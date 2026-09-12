@@ -1,0 +1,12 @@
+{
+  "name": "daily-paper",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "preview:build": "node scripts/build.mjs --demo",
+    "test": "node --test"
+  },
+  "engines": { "node": ">=20" },
+  "dependencies": { "katex": "0.18.7" }
+}

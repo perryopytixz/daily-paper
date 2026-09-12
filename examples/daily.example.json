@@ -1,0 +1,50 @@
+{
+  "example": true,
+  "date": "2026-09-12",
+  "status": "complete",
+  "frontiers_status": "recommendations",
+  "papers": [
+    {
+      "arxiv_id": "2609.00001",
+      "version": 1,
+      "title": "Delay-adaptive updates for asynchronous optimization",
+      "authors": ["Example Author A", "Example Author B"],
+      "submitted": "2026-09-12",
+      "updated": "2026-09-12",
+      "directions": ["asynchronous-distributed", "distributed"],
+      "arxiv_url": "https://arxiv.org/abs/2609.00001v1",
+      "abstract": "Illustrative content only. We study asynchronous updates under delayed information, measured by $\\mathbb{E}[\\|\\nabla f(x_k)\\|^2]$. This text is a layout example, not a paper abstract.",
+      "summary": "示例内容：讨论异步更新中的延迟与步长选择。用于查看正文和公式排版，不代表真实论文结论。",
+      "reason": "示例阅读角度：比较步长是否需要预先知道延迟上界，以及分析对网络条件的依赖。",
+      "order": 1
+    },
+    {
+      "arxiv_id": "2609.00002",
+      "version": 1,
+      "title": "A unified view of memory in first-order optimization",
+      "authors": ["Example Author C", "Example Author D"],
+      "submitted": "2026-09-12",
+      "updated": "2026-09-12",
+      "directions": ["historical-information", "optimization-frontiers"],
+      "arxiv_url": "https://arxiv.org/abs/2609.00002v1",
+      "abstract": "Illustrative content only. Starting from the update $$x_{k+1}=x_k-\\alpha_k\\nabla f(x_k),$$ this example demonstrates display mathematics. It does not describe a real paper.",
+      "summary": "示例内容：考察历史迭代点和梯度在一阶优化中的作用。用于查看长标题、英文摘要和中文导读的布局。",
+      "reason": "示例阅读角度：统一表示能否提供新的分析工具，以及历史信息的收益与存储成本如何关联。",
+      "order": 2
+    },
+    {
+      "arxiv_id": "2609.00003",
+      "version": 1,
+      "title": "Feasible distributed updates under changing communication graphs",
+      "authors": ["Example Author E", "Example Author F"],
+      "submitted": "2026-09-12",
+      "updated": "2026-09-12",
+      "directions": ["safety-critical", "time-varying-networks", "distributed"],
+      "arxiv_url": "https://arxiv.org/abs/2609.00003v1",
+      "abstract": "Illustrative content only. This example distinguishes feasibility at each iteration from asymptotic constraint satisfaction over changing graphs. It is not a verified research claim.",
+      "summary": "示例内容：讨论变化网络中带耦合约束的分布式优化。这里展示多个研究方向标签和迭代可行性的导读结构。",
+      "reason": "示例阅读角度：区分全过程可行与渐近满足约束，并比较网络切换对保证条件的影响。",
+      "order": 3
+    }
+  ]
+}

@@ -1,0 +1,129 @@
+{
+  "date": "2026-09-07",
+  "status": "complete",
+  "frontiers_status": "recommendations",
+  "papers": [
+    {
+      "arxiv_id": "2609.04578",
+      "version": 1,
+      "title": "Centered Permutation Prefixes for SGD with Random Reshuffling: Sharp Rates, Hölder Geometry, and Composite Proximal Extensions",
+      "authors": [
+        "Jiaxiang Li"
+      ],
+      "submitted": "2026-09-04",
+      "updated": "2026-09-04",
+      "directions": [
+        "optimization-frontiers",
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.04578v1",
+      "abstract": "We study stochastic gradient descent with random reshuffling for finite sums \\[ F(x)=\\frac1n\\sum_{i=1}^n f_i(x). \\] For fresh reshuffling with a constant component stepsize, if each $f_i$ has an $L$-Lipschitz gradient and the average $F$ is $\\mu$-strongly convex with a Lipschitz-continuous Hessian, we prove the last-epoch rate \\[ \\mathbb E[F(y_K)-F(x_\\star)] =\\widetilde O\\!\\left(T^{-2}+n^2T^{-3}\\right), \\qquad T=nK, \\] matching the known quadratic lower bound in its $(n,K)$-dependence. The components may be nonconvex, and no componentwise Hessian continuity or separate bounded-iterate assumption is required. More generally, a $\\nu$-Hölder-continuous average Hessian adds only $\\widetilde O(n^{1+\\nu}T^{-2-2\\nu})$, so every $\\nu\\ge 1/2$ preserves the quadratic rate. Under convex components, a decreasing-stepsize result removes the large-epoch requirement and recovers the same two-term scale once $nK$ exceeds the condition-number scale.\nWe also analyze epoch-wise ProxRR for $\\mathcal P=F+\\psi$. Writing $x^\\dagger$ for the composite minimizer and $\\beta_\\star=\\|\\nabla F(x^\\dagger)\\|$, we prove \\[ \\mathbb E\\|y_K-x^\\dagger\\|^2 =\\widetilde O\\!\\left( \\frac{\\beta_\\star^2}{K^2} +T^{-2}+n^2T^{-3} +n^{1+\\nu}T^{-2-2\\nu} \\right). \\] For $\\nu\\ge 1/2$, we show that the $\\beta_\\star^2/K^2$ splitting term is unavoidable and obtain a matching lower bound up to logarithms in the stated constant-stepsize regime.",
+      "summary": "论文研究有限和目标的随机重排 SGD，通过中心化排列前缀处理轮内采样与迭代点之间的依赖。平均目标强凸且 Hessian 满足相应连续性条件时，作者给出更紧的最后一轮误差界，并允许分量函数非凸；不同步长结果对轮数与有界性有各自条件。近端复合扩展还揭示额外的分裂误差项，不能直接沿用无正则化情形的全部速率。",
+      "reason": "值得借鉴的是用排列前缀的抵消结构分析历史采样依赖，而不是把它粗略视作独立噪声。这有助于解释随机重排何时优于有放回采样，也提示比较近端变体时须单独核对误差指标与分裂偏差。",
+      "order": 1
+    },
+    {
+      "arxiv_id": "2609.04763",
+      "version": 1,
+      "title": "Resilience Beyond Stationary Client Unavailability: Unlocking Efficient and Unbiased Federated Learning",
+      "authors": [
+        "Ming Xiang",
+        "Stratis Ioannidis",
+        "Edmund Yeh",
+        "Carlee Joe-Wong",
+        "Lili Su"
+      ],
+      "submitted": "2026-09-04",
+      "updated": "2026-09-04",
+      "directions": [
+        "distributed",
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.04763v1",
+      "abstract": "Due to resource constraints or external and internal uncertainties, clients in real-world federated learning systems are often intermittently available edge devices. In highly dynamic environments, the parameter server lacks prior real-time knowledge of clients' availability, making it challenging to adapt traditional federated learning algorithms to be resilient to uncertainties in client availability. If not carefully addressed, complex client availability can introduce significant bias, potentially harming the performance of the trained model. Most prior work either fails to account for non-stationary client availability dynamics or demands significant memory and computational overhead. This paper aims to develop efficient federated learning algorithms that are provably resilient to heterogeneous and non-stationary stochastic client availability. We propose FedSWE, which admits novel algorithmic structures to (i) compensate for missed computations, (ii) stabilize and diffuse the global updates over rounds, and (iii) evenly mix the local updates through implicit gossiping, despite being agnostic to non-stationary dynamics. Compared with the standard FedAvg, FedSWE introduces light additional memory and computation overhead. We show that FedSWE converges to a stationary point of non-convex objectives while achieving the desired linear speedup property in certain special cases. We corroborate our analysis with numerical experiments over diversified client unavailability dynamics on real-world data sets.",
+      "summary": "论文提出 FedSWE，通过补偿缺席期间的计算、平滑全局更新和隐式混合，处理非平稳客户端参与造成的优化偏差。理论允许参与概率随时间变化，但要求跨客户端和轮次的独立性，以及窗口平均参与概率的正下界。作者分析非凸目标的平稳性收敛，并仅在特定情形给出线性加速性质。",
+      "reason": "其启发在于把参与不均衡作为算法需要纠正的偏差来源，而不仅是更少的样本。值得检查补偿幅度如何与全局平滑相互制约，以及在相关缺席或真正异步通信中哪些假设还需要重新建立。",
+      "order": 2
+    },
+    {
+      "arxiv_id": "2609.04460",
+      "version": 1,
+      "title": "Distributed risk-averse optimization via CVaR",
+      "authors": [
+        "Siyi Wang",
+        "Kun Huang",
+        "Lei Xu",
+        "Karl H. Johansson"
+      ],
+      "submitted": "2026-09-03",
+      "updated": "2026-09-03",
+      "directions": [
+        "distributed",
+        "stochastic",
+        "time-varying-networks"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.04460v1",
+      "abstract": "Distributed systems often operate under uncertainty, where minimizing expected loss may overlook rare but severe events. This paper studies a distributed risk-averse convex optimization problem in which agents cooperatively minimize the average of local conditional value-at-risk (CVaR) objectives over a time-varying network. Each agent has access only to noisy evaluations of its local loss function, rather than to its CVaR objective or gradient. We therefore develop a zeroth-order algorithm that uses sampled losses to construct empirical CVaR estimates and their gradient estimates. At each iteration, agents combine neighboring decisions and perform a local update. Under convexity and Lipschitz continuity assumptions, we prove that the agents reach exact asymptotic consensus. We also establish a finite-time expected suboptimality bound for the weighted ergodic iterate. With diminishing step sizes and fixed sample sizes, the local last iterates converge almost surely to a common optimum, and their limiting expected CVaR gap is bounded in terms of the smoothing and finite-sample errors. This distributed bound matches the parameter dependence of the centralized benchmark provided in this paper. Finally, simulations on a distributed sensor network estimation problem illustrate the efficacy of the method.",
+      "summary": "论文在时变通信网络上最小化各节点 CVaR 的平均，以损失采样构造零阶风险梯度估计。分析区分网络不一致、平滑和有限样本估计三种误差，并在凸性、Lipschitz 连续、联合连通与双随机权重等条件下证明一致性。固定采样量和平滑半径时，最后迭代点收敛到代理问题的共同最优点，原 CVaR 目标仍有可量化误差。",
+      "reason": "这直接连接时变网络优化与尾部风险度量。值得借鉴误差分解和代理目标的处理方式，尤其要区分节点达到一致与原风险目标精确最优这两件事；风险规避本身也不等于过程安全可行保证。",
+      "order": 3
+    },
+    {
+      "arxiv_id": "2609.04401",
+      "version": 1,
+      "title": "Multivariable Extremum Seeking for Locally Lipschitz Objectives",
+      "authors": [
+        "Alan Williams"
+      ],
+      "submitted": "2026-09-03",
+      "updated": "2026-09-03",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.04401v1",
+      "abstract": "Classical extremum seeking (ES) is commonly interpreted as approximating gradient descent, but this interpretation is less clear for nonsmooth objectives in the continuous-time multivariable setting. We propose a minimal modification of the classical multivariable perturbation--demodulation architecture: rationally independent perturbation frequencies and matched demodulation signals. For any locally Lipschitz static objective, the Kronecker--Weyl theorem shows that, at every fixed perturbation amplitude, the long-time averaged dynamics are exactly the negative gradient of a kernel-smoothed objective. Because rationally independent frequencies render the perturbation and demodulation signals nonperiodic, we employ general averaging theory rather than periodic averaging theory. If the gradient flow of the smoothed objective is globally uniformly asymptotically stable, then the ES dynamics are practically globally uniformly asymptotically stable. We also derive a general matching condition relating the perturbation occupation density, demodulation signal, and smoothing kernel, yielding a family of alternative designs. Numerical examples include a nonsmooth objective function, which may be interpreted as the penalty function of a nonlinear program, and the Rastrigin function, for which smoothing eliminates all undesired local minima.",
+      "summary": "研究局部 Lipschitz 非光滑目标的极值寻优，建立扰动信号、解调信号与平滑核之间的匹配关系，使平均动力学对应同一个平滑目标的梯度。文章给出正弦与三角波构造，并用平均化分析说明实际系统如何逼近平滑梯度流。稳定性结论需要平滑系统本身满足相应吸引性条件，不能理解为任意非光滑目标都能全局求解。",
+      "reason": "值得借鉴的是先明确估计器实际对应哪个目标，再设计扰动与解调，而不只是把平均更新近似称为梯度。这为零阶数学优化算法中的平滑偏差与动力学分析提供了具体工具。",
+      "order": 4
+    },
+    {
+      "arxiv_id": "2609.04794",
+      "version": 1,
+      "title": "Policy Iteration for Domain Randomized Linear Quadratic Systems",
+      "authors": [
+        "Abbas Pasdar",
+        "Farnaz Adib Yaghmaie"
+      ],
+      "submitted": "2026-09-04",
+      "updated": "2026-09-04",
+      "directions": [
+        "safety-critical"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.04794v1",
+      "abstract": "In this work, we study policy optimization under domain randomization for linear quadratic control, focusing on learning a single state-feedback controller that minimizes the average cost across systems with uncertain dynamics. We propose a policy iteration algorithm with a step-size rule that preserves stability across all sampled systems at each iteration. We show that the method yields monotonic improvement of the sample-average objective and that a stabilizing step size always exists. Under standard smoothness assumptions, the iterates converge subsequentially to stationary points, and under a gradient-dominance condition, we obtain a global linear convergence rate.",
+      "summary": "针对有限个采样系统共享反馈增益的域随机化 LQR，构造基于各系统 Lyapunov 方程的策略改进方向。分析说明从共同稳定的初始控制器出发，足够小的更新可以保持所有采样系统稳定，并在紧子水平集等条件下建立下降与收敛结论。线性收敛还依赖额外的梯度支配假设，稳定保证也不自动覆盖未采样系统。",
+      "reason": "它把迭代中的稳定性保持与优化下降分别处理，适合比较安全可行域内的步长设计。尤其值得检查共同稳定初始化、稳定裕量与收敛速率之间如何相互依赖。",
+      "order": 5
+    },
+    {
+      "arxiv_id": "2609.04636",
+      "version": 1,
+      "title": "Blind Random Search with Noisy Loss Measurements: Averaging, Thresholding, and Almost Sure Convergence",
+      "authors": [
+        "Zixian Zhou",
+        "Xintong Jiang"
+      ],
+      "submitted": "2026-09-04",
+      "updated": "2026-09-04",
+      "directions": [
+        "historical-information",
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.04636v1",
+      "abstract": "Blind random search repeatedly draws a candidate point and replaces the current estimate whenever the candidate has a lower loss. In the absence of noise, the true loss is observed directly. It decreases strictly at every accepted update and is monotone nonincreasing over all iterations. Measurement noise can make a worse candidate appear better and thereby break this monotonicity. To recover almost sure convergence under noise, we incorporate averaging and thresholding into the original decision criterion. These two classical tools are coupled. As the sample sizes grow, the positive threshold shrinks at a matched rate. These modifications allow blind random search to recover eventual monotonicity of the true loss under noisy measurements and to converge almost surely.",
+      "summary": "针对只有含噪函数值的随机搜索，论文将递增采样量、递减接受阈值与当前点的历史观测复用结合。通过对所有可能的历史观测组合建立统一概率界，分析接受决策造成的选择偏差，并在独立同分布次高斯噪声、最优点分离及候选可达性条件下证明几乎必然收敛。保证是渐近的，采样量随迭代增长，不能视为有限预算下的高效全局优化保证。",
+      "reason": "值得借鉴的是对历史观测复用引入的依赖关系进行显式控制，而不把被选中的样本均值当成新的无偏估计。这为带记忆的随机接受规则提供了具体分析思路，也说明缓存观测节省测量时需要付出什么统计代价。",
+      "order": 6
+    }
+  ]
+}

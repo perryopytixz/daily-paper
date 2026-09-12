@@ -1,0 +1,244 @@
+{
+  "date": "2026-09-10",
+  "status": "complete",
+  "frontiers_status": "recommendations",
+  "papers": [
+    {
+      "arxiv_id": "2609.09524",
+      "version": 1,
+      "title": "Oracle Complexity of Stochastic Fixed-Point Equations with Nonexpansive Maps",
+      "authors": [
+        "Jelena Diakonikolas",
+        "Cristóbal Guzmán",
+        "David Martínez-Rubio"
+      ],
+      "submitted": "2026-09-08",
+      "updated": "2026-09-08",
+      "directions": [
+        "optimization-frontiers",
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.09524v1",
+      "abstract": "We study the oracle complexity of computing a point with small fixed-point residual $\\|T(x)-x\\| \\leq \\epsilon$, for a general norm $\\|\\cdot\\|$ and a self-map $T$ of a compact convex set. We study this problem in the setting where $T$ is nonexpansive with respect to the same norm $\\|\\cdot\\|$ and accessed via an unbiased stochastic oracle with bounded variance $\\sigma^2$. We provide an algorithm that solves such instances for any norm with a weak Rademacher type $q > 1$, with high probability. The algorithm is based on a recursive anchoring technique. For type-$2$ spaces, such as $\\ell_p$-spaces for $p \\in [2, \\infty]$, our algorithm attains stochastic oracle complexity $\\tilde O(\\sigma^2 \\epsilon^{-3} + \\epsilon^{-1})$. We further prove a near-matching lower bound (i.e., matching up to poly-log factors) for such $\\ell_{\\infty}$-norm instances in high dimensions. Our lower bound holds against any randomized algorithm that succeeds with constant probability. It further extends to settings with ``sparse'' noise, where variance measured with respect to any $\\ell_p$ norm is of the same order, ruling out the possibility of improving oracle complexity as a function of $\\varepsilon$ by measuring variance in a non-matching $\\ell_p$ norm.",
+      "summary": "论文研究一般范数下非扩张映射的随机不动点求解，假设定义域紧且凸，随机访问无偏且方差有界。递归锚定方法在相应几何条件下给出高概率残差保证，其中 type-2 情形的复杂度为 $\\widetilde O(\\sigma^2\\varepsilon^{-3}+\\varepsilon^{-1})$。作者另在高维 $\\ell_\\infty$ 情形建立近匹配下界；这一最优性结论不能直接推广为所有欧氏情形的下界。",
+      "reason": "许多迭代算法可写成不动点形式，本文有助于区分算法分析不够紧与随机访问本身的困难。尤其值得看范数几何、噪声度量和下界构造之间的关系，为设计随机固定点迭代时选择残差与假设提供参照。",
+      "order": 1
+    },
+    {
+      "arxiv_id": "2609.09743",
+      "version": 1,
+      "title": "Heavy-Ball Method under Randomized Schedules",
+      "authors": [
+        "Chang He",
+        "Shuzhong Zhang"
+      ],
+      "submitted": "2026-09-09",
+      "updated": "2026-09-09",
+      "directions": [
+        "optimization-frontiers",
+        "historical-information"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.09743v1",
+      "abstract": "We study how predefined randomized parameter schedules accelerate the heavy-ball method on general smooth convex objectives. Our analysis distinguishes two levels of randomization: sampling gradient-evaluation times within intervals whose boundaries are deterministic, and additionally randomizing the time boundaries themselves. With deterministic time boundaries, we construct fixed-time and anytime schedules that achieve an expected last-iterate function value gap of order $\\mathcal{O}(1/K^{4/3})$; the anytime schedule also satisfies the same rate almost surely. We then use randomized time boundaries and obtain the improved last-iterate rate $\\mathcal{O}(1/K^{3/2})$, both in expectation and almost surely. To the best of our knowledge, this is the first global nonasymptotic convergence guarantee for the heavy-ball method on general smooth convex functions that improves polynomially over the classical $\\mathcal{O}(1/K)$ rate. Our result shows that the heavy-ball method achieves a strictly better convergence rate than the best known result $\\mathcal{O}(1/K^{\\log_2(1+\\sqrt{2})})$ attainable by plain gradient descent with silver stepsize schedules.",
+      "summary": "论文通过预先随机化参数调度分析一般光滑凸目标上的 Heavy-Ball 方法。两种随机化构造分别给出最后迭代点目标误差的 $O(K^{-4/3})$ 和 $O(K^{-3/2})$ 速率，并讨论期望与几乎必然保证。这里使用精确梯度，随机性来自调度；构造中的动量系数也不受经典 $[0,1]$ 区间限制。",
+      "reason": "这提供了一个理解动量加速能力的新例子，适合与预定步长梯度下降的下界对读。可借鉴其把历史迭代作用与随机时间调度联系起来的分析，但不宜直接把理论构造当成现成的实用超参数方案。",
+      "order": 2
+    },
+    {
+      "arxiv_id": "2609.09361",
+      "version": 1,
+      "title": "Communication-efficient ADMM over Hierarchical Networks",
+      "authors": [
+        "Binh Nguyen",
+        "Shuangqing Wei",
+        "Truong X. Nghiem"
+      ],
+      "submitted": "2026-09-08",
+      "updated": "2026-09-08",
+      "directions": [
+        "distributed"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.09361v1",
+      "abstract": "This paper develops a novel distributed optimization algorithm based on the Alternating Direction Method of Multipliers (ADMM) to solve hierarchical optimization problems over tree-structured networks, termed hierarchical ADMM (hADMM), with a particular focus on enhancing communication efficiency across the network. By rearranging the augmented Lagrangian to establish a query-response communication mechanism between nodes that explicitly exploits the hierarchical tree structure, the proposed algorithm significantly reduces communication costs compared to existing ADMM-based methods for hierarchical optimization. Furthermore, hADMM guarantees asymptotic convergence under convexity assumptions. We also present a convergence rate analysis based on linear matrix inequalities to characterize the maximum theoretically achievable convergence rates across different network topologies, showing that the proposed hADMM attains linear convergence under mild conditions. Three numerical experiments demonstrate that hADMM is compatible with arbitrary tree network structures and outperforms existing approaches in terms of communication efficiency.",
+      "summary": "论文针对树形层级网络重排增广拉格朗日与消息交互，提出父子节点间的查询—响应式 hADMM，减少嵌套求解与通信开销。作者在凸性及矩阵秩等条件下证明收敛，并利用线性矩阵不等式分析附加强凸、光滑等条件下的线性速率。其结论依赖层级拓扑和相应模型条件，不能视作任意异步延迟下的保证。",
+      "reason": "值得看网络拓扑如何直接影响变量分解、消息内容与更新顺序，而不只作为收敛常数出现。比较通信效率时应同时核对一次迭代跨越多少层、传输多少消息，以及子问题求解的实际开销。",
+      "order": 3
+    },
+    {
+      "arxiv_id": "2609.10314",
+      "version": 1,
+      "title": "An $O(1/T^3)$ algorithm for minimizing convex quadratic functions over the $L_1$ ball",
+      "authors": [
+        "Yuyuan Ouyang"
+      ],
+      "submitted": "2026-09-09",
+      "updated": "2026-09-09",
+      "directions": [
+        "optimization-frontiers",
+        "historical-information"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.10314v1",
+      "abstract": "We study convex quadratic minimization over the unit $L_1$ ball in which the maximum eigenvalue of the Hessian matrix is bounded by a positive constant $L$. We propose a novel first-order algorithm with objective value error bounded by $O(L/T^3)$ after $T$ gradient evaluations, assuming that the subproblems involved in the algorithm can be solved exactly. To the best of our knowledge, the best convergence rate of algorithms in the literature is $O(L/T^2)$. From the perspective of information-based complexity theory, our proposed algorithm is the first in the literature that achieves the $O((L/\\varepsilon)^{1/3})$ first-order oracle complexity, although its current version is not necessarily practical for implementation. We hope that our proposed algorithm could shed some light on future implementable and efficient $O(L/T^3)$-convergence-rate algorithms. The proposed algorithm incorporates a decomposition of components of vectors in the unit $L_1$-norm ball to \"good\" and \"bad\" parts, and uses symmetric rank-1 (SR1) updates on the bad parts. The proposed algorithm was developed after the author instructed the OpenAI ChatGPT 6 (Astra) model to study the problem using ideas of weak-type $L^1$ estimates and good-bad part decomposition in harmonic analysis and a recent result.",
+      "summary": "研究 $L_1$ 球上的凸二次最小化，通过坐标结构分解和 SR1 曲率学习构造三次衰减的目标误差保证。算法将较难处理的坐标交给曲率恢复机制，并把相应 Hessian 向量乘积纳入一阶查询预算。结果依赖二次结构与规定的子问题求解，查询复杂度不直接等于实际运行时间。",
+      "reason": "这是历史曲率信息如何转化为更好复杂度的具体案例。值得学习其结构分解与成本记账方式，而不是把更快的速率推广到一般光滑目标。",
+      "order": 4
+    },
+    {
+      "arxiv_id": "2609.09686",
+      "version": 1,
+      "title": "Counterexamples for BFGS-type methods under arbitrary strong Wolfe constants",
+      "authors": [
+        "Rui Diao"
+      ],
+      "submitted": "2026-09-09",
+      "updated": "2026-09-09",
+      "directions": [
+        "optimization-frontiers",
+        "historical-information"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.09686v1",
+      "abstract": "Whether the Broyden-Fletcher-Goldfarb-Shanno (BFGS) method and its variants can fail to converge on smooth nonconvex functions under realistic line-search parameters has remained a central open problem in quasi-Newton theory since the landmark counterexample of Dai (2002), which was confined to small Armijo parameters ($c_1 \\le 1/84 \\approx 0.0119$ on Powell's geometry, or $c_1 \\le 69/7480 \\approx 0.0092$ on his six-point cycle) and an objective function unbounded below. In this paper, we resolve the long-standing open question, posed by Dai (2002) following a discussion with J. C. Gilbert, of whether such counterexamples exist in theory for every Armijo parameter $c_1 \\in (0, 1)$. Specifically, for every prescribed pair of line-search parameters $0 < c_1 < c_2 < 1$, we construct an objective function $f \\in C^\\infty(\\mathbb{R}^2)$, bounded below and with Lipschitz continuous gradient, on which every method in a broad conjugacy class $\\mathcal{C}$ equipped with the first-local-minimizer line search generates an infinite sequence of iterates with $\\|\\nabla f(x_k)\\| = 1$ for all $k \\ge 0$. The class $\\mathcal{C}$ encompasses the classical full-memory BFGS method, limited-memory BFGS (L-BFGS) with arbitrary memory $m \\ge 1$, the Broyden positive family, and the Hestenes-Stiefel conjugate gradient method. The steps are the standard first local minimizers along the search rays and simultaneously satisfy the strong Wolfe, weak Wolfe, Armijo, and Goldstein conditions with constants $(c_1, c_2)$. The construction operates in the minimal possible dimension $n = 2$, exploiting a non-decaying conjugate descent orbit in the plane coupled with an explicit tubular interpolation whose two-bump axial curvature profile places the Armijo ratio anywhere in $(0, 1)$.",
+      "summary": "为 BFGS 等方法构造光滑非凸反例：目标有下界且梯度 Lipschitz，线搜索满足规定的强 Wolfe 条件，但梯度范数仍不趋于零。构造中的轨迹持续向无穷远逃逸，因此其相关子水平集无界。结果揭示仅有目标下界不足以替代某些经典收敛定理中的有界水平集假设。",
+      "reason": "反例精确指出了收敛假设的作用，适合用来审查拟牛顿方法的全局化论证。它不能被解读为否定已有条件下的 BFGS 收敛结论。",
+      "order": 5
+    },
+    {
+      "arxiv_id": "2609.09683",
+      "version": 1,
+      "title": "Primal-Dual Inexact Newton-MR for Nonconvex Optimization with Equality Constraints",
+      "authors": [
+        "Oscar Smee",
+        "Fred Roosta"
+      ],
+      "submitted": "2026-09-09",
+      "updated": "2026-09-09",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.09683v1",
+      "abstract": "Optimization problems with nonlinear equality constraints arise throughout science, engineering, and increasingly in machine learning. Prominent methods for solving such problems include sequential quadratic programming and, more broadly, primal-dual Newton methods. Classical analyses of these methods typically rely on strong assumptions, perhaps most notably positive definiteness of the Lagrangian Hessian on the null space of the constraint Jacobian. In practice, this assumption often necessitates strong regularization or the use of a positive definite Hessian surrogate. Moreover, in large-scale settings, solving the primal-dual Newton subproblem exactly is often computationally infeasible. To address these issues, we propose an inexact primal-dual Newton method with an inner solver based on the conjugate residual (CR) method. Exploiting recently established properties of CR, including negative-curvature detection, iterate monotonicity, and descent guarantees, our method handles indefiniteness in the subproblem directly as it arises. Our method thereby avoids detrimental regularization of the Lagrangian Hessian while naturally accommodating inexact solves. We establish worst-case global convergence guarantees and demonstrate strong empirical performance on large-scale, nonconvex problems.",
+      "summary": "针对光滑非线性等式约束优化，提出原始—对偶不精确 Newton-MR 方法，将法向可行性改进与切向优化分开处理。方法结合 Krylov 子问题求解和负曲率信息，避免要求拉格朗日 Hessian 始终正定。全局分析仍依赖约束 Jacobian 一致满行秩等正则条件，且不保证所有迭代点严格可行。",
+      "reason": "值得借鉴的是如何区分约束退化与目标负曲率，并为二者采用不同机制。这有助于构造更灵活的约束二阶数学优化算法，同时明确其不可省略的正则性前提。",
+      "order": 6
+    },
+    {
+      "arxiv_id": "2609.09441",
+      "version": 1,
+      "title": "Powell-Style Model-Based Derivative-Free Optimization with Complexity Guarantees",
+      "authors": [
+        "Abraar Chaudhry",
+        "Katya Scheinberg",
+        "Scholar Sun"
+      ],
+      "submitted": "2026-09-08",
+      "updated": "2026-09-08",
+      "directions": [
+        "optimization-frontiers",
+        "historical-information",
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.09441v1",
+      "abstract": "We propose variants of model-based trust region derivative-free algorithms that are closest to methods initially proposed and implemented by Powell. These methods rely on low degree polynomial interpolation and carefully maintain geometry of the interpolation sets. We are able to derive complexity bounds for these methods that make them theoretically competitive to other derivative-free methods. Applying these methods in randomly generated subspaces recovers what we believe to be nearly tight complexity. This paper builds on recent results where complexity of a much simplified version of Powell's methods was derived. Here, we extend the analysis to fully incorporate Powell's geometry handling approach and conduct an extensive numerical comparison of the model-based trust region methods connecting practical and theoretical performance. We also extend the analysis of subspace model-based trust region methods to the case of noisy function evaluations.",
+      "summary": "为 Powell 风格的模型无导数方法分析最坏情形复杂度，显式控制插值集合几何、模型误差和模型改进所需的函数评估。文章进一步研究有界函数误差及随机子空间版本，给出相应停止时间保证。存在噪声时只能保证达到与噪声和半径机制相容的精度，不能将结果写成任意精度收敛。",
+      "reason": "它把复用历史采样点的收益与维护这些点的几何成本放进同一分析。对希望用记忆减少函数评估的算法，这比只统计成功下降迭代更有参考价值。",
+      "order": 7
+    },
+    {
+      "arxiv_id": "2609.09466",
+      "version": 1,
+      "title": "Exact-Form Regret for Gradient Descent, Mirror Descent and Follow-the-Regularized-Leader",
+      "authors": [
+        "Ashkan Soleymani",
+        "Gabriele Farina",
+        "Patrick Jaillet"
+      ],
+      "submitted": "2026-09-08",
+      "updated": "2026-09-08",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.09466v1",
+      "abstract": "Online gradient descent is usually studied through external regret, where the learner competes with fixed alternatives. Recent work shows that first-order methods control richer action-dependent deviations. We ask for a geometric characterization of the deviations with respect to which online gradient descent, mirror descent, and follow-the-regularized-leader (FTRL) achieve no regret. We identify exactness as the common principle. Exactness means that the relevant displacement field is generated by a scalar potential, or equivalently that the associated one-form is exact in the geometry used by the algorithm. This geometry depends on the algorithm. For gradient descent it is Euclidean geometry, for mirror descent it is the geometry induced by the regularizer, and for FTRL it is the cumulative dual state. Under mild regularity conditions, exactness yields sublinear regret, while nonzero circulation provides the complementary obstruction and leads to linear regret. This gives a unified geometric framework for understanding the deviation classes controlled by these algorithms and reveals that different first-order methods can control genuinely different classes of deviations. These deviation classes have direct consequences for learning, particularly in games. We study the equilibrium notions induced by exact-form deviations and introduce conservative correlated equilibrium, reflecting both the conservative geometry of the underlying displacement fields and the restricted family of deviations available to the players. We characterize its relation to correlated equilibrium, determine when the resulting equilibrium notions coincide and when they separate, and show how these relationships depend on the geometry and the learning algorithm. Overall, this work gives a unified geometric account of what first-order online learning algorithms are no-regret with respect to, beyond fixed comparators.",
+      "summary": "从势函数与几何结构出发，研究梯度下降、镜像下降和 FTRL 的精确形式遗憾表达。文章通过望远镜分解说明哪些偏差项决定遗憾，并分析更新场的循环行为如何影响可实现的保证。结论依赖相应映射、正则性和比较对象，不能把任意更新规则都视为某个势函数的梯度。",
+      "reason": "这种表达把遗憾分析与算法实际遵循的几何联系起来，有助于发现标准上界掩盖的结构。对于设计新的预条件或非保守更新，可用它检查是否仍存在合适的势函数解释。",
+      "order": 8
+    },
+    {
+      "arxiv_id": "2609.10201",
+      "version": 1,
+      "title": "Distributed Vector Assembly via Selector-Anchored Diffusion with Local Innovation",
+      "authors": [
+        "Diana Vieira Fernandes",
+        "Carlos Santos Silva",
+        "Soummya Kar"
+      ],
+      "submitted": "2026-09-09",
+      "updated": "2026-09-09",
+      "directions": [
+        "distributed"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.10201v1",
+      "abstract": "We introduce Selector-Anchored Diffusion with Local Innovation (D+LI), a distributed vector-assembly primitive that constructs complete local replicas from independently owned authoritative blocks. Orthogonal selectors preserve block identity, local innovation anchors each owner's contribution, and Laplacian diffusion propagates these contributions across the network. We show that pure averaging with raw additive selector sources cannot isolate this replica. The D+LI error operator decomposes coordinatewise as the identity minus an owner-grounded Laplacian, yielding global contraction with a factor independent of the total and block dimensions. For time-varying outer targets, we establish a finite-T input-to-state stability (ISS) bound and a self-consistent estimator-controller gain condition for Lipschitz coordination maps, including non-potential ones. For semi-algebraic potential problems, we prove Kurdyka-Lojasiewicz (KL) finite-length convergence of the coupled decision-assembly iteration with a fixed finite communication budget per outer iteration under explicit timescale-separation conditions. Three numerical experiments demonstrate contraction tightness and finite-horizon tracking, verify an admissible KL timescale, and illustrate discrete and non-potential outer maps.",
+      "summary": "针对由不同节点负责的变量块，构造分布式向量副本组装与创新修正机制，并将其嵌入优化和博弈迭代。文章在固定连通无向图等条件下分析有限通信轮数造成的跟踪误差；势函数情形进一步结合充分下降与 KL 性质给出收敛结果。通信轮数与步长仍需满足误差控制条件。",
+      "reason": "它说明如何把全局向量的近似可用性转化为可量化的优化误差，适合设计每轮通信预算有限的算法。图本身固定，因此不应仅因目标或变量随时间变化就归入时变网络优化。",
+      "order": 9
+    },
+    {
+      "arxiv_id": "2609.09872",
+      "version": 1,
+      "title": "Initialization-dependent BFGS trial rates for tilted absolute values",
+      "authors": [
+        "Qiuyu Chen"
+      ],
+      "submitted": "2026-09-09",
+      "updated": "2026-09-09",
+      "directions": [
+        "historical-information"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.09872v1",
+      "abstract": "Lewis and Overton conjectured in 2008 that, for BFGS applied to the one-dimensional tilted absolute value with their Armijo--Wolfe line search, every nonterminating execution converges at a trial-normalized rate determined only by the tilt parameter and independent of the initial data. We prove that this initialization-independent rate assertion is false. In fact, for every tilt parameter in an explicit open interval, we construct two nonterminating executions with different sharp trial-normalized convergence rates. The proof reduces the line search to a scale-free state consisting of the iterate sign and the zero-crossing stepsize, and verifies two periodic state cycles by elementary rational inequalities. This yields an explicit family of counterexamples and shows that the asymptotic trial-normalized behavior of nonsmooth BFGS can depend essentially on the initialization even for this canonical one-dimensional model.",
+      "summary": "在倾斜绝对值这一非光滑模型上，构造 BFGS 的不同周期轨迹，比较初始状态如何改变渐近收缩与线搜索试探次数。分析显示每次接受迭代的收敛因子和每次函数试探的有效速率可能给出不同排序。结论针对特定目标与线搜索轨迹，不是一般 BFGS 的统一速率。",
+      "reason": "该模型提醒我们把线搜索失败试探计入算法成本，而不只比较接受步数。它也为理解历史曲率状态和初始化的长期影响提供了可追踪的例子。",
+      "order": 10
+    },
+    {
+      "arxiv_id": "2609.09454",
+      "version": 1,
+      "title": "Unifying Variational View of Accelerated Primal-Dual Methods",
+      "authors": [
+        "Cheng Chang",
+        "Mehran Mesbahi"
+      ],
+      "submitted": "2026-09-08",
+      "updated": "2026-09-08",
+      "directions": [
+        "optimization-frontiers",
+        "distributed"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.09454v1",
+      "abstract": "We develop a unifying variational framework for accelerated primal-dual flows in affinely constrained convex optimization. In particular, it is shown that applying the Euler-Lagrange-Rayleigh (ELR) principle to coupled augmented Bregman Lagrangians systematically generates accelerated dynamics over general Bregman geometries and recovers a family of existing primal-dual mirror and Alternating Direction Method of Multipliers (ADMM) flows as special cases. We then establish $\\mathcal{O}(e^{-b_t})$ convergence guarantees for these flows under mild assumptions. Lastly, we show that the proposed framework for algorithmic development extends from finite-dimensional optimization to constrained optimization over probability distributions.",
+      "summary": "以耦合的 Bregman 拉格朗日量和耗散项统一构造仿射约束凸优化的加速原始—对偶连续动力学，恢复若干镜像与 ADMM 流作为特例。共同的 Lyapunov 分析同时控制对偶间隙、可行性残差和目标误差，但不同指标达到同阶速率需要额外条件。文章还给出分布式和概率分布空间的构造；连续时间速率不能直接视为离散实现的迭代复杂度。",
+      "reason": "该框架为从几何和耗散机制出发设计加速算法提供了统一入口。尤其值得借鉴其原始、对偶交叉项的抵消方式，同时检查离散化后是否还能保留相应势函数下降。",
+      "order": 11
+    },
+    {
+      "arxiv_id": "2609.09449",
+      "version": 1,
+      "title": "Afterimage Slow Regions in First-Order Methods for Linear Conic Programming",
+      "authors": [
+        "Shucheng Kang",
+        "Heng Yang"
+      ],
+      "submitted": "2026-09-08",
+      "updated": "2026-09-08",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.09449v1",
+      "abstract": "First-order methods for linear conic programming often stall on long plateaus. Existing analyses characterize when during a run or on which problem instances slow convergence occurs; we instead ask where in the state space slow convergence is present. We introduce the slow region family for parameterized averaged fixed-point iterations. On a slow region, one step moves the state by only a small fraction of its distance to the fixed-point set, so an orbit starting there keeps almost its initial distance for arbitrarily many iterations. We then develop the afterimage principle to construct them. A center family and a nearby petal family share the same limit parameter, so their residual fields become close, while their fixed-point sets or forward drifts stay far apart. The petal geometry then certifies a slow region for the center. We verify the standing assumptions for ADMM, sGS-ADMM, and PDHG, and give an LP, SOCP, and SDP gallery showing how varied slow regions can be.",
+      "summary": "论文用“残影”机制解释一阶固定点方法为什么会在某些区域长期进展缓慢：邻近问题的残差场接近，但固定点集合或漂移结构变化很大。作者在参数化平均算子及度量正则性等条件下，给出慢区域与逃离时间的定量分析，并讨论 ADMM、PDHG 等实例。一个简单线性规划展示了参数微扰下的长平台期，结果解释停滞机制，并未自动提供消除停滞的新算法。",
+      "reason": "这项工作提示，小残差与离解很近之间可能存在严重差距。值得借鉴它用邻近问题几何构造慢区域的办法，用于审视停止准则、误差界常数及看似稳定却进展很慢的迭代轨迹。",
+      "order": 12
+    }
+  ]
+}

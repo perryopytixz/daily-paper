@@ -1,0 +1,15 @@
+{
+  "title": "Daily Paper",
+  "archive_url": "https://github.com/perryopytixz/daily-paper/tree/main/content",
+  "display_days": 7,
+  "timezone": "Asia/Singapore",
+  "directions": [
+    { "id": "optimization-frontiers", "name": "Optimization Frontiers" },
+    { "id": "historical-information", "name": "Historical Information-based Optimization" },
+    { "id": "distributed", "name": "Distributed Optimization" },
+    { "id": "asynchronous-distributed", "name": "Asynchronous Distributed Optimization" },
+    { "id": "stochastic", "name": "Stochastic Optimization" },
+    { "id": "safety-critical", "name": "Safety-critical Optimization" },
+    { "id": "time-varying-networks", "name": "Optimization over Time-varying Networks" }
+  ]
+}

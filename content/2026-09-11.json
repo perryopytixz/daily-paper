@@ -1,0 +1,320 @@
+{
+  "date": "2026-09-11",
+  "status": "complete",
+  "frontiers_status": "recommendations",
+  "papers": [
+    {
+      "arxiv_id": "2609.11480",
+      "version": 1,
+      "title": "Global Linear Convergence of the Proximal Bundle Method under Unknown Piecewise Smoothness and Quadratic Growth",
+      "authors": [
+        "Zhenwei Lin",
+        "Zhe Zhang"
+      ],
+      "submitted": "2026-09-10",
+      "updated": "2026-09-10",
+      "directions": [
+        "optimization-frontiers",
+        "historical-information"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.11480v1",
+      "abstract": "We study why the proximal bundle method (PBM) can perform better in practice when it retains more cutting planes. We consider convex objectives with quadratic growth and an unknown piecewise-smooth structure. Our key observation is that retaining sufficiently many cutting planes allows PBM to exploit the objective's piecewise-smooth structure and behave as if it were optimizing a smooth function. We provide a theoretical explanation for the observed linear convergence of PBM on piecewise-smooth objectives when it retains sufficiently many cutting planes.",
+      "summary": "论文研究凸、分段光滑且满足二次增长条件的目标，解释近端束方法保留更多历史切平面为何可能更快。作者分别分析全记忆与有限记忆版本，证明保留足够切平面时可获得全局线性收敛；有限记忆保证要求容量不小于分段结构的规模。进一步通过可计算证书和重启处理未知增长参数。",
+      "reason": "值得重点看历史切平面的数量如何进入复杂度，以及空步期间的模型改进如何转化为收敛保证。这为判断保留、压缩历史信息的收益提供了结构化依据，也提示算法设计需要同时考虑记忆阈值与每步子问题成本。",
+      "order": 1
+    },
+    {
+      "arxiv_id": "2609.10732",
+      "version": 1,
+      "title": "Operator Splitting Methods with Online Scaling",
+      "authors": [
+        "Wanyu Zhang",
+        "Wenzhi Gao",
+        "Madeleine Udell"
+      ],
+      "submitted": "2026-09-09",
+      "updated": "2026-09-09",
+      "directions": [
+        "optimization-frontiers",
+        "historical-information"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.10732v1",
+      "abstract": "This paper develops a principled framework for automatically tuning preconditioners in operator splitting methods, including forward-backward splitting, Douglas-Rachford splitting, and the alternating direction method of multipliers. We interpret these splitting methods as preconditioned gradient descent applied to their corresponding envelope functions and use online learning to adaptively learn the preconditioner during optimization. Our framework achieves asymptotically faster convergence rates and accelerates the solution of important optimization problems, including Lasso, $\\ell_1$-regularized logistic regression, and quadratic programming. Extensive numerical experiments validate our theoretical results and demonstrate the practical effectiveness of the proposed approach.",
+      "summary": "论文将前向后向分裂、Douglas–Rachford 分裂和 ADMM 联系到相应包络函数上的预条件梯度下降，并用在线学习调整迭代残差的缩放矩阵。作者在不同正则性条件下分析全局收敛，并在局部仿射结构下得到局部超线性结果。缩放放在分裂更新之外，但 ADMM 版本的反馈计算仍可能需要额外线性求解。",
+      "reason": "可与 Anderson 加速等利用历史残差的方法对照阅读：这里学习的是预条件矩阵，其反馈来自包络函数。值得借鉴的是把参数适应与收敛分析连接起来的方式，同时应比较额外反馈计算能否被迭代次数的减少抵消。",
+      "order": 2
+    },
+    {
+      "arxiv_id": "2609.11751",
+      "version": 1,
+      "title": "Stochastic Gradient Methods with Online Scaling",
+      "authors": [
+        "Wanyu Zhang",
+        "Wenzhi Gao",
+        "Yinyu Ye",
+        "Madeleine Udell"
+      ],
+      "submitted": "2026-09-10",
+      "updated": "2026-09-10",
+      "directions": [
+        "optimization-frontiers",
+        "historical-information",
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.11751v1",
+      "abstract": "This paper introduces Stochastic Online Scaled Gradient Methods (SOSGM), a generalization of the recently developed adaptive preconditioning framework in arXiv:2505.23081 and arXiv:2509.11007 to stochastic optimization. Under standard assumptions, we establish convergence guarantees for SOSGM using large batchsize or variance reduction. SOSGM is compatible with popular diagonal and/or low-rank preconditioners as well as heavy-ball momentum, while maintaining memory and computation cost comparable to Adam. Extensive numerical experiments demonstrate the strong empirical performance of SOSGM. Using a diagonal preconditioner, SOSGM and its variants substantially outperform existing adaptive first-order methods across a range of statistical learning tasks.",
+      "summary": "论文把在线学习预条件矩阵的思路推广到随机梯度方法，通过大批量估计或方差缩减控制反馈噪声。其理论分别依赖相对梯度误差等条件，以及有限和强凸问题的结构；不能直接理解为任意小批量噪声下均有同样保证。对角预条件等实现展示了较低存储开销和统计学习任务上的实验效果。",
+      "reason": "值得研究噪声如何影响预条件器的学习，以及哪些确定性反馈规则不能直接移植到随机情形。大批量与方差缩减两条路线提供了具体比较对象，有助于评估历史信息利用带来的收益与采样成本。",
+      "order": 3
+    },
+    {
+      "arxiv_id": "2609.11207",
+      "version": 1,
+      "title": "Convex Optimization with Nested Evolving Feasible Sets (CONES) under Time-Varying Loss Functions",
+      "authors": [
+        "Rahul Vaze"
+      ],
+      "submitted": "2026-09-10",
+      "updated": "2026-09-10",
+      "directions": [
+        "optimization-frontiers",
+        "safety-critical"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.11207v1",
+      "abstract": "Convex Optimization with Nested Evolving Feasible Sets (CONES) was introduced in [10] where the objective function \\(f\\) remains fixed but the feasible region evolves over time as a nested sequence \\(S_1 \\supseteq S_2 \\supseteq \\cdots \\supseteq S_T\\). The goal of an online algorithm is to simultaneously minimize the regret with respect to hindsight static optimal benchmark and the total movement cost $M_\\mathcal{A}(T)$ while ensuring feasibility at all times. CONES is an optimization-oriented generalization of the well-known nested convex body chasing (NCBC). In this paper, we extend CONES to allow for loss functions $f_t'$s to also change over time. When all loss functions are convex, we show that the projected proximal algorithm achieves $O(T^{1-\\beta}), O(T^\\beta)$ simultaneous regret and movement cost, respectively, for any $\\beta \\in [0,1)$, over a time horizon of $T$. We also show that any weakly adaptive online algorithm with $O(T^\\beta)$ regret has a movement cost of $\\Omega\\left(T^{\\frac{1-\\beta}{2}}\\right)$ for any $\\beta \\in [0,1)$. When all loss functions are strongly convex, we show that the projected proximal algorithm simultaneously achieves $O(1)$ regret and a movement cost of $O(\\log T)$. To complement this, we show that any online algorithm with sublinear anytime regret has a movement cost of $\\Omega\\left(\\log T\\right)$.",
+      "summary": "论文研究每轮先获知损失函数与逐渐收缩的凸可行集，再选择可行动作的优化问题，同时衡量静态比较器遗憾与累计移动量。近端更新在凸、Lipschitz 等条件下给出二者的权衡；强凸情形可同时达到常数阶遗憾和对数阶移动量，并配有相应下界。该模型要求每轮可行，且信息揭示顺序不同于行动后才观察损失的通常在线学习设定。",
+      "reason": "对于要求过程可行且不希望决策频繁大幅变化的算法，移动量是目标误差之外的重要指标。值得借鉴其近端正则化如何兼顾可行性与动作稳定性；若用于实际系统，还需进一步处理近端子问题的求解代价和信息可得性。",
+      "order": 4
+    },
+    {
+      "arxiv_id": "2609.11567",
+      "version": 1,
+      "title": "Non-monotone direct-search methods for deterministic and stochastic derivative-free optimization",
+      "authors": [
+        "Anjie Ding",
+        "Trang H. Tran",
+        "Luis Nunes Vicente"
+      ],
+      "submitted": "2026-09-10",
+      "updated": "2026-09-10",
+      "directions": [
+        "historical-information",
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.11567v1",
+      "abstract": "In derivative-free optimization (DFO), one minimizes functions for which the gradient is unavailable or expensive to compute. In many applications, objective function values and gradients are noisy due to simulations or system randomness. A class of standard direct-search methods for DFO accept a trial point when it decreases the objective function by an amount proportional to the squared stepsize. However, when applied to complex landscapes, such a requirement may trap the algorithm in a neighborhood of sub-optimal solutions. We study a non-monotone direct-search alternative where the trial function value is compared with the largest objective function obtained through the $M$ most recent distinct iterates. This max-$M$ non-monotone condition permits temporary increases in the objective function and can help navigate narrow curved valleys; however, its theoretical analysis is significantly more challenging due to the lack of monotonic decrease. In this paper, we develop a comprehensive complexity theory for the max-$M$ non-monotone direct-search in both deterministic and stochastic DFO problems. For deterministic objectives, we establish a worst-case iteration bound for a complete poll based on a positive spanning set and an expected iteration bound for a probabilistic-descent poll. We then analyze a stochastic variant using independent function estimates and show the expected iteration complexity under tail-bound assumptions of the stochastic errors. All three results have the standard complexity of $\\mathcal{O}(\\epsilon^{-2})$, which matches the iteration complexity of monotone direct-search methods. Our theory is enabled by a new family of merit functions that correct the stored objective values by ordered multiples of the squared stepsize, together with a renewal-reward stopping-time argument for the probabilistic methods.",
+      "summary": "论文在直接搜索中用最近若干个不同迭代点的最大函数值作为接受基准，允许暂时上升。作者构造带步长修正的评价函数，分析确定性、随机搜索方向及带噪声函数估计的版本，在各自条件下得到 $O(\\varepsilon^{-2})$ 的迭代复杂度或期望迭代复杂度。随机函数估计需要独立性与尾部控制；这里的迭代界不等同于总函数采样成本。",
+      "reason": "历史信息不仅能用于组合方向，也能用于设计接受准则。这篇论文值得关注如何在失去单调下降后重新构造可分析的评价函数，以及存储窗口与随机停止时间论证的配合。",
+      "order": 5
+    },
+    {
+      "arxiv_id": "2609.11788",
+      "version": 1,
+      "title": "Optimal Recursive Composition and Dyadic Phase Laws for Gradient Descent with Predetermined Stepsizes",
+      "authors": [
+        "Yu Liu",
+        "Kang Chen",
+        "Rujun Jiang",
+        "Tianyu Wang"
+      ],
+      "submitted": "2026-09-10",
+      "updated": "2026-09-10",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.11788v1",
+      "abstract": "Predetermined stepsize schedules featuring carefully chosen long steps have recently been shown to accelerate gradient descent (GD) on smooth convex functions. A prominent class of such schedules is built through recursive composition. In this paper, we characterize the convergence of these optimized recursive schedules, revealing a non-constant log-periodic modulation across prescribed horizons. Specifically, for symmetric recursive frameworks (primitive and OBS-S constructions), we prove that for every $N \\geq 1$, the corresponding optimized schedules satisfy $f(x_{N-1})-f^\\ast \\le \\frac{1}{2N^p \\Phi(\\log_2N)-1} \\frac{L}{2}\\|x_0-x^\\ast\\|^2$, $ p=\\log_2(1+\\sqrt2)$, where $\\Phi$ is a positive, Lipschitz, nonconstant $1$-periodic function. We derive this by proving that balanced splitting is optimal at every horizon for these constructions, resolving a conjecture of Zhang and Jiang. Furthermore, for the asymmetric framework (the OBS-F construction), we show that although optimal splits are not necessarily balanced, the same Silver exponent asymptotically persists alongside a distinct log-periodic modulation.",
+      "summary": "研究预定步长梯度下降中的递归组合，利用组合算子的性质分析不同递归划分的性能。文章在相应对称齐次组合规则下证明平衡划分的最优性，并刻画随时域变化的二进尺度相位规律。共同的渐近指数并不能完全描述不同有限时域下的常数差别，非对称规则也不能直接套用平衡最优结论。",
+      "reason": "它把步长设计从单个公式推进到可分析的组合结构，提供了比较不同递归调度的工具。有限时域的相位规律尤其有助于理解相同渐近速率下仍存在的性能差异。",
+      "order": 6
+    },
+    {
+      "arxiv_id": "2609.11784",
+      "version": 1,
+      "title": "Constant Steps Are s-Composable: An Exact Interpolation Certificate for Gradient Descent",
+      "authors": [
+        "Jinze Zhao"
+      ],
+      "submitted": "2026-09-10",
+      "updated": "2026-09-10",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.11784v1",
+      "abstract": "Grimmer, Shu, and Wang asked whether a balanced constant schedule is $s$-composable at every horizon. More precisely, for an integer $n\\geq 1$, let $\\bar{h}=1+r$, where $r\\in(0,1)$ is the unique solution of $$r^n\\bigl(1+n(1+r)\\bigr)=1,$$ and run gradient descent for $n$ steps with normalized stepsize $\\bar{h}$. The cases $n=1,2$ were known, while the general case $n\\geq3$ was left open. We prove the conjecture for every $n$. Our proof gives an explicit, dimension-free nonnegative linear combination of the smooth convex interpolation inequalities. The certificate is assembled from matrices supported on contiguous index intervals. Its off-diagonal entries are automatically positive, its quadratic part is diagonal, and its remaining multipliers reduce to two scalar families. We derive closed forms for those families and prove positivity using strict concavity and elementary rational inequalities. Consequently, for every $L$-smooth convex function, the constant schedule satisfies the sharp mixed terminal Lyapunov inequality conjectured in the original paper, together with the associated simultaneous objective-gap and gradient-norm bounds. All exceptional horizons and boundary indices are treated explicitly.",
+      "summary": "为满足特定平衡方程的恒定步长序列建立 s-composability 证书，同时控制终点函数值、梯度与距离。文章显式构造光滑凸插值不等式的非负权重，并解析证明权重非负，而不是仅依赖数值半定规划输出。结论对应所选步长和长度的关系，不是任意恒定步长都具有同样证书。",
+      "reason": "值得阅读的是如何把计算发现的性能界转化为可复用的解析证书。该构造可作为探索新步长序列、势函数或组合规则时的证明参考。",
+      "order": 7
+    },
+    {
+      "arxiv_id": "2609.11183",
+      "version": 1,
+      "title": "Single-Loop Gradient Algorithms for Pessimistic Bilevel Optimization Problems",
+      "authors": [
+        "Qichao Cao",
+        "Bo Zeng",
+        "Shangzhi Zeng",
+        "Jin Zhang"
+      ],
+      "submitted": "2026-09-10",
+      "updated": "2026-09-10",
+      "directions": [
+        "optimization-frontiers",
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.11183v1",
+      "abstract": "Bilevel optimization has recently attracted growing attention, particularly in the development of efficient numerical methods. Despite substantial progress on optimistic bilevel optimization, pessimistic bilevel optimization (PBO) remains much less explored, especially the design of fully first-order, single-loop gradient-based methods. To address this gap, we propose a smooth approximation of PBO through reformulation, penalization and regularization, and establish convergence guarantees in terms of both minimizers and stationarity. Building on this framework, we then develop two single-loop algorithms for deterministic and stochastic PBOs, respectively. Both use only first-order gradient information and avoid second-order derivatives and inner-loop subproblem solves. Non-asymptotic convergence rates for the proposed algorithms are established to provide theoretical guarantees. Through a systematic empirical study of both synthetic and practical problem instances, we demonstrate that our algorithms are highly effective and efficient. In particular, our results on spam classification and Smart Predict-then-Optimize further illustrate PBO's advantages over its classical optimistic bilevel counterpart, highlighting its strong potential for practical modeling and the delivery of robust solutions.",
+      "summary": "通过惩罚与正则化，将悲观双层问题转化为一系列可跟踪的光滑鞍点近似，并提出单循环梯度算法及随机扩展。分析分别控制当前近似问题的驻点残差和内层跟踪误差。收敛到原问题的 C-驻点还需要下层凸性及相关局部正则条件，不能将近似残差的有限时间界直接当作原问题的无条件收敛率。",
+      "reason": "它展示了不用完整求解每个内层问题也能组织悲观双层计算的一条路线。近似误差、跟踪误差与原问题驻点之间的分层分析，对设计单循环随机算法很有参考价值。",
+      "order": 8
+    },
+    {
+      "arxiv_id": "2609.10980",
+      "version": 1,
+      "title": "EGGROLL, Unrolled: Understanding and Improving Low-Rank Evolution Strategies at Scale",
+      "authors": [
+        "Ege C. Kaya",
+        "Abolfazl Hashemi"
+      ],
+      "submitted": "2026-09-10",
+      "updated": "2026-09-10",
+      "directions": [
+        "optimization-frontiers",
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.10980v1",
+      "abstract": "EGGROLL makes evolution strategies (ES) practical for LLMs by replacing dense Gaussian weight perturbations with low-rank Gaussian products, often of rank one. This choice is computationally attractive but geometrically severe: each rank-one perturbation lies in a zero-volume subset of the ambient matrix space, despite having identity covariance. We characterize the mean EGGROLL update field at finite rank and nonzero perturbation radii, then analyze the error of its finite-population estimator. The population field is obtained by applying an explicit resolvent to the gradient of the objective smoothed by the perturbations. We show that the resolvent can introduce a nonconservative component and can reverse the local stability of an optimum. EGGROLL is nevertheless exact on every quadratic objective at every rank and radius. For smooth objectives, its first local finite-rank correction is $O(\\sigma^2/r)$, and nonasymptotic bounds control the resulting field error under smoothness assumptions. Under a local affine model, rank-one perturbations increase the variance of the gradient estimator by only $\\frac{2(m+n+1)}{mn+1}$ relative to dense Gaussian ES, or $0.098\\%$ for a $4096\\times4096$ matrix. We then introduce LOO-ROLL, a leave-one-out estimator that preserves the finite-rank population field while replacing EGGROLL's two antithetic evaluations per direction by one. At equal evaluation cost, LOO-ROLL halves estimator MSE in transformer blocks. At matched wall time across ten post-training settings and models up to 8B parameters, LOO-ROLL improves seven outcomes in individual paired tests, with no significant loss. On the GSM8K test set, accuracy increases from $38.1\\%$ to $63.0\\%$ at 0.6B and from $65.9\\%$ to $80.0\\%$ at 8B. Transformer measurements recover the predicted finite-rank variance, while the rank comparisons show no reproducible reward-based advantage for rank eight.",
+      "summary": "分析 EGGROLL 低秩随机扰动的平均更新场，说明它一般不等于扰动平滑后目标的梯度，甚至未必对应任何标量势函数。文章给出有限秩偏差与有限总体方差的表达，并提出利用其他样本作留一基线的 LOO-ROLL，以较少函数评估保持原有平均场。保持平均场并不意味着消除有限秩偏差。",
+      "reason": "这篇工作改变了对低秩零阶估计器的理解：低秩化不仅影响方差，也可能改变优化动力学。区分目标平滑、更新偏差和样本方差，有助于更准确地设计与比较随机数学优化算法。",
+      "order": 9
+    },
+    {
+      "arxiv_id": "2609.11273",
+      "version": 1,
+      "title": "Minimax-Optimal Early Stopping for Continuous-Time SGD via the Discrepancy Principle",
+      "authors": [
+        "Tim Jahn",
+        "Loucas Pillaud-Vivien",
+        "Adrien Schertzer"
+      ],
+      "submitted": "2026-09-10",
+      "updated": "2026-09-10",
+      "directions": [
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.11273v1",
+      "abstract": "We study early stopping for a continuous-time model of stochastic gradient descent (SGD) in ill-posed linear inverse problems. We consider an a posteriori stopping rule based on the discrepancy principle, which stops the dynamics once the residual reaches the noise level. Unlike deterministic gradient flow, the stochastic dynamics exhibits persistent multiplicative fluctuations whose amplitude scales with the residual itself.\nUnder a source condition on the initial error and a polynomial bound on the spectrum of the empirical covariance operator, we prove that, with high probability, the error at this random stopping time achieves the minimax rate over the corresponding source class, up to a logarithmic factor. Our results therefore establish the discrepancy principle as an adaptive regularization strategy for continuous-time SGD that is minimax-optimal up to a logarithmic factor, despite the persistent fluctuations induced by stochastic sampling. To our knowledge, this is the first convergence-rate result for a continuous-time model of stochastic gradient descent in inverse problems under an a posteriori stopping rule: existing analyses, including those of variance-reduced variants, bound the stopping time but do not quantify the error attained there.",
+      "summary": "为逆问题中的连续时间 SGD 建立基于残差差异原则的提前停止规则，并在源条件、协方差谱衰减和噪声条件下分析统计精度。结论说明停止时间可以平衡迭代误差与噪声放大，相关最优性依赖允许的光滑度和谱参数范围。理论对象是连续时间随机过程，不能直接当作离散 SGD 的实现保证。",
+      "reason": "它为随机迭代何时应停止提供了可分析的准则，而不单纯追求更小训练残差。源条件与谱衰减的配合也有助于理解随机算法的隐式正则化。",
+      "order": 10
+    },
+    {
+      "arxiv_id": "2609.11171",
+      "version": 1,
+      "title": "A sequential smoothing majorant stochastic approximation method for nonconvex nonconcave minimax problems",
+      "authors": [
+        "Zhouxing Luo",
+        "Wei Liu",
+        "Xin Liu",
+        "Xiaojun Chen"
+      ],
+      "submitted": "2026-09-10",
+      "updated": "2026-09-10",
+      "directions": [
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.11171v1",
+      "abstract": "We propose a sequential smoothing majorant stochastic approximation (SMSA) method for nonconvex-nonconcave minimax optimization problems. To overcome the nonconcavity of the inner maximization problem, we introduce a new majorant stochastic approximation with an $O\\left(\\beta_N^2\\right)$ accuracy bound, where $\\beta_N$ is the sample coverage radius. The accuracy bound significantly improves upon the $O\\left(\\beta_N\\right)$ approximation bound for the standard stochastic approximation. Moreover, we establish nonasymptotic bounds for both global optimal values and minimizer sets, and prove consistency for the Clarke stationary points, as $\\beta_N \\downarrow 0$ almost surely. We show that the generated sequence by the SMSA method is bounded, and that the returned point is an approximate Clarke stationary point of the majorant stochastic approximation models. Numerical experiments on a synthetic toy example and robust logistic regression on two UCI datasets demonstrate improved approximation fidelity and lower mean robust test losses relative to the standard sampled approximation.",
+      "summary": "针对非凸—非凹极小极大问题，用内层局部二次信息构造采样近似，并通过逐步平滑求解该近似问题。价值函数近似误差可从采样覆盖半径的一阶改善到二阶；这里的覆盖半径不能直接替换为样本数的倒数。驻点向原问题转移还依赖额外 PL 等条件，算法保证也需要区分采样模型与原始极小极大问题。",
+      "reason": "它提供了用局部优化结构提升采样近似精度的具体方法。阅读时重点比较模型构造增加的计算量与覆盖维数带来的采样代价，才能判断该改进何时有实际收益。",
+      "order": 11
+    },
+    {
+      "arxiv_id": "2503.24086",
+      "version": 4,
+      "title": "Distributed AC Optimal Power Flow: A Scalable Solution for Large-Scale Problems",
+      "authors": [
+        "Xinliang Dai",
+        "Yuning Jiang",
+        "Yi Guo",
+        "Colin N. Jones",
+        "Moritz Diehl",
+        "Veit Hagenmeyer"
+      ],
+      "submitted": "2025-03-31",
+      "updated": "2026-09-10",
+      "directions": [
+        "distributed"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2503.24086v4",
+      "abstract": "This paper introduces a novel distributed optimization framework for large-scale AC Optimal Power Flow (OPF) problems, offering both theoretical convergence guarantees and rapid convergence in practice. By integrating smoothing techniques and the Schur complement, the proposed approach addresses the scalability challenges and reduces communication overhead in distributed AC OPF. Additionally, optimal network decomposition enables efficient parallel processing under the single program multiple data (SPMD) paradigm. Extensive simulations on large-scale benchmarks across various operating scenarios indicate that the proposed framework outperforms the state-of-the-art centralized solver IPOPT on modest hardware. This paves the way for more scalable and efficient distributed optimization in future power system applications.",
+      "summary": "研究大规模非凸 AC 最优潮流的分布式内点方法，将局部求解与区域间协调结合，并分析局部收敛和全局化机制。此次版本将全局化论证明确定义在固定障碍参数的问题上，并显式要求辅助原始—对偶问题达到零对偶间隙等条件。这里的全局化与有限容差停止不代表找到了非凸原问题的全局最优解。",
+      "reason": "值得关注的是分布式二阶方法如何组织局部计算、协调与全局化，以及理论所需条件如何落实到非凸应用。本次修订对这些条件的澄清也适合用来审查类似算法的收敛证明。",
+      "order": 12,
+      "update_note": "v4 修订固定障碍参数下的全局化论证，明示辅助问题的对偶可达与零对偶间隙条件，并修正对应的精确罚函数。"
+    },
+    {
+      "arxiv_id": "2505.07298",
+      "version": 2,
+      "title": "Learning-Based Surrogate Method for Stochastic Optimization under Decision-Dependent Uncertainty with Adaptive Random Designs",
+      "authors": [
+        "Boyang Shen",
+        "Junyi Liu"
+      ],
+      "submitted": "2025-05-12",
+      "updated": "2026-09-10",
+      "directions": [
+        "optimization-frontiers",
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2505.07298v2",
+      "abstract": "We study stochastic programs in which the latent decision-dependent uncertainty is described via a nonparametric regression model. The major challenge is that, without convexity assumptions on either the cost function or the regression model, the resulting objective is both nonconvex and nonsmooth, and its first-order information is unavailable due to the unknown decision-dependent distribution. To address this issue, we construct a learning-based surrogate model that integrates simulation and statistical learning by embedding Jacobian estimates of the regression function, which are updated iteratively and interactively during the optimization procedure. We develop an adaptive random design that concentrates design points around the current iterate for Jacobian estimation and we show that the mean squared error of Jacobian estimates achieves a dimension-independent convergence rate. Building on this, we propose the learning-based stochastic prox-linear (L-SPL) algorithm with adaptive random design and establish its nonasymptotic convergence rates under various parameter settings. Numerical results demonstrate that L-SPL algorithm significantly improves sample efficiency and achieves substantially lower objective values compared to the state-of-the-art methods. More broadly, our method implies that the statistical design in an iterative learning-based optimization algorithm can be novelly tailored to the local information of the optimization procedure to sharpen estimates and enhance the convergence performance and sample efficiency of the resulting algorithm.",
+      "summary": "针对不确定性分布随决策变化的随机优化，用学习得到的响应 Jacobian 构造近端线性替代问题。新版本将围绕当前迭代点的自适应随机设计纳入算法，在规定的光滑性与设计条件下分析局部线性回归误差，再传递到 Moreau 型驻点保证和采样复杂度。相应误差指数的改善不意味着维数相关常数或子问题求解成本消失。",
+      "reason": "该方法把试验位置的选择与优化迭代联合起来，适合思考决策依赖数据下如何分配采样预算。值得借鉴的是学习误差、随机误差与优化误差的分别控制，而不只是用预测模型替代未知梯度。",
+      "order": 13,
+      "update_note": "v2 增加自适应随机设计及其估计误差分析，扩展可变参数调度，并区分静态与自适应设计的采样复杂度。"
+    },
+    {
+      "arxiv_id": "2609.11712",
+      "version": 1,
+      "title": "Generalization Analysis of Distributed Kernel-based Robust Gradient Descent Algorithms",
+      "authors": [
+        "Jun-Yi Meng",
+        "Zheng-Chu Guo",
+        "Yuan Mao"
+      ],
+      "submitted": "2026-09-10",
+      "updated": "2026-09-10",
+      "directions": [
+        "distributed",
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.11712v1",
+      "abstract": "In this paper, we investigate the generalization performance of distributed gradient descent algorithms in a reproducing kernel Hilbert space under a robust loss function $l_{\\sigma}$. By exploiting the spectral characterization of gradient descent together with the intrinsic properties of robust loss functions, we establish optimal learning rates for the distributed kernel-based robust gradient descent (DKRGD) algorithm with an appropriately chosen scale parameter $\\sigma$. The proposed parameter choice of $\\sigma$ simultaneously alleviates the saturation phenomenon and guarantees statistical robustness. A key technical contribution is a novel error analysis that provides substantially sharper bounds for products of operators, thereby significantly relaxing existing restrictions on the maximum number of local machines while retaining optimal learning rates. Finally, we develop a communication-efficient strategy that further improves the convergence performance of DKRGD.",
+      "summary": "论文分析分布式核鲁棒梯度方法的统计学习表现，并引入额外通信步骤改善机器数受限的问题。主要保证依赖源条件、有效维数、标签有界性、样本分配与鲁棒化尺度等要求。给出的是相应核学习模型中的误差率与并行条件，不能直接解释为一般分布式非凸优化的迭代复杂度。",
+      "reason": "它把鲁棒损失、早停和机器数之间的关系具体化，适合借鉴如何同时安排统计误差与分布式计算。尤其值得比较增加通信与增加样本两种改善并行能力的途径。",
+      "order": 14
+    },
+    {
+      "arxiv_id": "2609.11655",
+      "version": 1,
+      "title": "Musec: MomentUm SpEctral Clipping for Stable Muon-type Training",
+      "authors": [
+        "Zhuanghua Liu",
+        "Menglian Wang",
+        "Luo Luo"
+      ],
+      "submitted": "2026-09-10",
+      "updated": "2026-09-10",
+      "directions": [
+        "historical-information",
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.11655v1",
+      "abstract": "Muon has emerged as a highly effective optimizer for large language model training, often achieving superior convergence and performance compared with the widely adopted Adam and AdamW optimizers. Nevertheless, Muon is prone to training instability due to its spectral flattening, manifested by loss spikes and unbounded growth of model weights. Existing approaches primarily rely on weight or attention-logit clipping, which require architecture-specific modifications and do not directly address instability across all model components. We propose MomentUm SpEctral Clipping (Musec), which replaces Muon's spectral flattening with spectral clipping: rather than setting all singular values of the momentum matrix to approximately one, Musec clips singular values that exceed a threshold while preserving the underlying spectral structure of the momentum. Our strategy provides an optimizer-level, architecture-agnostic mechanism for stabilizing Muon training. We further develop Soft Musec, an efficient implementation that uses a smooth spectral saturation function approximated by coupled Newton-Schulz iterations. Theoretically, we establish convergence guarantees for Musec in nonconvex nonsmooth stochastic optimization. To the best of our knowledge, this is the first convergence guarantee for Muon-type methods in the nonconvex nonsmooth setting. We provide empirical studies to show that Soft Musec consistently improves training stability over existing Muon variants across a wide range of learning rates and model sizes. Notably, Soft Musec remains stable in settings where existing Muon variants diverge, while matching their performance under well-tuned configurations.",
+      "summary": "论文针对弱凸、非光滑随机优化，提出对动量矩阵奇异值进行裁剪并将裁剪结果反馈到后续动量递推的算法。该反馈与仅在输出更新时做谱变换不同，是分析中控制历史状态的重要环节。理论针对满足样本 Lipschitz 和随机次梯度条件的问题，以分块平均后随机选出的点控制 Goldstein 平稳性；近似实现与实验方案需要和精确算法区分。",
+      "reason": "值得关注的是裁剪究竟作用于当前更新还是未来记忆，这会改变可证明的稳定性。它给研究矩阵动量和随机非光滑优化提供了具体联系，同时提醒不要把 Goldstein 平稳性误写成最后一个迭代点的普通梯度收敛。",
+      "order": 15
+    }
+  ]
+}

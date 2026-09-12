@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.preview/
+.build-*/
+generated/
+.env
+.env.*
+!.env.example
+.DS_Store

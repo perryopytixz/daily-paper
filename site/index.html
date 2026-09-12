@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Daily Paper</title>
+  <link rel="stylesheet" href="assets/katex/katex.min.css">
+  <link rel="stylesheet" href="assets/style.css">
+  <script id="daily-paper-data" type="application/json">__DAILY_PAPER_DATA__</script>
+  <script defer src="assets/app.js"></script>
+</head>
+<body>
+<div id="dp-design" data-style="serif">
+  <div class="dp-preview" hidden>Design preview · Illustrative content only</div>
+  <header class="dp-header">
+    <div class="dp-identity"><div class="dp-brand">Daily Paper<span class="dp-brand-dot">.</span></div><div class="dp-subbrand">Optimization research digest</div></div>
+    <a class="dp-archive" target="_blank" rel="noopener noreferrer">Archive on GitHub ↗</a>
+  </header>
+  <div class="dp-layout">
+    <aside aria-label="Research directions">
+      <p class="dp-side-label">RESEARCH DIRECTIONS</p>
+      <nav class="dp-directions" aria-label="Filter by research direction"></nav>
+      <select class="dp-mobile-direction" aria-label="Filter by research direction"></select>
+      <div class="dp-side-note"><strong id="dp-window-label"></strong>Earlier digests are archived in the repository.</div>
+    </aside>
+    <main class="dp-main">
+      <nav class="dp-datebar" aria-label="Browse recent dates"></nav>
+      <div class="dp-heading"><div><h1 id="dp-date-title"></h1><p class="dp-meta" id="dp-status"></p></div></div>
+      <div id="dp-results" aria-live="polite"></div>
+      <noscript>Please enable JavaScript to browse papers by date and direction.</noscript>
+      <footer class="dp-footer"></footer>
+    </main>
+  </div>
+</div>
+</body>
+</html>
