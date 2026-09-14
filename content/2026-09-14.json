@@ -1,0 +1,233 @@
+{
+  "date": "2026-09-14",
+  "status": "complete",
+  "frontiers_status": "recommendations",
+  "papers": [
+    {
+      "arxiv_id": "2602.13177",
+      "version": 2,
+      "title": "Block-Norm Geometries for Online Mirror Descent with Sparse Losses",
+      "authors": [
+        "Swati Gupta",
+        "Jai Moondra",
+        "Mohit Singh"
+      ],
+      "submitted": "2026-02-13",
+      "updated": "2026-09-11",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2602.13177v2",
+      "abstract": "The performance of online mirror descent depends critically on the geometry induced by its mirror map, yet standard algorithms largely rely on two canonical choices: Euclidean and entropic geometry. We show that these two geometries can both be substantially suboptimal when loss gradients are sparse. We introduce a family of randomized block-norm mirror maps that interpolates between Euclidean and entropic geometries and adapts to intermediate sparsity structure. For several standard convex sets, including $\\ell_p$ balls, ellipsoids, boxes, and Minkowski sums of norm balls, we prove polynomial-in-dimension improvements in regret bounds over the better of online projected gradient descent and exponentiated gradient. We further construct explicit online convex optimization instances for which these improvements are realized: on a simple polytope, an intermediate block geometry achieves a $\\text{poly}(d)$ separation in regret from both Euclidean and entropic geometries in dimension $d$, while on the probability simplex we obtain a separation of order $Ω(\\sqrt{\\log d}/\\log\\log d)$. Finally, we study geometry selection when sparsity is unknown. We show that naively alternating between mirror maps can incur linear regret, even though either mirror map alone has sublinear regret, and give a Hedge meta-algorithm that competes with the best mirror map in a finite portfolio. For random block geometries, this yields regret within an $O(\\sqrt{\\log\\log d})$ factor of the best random uniform block norm chosen in hindsight.",
+      "summary": "论文为稀疏损失梯度构造随机分块范数镜像映射，在欧氏与熵几何之间插值。对多类凸域，作者给出相较投影梯度和指数梯度中较优者的维数级改进，并构造实现分离的实例。若稀疏度未知，简单轮换几何可能产生线性遗憾，而 Hedge 组合可在有限几何库中接近事后最优选择；分析面向 oblivious adversary。",
+      "reason": "它把“选哪种镜像几何”从经验问题变成可比较、可在线选择的算法问题。尤其值得关注分块大小与梯度稀疏度怎样共同决定遗憾，以及元算法的额外因子是否能在具体问题中换来稳健收益。",
+      "order": 1
+    },
+    {
+      "arxiv_id": "2609.12992",
+      "version": 1,
+      "title": "An Adaptive Multi-Parameter ADMM Algorithm for Embedded MPC",
+      "authors": [
+        "Alberto Zaupa",
+        "Mikael Johansson"
+      ],
+      "submitted": "2026-09-11",
+      "updated": "2026-09-11",
+      "directions": [
+        "optimization-frontiers",
+        "historical-information"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.12992v1",
+      "abstract": "We introduce an adaptive multi-parameter variant of ADMM and prove that it exhibits local superlinear convergence once the set of active constraints has been identified. In simulations, the proposed algorithm consistently outperforms OSQP, a standard ADMM solver, in terms of iteration count. We then implement an MPC solver based on our method and compare its runtime against a broader selection of state-of-the-art algorithms. Evaluations on challenging benchmark problems reveal that our approach delivers competitive performance both in terms of average and worst-case solve times, without being limited to coarse tolerances, as is typically the case for standard ADMM implementations and first-order methods.",
+      "summary": "论文为嵌入式 MPC 中的箱约束二次规划设计逐约束自适应 ADMM 罚参数，更新利用当前原始残差与相邻对偶变量变化。作者证明在活动集已识别、局部 Hessian 正定且不启用实际剪裁等条件下，误差可呈超线性衰减。通用约束矩阵、活动集识别前的瞬态以及实际剪裁版本并未被同一理论覆盖。",
+      "reason": "这是把历史残差直接转成多参数预条件的一例，也把局部快收敛与嵌入式运行时间联系起来。阅读时应同时比较理论中的理想更新和工程实现中的松弛、剪裁，避免把局部结论外推到整个求解过程。",
+      "order": 2
+    },
+    {
+      "arxiv_id": "2609.12785",
+      "version": 1,
+      "title": "Convergence of Stochastic Gradient Methods under Heavy-Tailed Noise and Hölder Smoothness",
+      "authors": [
+        "Misbah Uz Zaman",
+        "Anirbit Mukherjee"
+      ],
+      "submitted": "2026-09-11",
+      "updated": "2026-09-11",
+      "directions": [
+        "optimization-frontiers",
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.12785v1",
+      "abstract": "Classical convergence guarantees for stochastic gradient methods typically assume Lipschitz-smooth objectives and finite-variance gradient noise, both frequently violated in practice. In contrast, we study nonconvex stochastic optimization under the joint relaxation of these assumptions: objectives with $(L,s)$-Hölder continuous gradients, $s\\in(0,1]$, and gradient noise satisfying only a bounded $α$-th moment condition for $α\\in(1,2]$. We establish three convergence results. Firstly, that standard SGD converges at rate $O(T^{-s/(1+s)})$ whenever $α\\ge1+s$, extending the classical nonconvex SGD rate to heavy-tailed noise and Hölder smoothness simultaneously. Secondly, we analyze $δ$-regularized gradient clipping ($δ$-GClip), a provable trainer of wide and deep nets, and establish a stationarity rate of $O(T^{-2s(α-1)/[(1+s)(2α-1)]})$ under the same condition. Thirdly, we analyze standard gradient clipping (G-Clip) and show that it recovers the above rate for $α\\ge1+s$ while in the very heavy-tailed regime $α<1+s$, it has a convergence rate $O(T^{-2s(α-1)/[(α-1)+s(2α-1)]})$ --- the first convergence guarantee in this regime for any stochastic gradient based method.",
+      "summary": "论文同时放宽非凸随机优化中的 Lipschitz 光滑和有限方差假设，允许 Hölder 连续梯度与仅有限 $α$ 阶矩的重尾噪声。标准 SGD 在 $α ≥ 1+s$ 时仍有速率；梯度裁剪进一步覆盖更重尾的 $α<1+s$ 区间。保证控制的是平均化的裁剪型驻点量，不是最后迭代点的普通梯度范数。",
+      "reason": "它清楚刻画了目标光滑度与噪声尾部之间的可行边界，也说明裁剪在哪些区间确实扩展了理论覆盖。对重尾随机算法，所用驻点定义和输出规则与速率本身同样值得核对。",
+      "order": 3
+    },
+    {
+      "arxiv_id": "2604.22581",
+      "version": 3,
+      "title": "Stochastic Krasnoselskii-Mann Iterations: Convergence without Uniformly Bounded Variance",
+      "authors": [
+        "Daniel Cortild",
+        "Coralia Cartis",
+        "Juan Peypouquet"
+      ],
+      "submitted": "2026-04-24",
+      "updated": "2026-09-11",
+      "directions": [
+        "optimization-frontiers",
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2604.22581v3",
+      "abstract": "We investigate the Stochastic Krasnoselskii-Mann iterations for expected nonexpansive fixed-point problems in a real separable Hilbert space. We establish convergence guarantees under significantly weaker assumptions on the variance than those typically used in the literature. In particular, instead of a uniform bound on the variance of the stochastic oracle, we only assume finite variance at a single fixed point. Under this assumption, we prove almost sure weak convergence of the iterates, derive convergence rates for the expected residual and the last-iterate residual, and obtain almost sure convergence rates for the running minimum residual. Notably, we recover the best-known stochastic oracle complexity without imposing uniformly bounded variance. We illustrate the applicability of our results to Stochastic Gradient Descent, where we recover known guarantees, to Stochastic Three-Operator Splitting and Stochastic Backward-Forward Splitting, for which we obtain the first results that avoid uniform variance bounds, and to a novel Stochastic Lifted Three-Operator Splitting.",
+      "summary": "论文研究可分 Hilbert 空间中的随机 Krasnoselskii–Mann 迭代，只要求随机算子在一个固定点处方差有限，而非对所有迭代点统一有界。由非扩张性传播噪声控制后，作者证明几乎处处弱收敛，并给出期望、末次和运行最小残差的速率；结果还覆盖随机梯度及多种算子分裂。",
+      "reason": "许多随机算法的统一方差假设难以验证，这篇工作展示了如何用算子结构把单点信息扩展到整条轨迹。它既提供一般固定点工具，也为检查随机分裂算法中的噪声假设给出更现实的基准。",
+      "order": 4
+    },
+    {
+      "arxiv_id": "2609.13040",
+      "version": 1,
+      "title": "Quantile-based Loss Filtering for Outlier-Robust Stochastic Gradient Descent",
+      "authors": [
+        "Jamie Haddock",
+        "Anna Ma",
+        "Elizaveta Rebrova"
+      ],
+      "submitted": "2026-09-11",
+      "updated": "2026-09-11",
+      "directions": [
+        "optimization-frontiers",
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.13040v1",
+      "abstract": "We study loss-based filtering for finite-sum optimization with a subset of corrupted component functions whose gradients may be highly unreliable. Motivated by minimum-loss-based SGD (min-$k$-loss) and quantile-based methods for corrupted linear systems, we propose and analyze a general loss-filtering framework -- Quantile-\\(k\\)-Loss SGD (Q\\(k\\)L-SGD) -- that samples \\(k\\) component losses at each iteration and updates using an index chosen uniformly from the lower empirical \\(q\\)-quantile. We prove linear convergence of this family of methods under standard convexity assumptions, requiring the sample size to scale with the number of corruptions and a subset strong-convexity threshold. For the cases when large enough sampling is impossible or undesirable, we give a complementary small-sample probabilistic analysis that covers any sample size $k$ and the convergence behavior depends on the probability of selecting an outlier and on the curvature of the selected good step. Experiments on polynomial regression, regularized logistic regression, and regularized hinge loss show that intermediate quantiles often outperform both standard SGD and min-\\(k\\)-loss SGD. In particular, min-\\(k\\) often stalls by repeatedly selecting nearly solved components, while intermediate quantiles retain robustness and produce more informative updates.",
+      "summary": "论文每轮抽取 $k$ 个分量损失，并从经验低分位集合中随机选择梯度，以避免最小损失规则反复选中已近乎求解的分量。大样本线性收敛需要抽样规模相对异常分量数足够大、良好分量满足插值与子集强凸等条件；小样本结论则包含选择异常项概率和误差邻域。",
+      "reason": "中间分位数在“避开异常值”和“保留有效更新”之间提供了可调折中。该框架适合与稳健聚合比较，但其强保证依赖较具体的有限和结构，不能简单推广到任意含异常梯度的非凸训练。",
+      "order": 5
+    },
+    {
+      "arxiv_id": "2504.12713",
+      "version": 2,
+      "title": "Efficient Primal-dual Forward-backward Splitting Method for Wasserstein-like Gradient Flows with General Nonlinear Mobilities",
+      "authors": [
+        "Yunhong Deng",
+        "Chaozhen Wei"
+      ],
+      "submitted": "2025-04-17",
+      "updated": "2026-09-11",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2504.12713v2",
+      "abstract": "We construct an efficient primal-dual forward-backward (PDFB) splitting method for computing a class of minimizing movement schemes with nonlinear mobility transport distances, and apply it to computing Wasserstein-like gradient flows. This approach introduces a novel saddle point formulation for the minimizing movement schemes, leveraging a support function form from the Benamou-Brenier dynamical formulation of optimal transport. The resulting framework allows for flexible computation of Wasserstein-like gradient flows by solving the corresponding saddle point problem at the fully discrete level, and can be easily extended to handle general nonlinear mobilities. We also provide a detailed convergence analysis of the PDFB splitting method, along with practical remarks on its implementation and application. The effectiveness of the method is demonstrated through several challenging numerical examples.",
+      "summary": "论文把一般非线性迁移率下的最小移动格式写成鞍点问题，并用原始—对偶前向后向分裂计算 Wasserstein 型梯度流。理论覆盖强凸或经 Moreau–Yosida 正则化、半隐式迁移率处理的离散问题；原始指示函数对应的完全隐式实现主要由数值结果支持，因此正则化偏差与步长条件需单独考虑。",
+      "reason": "它把最优传输几何中的非线性迁移率转成可实现的算子分裂结构，并讨论网格加密下的参数选择。对实际采用者，最有价值的是区分严格收敛理论覆盖的变体和更精确但目前偏经验的实现。",
+      "order": 6
+    },
+    {
+      "arxiv_id": "2609.13010",
+      "version": 1,
+      "title": "Dual-guided Hierarchical Edge Localization for Large-scale Optimal Transport Across Dimensions",
+      "authors": [
+        "Wenzhou Xia",
+        "Qiaoqiao Ding",
+        "Jingwei Liang",
+        "Xiaoqun Zhang"
+      ],
+      "submitted": "2026-09-11",
+      "updated": "2026-09-11",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.13010v1",
+      "abstract": "Optimal transport (OT) compares distributions and aligns datasets in machine learning, yet unregularized discrete OT requires a linear program with quadratically many transport variables. We propose HELLO, a hierarchical solver that casts large-scale discrete OT as edge localization and uses dual potentials to guide both coarse-to-fine initialization and within-level refinement. Initialization propagates coarse dual potentials across a recursive subsampling hierarchy to assign candidate edges. Refinement then iteratively inserts the largest dual violators in each row and column until the relative KKT residual meets a prescribed tolerance, while budgeted pruning ensures linear memory complexity. For exact-arithmetic refinement, we prove finite termination at a global optimum under a symbolic lexicographic rule. At the million-point scale, HELLO attains lower transport objectives with order-of-magnitude runtime improvements over strong baselines across feature dimensions from single digits to thousands. It further scales to 1.28 million samples per marginal in 8192 dimensions on a single H100, using 41.6 GiB peak GPU memory while satisfying a full relative KKT residual below $10^{-6}$. Beyond standard discrete OT, the framework supports general pairwise costs and serves as a scalable balanced-OT oracle for semi-discrete OT, Gromov--Wasserstein, unbalanced OT, and OT-based Flow Matching.",
+      "summary": "HELLO 将无正则离散最优传输视为稀疏边定位：由粗层对偶势生成候选支撑，再逐轮加入行列中的最大对偶违反边并预算化剪枝。精确算术与符号字典序规则下可有限终止于全局最优；百万点实验显示线性级内存和较低 KKT 残差，但浮点实现的有限终止不由该证明直接保证。",
+      "reason": "它没有用熵正则化换取规模，而是主动发现原线性规划的有效支撑，适合关注精确 OT 的读者。对偶证书同时服务于初始化、改进和停止，是算法结构中特别值得复用的部分。",
+      "order": 7
+    },
+    {
+      "arxiv_id": "2609.12957",
+      "version": 1,
+      "title": "Clifford Realizations of Hyperbolic Cubics",
+      "authors": [
+        "Tim Netzer"
+      ],
+      "submitted": "2026-09-11",
+      "updated": "2026-09-11",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.12957v1",
+      "abstract": "We prove the generalized Lax conjecture for cubics in five variables: their hyperbolicity cones are spectrahedral. Our approach constructs spectrahedral realizations from completely positive maps on Clifford algebras. The construction passes through quaternionic determinantal representations of certain extremal cubics. Convexity of the set of Clifford-realizable cubics then yields the result for all cubics in five variables. The approach also covers all previously known cubic cases of the generalized Lax conjecture: forms in at most four variables and symmetric forms in arbitrarily many variables. We further establish a sufficient criterion for Clifford realizability in arbitrary dimension and use it to obtain a neighborhood of the origin in the cubic norm ball consisting of Clifford-realizable cubics. Finally, we prove spectrahedrality for sparse hyperbolic quartics in four variables.",
+      "summary": "论文证明五变量齐次三次多项式的双曲锥均为谱面体，解决该范围内的广义 Lax 猜想。证明通过 Clifford 代数上的完全正映射和四元数行列式表示构造半定表示，再利用可实现多项式集合的凸性扩展。高维中的方法障碍只否定特定 Clifford 实现，并非广义猜想的反例。",
+      "reason": "谱面体表示决定一类凸锥能否直接进入半定规划，这一结果扩展了可计算锥几何的边界。即使侧重算法，也值得了解这种代数表示何时能把抽象双曲优化转成标准锥优化。",
+      "order": 8
+    },
+    {
+      "arxiv_id": "2609.12765",
+      "version": 1,
+      "title": "High-Probability Convergence of SGD via Batched Updates",
+      "authors": [
+        "Feng Zhu",
+        "Robert W. Heath Jr.",
+        "Aritra Mitra"
+      ],
+      "submitted": "2026-09-11",
+      "updated": "2026-09-11",
+      "directions": [
+        "optimization-frontiers",
+        "distributed",
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.12765v1",
+      "abstract": "Stochastic gradient descent (SGD) is the primary workhorse for large-scale optimization. While the average behavior of its iterates, typically characterized by mean-squared error bounds, is well-understood, obtaining high-probability guarantees for the last iterate remains challenging. Prior approaches to this problem have either imposed restrictive assumptions (such as bounded domains or gradients) or relied on complex proofs involving auxiliary sequences. In this work, we propose Batched SGD, a simple variant that partitions online samples into epochs and performs a single update per epoch using a refined, low-variance gradient estimate. Our main contribution demonstrates that this batching mechanism enables a surprisingly simple high-probability analysis that avoids both restrictive assumptions and auxiliary sequences. Under standard smoothness and norm-sub-Gaussian noise assumptions, we establish near-optimal rates for both strongly convex and non-convex objectives. Furthermore, we show that our batching idea extends naturally to federated learning (FL). We provide the first high-probability guarantees for FL, achieving logarithmic communication complexity, linear speedup in the number of agents, and resilience to data heterogeneity.",
+      "summary": "Batched SGD 在每个 epoch 内冻结迭代点，用整批独立样本形成低方差梯度后只更新一次，从而简化末次迭代的高概率分析。对光滑强凸问题给出近 $1/T$ 速率；联邦扩展允许任意异质本地目标，在独立次高斯噪声等条件下实现按代理数线性加速和对数级通信。非凸通信量则为平方根级。",
+      "reason": "这篇工作用更少、更稳的更新换取简洁的高概率保证，并把同一机制自然转成通信节省。值得重点核算批量增长带来的延迟与内存成本，以及强凸和非凸情形下通信结论的差异。",
+      "order": 9
+    },
+    {
+      "arxiv_id": "2406.06802",
+      "version": 4,
+      "title": "Satisficing Regret Minimization in Bandits: Constant Rate and Light-Tailed Distribution",
+      "authors": [
+        "Qing Feng",
+        "Tianyi Ma",
+        "Ruihao Zhu"
+      ],
+      "submitted": "2024-06-10",
+      "updated": "2026-09-11",
+      "directions": [
+        "optimization-frontiers",
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2406.06802v4",
+      "abstract": "Motivated by the concept of satisficing in decision-making, we consider the problem of satisficing regret minimization in bandit optimization. In this setting, the learner aims at selecting satisficing arms (arms with mean reward exceeding a certain threshold value) as frequently as possible. The performance is measured by satisficing regret, which is the cumulative deficit of the chosen arm's mean reward compared to the threshold. We propose SELECT, a general algorithmic template for Satisficing REgret Minimization via SampLing and LowEr Confidence bound Testing, that attains constant expected satisficing regret for a wide variety of bandit optimization problems in the realizable case (i.e., a satisficing arm exists). As a complement, SELECT also enjoys the same (standard) regret guarantee as the oracle in the non-realizable case. To further ensure stability of the algorithm, we introduce SELECT-LITE that achieves a light-tailed satisficing regret distribution plus a constant expected satisficing regret in the realizable case and a sub-linear expected (standard) regret in the non-realizable case. Notably, SELECT-LITE can operate on learning oracles with heavy-tailed (standard) regret distribution. More importantly, our results reveal the surprising compatibility between constant expected satisficing regret and light-tailed satisficing regret distribution, which is in sharp contrast to the case of (standard) regret. Finally, we conduct numerical experiments to validate the performance of SELECT and SELECT-LITE on both synthetic datasets and a real-world dynamic pricing case study.",
+      "summary": "论文把 bandit 目标从追逐最优臂改为频繁选择超过给定阈值的满意臂。SELECT 用任意学习 oracle 提议候选，再以强制采样和置信下界检验；可实现情形获得常数期望满意遗憾，不可实现时继承 oracle 的标准遗憾。SELECT-LITE 进一步得到轻尾满意遗憾，即使底层 oracle 的标准遗憾为重尾。",
+      "reason": "当“足够好”比精确最优更符合决策目标时，这一遗憾定义会改变探索的最优组织方式。算法模板兼顾可实现与不可实现情形，也提供了区分期望表现和尾部稳定性的清晰案例。",
+      "order": 10
+    },
+    {
+      "arxiv_id": "2609.12670",
+      "version": 1,
+      "title": "Unified Constrained Geometric Configuration Optimization for Source Localization Systems: A Riemannian Manifold-Based Approach",
+      "authors": [
+        "Xin Cheng",
+        "Feng Shu",
+        "Gangle Sun",
+        "Xinrui Li",
+        "Yuqi Chen",
+        "Guangjie Han"
+      ],
+      "submitted": "2026-09-11",
+      "updated": "2026-09-11",
+      "directions": [
+        "safety-critical"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.12670v1",
+      "abstract": "Time of arrival (TOA), time difference of arrival (TDOA), received signal strength (RSS), received signal strength difference (RSSD) and angle of arrival (AOA) are commonly used techniques for source localization. The positioning accuracy of these systems depends heavily on the geometric configuration of sensors, which is typically constrained by practical conditions. This paper presents a unified framework for optimizing sensor geometry across all five localization systems, explicitly incorporating both distance and angle constraints on sensor positions. First, the Cramér-Rao lower bounds (CRLBs) of these systems are transformed to obtain a unified expression. Based on this expression, a unified constrained geometric configuration optimization problem is formulated. The problem is then simplified into a compact form by replacing the sensor-target angles with an orientation matrix. Subsequently, a Riemannian manifold-based constrained geometric configuration optimization algorithm (RM-CGCOA) is proposed to optimize the sensor-target distances and the orientation matrix. This algorithm casts the orientation matrix onto a product manifold of unit circles. An adaptive pullback is further proposed to strictly enforce angle-related inequality constraints, ensuring that all iterates remain feasible when updating the orientation matrix via the Riemannian gradient. Within RM-CGCOA, analytical optimal distances are derived for TOA, TDOA, RSS and AOA, whereas for RSSD, the distances are updated using projected gradient descent (PGD) together with the orientation matrix. Experimental results demonstrate that the proposed RM-CGCOA consistently achieves a significantly lower position error bound (PEB) compared with the existing strategies and yields a similar PEB to the near-optimal search algorithm, but with a much faster running time.",
+      "summary": "论文统一 TOA、TDOA、RSS、RSSD 与 AOA 五类定位系统的 CRLB 几何设计，并把方向变量放到单位圆乘积流形上优化。自适应回拉在每次方向更新中严格满足角度不等式；多数模态的距离可解析更新，RSSD 则配合投影梯度。性能依据数值 PEB，尚无一般的全局最优或收敛证明。",
+      "reason": "对定位这类过程约束敏感的设计，迭代全程可行比终点修复更有意义。该工作提供统一建模与可行流形更新思路，但应用前仍需验证局部解质量、初始化敏感性和实际噪声模型偏差。",
+      "order": 11
+    }
+  ]
+}
