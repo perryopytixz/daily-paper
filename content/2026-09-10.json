@@ -20,8 +20,8 @@
       ],
       "arxiv_url": "https://arxiv.org/abs/2609.09524v1",
       "abstract": "We study the oracle complexity of computing a point with small fixed-point residual $\\|T(x)-x\\| \\leq \\epsilon$, for a general norm $\\|\\cdot\\|$ and a self-map $T$ of a compact convex set. We study this problem in the setting where $T$ is nonexpansive with respect to the same norm $\\|\\cdot\\|$ and accessed via an unbiased stochastic oracle with bounded variance $\\sigma^2$. We provide an algorithm that solves such instances for any norm with a weak Rademacher type $q > 1$, with high probability. The algorithm is based on a recursive anchoring technique. For type-$2$ spaces, such as $\\ell_p$-spaces for $p \\in [2, \\infty]$, our algorithm attains stochastic oracle complexity $\\tilde O(\\sigma^2 \\epsilon^{-3} + \\epsilon^{-1})$. We further prove a near-matching lower bound (i.e., matching up to poly-log factors) for such $\\ell_{\\infty}$-norm instances in high dimensions. Our lower bound holds against any randomized algorithm that succeeds with constant probability. It further extends to settings with ``sparse'' noise, where variance measured with respect to any $\\ell_p$ norm is of the same order, ruling out the possibility of improving oracle complexity as a function of $\\varepsilon$ by measuring variance in a non-matching $\\ell_p$ norm.",
-      "summary": "论文研究一般范数下非扩张映射的随机不动点求解，假设定义域紧且凸，随机访问无偏且方差有界。递归锚定方法在相应几何条件下给出高概率残差保证，其中 type-2 情形的复杂度为 $\\widetilde O(\\sigma^2\\varepsilon^{-3}+\\varepsilon^{-1})$。作者另在高维 $\\ell_\\infty$ 情形建立近匹配下界；这一最优性结论不能直接推广为所有欧氏情形的下界。",
-      "reason": "许多迭代算法可写成不动点形式，本文有助于区分算法分析不够紧与随机访问本身的困难。尤其值得看范数几何、噪声度量和下界构造之间的关系，为设计随机固定点迭代时选择残差与假设提供参照。",
+      "summary": "许多随机优化、博弈和学习算法都可写成非扩张映射的不动点迭代，但一般范数空间中的随机 oracle 复杂度此前缺少统一刻画。该文在紧凸定义域、无偏访问和方差有界条件下分析递归锚定方法，用逐步变化的锚点稳定噪声并直接控制固定点残差。在相应 type-2 几何中，达到高概率残差 $\\varepsilon$ 的复杂度为 $\\widetilde O(\\sigma^2\\varepsilon^{-3}+\\varepsilon^{-1})$。作者还在高维 $\\ell_\\infty$ 空间构造近匹配下界，说明该尺度对一般范数模型基本不可避免；这个最优性结论不能直接当作所有欧氏问题的下界。",
+      "reason": "推荐看范数几何、噪声度量和锚定递推怎样共同决定残差复杂度。配套下界有助于区分分析松弛与随机不动点访问本身的困难，也提醒选择残差指标时必须同时说明所在空间。",
       "order": 1
     },
     {
@@ -40,8 +40,8 @@
       ],
       "arxiv_url": "https://arxiv.org/abs/2609.09743v1",
       "abstract": "We study how predefined randomized parameter schedules accelerate the heavy-ball method on general smooth convex objectives. Our analysis distinguishes two levels of randomization: sampling gradient-evaluation times within intervals whose boundaries are deterministic, and additionally randomizing the time boundaries themselves. With deterministic time boundaries, we construct fixed-time and anytime schedules that achieve an expected last-iterate function value gap of order $\\mathcal{O}(1/K^{4/3})$; the anytime schedule also satisfies the same rate almost surely. We then use randomized time boundaries and obtain the improved last-iterate rate $\\mathcal{O}(1/K^{3/2})$, both in expectation and almost surely. To the best of our knowledge, this is the first global nonasymptotic convergence guarantee for the heavy-ball method on general smooth convex functions that improves polynomially over the classical $\\mathcal{O}(1/K)$ rate. Our result shows that the heavy-ball method achieves a strictly better convergence rate than the best known result $\\mathcal{O}(1/K^{\\log_2(1+\\sqrt{2})})$ attainable by plain gradient descent with silver stepsize schedules.",
-      "summary": "论文通过预先随机化参数调度分析一般光滑凸目标上的 Heavy-Ball 方法。两种随机化构造分别给出最后迭代点目标误差的 $O(K^{-4/3})$ 和 $O(K^{-3/2})$ 速率，并讨论期望与几乎必然保证。这里使用精确梯度，随机性来自调度；构造中的动量系数也不受经典 $[0,1]$ 区间限制。",
-      "reason": "这提供了一个理解动量加速能力的新例子，适合与预定步长梯度下降的下界对读。可借鉴其把历史迭代作用与随机时间调度联系起来的分析，但不宜直接把理论构造当成现成的实用超参数方案。",
+      "summary": "经典 Heavy-Ball 在一般光滑凸目标上的加速能力受固定确定性参数限制，但预先随机化调度能否改变最坏情形仍不清楚。该文提出两种随机参数构造，在使用精确梯度、随机性仅来自调度的设定下，分别把最后迭代点目标误差推进到 $O(K^{-4/3})$ 和 $O(K^{-3/2})$。论文同时区分期望保证与几乎必然保证，并分析历史位移如何与随机时间尺度配合。所用动量系数不局限于经典 $[0,1]$ 区间，构造也不是根据观测梯度自适应调参，因此不能直接当作常规训练的超参数建议。",
+      "reason": "这篇文章提供了“随机化算法日程本身也能带来加速”的清楚例子，适合与预定步长梯度下降和 Heavy-Ball 下界对读。推荐重点看随机调度怎样改变历史动量项的累计，而不只看最终指数。",
       "order": 2
     },
     {
@@ -60,8 +60,8 @@
       ],
       "arxiv_url": "https://arxiv.org/abs/2609.09361v1",
       "abstract": "This paper develops a novel distributed optimization algorithm based on the Alternating Direction Method of Multipliers (ADMM) to solve hierarchical optimization problems over tree-structured networks, termed hierarchical ADMM (hADMM), with a particular focus on enhancing communication efficiency across the network. By rearranging the augmented Lagrangian to establish a query-response communication mechanism between nodes that explicitly exploits the hierarchical tree structure, the proposed algorithm significantly reduces communication costs compared to existing ADMM-based methods for hierarchical optimization. Furthermore, hADMM guarantees asymptotic convergence under convexity assumptions. We also present a convergence rate analysis based on linear matrix inequalities to characterize the maximum theoretically achievable convergence rates across different network topologies, showing that the proposed hADMM attains linear convergence under mild conditions. Three numerical experiments demonstrate that hADMM is compatible with arbitrary tree network structures and outperforms existing approaches in terms of communication efficiency.",
-      "summary": "论文针对树形层级网络重排增广拉格朗日与消息交互，提出父子节点间的查询—响应式 hADMM，减少嵌套求解与通信开销。作者在凸性及矩阵秩等条件下证明收敛，并利用线性矩阵不等式分析附加强凸、光滑等条件下的线性速率。其结论依赖层级拓扑和相应模型条件，不能视作任意异步延迟下的保证。",
-      "reason": "值得看网络拓扑如何直接影响变量分解、消息内容与更新顺序，而不只作为收敛常数出现。比较通信效率时应同时核对一次迭代跨越多少层、传输多少消息，以及子问题求解的实际开销。",
+      "summary": "层级网络上的 ADMM 若按平面网络方式同步所有变量，会产生多层等待和重复子问题求解，通信拓扑并未真正进入算法设计。该文面向树形层级结构提出查询—响应式 hADMM，让父节点发起所需信息请求，子节点按层完成局部更新和消息返回，从而重排增广拉格朗日计算与通信顺序。在凸性和相关矩阵秩条件下，作者证明全局收敛；加入强凸、光滑等条件后，再通过线性矩阵不等式给出线性速率。结论依赖层级拓扑与规定更新协议，不覆盖任意网络或无界异步延迟。",
+      "reason": "推荐看网络层级怎样直接决定变量分解、消息内容与更新顺序，而不只是出现在谱常数里。评价通信效率时，论文也促使我们同时计算跨层等待、消息数量和局部子问题成本。",
       "order": 3
     },
     {
@@ -79,8 +79,8 @@
       ],
       "arxiv_url": "https://arxiv.org/abs/2609.10314v1",
       "abstract": "We study convex quadratic minimization over the unit $L_1$ ball in which the maximum eigenvalue of the Hessian matrix is bounded by a positive constant $L$. We propose a novel first-order algorithm with objective value error bounded by $O(L/T^3)$ after $T$ gradient evaluations, assuming that the subproblems involved in the algorithm can be solved exactly. To the best of our knowledge, the best convergence rate of algorithms in the literature is $O(L/T^2)$. From the perspective of information-based complexity theory, our proposed algorithm is the first in the literature that achieves the $O((L/\\varepsilon)^{1/3})$ first-order oracle complexity, although its current version is not necessarily practical for implementation. We hope that our proposed algorithm could shed some light on future implementable and efficient $O(L/T^3)$-convergence-rate algorithms. The proposed algorithm incorporates a decomposition of components of vectors in the unit $L_1$-norm ball to \"good\" and \"bad\" parts, and uses symmetric rank-1 (SR1) updates on the bad parts. The proposed algorithm was developed after the author instructed the OpenAI ChatGPT 6 (Astra) model to study the problem using ideas of weak-type $L^1$ estimates and good-bad part decomposition in harmonic analysis and a recent result.",
-      "summary": "研究 $L_1$ 球上的凸二次最小化，通过坐标结构分解和 SR1 曲率学习构造三次衰减的目标误差保证。算法将较难处理的坐标交给曲率恢复机制，并把相应 Hessian 向量乘积纳入一阶查询预算。结果依赖二次结构与规定的子问题求解，查询复杂度不直接等于实际运行时间。",
-      "reason": "这是历史曲率信息如何转化为更好复杂度的具体案例。值得学习其结构分解与成本记账方式，而不是把更快的速率推广到一般光滑目标。",
+      "summary": "$L_1$ 球上的凸二次优化具有坐标稀疏结构，但标准一阶方法通常只能得到较慢的通用凸速率；要利用二次曲率又不能忽略 Hessian 信息的获取成本。该文将坐标划分为易处理部分和需要曲率恢复的部分，并通过 SR1 型历史更新学习后者的二次结构，构造目标误差 $O(1/T^3)$ 的算法。分析把所需 Hessian—向量乘积计入一阶查询预算，而不是把曲率恢复视为免费。三次速率依赖二次目标、$L_1$ 几何和规定的子问题求解，不能直接推广到一般光滑凸函数。",
+      "reason": "推荐关注历史曲率如何与坐标结构共同产生快于通用一阶法的复杂度，以及论文怎样为额外线性代数操作记账。这是判断准牛顿信息何时真正改善 oracle 复杂度的具体案例。",
       "order": 4
     },
     {
@@ -98,8 +98,8 @@
       ],
       "arxiv_url": "https://arxiv.org/abs/2609.09686v1",
       "abstract": "Whether the Broyden-Fletcher-Goldfarb-Shanno (BFGS) method and its variants can fail to converge on smooth nonconvex functions under realistic line-search parameters has remained a central open problem in quasi-Newton theory since the landmark counterexample of Dai (2002), which was confined to small Armijo parameters ($c_1 \\le 1/84 \\approx 0.0119$ on Powell's geometry, or $c_1 \\le 69/7480 \\approx 0.0092$ on his six-point cycle) and an objective function unbounded below. In this paper, we resolve the long-standing open question, posed by Dai (2002) following a discussion with J. C. Gilbert, of whether such counterexamples exist in theory for every Armijo parameter $c_1 \\in (0, 1)$. Specifically, for every prescribed pair of line-search parameters $0 < c_1 < c_2 < 1$, we construct an objective function $f \\in C^\\infty(\\mathbb{R}^2)$, bounded below and with Lipschitz continuous gradient, on which every method in a broad conjugacy class $\\mathcal{C}$ equipped with the first-local-minimizer line search generates an infinite sequence of iterates with $\\|\\nabla f(x_k)\\| = 1$ for all $k \\ge 0$. The class $\\mathcal{C}$ encompasses the classical full-memory BFGS method, limited-memory BFGS (L-BFGS) with arbitrary memory $m \\ge 1$, the Broyden positive family, and the Hestenes-Stiefel conjugate gradient method. The steps are the standard first local minimizers along the search rays and simultaneously satisfy the strong Wolfe, weak Wolfe, Armijo, and Goldstein conditions with constants $(c_1, c_2)$. The construction operates in the minimal possible dimension $n = 2$, exploiting a non-decaying conjugate descent orbit in the plane coupled with an explicit tubular interpolation whose two-bump axial curvature profile places the Armijo ratio anywhere in $(0, 1)$.",
-      "summary": "为 BFGS 等方法构造光滑非凸反例：目标有下界且梯度 Lipschitz，线搜索满足规定的强 Wolfe 条件，但梯度范数仍不趋于零。构造中的轨迹持续向无穷远逃逸，因此其相关子水平集无界。结果揭示仅有目标下界不足以替代某些经典收敛定理中的有界水平集假设。",
-      "reason": "反例精确指出了收敛假设的作用，适合用来审查拟牛顿方法的全局化论证。它不能被解读为否定已有条件下的 BFGS 收敛结论。",
+      "summary": "BFGS 类方法配合强 Wolfe 线搜索时，经典全局收敛结论通常还要求相关子水平集有界；仅有目标下界和 Lipschitz 梯度是否足够并不清楚。该文对任意允许的强 Wolfe 常数组合构造光滑非凸目标和相应 BFGS 型轨迹，使每一步都满足线搜索条件、目标有下界且梯度 Lipschitz，但梯度范数仍不趋于零。反例中的迭代持续逃向无穷远，因而子水平集无界，精确说明了有界性假设阻止的失败机制。结果否定的是删去该假设后的推论，不影响已有完整条件下的收敛定理。",
+      "reason": "推荐把它作为审查拟牛顿全局化证明的基准反例：线搜索条件本身不能阻止轨迹沿无界水平集逃逸。构造对任意强 Wolfe 常数都成立，也说明问题不只是参数选择不当。",
       "order": 5
     },
     {
@@ -117,8 +117,8 @@
       ],
       "arxiv_url": "https://arxiv.org/abs/2609.09683v1",
       "abstract": "Optimization problems with nonlinear equality constraints arise throughout science, engineering, and increasingly in machine learning. Prominent methods for solving such problems include sequential quadratic programming and, more broadly, primal-dual Newton methods. Classical analyses of these methods typically rely on strong assumptions, perhaps most notably positive definiteness of the Lagrangian Hessian on the null space of the constraint Jacobian. In practice, this assumption often necessitates strong regularization or the use of a positive definite Hessian surrogate. Moreover, in large-scale settings, solving the primal-dual Newton subproblem exactly is often computationally infeasible. To address these issues, we propose an inexact primal-dual Newton method with an inner solver based on the conjugate residual (CR) method. Exploiting recently established properties of CR, including negative-curvature detection, iterate monotonicity, and descent guarantees, our method handles indefiniteness in the subproblem directly as it arises. Our method thereby avoids detrimental regularization of the Lagrangian Hessian while naturally accommodating inexact solves. We establish worst-case global convergence guarantees and demonstrate strong empirical performance on large-scale, nonconvex problems.",
-      "summary": "针对光滑非线性等式约束优化，提出原始—对偶不精确 Newton-MR 方法，将法向可行性改进与切向优化分开处理。方法结合 Krylov 子问题求解和负曲率信息，避免要求拉格朗日 Hessian 始终正定。全局分析仍依赖约束 Jacobian 一致满行秩等正则条件，且不保证所有迭代点严格可行。",
-      "reason": "值得借鉴的是如何区分约束退化与目标负曲率，并为二者采用不同机制。这有助于构造更灵活的约束二阶数学优化算法，同时明确其不可省略的正则性前提。",
+      "summary": "光滑非线性等式约束优化的 Newton 法需要同时减少约束违反和目标驻点残差，而拉格朗日 Hessian 在非凸区域可能不定，精确线性系统求解也过于昂贵。该文提出原始—对偶不精确 Newton-MR，把法向步骤用于改善可行性、切向步骤用于优化目标，并用 Krylov 子问题近似求解相应线性系统。方法显式利用负曲率，因此不要求拉格朗日 Hessian 始终正定，并在适当 merit 与步长机制下建立全局收敛。分析仍需约束 Jacobian 一致满行秩等正则条件，迭代过程也不保证每个点严格可行。",
+      "reason": "推荐看约束退化和目标负曲率如何被分配给不同步骤处理，并怎样为 Krylov 截断误差设定可验证条件。它为构造既利用负曲率又不精确求解大规模线性系统的约束二阶方法提供了清楚框架。",
       "order": 6
     },
     {
@@ -139,8 +139,8 @@
       ],
       "arxiv_url": "https://arxiv.org/abs/2609.09441v1",
       "abstract": "We propose variants of model-based trust region derivative-free algorithms that are closest to methods initially proposed and implemented by Powell. These methods rely on low degree polynomial interpolation and carefully maintain geometry of the interpolation sets. We are able to derive complexity bounds for these methods that make them theoretically competitive to other derivative-free methods. Applying these methods in randomly generated subspaces recovers what we believe to be nearly tight complexity. This paper builds on recent results where complexity of a much simplified version of Powell's methods was derived. Here, we extend the analysis to fully incorporate Powell's geometry handling approach and conduct an extensive numerical comparison of the model-based trust region methods connecting practical and theoretical performance. We also extend the analysis of subspace model-based trust region methods to the case of noisy function evaluations.",
-      "summary": "为 Powell 风格的模型无导数方法分析最坏情形复杂度，显式控制插值集合几何、模型误差和模型改进所需的函数评估。文章进一步研究有界函数误差及随机子空间版本，给出相应停止时间保证。存在噪声时只能保证达到与噪声和半径机制相容的精度，不能将结果写成任意精度收敛。",
-      "reason": "它把复用历史采样点的收益与维护这些点的几何成本放进同一分析。对希望用记忆减少函数评估的算法，这比只统计成功下降迭代更有参考价值。",
+      "summary": "Powell 风格模型无导数优化会反复利用历史采样点构造局部插值模型，但最坏情形分析必须同时保证采样集合几何良好、模型足够准确，并计算修复几何所花的函数评估。该文为这类实际模型管理流程建立复杂度框架，把成功步、模型改进步和 poisedness 维护统一计入总评估数。论文还扩展到函数值有界误差和随机低维子空间，并分别给出与噪声水平或随机停止时间相容的保证。存在噪声时只能收敛到由误差和信赖域机制决定的精度邻域，不能宣称任意精度收敛。",
+      "reason": "推荐关注历史采样点复用带来的收益与维护插值几何的成本如何一起进入复杂度。它比只统计成功下降迭代更接近 Powell 类算法的真实函数评估负担。",
       "order": 7
     },
     {
@@ -159,8 +159,8 @@
       ],
       "arxiv_url": "https://arxiv.org/abs/2609.09466v1",
       "abstract": "Online gradient descent is usually studied through external regret, where the learner competes with fixed alternatives. Recent work shows that first-order methods control richer action-dependent deviations. We ask for a geometric characterization of the deviations with respect to which online gradient descent, mirror descent, and follow-the-regularized-leader (FTRL) achieve no regret. We identify exactness as the common principle. Exactness means that the relevant displacement field is generated by a scalar potential, or equivalently that the associated one-form is exact in the geometry used by the algorithm. This geometry depends on the algorithm. For gradient descent it is Euclidean geometry, for mirror descent it is the geometry induced by the regularizer, and for FTRL it is the cumulative dual state. Under mild regularity conditions, exactness yields sublinear regret, while nonzero circulation provides the complementary obstruction and leads to linear regret. This gives a unified geometric framework for understanding the deviation classes controlled by these algorithms and reveals that different first-order methods can control genuinely different classes of deviations. These deviation classes have direct consequences for learning, particularly in games. We study the equilibrium notions induced by exact-form deviations and introduce conservative correlated equilibrium, reflecting both the conservative geometry of the underlying displacement fields and the restricted family of deviations available to the players. We characterize its relation to correlated equilibrium, determine when the resulting equilibrium notions coincide and when they separate, and show how these relationships depend on the geometry and the learning algorithm. Overall, this work gives a unified geometric account of what first-order online learning algorithms are no-regret with respect to, beyond fixed comparators.",
-      "summary": "从势函数与几何结构出发，研究梯度下降、镜像下降和 FTRL 的精确形式遗憾表达。文章通过望远镜分解说明哪些偏差项决定遗憾，并分析更新场的循环行为如何影响可实现的保证。结论依赖相应映射、正则性和比较对象，不能把任意更新规则都视为某个势函数的梯度。",
-      "reason": "这种表达把遗憾分析与算法实际遵循的几何联系起来，有助于发现标准上界掩盖的结构。对于设计新的预条件或非保守更新，可用它检查是否仍存在合适的势函数解释。",
+      "summary": "在线优化的标准遗憾上界常通过不等式丢掉大量结构，难以看出梯度下降、镜像下降和 FTRL 之间真正一致或不同的部分。该文从势函数与底层几何出发，为三类方法推导精确形式的遗憾恒等式，通过望远镜分解保留每一项偏差，而不是立即作粗界。由此可以识别正则化、Bregman 几何和更新场的循环成分分别如何影响遗憾，并说明哪些更新确实来自某个势函数。表达依赖具体映射、正则性和比较对象，不能把任意非保守更新都强行解释为势函数梯度。",
+      "reason": "推荐看精确恒等式在取上界前暴露出的几何项，它能帮助定位标准分析究竟在哪一步变松。对设计预条件或非保守在线更新，这也是检查是否仍存在合适势函数解释的实用工具。",
       "order": 8
     },
     {
@@ -179,8 +179,8 @@
       ],
       "arxiv_url": "https://arxiv.org/abs/2609.10201v1",
       "abstract": "We introduce Selector-Anchored Diffusion with Local Innovation (D+LI), a distributed vector-assembly primitive that constructs complete local replicas from independently owned authoritative blocks. Orthogonal selectors preserve block identity, local innovation anchors each owner's contribution, and Laplacian diffusion propagates these contributions across the network. We show that pure averaging with raw additive selector sources cannot isolate this replica. The D+LI error operator decomposes coordinatewise as the identity minus an owner-grounded Laplacian, yielding global contraction with a factor independent of the total and block dimensions. For time-varying outer targets, we establish a finite-T input-to-state stability (ISS) bound and a self-consistent estimator-controller gain condition for Lipschitz coordination maps, including non-potential ones. For semi-algebraic potential problems, we prove Kurdyka-Lojasiewicz (KL) finite-length convergence of the coupled decision-assembly iteration with a fixed finite communication budget per outer iteration under explicit timescale-separation conditions. Three numerical experiments demonstrate contraction tightness and finite-horizon tracking, verify an admissible KL timescale, and illustrate discrete and non-potential outer maps.",
-      "summary": "针对由不同节点负责的变量块，构造分布式向量副本组装与创新修正机制，并将其嵌入优化和博弈迭代。文章在固定连通无向图等条件下分析有限通信轮数造成的跟踪误差；势函数情形进一步结合充分下降与 KL 性质给出收敛结果。通信轮数与步长仍需满足误差控制条件。",
-      "reason": "它说明如何把全局向量的近似可用性转化为可量化的优化误差，适合设计每轮通信预算有限的算法。图本身固定，因此不应仅因目标或变量随时间变化就归入时变网络优化。",
+      "summary": "当全局决策向量由不同节点分别维护变量块时，每个节点需要在有限通信内组装近似全局副本，同时加入自己负责块的新信息。该文提出 selector-anchored diffusion，用选择矩阵固定各块的责任节点，再通过扩散与局部创新更新每个节点的向量副本，并将该模块嵌入优化和博弈迭代。在固定连通无向图等条件下，论文量化有限通信轮数产生的跟踪误差；若底层问题具有势函数，再结合充分下降与 KL 性质得到点列收敛。通信轮数、步长和创新误差必须匹配，目标或变量随迭代变化也不意味着网络本身是时变的。",
+      "reason": "推荐看“近似拥有全局向量”如何被封装成可量化误差，再传入上层优化证明。它为每轮只能进行有限次邻居通信的分块问题提供了可复用模块，也明确了通信轮数与步长的耦合。",
       "order": 9
     },
     {
@@ -197,8 +197,8 @@
       ],
       "arxiv_url": "https://arxiv.org/abs/2609.09872v1",
       "abstract": "Lewis and Overton conjectured in 2008 that, for BFGS applied to the one-dimensional tilted absolute value with their Armijo--Wolfe line search, every nonterminating execution converges at a trial-normalized rate determined only by the tilt parameter and independent of the initial data. We prove that this initialization-independent rate assertion is false. In fact, for every tilt parameter in an explicit open interval, we construct two nonterminating executions with different sharp trial-normalized convergence rates. The proof reduces the line search to a scale-free state consisting of the iterate sign and the zero-crossing stepsize, and verifies two periodic state cycles by elementary rational inequalities. This yields an explicit family of counterexamples and shows that the asymptotic trial-normalized behavior of nonsmooth BFGS can depend essentially on the initialization even for this canonical one-dimensional model.",
-      "summary": "在倾斜绝对值这一非光滑模型上，构造 BFGS 的不同周期轨迹，比较初始状态如何改变渐近收缩与线搜索试探次数。分析显示每次接受迭代的收敛因子和每次函数试探的有效速率可能给出不同排序。结论针对特定目标与线搜索轨迹，不是一般 BFGS 的统一速率。",
-      "reason": "该模型提醒我们把线搜索失败试探计入算法成本，而不只比较接受步数。它也为理解历史曲率状态和初始化的长期影响提供了可追踪的例子。",
+      "summary": "BFGS 在非光滑目标上的行为高度依赖初始化与线搜索历史，即使最终形成周期轨迹，只按接受迭代计数也可能误判实际效率。该文以倾斜绝对值这一可解析模型构造多种 BFGS 周期轨迹，并精确比较不同初始状态产生的渐近收缩因子和线搜索试探序列。结果显示，按成功更新次数衡量的收敛速度与按函数试探总数衡量的有效速度可能给出相反排序。结论针对特定目标和规定线搜索轨迹，是理解机制的模型结果，而非一般 BFGS 的统一速率。",
+      "reason": "推荐关注初始化如何通过历史曲率状态长期影响周期，以及失败线搜索试探为何必须计入成本。这个可追踪模型适合用来检验只报告接受步数的拟牛顿实验是否掩盖了实际代价。",
       "order": 10
     },
     {
@@ -217,8 +217,8 @@
       ],
       "arxiv_url": "https://arxiv.org/abs/2609.09454v1",
       "abstract": "We develop a unifying variational framework for accelerated primal-dual flows in affinely constrained convex optimization. In particular, it is shown that applying the Euler-Lagrange-Rayleigh (ELR) principle to coupled augmented Bregman Lagrangians systematically generates accelerated dynamics over general Bregman geometries and recovers a family of existing primal-dual mirror and Alternating Direction Method of Multipliers (ADMM) flows as special cases. We then establish $\\mathcal{O}(e^{-b_t})$ convergence guarantees for these flows under mild assumptions. Lastly, we show that the proposed framework for algorithmic development extends from finite-dimensional optimization to constrained optimization over probability distributions.",
-      "summary": "以耦合的 Bregman 拉格朗日量和耗散项统一构造仿射约束凸优化的加速原始—对偶连续动力学，恢复若干镜像与 ADMM 流作为特例。共同的 Lyapunov 分析同时控制对偶间隙、可行性残差和目标误差，但不同指标达到同阶速率需要额外条件。文章还给出分布式和概率分布空间的构造；连续时间速率不能直接视为离散实现的迭代复杂度。",
-      "reason": "该框架为从几何和耗散机制出发设计加速算法提供了统一入口。尤其值得借鉴其原始、对偶交叉项的抵消方式，同时检查离散化后是否还能保留相应势函数下降。",
+      "summary": "仿射约束凸优化中的多种加速原始—对偶流看似公式不同，其惯性、镜像几何和耗散机制缺少共同构造原则。该文以耦合 Bregman 拉格朗日量为基础加入可调耗散项，统一导出一族连续时间动力学，并把若干镜像流与 ADMM 型流恢复为特例。共同的 Lyapunov 分析同时跟踪对偶间隙、可行性残差和目标误差；不同指标要达到同阶加速仍需各自的正则与参数条件。论文还给出分布式和概率分布空间中的实例，但连续时间衰减率不能直接当作离散算法的迭代复杂度。",
+      "reason": "推荐看原始与对偶交叉项如何通过几何和耗散选择在同一能量函数中抵消，这为从结构出发设计新动力学提供了入口。更重要的是，框架清楚显示离散化后需要重新保留哪些势函数关系。",
       "order": 11
     },
     {
@@ -236,8 +236,8 @@
       ],
       "arxiv_url": "https://arxiv.org/abs/2609.09449v1",
       "abstract": "First-order methods for linear conic programming often stall on long plateaus. Existing analyses characterize when during a run or on which problem instances slow convergence occurs; we instead ask where in the state space slow convergence is present. We introduce the slow region family for parameterized averaged fixed-point iterations. On a slow region, one step moves the state by only a small fraction of its distance to the fixed-point set, so an orbit starting there keeps almost its initial distance for arbitrarily many iterations. We then develop the afterimage principle to construct them. A center family and a nearby petal family share the same limit parameter, so their residual fields become close, while their fixed-point sets or forward drifts stay far apart. The petal geometry then certifies a slow region for the center. We verify the standing assumptions for ADMM, sGS-ADMM, and PDHG, and give an LP, SOCP, and SDP gallery showing how varied slow regions can be.",
-      "summary": "论文用“残影”机制解释一阶固定点方法为什么会在某些区域长期进展缓慢：邻近问题的残差场接近，但固定点集合或漂移结构变化很大。作者在参数化平均算子及度量正则性等条件下，给出慢区域与逃离时间的定量分析，并讨论 ADMM、PDHG 等实例。一个简单线性规划展示了参数微扰下的长平台期，结果解释停滞机制，并未自动提供消除停滞的新算法。",
-      "reason": "这项工作提示，小残差与离解很近之间可能存在严重差距。值得借鉴它用邻近问题几何构造慢区域的办法，用于审视停止准则、误差界常数及看似稳定却进展很慢的迭代轨迹。",
+      "summary": "线性锥规划的一阶固定点方法有时残差已经很小，却会在很长时间内几乎不靠近解集；仅用局部残差大小难以解释这种平台期。该文提出“残影慢区域”：邻近参数问题的残差场与当前问题非常接近，但固定点集合或整体漂移结构已发生显著变化，于是当前迭代会暂时沿着邻近问题的几何缓慢移动。作者在参数化平均算子和度量正则性等条件下，定量联系慢区域尺度与逃离时间，并在 ADMM、PDHG 及一个简单线性规划中展示微小参数扰动造成的长平台。结果解释了停滞机制，并未直接给出消除停滞的新算法。",
+      "reason": "推荐把它用于重新审视“小残差意味着接近解”的直觉。邻近问题几何给出的慢区域构造，可帮助分析停止准则、误差界常数以及迭代看似稳定却长期没有实质进展的现象。",
       "order": 12
     }
   ]

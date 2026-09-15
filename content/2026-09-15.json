@@ -13,8 +13,8 @@
       "directions": ["optimization-frontiers", "historical-information"],
       "arxiv_url": "https://arxiv.org/abs/2609.15936v1",
       "abstract": "The forward-reflected-backward (FRB) splitting solves inclusion problems involving the sum of a maximally monotone operator and a monotone Lipschitz continuous operator. Each iteration performs one resolvent step and one evaluation of the Lipschitz operator, plus a reflection term with coefficient one that reuses the previous operator value. We consider the setting where the maximally monotone operator is the subdifferential of a proper, lower semicontinuous, convex function. We identify the tight admissible range of constant reflection coefficients, namely all values larger than one half for a sufficiently small stepsize. We then propose a linesearch-free adaptive variant of FRB for locally Lipschitz continuous operators, in which both the stepsize and the reflection coefficient change across iterations. The stepsize is computed in closed form from a simple local Lipschitz estimate, without requiring the existence or knowledge of a global Lipschitz constant, while maintaining the iteration cost of FRB. The analysis of both methods relies on a new Lyapunov function that combines the distance to a solution, successive differences of iterates, and a gap-type term. The individual terms need not decrease along the iterates, but the stepsize conditions ensure that their weighted combination does. Moreover, alongside nonasymptotic rates, we derive explicit lower bounds on the generated stepsizes, and showcase the effectiveness of the adaptive method through numerical experiments on minimax problems, equilibrium models, and regularized regression.",
-      "summary": "论文研究单调包含 $0\\in F+\\partial g$，其中 $F$ 只需局部 Lipschitz。作者先证明固定步长 FRB 的反射系数必须严格大于 $1/2$，并给出边界外发散例；再提出 adaFRB，用相邻算子值构造闭式局部步长，每轮仍只需一次算子与一次近端计算。新 Lyapunov 分析给出序列收敛、步长下界及最佳迭代点 $O(1/K)$ 间隙率。",
-      "reason": "它同时解决了反射参数的紧范围与未知全局 Lipschitz 常数下的自适应问题，且没有引入回溯成本。应注意理论依赖单调性和解存在；增强版在临界参数处的完整序列结论弱于保守参数情形。",
+      "summary": "前向反射后向分裂（FRB）利用当前和上一步的算子值求解单调包含，但固定步长需要知道全局 Lipschitz 常数，反射系数的准确可行范围此前也不清楚。该文首先证明，在步长足够小时，常数反射系数严格大于 $1/2$ 是紧的允许范围，并构造边界外的发散例。随后提出的 adaFRB 根据相邻算子值形成局部 Lipschitz 估计，闭式更新步长和反射系数，不使用回溯，每轮仍只计算一次算子和一次近端映射。在单调性、解存在和局部 Lipschitz 连续等条件下，新 Lyapunov 分析给出迭代序列收敛、步长正下界以及最佳迭代点 $O(1/K)$ 的间隙率。",
+      "reason": "推荐重点看紧参数边界与自适应算法如何由同一套分析连接起来：发散例说明反射系数不能任意放宽，局部算子变化则让步长选择摆脱预知全局常数。adaFRB 在不增加单轮算子调用和回溯成本的情况下实现这种适应性，为设计使用历史算子值的分裂方法提供了具体参考。",
       "order": 1
     },
     {
@@ -27,8 +27,8 @@
       "directions": ["optimization-frontiers", "historical-information"],
       "arxiv_url": "https://arxiv.org/abs/2609.15806v1",
       "abstract": "Proximal bundle methods (PBMs) are classical algorithms for nonsmooth convex optimization. Existing analyses of the classical PBM couple the null steps with the descent test. This coupling obscures how the bundle updates approximate the proximal subproblem. In this work, we consider composite objectives $F=f+h$ and view each null-step cycle as an inner bundle subroutine, called ProxBundle. We analyze ProxBundle independently of any stopping criterion under general bundle model conditions and show that it automatically adapts to Hölder smoothness. Combining this inner-loop analysis with the descent-step analysis yields sharper complexity bounds for the classical PBM. For any fixed proximal parameter, its overall complexity is $\\mathcal O(\\epsilon^{-(3-\\nu)/(1+\\nu)})$ for $\\nu\\in[0,1)$ and $\\mathcal O(\\epsilon^{-1})$ for $\\nu=1$, where $\\nu$ is the Hölder smoothness exponent. Choosing the proximal parameter proportional to $\\epsilon$ improves the rate to $\\mathcal O(\\epsilon^{-2/(1+\\nu)})$ for $\\nu\\in[0,1)$. These are the first guarantees under Hölder smoothness with $\\nu\\in(0,1)$ for the classical descent test. We further introduce an absolute model-error test. The resulting PBM variant admits a clean inexact proximal-point analysis, and for any fixed proximal parameter, achieves the same complexity $\\mathcal O(\\epsilon^{-2/(1+\\nu)})$. Overall, our analysis separates the roles of the descent and null steps and gives a modular understanding of PBMs across different tests.",
-      "summary": "论文把近端束方法的一段空步循环独立视为 ProxBundle 内层求解器，先分析束模型逼近近端子问题的精度，再与下降步组合。该分解揭示经典方法对未知 Hölder 指数的自动适应性，并改进从非光滑到光滑区间的复杂度；新的绝对模型误差检验在固定近端参数下达到 $O(\\epsilon^{-2/(1+\\nu)})$。",
-      "reason": "这项工作没有只提出新变体，而是重构了经典束方法的分析接口，使空步、下降检验和正则参数的作用可分别比较。结果针对凸复合目标与标准束模型；速率优势不应外推到非凸束方法。",
+      "summary": "经典近端束方法交替执行下降步和更新切平面模型的空步，已有分析通常把空步循环与下降检验绑定在一起，因此难以看清束模型逼近近端子问题的效率。该文把一段空步循环独立定义为 ProxBundle 内层求解器，先分析模型误差如何下降，再把这一结果接回外层下降步。对于凸复合目标，这种分解揭示了经典方法对未知 Hölder 光滑指数的自动适应性，并改进了从非光滑到光滑区间的复杂度。该文还提出绝对模型误差检验；在固定近端参数下，相应变体达到 $O(\\epsilon^{-2/(1+\\nu)})$ 的复杂度。",
+      "reason": "推荐关注把空步循环作为独立内层问题分析的视角。它不仅给出更好的速率，也把束模型质量、下降检验和近端参数各自造成的复杂度影响分开，使经典束方法的证明更容易复用到新的停止准则和模型更新设计中。",
       "order": 2
     },
     {
@@ -41,8 +41,8 @@
       "directions": ["optimization-frontiers"],
       "arxiv_url": "https://arxiv.org/abs/2609.14235v1",
       "abstract": "We study the deterministic first-order oracle complexity of smooth nonconvex-concave minimax optimization over a bounded convex dual domain. Let $\\ell$ denote the joint smoothness constant, $D_{\\mathcal Y}$ the diameter of the dual domain, and $\\Delta$ the initial gap. We prove that every deterministic first-order algorithm requires $\\Omega(\\ell^2D_{\\mathcal Y}\\Delta/\\epsilon^3)$ oracle queries in the worst case to find an $\\epsilon$-optimization-stationary point whenever $\\epsilon\\lesssim\\min\\{\\ell D_{\\mathcal Y},\\sqrt{\\ell\\Delta}\\}$. We then develop Tracked-FOAM, a first-order method that attains a matching upper bound, removing the logarithmic factor from previous upper bounds. Together, these results establish the optimal dependence on all problem parameters in the stated regime.",
-      "summary": "论文给出光滑非凸—凹极小极大问题的确定性一阶复杂度闭环。在有界凸对偶域上，作者把 resisting-oracle 下界扩展到任意确定性一阶算法，得到 $\\Omega(\\ell^2D_{\\mathcal Y}\\Delta/\\epsilon^3)$；Tracked-FOAM 复用连续强凸—强凹子问题的状态，达到同阶上界并去掉既有对数因子。",
-      "reason": "上下界在全部主要参数上匹配，明确了该问题类中一阶方法还能改进到哪里。结论使用 Moreau 包络定义的优化驻点、限定精度区间且只覆盖确定性算法；随机化复杂度仍是开放边界。",
+      "summary": "光滑非凸—凹极小极大问题的确定性一阶复杂度，此前在上界和下界之间仍存在一个对数因子的差距。对于有界凸对偶域，该文用 resisting oracle 证明，在给定精度范围内，任意确定性一阶算法找到一个 $\\epsilon$-优化驻点都至少需要 $\\Omega(\\ell^2D_{\\mathcal Y}\\Delta/\\epsilon^3)$ 次查询。与之对应，Tracked-FOAM 在连续求解一系列强凸—强凹子问题时保留已有状态，达到同阶上界并去掉先前结果中的对数因子。上下界采用 Moreau 包络定义的驻点并覆盖全部主要参数；随机算法的最优复杂度不在该结果范围内。",
+      "reason": "这项结果基本确定了该问题类在确定性一阶信息下的难度，也说明既有上界中的对数损失并非问题本身所必需。推荐同时关注下界构造和 Tracked-FOAM 的状态复用机制：前者界定算法还能改进到哪里，后者展示嵌套方法如何减少连续子问题之间的重复求解。",
       "order": 3
     },
     {
@@ -55,8 +55,8 @@
       "directions": ["optimization-frontiers", "historical-information"],
       "arxiv_url": "https://arxiv.org/abs/2510.22715v3",
       "abstract": "In this paper, we prove that the iterates of the accelerated Nesterov's algorithm in the critical regime do converge in the weak topology to a global minimizer of an $L$-smooth function in a real Hilbert space, hence answering positively a conjecture posed by H. Attouch and co-authors a decade ago. This result is the algorithmic case of a very recent result on the continuous-time system posted by E. Ryu on X, with assistance from ChatGPT.",
-      "summary": "论文证明 Nesterov 加速法在临界阻尼参数 $\\alpha=3$ 时，迭代点在实 Hilbert 空间中弱收敛到全局最小点；同一方法也覆盖临界 Chambolle–Dossal 参数以及光滑与复合 FISTA。证明利用迭代点的有界加权平均表示和 Opial 型论证，补上此前只有 $O(1/k^2)$ 目标值率而缺少点列收敛的空白。",
-      "reason": "这是经典加速算法长期未闭合的临界情形，区分“函数值快”与“迭代点确实收敛”。结论需要凸性、$L$-光滑性、非空最优集和合适步长，并给出弱而非强收敛。",
+      "summary": "Nesterov 加速梯度法在临界阻尼参数 $\\alpha=3$ 时具有 $O(1/k^2)$ 的函数值收敛率，但函数值趋近最优并不能保证迭代点本身收敛。该文利用迭代点的有界加权平均表示和 Opial 型论证，证明临界参数下的迭代序列在实 Hilbert 空间中弱收敛到一个全局最小点。相同思路还覆盖临界 Chambolle–Dossal 参数以及相应的光滑与复合 FISTA。相关结论要求凸性、$L$-光滑性、非空最优集和合适步长，得到的是弱收敛而非范数意义下的强收敛。",
+      "reason": "这项结果补上了经典加速方法理论中的一个实质缺口：实际算法产生并使用迭代点，函数值具有加速率不能替代点列收敛。推荐重点阅读临界参数下原有能量估计为何不足，以及加权平均表示如何恢复 Opial 论证所需的结构；这种处理可能为其他临界惯性算法的点列分析提供参考。",
       "order": 4
     },
     {
@@ -69,8 +69,8 @@
       "directions": ["optimization-frontiers", "historical-information"],
       "arxiv_url": "https://arxiv.org/abs/2609.13765v1",
       "abstract": "The notion of $s$-composability was introduced to compose optimized stepsize schedules while preserving sharp guarantees. We show that the same joint potential has a second use: it can serve directly as a certificate of sharp last-iterate performance. We develop this viewpoint for constant and silver schedules. For the constant schedule, we prove the $s$-composability statement posed as an open question by Grimmer et al. (2025), at every finite horizon, through an explicit nonnegative smooth-convex interpolation certificate. The result identifies the unique constant stepsize minimizing the worst-case final gradient norm of smooth convex gradient descent under an initial-distance bound, thereby proving the optimal stepsize, value, and uniqueness predicted by Conjecture 3 of Taylor et al. (2017) without resolving its full worst-case curve. Through the Moreau envelope, the same constant is also the unique constant relaxation minimizing the worst-case final residual of relaxed proximal point. More generally, for every positive $s$-composable schedule, we determine the exact worst-case final proximal objective-gap constant and give a matching one-dimensional example. Applying this result to the already $s$-composable original silver schedule yields its exact last-iterate objective-gap constant, closing a question left open by Wang et al. (2025).",
-      "summary": "论文把 $s$-可组合势函数直接用作末次迭代的精确证书。对光滑凸梯度下降，作者确定唯一最优的常数步长，并经 Moreau 包络得到松弛近端点法的唯一最优常数松弛；对任意正 $s$-可组合日程，还给出末次近端目标差的精确常数与一维匹配例，包括 silver schedule。",
-      "reason": "结果为经典 GD 与 PPA 的有限时域参数选择给出精确而非量级结论，也展示性能估计势函数如何复用。它没有解析离最优步长较远处的完整最坏曲线，问题范围仍是凸光滑与近端框架。",
+      "summary": "渐近收敛阶不能回答有限步运行后哪个步长真正最优，也不能给出末次迭代误差的精确常数。该文证明，原本用于拼接优化步长日程的 $s$-可组合联合势函数，也可以直接充当末次迭代的精确性能证书。对于光滑凸梯度下降，这一证书确定了唯一最优的常数步长及其最坏情形末次梯度范数；通过 Moreau 包络，同一结果转化为松弛近端点法的唯一最优常数松弛。对于任意正 $s$-可组合日程，该文还给出末次近端目标差的精确常数和一维匹配例，其中包括 silver schedule。",
+      "reason": "推荐关注势函数从证明工具到参数设计证书的转变。精确的有限时域常数能够区分具有相同渐近阶的步长选择，而一维匹配例说明这些常数不是分析松弛造成的。这个视角还为构造和比较新的可组合步长日程提供了可直接检验的标准。",
       "order": 5
     },
     {
@@ -83,8 +83,8 @@
       "directions": ["optimization-frontiers", "stochastic"],
       "arxiv_url": "https://arxiv.org/abs/2609.14922v1",
       "abstract": "For constant-stepsize stochastic approximation (SA), the iterates converge in distribution to a stationary law that depends on the stepsize $\\alpha$. Steady-state convergence (SSC) concerns the limit of the scaled stationary distribution as $\\alpha\\downarrow0$. Existing SSC theory requires i.i.d. or additive noise and global differentiability of the mean operator, and yields suboptimal rates. We develop a unified SSC theory for constant-stepsize contractive SA driven by Markovian, multiplicative noise, covering both locally differentiable and locally nondifferentiable mean operators. A key methodological contribution is a multi-step universality framework that progressively reduces the original stochastic recursion to tractable auxiliary dynamics while preserving its steady-state limit. Under local quadratic linearization at the fixed point, we obtain a Gaussian approximation of the scaled steady state at the optimal rate $O(\\sqrt\\alpha)$ in Wasserstein-2 distance, which further gives finite-time Gaussian approximations for the raw iterates. In the locally nondifferentiable regime, we establish a general SSC result and show that the leading-order asymptotic bias can be of order $\\sqrt\\alpha$, in contrast to the $\\alpha$-order bias in the smooth regime. We apply the theory to Markovian linear SA and asynchronous Q-learning, neither of which is covered by prior results. We further propose a bias-reduction scheme for Q-learning that requires no knowledge of the local smoothness regime, validated by numerical experiments.",
-      "summary": "论文建立常步长收缩型随机逼近在 Markov 乘性噪声下的稳态极限理论。局部二次线性化时，缩放稳态分布以 Wasserstein-2 距离 $O(\\sqrt\\alpha)$ 逼近高斯，并可转成原始迭代的有限时近似；局部不可微时仍有稳态收敛，但首阶偏差可从光滑情形的 $O(\\alpha)$ 增大到 $O(\\sqrt\\alpha)$。",
-      "reason": "多步 universality 把复杂噪声递推逐层约化，同时保留稳态极限，覆盖异步 Q-learning 等旧理论之外的模型。保证依赖全局收缩、均匀遍历与噪声控制；这些条件决定其可移植范围。",
+      "summary": "常步长随机逼近通常不会收敛到单个点，而是进入一个随步长变化的稳态分布；已有稳态极限理论多依赖独立同分布或加性噪声以及全局可微性。该文建立多步约化框架，把带 Markov 乘性噪声的原始递推逐层替换为更易分析的辅助动力学，同时保持其稳态极限。均值算子在固定点附近具有二次线性化时，缩放后的稳态分布以 Wasserstein-2 距离 $O(\\sqrt\\alpha)$ 逼近高斯，并可进一步得到原始迭代的有限时高斯近似。局部不可微时仍可建立稳态收敛，但首阶偏差可能从光滑情形的 $O(\\alpha)$ 增大到 $O(\\sqrt\\alpha)$；异步 Q-learning 是文中覆盖的应用之一。",
+      "reason": "这项工作把常步长随机算法的分析重点从期望误差推进到稳态分布、近似速率和偏差阶数。推荐关注多步约化如何处理 Markov 依赖与乘性噪声，以及局部可微性为何会改变首阶偏差；这两点对随机逼近的置信评估和偏差修正都有具体启发。",
       "order": 6
     },
     {
@@ -97,8 +97,8 @@
       "directions": ["optimization-frontiers", "stochastic"],
       "arxiv_url": "https://arxiv.org/abs/2609.15257v1",
       "abstract": "We analyze a stochastic algorithm with Halpern anchoring for constrained convex-concave problems and monotone variational inequalities. This algorithm is single-loop and single-call since it uses one unbiased sample of the gradient operator at every iteration to be applicable to monotone games with noisy feedback. With $t$ denoting the iteration counter, we prove the anytime last-iterate convergence rate of $O(t^{-1/4})$ for both gradient-mapping norm and restricted gap, improving the best-known rate $O(t^{-1/5})$ that was obtained for the restricted gap function. Our rates cover constrained problems with a potentially unbounded feasible set as well as a structured class of stochastic oracles without a bounded variance.",
-      "summary": "论文分析单循环、单样本、单近端的随机 Halpern 锚定算法；任意时刻都可输出，无需预知终止轮数。对单调 Lipschitz 变分不等式，末次梯度映射与受限间隙均达 $O(t^{-1/4})$，优于此前 $O(t^{-1/5})$；噪声方差允许随相对锚点距离增长，残差结论也允许无界可行域。",
-      "reason": "在 noisy games 中，末次迭代、anytime 和每轮单次 oracle 同时满足很难，这篇工作给出清晰改进。其 $\\epsilon^{-4}$ 样本复杂度仍不快，且受限间隙的解释需结合所选测试集。",
+      "summary": "随机单调变分不等式中的 anytime 算法需要在不知道停止时刻的情况下，让当前迭代点本身保持可用；如果每轮还只允许一次随机查询和一次近端计算，已有末次迭代速率较弱。该文分析一种单循环的随机 Halpern 锚定方法，在每轮使用单个样本和单次近端更新。对于单调 Lipschitz 变分不等式，末次梯度映射和受限间隙都达到 $O(t^{-1/4})$，改进了此前的 $O(t^{-1/5})$。噪声方差可以随迭代点相对锚点的距离增长，梯度映射结论也不要求可行域有界；受限间隙则仍需结合选定的测试集解释。",
+      "reason": "推荐关注锚定结构如何同时服务于 anytime 输出和末次迭代分析。该方法没有通过增大批量、双循环或预知运行时长换取速率改进，因此适合用来理解低单轮成本与可靠当前解之间的权衡。其证明对距离相关噪声的处理，也为随机博弈和随机单调包含提供了更灵活的方差模型。",
       "order": 7
     },
     {
@@ -111,8 +111,8 @@
       "directions": ["optimization-frontiers", "stochastic"],
       "arxiv_url": "https://arxiv.org/abs/2609.13925v1",
       "abstract": "This work studies the stability and convergence of augmented primal-dual dynamics when constraint values are estimated from samples. Unbiased constraint observations can produce a biased augmented multiplier signal, shifting the equilibria of the mean dynamics. For componentwise inequalities, we give a necessary and sufficient condition for preserving the Karush-Kuhn-Tucker (KKT) equilibria and construct a convex example with a locally exponentially stable equilibrium that violates complementarity. To address this bias, constraint values are estimated recursively before forming the augmented multiplier signal. For smooth convex conic problems, a joint energy analysis establishes boundedness of the primal, dual, and estimation states, vanishing estimation error, and almost sure convergence of the primal-dual iterates to a single KKT point under global regularity and bounded conditional second moments. The result allows nonunique solutions and multipliers while keeping the number of samples per iteration fixed. Numerical studies illustrate the predicted equilibrium bias and examine convergence with nonunique KKT points and nonlinear constraints.",
-      "summary": "论文指出：即使约束观测无偏，经过正部投影或锥投影形成的增广乘子信号仍可能有偏，使均值动力系统稳定在违反互补性的点。作者为分量不等式给出保持 KKT 平衡的充要条件，并用递归约束估计器修正；在光滑凸锥问题上证明固定样本数下几乎处处收敛到单个 KKT 点。",
-      "reason": "它揭示了“无偏样本经过非线性后仍无偏”这一常见误区，并给出算法性补救。证明需要全局 Lipschitz 正则性、K-凸性和有限条件二阶矩；收敛到 KKT 不等于每次迭代都保持可行。",
+      "summary": "在带随机约束的增广原始—对偶方法中，约束样本通常先经过正部或锥投影，再用于更新乘子；原始观测无偏并不自动保证投影后的乘子信号仍然无偏。该文指出，这种非线性变换可能产生系统性偏差，使平均动力系统稳定在不满足互补条件的平衡点。对于分量不等式约束，保持 KKT 平衡的充要条件得到明确刻画，递归约束估计器则被用于修正投影造成的偏差。在全局 Lipschitz 正则性、K-凸性和有限条件二阶矩等条件下，修正后的光滑凸锥动力系统以固定样本数几乎处处收敛到单个 KKT 点；该结果不表示中间迭代始终可行。",
+      "reason": "推荐关注非线性投影破坏无偏性的具体机制。该文说明，只检查投影前的随机观测是否无偏，并不足以判断原始—对偶算法最终求解的是否仍是原问题。从这一结果出发，随机投影、截断、罚函数和安全过滤方法中的平均更新方向也值得作同类检查；这是由该机制引出的研究问题，而不是已经统一证明的结论。",
       "order": 8
     },
     {
@@ -125,8 +125,8 @@
       "directions": ["optimization-frontiers", "stochastic"],
       "arxiv_url": "https://arxiv.org/abs/2609.06921v2",
       "abstract": "We study constrained online convex optimization with adversarial constraints and conditionally unbiased, finite-variance observations of constraint values and gradients. Under common feasibility, our LEDGER algorithm attains $O(\\sqrt T)$ expected regret and $O(\\sqrt{T\\log(eT)})$ expected budget violation, the largest cumulative overspend over any window. It uses a reflected exponential potential, clipped signed observations, and predictable adaptive regularization, with one feedback triple and one projection per round. Neither a Slater condition, independence between feedback channels, nor an absolute constraint-value bound is needed. A Gaussian testing lower bound proves that the budget rate has optimal horizon dependence under square-root regret at fixed positive noise, including the logarithm. The same obstruction holds for terminal violation, so the logarithm is not a cost of maximizing over windows; an $O(\\sqrt T)$ budget bound instead forces linear regret. In contrast, fixed positive Gaussian value noise yields a joint regret--hard-violation lower bound of $\\Omega(\\min\\{\\sigma,1\\}T/\\log^2T)$, even with exact gradients in one dimension. The hard-violation construction matches arbitrarily many moments while preserving a feasible-endpoint gap and constant endpoint probabilities. Together, the bounds separate uncertainty about hard feasibility from learnable signed budgets. Deterministic restarts remove the horizon input without changing either upper rate.",
-      "summary": "v2 重写了带噪约束值的在线凸优化结论：LEDGER 在共同可行情形同时获得 $O(\\sqrt T)$ 期望遗憾与 $O(\\sqrt{T\\log(eT)})$ 最大窗口预算违反，并给出匹配的高斯检验下界。论文进一步证明，把预算违反压到 $O(\\sqrt T)$ 会迫使线性遗憾，而硬违反在固定正值噪声下近乎线性不可学。",
-      "reason": "新版把“可累计管理的带符号预算”与“逐轮硬可行”之间的统计鸿沟刻画得更完整，且上界不需 Slater、反馈独立或绝对约束界。读者应区分预算违反与硬违反，两者不能由同一结论互换。",
+      "summary": "带噪约束值的在线凸优化需要同时控制目标遗憾和约束违反，但累计的带符号预算与逐轮硬违反具有不同的统计难度。修订后的 v2 提出 LEDGER：在共同可行情形下，它以每轮一次反馈和一次投影获得 $O(\\sqrt T)$ 期望遗憾，以及 $O(\\sqrt{T\\log(eT)})$ 的最大窗口预算违反；该上界不需要 Slater 条件、反馈通道独立或约束值绝对有界。匹配的高斯检验下界表明，在保持平方根遗憾时，这个预算违反率对时域长度已经最优；若强行把预算违反降到 $O(\\sqrt T)$，遗憾将变为线性。对于固定正值噪声下的硬违反，该文还给出近乎线性的联合下界，从而把可管理的预算约束与难以学习的逐轮硬可行区分开来。",
+      "reason": "推荐重点看上界与两个层次下界如何共同画出带噪约束反馈的可行边界。v2 不只改进一个算法速率，还说明哪些安全目标可以通过在线学习实现、哪些目标会与低遗憾发生根本冲突。这种区分有助于后续算法先选择统计上合理的约束指标，再讨论具体更新规则。",
       "update_note": "相较 2026-09-09 推荐的 v1，v2 删除动态比较器部分，改为在共同可行下给出 $O(\\sqrt T)$ 遗憾和近匹配的最大窗口预算界；同时显著强化预算与硬违反下界，并加入无需已知时域的确定性重启。",
       "order": 9
     },
@@ -140,8 +140,8 @@
       "directions": ["optimization-frontiers"],
       "arxiv_url": "https://arxiv.org/abs/2609.14564v1",
       "abstract": "This paper studies DC composite optimization problems with simultaneous conic and manifold constraints. We propose an inexact proximal linearized exact penalty algorithm based on a distance-based penalty function for the conic constraint. The algorithm successively computes approximate minimizers of proximal linearizations of the penalty function over the tangent spaces of the manifold under a readily verifiable inexactness criterion, with adaptive updates of the proximal and penalty parameters. Under the boundedness assumption on the sequences of iterates and penalty parameters, we establish an $O(\\epsilon^{-2})$ worst-case complexity bound for finding an $\\epsilon$-stationary point. Moreover, when semi-proximal ADMM is employed to solve the subproblems, the resulting oracle complexity is $O(\\epsilon^{-2}\\log\\epsilon^{-1})$ provided that the distance function and the first DC component are piecewise linear-quadratic, while an accelerated variant achieves an $O(\\epsilon^{-4})$ oracle complexity. If, in addition, the associated potential function satisfies the KL property, the whole sequence of iterates converges to a stationary point. Extensive numerical experiments on composite optimization problems with orthogonal manifold, nonnegative cone, and second-order cone constraints demonstrate the effectiveness of the proposed method.",
-      "summary": "论文面向同时含流形与锥约束的 DC 复合优化，以锥距离构造非光滑精确罚，并在流形切空间上近端线性化求解。可检验内层误差和自适应罚参数配合下，作者给出 $O(\\epsilon^{-2})$ 的驻点迭代复杂度；在额外分段线性—二次结构下，还分析半近端 ADMM 的总 oracle 成本。",
-      "reason": "该框架把流形几何、锥可行性、DC 非光滑性和内层不精确统一进一个复杂度分析。核心界依赖迭代点与罚参数序列有界；全序列收敛还需 KL 性质，应用时应先验证这些非自动条件。",
+      "summary": "同时带有流形约束、锥约束和 DC 复合结构的优化问题，需要兼顾流形几何、非光滑性与锥可行性，标准欧氏近端步骤不能直接使用。该文以到锥的距离构造非光滑精确罚函数，并在流形切空间上求解其近端线性化子问题；内层解只需满足可检验的不精确条件，近端参数和罚参数均可自适应调整。在迭代点与罚参数序列有界的条件下，该方法以 $O(\\epsilon^{-2})$ 次外层迭代得到 $\\epsilon$-驻点。若距离函数和第一个 DC 分量具有分段线性—二次结构，半近端 ADMM 内层求解还可得到 $O(\\epsilon^{-2}\\log\\epsilon^{-1})$ 的总 oracle 复杂度；全序列收敛则进一步依赖 KL 性质。",
+      "reason": "推荐关注精确罚、流形切空间近端化和可检验内层误差如何被组织进同一个复杂度分析。复杂约束算法往往只证明理想子问题精确求解时的外层收敛，这项工作进一步核算了实际内层求解带来的 oracle 成本，为设计可实施的流形—锥约束方法提供了较完整的分析模板。",
       "order": 10
     },
     {
@@ -154,8 +154,8 @@
       "directions": ["historical-information", "stochastic"],
       "arxiv_url": "https://arxiv.org/abs/2609.15723v1",
       "abstract": "Traditional variance reduction methods (e.g., SPIDER, SARAH, STORM) have been extensively investigated for improving the convergence rates of stochastic optimization. These techniques typically maintain a sequence of estimators for a single function (or gradient) across iterations. However, what if we need to track multiple functions, but can only access stochastic samples of $\\mathcal{O}(1)$ functions at each iteration? This scenario arises in an important emerging family of finite-sum coupled compositional optimization (FCCO) problems of the form $\\frac{1}{m}\\sum_{i=1}^m f_i(g_i(\\mathbf{w}))$, where each $g_i$ is accessible only through a stochastic oracle. The key challenge is to track $\\mathbf g(\\mathbf{w})=(g_1(\\mathbf{w}), \\ldots, g_m(\\mathbf{w}))$ over time, where $\\mathbf g(\\mathbf{w})$ has $m$ blocks but only $\\mathcal{O}(1)$ blocks can be probed for their stochastic values at each step. To address this challenge, we propose a novel Multi-block-Single-probe Variance Reduction (MSVR) estimator to efficiently trace $\\mathbf g(\\mathbf{w})$ under partial block sampling. Building on the MSVR estimator, we develop several algorithms for FCCO problems, achieving improved sample complexities for non-convex, convex, strongly convex, and Polyak-Łojasiewicz (PL) objectives. We further obtain an improved dependence on $m$ when the outer function gradients $\\nabla f_i$ are linear. Empirical studies on multi-task deep AUC maximization further demonstrate the superior performance of the proposed estimators.",
-      "summary": "论文研究有限和耦合复合目标：需要持续跟踪 $m$ 个内层映射，但每轮只能探测 $O(1)$ 个块。MSVR 在 STORM 型历史校正中同时处理 oracle 噪声与块抽样随机性，并据此覆盖非凸、凸、强凸与 PL 情形；当外层梯度线性时可进一步去掉或减轻复杂度对 $m$ 的依赖。",
-      "reason": "这是历史估计器从单序列扩展到多块部分观测的有针对性设计，补上直接套用 STORM 无法消除的块抽样误差。部分最优复杂度仍需平均光滑、有限和或线性外层梯度等附加结构，应按定理分支核对。",
+      "summary": "有限和耦合复合目标需要同时跟踪 $m$ 个内层映射，但每轮通常只能随机访问其中 $O(1)$ 个块；SPIDER、SARAH 和 STORM 等传统方差缩减方法主要维护单个函数或梯度估计，不能直接处理这种多块部分观测。针对这一缺口，该文提出多块单探测方差缩减估计器 MSVR，用历史估计与当前样本共同校正 oracle 噪声和块抽样误差。基于 MSVR 的算法覆盖非凸、凸、强凸和 PL 目标，并在相应条件下改进样本复杂度；当外层梯度为线性映射时，复杂度对块数 $m$ 的依赖还可进一步减轻。多任务深度 AUC 最大化实验用于检验估计器的实际表现。",
+      "reason": "推荐关注“需要持续跟踪多个块、每轮却只能查看少数块”这一信息约束如何改变方差缩减估计器的设计。MSVR 把历史校正从单序列扩展到多块状态，为其他具有部分观测、多任务或分组结构的随机优化问题提供了可借鉴的估计机制。",
       "order": 11
     },
     {
@@ -168,8 +168,8 @@
       "directions": ["historical-information", "distributed"],
       "arxiv_url": "https://arxiv.org/abs/2504.15196v5",
       "abstract": "In decentralized optimization, gradient-tracking methods typically rely on a single global stepsize. This choice can be conservative when agents have local objectives with different smoothness constants, since the stepsize must remain stable for the agent with the largest smoothness constant. This paper proposes AdGT, a decentralized gradient-tracking method in which each agent adapts its own stepsize using local gradient variation and a single global safety factor. The method reduces fixed-stepsize tuning effort and allows agents to exploit local smoothness information during the iterations. For smooth and strongly convex local objectives over undirected networks, we prove that the analyzed AdGT update converges linearly to the exact consensus optimizer. We also study two adaptive stepsize updates that use changes in the gradient-tracking direction. We characterize when the corresponding candidate determines the stepsize and prove conditional lower and upper stepsize bounds and linear convergence under an additional relative tracking-disagreement condition. Experiments on logistic regression, ridge regression, synthetic quadratic problems, and a linear-regression benchmark against state-of-the-art decentralized solvers show that AdGT often reaches a given accuracy in fewer iterations or gradient evaluations than tuned fixed-stepsize GT and the tested baselines, especially under heterogeneous local smoothness. In the topology experiments, each tested AdGT update uses one common safety factor across all graphs, whereas the fixed GT stepsize is tuned separately for each graph and seed.",
-      "summary": "AdGT 让各代理用本地梯度变化独立调步长，仅共享一个安全因子，从而避免全网被最差局部光滑常数限制。在无向连通网、对称双随机混合与光滑强凸局部目标下，主更新可证明精确线性收敛；另两种基于跟踪方向变化的更新还需额外的相对跟踪—分歧条件。",
-      "reason": "它把局部历史曲率用于分布式预条件，同时不增加通信轮次，特别适合局部光滑度异质的网络。安全因子界较保守，且有向、时变、随机与非凸情形不在当前主理论范围。",
+      "summary": "去中心化梯度跟踪通常让所有节点采用统一步长；当局部目标的光滑程度差异较大时，这个步长需要满足最保守节点的稳定要求，其他节点的局部信息因而难以充分利用。针对这一问题，该文提出 AdGT，让每个节点根据相邻迭代间的本地梯度变化独立调整步长，同时只共享一个全局安全因子，不增加每轮通信次数。对于固定无向连通网络和光滑强凸局部目标，主要更新方案能够精确线性收敛到一致最优解；另外两种利用梯度跟踪方向变化的规则，则需要额外控制跟踪误差与节点分歧的相对大小。逻辑回归、岭回归和二次优化等实验显示，在局部光滑程度不均衡的设置中，AdGT 通常比经过调参的统一步长方法更快达到给定精度。",
+      "reason": "推荐重点看各节点独立调步后，步长差异如何与梯度跟踪误差和网络分歧共同进入收敛分析。这个问题决定了局部自适应能否摆脱全网最坏光滑常数，同时仍收敛到精确的一致解。AdGT 在不增加通信轮次的情况下给出一种具体处理方式，对局部曲率差异较大的分布式优化具有直接参考价值。",
       "order": 12
     },
     {
@@ -182,8 +182,8 @@
       "directions": ["stochastic", "historical-information"],
       "arxiv_url": "https://arxiv.org/abs/2609.15679v1",
       "abstract": "This paper studies projection-free algorithms for stochastic constrained multi-level compositional optimization. In this context, the objective function is a nested composition of several smooth functions, and the decision set is closed and convex. Since projection onto the constraint set can be computationally expensive, we develop projection-free methods that rely on linear minimization oracles. For non-convex objectives, we propose variance-reduced projection-free algorithms and establish complexity guarantees under both the Frank-Wolfe gap and the gradient mapping criteria. We also develop momentum-based methods that achieve convergence guarantees under weaker smoothness assumptions. Additionally, by using a stage-wise design, we derive a parameter-free variant that preserves the same complexities for the Frank-Wolfe gap. Such a design can be further used to develop algorithms for convex and strongly convex functions whose rates match those of single-level projection-free counterparts. Finally, we consider finite-sum problems and derive complexities for non-convex, convex, and strongly convex objectives. Numerical experiments across multiple tasks demonstrate the effectiveness of the proposed methods.",
-      "summary": "论文为随机多层复合约束优化构造只调用线性最小化 oracle 的投影自由算法。方差缩减版本首次给出多层情形的 Frank–Wolfe 间隙保证，并在梯度映射下达到 $O(\\epsilon^{-3/2})$ 随机一阶复杂度；分阶段版本无需问题常数，动量版本在较弱光滑假设下工作，另覆盖凸、强凸与有限和结构。",
-      "reason": "它系统补齐多层复合问题中 SFO、LMO 与不同驻点度量的复杂度表，而非只优化单一指标。若用更大批量降低 LMO 次数，样本与存储代价会前移；各最优率对应的光滑与批量条件需分别核对。",
+      "summary": "随机多层复合优化需要估计嵌套函数及其梯度，约束集合上的投影又可能比线性优化昂贵，因此单层 Frank–Wolfe 方法不能直接给出合适的复杂度。该文构造一组只调用线性最小化 oracle 的投影自由算法。方差缩减版本首次在多层随机复合情形下给出 Frank–Wolfe 间隙保证，并在梯度映射指标下达到 $O(\\epsilon^{-3/2})$ 的随机一阶复杂度；分阶段版本无需预知问题常数，动量版本则在较弱光滑假设下工作。相应分析还覆盖凸、强凸和有限和结构，但不同速率分别依赖其对应的光滑性与批量条件。",
+      "reason": "这项工作的阅读价值在于同时核算随机一阶查询、线性最小化调用和不同驻点指标，而不是只给出单一收敛率。推荐比较方差缩减、分阶段和动量三种设计各自解决的困难，以及减少投影或线性最小化次数时，样本量和批量成本如何随之变化。",
       "order": 13
     },
     {
@@ -196,8 +196,8 @@
       "directions": ["asynchronous-distributed", "distributed"],
       "arxiv_url": "https://arxiv.org/abs/2609.15605v1",
       "abstract": "Asynchronous iterative methods are attractive for large-scale parallel computing because they reduce synchronization and communication overhead. Existing convergence-rate analyses, however, have primarily focused on shared memory implementations, whereas distributed memory systems introduce more general and potentially inconsistent communication delays. In this work, we revisit asynchronous Jacobi and randomized Gauss--Seidel (RGS) methods for symmetric positive definite linear systems from a unified perspective. We first introduce a general asynchronous model that encompasses both shared memory and distributed memory settings and expresses the two methods through a common coordinate-update framework. We then establish linear convergence in expectation under an explicit stability condition. The resulting convergence bound depends algebraically on the delay through the quantity $\\sqrt{\\rho\\tau}+\\rho\\tau$, where $\\tau$ is the maximum communication delay and $\\rho$ reflects the communication pattern of the underlying parallel implementation. In particular, under an appropriate scaling regime with $\\rho\\tau=O(1)$, the guaranteed per-iteration convergence rate has the same asymptotic order as that of synchronous RGS. These results provide a unified framework for quantifying the effect of asynchronicity on asynchronous Jacobi/RGS methods in both shared and distributed memory environments.",
-      "summary": "论文用统一坐标更新模型分析 SPD 线性系统上的异步 Jacobi 与随机 Gauss–Seidel，覆盖共享内存和更一般的不一致分布式延迟。在更新方向独立均匀、延迟有界并满足显式稳定条件时，误差按期望线性收敛；延迟影响通过 $\\sqrt{\\rho\\tau}+\\rho\\tau$ 代数进入，而非指数恶化。",
-      "reason": "它把分布式内存中的通信耦合与最大延迟拆开量化；当 $\\rho\\tau=O(1)$ 时，每迭代渐近阶可与同步 RGS 相同。保证依赖特定陈旧读模型、调度独立性和保守的最坏延迟条件。",
+      "summary": "异步 Jacobi 和随机 Gauss–Seidel 可以减少并行线性求解中的同步等待，但分布式内存会产生比共享内存更一般、也可能彼此不一致的通信延迟。该文建立统一的坐标更新模型，把两类算法及两种内存环境放入同一分析框架。对于对称正定线性系统，在更新方向独立均匀、延迟有界并满足显式稳定条件时，误差按期望线性收敛。收敛界中的延迟代价通过 $\\sqrt{\\rho\\tau}+\\rho\\tau$ 表示，其中 $\\tau$ 是最大延迟，$\\rho$ 描述通信耦合；当 $\\rho\\tau=O(1)$ 时，每次迭代的渐近收敛阶与同步随机 Gauss–Seidel 相同。",
+      "reason": "推荐关注通信耦合与最大延迟如何被分开量化。相比只给出一个最坏延迟上界，这个表达式更清楚地说明系统规模、通信模式和陈旧读取共同在什么范围内仍可维持同步方法的迭代效率，也为异步实现选择并行度和通信结构提供了可检验的稳定尺度。",
       "order": 14
     },
     {
@@ -210,8 +210,8 @@
       "directions": ["distributed"],
       "arxiv_url": "https://arxiv.org/abs/2609.14953v1",
       "abstract": "This paper aims to develop new and efficient distributed algorithms for solving a class of monotone inclusions, $0\\in\\sum_{i=1}^n(G_ix+T_ix)$, over a connected network of $n$ agents, where the single-valued operator $G_i$ and the possibly multivalued operator $T_i$ remain private to agent $i$. Existing distributed algorithms for this problem class are primarily non-accelerated, and their exact convergence rates in the original primal space are largely unexplored. To bridge this gap, we propose two Decentralized Fast Fixed-Point-based algorithms, ND-DFFP and NI-DFFP, which integrate Nesterov-type acceleration with primal-dual techniques under two prominent settings: (i) Lipschitz continuity of $G_i$ and maximal monotonicity of $G_i+T_i$; and (ii) co-coercivity of $G_i$ and maximal monotonicity of $T_i$. While ND-DFFP utilizes a homogeneous network-dependent stepsize, NI-DFFP reformulates the problem into a three-operator inclusion to decouple the network topology, enabling heterogeneous network-independent stepsizes. Under appropriate assumptions, we establish an $\\mathcal{O}(1/k)$ convergence rate for the consensus error and an $\\mathcal{O}(1/k)$ rate for both the restricted gap function and the squared forward-backward splitting residual, with the latter two metrics evaluated at the network-average iterate or its projection onto the effective domain. Finally, numerical experiments on distributed bilinear matrix games and a virtual power plant problem demonstrate the competitive performance and computational efficiency of our methods over recent decentralized baselines in the literature.",
-      "summary": "论文针对网络上私有复合单调包含提出两种快速固定点算法。ND-DFFP 在局部 Lipschitz 加极大单调条件下使用依赖网络的统一步长；NI-DFFP 借三算子重构，在余强单调条件下允许与拓扑解耦的异质步长。局部点收敛到一致根，并对一致误差、受限间隙和前向后向残差给出 $O(1/k)$ 或 $o(1/k)$ 级结论。",
-      "reason": "拓扑相关与拓扑无关两个版本清楚展示了步长自由度要用什么算子结构交换。间隙与残差是在网络均值或其投影处评估，并依赖有效域内部性等正则条件，不能直接理解为每个本地点的同阶证书。",
+      "summary": "网络上的复合单调包含要求各节点在不公开本地算子的情况下求得一致根，已有分布式方法多为非加速算法，原始变量空间中的明确收敛率也不完整。该文提出两种结合 Nesterov 型加速与原始—对偶结构的快速固定点算法。ND-DFFP 适用于局部 Lipschitz 算子与极大单调和，采用依赖网络的统一步长；NI-DFFP 在前向算子余强单调时通过三算子重构，将步长与拓扑解耦并允许各节点采用异质步长。局部迭代点收敛到一致根，一致误差、受限间隙和前向后向残差得到 $O(1/k)$ 或 $o(1/k)$ 级保证；后两类指标在网络均值或其有效域投影处评估。",
+      "reason": "两种算法的并列分析清楚展示了步长自由度需要用什么算子结构来换取。推荐重点比较网络相关统一步长与拓扑无关异质步长背后的问题重构，以及不同残差为何在网络均值而非每个本地点上建立；这有助于判断分布式单调包含中的加速结论究竟控制了哪个实际输出。",
       "order": 15
     },
     {
@@ -224,8 +224,8 @@
       "directions": ["distributed", "stochastic"],
       "arxiv_url": "https://arxiv.org/abs/2310.07983v7",
       "abstract": "The ProxSkip algorithm for distributed optimization is gaining increasing attention due to its effectiveness in reducing communication. However, existing analyses of ProxSkip are limited to the strongly convex setting and fail to achieve linear speedup with respect to the number of nodes. Key questions regarding its behavior in the non-convex setting and the achievability of linear speedup remain open. In this paper, we revisit decentralized ProxSkip and answer these questions affirmatively. We provide a unified convergence analysis for stochastic non-convex, convex, and strongly convex problems, revealing how gradient noise, local updates, network connectivity, and data heterogeneity jointly determine the convergence behavior. To the best of our knowledge, this is the first analysis showing that decentralized ProxSkip achieves linear speedup in the number of nodes under stochastic gradients. Moreover, our results demonstrate that local updates can effectively reduce communication frequency and improve communication efficiency.",
-      "summary": "论文重新分析带概率本地步的去中心化 ProxSkip，统一覆盖随机非凸、凸与强凸问题。在无向连通网、光滑局部目标、节点条件独立无偏且方差有界的随机梯度下，新误差分解在足够长瞬态后给出按节点数 $n$ 的线性加速，并明确通信概率、谱隙、噪声与异质性怎样进入界。",
-      "reason": "它补上 ProxSkip 此前缺少的非凸结果和随机线性加速证明，说明减少通信不必牺牲并行样本收益。加速是主导项的渐近结论，达到该区间前的网络与异质性瞬态不可忽略。",
+      "summary": "去中心化 ProxSkip 通过概率性地跳过通信、增加本地更新来降低通信频率，但此前分析主要限于强凸问题，也没有证明随机梯度下随节点数增长的线性加速。该文重新分解本地更新、网络混合、梯度噪声和数据异质性造成的误差，统一覆盖随机非凸、凸和强凸目标。对于固定无向连通网络以及条件独立、无偏且方差有界的随机梯度，主要复杂度项在经过足够长的瞬态后可获得关于节点数 $n$ 的线性加速。相应界同时给出通信概率、谱隙、噪声和异质性对瞬态长度与最终速率的影响。",
+      "reason": "这项分析补上了 ProxSkip 的非凸保证和随机线性加速结果，说明降低通信频率与保留并行采样收益可以同时实现。推荐重点看新误差分解如何区分渐近主导项与网络瞬态；这一区分对选择通信概率和判断有限训练时长内能否真正看到线性加速尤其重要。",
       "order": 16
     },
     {
@@ -238,8 +238,8 @@
       "directions": ["stochastic"],
       "arxiv_url": "https://arxiv.org/abs/2609.15403v1",
       "abstract": "Chance constraints are widely used in optimization under uncertainty. This paper aims to show the eventual convexity (EV) of chance constraints with skewed generalized hyperbolic (GH) random variables. We prove that the densities of GH distributions are $\\alpha$-decreasing, and obtain exact convex reformulations for separable jointly chance constraints with GH distributions. We provide numerical results to compute the $\\alpha$-decreasing threshold parameters and show the EV of the feasible set together with the computational tractability to solve the associated optimization problems.",
-      "summary": "论文证明偏斜广义双曲分布的密度具有 $\\alpha$-递减性，并据此得到可分联合机会约束的“最终凸”区域：当置信水平超过可计算阈值、各随机分量独立且右端函数满足相应凹性时，原机会约束可精确改写为对数 CDF 之和的凸约束。",
-      "reason": "它为重尾、偏斜不确定性下的机会约束提供了精确而非保守近似的可解区间。结论依赖独立的一维 GH 分量和足够高置信水平；决策相关偏斜及一般相关多元分布未被覆盖。",
+      "summary": "机会约束在高置信水平下是否形成凸可行域，取决于随机分布尾部的几何性质；偏斜且重尾的广义双曲分布此前缺少相应的可解性刻画。该文证明这类分布的密度具有 $\\alpha$-递减性，并由此得到可分联合机会约束的最终凸区域。当各随机分量相互独立、右端函数满足相应凹性且置信水平超过可计算阈值时，原机会约束可以精确改写为对数累积分布函数之和构成的凸约束。数值计算进一步用于确定不同参数下的阈值并展示可行域的凸化。",
+      "reason": "推荐关注从分布尾部性质到凸优化表示的完整连接。对于偏斜重尾不确定性，这一结果给出的不是保守近似，而是在明确阈值以上与原机会约束等价的凸重构；因此实际应用的关键变成验证独立性、函数形状和置信水平是否落在可解区域。",
       "order": 17
     },
     {
@@ -252,8 +252,8 @@
       "directions": ["safety-critical"],
       "arxiv_url": "https://arxiv.org/abs/2609.14076v1",
       "abstract": "We present an optimal and convergent model-free policy gradient (PG) reinforcement learning (RL) framework for controlling nonlinear dynamical systems under hard safety constraints. We first construct a class of stochastic wrapper policies centered around a deterministic controller, thereby enabling exploration in unknown environments while preserving the underlying deterministic control structure. We then define a class of parameterized safe-by-construction control policies by truncating these stochastic policies onto hard safety constraints. We next establish, via measure-theoretic arguments, that the potentially nonconvex RL objective under the truncated policy class, as well as its policy gradients, are well-defined. We then develop a model-free PG algorithm based on stochastic gradient ascent that directly searches over these truncated policies and leverage gradient dominance to establish convergence and optimality guarantees. Finally, we validate this framework through simulations on a safe quadrotor navigation problem.",
-      "summary": "SafePG 把高斯型随机探索策略截断到状态相关安全控制集，使每个采样动作满足硬输入条件；若控制障碍函数模型正确且集合非空，可保持安全集正向不变。作者证明截断策略的目标与梯度良定，并在弱梯度支配及无偏有界方差估计等条件下，给出到安全策略类全局最优邻域的样本复杂度。",
-      "reason": "它把训练期探索安全直接嵌入策略分布，而不只在部署时加过滤器。安全保证仍要求已知可靠的动力学安全集；全局最优性依赖较强的可达/支持与梯度支配假设，目前证据为四旋翼仿真。",
+      "summary": "强化学习中的随机探索可能在训练阶段就违反硬安全约束，而只在部署时过滤动作不能解决这一问题。该文构造以确定性控制器为中心的随机包装策略，并将其截断到状态相关的安全控制集，由此得到按构造即安全的策略类。若控制障碍函数所用模型正确且安全动作集合始终非空，每个采样动作都满足硬输入条件，安全集合也保持正向不变。目标函数和策略梯度在截断分布下被证明良定；在弱梯度支配、适当支持条件以及无偏有界方差估计等假设下，SafePG 还给出收敛到安全策略类全局最优邻域的样本复杂度，并以四旋翼仿真进行验证。",
+      "reason": "推荐关注安全约束如何直接进入探索策略的概率分布，使训练期间产生的动作本身满足约束。这个设计把安全性、梯度估计和策略优化放在同一对象上分析，为研究安全过滤对采样分布及优化几何的影响提供了具体框架；应用时，动力学安全模型和安全集合非空仍是保证成立的关键前提。",
       "order": 18
     },
     {
@@ -266,8 +266,8 @@
       "directions": ["safety-critical"],
       "arxiv_url": "https://arxiv.org/abs/2609.14935v1",
       "abstract": "Multi-robot Control Barrier Function (CBF) safety filters can become infeasible, but a failed quadratic program (QP) does not indicate why the conflict occurred or how to resolve it. To address this, we develop an exact feasibility certificate for multi-agent CBF filters with heterogeneous control-affine dynamics and convex input sets. The certificate quantifies a feasibility reserve by separating the demand imposed by safety constraints from the available actuator supply. This decomposition shows when CBF gain tuning or increased actuation can and cannot resolve infeasibility, and identifies the agents and interactions responsible for the conflict. We further propose an algorithm to optimally allocate shared safety constraints by maximizing the worst local feasibility margin, yielding a linear program for polyhedral input sets. In $320$ paired closed-loop simulations, the proposed allocation reduces infeasible control steps from roughly $50\\%$ to $6.2\\%$, and reduces safety-violating runs from $118/160$ to $24/160$. In addition, across $52$ infeasibility events, the certificate identifies an interaction whose relaxation restores feasibility in $94\\%$ of cases.",
-      "summary": "论文为异质控制仿射多机器人 CBF 过滤器构造精确的逐点可行性余量，把安全约束需求与凸输入集的执行器供给分离，并可定位造成冲突的交互。随后以最大化最差局部余量分配共享安全责任；多面体输入集下得到线性规划，非负最优余量可直接证实各本地过滤器可行。",
-      "reason": "证书不仅报告 QP 失败，还说明调 CBF 增益或增加执行能力何时无济于事，适合故障诊断与责任分配。局部责任证书是充分而非必要条件；负余量只表示最佳折中，不再提供安全保证，且结论是瞬时而非全轨迹。",
+      "summary": "多机器人控制障碍函数（CBF）安全过滤器的二次规划失败时，通常只能知道问题不可行，却无法判断冲突来自安全要求、执行器能力还是责任分配。该文为具有异质控制仿射动力学和凸输入集的系统构造精确逐点可行性余量，将安全约束的需求与执行器能够提供的控制能力分离，并据此定位造成冲突的机器人交互。共享安全责任随后通过最大化最差局部余量重新分配；对于多面体输入集，这一步可以写成线性规划，非负最优余量能够证明各本地过滤器可行。该证书描述当前状态下的可行性；负余量只给出最佳折中，不再构成安全保证。",
+      "reason": "这项工作的价值在于把“过滤器不可行”转化为可以解释和调整的诊断结果。证书能够判断修改 CBF 增益或增加执行能力是否可能解决冲突，并指出应重新分配哪一项共享安全责任。相比只报告二次规划失败，这种需求—供给分解更直接地支持多机器人安全系统的调试、责任分配和故障处置。",
       "order": 19
     }
   ]
