@@ -1,7 +1,7 @@
 {
   "date": "2026-09-18",
-  "status": "complete",
-  "frontiers_status": "recommendations",
+  "status": "incomplete",
+  "frontiers_status": "incomplete",
   "papers": [
     {
       "arxiv_id": "2609.20327",
