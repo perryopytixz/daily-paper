@@ -1,0 +1,486 @@
+{
+  "date": "2026-09-23",
+  "status": "complete",
+  "frontiers_status": "recommendations",
+  "papers": [
+    {
+      "arxiv_id": "2606.05438",
+      "version": 2,
+      "title": "Sharp First-Order Lower Bounds for Higher-Order Smooth Nonconvex Optimization",
+      "authors": [
+        "Dongruo Zhou"
+      ],
+      "abstract": "We study the deterministic first-order oracle complexity of finding \\(ε\\)-stationary points in smooth nonconvex optimization when the objective satisfies higher-order smoothness assumptions. While the classical \\(ε^{-2}\\) rate is optimal under only Lipschitz gradients, higher-order smoothness leads to accelerated first-order upper bounds, most notably the \\(ε^{-7/4}\\) rate under Lipschitz Hessians and the \\(ε^{-5/3}\\) rate under Lipschitz third derivatives. The matching lower bounds, however, have remained open. We resolve this gap by proving a new dimension-free first-order lower bound for higher-order smooth nonconvex functions, valid for every finite smoothness order. In particular, our construction gives a matching \\(Ω(ε^{-7/4})\\) lower bound in the Hessian-Lipschitz case and a matching \\(Ω(ε^{-5/3})\\) lower bound in the third-order-smooth regime. The hard instance is based on a \\emph{block-chain} mechanism that enforces blockwise oracle revelation while preserving the smoothness structure needed for the scalar hard instance. The lower-bound construction was discovered with the assistance of ChatGPT 5.5 Pro and subsequently verified by the authors.",
+      "summary": "论文研究仅访问梯度的一阶黑盒算法寻找非凸函数近似驻点时的最坏情形复杂度。作者构造新的块链困难实例，使目标函数可同时具备任意有限阶的 Lipschitz 高阶导数；由此在 Hessian-Lipschitz 情形证明 $\\Omega(\\varepsilon^{-7/4})$ 下界，在三阶导数 Lipschitz 情形证明 $\\Omega(\\varepsilon^{-5/3})$ 下界，与已有上界精确匹配。结论针对确定性一阶 oracle，不覆盖能够直接调用 Hessian 或更高阶导数的方法。",
+      "reason": "它闭合了高阶光滑非凸优化中两个长期存在的一阶复杂度缺口，并提供可迁移到其他 oracle 下界问题的困难实例构造。",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "submitted": "2026-06-03",
+      "updated": "2026-09-21",
+      "arxiv_url": "https://arxiv.org/abs/2606.05438v2",
+      "order": 1
+    },
+    {
+      "arxiv_id": "2609.23557",
+      "version": 1,
+      "title": "Optimal High-Order Methods for Solving Monotone Variational Inequalities",
+      "authors": [
+        "Xinliang Zhang",
+        "Lesi Chen",
+        "Linxuan Pan",
+        "Chengchang Liu",
+        "Junchi Yang",
+        "Jingzhao Zhang"
+      ],
+      "abstract": "We study second- and higher-order methods for solving smooth monotone variational inequalities (MVI). Monteiro and Svaiter (SIAM J. Optim., 2012) showed that a second-order method, NPE, converges at a rate of $\\mathcal{O}(T^{-1.5})$. For convex-concave minimax optimization, a subclass of MVI problems, Chen, Liu, Luo, and Zhang (COLT 2025) recently improved this rate to $\\tilde{\\mathcal{O}}( T^{-1.75})$. However, the result has a substantial gap compared to the lower bound of $Ω(T^{-2.5})$ established by Chen et al. (2026). In this paper, we propose a novel second-order method that achieves the optimal rate of $\\mathcal{O}(T^{-2.5})$. Our algorithm also extends to higher-order methods: for any integer $ p \\ge 1$, we obtain a $p$th-order method with a convergence rate of $\\mathcal{O}(T^{-(3p-1)/2})$, matching the known lower bounds and therefore establishing optimal rates across all orders.",
+      "summary": "论文面向紧凸域上的单调变分不等式，提出加速 Halpern 外层迭代，并用锚定张量子问题近似实现高阶 resolvent。通过对内层求解开销作摊还分析，每轮只需常数次高阶 oracle 调用，$p$ 阶方法获得 $O(T^{-(3p-1)/2})$ 残差率；特别地，二阶方法达到 $O(T^{-5/2})$。该结果依赖算子的高阶光滑性与可解的锚定子问题结构。",
+      "reason": "它把高阶单调 VI 的最优速率与可实现的常数摊还成本同时落地，尤其给出目前很醒目的二阶 $T^{-5/2}$ 收敛率。",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "submitted": "2026-09-20",
+      "updated": "2026-09-20",
+      "arxiv_url": "https://arxiv.org/abs/2609.23557v1",
+      "order": 2
+    },
+    {
+      "arxiv_id": "2609.23837",
+      "version": 1,
+      "title": "The Exponential Price of Determinism in Nonsmooth Nonconvex Optimization",
+      "authors": [
+        "Guy Kornowski"
+      ],
+      "abstract": "We study the complexity of finding $(δ,ε)$-Goldstein stationary points of nonsmooth nonconvex Lipschitz functions. By now, it is known that randomized first-order algorithms can solve this task with a dimension-free oracle complexity [Zhang et al., 2020], whereas deterministic algorithms cannot, as their complexity must scale at least linearly with the dimension $d$ [Jordan et al., 2023, Tian and So, 2024]. This leaves open whether deterministic algorithms can nevertheless solve the problem with oracle complexity polynomial in $d$. We answer this question negatively by proving a lower bound of order $(1/ε)^{Ω(d)}$ for deterministic algorithm, closing the exponential gap between the previously known lower and upper bounds and resolving an open problem posed by Jordan et al. [2023]. We further discuss several extensions and implications of this result to weaker stationarity notions, finding a descent direction and deterministic smoothing. Overall, our results establish an exponential computational advantage in nonsmooth nonconvex optimization offered by randomization.",
+      "summary": "论文比较确定性与随机化算法寻找 Lipschitz 非光滑非凸函数 Goldstein 驻点的复杂度。作者证明，一大类局部确定性算法在维度 $d$ 上需要 $(1/\\varepsilon)^{\\Omega(d)}$ 次查询，而随机化方法已有与维度无关的多项式复杂度；困难实例还满足有界初始最优性差距。下界针对局部查询模型与 Goldstein 驻性，不应外推到所有非局部或结构化算法。",
+      "reason": "它首次把“随机化为何不可替代”量化为指数级差距，为非光滑非凸算法设计提供了非常清晰的复杂度边界。",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "submitted": "2026-09-20",
+      "updated": "2026-09-20",
+      "arxiv_url": "https://arxiv.org/abs/2609.23837v1",
+      "order": 3
+    },
+    {
+      "arxiv_id": "2609.25800",
+      "version": 1,
+      "title": "Doubly exponential convergence of the cyclic steepest descent method for strictly convex quadratics in arbitrary dimensions",
+      "authors": [
+        "Ran Gu"
+      ],
+      "abstract": "We study the cyclic steepest descent method (CSD) for strictly convex quadratic minimization. CSD repeats, for j consecutive iterations, the exact steepest-descent step size computed at the beginning of each cycle. The only rigorous result for the real algorithm has so far been restricted to two dimensions, where the cycle-starting gradient sequence is known to converge doubly exponentially. For the simplified (\"simple\") model obtained by discarding bounded logarithmic terms, Dai and Fletcher predicted that CSD is superlinear whenever the number n of distinct eigenvalues is below twice the cycle length m, and linear otherwise. Let A be symmetric positive definite with q distinct eigenvalues, and suppose 2j > q. We prove the superlinear side of this threshold for the real algorithm in arbitrary dimensions, and in fact obtain a faster, doubly exponential, decay. Except for a Lebesgue-null set of initial points, for every kappa below an explicit positive threshold kappa_0, the cycle-starting gradient satisfies ||g_k|| <= exp(-C exp(kappa k)), and the full gradient and iterate errors satisfy analogous bounds with exponent kappa/j after m iterations. This is the first rigorous proof for the real CSD in arbitrary dimensions, including repeated eigenvalues, and confirms the threshold 2j > q (the simple-model prediction n < 2m); the doubly exponential rate is faster than the superlinear one predicted by the simple model. The proof combines arbitrary-reference ratio coordinates, inverse-image volume contraction, thin-band estimates, and a per-component Borel-Cantelli argument.",
+      "summary": "论文分析循环最速下降：每次精确线搜索得到的步长会在后续循环中重复使用。对具有 $q$ 个互异特征值的对称正定二次函数，当循环长度满足 $2j>q$ 时，作者证明除零测集初值外，迭代以双指数速度收敛；重复特征值也被覆盖。结果揭示了复用历史步长可触发远快于线性的机制，但没有刻画 $2j\\le q$ 时的完整行为，且理论限于二次模型。",
+      "reason": "双指数收敛非常罕见；这项工作把“复用历史线搜索信息”与谱消去机制精确联系起来，兼具理论新意和算法启发。",
+      "directions": [
+        "optimization-frontiers",
+        "historical-information"
+      ],
+      "submitted": "2026-09-22",
+      "updated": "2026-09-22",
+      "arxiv_url": "https://arxiv.org/abs/2609.25800v1",
+      "order": 4
+    },
+    {
+      "arxiv_id": "2609.25954",
+      "version": 1,
+      "title": "A Bounded Degree SOS Plus SONC Hierarchy for Polynomial Optimization",
+      "authors": [
+        "Mareike Dressler",
+        "Qi Wang"
+      ],
+      "abstract": "We propose a bounded degree SOS+SONC hierarchy for constrained polynomial optimization, termed B-SOS+SONC. Starting from Lasserre's bounded-degree SOS framework, we enlarge the certificate cone from SOS to the recently introduced SOS+SONC cone, thereby combining the algebraic strength of semidefinite relaxations with the sparse structure captured by circuit polynomials. We show that, for each fixed certificate degree, the resulting hierarchy is complete, that is, its optimal values are monotone and converge to the global optimum. Moreover, we derive an explicit SDP-REP reformulation, so that each relaxation can be solved within a tractable convex optimization framework over semidefinite and relative entropy cones. Beyond the optimization hierarchy itself, we investigate structural properties of the SONC cone and introduce the notions of first-order and second-order SONC-convexity. This leads to a new sufficient condition for first-level exactness of the B-SOS+SONC hierarchy. Numerical experiments illustrate that the proposed hierarchy often yields tighter lower bounds than the B-SOS relaxation while remaining tractable.",
+      "summary": "论文为紧致归一化半代数集上的多项式优化构造 Bounded-degree SOS plus SONC 层级。每层把半正定约束与相对熵锥约束结合，在固定次数下仍形成完备层级，并证明下界收敛到全局最优值；在一阶 SONC 凸性条件下，最低层即可精确。方法比纯 B-SOS 能利用更多非负多项式结构，但仍受 SDP/相对熵锥规模与半代数描述质量限制。",
+      "reason": "它把 SOS 与 SONC 两条证书路线真正合成一个可收敛的有界次数层级，为大规模多项式优化提供新的精度—代价折中。",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "submitted": "2026-09-22",
+      "updated": "2026-09-22",
+      "arxiv_url": "https://arxiv.org/abs/2609.25954v1",
+      "order": 5
+    },
+    {
+      "arxiv_id": "2601.08362",
+      "version": 3,
+      "title": "Stratification for Nonlinear Semidefinite Programming",
+      "authors": [
+        "Chenglong Bao",
+        "Chao Ding",
+        "Fuxiaoyue Feng",
+        "Jingyu Li"
+      ],
+      "abstract": "This paper introduces a stratification framework for nonlinear semidefinite programming (NLSDP) that reveals and utilizes the geometry behind the nonsmooth KKT system. Based on the index stratification of $\\mathbb{S}^n$ and its lift to the primal-dual space, a stratified variational analysis is developed. Specifically, we define the stratum-restricted regularity property, characterize it by the verifiable weak second order condition (W-SOC) and weak strict Robinson constraint qualification (W-SRCQ), and interpret the W-SRCQ geometrically via transversality, with stability along strata. The interactions of these properties across neighboring strata are further examined, leading to the conclusion that classical strong-form regularity conditions correspond to the local uniform validity of stratum-restricted counterparts. On the algorithmic side, a stratified Gauss--Newton method with normal steps and a correction mechanism is proposed for globally solving the KKT equation through a least-squares merit function. We demonstrate that the algorithm converges globally to directional stationary points. Moreover, under the second order sufficient condition (SOSC) and the strict Robinson constraint qualification (SRCQ) at an accumulation point, with a suitable correction threshold, the whole sequence converges superlinearly to this point, which is a KKT pair, and eventually identifies the active stratum. The rate is quadratic if the problem data are additionally of class $LC^2$ near the solution.",
+      "summary": "论文针对非线性半定规划的退化边界结构，用投影的惯性指标建立分层，并据此设计分层 Gauss–Newton 方法。作者证明受限正则性与弱二阶条件之间的等价关系，得到到 D-驻点的全局收敛；在二阶充分条件和严格 Robinson 约束资格下，算法识别活跃分层并超线性收敛，在线性—二次局部模型下可达二次收敛。结论依赖相应约束资格和局部二阶条件。",
+      "reason": "它把 NLSDP 的几何分层、正则性判据和快速局部算法连成完整链条，直接处理半定锥边界退化这一核心难点。",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "submitted": "2026-01-13",
+      "updated": "2026-09-22",
+      "arxiv_url": "https://arxiv.org/abs/2601.08362v3",
+      "order": 6
+    },
+    {
+      "arxiv_id": "2609.25752",
+      "version": 1,
+      "title": "Efficient Parameter-Free First-Order Methods for Nonsmooth Composite Minimax Optimization",
+      "authors": [
+        "Shaozhe Ke",
+        "Sanyou Mei",
+        "Jiheng Zhang"
+      ],
+      "abstract": "In this paper we propose first-order methods for a class of nonsmooth composite strongly convex--strongly concave and nonconvex--concave minimax optimization. We first develop an inexact proximal method and an accumulative regularizated method for strongly convex--strongly concave problems. The latter achieves the optimal dependence on the curvature parameters and places the smaller curvature inside the accuracy logarithm. Using this method as a subsolver, we propose a proximal point method for nonconvex--concave problems. Under suitable assumptions, it finds an $ε$-stationary point with an operation complexity of $O(ε^{-5/2})$, which improves the best-known $O(ε^{-5/2}\\log(1/ε))$ bounds by removing the logarithmic factor. We further develop parameter-free variants for both problem classes, and achieve the same complexity without knowledge of any problem constants. All proposed methods are equipped with verifiable termination criteria.",
+      "summary": "论文研究非光滑复合极小极大问题，包括强凸—强凹和非凸—凹两类。方法把不精确近端求解与累积正则化结合，将较小曲率放入对数项，并提供无需预先知道关键参数的实现及可检验停止准则；对非凸—凹情形，近端点框架在去除额外对数因子后达到 $O(\\varepsilon^{-5/2})$ 的驻点复杂度。分析假设相关复合项可高效做近端运算且可行域满足给定有界性条件。",
+      "reason": "这项工作同时改进条件数依赖、非凸复杂度和参数未知时的可实现性，覆盖面与理论完成度都很高。",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "submitted": "2026-09-22",
+      "updated": "2026-09-22",
+      "arxiv_url": "https://arxiv.org/abs/2609.25752v1",
+      "order": 7
+    },
+    {
+      "arxiv_id": "2607.27073",
+      "version": 3,
+      "title": "Parameter-Free Dynamic Regret under Heavy-Tailed Noise",
+      "authors": [
+        "Vaneet Aggarwal"
+      ],
+      "abstract": "We study online convex optimization with one unbiased stochastic subgradient per round and noise having a finite $p$-th central moment, where $p\\in(1,2]$ is unknown. For a bounded convex domain of diameter $D$, subgradients bounded by $G$, noise scale $σ$, and comparator path length $P_T$, let $Λ_T=1+P_T/D$. A single algorithm, using none of $G,σ,p,P_T$, attains expected dynamic regret $O_p\\left(\\min\\{GD\\sqrt{TΛ_T}+σDT^{1/p}Λ_T^{(p-1)/p},\\,GDT\\}\\right)$ against every fixed comparator sequence. Restarted AdaGrad experts produce the noise-path exponent $(p-1)/p$, and a prior favoring longer restart intervals removes horizon-dependent logarithmic overhead. We give an explicit bound uniform in $p$; its logarithm-free form has noise coefficient $O(1+\\log(p/(p-1)))$, while the static-regret constant is universal. The analysis requires only marginal noise moments and permits dependent errors. Complete pathwise proofs retain both the expert-loss range and the gradient energies preceding comparator movement. Matching lower bounds hold on every bounded convex domain of positive diameter, under the same gradient-only information model. Together with a path-budget-tuned upper bound, they characterize the minimax rate with universal constants, including its linear-regret saturation.",
+      "summary": "论文处理重尾噪声下的在线动态遗憾，算法事先不知道矩阶 $p\\in(1,2]$、噪声尺度、梯度界或比较序列路径长度。作者将重启 AdaGrad 专家与自适应先验聚合，得到同时依赖时间、路径长度和 $p$ 阶噪声矩的参数自由上界，并在允许依赖噪声的边际矩假设下给出匹配下界。结果聚焦凸在线优化，常数与具体可行域几何仍会影响实际表现。",
+      "reason": "它给出首个对重尾阶数和环境变化都无需调参、同时又有匹配下界的动态遗憾结果，适合非平稳随机场景。",
+      "directions": [
+        "optimization-frontiers",
+        "historical-information",
+        "stochastic"
+      ],
+      "submitted": "2026-07-29",
+      "updated": "2026-09-22",
+      "arxiv_url": "https://arxiv.org/abs/2607.27073v3",
+      "order": 8
+    },
+    {
+      "arxiv_id": "2609.24423",
+      "version": 1,
+      "title": "Complexities of Weak Proximal Oracle Methods for Composite Convex Optimization",
+      "authors": [
+        "Dan Garber"
+      ],
+      "abstract": "We consider a standard convex composite optimization problem with either smooth or nonsmooth objective function, and under quadratic growth. In recent years, several works gave algorithms based on a \\textit{weak proximal oracle} (WPO) that essentially match in oracle complexities proximal (sub)gradient methods relying on exact prox operations. Importantly, such WPOs, which relax the strong optimality condition of the standard prox operator, may admit much more efficient implementation in terms of runtime when optimal solutions have some sparse structure. A question remained if such WPO-based methods can be accelerated (in the sense of Nesterov's accelerated gradient). In this work we provide a negative answer by establishing lower bounds against both deterministic and randomized methods. Thus, while WPOs can substantially reduce the cost of individual oracle calls, this comes with an inherent loss in oracle complexity. We also provide a new upper-bound for WPO-based nonsmooth convex composite optimization, nearly matching the proximal subgradient method.",
+      "summary": "论文研究满足二次增长的复合凸优化，当算法只能调用弱近端 oracle 时能否保留加速。作者构造确定性与随机化下界，表明弱 oracle 即使能利用稀疏最优解，也普遍无法获得 Nesterov 型加速：光滑情形对条件数的线性依赖、非光滑情形对 $1/(\\alpha\\varepsilon)$ 的依赖在对数因子内不可避免；同时给出接近下界的非光滑上界。结论针对文中定义的弱近端 oracle 模型。",
+      "reason": "它划清了“便宜但较弱的近端步骤”所付出的根本代价，能直接指导复合优化中 oracle 与算法架构的选择。",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "submitted": "2026-09-21",
+      "updated": "2026-09-21",
+      "arxiv_url": "https://arxiv.org/abs/2609.24423v1",
+      "order": 9
+    },
+    {
+      "arxiv_id": "2609.23519",
+      "version": 1,
+      "title": "Semidefinite Implementations of the Proximal Point Algorithm and Consequences for Progressive Decoupling in Optimization",
+      "authors": [
+        "Xudong Li",
+        "R. Tyrrell Rockafellar",
+        "Defeng Sun"
+      ],
+      "abstract": "The proximal point algorithm for finding a zero of a maximal monotone mapping is the engine that drives augmented Lagrangian methods and various splitting schemes in convex optimization, where proximal terms that are merely positive semidefinite can be helpful in preconditioning. Here a semidefinite extension of that algorithm is developed with new features which guarantee convergence, typically even linear convergence, in broader territory than previously foreseen. Moreover, inexact minimization is allowed in the subproblems in a variable-metric implementation which might open up quasi-Newton-like approaches. The key to the extension is applying an advanced form of the positive definite proximal point algorithm to a projected monotone mapping derived from the given mapping, and combining that with a completion step. For this to work, the maximality of the projected mapping is essential, but maximality is not automatic. The circumstances that guarantee maximality are definitively analyzed and convenient criteria for maximality are thereby identified. Consequences of the extended algorithm are worked out for application to convex inf-projection, augmented Lagrangian steps, and bracketed progressive decoupling based on Spingarn's partial inverse as a scheme for problem decomposition.",
+      "summary": "论文研究半正定、可能奇异的度量下如何真正实现近端点算法。作者将问题限制到度量的公共作用空间并补全算子，给出精确可实现性刻画；框架允许变度量与不精确求解，在度量次正则条件下得到 Q-线性收敛，并统一覆盖 infimal projection、增广拉格朗日和 Spingarn 分裂等实例。公共核/作用空间对齐是关键结构假设。",
+      "reason": "它系统解决了退化预条件下“理论 resolvent 是否可算”的问题，把抽象 PPA 收敛论证转化为可执行的半正定实现准则。",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "submitted": "2026-09-20",
+      "updated": "2026-09-20",
+      "arxiv_url": "https://arxiv.org/abs/2609.23519v1",
+      "order": 10
+    },
+    {
+      "arxiv_id": "2609.24522",
+      "version": 1,
+      "title": "Convergence of Rotation-based Matrix Optimizers: A Unified Analysis of SOAP, Conda, and SPlus",
+      "authors": [
+        "Yiwen Sun",
+        "Huan Li",
+        "Zhouchen Lin"
+      ],
+      "abstract": "In this work, we develop a unified theoretical framework for analyzing the convergence of rotation-based matrix optimizers, which apply orthogonal transformations to map the momentum into a rotated space, perform coordinate-wise or normalized updates there, and then rotate the updates back. Our framework encompasses prominent matrix optimizers, including SOAP, Conda, and truncated SPlus, as well as matrix-parameterized Adam as a special case. As our main result, we establish, for the first time, the convergence rate of SOAP with sharp dimensional dependence, as well as the convergence rate of Adam measured by the nuclear norm. Our framework also covers a more general variant of rotation-based optimizers that allows arbitrary orthogonal rotation matrices, allowing these matrices to depend on the current stochastic gradient at each iteration. Technically, our framework leverages a row-column trace-control argument that converts elementwise bounds into bounds on two diagonal control matrices, thereby improving the dimension dependence of the resulting bound.",
+      "summary": "论文统一分析利用历史梯度统计构造旋转基的矩阵优化器，涵盖 SOAP、Conda 和截断 SPlus。新的行列迹控制把部分维度依赖从 $mn$ 改进到约 $\\sqrt{m+n}$，并给出 SOAP 的首个收敛率；分析还解释了 Adam 类方法与核范数几何的关系。理论依赖光滑目标、无偏随机梯度及方差/矩界，是否转化为端到端训练收益仍需实验验证。",
+      "reason": "矩阵预条件器正快速进入大模型训练；这篇论文既补上 SOAP 理论空白，也给出明显更锋利的维度刻画。",
+      "directions": [
+        "historical-information",
+        "stochastic"
+      ],
+      "submitted": "2026-09-21",
+      "updated": "2026-09-21",
+      "arxiv_url": "https://arxiv.org/abs/2609.24522v1",
+      "order": 11
+    },
+    {
+      "arxiv_id": "2412.02079",
+      "version": 4,
+      "title": "A simple and practical adaptive trust-region method",
+      "authors": [
+        "Fadi Hamad",
+        "Oliver Hinder"
+      ],
+      "abstract": "We present an adaptive trust-region method for unconstrained optimization that allows inexact solutions to the trust-region subproblems. Our method is a simple variant of the classical trust-region method of Ssorensen. The method achieves the best possible convergence bound up to an additive logarithmic term for finding an $ε$-approximate stationary point, i.e., $O( Δ_f L^{1/2} ε^{-3/2}) + \\tilde{O}(1)$ iterations, where $L$ is the Lipschitz constant of the Hessian, $Δ_f$ is the optimality gap, and $ε$ is the termination tolerance for the gradient norm. This improves over existing trust-region methods whose worst-case bound is at least a factor of $L$ worse. We compare our performance with state-of-the-art trust-region (TRU) and cubic regularization (ARC) methods from the GALAHAD library on the CUTEst benchmark problems with at least 100 variables. We also compare with the recently developed Universal trust-region (UTR) method, using the same subproblem solver. In terms of shifted geometric mean of wall-clock times our method's is between $1.2\\times$ and $2\\times$ faster. We report similar improvements for number of function evaluations, factorizations, gradient evaluations and Hessian evaluations. Compared to the conference version of this paper, our revised method includes several practical enhancements. These modifications dramatically improved performance, including almost an order of magnitude reduction in the shifted geometric mean of wall-clock times. We also show that it suffices for the function to be continuously twice-differentiable to guarantee that either the minimum gradient norm converges to zero or the objective value tends towards negative infinity, even when the iterates diverge.",
+      "summary": "论文提出一个简单的自适应信赖域变体，以历史成功/失败信息更新半径，并允许子问题只被近似求解。在 Hessian Lipschitz 条件下，它无需预先知道 Lipschitz 常数即可达到 $O(\\Delta L^{1/2}\\varepsilon^{-3/2})$ 加一个对数项的二阶复杂度，基本匹配最优界；数值基准中相对经典实现有约 1.2–2 倍提速。保证仍依赖足够准确的模型下降和标准二阶光滑条件。",
+      "reason": "它用极少机制改动获得近最优复杂度与可见实验收益，是理论结果较容易转化为实际求解器改进的一项工作。",
+      "directions": [
+        "historical-information"
+      ],
+      "submitted": "2024-12-02",
+      "updated": "2026-09-21",
+      "arxiv_url": "https://arxiv.org/abs/2412.02079v4",
+      "order": 12
+    },
+    {
+      "arxiv_id": "2601.15531",
+      "version": 2,
+      "title": "Variable Stepsize Distributed Forward-Backward Splitting Methods as Relocated Fixed-Point Iterations",
+      "authors": [
+        "Felipe Atenas",
+        "Minh N. Dao",
+        "Matthew K. Tam"
+      ],
+      "abstract": "We present a family of distributed forward-backward methods with variable stepsizes to find a solution of structured monotone inclusion problems. The framework is constructed by means of relocated fixed-point iterations, extending the approach introduced in [SIAM J. Optim. 2026; 36(3):1297-1325] to conically averaged operators, thus including iteration operators for methods of forward-backward type devised by graphs. The family of methods we construct preserve the per-iteration computational cost and the convergence properties of their constant stepsize counterparts. Specifically, we show that the resulting methods generate a sequence that converges to a fixed-point of the underlying iteration operator, whose shadow sequences converge to a solution of the problem. Numerical experiments illustrate the behaviour of our framework in structured sparse optimisation problems.",
+      "summary": "论文把分布式前向—后向分裂表述为结构化单调包含，并通过图结构算子和重定位不动点证明映射具有锥平均性。由此，节点可根据历史局部信息采用变步长，同时保持与常步长版本相同量级的单轮通信/计算成本和收敛保证；相应 shadow 序列收敛到原问题解。理论面向固定连接图和满足给定余锥/单调性条件的算子。",
+      "reason": "它为分布式算子分裂中的本地自适应步长提供统一、可验证的收敛基础，直接回应固定步长难调这一实际痛点。",
+      "directions": [
+        "historical-information",
+        "distributed"
+      ],
+      "submitted": "2026-01-21",
+      "updated": "2026-09-21",
+      "arxiv_url": "https://arxiv.org/abs/2601.15531v2",
+      "order": 13
+    },
+    {
+      "arxiv_id": "2608.26989",
+      "version": 2,
+      "title": "Decentralized Multitask Learning over Learned Task Graphs",
+      "authors": [
+        "Zirui Wan",
+        "Stefan Vlaski"
+      ],
+      "abstract": "This paper investigates decentralized multitask learning over networks when the underlying task relationships are unknown. While existing graph-regularized multitask frameworks typically assume a known structure, practical settings often require learning inter-task dependencies directly from distributed data. We propose a decentralized two-phase strategy that first estimates a generalized graph Laplacian from noisy non-cooperative stochastic gradient iterates, and subsequently exploits the learned graph to enable cooperative multitask diffusion learning. This framework is motivated by a Gaussian Markov random field prior, which gives rise to a decentralized maximum likelihood estimator for the graph Laplacian. The analysis quantifies the Laplacian estimation error and its propagation to the steady-state performance of the multitask diffusion recursion, and introduces a topology sensitivity index to capture the effect of network heterogeneity. Simulation results corroborate the theoretical findings and demonstrate that cooperation enabled by the learned task graph significantly improves performance over non-cooperative learning, while approaching the true-graph baseline when the estimation stepsize is sufficiently small.",
+      "summary": "论文研究任务关系未知时的去中心化多任务学习。第一阶段，各节点从带噪的非协作 SGD 轨迹估计广义 Laplacian/Gaussian Markov 随机场任务图；第二阶段在所学图上执行扩散学习。作者给出有限样本图估计误差、稳态学习误差及拓扑扰动传播界，明确量化结构学习如何影响最终性能。分析假设固定本地通信关系、步长足够小及模型满足相应可识别性。",
+      "reason": "它不再把任务相似图当作先验，而是给出从分散优化轨迹学习图并控制下游误差的完整理论链条。",
+      "directions": [
+        "distributed",
+        "stochastic"
+      ],
+      "submitted": "2026-08-27",
+      "updated": "2026-09-20",
+      "arxiv_url": "https://arxiv.org/abs/2608.26989v2",
+      "order": 14
+    },
+    {
+      "arxiv_id": "2609.25701",
+      "version": 1,
+      "title": "Fully Byzantine-Resilient Multi-Agent Reinforcement Learning",
+      "authors": [
+        "Haejoon Lee",
+        "Dimitra Panagou"
+      ],
+      "abstract": "We study distributed Byzantine-resilient actor-critic multi-agent reinforcement learning (AC-MARL), where agents collectively learn policies through local interactions. Existing methods guarantee convergence of the agents' parameters only to a neighborhood of the attack-free limit points, resulting in degraded performance. We propose Fully Resilient AC-MARL (FRAC-MARL), a decentralized method in which each agent leverages redundancy in two-hop messages to identify reliable messages. Under linear parameterizations of the value and team-reward functions and Byzantine edge attacks, where adversarial behavior is confined to the communication layer, we prove that agents' parameters converge almost surely to the same limit points as in the attack-free case over time - varying communication graphs. We introduce a novel topological condition for the convergence of our method, present a systematic method to construct such networks , and prove that this condition can be verified in polynomial time . Finally, we demonstrate our method on cooperative multi-robot formation control tasks.",
+      "summary": "论文提出面向多智能体强化学习的全 Byzantine 韧性协议，只依赖两跳冗余，在时变无向通信图和边级攻击模型下工作。对线性价值近似与团队奖励，作者证明在给定 $(r,r')$ 冗余条件下，各正常智能体几乎必然收敛到无攻击时的同一极限，并给出多项式时间的网络条件验证。代价是两跳通信开销，且保证不覆盖任意节点完全失陷或非线性函数逼近。",
+      "reason": "它把时变网络、强化学习与可验证的 Byzantine 防御结合起来，并给出“恢复无攻击极限”这一强于仅保持有界的保证。",
+      "directions": [
+        "distributed",
+        "stochastic",
+        "time-varying-networks"
+      ],
+      "submitted": "2026-09-22",
+      "updated": "2026-09-22",
+      "arxiv_url": "https://arxiv.org/abs/2609.25701v1",
+      "order": 15
+    },
+    {
+      "arxiv_id": "2609.23848",
+      "version": 1,
+      "title": "Anytime-Feasible Gradient Descent for Constrained Optimization Under Gradient Uncertainty",
+      "authors": [
+        "Sina Sharifi",
+        "Jiarui Wang",
+        "Mahyar Fazlyab"
+      ],
+      "abstract": "Constrained optimization is central to many engineering systems in which decisions must satisfy strict safety and operational requirements, especially in real-time settings with limited computational budgets. In such scenarios, optimization algorithms are often terminated before full convergence, making *anytime feasibility* essential for safe deployment. Existing methods that guarantee feasibility at every iterate typically rely on exact gradient information, an assumption that is often violated in practice due to measurement noise, stochastic approximations, or model mismatch. We develop an anytime-feasible first-order method for nonlinear constrained optimization under norm-bounded errors in the objective and constraint gradients. The method computes a robust search direction by solving a second-order cone program and selects a step size through safeguarded backtracking. Assuming exact function evaluations and a strictly feasible initialization, the method preserves strict feasibility and guarantees sufficient objective decrease whenever the computed search direction is nonzero. We establish a uniform positive lower bound on the accepted step sizes, an O(1/K) bound on the average squared search direction norm, and convergence of the search directions to zero. We also show that a zero search direction at a strictly feasible point certifies approximate first-order stationarity. We validate the proposed method on a multi-agent navigation task in cluttered environments and show that it maintains collision-free trajectories despite noisy gradient information.",
+      "summary": "论文针对约束梯度只能带有范数有界误差的非线性优化，提出 anytime-feasible 梯度下降。每步通过鲁棒 SOCP 方向与保护线搜索，在已知精确约束值和严格可行初点时保持所有迭代严格可行；作者证明步长有正下界、平均方向平方以 $O(1/K)$ 衰减，零方向对应近似 KKT 点。若误差界、约束值或严格可行初点不可得，保证不直接成立。",
+      "reason": "它给出梯度不确定时仍逐步可部署的可行性证书，适合不能容忍中间迭代越界的在线控制与物理系统。",
+      "directions": [
+        "safety-critical"
+      ],
+      "submitted": "2026-09-20",
+      "updated": "2026-09-20",
+      "arxiv_url": "https://arxiv.org/abs/2609.23848v1",
+      "order": 16
+    },
+    {
+      "arxiv_id": "2609.24496",
+      "version": 1,
+      "title": "Conformalized Safe Feasible Sets in Uncertain Decision Systems",
+      "authors": [
+        "Yajie Bao",
+        "Yinjie Min",
+        "Haojie Ren",
+        "Changliang Zou"
+      ],
+      "abstract": "Safety-critical decision systems often require a downstream optimizer to choose from an unknown feasible set determined by an unobserved label $Y$. Given a context $X$, the goal is to construct a safe subset $D(X)$ contained in the oracle feasible set $A(X,Y)$ with probability at least $1-α$. Existing conformal approaches typically construct a prediction set of the unobserved label $Y$ and retain decisions that are safe for every value in this set. Although valid, this requires a stronger intermediate event than set inclusion. We propose Directed Inclusion Safety Calibration (DISC), a conformal framework that directly controls the probability of this inclusion event by reducing its verification to a scalar critical-inclusion score. Given a pretrained nested family of candidate feasible sets, DISC assigns each labeled observation the smallest nestedness level at which the corresponding subset is contained in $A(X,Y)$, and constructs the safe feasible set using an empirical quantile at test-time. With data exchangeability, this yields a finite-sample, distribution -free inclusion guarantee. Under two practical set families, we show that DISC produces a safe feasible set containing that obtained by the corresponding calibration baseline. We further develop optimization -based score computation and decision-aware procedures for learning subset families. Experiments across continuous and structured decision problems show that DISC achieves the target inclusion guarantee while producing larger feasible regions.",
+      "summary": "论文提出 DISC，直接为“真实可行集被预测集合包含”这一集合事件做 conformal 校准，而不是逐点校准标签。方法利用嵌套候选可行集和临界包含分数，在交换性假设下给出有限样本、分布无关的覆盖保证；文中构造的零阶和一阶版本均包含基线集合，在完全校准时可达到精确覆盖。代价是需要求解包含分数对应的优化问题，且分布漂移会破坏交换性保证。",
+      "reason": "它把 conformal prediction 从点预测推进到安全可行集本身，输出能直接进入下游优化，并保留清晰的有限样本保证。",
+      "directions": [
+        "stochastic",
+        "safety-critical"
+      ],
+      "submitted": "2026-09-21",
+      "updated": "2026-09-21",
+      "arxiv_url": "https://arxiv.org/abs/2609.24496v1",
+      "order": 17
+    },
+    {
+      "arxiv_id": "2606.00297",
+      "version": 2,
+      "title": "Predicted-Flow Control Barrier Functions for Real-Time Safe Optimal Control",
+      "authors": [
+        "Amirsaeid Safari",
+        "Jesse B. Hoagg"
+      ],
+      "abstract": "Control barrier functions (CBFs) provide real-time safety guarantees through pointwise conditions on the state. However, synthesizing a valid CBF is difficult and the resulting controllers are myopic. To address myopia, this article introduces predicted-flow control barrier functions (P-CBFs), which generalize the CBF from a function of the current state to a functional of a predicted flow under a parametrized control plan over a finite prediction horizon. For safety, a P-CBF can certify that the predicted flow is in a safe set over the entire prediction horizon. However, candidate P-CBFs suffer from the same challenge as candidate CBFs, namely, control constraints make it difficult to guarantee that the P-CBF is valid. This article resolves this challenge by introducing a terminal candidate P-CBF requiring that the predicted flow end in a backup safe set at the terminal time, and a planning-time shift that modulates the prediction horizon, providing an additional degree of freedom to ensure feasibility . The real-time control and the evolution of the control-plan parameter and planning-time shift are determined jointly by a single convex optimization that is guaranteed to be feasible and renders the associated safe set forward invariant. The resulting safe optimal flow control provides a safety certificate over the entire prediction horizon and unifies finite-horizon integral-cost optimization with safety certification. This optimization reduces to a quadratic program (QP) if the control constraints are a convex polytope. The QP implementation, termed FlowBarrier, is validated on a nonholonomic ground robot navigating a dense environment. FlowBarrier is compared to nonlinear model predictive control and two CBF-based safety filter methods across 100 trials, where FlowBarrier achieves the highest goal-reaching rate, zero safety violations, and the lowest computation time.",
+      "summary": "论文提出 Predicted-Flow Control Barrier Functions，以预测闭环流和终端备份安全集扩展传统 CBF。控制输入、规划参数和时间平移在单个凸优化中联合选择，并证明在模型、备份策略和终端安全条件满足时保持前向不变性；多面体控制约束下可化为 QP。仿真报告 100 次试验零违规，但性能依赖预测模型和可用备份安全集。",
+      "reason": "它把前瞻规划能力嵌入 CBF 的逐步安全证书，同时仍保持凸在线求解结构，是安全控制中很实用的接口设计。",
+      "directions": [
+        "safety-critical"
+      ],
+      "submitted": "2026-05-29",
+      "updated": "2026-09-20",
+      "arxiv_url": "https://arxiv.org/abs/2606.00297v2",
+      "order": 18
+    },
+    {
+      "arxiv_id": "2510.11676",
+      "version": 2,
+      "title": "Accelerated stochastic first-order method for convex optimization under heavy-tailed noise",
+      "authors": [
+        "Chuan He",
+        "Bowen Li",
+        "Zhaosong Lu"
+      ],
+      "abstract": "We study convex composite optimization problems, where the objective function is given by the sum of a prox-friendly function and a convex function whose subgradients are estimated under heavy-tailed noise. Existing work often employs gradient clipping or normalization techniques in stochastic first-order methods to address heavy-tailed noise. %In this paper, we demonstrate that a vanilla stochastic algorithm---without additional modifications such as clipping or normalization---can achieve optimal complexity for these problems. In this paper, we analyze the first-order oracle complexity of vanilla stochastic algorithms---without additional modifications such as clipping or normalization---for solving these problems. In particular, we establish that an accelerated stochastic proximal subgradient method achieves a first-order oracle complexity for finding an approximate optimal solution in expectation that is universally optimal for smooth, weakly smooth, and nonsmooth convex optimization, as well as for stochastic convex optimization under heavy-tailed noise. Moreover, we derive high-probability first-order oracle complexity bounds for the accelerated stochastic proximal subgradient method under heavy-tailed and sub-Weibull noise, respectively. Numerical experiments are further provided to illustrate the numerical behavior of the methods.",
+      "summary": "论文研究仅有有限 $\\alpha$ 阶矩、$\\alpha\\in(1,2]$ 的重尾随机梯度下的复合凸优化，统一覆盖光滑、Hölder 光滑和非光滑部分。作者提出无需梯度裁剪的加速随机近端梯度方法，在期望意义下跨不同光滑制度达到最优复杂度，并进一步给出重尾与次 Weibull 噪声的高概率界。分析需要无偏 oracle、相应矩界和可做近端运算的正则项。",
+      "reason": "它说明在无限方差环境中也能保留加速与最优率，而且免去裁剪阈值这一通常很敏感的超参数。",
+      "directions": [
+        "stochastic"
+      ],
+      "submitted": "2025-10-13",
+      "updated": "2026-09-21",
+      "arxiv_url": "https://arxiv.org/abs/2510.11676v2",
+      "order": 19
+    },
+    {
+      "arxiv_id": "2411.08435",
+      "version": 2,
+      "title": "Dynamic Programming-Compatible Uncertainty Sets in Robust Markov Decision Processes",
+      "authors": [
+        "Julien Grand-Clément",
+        "Nian Si",
+        "Shengbo Wang"
+      ],
+      "abstract": "In this paper, we investigate the compatibility of robust Markov Decision Processes (RMDPs) with dynamic programming under various assumptions on the uncertainty set, i.e., we investigate when one can solve an RMDP by solving a fixed point equation. We show that in all generality, s-rectangular and sa-rectangular uncertainty sets are the only models of uncertainty that are compatible with dynamic programming. Our analysis shows that existing non-rectangular models, including r-rectangularity, are only weakly compatible with dynamic programming, as they require the assumption that rewards do not depend on the next state. In this case, our results imply that one can always construct a rectangular uncertainty set that is equivalent, for both policy evaluation and optimization, to the dynamic programming-compatible non-rectangular model. This highlights a key limitation: dynamic-programming-compatible non-rectangular uncertainty sets, although practically relevant for uncertainty quantification, do not provide a genuinely distinct assessment of policy performance. Interestingly, our proof techniques rely on identifying a novel simultaneous solvability property, which we show is central to several important properties of RMDPs, including the existence of stationary optimal policies and dynamic programming-based formulations. The simultaneous solvability property enables a unified approach to studying all existing models of uncertainty, rectangular and non-rectangular alike.",
+      "summary": "论文刻画哪些鲁棒 MDP 不确定集真正与动态规划兼容。作者证明，对一般奖励结构，只有状态矩形和状态—动作矩形集合满足所需的同时可解性；非矩形弱兼容只在奖励与下一状态无关等受限情形出现，并可等价归约为矩形模型。结果给出策略评估和优化的必要充分条件，但不意味着所有带统计耦合的不确定集都能保留这种结构。",
+      "reason": "它为鲁棒 MDP 中常被默认的“可以直接做 Bellman 递推”给出精确边界，能避免在错误不确定集上使用失效的动态规划。",
+      "directions": [
+        "stochastic"
+      ],
+      "submitted": "2024-11-13",
+      "updated": "2026-09-21",
+      "arxiv_url": "https://arxiv.org/abs/2411.08435v2",
+      "order": 20
+    },
+    {
+      "arxiv_id": "2609.25257",
+      "version": 1,
+      "title": "Higher-Order Approximation of Exit Functionals in Sampling-Based Stochastic Model Predictive Control",
+      "authors": [
+        "Sashank Modali",
+        "Takashi Tanaka"
+      ],
+      "abstract": "Safety evaluation in sampling-based stochastic model predictive control often requires numerical estimation of exit functionals. The approximation of first-exit times and exit indicators is therefore a key numerical bottleneck, and discretization error in these quantities directly affects the resulting controller. This paper studies how existing higher-order methods for strong approximation of exit times can be brought into safe control. Two cases are highlighted. For general noncommutative dynamics, an adaptive order-1 Milstein discretization is used together with Lévy-area simulation via Wiktorsson's method. For commutative dynamics, an adaptive order-1.5 construction achieves a stronger exit-time rate. Under a local anti-concentration condition on the exit-time law, we show that strong exit-time approximation transfers to strong approximation of the failure indicator. The methods are then studied in the context of chance-constrained path integral control, which provides an exact continuous-time representation of safety through exit events. Numerical experiments compare the two cases in terms of strong exit-time error, failure-indicator error, and closed-loop constraint satisfaction, showing improvement over Euler-Maruyama and thereby enabling existing and future techniques whose applicability depends on improved strong approximation.",
+      "summary": "论文改进采样式随机 MPC 对路径退出概率的数值估计：非交换噪声采用带 Wiktorsson 面积模拟的自适应 Milstein，交换噪声可用 1.5 阶格式。作者借助局部反集中与边界层分析，把轨迹强误差传递到不连续退出指示量，并据此提高闭环风险估计精度。理论依赖较强的系数/边界正则性与扩散假设，且高阶随机积分会增加单样本成本。",
+      "reason": "机会约束 MPC 的瓶颈常是稀有越界事件的离散偏差；这项工作提供了高阶、带理论误差传递的直接修正。",
+      "directions": [
+        "stochastic",
+        "safety-critical"
+      ],
+      "submitted": "2026-09-21",
+      "updated": "2026-09-21",
+      "arxiv_url": "https://arxiv.org/abs/2609.25257v1",
+      "order": 21
+    },
+    {
+      "arxiv_id": "2609.26364",
+      "version": 1,
+      "title": "Online Learning-Based Adaptive Hybrid Benders Decomposition for Risk-Averse Optimal Sizing",
+      "authors": [
+        "Saif Ahmad",
+        "Seifeddine Benelghali",
+        "Hafiz Ahmed"
+      ],
+      "abstract": "Optimal sizing problem (OSP) for battery energy storage system (BESS) under uncertain inputs is often formulated as a two-stage stochastic program (2SP), which typically introduces computational and RAM (memory) bottlenecks for large scenario sets. Benders Decomposition (BD) is a popular approach for tackling this problem, but it suffers from slow convergence to the exact solution. To address this problem, we propose an accelerated online learning-based adaptive hybrid BD algorithm for a risk-averse 2SP formulation. The proposed method avoids getting stuck in the infeasible region during early iterations by explicitly embedding a carefully selected scenario in the master problem, while a tail-relevant scenario selector based on online learning helps to avoid solving the entire scenario set at every iteration. The OSP is formulated to select a behind-the-meter BESS in a multi-site energy community with existing renewables. The use case explores an interesting middle-ground between deterministic acceleration methods and training-heavy ML models, showcasing the potential of ML-assisted decision-making. Compared with vanilla BD, OLAH-BD reduces subproblem evaluations and total wall time by up to 80\\% under the same tolerance settings.",
+      "summary": "论文面向含电池储能设计的风险厌恶两阶段随机规划，提出自适应混合 Benders。方法将在线学习选出的尾部场景直接嵌入主问题，减少早期不可行切割，并依据历史分离效果跳过低价值场景；在算例中，场景评估与运行时间最多减少约 80%，同时保持给定容差内解质量。证据主要来自该应用与实验，跨问题的统一复杂度保证仍有限。",
+      "reason": "它展示了如何把历史场景价值转化为 Benders 的实时计算预算，针对大规模风险厌恶模型有明确且可量化的收益。",
+      "directions": [
+        "historical-information",
+        "stochastic"
+      ],
+      "submitted": "2026-09-22",
+      "updated": "2026-09-22",
+      "arxiv_url": "https://arxiv.org/abs/2609.26364v1",
+      "order": 22
+    },
+    {
+      "arxiv_id": "2609.25345",
+      "version": 1,
+      "title": "Higher-Order Sensitivity Analysis of Wasserstein and Adapted Wasserstein Distributionally Robust Optimization Problems",
+      "authors": [
+        "Nathan Sauldubois"
+      ],
+      "abstract": "We investigate the higher-order expansions of the sensitivities of functionals of probability measures. Building on the work of \\citeauthor{bartl2021sensitivity} \\cite{bartl2021sensitivity} and \\citeauthor{bartlsensitivityadapted} \\cite{bartlsensitivityadapted}, who established the first-order expansion when the functional arises from a stochastic optimisation problem, we extend these results using recent developments in differential calculus on Wasserstein spaces. Specifically, we generalise their approach to broader classes of functionals defined on the Wasserstein space. We provide an explicit formula for the second-order expansion of the sensitivity of a functional with respect to both the Wasserstein and the adapted Wasserstein metrics. Furthermore, we propose a construction method for the higher-order expansion of these sensitivities. Finally, following recent advances by \\citeauthor{Touzisauldubois2024ordermartingalemodelrisk} \\cite{Touzisauldubois2024ordermartingalemodelrisk} and \\citeauthor{JiangObloj} \\cite{JiangObloj} concerning sensitivity of Distributionally Robust Optimisation under martingale constraints, we also derive higher-order expansions for sensitivities in the presence of such constraints.",
+      "summary": "论文建立 Wasserstein 与 adapted Wasserstein 分布鲁棒优化值函数的高阶敏感性理论。作者用线性函数导数给出显式二阶展开，并说明更高阶项的递归构造；对 adapted 距离，还给出二阶项保持鞅结构的充分条件。数值上，二阶近似可作为神经网络求解器的 warm start。理论要求足够的可微性、矩条件及局部唯一/稳定结构。",
+      "reason": "它把 DRO 从一阶稳健性分析推进到可计算的二阶与高阶响应，可用于快速再优化、灵敏度解释和学习型求解器初始化。",
+      "directions": [
+        "stochastic"
+      ],
+      "submitted": "2026-09-21",
+      "updated": "2026-09-21",
+      "arxiv_url": "https://arxiv.org/abs/2609.25345v1",
+      "order": 23
+    },
+    {
+      "arxiv_id": "2601.13519",
+      "version": 4,
+      "title": "Small Gradient Norm Regret for Online Convex Optimization",
+      "authors": [
+        "Wenzhi Gao",
+        "Chang He",
+        "Madeleine Udell"
+      ],
+      "abstract": "This paper introduces a new problem-dependent regret measure for online convex optimization with smooth losses. The notion, which we call the $G^\\star$ regret, depends on the cumulative squared gradient norm evaluated at the decision in hindsight. We show that the $G^\\star$ regret strictly refines the existing $L^\\star$ (small loss) regret, and that it can be arbitrarily sharper when the losses have vanishing curvature around the hindsight decision. We establish upper and lower bounds on the $G^\\star$ regret and extend our results to dynamic regret and bandit settings. As a byproduct, we refine the existing convergence analysis of stochastic optimization algorithms in the interpolation regime. Some experiments validate our theoretical findings.",
+      "summary": "论文为在线凸优化提出“小梯度范数遗憾”，用事后最优比较点处的累计平方梯度替代传统损失量或统一梯度界。作者在光滑在线、动态遗憾和 bandit 设置中给出上界与匹配下界；当比较点附近曲率或梯度逐渐消失时，该度量可严格优于 small-loss 界，并导出随机优化中的插值型结果。收益依赖比较点梯度确实较小，最坏情形不会自动改善。",
+      "reason": "它提供了比 small-loss 更贴近局部几何的新自适应尺度，并用上下界证明这种改进不是分析假象。",
+      "directions": [
+        "historical-information",
+        "stochastic"
+      ],
+      "submitted": "2026-01-19",
+      "updated": "2026-09-20",
+      "arxiv_url": "https://arxiv.org/abs/2601.13519v4",
+      "order": 24
+    }
+  ]
+}
