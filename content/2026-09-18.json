@@ -1,7 +1,81 @@
 {
   "date": "2026-09-18",
-  "status": "incomplete",
-  "frontiers_status": "incomplete",
+  "status": "complete",
+  "frontiers_status": "recommendations",
+  "highlights": [
+    {
+      "arxiv_id": "2609.20327",
+      "label": "纯单循环 extragradient 获得近最优条件数依赖",
+      "text": "强凸–强凹极小极大的最优方法常依赖内循环或重启。该文以固定参数的阻尼 extragradient 和辅助反馈，每轮只用两次新全梯度，使末迭代点线性收敛；复杂度为 $O(\\sqrt{\\kappa_x\\kappa_y}\\log(2\\kappa_x\\kappa_y/\\varepsilon))$，适用于确定性无约束情形。",
+      "types": [
+        "field"
+      ]
+    },
+    {
+      "arxiv_id": "2206.11948",
+      "label": "非凸风险函数规划强对偶扩展到结构化策略",
+      "text": "在无原子条件分布与 Slater 条件下，该文证明非凸瞬时性能配合任意凸 $L^p$ 风险泛函仍可强对偶；“稠密可分解”进一步覆盖连续、光滑及某些固定规模神经网络策略。显式 mean-CVaR 反例也标出条件期望平滑算子的必要性。",
+      "types": [
+        "field"
+      ]
+    },
+    {
+      "arxiv_id": "2509.11983",
+      "label": "Low-rank Muon｜压缩历史动量的正交化成本",
+      "text": "高斯草图与薄 QR 先提取动量矩阵的低秩子空间，再做小矩阵极分解；核尾误差直接进入驻点界，重尾噪声下仍保持最优精度阶。大模型预训练通常改善 Muon，但端到端仍慢于 AdamW/SGDM。",
+      "types": [
+        "group"
+      ]
+    },
+    {
+      "arxiv_id": "2609.19097",
+      "label": "近优水平集几何统一解释重启 PDHG 的速率",
+      "text": "作者用近优水平集的直径、锥半径和到最优集的距离，统一刻画重启 PDHG 的对数型与 $1/\\varepsilon$ 型复杂度；若直径与锥半径之比在趋近最优时有界，即得线性收敛。结论覆盖满足原始–对偶 Slater 条件的多类锥规划。",
+      "types": [
+        "field"
+      ]
+    },
+    {
+      "arxiv_id": "2609.18728",
+      "label": "精确值零阶强凸复杂度上下界接近闭合",
+      "text": "作者同时构造查询受限模型的维数–精度–条件数下界与算法上界，在精度主导和若干常相对精度区间完全匹配，高精度区只差对数因子。结果还揭示维数饱和阈值，并明确限定在确定性精确函数值 oracle。",
+      "types": [
+        "field"
+      ]
+    },
+    {
+      "arxiv_id": "2609.20031",
+      "label": "$SO(3)$ 树网络｜先有限时间共识再指数优化",
+      "text": "固定增益的内禀 signum–gradient 协议在向内边界和显式增益条件下保持测地凸球不变；树簇收缩给出精确有限时间共识，随后沿总代价黎曼梯度流指数收敛。",
+      "types": [
+        "group"
+      ]
+    },
+    {
+      "arxiv_id": "2609.12119",
+      "label": "裁剪加噪 SGD｜建立末迭代几乎处处收敛",
+      "text": "当随机梯度噪声一致有界且裁剪阈值 $q>\\sigma_g$ 时，裁剪期望方向保持正对齐；超鞅分析同时覆盖 SGD、heavy ball 与 Nesterov，并从最佳迭代推进到末迭代渐近驻点。",
+      "types": [
+        "group"
+      ]
+    },
+    {
+      "arxiv_id": "2602.04161",
+      "label": "RF-SGS｜无需重启保持强凸 oracle 最优阶",
+      "text": "连续参数调度和增长的内层长度替代多阶段重启，昂贵光滑梯度调用为 $O(\\sqrt{L/\\mu}\\log(1/\\varepsilon))$，随机次梯度维持 $O(1/\\varepsilon)$ 阶；平滑 oracle 版本也保留对应复杂度。",
+      "types": [
+        "group"
+      ]
+    },
+    {
+      "arxiv_id": "2601.21739",
+      "label": "Adam 记忆失配｜相等 beta 消去幅值滞后通道",
+      "text": "连续时间分解隔离出与 $(\\tau_2-\\tau_1)d\\log|g|/dt$ 成正比的幅值滞后项，只有 $\\beta_1=\\beta_2$ 时结构性消失。真实训练的全历史分解也显示相等 beta 更由符号项主导、更新通常更平滑。",
+      "types": [
+        "group"
+      ]
+    }
+  ],
   "papers": [
     {
       "arxiv_id": "2609.20327",

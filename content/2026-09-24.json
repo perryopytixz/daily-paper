@@ -2,6 +2,56 @@
   "date": "2026-09-24",
   "status": "complete",
   "frontiers_status": "recommendations",
+  "highlights": [
+    {
+      "arxiv_id": "2609.26873",
+      "label": "Silver 步长几乎达到预定非负步长的极限",
+      "text": "任意预定非负步长序列在光滑强凸问题上至少需要 $\\Omega(\\kappa^{1/p_{\\mathrm{sil}}-o(1)}\\log(1/\\delta))$ 次迭代；这在条件数指数上匹配 Silver 调度，只剩次多项式间隙。",
+      "types": [
+        "field"
+      ]
+    },
+    {
+      "arxiv_id": "2507.13804",
+      "label": "简单线搜索也能泛型规避严格鞍点",
+      "text": "只在小梯度区域保留上一步步长，Armijo 回溯便可在不要求梯度全局 Lipschitz 的条件下，对几乎所有初点规避严格鞍点；结论还推广到实解析回缩下的黎曼梯度下降。",
+      "types": [
+        "field"
+      ]
+    },
+    {
+      "arxiv_id": "2609.26978",
+      "label": "在线逆线性优化遗憾降至最优 $O(\\sqrt d)$",
+      "text": "多尺度矩阵权重把此前 $O(d)$ 的无时长依赖遗憾降至 $O(\\sqrt d)$，与 $T\\ge d$ 时的下界匹配；统计维数间隙由此闭合，但总运行时间是否多项式仍待解决。",
+      "types": [
+        "field"
+      ]
+    },
+    {
+      "arxiv_id": "2607.04904",
+      "label": "随机投影加速｜sketched Anderson 与 GMRES 等价",
+      "text": "在线性无截断情形，同一随机投影内积下的 Anderson 外推点与 sketched GMRES 迭代点逐步一致，为低成本随机历史加速建立了精确 Krylov 桥梁。",
+      "types": [
+        "group"
+      ]
+    },
+    {
+      "arxiv_id": "2609.27499",
+      "label": "重尾信息年龄｜均值发散仍可收敛",
+      "text": "只需延迟具有某个 $p\\in(0,1]$ 阶有限矩，递减步长便能让陈旧信息影响渐近消失；分析覆盖平均信息年龄不存在的异步分布式随机逼近。",
+      "types": [
+        "group"
+      ]
+    },
+    {
+      "arxiv_id": "2609.27329",
+      "label": "期望约束｜增广拉格朗日获得二阶保证",
+      "text": "MESCAL 用随机梯度与 Hessian--向量积求解非凸原始子问题，系统给出期望约束问题达到二阶驻点的外层和样本复杂度。",
+      "types": [
+        "group"
+      ]
+    }
+  ],
   "papers": [
     {
       "arxiv_id": "2609.26873",

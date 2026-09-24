@@ -3,6 +3,17 @@
   "date": "2026-09-12",
   "status": "complete",
   "frontiers_status": "recommendations",
+  "highlights": [
+    {
+      "arxiv_id": "2609.00001",
+      "label": "异步优化不再需要预知延迟上界",
+      "text": "示例进展：异步更新通常需要预先知道延迟上界。该示例方法根据收到信息的新旧程度调整步长，并给出延迟未知时的收敛保证。",
+      "types": [
+        "group",
+        "field"
+      ]
+    }
+  ],
   "papers": [
     {
       "arxiv_id": "2609.00001",

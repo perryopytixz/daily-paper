@@ -38,10 +38,32 @@ test('duplicate paper, conflicting dates, unrecognized fields, and URL mismatche
 test('missing, empty and incomplete recommendation results cannot be confused', () => {
   const digest = copy(); digest.frontiers_status = 'no_matches';
   assert.throws(() => validateDigest(digest, digest.date, config), /Frontiers/);
-  digest.papers = []; validateDigest(digest, digest.date, config);
+  digest.papers = []; digest.highlights = []; validateDigest(digest, digest.date, config);
   digest.frontiers_status = 'incomplete';
   assert.throws(() => validateDigest(digest, digest.date, config), /complete/);
   digest.status = 'incomplete'; validateDigest(digest, digest.date, config);
+});
+test('highlights have no numeric cap but must be unique and reference recommended papers', () => {
+  const legacy = copy(); delete legacy.highlights;
+  validateDigest(legacy, legacy.date, config);
+  const unknown = copy(); unknown.highlights[0].arxiv_id = '2609.99999';
+  assert.throws(() => validateDigest(unknown, unknown.date, config), /not in this digest/);
+  const duplicate = copy(); duplicate.highlights.push(structuredClone(duplicate.highlights[0]));
+  assert.throws(() => validateDigest(duplicate, duplicate.date, config), /Duplicate highlight/);
+  const expanded = copy();
+  expanded.papers = Array.from({ length: 12 }, (_, index) => {
+    const paper = structuredClone(example.papers[0]);
+    paper.arxiv_id = `2609.${String(index + 1).padStart(5, '0')}`;
+    paper.arxiv_url = `https://arxiv.org/abs/${paper.arxiv_id}v${paper.version}`;
+    paper.order = index + 1;
+    return paper;
+  });
+  expanded.frontiers_status = 'no_matches';
+  const highlights = expanded.papers.map(paper => ({ arxiv_id: paper.arxiv_id, label: 'Highlight', text: 'Text' }));
+  for (const count of [0, 3, 5, 6, 12]) {
+    expanded.highlights = highlights.slice(0, count);
+    validateDigest(expanded, expanded.date, config);
+  }
 });
 test('text is escaped and invalid TeX fails before publication', () => {
   assert.equal(renderText('<script>alert(1)</script>'), '&lt;script&gt;alert(1)&lt;/script&gt;');
@@ -50,6 +72,19 @@ test('text is escaped and invalid TeX fails before publication', () => {
   assert.throws(() => renderText('$\\notARealCommand{x}$'));
   assert.throws(() => renderText('An unclosed $x'));
   assert.equal(renderText('Cost \\$5'), 'Cost $5');
+});
+
+test('highlight types accept independent and dual selections but reject invalid values', () => {
+  for (const types of [['field'], ['group'], ['group', 'field'], ['field', 'group']]) {
+    const digest = copy(); digest.highlights[0].types = types;
+    validateDigest(digest, digest.date, config);
+  }
+  const legacy = copy(); delete legacy.highlights[0].types;
+  validateDigest(legacy, legacy.date, config);
+  for (const types of [[], ['group', 'group'], ['other'], 'group', null]) {
+    const digest = copy(); digest.highlights[0].types = types;
+    assert.throws(() => validateDigest(digest, digest.date, config), /highlight types/);
+  }
 });
 
 async function workspace(t) {
@@ -93,7 +128,7 @@ test('repeat recommendations in the window require a newer version and update no
   const root = await workspace(t);
   const first = copy();
   await fs.writeFile(path.join(root, 'content/2026-09-12.json'), JSON.stringify(first));
-  const next = copy(); next.date = '2026-09-13'; next.papers = [next.papers[1]];
+  const next = copy(); next.date = '2026-09-13'; next.highlights = []; next.papers = [next.papers[1]];
   await fs.writeFile(path.join(root, 'content/2026-09-13.json'), JSON.stringify(next));
   await assert.rejects(build({ root, today: next.date }), /newer version/);
   next.papers[0].version = 2;

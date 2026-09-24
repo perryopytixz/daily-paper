@@ -28,6 +28,7 @@ export async function build({ root = ROOT, today, demo = false } = {}) {
       const regularOnly = structuredClone(example);
       regularOnly.date = dates[3];
       regularOnly.frontiers_status = 'no_matches';
+      regularOnly.highlights = [];
       regularOnly.papers = [regularOnly.papers[0]];
       regularOnly.papers[0].arxiv_id = '2609.00004';
       regularOnly.papers[0].arxiv_url = 'https://arxiv.org/abs/2609.00004v1';

@@ -2,6 +2,48 @@
   "date": "2026-09-22",
   "status": "complete",
   "frontiers_status": "recommendations",
+  "highlights": [
+    {
+      "arxiv_id": "2609.23170",
+      "label": "Conformal score 统一可靠性与目标前沿",
+      "text": "论文把 conformal score 作为稳健性的共同尺度；在目标不确定且满足凸对偶条件时，可靠性驱动的稳健优化与目标驱动的 satisficing 参数化同一决策前沿，并获得分布无关的有限样本证书。",
+      "types": [
+        "field"
+      ]
+    },
+    {
+      "arxiv_id": "2502.07977",
+      "label": "RESIST｜鲁棒通信换取更少梯度计算",
+      "text": "每次局部梯度前执行 $J-1$ 轮筛选共识，既应对时变中间人链路攻击，又刻画异质目标下的迭代、函数值和平稳性误差邻域。",
+      "types": [
+        "group"
+      ]
+    },
+    {
+      "arxiv_id": "2304.10640",
+      "label": "分布式线性求解｜角异质性改变算法排序",
+      "text": "跨机器与机器内 angular heterogeneity 同时进入 APC 和分布式 Heavy-Ball 的最优收敛率界，解释高异质数据下投影共识为何可严格更快。",
+      "types": [
+        "group"
+      ]
+    },
+    {
+      "arxiv_id": "2609.23279",
+      "label": "修正经典专著中的非 prox-regular 反例",
+      "text": "作者证明 Rockafellar–Wets 原例的近端映射在任意靠近原点处都会不连续或多值，因而不具声称性质；随后给出局部常值近端映射但仍非 prox-regular 的修正版。",
+      "types": [
+        "field"
+      ]
+    },
+    {
+      "arxiv_id": "2402.13988",
+      "label": "无摩擦 Hamiltonian 流与速度重置也能产生加速",
+      "text": "对强凸二次问题，作者用 Chebyshev 节点选择精确 Hamiltonian 演化时间，并在段间将速度归零，获得与 Heavy-Ball 流同阶的加速条件数依赖；坐标及并行版本统一解释 Gauss–Seidel、SOR 与 Jacobi。结果依赖二次结构和精确流，不是一般非二次问题的现成算法。",
+      "types": [
+        "field"
+      ]
+    }
+  ],
   "papers": [
     {
       "arxiv_id": "2609.23170",

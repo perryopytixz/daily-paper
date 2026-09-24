@@ -54,7 +54,7 @@ export function renderText(input) {
 }
 
 export function validateDigest(digest, fileDate, config) {
-  keys(digest, ['date', 'status', 'frontiers_status', 'papers']);
+  keys(digest, ['date', 'status', 'frontiers_status', 'papers'], ['highlights']);
   requireThat(validDate(digest.date) && digest.date === fileDate, 'Digest date must match its filename');
   requireThat(['complete', 'incomplete'].includes(digest.status), 'Invalid digest status');
   requireThat(['recommendations', 'no_matches', 'incomplete'].includes(digest.frontiers_status), 'Invalid frontiers_status');
@@ -75,6 +75,17 @@ export function validateDigest(digest, fileDate, config) {
     requireThat(Number.isInteger(paper.order) && paper.order > 0 && !orders.has(paper.order), 'Reading order must be unique positive integers'); orders.add(paper.order);
     if (Object.hasOwn(paper, 'update_note')) requireThat(text(paper.update_note), 'update_note must be nonempty');
   }
+  const highlights = digest.highlights ?? [];
+  requireThat(Array.isArray(highlights), 'highlights must be an array');
+  const highlighted = new Set();
+  for (const highlight of highlights) {
+    keys(highlight, ['arxiv_id', 'label', 'text'], ['types']);
+    requireThat(ids.has(highlight.arxiv_id), `Highlight paper is not in this digest: ${highlight.arxiv_id}`);
+    requireThat(!highlighted.has(highlight.arxiv_id), `Duplicate highlight: ${highlight.arxiv_id}`); highlighted.add(highlight.arxiv_id);
+    requireThat(text(highlight.label) && text(highlight.text), `Empty highlight: ${highlight.arxiv_id}`);
+    const types = highlight.types === undefined ? ['field'] : highlight.types;
+    requireThat(Array.isArray(types) && types.length > 0 && new Set(types).size === types.length && types.every(type => ['field', 'group'].includes(type)), `Invalid highlight types: ${highlight.arxiv_id}`);
+  }
   const hasFrontiers = digest.papers.some(p => p.directions.includes(FRONTIERS));
   requireThat(digest.frontiers_status !== 'no_matches' || !hasFrontiers, 'Frontiers has papers but says no_matches');
   requireThat(digest.frontiers_status !== 'recommendations' || hasFrontiers, 'Frontiers says recommendations but has no papers');
@@ -82,9 +93,17 @@ export function validateDigest(digest, fileDate, config) {
 }
 
 export function prepareDigest(digest) {
-  return { ...digest, papers: [...digest.papers].sort((a, b) => a.order - b.order).map(p => {
+  const highlights = (digest.highlights ?? []).map(highlight => ({ ...highlight, html: {
+    label: renderText(highlight.label),
+    text: renderText(highlight.text)
+  } }));
+  const typesById = new Map(highlights.map(item => [item.arxiv_id, item.types ?? ['field']]));
+  const priority = paper => typesById.get(paper.arxiv_id)?.includes('field') ? 0 : typesById.has(paper.arxiv_id) ? 1 : 2;
+  return { ...digest, highlights, papers: [...digest.papers].sort((a, b) =>
+    priority(a) - priority(b) || a.order - b.order
+  ).map(p => {
     const html = {};
     for (const field of ['title', 'abstract', 'summary', 'reason', 'update_note']) if (p[field]) html[field] = renderText(p[field]);
-    return { ...p, html };
+    return { ...p, highlight_types: [...(typesById.get(p.arxiv_id) ?? [])], html };
   }) };
 }
