@@ -122,7 +122,7 @@ test('field highlights precede group highlights and remaining recommendations; d
   assert.deepEqual(paperIds(html), ['2609-00003', '2609-00004', '2609-00005', '2609-00001', '2609-00002']);
   assert.deepEqual(numbers(html), ['01', '02', '03', '04', '05']);
   const headings = [...html.matchAll(/<h2[^>]*>([^<]+)<\/h2>/g)].map(match => match[1]);
-  assert.deepEqual(headings, ['前沿亮点', '课题相关亮点', '剩余推荐']);
+  assert.deepEqual(headings, ['前沿亮点', '课题组相关亮点', '剩余推荐']);
   const cards = html.match(/<article\b[\s\S]*?<\/article>/g);
   assert.doesNotMatch(cards[0], /dp-highlight-group/);
   assert.match(cards[0], /dp-highlight-field/);
@@ -140,14 +140,14 @@ test('field highlights precede group highlights and remaining recommendations; d
   assert.match(filtered, /剩余推荐/);
   const fieldOnly = page(prepared, '#direction=optimization-frontiers');
   assert.deepEqual(paperIds(fieldOnly), ['2609-00003']);
-  assert.doesNotMatch(fieldOnly, /课题相关亮点|剩余推荐/);
+  assert.doesNotMatch(fieldOnly, /课题组相关亮点|剩余推荐/);
 });
 
 test('group-only highlights work and empty sections are omitted', () => {
   const digest = fixture();
   digest.highlights = digest.papers.map(paper => ({ arxiv_id: paper.arxiv_id, label: 'Group', text: 'Result', types: ['group'] }));
   const html = page(prepareDigest(digest));
-  assert.match(html, /课题相关亮点/);
+  assert.match(html, /课题组相关亮点/);
   assert.doesNotMatch(html, /前沿亮点|剩余推荐/);
   assert.equal(new Set(paperIds(html)).size, digest.papers.length);
 });
