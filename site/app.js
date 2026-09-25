@@ -78,7 +78,7 @@
     }
     const buckets = [[], []];
     for (const paper of filtered) buckets[paper.highlight_types.length ? 0 : 1].push(paper);
-    const labels = ['亮点', '剩余推荐'];
+    const labels = ['亮点论文', '剩余推荐'];
     let index = 0;
     results.innerHTML = notice + buckets.map((items, bucket) => items.length ? `<section class="dp-paper-group" aria-labelledby="dp-group-${bucket}"><div class="dp-summary-line"><h2 id="dp-group-${bucket}" lang="zh-CN">${labels[bucket]}</h2><span>${items.length} 篇</span></div>${items.map(paper => card(paper, index++)).join('')}</section>` : '').join('');
   }

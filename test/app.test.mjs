@@ -122,7 +122,7 @@ test('mixed highlight types share one section in reading order; dual types appea
   assert.deepEqual(paperIds(html), ['2609-00001', '2609-00003', '2609-00004', '2609-00002', '2609-00005']);
   assert.deepEqual(numbers(html), ['01', '02', '03', '04', '05']);
   const headings = [...html.matchAll(/<h2[^>]*>([^<]+)<\/h2>/g)].map(match => match[1]);
-  assert.deepEqual(headings, ['亮点', '剩余推荐']);
+  assert.deepEqual(headings, ['亮点论文', '剩余推荐']);
   const cards = html.match(/<article\b[\s\S]*?<\/article>/g);
   assert.match(cards[0], /dp-highlight-group/);
   assert.doesNotMatch(cards[0], /dp-highlight-field/);
@@ -136,10 +136,10 @@ test('mixed highlight types share one section in reading order; dual types appea
   const filtered = page(prepared, `#direction=${config.directions[1].id}`);
   assert.deepEqual(paperIds(filtered), ['2609-00001', '2609-00004', '2609-00002', '2609-00005']);
   assert.deepEqual(numbers(filtered), ['01', '02', '03', '04']);
-  assert.deepEqual([...filtered.matchAll(/<h2[^>]*>([^<]+)<\/h2>/g)].map(match => match[1]), ['亮点', '剩余推荐']);
+  assert.deepEqual([...filtered.matchAll(/<h2[^>]*>([^<]+)<\/h2>/g)].map(match => match[1]), ['亮点论文', '剩余推荐']);
   const fieldOnly = page(prepared, '#direction=optimization-frontiers');
   assert.deepEqual(paperIds(fieldOnly), ['2609-00003']);
-  assert.match(fieldOnly, /<h2[^>]*>亮点<\/h2>/);
+  assert.match(fieldOnly, /<h2[^>]*>亮点论文<\/h2>/);
   assert.doesNotMatch(fieldOnly, /课题组相关亮点|剩余推荐/);
 });
 
