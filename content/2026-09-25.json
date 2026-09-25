@@ -1,0 +1,504 @@
+{
+  "date": "2026-09-25",
+  "status": "complete",
+  "frontiers_status": "recommendations",
+  "highlights": [
+    {
+      "arxiv_id": "2608.30876",
+      "label": "凸体舍入的对称度猜想获证",
+      "text": "任意 $n$ 维凸体都存在 $\\sqrt{n/\\mathrm{sym}(S)}$-舍入；多面体情形可由中心正则化椭球凸程序构造，且该因子对全部允许对称度在常数意义下紧。",
+      "types": [
+        "field"
+      ]
+    },
+    {
+      "arxiv_id": "2609.28246",
+      "label": "高阶极小极大下界不再局限张量算法",
+      "text": "任意自适应确定性或随机 $p$ 阶算法都需要 $\\Omega(Q_E^{2/(3p-1)})$ 次查询；结合已有上界，凸--凹鞍点残差与间隙的指数被闭合到多对数因子。",
+      "types": [
+        "field"
+      ]
+    },
+    {
+      "arxiv_id": "2609.28238",
+      "label": "随机二阶驻点复杂度去掉混合项",
+      "text": "共同随机损失模型下得到紧的 $\\widetilde\\Theta(\\varepsilon^{-3}+\\gamma^{-5})$ 新样本界，即便返回完整 Hessian 也不改善容差指数。",
+      "types": [
+        "field"
+      ]
+    },
+    {
+      "arxiv_id": "2606.25311",
+      "label": "谱步长反弹｜历史曲率尺度需要重排与刷新",
+      "text": "有限矩框架统一多类历史谱候选，并揭示低频步会重新放大高频分量；RASG 因而按频率、强度和不确定性安排步长，严格凸二次问题上全局 $R$-线性收敛。",
+      "types": [
+        "field",
+        "group"
+      ]
+    },
+    {
+      "arxiv_id": "2609.29446",
+      "label": "无梯度去中心化｜$O(\\varepsilon^{-2})$ 通信配 $O(\\varepsilon^{-3})$ 查询",
+      "text": "增长本地更新长度仍保持 $O(T^{-1/3})$ 驻点--一致性界，把通信轮数降到 $\\Theta(T^{2/3})$；每轮单次保护发布还给出完整转录的客户端级隐私。",
+      "types": [
+        "group"
+      ]
+    },
+    {
+      "arxiv_id": "2609.28364",
+      "label": "安全滤波改按累计扰动努力计预算",
+      "text": "LEAP 把到达失败集所需的最小扰动代价变成 CBF 与 QP 安全约束，允许短时大扰动而对总努力给保证；学习近似尚需单独验证。",
+      "types": [
+        "group"
+      ]
+    },
+    {
+      "arxiv_id": "2609.28543",
+      "label": "双惯性历史｜随机 KM 达到近最优样本复杂度",
+      "text": "单循环、每步一个随机 oracle 即获 $\\widetilde O(\\varepsilon^{-2})$ 样本复杂度；精确 oracle 下末次残差为最优 $O(K^{-1})$。",
+      "types": [
+        "group"
+      ]
+    }
+  ],
+  "papers": [
+    {
+      "arxiv_id": "2608.30876",
+      "version": 2,
+      "title": "Symmetry-dependence in Rounding of a Convex Body",
+      "authors": [
+        "Zikai Xiong",
+        "Robert M. Freund"
+      ],
+      "submitted": "2026-08-31",
+      "updated": "2026-09-23",
+      "abstract": "The symmetry measure of a convex body $S\\subset\\mathbb{R}^n$ is given by: $\\mathrm{sym}(S):=\\max\\{α\\ge0:\\text{ there exists }x\\in S\\text{ such that }-α(S-x)\\subseteq S-x\\}$, where such an $x$ is called a Minkowski center. We prove that every convex body $S$ admits a $\\sqrt{\\frac{n}{\\mathrm{sym}(S)}}$-rounding of $S$, namely, there exists an origin-centered ellipsoid $E$ and a center $c$ such that $E\\subseteq S-c\\subseteq\\sqrt{\\frac{n}{\\mathrm{sym}(S)}}\\,E$. This result was conjectured in 2005 by Belloni and Freund. As special cases, this recovers an $n$-rounding of $S$ (since $\\mathrm{sym}(S)\\ge\\frac{1}{n}$), and a $\\sqrt{n}$-rounding when $\\mathrm{sym}(S)=1$. In the case when $S$ is a polytope given as the convex hull of points, the desired rounding is produced by a regularized minimum-volume covering ellipsoid problem where the regularization is with respect to the Minkowski center. Similarly, when $S$ is a polytope given as the intersection of halfspaces, such a rounding is produced by a regularized maximum-volume inscribed ellipsoid problem. In both of these cases, the rounding can be computed by first solving a linear optimization problem (to compute $\\mathrm{sym}(S)$ and a Minkowski center), and then solving a convex optimization problem with a logarithmic determinant objective, second-order cone constraints, and one semidefinite cone constraint. We also show that the factor $\\sqrt{\\frac{n}{\\mathrm{sym}(S)}}$ is nearly tight in its dependence on dimension and symmetry. When $\\frac{n+1}{1+\\mathrm{sym}(S)}$ is an integer, we show by explicit construction that the factor $\\sqrt{\\frac{n}{\\mathrm{sym}(S)}}$ is tight. In the more general case, for every dimension $n$ and every admissible symmetry value, we construct a polytope $S$ for which every rounding factor is at least $\\sqrt{\\frac{2}{3}}\\sqrt{\\frac{n}{\\mathrm{sym}(S)}}$.",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2608.30876v2",
+      "summary": "对称性精确控制凸体舍入维数",
+      "reason": "椭球舍入从一般凸体的 $n$ 因子到中心对称情形的 $\\sqrt n$ 因子之间，长期缺少由全局对称度连续插值的最优界。该文证明任意 $n$ 维凸体 $S$ 都存在中心 $c$ 与椭球 $E$，使 $E\\subseteq S-c\\subseteq\\sqrt{n/\\mathrm{sym}(S)}E$，解决 Belloni--Freund 2005 年的猜想。对顶点或半空间表示的多面体，作者分别给出以 Minkowski 中心正则化的最小外接/最大内接椭球凸优化构造；并证明该因子对所有维数与允许的对称度都在常数意义下紧，特定整数关系下完全取等。",
+      "order": 1
+    },
+    {
+      "arxiv_id": "2609.28246",
+      "version": 1,
+      "title": "Near-Optimal Higher-Order Oracle Complexity for Convex--Concave Minimax Optimization",
+      "authors": [
+        "Yanyi Li",
+        "Haihan Zhang",
+        "Chenheng Zhang",
+        "Wendao Wu",
+        "Chunyuan Zheng",
+        "Cong Fang",
+        "Haoxuan Li",
+        "Zhouchen Lin"
+      ],
+      "submitted": "2026-09-23",
+      "updated": "2026-09-23",
+      "abstract": "For smooth convex--concave minimax optimization, the higher-order lower bound of Chen et al. (2026) applies to a restricted tensor-algorithm class with prescribed regularized Taylor-model updates. We establish the same bound for arbitrary adaptive deterministic and randomized algorithms, matching, up to logarithmic factors, the upper bound of Zhang et al. (2026). Fix an integer $p\\ge 2$ and let $L_p>0$ bound the Lipschitz constant of the objective's $p$-th derivative on a compact convex product domain of diameter at most $D_Z>0$. Each feasible query returns the objective value and all derivatives through order $p$. For accuracy $ε>0$, set $Q_{\\mathrm{tan}}=L_pD_Z^p/ε$ for tangent residual and $Q_{\\mathrm{gap}}=L_pD_Z^{p+1}/ε$ for saddle gap. Let $T_E^{\\mathrm{det}}(ε)$ and $T_E^{\\mathrm{rand}}(ε)$ denote the high-dimensional minimax query complexities for criterion $E\\in\\{\\mathrm{tan},\\mathrm{gap}\\}$, with randomized success probability at least $2/3$ on every instance. Our lower bounds and the existing upper bound give $c_pQ_E^{2/(3p-1)}\\le T_E^{\\mathrm{rand}}(ε)\\le T_E^{\\mathrm{det}}(ε)\\le C_pQ_E^{2/(3p-1)}[1+\\log(3+Q_E)]^{6(p-1)}$ for sufficiently large $Q_E$, where $c_p,C_p>0$ depend only on $p$. Thus the same accuracy exponent holds beyond tensor update rules, even for randomized queries and arbitrary feasible outputs. The proof constructs a scalar convex--concave chain with exactly flat gates that hide complete derivative information. Direct product-domain error witnesses and adaptive transcript arguments establish the lower bounds for both criteria.",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.28246v1",
+      "summary": "高阶极小极大复杂度扩展到任意自适应算法",
+      "reason": "光滑凸--凹极小极大的已知 $2/(3p-1)$ 高阶复杂度下界此前只覆盖规定 Taylor 更新的张量算法。该文构造具有完全平坦门的标量凸--凹链，对任意自适应确定性或随机算法、任意可行查询和未查询输出，都证明切锥残差与鞍点间隙的查询下界为 $\\Omega(Q_E^{2/(3p-1)})$；结合已有上界，得到相差多对数因子的紧刻画。结论针对紧凸乘积域、固定 $p\\ge2$，允许最坏情形维数随预算增长。",
+      "order": 2
+    },
+    {
+      "arxiv_id": "2609.28238",
+      "version": 1,
+      "title": "Second-Order Stationarity with Common Random Losses: Matching Tolerance Bounds",
+      "authors": [
+        "Wendao Wu",
+        "Haihan Zhang",
+        "Chenheng Zhang",
+        "Yanyi Li",
+        "Chunyuan Zheng",
+        "Cong Fang",
+        "Haoxuan Li",
+        "Zhouchen Lin"
+      ],
+      "submitted": "2026-09-23",
+      "updated": "2026-09-23",
+      "abstract": "We establish tight polynomial tolerance bounds for stochastic second-order stationarity when each fresh oracle response is a derivative of one common random scalar loss. For a population objective $F$ with Lipschitz gradient and Hessian, the target is $\\|\\nabla F(x)\\|\\le ε$ and $λ_{\\min}(\\nabla^2 F(x))\\ge -γ$, with independent tolerances $ε,γ>0$. Under bounded gradient variance and almost-surely bounded Hessian error, the minimax number of fresh gradient or Hessian-vector-product calls is $\\widetildeΘ\\!\\left(ε^{-3}+γ^{-5}\\right)$. The characterization fixes positive gap, smoothness, and noise parameters, suppresses logarithmic factors, and allows dimension to grow within an explicit polynomial envelope. The upper bound removes the mixed term $ε^{-2}γ^{-2}$ from the earlier fresh-HVP guarantee. Direct random-line Hessian estimates and a dyadic gradient tracker separate gradient drift from randomly signed curvature motion. The lower bound realizes the endpoint costs through globally defined smooth random losses: a smooth partition localizes scalar noise without a chain-length penalty, while exact cancellation limits the information in the entire response. Consequently, the same tolerance exponents hold even for joint value, gradient, and full-Hessian responses with bounded value variance. For a population Hessian with Hölder exponent $ν\\in(0,1]$, fresh gradient/HVP complexity becomes $\\widetildeΘ\\!\\left(ε^{-3}+γ^{-(3+2/ν)}\\right)$ under the corresponding dimension envelope.",
+      "directions": [
+        "optimization-frontiers",
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.28238v1",
+      "summary": "二阶随机驻点两项容差界实现匹配",
+      "reason": "在每次只能从一个共同随机标量损失取得新梯度或 Hessian--向量积的模型中，该文分别控制一阶容差 $\\varepsilon$ 与负曲率容差 $\\gamma$。对 Lipschitz Hessian、梯度方差有界且 Hessian 误差几乎处处有界的总体目标，作者给出并证明紧的 $\\widetilde\\Theta(\\varepsilon^{-3}+\\gamma^{-5})$ 新样本复杂度，去掉既有上界中的混合项 $\\varepsilon^{-2}\\gamma^{-2}$；即便一次返回值、梯度和完整 Hessian，容差指数也不改善。Hölder Hessian 时曲率项推广为 $\\gamma^{-(3+2/\\nu)}$。",
+      "order": 3
+    },
+    {
+      "arxiv_id": "2606.25311",
+      "version": 3,
+      "title": "Structured Spectral Step-Sizes and Rebound-Aware Ordering for Gradient Methods",
+      "authors": [
+        "Yijia Zhou",
+        "Ran Gu",
+        "Ya-xiang Yuan"
+      ],
+      "submitted": "2026-06-23",
+      "updated": "2026-09-23",
+      "abstract": "The performance of gradient methods depends critically on step-size selection. Spectral step-size design involves constructing candidates from finite history and ordering them during iteration. We address both through a finite-moment spectral framework. For candidate construction, we relate Huang--Dai--Liu determinant pencils, limited-memory steepest-descent Krylov--Ritz extraction, pseudo-memory moment realization, and Gu--Du recovery of spectral nodes and component weights. The framework distinguishes generalized-eigenvalue recoverability, finite-window implementability, and component-weight interpretability. Under explicit positivity, rank-one, regularity, and exact-recovery assumptions, these properties become compatible in a common finite-moment regime, with the long, short, and mean LMSD constructions as representatives. For ordering, we identify spectral rebound: a step targeting a lower spectral scale may reactivate previously reduced high-frequency components. Idealized one-target, block, and recomputed memory-\\(m\\) models yield phase-count recurrences motivating a high-frequency-first strategy with spectral refreshes. We propose a rebound-aware spectral gradient method (RASG) that ranks Ritz candidates by frequency and estimated strength, and sets phase duration via a Ritz-uncertainty estimator. Two variants, RASG-KT and RASG-LMSD, use a Kato--Temple-inspired estimator and a long/short LMSD discrepancy. For strictly convex quadratics, global \\(R\\)-linear convergence holds under an admissibility safeguard. Experiments on ill-conditioned quadratic problems and two large-scale convex problems illustrate the behavior.",
+      "directions": [
+        "optimization-frontiers",
+        "historical-information"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2606.25311v3",
+      "summary": "有限历史谱信息揭示步长反弹机制",
+      "reason": "谱步长既要从有限梯度历史恢复曲率尺度，也要决定这些尺度的使用顺序。该文以有限矩框架统一 determinant pencil、LMSD 的 Krylov--Ritz 提取、伪历史矩实现和 Gu--Du 谱节点/权重恢复，并识别“谱反弹”：针对低频尺度的步长可能重新放大已压低的高频分量。由此提出 RASG，以频率、估计强度和 Ritz 不确定性安排步长及刷新；在可接受性保护下，对严格凸二次问题证明全局 $R$-线性收敛，非二次大规模凸实验仅作为经验延伸。",
+      "order": 4
+    },
+    {
+      "arxiv_id": "2609.29446",
+      "version": 1,
+      "title": "SPADE-DFL: Communication-Efficient Decentralized Federated Learning via Derivative-Free Linearized ADMM",
+      "authors": [
+        "Mengli Wei",
+        "Mengkai Zhu",
+        "Jiawen Chen",
+        "Wenwu Yu",
+        "Duxin Che"
+      ],
+      "submitted": "2026-09-24",
+      "updated": "2026-09-24",
+      "abstract": "Reducing communication in derivative-free decentralized learning requires controlling the disagreement accumulated over multiple local updates. This paper develops SPADE-DFL, a primal--dual method that allows the number of local function-value updates between neighbor exchanges to grow with the computation budget while preserving the nonprivate convergence order. For smooth nonconvex objectives under uniform query-moment bounds, the prescribed nonprivate schedule achieves a time-averaged stationarity and consensus bound of $\\mathcal{O}(T^{-1/3})$ using only $Θ(T^{2/3})$ communication rounds, where $T$ is the number of local updates per client. For private training, the accumulated data-dependent increment is isolated from the graph correction, allowing one protected state per client and round to generate all outgoing messages. We prove client-level differential privacy for the full interactive transcript and quantify the resulting optimization error over a finite horizon. Experiments on four classification tasks show that SPADE-DFL achieves higher mean test accuracy than existing decentralized learning methods.",
+      "directions": [
+        "distributed",
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.29446v1",
+      "summary": "局部计算增长而通信复杂度降一阶",
+      "reason": "SPADE-DFL 把单点无导数估计、记忆递归与线性化 ADMM 结合，允许每轮邻居通信之间的本地函数值更新数随总预算增长。对固定连通无向图上的光滑非凸目标和统一查询矩界，取每轮本地长度 $\\tau=\\Theta(T^{1/3})$ 时，时间平均驻点与一致性误差仍为 $O(T^{-1/3})$，通信轮数降为 $\\Theta(T^{2/3})$。私有版本每个客户端每轮只发布一个裁剪加噪状态，论文证明完整交互转录的客户端级差分隐私并量化有限时域误差。",
+      "order": 5
+    },
+    {
+      "arxiv_id": "2609.28364",
+      "version": 1,
+      "title": "LEAP-CBF: A Safety Filter for Uncertain Systems with Least-Effort Adversarial Potentials",
+      "authors": [
+        "Oswin So",
+        "Eric Yu",
+        "Chuchu Fan"
+      ],
+      "submitted": "2026-09-23",
+      "updated": "2026-09-23",
+      "abstract": "Control barrier functions (CBF) are a popular safety filter to ensure safety for nonlinear dynamical systems. However, when the system is subject to uncertainties and disturbances, this requires the use of robust variants of CBFs, which can be difficult to construct and can be overly conservative, especially for high-dimensional systems under input constraints. In this work, we propose a new approach to solve these challenges by introducing Least-Effort Adversarial Potentials (LEAP), a certificate that quantifies the robustness of a given state against disturbances in terms of the effort required by the disturbance to cause failure. We show that LEAP is a CBF for the undisturbed system, but can also be used to construct a safety filter that is robust to disturbances whose cumulative effort is bounded. We propose a method for constructing LEAPs with on-policy deep reinforcement learning. Next, we demonstrate LEAPs in simulation on a variety of multi-agent systems with disturbances and uncertainties. Finally, hardware experiments on a quadruped and quadrotors validate that LEAPs are well suited to tackle the disturbances and uncertainties from real-world robotic systems.",
+      "directions": [
+        "safety-critical"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.28364v1",
+      "summary": "累计扰动预算替代逐点最坏界",
+      "reason": "该文定义 Least-Effort Adversarial Potential：从当前状态在固定回退策略下到达失败集所需的最小累计扰动代价。精确 LEAP 的正阈值平移是名义系统的控制障碍函数，并可构造切换式或 QP 安全滤波器；只要扰动累计代价小于预算 $D$，滤波器即保证不进入失败集。与逐时刻幅值有界的鲁棒 CBF/HJI 不同，该证书容许短时大峰值。作者用在策略深度强化学习近似 LEAP，并在多智能体仿真、四足机器人和无人机实验中验证。",
+      "order": 6
+    },
+    {
+      "arxiv_id": "2609.28543",
+      "version": 1,
+      "title": "Stochastic Inertial Krasnosel'skii-Mann Iteration Achieves Near-Optimal Sample Complexity",
+      "authors": [
+        "Tong Yang",
+        "Tao Jiang",
+        "Yuejie Chi",
+        "Ashok Cutkosky",
+        "Lin Xiao"
+      ],
+      "submitted": "2026-09-22",
+      "updated": "2026-09-22",
+      "abstract": "We analyze a simple stochastic inertial Krasnosel'skii--Mann (iKM) method for finding a fixed point of a nonexpansive operator in a real Hilbert space. Our method is obtained simply by adding two inertial extrapolations to stochastic KM [Bravo and Cominetti, 2024], and it retains one call to a possibly biased stochastic oracle per update and achieves sharp rates in both the stochastic and deterministic regimes. Specifically, with our proposed parameter schedule, we prove the following last-iterate fixed-point residual bound: \\[ {O}\\!\\left(\\frac{1}{K} +\\frac{σ\\log K}{\\sqrt K} +\\frac{B_K\\log K}{K}\\right), \\] where $K$ is the horizon, $σ$ is the noise level and $B_K$ is the accumulated root-mean-square bias. When $B_K=O(\\sqrt K)$, this yields $\\widetilde O(ε^{-2})$ sample complexity that matches, up to a logarithmic factor, the stochastic-oracle lower bound given under the unbiased subclass of our model [Foster et al., 2019, Theorem 2]. It also improves the best-known $O(ε^{-4})$ random-iterate guarantee for stochastic KM [Bravo and Cominetti, 2024, Corollary 5.4]. To our knowledge, this is the first single-loop method for general nonexpansive fixed-point problems to attain this near-optimal sample complexity without variance reduction or batching. When the oracle is exact, the same method attains the worst-case-optimal $O(K^{-1})$ last-iterate residual rate [Park and Ryu, 2022, Theorem 4.6], improving the $O(K^{-1/2})$ rate of classical KM [Cominetti et al., 2014; Bravo and Cominetti, 2018].",
+      "directions": [
+        "historical-information",
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.28543v1",
+      "summary": "双惯性外推让随机 KM 达到近最优样本复杂度",
+      "reason": "该文在随机 Krasnosel'skii--Mann 迭代中加入两个基于上一迭代差分的惯性外推，每步仍只调用一次可能有偏的随机非扩张算子 oracle。特定参数日程下，末次迭代及两个外推点的残差为 $O(K^{-1}+\\sigma\\log K/\\sqrt K+B_K\\log K/K)$。当累计均方根偏差 $B_K=O(\\sqrt K)$ 时，样本复杂度为 $\\widetilde O(\\varepsilon^{-2})$，较既有随机 KM 的 $O(\\varepsilon^{-4})$ 随机迭代保证显著改善；精确 oracle 下则达到最坏情形最优的 $O(K^{-1})$ 末次残差。",
+      "order": 7
+    },
+    {
+      "arxiv_id": "2609.28447",
+      "version": 1,
+      "title": "A Spectral Proof of Khachiyan's Ellipsoid Conjecture",
+      "authors": [
+        "Zhou Longfei",
+        "Haijun Zou",
+        "Tianhao Liu"
+      ],
+      "submitted": "2026-09-23",
+      "updated": "2026-09-23",
+      "abstract": "For a convex body $K\\subset\\mathbb{R}^n$, let $w(K)$ denote the volume of its maximum-volume inscribed ellipsoid. We prove that every closed halfspace $H$ whose boundary passes through the center of the maximizing ellipsoid satisfies \\[ w(K\\cap H)\\le\\frac{\\sqrt e}{2}\\,w(K). \\] The constant is optimal uniformly over all dimensions, as witnessed by a family of circular cones, thereby establishing Khachiyan's conjecture. The proof converts containment, maximality, and the central-cut condition into algebraic constraints on positive definite matrices. Two complementary spectral bounds from a diagonal model extend to arbitrary center displacements through a directional rank-one estimate for fractional trace powers. Concavity determines their joint optimum. We also derive finite-dimensional bounds and a necessary condition for near equality, with self-contained supporting proofs and an alternative resolvent argument. An AI language model discovered the proof in a human-directed research process. Lean 4 with mathlib verifies the main theorem, sharpness, and supporting results.",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.28447v1",
+      "summary": "中心切割的最大内接椭球体积常数被精确确定",
+      "reason": "设 $w(K)$ 为凸体 $K$ 的最大体积内接椭球的体积。该文证明，任一经过该椭球中心的闭半空间 $H$ 都满足 $w(K\\cap H)\\le(\\sqrt e/2)w(K)$，并用圆锥族证明常数对所有维数统一最优，从而解决 Khachiyan 的椭球猜想。证明把包含关系、最大性和中心切割转为正定矩阵约束，再由对角模型的两类谱界、分数迹幂的方向秩一估计和凹性完成；主定理与紧性还经 Lean 4 验证。",
+      "order": 8
+    },
+    {
+      "arxiv_id": "2609.21102",
+      "version": 2,
+      "title": "Spectral Deflation for Factorization-Free Matrix Filtering in Muon and Semidefinite Programming",
+      "authors": [
+        "Haoran Sun",
+        "Shucheng Kang",
+        "Heng Yang"
+      ],
+      "submitted": "2026-09-17",
+      "updated": "2026-09-23",
+      "abstract": "GPU implementations of the Muon optimizer and of first-order semidefinite programming (SDP) solvers share one computational pattern: a matrix factorization is replaced by a fixed-depth polynomial filter applied after normalization. When a few dominant spectral components carry most of the input's scale, normalization pushes the remaining spectrum toward zero, where the filter is least accurate. We propose spectral deflation: estimate the dominant components, remove them, filter the normalized residual with the unchanged filter, and restore them. Deflation preserves the target matrix function, and we prove that it strictly reduces the finite-step error of the classical Newton--Schulz family. Implemented with batched randomized SVD for Muon and warm-started subspace tracking for ADMM, deflation consistently improves GPT-2 pretraining over the corresponding Muon baselines with both the Newton--Schulz and Polar Express mappings, also in wall-clock time, and lowers the KKT residuals of factorization-free ADMM on large-scale SDPs within a similar projection time.",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.21102v2",
+      "summary": "谱消元提升固定深度矩阵滤波精度",
+      "reason": "Muon 的极分解近似和一阶 SDP 的 PSD 投影都常以归一化后的固定深度多项式滤波替代矩阵分解；少数大谱值会把剩余谱压到滤波器最不准确的零点附近。该文先估计并移除主导谱子空间，对残差重新归一化滤波后再恢复主部；目标矩阵函数保持不变。对经典 Newton--Schulz 族，作者证明谱地板提高且有限步误差比以双指数速度下降，并分别用随机 SVD 与暖启动子空间跟踪实现于 Muon 和 ADMM。",
+      "order": 9
+    },
+    {
+      "arxiv_id": "2604.06158",
+      "version": 3,
+      "title": "Distributionally Robust Regret Optimal LQR with Common Stage-Law Ambiguity",
+      "authors": [
+        "Lukas-Benedikt Fiechtner",
+        "Jose Blanchet"
+      ],
+      "submitted": "2026-04-07",
+      "updated": "2026-09-23",
+      "abstract": "We study what is, to our knowledge, the first tractable multistage ex-ante distributionally robust regret optimization (DRRO) formulation for stochastic control. We consider finite-horizon LQR with common stage-law ambiguity, where disturbances are independent across time but drawn from the same unknown stage law whose mean and covariance lie in a Gelbrich ball around nominal moments. Unlike the benign single-stage quadratic setting, the nominal controller is generally not regret-optimal: reuse of the stage law makes past disturbances informative for future decisions. Despite the general hardness of DRRO, we show that, over affine disturbance-feedback policies, the multistage DRRO-LQR problem admits an exact semidefinite programming reformulation. An optimal controller in this class is the nominal LQR controller plus a strictly causal empirical-mean correction. We also characterize worst-case moment pairs and show that, for the DRRO-optimal policy, they are not unique. Portfolio liquidation experiments show that DRRO substantially reduces worst-case regret relative to DRO and the nominal controller, with comparatively modest increases in worst-case cost, and exhibits a learning effect: its correction matrices empirically approach the corresponding coefficients of the oracle controller that knows the true disturbance law in hindsight.",
+      "directions": [
+        "optimization-frontiers",
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2604.06158v3",
+      "summary": "共享分布歧义让历史均值进入鲁棒遗憾控制",
+      "reason": "多阶段 LQR 若各期扰动独立但共享同一未知阶段分布，过去扰动就携带未来分布信息，单阶段中“名义策略即遗憾最优”的结论不再成立。该文在均值与协方差位于 Gelbrich 球、策略限于仿射扰动反馈且名义协方差和 Riccati 控制块正定时，把 ex-ante 分布鲁棒遗憾 LQR 精确改写为 SDP。最优策略等于名义 LQR 加上由过去扰动经验均值驱动的严格因果修正；作者还刻画最坏矩并与同歧义集的 DRO 比较。",
+      "order": 10
+    },
+    {
+      "arxiv_id": "2609.28319",
+      "version": 1,
+      "title": "Effective curvature dimension in smooth DC optimization",
+      "authors": [
+        "Fahaar M. Pirani"
+      ],
+      "submitted": "2026-09-23",
+      "updated": "2026-09-23",
+      "abstract": "We introduce the effective curvature dimension of a smooth DC decomposition, defined as the dimension of the span of the Hessian ranges of its first convex component. We prove that the smallest attainable effective dimension over all smooth DC decompositions equals the minimum rank of a positive semidefinite matrix that uniformly majorizes the Hessian of the DC objective. Hence, an optimal dimension is always attained by a quadratic convexifier. We further characterize feasible curvature-free subspaces through generalized Schur-complement criteria, revealing an obstruction caused by cross-curvature.As an algorithmic consequence of the effective dimension framework, we show that the number of globally solved lower model subproblems depends on the effective dimension rather than the ambient dimension. Finally, for quadratic first components, we identify the minimum number of tangent supports required for uniform approximation with an internal covering number and obtain a matching dimensional exponent under a nondegeneracy condition.",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.28319v1",
+      "summary": "DC 分解复杂度由有效曲率维数而非环境维数决定",
+      "reason": "该文把光滑 DC 分解第一凸分量全部 Hessian 像空间的张成维数定义为有效曲率维数，并证明所有光滑 DC 分解中可达到的最小值，恰等于一致上界目标 Hessian 的半正定矩阵最小秩；因此最优维数总能由二次凸化器实现。对基于切平面下模型的全局 DC 方法，需全局求解的下模型子问题数为 $O(\\varepsilon^{-d/2})$，其中 $d$ 是有效维数；二次第一分量时，切平面数又与内部覆盖数精确对应并取得同一指数。",
+      "order": 11
+    },
+    {
+      "arxiv_id": "2609.28202",
+      "version": 1,
+      "title": "Matching Upper and Lower Bounds for Higher-Order Nonconvex Finite-Sum Optimization",
+      "authors": [
+        "Wendao Wu",
+        "Haihan Zhang",
+        "Chenheng Zhang",
+        "Yanyi Li",
+        "Chunyuan Zheng",
+        "Cong Fang",
+        "Haoxuan Li",
+        "Zhouchen Lin"
+      ],
+      "submitted": "2026-09-23",
+      "updated": "2026-09-23",
+      "abstract": "We establish tight randomized higher-order oracle complexity for finding first-order stationary points of nonconvex finite sums. Let $n$ be the number of components, $Δ>0$ the initial objective-gap bound, $L_p>0$ an individual $p$-th derivative Lipschitz bound, and $ε>0$ the target gradient norm. For every fixed integer $p\\ge 2$, the minimax number of exact component queries returning the value and all derivatives through order $p$, with success probability at least $2/3$, is \\[ Θ_p\\!\\left( n+ΔL_p^{1/p}n^{1-1/(2p)} ε^{-(p+1)/p} \\right), \\] where the constants depend only on $p$ and the worst case ranges over all finite dimensions. The lower bound holds for unrestricted randomized adaptive algorithms and closes the $\\sqrt{n}$ gap between the previously known general-order upper and lower bounds in their dependence on $n$. We extend dense weak hiding to complete higher-order replies while keeping each component's regularity independent of the chain length. The matching upper bound retains the known finite-sum exponent, requires only mean-squared $p$-th derivative increments, and removes the fixed-confidence logarithmic loss by verifying entire recursive-estimation epochs with exact function values. The characterization includes the additive $n$ term for every positive parameter regime; it counts oracle calls with unrestricted internal computation.",
+      "directions": [
+        "optimization-frontiers",
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.28202v1",
+      "summary": "高阶非凸有限和复杂度闭合 $\\sqrt n$ 缺口",
+      "reason": "对 $F=n^{-1}\\sum_i f_i$ 的非凸有限和，每次可查询一个分量的函数值及至 $p$ 阶全部导数。该文证明任意固定 $p\\ge2$ 时，找到 $\\|\\nabla F\\|\\le\\varepsilon$ 的随机最小查询复杂度精确为 $\\Theta_p(n+\\Delta L_p^{1/p}n^{1-1/(2p)}\\varepsilon^{-(p+1)/p})$。下界覆盖任意自适应随机算法、无界查询点和未查询输出，闭合既有上下界在 $n$ 上的 $\\sqrt n$ 缺口；上界只需 $p$ 阶导数增量的均方正则性，并用精确函数值核验整段递归估计以去掉固定置信度对数损失。",
+      "order": 12
+    },
+    {
+      "arxiv_id": "2606.21354",
+      "version": 2,
+      "title": "Restart and Adaptive Acceleration in Stochastic Gradient Methods",
+      "authors": [
+        "Ali Elhishi",
+        "Chistophe Roux",
+        "Alexandre d'Aspremont"
+      ],
+      "submitted": "2026-06-19",
+      "updated": "2026-09-23",
+      "abstract": "We study restart schemes in stochastic optimization problems for non-smooth and weakly convex functions that satisfy a Kurdyka-Łojasiewicz (KŁ) inequality. Using restarts allows us to leverage KŁ inequalities to achieve optimal convergence rates, with acceleration depending explicitly on the KŁ exponent. Furthermore, for stochastic gradient descent (SGD), optimal restart schedules correspond to piecewise constant (step decay) step sizes. While regularity constants such as the KŁ exponent are typically unknown in practice, we prove that restart schemes are robust to significant misspecification of these constants, hence nearly adaptive. We detail numerical experiments on a number of problems where the KŁ exponent is controlled.",
+      "directions": [
+        "optimization-frontiers",
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2606.21354v2",
+      "summary": "KŁ 重启把非光滑弱凸 SGD 推到最优速率",
+      "reason": "对满足 KŁ 不等式、但可非光滑且仅弱凸的随机优化问题，该文重启近端随机次梯度法，使 Moreau 包络目标差达到 $O(T^{-1/(4\\theta-1)})$，并用下界证明对 $\\theta\\in[1/2,1]$ 的 $T$ 指数最优；同一速率还推广到带动量方法和不重启的指数适配步长。由于 KŁ 指数与常数通常未知，作者证明常数重启日程只损失 $\\log\\log T$ 因子，并量化重启次数或步长尺度误设的影响。",
+      "order": 13
+    },
+    {
+      "arxiv_id": "2609.29458",
+      "version": 1,
+      "title": "Precise Convergence Speed of Clipped SGD",
+      "authors": [
+        "David A. R. Robin"
+      ],
+      "submitted": "2026-09-24",
+      "updated": "2026-09-24",
+      "abstract": "We present a tightened convergence analysis of clipped gradient descent on $(L_0, L_1)$-smooth functions, with quantitative constants. Building on the ideas of Koloskova et al (2023), we refactor several case disjunctions to reveal the central role of a control of the bias derived from fundamental properties of $\\ell_2$-projection, simplifying proofs. We also extend the domain of validity from $η\\leq 1 / (9 β)$ to $η< 1 /β$ where $β= L_0 + c L_1$ for clipping constant $c$, which matches the more traditional analysis of smooth functions. We strengthen the convergence criterion from $\\left( \\min_{t < T} \\mathbb{E}[\\lVert \\nabla f(x_t) \\rVert_2] \\right)$ to $\\left( \\frac{1}{T} \\sum_{t < T} \\mathbb{E}[\\lVert \\nabla f(x_t) \\rVert_2] \\right)$ with matching speed, and lower the final achievable loss from $\\mathcal{O}(\\min(σ^2/c, σ))$ to the more precise $6 \\min(σ^2 /c, 3 σ)$.",
+      "directions": [
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.29458v1",
+      "summary": "裁剪 SGD 的允许步长与平均梯度界被收紧",
+      "reason": "针对 $(L_0,L_1)$-光滑目标上的裁剪 SGD，该文把偏差控制重写为欧氏球投影的基本性质，从而简化并收紧已有分析。允许步长从 $\\eta\\le1/(9\\beta)$ 扩展到 $\\eta<1/\\beta$，其中 $\\beta=L_0+cL_1$；收敛判据由最优单次迭代的期望梯度范数加强为全程平均期望梯度范数，同时保持同阶速度，并把噪声决定的最终误差细化为显式常数界。",
+      "order": 14
+    },
+    {
+      "arxiv_id": "2609.29265",
+      "version": 1,
+      "title": "A Stochastic Optimization Approach to Control-Affine Optimal Control Problems",
+      "authors": [
+        "Eloïse Berthier",
+        "Ziad Kobeissi",
+        "Francis Bach"
+      ],
+      "submitted": "2026-09-24",
+      "updated": "2026-09-24",
+      "abstract": "We consider control-affine optimal control problems on the torus, where the dynamics and cost functions are only accessed through samples. Starting from a weak formulation of such problems, we derive a dual, a primal, and a primal-dual formulation, compatible with stochastic optimization. We show convergence of stochastic first-order methods to the optimal value under generic conditions. In addition, we introduce a computable metric that upper-bounds the performance of suboptimal controllers produced during optimization, under additional regularity assumptions. Preliminary results show that the method can efficiently solve a simple control problem. Finally, we discuss conditions for the boundedness of the optimal occupation measure, a key assumption for the primal and primal-dual approaches.",
+      "directions": [
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.29265v1",
+      "summary": "最优控制被改写成可采样的一阶随机优化",
+      "reason": "该文处理环面上的控制仿射确定性最优控制，动力学和代价只能通过状态样本访问。作者从占用测度弱形式导出对偶、原始和原始--对偶三个凸优化表述，并在 RKHS 中给出可由核及导数有限表示的随机一阶算法；在相应有界性、正则性和最优占用测度条件下，平均迭代收敛到最优值。原始--对偶形式还给出可计算的对偶间隙，能上界当前次优控制器的性能损失。",
+      "order": 15
+    },
+    {
+      "arxiv_id": "2609.28611",
+      "version": 1,
+      "title": "Global Convergence of Third-Order Langevin Dynamics for Non-Convex Optimization via Simulated Annealing",
+      "authors": [
+        "Yingli Wang",
+        "Kelvin Shuangjian Zhang",
+        "Lingjiong Zhu"
+      ],
+      "submitted": "2026-09-23",
+      "updated": "2026-09-23",
+      "abstract": "We study global convergence guarantees of third-order Langevin dynamics for non-convex optimization via simulated annealing with fixed friction and decreasing noise. An explicit three-block distorted entropy transfers dissipation from the noisy auxiliary variable to the full state. Under dissipativity, regularity, and low-temperature functional-inequality assumptions, logarithmic cooling drives the objective values to the global minimum in probability at the barrier-controlled kinetic rate. For the exact-force-integral and midpoint three-stage discretizations, polynomially decreasing steps preserve this rate on the physical time scale. The cubic local endpoint estimate gives a less restrictive sufficient step-size condition than the available frozen-force kinetic result. A comparison with the one-gradient UBU integrator shows how its centered stochastic local error leads, under the same strong-coupling analysis, to a smaller sufficient iteration exponent. Numerical experiments are conducted to illustrate our theory. For a double well objective, third-order Langevin terminal-success point estimates are higher than UBU at both a common horizon and an equal gradient budget. For a high-dimensional nonconvex neural-network objective using synthetic data, independently tuned UBU and third-order Langevin schemes both outperform overdamped Langevin dynamics; the third-order Langevin point estimate is higher. For the same neural-network objective on real data, we show the same point-estimate ordering for best-basin probability and post-quench test accuracy. Numerical code and associated experiment results are publicly available at https://github.com/gagawjbytw/simulated-annealing-third-order-langevin.",
+      "directions": [
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.28611v1",
+      "summary": "三阶 Langevin 在退火下获得全局非凸保证",
+      "reason": "该文研究固定摩擦、逐渐降温的三阶 Langevin 动力学用于非凸全局优化。显式三块扭曲熵把只作用于辅助变量的噪声耗散传递到完整状态；在耗散性、四阶正则与低温 log-Sobolev 势垒假设下，对数冷却使目标值以势垒控制的 kinetic 速率依概率趋于全局最小。精确力积分与中点三阶段离散在多项式衰减步长下保持物理时间速率，局部三次端点误差还放宽了相对冻结力 kinetic 方案的充分步长条件。",
+      "order": 16
+    },
+    {
+      "arxiv_id": "2608.24077",
+      "version": 2,
+      "title": "Safe Distributed Generalized Nash Equilibrium Seeking via Control Barrier Functions",
+      "authors": [
+        "Yihan Meng",
+        "Weijian Li",
+        "Lacra Pavel"
+      ],
+      "submitted": "2026-08-25",
+      "updated": "2026-09-23",
+      "abstract": "In this paper, we consider generalized Nash equilibrium (GNE) seeking in non-cooperative games with coupled constraint sets. Specifically, we aim to enforce safety for distributed GNE seeking, whereby the safety specifications are encoded in the coupled constraint set. To achieve this, we introduce the control barrier function (CBF) in the design of the GNE seeking dynamics. We design the dynamics for both full- and partial-information setting, where each player has knowledge of the decision information of all other players or only neighboring players, respectively. We justify the proposed dynamics by showing that the coupled constraint set is forward invariant, the equilibrium of the dynamics coincides with the exact GNE of the game, and the dynamics is asymptotically stable. Furthermore, we extend the approach to games where the agents are multi-integrators. Numerical simulations are provided to verify our results.",
+      "directions": [
+        "distributed",
+        "safety-critical"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2608.24077v2",
+      "summary": "控制障碍函数让分布式 GNE 轨迹始终可行",
+      "reason": "针对带耦合约束的广义 Nash 均衡求解，该文把约束安全集直接嵌入控制障碍函数动力学，而不是用渐近罚函数逼近。全信息和仅邻居交换的部分信息版本都保证耦合可行集前向不变、动力学平衡点等于精确变分 GNE，并在凸可微个体目标、强单调伪梯度、约束正则和固定连通图等条件下渐近稳定；方法还扩展到多重积分器智能体。",
+      "order": 17
+    },
+    {
+      "arxiv_id": "2609.28263",
+      "version": 1,
+      "title": "Resource-Adaptive Stochastic Gradient Descent for Online Linear Programming without Re-solving",
+      "authors": [
+        "Jiameng Lyu"
+      ],
+      "submitted": "2026-09-23",
+      "updated": "2026-09-23",
+      "abstract": "The growth of large language model (LLM) inference and search services increases the scale of online linear programming problems, motivating computationally efficient algorithms. We develop resource-adaptive stochastic gradient descent (RASGD) for stochastic online linear programming. The algorithm uses one request and current inventory to update resource prices, requiring O(m) operations for m resources and memory per arrival and no LP or sample-average optimization. The central idea is to express the current-resource pricing logic of re-solving through a first-order SGD update: each arrival refreshes the remaining-inventory allowance in the dual objective, while the stepsize decreases for early learning and increases later to match the speed of inventory adjustment. Under standard non-degeneracy conditions, our algorithm is feasible on every sample path and achieves O(\\log T) expected regret against the realized fractional hindsight optimum, which matches the lower bound, even for policies that know the distribution and have unrestricted computation. The analysis converts curvature around the fixed reference price into inventory stability without tracking optimal prices at changing resource levels. Numerical experiments show that RASGD achieves regret competitive with per-arrival LP re-solving and improves upon the tested first-order baselines, while retaining the computational efficiency of first-order methods. These results establish RASGD as a computationally efficient approach to achieving high allocation quality in large-scale OLP.",
+      "directions": [
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.28263v1",
+      "summary": "在线 LP 不重求也达到最优对数遗憾",
+      "reason": "RASGD 每个请求只用当前库存和一次随机价格梯度更新资源影子价，不求解 LP 或样本平均问题；步长先递减以学习固定参考价，后递增以匹配临近时域末端加速的库存变化。标准非退化条件下，算法每条样本路径都保持容量可行，并相对实现后的分数 hindsight 最优解取得 $O(\\log T)$ 期望遗憾，与即使已知分布且计算无限制的下界匹配；每次到达的时间和内存均为 $O(m)$。",
+      "order": 18
+    },
+    {
+      "arxiv_id": "2511.20413",
+      "version": 2,
+      "title": "BOCO: Bayesian Online Contextual Optimization for Decision-Focused Online Learning",
+      "authors": [
+        "Zhuojun Xie",
+        "Adam Abdin",
+        "Yiping Fang"
+      ],
+      "submitted": "2025-11-25",
+      "updated": "2026-09-23",
+      "abstract": "\\emph{Decision-focused learning} (DFL) trains predictive models to optimize downstream decisions rather than prediction accuracy alone. While recent studies have extended this paradigm to online settings with streaming data, existing online DFL methods generally maintain a point estimate, while their gradient-based updates require either a differentiable optimization layer or a problem-specific surrogate loss. Consequently, they can be unstable under limited data and difficult to apply across heterogeneous optimization problems. We introduce Bayesian Online Contextual Optimization (\\texttt{BOCO}), a framework that maintains a decision-focused posterior over model parameters. \\texttt{BOCO} aggregates the resulting predictions when prescribing decisions, thereby accounting for parameter uncertainty. To track this posterior in evolving environments, we develop two particle-based inference algorithms: a sequential Monte Carlo sampler for nondifferentiable problems and a function-space Stein variational gradient descent algorithm for differentiable problems. Across both real-world tasks, \\texttt{BOCO} reduces running mean regret and temporal regret variability relative to two frequentist online DFL baselines. At the full horizon, relative to the best frequentist baseline, BOCO reduces running mean regret and temporal regret variability by 6.9\\% and 6.3\\% on knapsack and by 49.3\\% and 38.1\\% on energy scheduling, respectively. The gains are larger early in the data stream, a pattern consistent with a benefit from accounting for parameter uncertainty when data are limited.",
+      "directions": [
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2511.20413v2",
+      "summary": "在线决策学习开始维护后验而非单点参数",
+      "reason": "BOCO 以历史下游决策损失构造广义幂似然，在流式情境优化中维护模型参数的决策导向后验，并对后验预测聚合后再求处方，从而把有限数据下的参数不确定性传到决策。作者给出两种互补粒子实现：SMC 配合无梯度 MCMC 可处理不可微优化层，函数空间 SVGD 用于可微高维模型。背包和能源调度实验中，后验方法相对两种频率学派在线 DFL 基线降低平均遗憾及时间波动，优势在早期数据少时更明显。",
+      "order": 19
+    },
+    {
+      "arxiv_id": "2609.28950",
+      "version": 1,
+      "title": "A nonmonotone globalization framework for Anderson acceleration for contractive and nonexpansive fixed point problems",
+      "authors": [
+        "Wei Bian",
+        "Zekai Li"
+      ],
+      "submitted": "2026-09-23",
+      "updated": "2026-09-23",
+      "abstract": "Anderson acceleration (AA) is an effective technique for accelerating fixed point iterations, but it generally lacks global convergence guarantees. We propose a nonmonotone globalized Anderson acceleration framework that retains the local acceleration of AA while ensuring global convergence. For contractive mappings, without requiring prior knowledge of the contraction factor, we prove that the proposed method reduces exactly to pure AA after finitely many iterations and enjoys global $r$-linear convergence for memory size $m\\geq1$ and global residual $q$-linear convergence for $m=1$, with convergence factors no greater than the contraction factor of the underlying fixed point mapping. For nonexpansive mappings, we prove that the fixed point residuals converge globally to zero. A class-agnostic parameter selection rule is further developed to ensure these convergence properties in both settings. Numerical experiments demonstrate the robustness and efficiency of the proposed method.",
+      "directions": [
+        "historical-information"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.28950v1",
+      "summary": "非单调保护最终自动退化为纯 Anderson 加速",
+      "reason": "该文提出 GlobAA：用非单调接受规则在 Anderson 步与基础不动点步之间切换，无需预知收缩因子。对收缩映射，在映射于不动点可微且 Anderson 系数绝对和统一有界等条件下，算法有限步后完全采用未正则化纯 AA；任意记忆深度有全局残差与迭代 $r$-线性收敛，$m=1$ 时还有残差 $q$-线性收敛，因子不劣于基础映射收缩率。对非扩张映射，配合统一的参数规则可保证残差全局趋零。",
+      "order": 20
+    },
+    {
+      "arxiv_id": "2609.28698",
+      "version": 1,
+      "title": "Safe Receding Horizon Mixed-Integer Differentiable Predictive Control for Degradation-Aware Battery Dispatch",
+      "authors": [
+        "Eshagh Safarzadeh Ravajiri",
+        "Jan Drgona",
+        "Benjamin F. Hobbs"
+      ],
+      "submitted": "2026-09-23",
+      "updated": "2026-09-23",
+      "abstract": "We present a safe receding-horizon mixed-integer differentiable predictive control methodology for residential battery energy storage dispatch that combines neural-network speed with recursive feasibility guarantees. Unlike open-loop learning-to- optimize methods, it incorporates real-time state-of-charge feedback and sinusoidal time-of-day conditioning, enabling closed-loop re-planning at every timestep without re-solving a mixed-integer program. A differentiable rainflow cycle-counting layer enables self-supervised training of the mixed-integer policy on exact degradation physics. The controller is a hybrid closed-loop system pairing a neural mode-selection and continuous-action policy with a quadratic-programming safety filter that guarantees recursive feasibility independent of network weights or mode optimality . We establish mode-conditioned Lipschitz continuity and a conditional regret decomposition into training-quality, mode-mismatch, and forecast-error terms. On a 7-day net-metering evaluation, the method attains a 6.9% cost gap versus the closed-loop mixed-integer MPC benchmark with a 25x speedup (0.11 s vs 2.7 s per step), while average regret rises by under 4% across 0-30% forecast noise. The learned and benchmark modes agree at every step, so the bound reduces to its training-quality and forecast-error terms, both empirically validated.",
+      "directions": [
+        "safety-critical"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.28698v1",
+      "summary": "学习型混合整数控制由 QP 滤波补上递归可行性",
+      "reason": "该文用神经网络在每个滚动时域选择混合整数模式和连续动作，再以模式条件的凸 QP 安全滤波修正动作；在每个模式下可行控制集非空和名义荷电状态动力学精确等条件下，闭环状态递归可行，保证与网络权重和模式是否最优无关。可微 rainflow 层把精确电池退化代价纳入自监督训练，作者还给出模式条件 Lipschitz 性及由训练误差、模式不匹配和预测误差组成的条件遗憾分解。七天实验相对闭环 MIP-MPC 成本差 6.9%，单步快 25 倍。",
+      "order": 21
+    }
+  ]
+}
