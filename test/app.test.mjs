@@ -107,39 +107,39 @@ test('all papers can be highlighted without duplicate entries or a count cap', (
   assert.equal((html.match(/dp-tag-highlight/g) || []).length, digest.papers.length);
 });
 
-test('field highlights precede group highlights and remaining recommendations; dual types appear once', () => {
+test('mixed highlight types share one section in reading order; dual types appear once', () => {
   const digest = fixture();
   digest.highlights = [
-    { arxiv_id: '2609.00005', label: 'Group', text: 'Group result', types: ['group'] },
     { arxiv_id: '2609.00004', label: 'Both', text: 'Shared result', types: ['field', 'group'] },
-    { arxiv_id: '2609.00003', label: 'Field', text: 'Field result', types: ['field'] }
+    { arxiv_id: '2609.00003', label: 'Field', text: 'Field result', types: ['field'] },
+    { arxiv_id: '2609.00001', label: 'Group', text: 'Group result', types: ['group'] }
   ];
   const original = structuredClone(digest);
   const prepared = prepareDigest(digest);
-  assert.deepEqual(prepared.papers.map(paper => paper.order), [3, 4, 5, 1, 2]);
+  assert.deepEqual(prepared.papers.map(paper => paper.order), [1, 3, 4, 2, 5]);
   assert.deepEqual(digest, original);
   const html = page(prepared);
-  assert.deepEqual(paperIds(html), ['2609-00003', '2609-00004', '2609-00005', '2609-00001', '2609-00002']);
+  assert.deepEqual(paperIds(html), ['2609-00001', '2609-00003', '2609-00004', '2609-00002', '2609-00005']);
   assert.deepEqual(numbers(html), ['01', '02', '03', '04', '05']);
   const headings = [...html.matchAll(/<h2[^>]*>([^<]+)<\/h2>/g)].map(match => match[1]);
-  assert.deepEqual(headings, ['前沿亮点', '课题组相关亮点', '剩余推荐']);
+  assert.deepEqual(headings, ['亮点', '剩余推荐']);
   const cards = html.match(/<article\b[\s\S]*?<\/article>/g);
-  assert.doesNotMatch(cards[0], /dp-highlight-group/);
-  assert.match(cards[0], /dp-highlight-field/);
+  assert.match(cards[0], /dp-highlight-group/);
+  assert.doesNotMatch(cards[0], /dp-highlight-field/);
   assert.match(cards[1], /dp-highlight-field/);
-  assert.match(cards[1], /dp-highlight-group/);
+  assert.doesNotMatch(cards[1], /dp-highlight-group/);
+  assert.match(cards[2], /dp-highlight-field/);
   assert.match(cards[2], /dp-highlight-group/);
-  assert.doesNotMatch(cards[2], /dp-highlight-field/);
   assert.doesNotMatch(cards[3] + cards[4], /dp-tag-highlight/);
+  assert.equal(new Set(paperIds(html)).size, digest.papers.length);
 
   const filtered = page(prepared, `#direction=${config.directions[1].id}`);
-  assert.deepEqual(paperIds(filtered), ['2609-00004', '2609-00005', '2609-00001', '2609-00002']);
+  assert.deepEqual(paperIds(filtered), ['2609-00001', '2609-00004', '2609-00002', '2609-00005']);
   assert.deepEqual(numbers(filtered), ['01', '02', '03', '04']);
-  assert.match(filtered, /id="dp-group-0"/);
-  assert.match(filtered, /id="dp-group-1"/);
-  assert.match(filtered, /剩余推荐/);
+  assert.deepEqual([...filtered.matchAll(/<h2[^>]*>([^<]+)<\/h2>/g)].map(match => match[1]), ['亮点', '剩余推荐']);
   const fieldOnly = page(prepared, '#direction=optimization-frontiers');
   assert.deepEqual(paperIds(fieldOnly), ['2609-00003']);
+  assert.match(fieldOnly, /<h2[^>]*>亮点<\/h2>/);
   assert.doesNotMatch(fieldOnly, /课题组相关亮点|剩余推荐/);
 });
 

@@ -98,7 +98,7 @@ export function prepareDigest(digest) {
     text: renderText(highlight.text)
   } }));
   const typesById = new Map(highlights.map(item => [item.arxiv_id, item.types ?? ['field']]));
-  const priority = paper => typesById.get(paper.arxiv_id)?.includes('field') ? 0 : typesById.has(paper.arxiv_id) ? 1 : 2;
+  const priority = paper => typesById.has(paper.arxiv_id) ? 0 : 1;
   return { ...digest, highlights, papers: [...digest.papers].sort((a, b) =>
     priority(a) - priority(b) || a.order - b.order
   ).map(p => {
