@@ -1,0 +1,291 @@
+{
+  "date": "2026-09-26",
+  "status": "complete",
+  "frontiers_status": "recommendations",
+  "highlights": [
+    {
+      "arxiv_id": "2609.30212",
+      "label": "高阶单调包含复杂度闭合",
+      "text": "Anchored Extra-Proximal 将锚定外推与相对误差近端步统一起来；对 $p\u22652$ 阶 oracle 达到 $\\widetilde O(\\varepsilon^{-2/(3p-1)})$ 切向残差复杂度，并以不限更新形式的下界证明其近最优。",
+      "types": [
+        "field"
+      ]
+    },
+    {
+      "arxiv_id": "2609.30215",
+      "label": "凸体成员查询需要近二次规模",
+      "text": "仅靠成员 oracle 做常数因子线性优化需要 $\\Omega(n^2/\\log^9 n)$ 次随机查询，与已知上界相差多对数因子；同一构造还给出均匀采样和体积估计的近二次下界。",
+      "types": [
+        "field"
+      ]
+    },
+    {
+      "arxiv_id": "2609.15257",
+      "label": "随机变分不等式｜anytime 末次迭代达到最优阶",
+      "text": "新版增加 STORM 型两样本单循环算法，在均方 Lipschitz 多点 oracle 下把受约束单调 VI 的 anytime 末次迭代率提升到 $O(t^{-1/2})$，对应 $O(\\varepsilon^{-2})$ oracle 复杂度。",
+      "types": [
+        "field",
+        "group"
+      ]
+    },
+    {
+      "arxiv_id": "2609.29833",
+      "label": "自适应马尔可夫随机逼近｜全未来可靠性获得紧界",
+      "text": "收缩管界同时控制某时刻之后的全部迭代；有限二阶矩下，管宽收缩速度与任一未来越界概率的多项式指数被上下界精确刻画，并扩展到增长噪声和可预测偏差。",
+      "types": [
+        "field",
+        "group"
+      ]
+    },
+    {
+      "arxiv_id": "2609.14892",
+      "label": "五专家预测的 COMB 最优性猜想被否定",
+      "text": "显式 PDE 解证明方向 $(1,0,1,0,0)$ 在整个有序扇区最优，而 COMB 仅在低维子集最优；147 个有理 Bernstein 证书与 Lean 4 核验支撑关键不等式和主定理。",
+      "types": [
+        "field"
+      ]
+    }
+  ],
+  "papers": [
+    {
+      "arxiv_id": "2609.30212",
+      "version": 1,
+      "title": "Anchored Extra-Proximal Methods: Optimal Higher-Order Methods for Monotone Inclusion Problems",
+      "authors": [
+        "Ruichen Jiang",
+        "TaeHo Yoon"
+      ],
+      "submitted": "2026-09-24",
+      "updated": "2026-09-24",
+      "abstract": "We study the deterministic oracle complexity of finding approximate solutions to composite monotone inclusion problems, formed by the sum of a smooth single-valued monotone operator and a maximally monotone set-valued operator, under the tangent-residual criterion. We introduce the Anchored Extra-Proximal (AEP) framework, which combines an anchored extrapolation step with an inexact anchored proximal update satisfying a relative-error condition. The framework recovers the composite Fast Extragradient method in the first-order setting and yields natural second- and higher-order extensions by replacing the operator in the implicit update with its Taylor approximation at the extrapolated point. For every $p\\geq 2$, assuming that the $(p-1)$th derivative of the single-valued operator is Lipschitz continuous, we combine this construction with a bisection line search to obtain a $p$th-order method that finds a point with tangent residual at most $\\varepsilon$ in $\\widetilde{O}(\\varepsilon^{-2/(3p-1)})$ oracle calls. This improves all prior upper bounds for $p$th-order methods: in particular, it improves the previous best-known $\\widetilde{O}(\\varepsilon^{-1/p})$ tangent-residual complexity as well as the classical $O(\\varepsilon^{-2/(p+1)})$ bound of higher-order hybrid proximal extragradient methods under the weaker duality-gap criterion. We complement this result with a worst-case lower bound of $\\Omega(\\varepsilon^{-2/(3p-1)})$ for every deterministic algorithm in the $p$th-order oracle model, without restricting the algorithm to tensor steps or any other prescribed update structure. Thus, the proposed method attains the optimal dependence on $\\varepsilon$, up to logarithmic factors, for all $p\\geq2$.",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.30212v1",
+      "summary": "对由光滑单值单调算子 $F$ 与最大单调集合值算子 $H$ 构成的复合包含 $0\\in F(z)+H(z)$，高阶方法在切向残差准则下仍存在明显复杂度缺口。该文提出 Anchored Extra-Proximal 框架，把锚定外推与满足相对误差条件的非精确锚定近端更新结合；用外推点处的 Taylor 近似替代隐式步中的算子，得到自然的二阶及高阶算法。若 $F$ 的 $(p-1)$ 阶导数为 Lipschitz，配合二分线搜索可在 $\\widetilde O(\\varepsilon^{-2/(3p-1)})$ 次 $p$ 阶 oracle 调用内达到切向残差 $\\varepsilon$。论文还对任意确定性 $p$ 阶 oracle 算法证明同阶下界，不限制为张量步，因此在对数因子外闭合了 $p\\ge2$ 的精度指数。",
+      "reason": "最值得阅读的是统一的锚定结构如何把一阶 Fast Extragradient 推进到复合高阶场景，并把已有 $\\widetilde O(\\varepsilon^{-1/p})$ 上界提高到可由一般算法下界支撑的最优指数。相对误差近端步、外推点 Taylor 模型与线搜索之间的配合，也为其他高阶单调算子算法如何避免精确隐式求解提供了清晰范式。",
+      "order": 1
+    },
+    {
+      "arxiv_id": "2609.30215",
+      "version": 1,
+      "title": "A Nearly Quadratic Lower Bound for Linear Optimization over Convex Bodies in the Membership Oracle Model",
+      "authors": [
+        "Santosh S. Vempala"
+      ],
+      "submitted": "2026-09-24",
+      "updated": "2026-09-24",
+      "abstract": "We prove nearly quadratic lower bounds for randomized algorithms for linear optimization and uniform sampling over convex bodies in the membership oracle model. For linear optimization, this matches the known nearly quadratic upper bound up to a polylog factor in the dimension. For uniform sampling, this improves on the previous linear lower bound. Our construction also implies the same lower bound for volume estimation.",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.30215v1",
+      "summary": "在成员 oracle 模型中，算法只能询问一个点是否属于未知凸体；线性优化虽已有近二次查询上界，此前却缺少匹配下界。该文证明即便只要求常数因子近似，随机线性优化也需要 $\\Omega(n^2/\\log^9 n)$ 次成员查询，在多对数因子外匹配已知上界。困难实例可取为多项式纵横比的中心对称平行多面体，同一构造还把均匀采样的既有线性下界提高到近二次，并推出体积估计的同阶下界。结论针对仅有成员访问的最坏情形凸体，不否定在更强 oracle 或特殊几何结构下更快的算法。",
+      "reason": "推荐关注这项结果对凸体三类核心 oracle 任务给出的统一信息壁垒。它不仅补齐线性优化的查询复杂度图景，也说明采样和体积估计的近二次代价并非现有算法分析的偶然损失；中心对称且条件良好的困难族进一步排除了由极端几何退化造成下界的解释。",
+      "order": 2
+    },
+    {
+      "arxiv_id": "2609.15257",
+      "version": 2,
+      "title": "Improving the Last-Iterate Guarantees of Anytime Algorithms for Stochastic Monotone Variational Inequalities",
+      "authors": [
+        "Jun-Hyun Kim",
+        "Ahmet Alacaoglu"
+      ],
+      "submitted": "2026-09-14",
+      "updated": "2026-09-24",
+      "abstract": "We analyze a stochastic algorithm with Halpern-type anchoring for constrained convex-concave problems and monotone variational inequalities. This single-loop and single-call algorithm uses one unbiased sample of the gradient operator at every iteration, to be applicable to monotone games with noisy feedback. With $t$ denoting the iteration counter, we prove an anytime last-iterate convergence rate of $O(t^{-1/4})$ for both the gradient-mapping norm and restricted gap, bypassing the $O(t^{-1/5})$ constrained-anytime bottleneck in the literature. Specializing then to multi-point oracles, we use variance reduction to achieve the $O(t^{-1/2})$ rate with an anytime single-loop algorithm using $2$ samples per iteration. Our results allow constrained problems with a potentially unbounded feasible set; as well as a structured class of stochastic oracles whose variance need not be uniformly bounded.",
+      "directions": [
+        "optimization-frontiers",
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.15257v2",
+      "summary": "受约束随机单调变分不等式中，anytime 算法既要不预先知道停止时刻，又要控制末次迭代，既有单样本结果受限于 $O(t^{-1/5})$。该文以 Halpern 型锚定构造单循环算法：每步一次无偏 oracle 调用时，对梯度映射范数和受限 gap 得到 $O(t^{-1/4})$ 末次迭代率。新版进一步面向满足均方 Lipschitz 条件的多点 oracle，引入 STORM 型递归方差缩减，每步两次采样即可达到 $O(t^{-1/2})$，即 $O(\\varepsilon^{-2})$ oracle 复杂度。分析允许潜在无界可行集及方差不必全局一致有界的一类结构化随机 oracle。",
+      "reason": "最值得读的是新版如何在不牺牲 anytime、单循环和末次迭代性质的前提下，把受约束随机 VI 推到随机一阶 oracle 的最优精度阶。Halpern 锚定与 STORM 估计误差的耦合分析直接对应噪声反馈博弈和随机鞍点问题中难以同时处理的约束、方差与停止时刻未知三项困难。",
+      "update_note": "相较 2026-09-15 推荐的 v1，v2 新增完整的 STORM--proximal--Halpern 方法与分析：在均方 Lipschitz 多点 oracle 下由每步两次采样获得 $O(t^{-1/2})$ anytime 末次迭代率和 $O(\\varepsilon^{-2})$ 复杂度；v1 的主要结果仅为每步一次采样的 $O(t^{-1/4})$ 率。",
+      "order": 3
+    },
+    {
+      "arxiv_id": "2609.29833",
+      "version": 1,
+      "title": "Shrinking-Tube Concentration for Adaptive Markovian Stochastic Approximation",
+      "authors": [
+        "Jin Li",
+        "Ye Luo",
+        "Xiaowei Zhang"
+      ],
+      "submitted": "2026-09-24",
+      "updated": "2026-09-24",
+      "abstract": "Adaptive algorithms increasingly make decisions while reshaping the dynamics that generate their future data. We establish a shrinking-tube concentration bound for projected stochastic approximation driven by an adaptive Markov chain. The bound guarantees, with high probability, that every iterate after a chosen time remains within a tolerance around the target that tightens over time. The probability of any exit after the chosen time admits a polynomially decaying upper bound, and a matching lower bound shows that its polynomial exponent cannot be improved in general under finite second moments. The result therefore identifies a sharp tradeoff between how quickly the tolerance shrinks and how rapidly the probability of any future exit decreases. We also extend the analysis to recursions with additional martingale-difference noise and predictable bias, showing how growth in the martingale-difference noise scale slows the decay of the exit-probability bound while predictable bias restricts the admissible tube shrinkage. The proof combines backward kernel replacement, a finite-time mean-squared-error bound, and a blockwise maximal first-exit argument. We apply the theory to inventory learning with stockout-dependent demand and fixed stockout costs, and quantify how numerical gradient accuracy affects the all-future reliability of the resulting policies.",
+      "directions": [
+        "optimization-frontiers",
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.29833v1",
+      "summary": "自适应算法会用当前决策改变未来数据的马尔可夫转移，普通定点或单时刻集中界不能保证此后所有策略都可靠。该文对投影随机逼近建立收缩管集中界：步长为 $k^{-\\delta}$、容差管为 $k^{-\\beta}$ 且 $\\beta<\\delta-1/2$ 时，某时刻之后任一迭代离开管道的概率按指数 $2(\\delta-\\beta)-1$ 多项式衰减（相差对数平方因子）。有限二阶矩下的匹配下界证明该指数一般不可改善。作者还把结论扩展到尺度可增长的鞅差噪声与可预测偏差，并用后向核替换、有限时均方误差和分块首次越界论证处理整条未来路径。",
+      "reason": "推荐关注从“固定时刻误差小”到“此后所有迭代持续落在收缩容差内”的分析跃迁。上下界给出的精确权衡可直接用于选择步长与可靠性收缩速度；对增长噪声和系统性偏差的分离也让结论能解释自适应数据生成下数值近似如何影响长期策略可靠性。",
+      "order": 4
+    },
+    {
+      "arxiv_id": "2609.14892",
+      "version": 2,
+      "title": "An explicit solution of the five-expert prediction PDE and the exact optimality set of COMB",
+      "authors": [
+        "Jeff Calder",
+        "Nadejda Drenska"
+      ],
+      "submitted": "2026-09-13",
+      "updated": "2026-09-24",
+      "abstract": "In this paper, we derive an explicit solution of the stationary prediction with expert advice PDE for five experts. The formula is given in three regions. In the first two regions, it is the four-expert solution plus a single integral with an elementary positive density. In the third region, it is a finite sum of hyperbolic products whose coefficients are determined by one scalar quadrature. Our formula establishes that the direction $(1,0,1,0,0)$ is optimal throughout the ordered sector, and that the COMB strategy $(1,0,1,0,1)$ is optimal only on a lower dimensional subset of the sector (where $x_1=x_2$ and $x_3=x_4$). This disproves the COMB optimality conjecture of Gravin, Peres and Sivan. The verification of the Hamiltonian inequalities is a tedious task, part of which is completed with a computer assisted proof. The verification reduces to 21 scalar inequalities, which we prove using 147 exact rational Bernstein polynomial certificates. The exact certificates and their independent arithmetic checks are included in a supplement to this paper, and a Lean 4 formalization machine-checks the verification and both main theorems, apart from the viscosity characterization.",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.14892v2",
+      "summary": "五专家预测 PDE 的显式解长期未知，COMB 策略也被猜测在整个有序扇区最优。该文把定常解按三个区域写成四专家解加单积分，或由一次标量求积确定系数的有限双曲函数乘积。显式公式证明方向 $(1,0,1,0,0)$ 在整个有序扇区最优，而 COMB 方向 $(1,0,1,0,1)$ 只在 $x_1=x_2$ 且 $x_3=x_4$ 的低维子集最优，从而否定原猜想。Hamiltonian 验证归约为 21 个标量不等式，并由 147 个精确有理 Bernstein 多项式证书完成；除黏性解刻画外，两项主定理还经 Lean 4 核验。",
+      "reason": "这项工作的价值既在于得到五专家问题的可计算闭式结构，也在于用精确反例改变对 COMB 策略适用范围的认识。分区 PDE 解、有限证书和形式化核验组合出一条可复查的证明链，对在线预测中把连续极限、最优控制方向与计算机辅助不等式验证连接起来尤其值得借鉴。",
+      "order": 5
+    },
+    {
+      "arxiv_id": "2607.08209",
+      "version": 2,
+      "title": "On the stability of proximal operators in Wasserstein spaces under different notions of convexity",
+      "authors": [
+        "Simone Di Marino",
+        "Sara Farinelli",
+        "Emanuele Naldi"
+      ],
+      "submitted": "2026-07-09",
+      "updated": "2026-09-24",
+      "abstract": "The proximal operator is a fundamental tool in variational analysis and optimization. In the setting of a Hilbert space, given a proper, lower semicontinuous convex functional, its proximal operator is non-expansive, that is, 1-Lipschitz continuous. In the Wasserstein setting, the contraction properties of this operator have been investigated from different perspectives by Carlen and Craig and by Adve and Mészáros, among others, and are not completely understood. In this paper, we study the stability properties of proximal maps, with a particular focus on non-expansivity, under various notions of convexity of the functional that can be considered in the Wasserstein space.",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2607.08209v2",
+      "summary": "Hilbert 空间中凸泛函的近端映射天然非扩张，但 Wasserstein 空间的曲率使该性质依赖所采用的凸性概念。该文系统比较多种条件：全凸性可推出非扩张，却过于刚性并排除常见内部能量；沿标准测地线的凸性一般只能给出弱非扩张或附加条件下的近 Lipschitz 估计。作者提出相对于两个基点的广义测地线凸性，并由此恢复完整非扩张性；较弱的广义测地线凸性则给出局部 $1/2$-Hölder 稳定。结果明确区分了哪些几何凸性足以支撑 Wasserstein 近端算法的扰动控制。",
+      "reason": "推荐关注论文对“凸性应如何选择才能换来近端稳定性”的层次化回答。它没有把 Hilbert 空间结论机械移植到测度空间，而是展示强条件的结构代价，并引入能保留非扩张性的两基点几何；这为分析 JKO 类离散、测度优化与近端迭代的误差传播提供了可复用的条件框架。",
+      "order": 6
+    },
+    {
+      "arxiv_id": "2609.29888",
+      "version": 1,
+      "title": "Randomized Branch Methods with Inexact Subproblems for Bouligand Stationarity in Linear and Quadratic Programs with Complementarity Constraints",
+      "authors": [
+        "Ziyin Hu",
+        "Xin Liu",
+        "Shangzhi Zeng",
+        "Jin Zhang"
+      ],
+      "submitted": "2026-09-24",
+      "updated": "2026-09-24",
+      "abstract": "We develop randomized branch methods for finding Bouligand-stationary (B-stationary) points of linear and quadratic programs with complementarity constraints (LPCCs and QPCCs) using only linear programming subproblems. The methods exploit the finite-union geometry of the feasible set and search for first-order descent on randomly selected compatible branches. For LPCCs, an exact method optimizes over sampled branches, while an inexact simplex method can accept an improving branch-feasible vertex before solving the sampled penalty problem to optimality. For QPCCs, including problems with indefinite quadratic objectives, branch quadratic programs are replaced by linearized trust-region subproblems; a ratio test ensures actual decrease, and thresholded sampling detects branches that emerge only at accumulation points. Under the stated assumptions, the LPCC methods stabilize after finitely many changes at B-stationary points almost surely. For the QPCC method, finite termination yields a B-stationary point, and every accumulation point of an infinite run is B-stationary almost surely. Experiments on bilevel-induced instances, instances arising from inverse quadratic programming, and sparse affine generalized Nash equilibrium instances, together with 129 MacMPEC embedding tests, show that the methods return points with competitive objective quality and runtimes on large-scale complementarity systems.",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.29888v1",
+      "summary": "互补约束可行集是有限个多面体分支的并，B-驻点要求在所有相容分支上都不存在一阶下降，但逐一检查分支会组合爆炸。该文随机抽取相容分支，并始终只求解线性规划子问题：LPCC 可精确求解采样分支，也可由单纯形法在惩罚问题最优前接受改进顶点；QPCC 则以线性化信赖域替代分支二次规划，用比值检验保证真实下降，并以阈值采样捕捉只在聚点出现的分支。在论文的有界性、惩罚与紧水平集等假设下，LPCC 几乎必然有限稳定到 B-驻点；QPCC 有限终止或无限序列的所有聚点也几乎必然 B-驻。",
+      "reason": "值得读的是算法如何直接利用有限并几何，在不枚举全部活动分支、也不精确求解非凸二次子问题的情况下取得强于常见弱驻性的 B-驻保证。随机分支检测、非精确提前接受与信赖域下降检验的组合兼顾了理论覆盖和大规模互补系统的实现成本，实验规模达到 11,984 个互补对并覆盖 129 个 MacMPEC 嵌入测试。",
+      "order": 7
+    },
+    {
+      "arxiv_id": "2609.30117",
+      "version": 1,
+      "title": "Convergence Analysis of Newton Methods for Nonlinear Optimal Control Problems",
+      "authors": [
+        "Yushu Feng",
+        "Haisen Zhang"
+      ],
+      "submitted": "2026-09-24",
+      "updated": "2026-09-24",
+      "abstract": "The main purpose of this paper is to establish the local quadratic convergence of Newton's method for nonlinear optimal control problems. Under suitable smoothness assumptions, the cost functional is first shown to be twice Gâteaux differentiable with respect to the control. An explicit operator representation of its second derivative is derived, and its continuity in different control spaces is examined. The second-order coercivity condition in $L^2(0,T;\\mathbb{R}^m)$ is then shown to be equivalent to the existence of a strongly regular solution to an associated matrix Riccati differential equation, thereby expressing an infinite-dimensional quadratic-form condition in terms of the solvability of a matrix differential equation. On this basis, local quadratic convergence of Newton's method in $L^\\infty(0,T;\\mathbb{R}^m)$ is established using linear-quadratic optimal control theory. Under suitable structural assumptions, local quadratic convergence in $L^2(0,T;\\mathbb{R}^m)$ is also established. Explicit estimates of the corresponding convergence neighborhoods are derived, and the theoretical results are illustrated by numerical examples.",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.30117v1",
+      "summary": "非线性最优控制的 Newton 分析存在两范数困难：二阶强制性自然位于 $L^2$，而二阶导数的局部 Lipschitz 连续性通常只能在更强的 $L^\\infty$ 空间建立。该文给出控制变量下成本泛函二阶导数的显式算子表示，并证明 $L^2$ 二阶强制性等价于一个关联矩阵 Riccati 微分方程存在强正则解。借助线性二次控制理论，作者在 $L^\\infty$ 中建立局部二次收敛并给出显式收敛邻域；当动力学与成本对控制满足额外结构、特别是相应二阶控制导数消失时，还得到 $L^2$ 中的局部二次收敛。",
+      "reason": "推荐关注把无限维二次型强制性转化为可检查的 Riccati 方程正则性的桥梁。该等价关系不仅支撑 Newton、Lagrange--Newton 与 SQP 的局部收敛分析，也把抽象可逆性条件落到控制理论熟悉的矩阵微分方程；显式收敛半径进一步说明了局部结论对初值和问题常数的依赖。",
+      "order": 8
+    },
+    {
+      "arxiv_id": "2609.30173",
+      "version": 1,
+      "title": "GridSFM: A Foundation Model for Solving AC Optimal Power Flow",
+      "authors": [
+        "Luke Bhan",
+        "Weiwei Yang",
+        "Margaret Capetz",
+        "Baosen Zhang"
+      ],
+      "submitted": "2026-09-24",
+      "updated": "2026-09-24",
+      "abstract": "We introduce GridSFM, a framework that combines a pretrained foundation model across grid topologies with physics-informed fine-tuning for solving AC Optimal Power Flow (AC-OPF) at scale. It is a $15$ million parameter physics-inspired graph neural network pretrained across $54$ topologies of $500$ to $4{,}000$ buses. Our model attains a $2.45\\%$ zero-shot generation-cost error on a $10{,}000$ bus case held-out operating conditions with no degradation as system size grows. Building on this, we pair the pretrained backbone with a physics-informed fine-tuning design based on Newton's method for power flow. With only $100$ solved instances, GridSFM adapts to unseen grids up to $10{,}000$ buses. We show it out performs single topology, dedicated neural network models that are trained more data, both in terms of cost and solver iterations when deployed as warm starting points. In designing this foundation model, we overcome the fact that the feasible set for AC-OPF can be disconnected. This is an obstruction that prevents any continuous neural network from approximating the solution map. To do so, we lift the problem and relax its constraints with logarithmically penalized slacks. We prove that the resulting elastic feasible set is contractible, that the AC-OPF minimizers remain minimizers of the elastic problem above an explicit penalty threshold, and that projecting an approximate solution back onto the AC-OPF feasible set is well posed. We release all models, data, and code so that the community can build on a shared starting point for AC-OPF.",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.30173v1",
+      "summary": "AC-OPF 的可行集可能不连通，因而连续神经网络无法在整个参数域连续逼近其解映射。GridSFM 通过引入松弛变量与对数惩罚，把问题提升到一个可缩的弹性可行集；论文证明惩罚超过显式阈值后原 AC-OPF 局部极小点得到保留，并在 LICQ 与局部正则条件下证明近似解向原可行集的投影唯一、留在同一连通分支且局部 Lipschitz。算法以 54 个、500--4,000 节点电网预训练 1,500 万参数图网络，再用基于 Newton 潮流的物理微调；在仅 100 个已求解样本下可适配至 10,000 节点，并作为传统求解器暖启动。",
+      "reason": "这项工作值得关注的不是单纯扩大模型规模，而是先识别不连通可行集对连续学习器的拓扑障碍，再用弹性提升改变几何并给出回投影保证。它把可行集拓扑、精确惩罚式局部极小点保持和学习型暖启动放在同一框架中；同时应注意投影结论依赖 LICQ 和局部邻域，实验性能也不等同于全局最优保证。",
+      "order": 9
+    },
+    {
+      "arxiv_id": "2609.30220",
+      "version": 1,
+      "title": "Riemannian Gradient Descent for Gaussian Mixture Models with unknown diagonal covariances",
+      "authors": [
+        "Romane Giard",
+        "Yohann De Castro",
+        "Roland Denis",
+        "Clément Marteau"
+      ],
+      "submitted": "2026-09-24",
+      "updated": "2026-09-24",
+      "abstract": "This paper investigates the numerical resolution of the Beurling-LASSO (BLASSO), a convex optimization framework that promotes sparsity in the space of measures. We consider its application to the estimation of Gaussian mixture models (GMMs) with an unknown number of components and unknown diagonal covariance matrices. Our approach combines the Conic Particle Gradient Descent (CPGD) principle with Riemannian gradient descent, to account for the underlying Fisher-Rao geometry of Gaussian distributions. Our contributions are twofold. First, we provide theoretical guarantees for the convergence of our algorithm. In particular, we establish exponential local convergence under a non-degeneracy condition on the solution and relate this assumption to a separation condition on the underlying statistical target. Second, we address practical implementation aspects of CPGD and present numerical experiments illustrating its performance. On the test cases considered, these experiments suggest that CPGD is more robust to overspecification of the number of components than the EM algorithm. We also investigate the impact of component separation on recovery accuracy.",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.30220v1",
+      "summary": "未知分量数与未知对角协方差的高斯混合估计可写成测度空间上的 BLASSO，但粒子参数中的均值、协方差与权重具有不同几何尺度。该文把 Conic Particle Gradient Descent 与高斯族的 Fisher--Rao Riemannian 梯度结合，同时移动粒子位置、协方差和锥权重。在最优解满足对偶非退化、初始化落入局部邻域等条件下，作者证明指数局部收敛，并把非退化条件与真实分量的分离联系起来。数值实验显示该法在候选粒子数过度指定时比 EM 更稳健，但论文不提供从任意初始化出发的全局收敛保证。",
+      "reason": "推荐关注稀疏测度优化与统计流形几何的结合：Fisher--Rao 预条件使协方差更新适配高斯分布的内在尺度，而 BLASSO 的连续稀疏结构允许分量数由优化过程决定。局部指数收敛与可解释的分离条件给出了理论抓手；强局部性和非退化假设也清楚标示了后续全局化与初始化研究的空间。",
+      "order": 10
+    },
+    {
+      "arxiv_id": "2609.29961",
+      "version": 1,
+      "title": "A Contraction Framework for Stochastic Operators with Bootstrapping: Application to TD Learning",
+      "authors": [
+        "Ids van der Werf",
+        "Sergio Rozada",
+        "Antonio G. Marques"
+      ],
+      "submitted": "2026-09-24",
+      "updated": "2026-09-24",
+      "abstract": "Many iterative algorithms rely on bootstrapping. A variable is updated using a second, frozen copy as a target, which is periodically replaced with the updated variable. Majorize-minimize and inexact proximal-point methods share this structure, as does temporal-difference (TD) learning. However, existing convergence guarantees for scenarios that combine sampled updates with targets refreshed only every $K$ steps rely on the specific structure of the update, such as linear approximation or gradient-based inner steps, and on uniformly bounded sampling error. We instead model the sampled update as a stochastic operator on the parameter space, which reduces the analysis to a contraction argument that needs no gradient structure and allows the sampling error to grow with the iterates. Within this framework, we derive a finite-time bound for i.i.d. samples and any target-update period $K$. We show that the iterates converge geometrically in root mean square to a ball around the fixed point, provided the sensitivity to the frozen target is smaller than the contraction slack of the inner map. Existing deterministic frozen-target contraction and stochastic-gradient-type bounds follow as special cases of our framework, and simulations of TD learning reproduce the predicted contraction rate and scaling of the error floor with the step size.",
+      "directions": [
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.29961v1",
+      "summary": "许多 bootstrap 算法用一个冻结副本作目标，连续更新 $K$ 步后再刷新；既有分析往往依赖线性逼近或梯度结构，并要求采样误差一致有界。该文把内层更新抽象为对当前变量收缩、对冻结目标 Lipschitz 的随机算子，允许噪声尺度随迭代点仿射增长。在 i.i.d. 采样下，只要内层收缩和目标敏感度连同噪声增长项满足严格收缩条件，对任意刷新周期 $K$ 都能证明均方根几何收敛到固定点邻域。增大 $K$ 可改善按外层刷新计的收缩率，却不降低误差地板，也不必然提高按总样本计的效率。",
+      "reason": "最值得借鉴的是一个不依赖梯度形式的冻结目标收缩模板，可同时覆盖确定性 target network、随机梯度型更新及 TD 学习。条件把“内层能收缩多少”和“目标刷新会放大多少”直接分开，便于判断延迟刷新是否稳定；对 $K$ 的结论也提醒算法设计不能把较快外层收敛误认为更好的样本复杂度。",
+      "order": 11
+    },
+    {
+      "arxiv_id": "2609.29941",
+      "version": 1,
+      "title": "MF-SCBO : Multi-fidelity Scalable Constrained Bayesian Optimization",
+      "authors": [
+        "Lucas Palazzolo",
+        "Mickaël Binois",
+        "Laëtitia Giraldi"
+      ],
+      "submitted": "2026-09-24",
+      "updated": "2026-09-24",
+      "abstract": "Many real-world optimization problems rely on expensive simulations or experiments, making the efficient use of available data essential. Multi-fidelity optimization of high-dimensional black-box functions subject to black-box constraints is increasingly relevant as the cost of objective evaluations continues to rise in applications such as machine learning, engineering, and control. To our knowledge, no existing method simultaneously addresses high-dimensionality, black-box constraints, an arbitrary number of fidelity levels, and non-nested sampling. In this work, we extend the Scalable Constrained Bayesian Optimization method to the multi-fidelity setting, resulting in the MF-SCBO method. The proposed approach is evaluated on standard benchmark functions as well as challenging problems. The experimental results demonstrate that MF-SCBO generally achieves better convergence than both the single-fidelity SCBO and the other multi-fidelity method considered in this high-dimensional and constrained settings.",
+      "directions": [
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.29941v1",
+      "summary": "高维黑箱约束优化同时利用多保真数据时，还要处理任意保真层数与非嵌套样本，既有可扩展约束贝叶斯优化方法很少同时覆盖这些条件。MF-SCBO 在 SCBO 的局部信赖域框架中为目标建立多保真代理，并用约束模型筛选可行候选；作者提出基于真实观测中心和预测中心的两种信赖域更新方式，并用解析留一法准则在多保真数据间选择中心。基准实验覆盖最高 100 维，整体优于所比较的单保真 SCBO 与多保真方法。本文贡献以算法设计和实验为主，不给出收敛或遗憾理论，且约束本身按单一保真度观测。",
+      "reason": "推荐关注它对高维、黑箱约束、多保真与非嵌套数据四项实际困难的统一实现，尤其是解析留一法如何避免为信赖域中心选择反复重训代理。该方法为昂贵仿真预算分配提供了可复现实证路线；阅读时也应把实验优势与尚缺的理论保证、保真度无关约束假设区分开。",
+      "order": 12
+    }
+  ]
+}
