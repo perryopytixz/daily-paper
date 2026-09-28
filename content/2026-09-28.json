@@ -1,0 +1,312 @@
+{
+  "date": "2026-09-28",
+  "status": "complete",
+  "frontiers_status": "recommendations",
+  "highlights": [
+    {
+      "arxiv_id": "2402.13670",
+      "types": [
+        "group"
+      ],
+      "label": "流形束方法｜为历史次梯度补上曲率误差",
+      "text": "历史次梯度经平行移动后，以曲率余项修正近似次微分模型。实步、空步与几何回溯共同支撑全局收敛，条件包括测地凸性、内部最优解及非平坦情形下的有界定义域。"
+    },
+    {
+      "arxiv_id": "2208.05127",
+      "types": [
+        "field"
+      ],
+      "label": "免投影非光滑优化｜无需重启的一阶倒数速率",
+      "text": "用局部线性优化 oracle 控制累积模型误差，在有界次梯度与强凸条件下达到一阶倒数速率，无需预知终止时刻，查询点始终可行；更快保证依赖比普通线性最小化更强的 oracle。"
+    },
+    {
+      "arxiv_id": "2609.09731",
+      "types": [
+        "field"
+      ],
+      "label": "AB 迭代｜区分数值稳定与真正的全局最优",
+      "text": "针对凸可微目标和满秩固定点，以更新方向与梯度之差是否属于约束法空间刻画全局最优性，并构造后验误差证书；单调下降本身不足以保证最优。"
+    },
+    {
+      "arxiv_id": "2609.13755",
+      "types": [
+        "group"
+      ],
+      "label": "线性规划｜修复历史活动集并验证热启动结果",
+      "text": "复用上一投影的终端活动集，再对完整极凸包验证，保持冷启动 LP-Newton 的数学结果。实验将复用收益与初始化成本分开，也揭示部分实例上热启动会变慢。"
+    },
+    {
+      "arxiv_id": "2608.19491",
+      "types": [
+        "group"
+      ],
+      "label": "方向感知动量｜按输入统计调整历史梯度记忆",
+      "text": "以激活为键的 delta rule 让不同方向采用不同遗忘速度，给出缓冲区收缩与漂移滞后界，并在预训练中验证收益；记忆跟踪结论不等同于非凸训练全局收敛率。"
+    }
+  ],
+  "papers": [
+    {
+      "arxiv_id": "2402.13670",
+      "version": 4,
+      "title": "The Riemannian Convex Bundle Method",
+      "authors": [
+        "Ronny Bergmann",
+        "Roland Herzog",
+        "Hajg Jasa"
+      ],
+      "submitted": "2024-02-21",
+      "updated": "2026-09-23",
+      "arxiv_url": "https://arxiv.org/abs/2402.13670v4",
+      "abstract": "We introduce the convex bundle method to solve convex, non-smooth optimization problems on Riemannian manifolds of bounded sectional curvature. Each step of our method is based on a model that involves the convex hull of previously collected subgradients, parallelly transported into the current serious iterate. This approach generalizes the dual form of classical bundle subproblems in Euclidean space. We prove that, under mild conditions, the convex bundle method converges to a minimizer. Several numerical examples implemented using Manopt$.$jl illustrate the performance of the proposed method and compare it to the subgradient method, the cyclic proximal point algorithm, as well as the proximal bundle method.",
+      "directions": [
+        "optimization-frontiers",
+        "historical-information"
+      ],
+      "summary": "非光滑凸束方法依靠过去收集的次梯度建立局部模型，但流形上这些向量属于不同切空间，平行移动后也不能直接沿用欧氏误差界。该文在截面曲率有上下界的完备黎曼流形上，将历史次梯度运输到当前实步点，并用曲率相关余项修正其近似次微分解释；通过一个对偶二次子问题选择方向，以实步、空步和几何回溯共同更新模型。在测地强凸定义域、存在内部最优解且实步点无边界聚点等条件下，作者证明点列收敛到全局最优解；非平坦情形还要求定义域有界，正曲率时另有限制直径的条件。数值部分在球面、对称正定矩阵等实例上与次梯度及近端方法比较。",
+      "reason": "推荐重点阅读历史次梯度运输后的误差补偿，以及只有有限个实步时空步模型仍能逼近最优性的论证。这两处把“保存更多历史信息”落实为可认证的流形模型，适合研究束方法如何在几何空间中保留其收敛机制，而非简单把欧氏更新替换成指数映射。",
+      "order": 1
+    },
+    {
+      "arxiv_id": "2208.05127",
+      "version": 4,
+      "title": "Projection-Free Non-Smooth Convex Programming",
+      "authors": [
+        "Kamiar Asgari",
+        "Michael J. Neely"
+      ],
+      "submitted": "2022-08-10",
+      "updated": "2026-09-11",
+      "arxiv_url": "https://arxiv.org/abs/2208.05127v4",
+      "abstract": "We study nonsmooth convex minimization over a compact convex set without projections. For a globally $L$-Lipschitz objective, optimistic primal-dual updates give error at most $2LD/\\sqrt{T}$ after $T$ iterations, where $D$ is the set's diameter. Each iteration uses at most one linear optimization call and one subgradient query at a point that may lie outside the feasible set. For objectives that are $\\mu$-strongly convex on the feasible set, we present a direct method with error at most $32\\rho^2L^2/[\\mu(T+1)]$. It uses a local linear optimization oracle with expansion factor $\\rho$ and subgradients of norm at most $L$ queried only at feasible points. The method requires neither restarts nor advance knowledge of $T$. We give self-contained proofs and a short restart argument for the convex variant of the Garber-Hazan algorithm that removes the logarithmic factor from their error bound.",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "summary": "该文研究紧凸集上的非光滑凸最小化，区分普通线性优化 oracle 与更强的局部线性优化 oracle。对全局 Lipschitz 目标，作者给出乐观原始—对偶解释：每轮至多一次线性优化和一次次梯度查询，平均可行点取得 $2LD/\\sqrt{T}$ 的目标误差，但次梯度查询点可以在约束集外。对约束集上强凸且次梯度有界的目标，新的直接方法用扩张系数为 $\\rho$ 的局部 oracle 控制累积二次模型误差，达到 $32\\rho^2L^2/[\\mu(T+1)]$，所有查询点和输出均可行，且无需重启或预知终止时刻。文中另以重启论证消去既有强凸方法误差界中的对数因子。",
+      "reason": "值得阅读的是强凸情形下累积模型、局部 oracle 半径和模型误差递推的配合，它给出无需预设时域的具体实现。比较投影与免投影方法时，这篇工作也提供了清楚的 oracle 成本边界：较快保证依赖局部线性优化能力，不能直接归给普通线性最小化接口。",
+      "order": 2
+    },
+    {
+      "arxiv_id": "2501.13835",
+      "version": 5,
+      "title": "A Globally Convergent Method for Computing B-stationary Points of Mathematical Programs with Equilibrium Constraints",
+      "authors": [
+        "Armin Nurkanović",
+        "Sven Leyffer"
+      ],
+      "submitted": "2025-01-23",
+      "updated": "2026-09-08",
+      "arxiv_url": "https://arxiv.org/abs/2501.13835v5",
+      "abstract": "This paper introduces a computationally efficient method that converges globally to B-stationary points of mathematical programs with equilibrium constraints (MPECs). B-stationarity is necessary for optimality and means that no feasible first-order direction can improve the objective. It can be certified by solving a linear program with equilibrium constraints (LPEC) constructed at a given feasible point. The proposed method solves a finite sequence of LPECs, which either certify B-stationarity or provide an active set estimate for the complementarity constraints, along with branch nonlinear programs (BNLPs) obtained by fixing the complementarity active set in the MPEC. In particular, the method proceeds in two phases: the first identifies a feasible BNLP or a stationary point of a constraint infeasibility minimization problem, and the second solves a sequence of BNLPs until a B-stationary point of the MPEC is found. We prove that under the MPEC-MFCQ, the method requires solving only a finite number of BNLPs and LPECs for convergence. Moreover, we show that, unless the current iterate is B-stationary, the combinatorial LPECs need not be solved to optimality. For convergence, it suffices to compute a nonzero feasible point, which in practice often requires solving a single linear program, yielding significant computational savings. Numerical experiments show that the proposed method is more robust and faster than relaxation-based methods and mixed-integer NLP reformulations (which, in contrast to the proposed approach, do not provide a certificate of B-stationarity), even on medium- to large-scale instances.",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "summary": "带均衡约束的数学规划在退化互补点可能满足较弱乘子驻点条件，却仍有一阶可行下降方向。该文提出 MPECopt，先寻找可行分支或约束不可行度的驻点，再交替求解线性化均衡约束问题（LPEC）与固定互补活动集后的非线性子问题（BNLP）。LPEC 同时承担活动集辨识、下降方向发现和 Bouligand 驻点认证；尚未达到驻点时，许多步骤只需获得可行下降解，无须把组合子问题完全解到最优。在 MPEC-MFCQ 及相应子问题求解条件下，从可行点启动的第二阶段只需有限次 LPEC/BNLP 求解即可得到 B-驻点，或检测无界；第一阶段本身可能停在不可行度驻点。基准实验显示了相对松弛法与混合整数重构的稳健性和效率。",
+      "reason": "核心阅读价值是把“产生进展”和“最终认证”对内层求解精度的要求分开。对互补约束与非凸分支算法，这种设计能避免为了每一步下降支付完整组合最优化代价，同时保留比一般乘子驻点更有意义的终止证书；有限终止统计的是子问题求解次数，而非每个子问题的计算成本。",
+      "order": 3
+    },
+    {
+      "arxiv_id": "2609.09731",
+      "version": 1,
+      "title": "Conditions for Global Optimality in Quantum Arimoto-Blahut Algorithms",
+      "authors": [
+        "Geng Liu",
+        "Masahito Hayashi"
+      ],
+      "submitted": "2026-09-09",
+      "updated": "2026-09-09",
+      "arxiv_url": "https://arxiv.org/abs/2609.09731v1",
+      "abstract": "Generalized Arimoto--Blahut (AB) algorithms are widely used in information theory and quantum optimization, but monotonic objective decrease and numerical stabilization do not guarantee global optimality. We establish necessary and sufficient conditions for the global optimality of full-rank AB fixed points for convex differentiable objectives under linear constraints. An AB fixed point is globally optimal if and only if the AB update direction and the objective gradient differ by an element of the constraint normal space at that point. The same compatibility condition characterizes agreement between individual AB and mirror-descent (MD) updates, whereas pathwise equivalence requires it along the entire common trajectory. Thus, an AB algorithm may follow a trajectory different from MD and still reach the global optimum. We also develop a posteriori optimality certificates based on feasible directional derivatives, including finite-difference upper bounds on the objective gap that require only objective evaluations. For channel relative entropy between dephasing and depolarizing channels, we analytically identify the global minimizer as the unique full-rank AB fixed point, although pathwise equivalence fails. Numerical experiments illustrate convergence of AB and MD along different trajectories and validate the certificates. By contrast, an amplitude-damping example shows that a monotone AB iteration can stabilize at a suboptimal fixed point, whose nonoptimality is detected by the finite-difference certificate. These results provide structural and computable criteria for assessing global optimality in quantum AB algorithms.",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "summary": "广义量子 Arimoto–Blahut（AB）迭代即使目标单调下降，也可能稳定在非最优固定点。该文在具有线性约束的密度矩阵集合上，针对凸可微目标与满秩迭代建立几何判据：AB 更新方向与目标梯度之差属于约束法空间，当且仅当相应满秩 AB 固定点全局最优。同一条件在单点刻画 AB 与镜像下降的一步更新等价，而整条轨迹等价需要沿途均成立。作者进一步构造基于可行方向导数的后验最优性证书，并用函数值有限差分给出可计算的误差上界。量子信道相对熵实例分别展示了不同轨迹仍到达最优点，以及单调下降却停在次优点的情形。",
+      "reason": "推荐关注“固定点正确性”与“迭代形式等价性”的严格区分，以及不依赖完整梯度的后验认证。其法空间兼容条件给出一种可复用的检查方式：一个看似镜像下降的更新，需要满足什么条件才能把数值稳定解释为真正的最优性。",
+      "order": 4
+    },
+    {
+      "arxiv_id": "2609.08021",
+      "version": 1,
+      "title": "Bi-ZOL: Bilevel Zeroth-Order Learning with Nonsmooth Responses",
+      "authors": [
+        "Zhisen Jiang",
+        "Saverio Bolognani"
+      ],
+      "submitted": "2026-09-07",
+      "updated": "2026-09-07",
+      "arxiv_url": "https://arxiv.org/abs/2609.08021v1",
+      "abstract": "This paper studies lower-level-constrained bilevel optimization in a response-oracle setting, where lower-level model information is unavailable and the induced response mapping is locally Lipschitz but potentially nonsmooth. In this setting, the classical response Jacobian and reduced hypergradient may fail to exist. We propose Bilevel Zeroth-Order Learning (Bi-ZOL), a structure-guided zeroth-order method for finding stationary points of the nonsmooth reduced problem. Instead of estimating the gradient of a fully smoothed reduced hyperobjective, Bi-ZOL separates the bilevel chain-rule structure: it keeps the exact upper-level partial gradients at the queried response and uses zeroth-order sampling only to estimate the response Jacobian. This construction yields an approximate hypergradient that is more directly aligned with the Clarke chain-rule subdifferential. We show that the Bi-ZOL direction admits a partial-smoothing interpretation, quantify its pointwise structural bias, and prove finite-time convergence to a $(\\delta,\\epsilon)$-Bi-ZOL Frank--Wolfe stationary point. The bias is $O(\\delta)$ for piecewise $C^{1,1}$ responses under local regularity and vanishes for piecewise affine responses on active-cell neighborhoods. Experiments on incentive-based tracking problems show that Bi-ZOL achieves smaller stationarity gaps and lower hyperobjective values than vanilla zeroth-order smoothing under comparable response-oracle budgets.",
+      "directions": [
+        "optimization-frontiers",
+        "stochastic"
+      ],
+      "summary": "该文研究只能查询下层最优响应、且该响应局部 Lipschitz 但可能非光滑的约束双层优化。Bi-ZOL 保留在真实响应处计算的上层偏导，只对缺失的响应 Jacobian 进行随机零阶估计，避免把整个约化目标一并平滑。作者给出部分平滑解释、结构偏差界，并在紧凸上层约束集、单值响应及相应光滑与有界条件下，用 Frank–Wolfe 更新取得有限时间的 Bi-ZOL 驻点证书和响应查询复杂度。把这一证书转成 Clarke 型结论还须计入结构平滑误差；对满足局部正则性的分片光滑响应，该误差可控，分片仿射响应在适当活动单元邻域内可消失。激励跟踪实验比较了相同查询预算下与全目标平滑的差异。",
+      "reason": "最值得读的是只估计不可获得的链式法则部分，并显式追踪由此产生的偏差。对含黑箱模块的随机或零阶优化，这比把全部结构都当作黑箱更有针对性；同时，专用驻点残差与原问题广义驻点之间的转换条件也值得作为算法比较的检查项。",
+      "order": 5
+    },
+    {
+      "arxiv_id": "2609.13755",
+      "version": 1,
+      "title": "Row-Polar LP-Newton for Linear Programming with Corral Repair",
+      "authors": [
+        "Yanfei Li",
+        "Yuki Matsuno",
+        "Jianming Shi"
+      ],
+      "submitted": "2026-09-12",
+      "updated": "2026-09-12",
+      "arxiv_url": "https://arxiv.org/abs/2609.13755v1",
+      "abstract": "LP-Newton solves a linear program through a sequence of nearest-point problems. Given an interior feasible point for an inequality-form LP, we construct the compact hull formed by the origin and its normalized constraint rows. Polar LP-Newton (P-LPN) follows the objective ray to the boundary of this row-polar hull, where it recovers a primal-dual optimum or a recession direction proving unboundedness. For rational row-polar data, we prove an outer-iteration bound quadratic in dimension and linear in binary input length, excluding inner Wolfe work. Restarting Wolfe at every outer iteration discards its terminal corral even though the hull is unchanged and the next target lies on the same ray. Corral-repair P-LPN (CR-P-LPN) instead repairs that corral and uses it to start the next projection. Verification over the full hull preserves P-LPN's projections, outer targets, and LP conclusion in exact arithmetic. Experiments in Julia and MATLAB show where repair helps. After common initialization, median P-LPN times across 180 single-LP tests are 1.62 times the corresponding CR-P-LPN times in Julia and 1.55 times in MATLAB. On three problems with 5,000 to 100,000 rows, the corresponding geometric-mean factors are 2.03 and 1.46. A separate end-to-end study includes initialization on 19 application-derived LPs. CR-P-LPN has lower median total time than the faster cold HiGHS mode, either dual simplex or the interior-point method with crossover, on 18 of the 19 workloads in each language. The geometric means of the ratios of HiGHS time to CR-P-LPN time are 4.93 and 3.06. Component comparisons identify terminal-corral reuse as the useful component, whereas candidate-first ordering alone shows no consistent gain. Repair is not always beneficial: it is slower on Klee-Minty tests, and an author-implemented simplex is faster on the retained Netlib models.",
+      "directions": [
+        "optimization-frontiers",
+        "historical-information"
+      ],
+      "summary": "LP-Newton 连续求解同一凸包上的投影问题，若每轮重启 Wolfe 内层算法，就会丢失上一轮已经识别的有效活动集。该文先将有严格可行点的不等式线性规划变为归一化约束行构成的极凸包上的射线边界搜索，从终点恢复原始—对偶最优解或无界方向；对有理输入，外层迭代数为 $O(n^2L)$，其中 $L$ 是变换后数据的二进制长度，此界不包含内层投影成本。CR-P-LPN 修复并复用前一投影的终端 corral，再对完整凸包验证，因此在精确算术下保持冷启动方法的投影、外层目标点及最终结论。实验把初始化、活动集修复和候选检查顺序分别计量，也报告了 Klee–Minty 等实例中复用变慢的情形。",
+      "reason": "推荐阅读 corral 修复后的全域验证机制，以及将复用收益与初始化成本分开的实验设计。它说明历史活动集可以作为下一次子问题的高质量起点，同时无需改变原算法的数学结果；这种有证书的状态复用比仅报告热启动加速更便于迁移和评估。",
+      "order": 6
+    },
+    {
+      "arxiv_id": "2608.19491",
+      "version": 2,
+      "title": "Activation-Keyed Momentum: An Anisotropic Momentum Update via the Delta Rule",
+      "authors": [
+        "Euijin Hong",
+        "Guannan Qu"
+      ],
+      "submitted": "2026-08-19",
+      "updated": "2026-09-03",
+      "arxiv_url": "https://arxiv.org/abs/2608.19491v2",
+      "abstract": "Most modern optimizers form their momentum as an exponential moving average (EMA) of past gradients, forgetting every direction at one fixed rate. However, the inputs a deep network sees during training can be highly anisotropic, with a few directions queried frequently while most are seen rarely. Preconditioning methods address this anisotropy by wrapping extra processing around this buffer and leave the momentum update itself unchanged. We propose Activation-Keyed Momentum (AK-Momentum), which builds direction-awareness into the momentum update rule. The gradient of a linear layer splits into an input activation that acts as a key and an output-side error that acts as a value. Keying on that activation, AK-Momentum updates the momentum buffer by the canonical delta rule, so each direction is forgotten at a rate set by how often it appears. We prove that it is a valid momentum, that it applies the input-side curvature correction without matrix inversion, and that it clears stale directions faster than EMA under both a fixed and a drifting optimum. It is a drop-in replacement for the momentum buffer of any optimizer, its coefficient transfers across widths under $\\mu$P, and its extra compute stays between $22.2\\%$ and $25.0\\%$ of a gated-MLP block's linear cost with no persistent memory. In FineWeb-Edu pretraining, AdamW with AK-Momentum (AK-AdamW) reaches AdamW's validation loss in up to $46.39 \\pm 4.32\\%$ fewer steps at 67M and $22.12 \\pm 0.80\\%$ at 370M over three seeds, and the gain persists at 1B on a Chinchilla-optimal budget. A Muon baseline tuned under the same protocol sits above AK-AdamW at both language-model scales, and the gain holds for SGD, ResNet-18, and ViT-Tiny on CIFAR-10. Training-time diagnostics confirm the predicted mechanism, better gradient tracking and healthier input directions.",
+      "directions": [
+        "optimization-frontiers",
+        "historical-information"
+      ],
+      "summary": "标准指数平均动量对所有输入方向采用同一遗忘速度，难以适应训练数据的各向异性。该文提出 Activation-Keyed Momentum，把线性层输入激活视为键、反向误差视为值，用归一化键驱动的 delta rule 更新动量缓冲区。在线性及相应独立性模型下，作者解释其固定点对应输入侧曲率修正，并给出稳定参数范围内沿输入协方差方向的记忆收缩分析；对于缓冲区目标漂移，还推导稳态滞后误差界。这些结论针对动量记忆与跟踪机制，不是一般深度非凸训练的全局收敛率。语言模型预训练与视觉实验报告了替换动量后的损失改进，同时计入额外计算开销和宽度参数迁移。",
+      "reason": "这篇工作直接改变历史梯度的写入与遗忘规则，而不是只在动量外部附加预条件器。推荐关注各方向有效记忆长度如何由输入统计决定，以及理论上的缓冲区跟踪结果如何与实际优化收益分层验证；这是设计结构化历史信息机制的具体思路。",
+      "order": 7
+    },
+    {
+      "arxiv_id": "2512.20791",
+      "version": 3,
+      "title": "Extragradient methods with complexity guarantees for hierarchical variational inequalities",
+      "authors": [
+        "Pavel Dvurechensky",
+        "Meggie Marschner",
+        "Shimrit Shtern",
+        "Mathias Staudigl"
+      ],
+      "submitted": "2025-12-23",
+      "updated": "2026-09-03",
+      "arxiv_url": "https://arxiv.org/abs/2512.20791v3",
+      "abstract": "In the framework of a real Hilbert space we consider the problem of approaching solutions to a class of hierarchical variational inequality problems, subsuming several other problem classes including certain mathematical programs under equilibrium constraints, constrained min-max problems, hierarchical game problems, optimal control under VI constraints, and simple bilevel optimization problems. For this general problem formulation, we establish rates of convergence in terms of suitably constructed gap functions, measuring feasibility gaps and optimality gaps. We present worst-case iteration complexity results on both levels of the variational problem, as well as weak convergence under a geometric weak sharpness condition on the lower level solution set. Our results match and improve the state of the art in terms of their iteration complexity and the generality of the problem formulation.",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "summary": "该文研究实 Hilbert 空间中的分层变分不等式：在下层均衡解集上进一步满足上层最优性条件，统一包含简单双层优化与均衡约束问题。作者把递减正则化与乐观外梯度步骤结合，每轮复用上一半步的算子信息，并分别控制下层可行性间隙与上层最优性间隙。在单调 Lipschitz 算子、解存在、规定的正则序列，以及轨迹有界性所需的几何条件或紧定义域条件下，给出两个层级的遍历复杂度界；幂次正则化带来两类误差的显式权衡。下层解集的弱尖锐性还能控制上层间隙的负部；加入定义域相容条件后，作者证明遍历平均点弱收敛到分层解。",
+      "reason": "阅读重点是同时追踪可行性与最优性，而不是用单一正则化目标的下降替代原分层问题的进展。其间隙函数、弱尖锐性和正则速度之间的联系，为比较双层方法中“接近下层解集”与“在解集上继续优化”的代价提供了明确框架。",
+      "order": 8
+    },
+    {
+      "arxiv_id": "2509.02894",
+      "version": 2,
+      "title": "A proximal augmented Lagrangian method for nonconvex optimization with equality and inequality constraints",
+      "authors": [
+        "Adeyemi D. Adeoye",
+        "Puya Latafat",
+        "Alberto Bemporad"
+      ],
+      "submitted": "2025-09-02",
+      "updated": "2026-09-15",
+      "arxiv_url": "https://arxiv.org/abs/2509.02894v2",
+      "abstract": "We propose an inexact proximal augmented Lagrangian method (P-ALM) for nonconvex structured optimization problems. The proposed method features an easily implementable rule not only for updating the penalty parameters, but also for adaptively tuning the proximal term. It allows the penalty parameter to grow rapidly in the early stages to speed up progress, while ameliorating the issue of ill-conditioning in later iterations, a well-known drawback of the traditional approach of linearly increasing the penalty parameters. A key element in our analysis lies in the observation that the augmented Lagrangian can be controlled effectively along the iterates, provided an initial feasible point is available. Our analysis, while simple, provides a new theoretical perspective about P-ALM and, as a by-product, results in similar convergence properties for its non-proximal variant, the classical augmented Lagrangian method (ALM). Numerical experiments, including convex and nonconvex problem instances, demonstrate the effectiveness of our approach.",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "summary": "非凸等式与不等式约束下，增广拉格朗日方法的罚参数增长既影响可行性推进，也影响内层病态程度。该文提出可行初值启动的非精确近端增广拉格朗日方法，允许目标包含易计算近端映射的凸非光滑项，并联合调整罚参数与近端强度。作者以初始可行点作为增广拉格朗日值的控制基准，将乘子增长与罚参数联系起来，不要求通过截断把乘子固定在预设有界集。满足目标下界、参数增长及内层残差等假设时，方法有限步达到给定精度的近似 KKT 条件；移除近端项可得到经典 ALM 的相应结论。这里的结论是近似 KKT 终止，不是整个点列收敛，且可行初值不意味着中间迭代始终可行。",
+      "reason": "推荐关注初始可行点如何转化为拉格朗日值及缩放乘子的控制，以及近端强度必须如何配合罚参数增长。它为非凸 ALM 提供了较直接的分析工具，也有助于区分数值参数更新规则、可行性改善与驻点终止之间各自需要的条件。",
+      "order": 9
+    },
+    {
+      "arxiv_id": "2609.12241",
+      "version": 1,
+      "title": "Transform before linearizing: robust Newton methods for singular $p$-Laplace and $p$-Stokes equations",
+      "authors": [
+        "Gonzalo G. De Diego",
+        "Fortino Garcia",
+        "Georg Stadler",
+        "Kewei Wang"
+      ],
+      "submitted": "2026-09-10",
+      "updated": "2026-09-10",
+      "arxiv_url": "https://arxiv.org/abs/2609.12241v1",
+      "abstract": "For $1<p<2$, the $p$-Laplace equation and its $p$-Stokes generalization are difficult to solve numerically. Newton's method converges rapidly only close to the solution, with iteration counts that grow under mesh refinement and deteriorate as $p\\to1$. The more robust Picard iteration converges only linearly. Rather than globalizing or preconditioning Newton's method, we modify the system to which it is applied. We \\emph{lift} the equation by introducing the flux $|\\nabla u|^{p-2}\\nabla u$ as an auxiliary (or ''lifting'') variable, apply a nonlinear \\emph{transformation} to the resulting constitutive relation, \\emph{linearize}, and \\emph{eliminate} the auxiliary variable by static condensation. Lifting alone leaves the linearization unchanged; it is the preceding transformation that yields the new method. The elimination is algebraic and pointwise at the quadrature points, so the flux variable is never discretized, no inf-sup condition or indefinite system arises, and the cost per iteration is that of a standard Newton step. Together with a pointwise feasibility bound on the lifting variable that keeps the diffusion tensor uniformly positive definite, this yields an iteration that we prove, in finite dimensions and for the $p$-Laplace equation, to converge globally and locally at a quadratic rate; a one-dimensional model problem explains why the lagged flux variable removes the zig-zag behavior of standard Newton for $p$ close to one. Firedrake-based experiments for $p$-Laplace problems in two and three dimensions and for stationary and time-dependent $p$-Stokes flows show iteration counts largely insensitive to $p$ and to mesh refinement, and up to an order of magnitude fewer iterations than standard Newton for $p$ close to one.",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "summary": "在 $1<p<2$ 的奇异 $p$-Laplace 问题中，标准 Newton 法常在平坦区域来回摆动，而 Picard 法虽较稳健但较慢。该文先引入通量辅助变量，对本构关系做非线性变换，再线性化并逐点消去辅助量，形成与标准 Newton 单步成本相近的求解方法。配合线搜索与保持扩散张量正定的点态保护，作者对有限维离散且正则化的 $p$-Laplace 能量问题证明全局收敛及局部二次收敛，并用一维模型解释滞后通量缓解摆动的机制。数值实验推广到 $p$-Stokes 和时变流动，显示对网格与接近 1 的指数较稳健；这些扩展的经验表现并未被同样完整的理论覆盖，证明中的常数仍会随 $p$ 接近 1 而恶化。",
+      "reason": "值得借鉴的是在线性化之前改变等价系统，而不是只在既有 Newton 步之后做阻尼或预条件。辅助变量无需额外空间离散即可改变迭代曲率，这为结构化凸能量最小化中的算法设计提供了清楚实例；一维机制解释与高维理论边界也分得较为明确。",
+      "order": 10
+    },
+    {
+      "arxiv_id": "2609.13569",
+      "version": 1,
+      "title": "A pullback-corrected scalar auxiliary variable optimizer with momentum and adaptive mobility",
+      "authors": [
+        "Jiahao Zhang",
+        "Shiheng Zhang",
+        "Guang Lin"
+      ],
+      "submitted": "2026-09-11",
+      "updated": "2026-09-11",
+      "arxiv_url": "https://arxiv.org/abs/2609.13569v1",
+      "abstract": "Objectives in scientific machine learning are often prescribed as a sum of several terms, such as the residual, boundary, initial, and data losses of a physics-informed neural network. In the pullback-corrected scalar auxiliary variable (PB--SAV) method, one scalar tracks the shifted objective while the component gradients build a positive semidefinite curvature correction of rank at most the number of components. We carry that correction into an optimizer with momentum and an adaptive mobility, applying it to the gradient and the stored momentum in a single implicit solve. A mobility that is nonincreasing in the Loewner order yields an exact modified energy law, covering Euclidean and AMSGrad-type choices; the corresponding identity for momentum appended after the solve carries a cross term of indefinite sign. For a fixed mobility we give a necessary and sufficient condition for local stability at a stationary point, depending on the Hessian minus twice the correction, and show that it also gives local geometric convergence for every scalar relaxation sequence. The implicit solve reduces to a dense system whose order is the number of components. In the forward Burgers comparison, four components reduce the mean tail objective by 64.7% and the final solution error by 50.2% relative to one component at the same learning rate and momentum settings.",
+      "directions": [
+        "historical-information"
+      ],
+      "summary": "多项损失的梯度可能相互抵消，使只依赖总梯度的标量辅助变量方法遗漏有用曲率。该文在 pullback-corrected SAV 框架中，用各分量梯度构造低秩半正定校正，把新梯度与历史动量同时放进一次隐式求解，再结合可变度量更新。对于按 Loewner 序不增的正定度量，作者建立精确的修正能量恒等式；若在求解之后直接附加动量，则会出现不定号交叉项。固定度量时，文中给出由 Hessian 与校正矩阵共同决定的局部稳定条件，并在非退化极小点附近证明局部几何收敛；一般驻点与最佳迭代梯度界还需要度量、曲率和辅助变量比例的统一控制。低秩结构把隐式求解缩减为与损失分量数相当的小系统。",
+      "reason": "推荐关注动量应放在隐式求解的哪一侧，以及这一选择如何改变可证明的能量下降。它把历史信息、分量曲率与自适应度量放进同一个可检查的恒等式，适合用于设计多损失优化中的稳定加速；修正能量下降与原目标下降须分别理解。",
+      "order": 11
+    },
+    {
+      "arxiv_id": "2605.04269",
+      "version": 2,
+      "title": "Adapt or Forget: Provable Tradeoffs Between Adam and SGD in Nonstationary Optimization",
+      "authors": [
+        "Sharan Sahu",
+        "Abir Sarkar",
+        "Cameron J. Hogan",
+        "Martin T. Wells"
+      ],
+      "submitted": "2026-05-05",
+      "updated": "2026-09-11",
+      "arxiv_url": "https://arxiv.org/abs/2605.04269v2",
+      "abstract": "We provide a theoretical analysis of Adam under non-stationary stochastic objectives, separating two regimes: Euclidean tracking under adaptive strong monotonicity of the Adam-preconditioned mean-gradient operator, and high-probability projected stationarity guarantees under general $L$-smooth objectives. In the tracking regime, we derive finite-time expected and high-probability bounds that decompose sharply into four components: initialization, objective drift, a first-moment tracking error governed by $\\beta_1$, and a preconditioner perturbation governed by $\\beta_2$. We characterize the burn-in time required for the transient terms to decay to the asymptotic tracking bound under constant and step-decay schedules. We also prove a high-probability bound on the average projected stationarity gap for Adam under distribution shift. Across both analyses, our bounds reveal a noise--drift tradeoff: in noise-dominated regimes, first-moment averaging and adaptive preconditioning can yield favorable upper guarantees, whereas in drift-dominated regimes, stale first-moment information and preconditioner perturbations can enlarge Adam's tracking guarantee, potentially allowing vanilla SGD to attain a smaller tracking error. Our explicit $(\\beta_1,\\beta_2,\\epsilon)$-dependent bounds identify mechanisms through which adaptive step-sizing can help or hurt under nonstationarity and provide theoretical explanations consistent with Adam's empirical instability and stabilization under distribution shift.",
+      "directions": [
+        "historical-information",
+        "stochastic"
+      ],
+      "summary": "该文分析目标分布随时间变化时 Adam 的随机优化行为，区分最优点跟踪与一般光滑目标的投影驻点两种保证。跟踪分析要求 Adam 预条件后的条件均值梯度映射满足强单调性；由于实际预条件器依赖当步样本，作者使用可预测代理并单独控制两者的差。有限时间期望及高概率界将误差拆为初始化、目标漂移、一阶动量滞后和二阶预条件扰动，并给出达到误差平台所需的预热时间。另一组结果在相应有界与噪声条件下控制平均投影驻点间隙。与 SGD 的比较揭示降噪和追踪漂移之间的取舍，但比较的是参数化上界，不能据此断言某算法在全部实例上实际更快。",
+      "reason": "推荐阅读可预测预条件代理的构造与误差分解，它处理了自适应缩放和当前噪声相互依赖的关键分析困难。对历史动量的研究而言，这提供了把记忆带来的降噪收益与陈旧信息代价分别量化的方法，也说明分布变化时仅调整学习率可能不足以解释算法行为。",
+      "order": 12
+    },
+    {
+      "arxiv_id": "2609.23007",
+      "version": 1,
+      "title": "Analysis of Bregman Proximal Point for the Obstacle Problem",
+      "authors": [
+        "Brendan Keith",
+        "Haojun Qin",
+        "Noe Reyes Rivas"
+      ],
+      "submitted": "2026-09-19",
+      "updated": "2026-09-19",
+      "arxiv_url": "https://arxiv.org/abs/2609.23007v1",
+      "abstract": "We study the Bregman proximal point method for the obstacle problem, a fundamental variational inequality arising in contact mechanics, optimal design, and mathematical finance. Each Bregman proximal step regularizes the energy through a Bregman divergence generated by a Legendre function, leading to a semilinear elliptic subproblem. We first establish a well-posedness and strict feasibility theory for these subproblems. We then analyze the convergence of the resulting iteration in the $H^1$-norm. Our convergence analysis is based on a sequential strict local minimality inequality. We show abstractly how the order of minimality determines the convergence rate. Assuming that the initial guess lies above the exact solution and a one-sided Bregman growth condition holds, we establish sequential strict local minimality of order $s \\geq 2$ and derive sublinear convergence rates in the $H^1$-norm of the form $O(k^{-\\zeta})$, where $\\zeta\\in(1/2,1]$ depends on the choice of Legendre function. For the Shannon and Tsallis entropies, we show that these rates are sharp in a uniform worst-case sense. Under additional assumptions on the free boundary and the obstacle, we establish sequential strict local minimality of order $s = 1$ with the Shannon and Spence entropies. This yields linear convergence of the form $O(\\varrho^k)$ for some $\\varrho\\in(0,1)$.",
+      "directions": [
+        "safety-critical"
+      ],
+      "summary": "该文研究障碍约束能量最小化中的 Bregman 近端点迭代：通过 Legendre 函数把点态可行约束编码进半线性椭圆子问题，并证明每一步适定且严格处于障碍之上，允许极限解最终接触障碍。作者以顺序严格局部极小性不等式连接可行域几何与收敛速度。在初值位于真解上方、满足单侧 Bregman 增长及边界相容等条件下，固定步长的 $H^1$ 误差达到 $O(k^{-\\zeta})$、$\\zeta\\in(1/2,1]$；对 Shannon 与 Tsallis 熵，文中用问题族证明相应统一最坏情形速率的尖锐性。附加自由边界与障碍正则条件后，Shannon 与 Spence 熵可取得线性收敛。",
+      "reason": "推荐关注严格可行子问题如何在逼近活动约束时仍保持适定，以及熵的边界增长怎样决定收敛速率。它与逐步保持可行的优化方法有直接联系，同时展示了安全裕量逐渐消失时需要哪些几何条件；这里的保证属于无限维障碍问题的精确近端迭代，数值离散和非精确求解的安全性需另行分析。",
+      "order": 13
+    }
+  ]
+}
