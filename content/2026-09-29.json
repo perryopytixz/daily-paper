@@ -560,28 +560,6 @@
       "order": 23
     },
     {
-      "arxiv_id": "2609.30655",
-      "version": 1,
-      "title": "Certificate-Carrying Distributed Model Predictive Control on Product Manifolds with $\\mathrm{SO}(3)$",
-      "authors": [
-        "Shengjun Zhang",
-        "Tingyi Liu",
-        "Lei Xu",
-        "Tao Yang"
-      ],
-      "submitted": "2026-09-25",
-      "updated": "2026-09-25",
-      "abstract": "This paper studies constraint certification in synchronous distributed model predictive control (DMPC) when neighboring predictions change between sampling instants. Before the parallel local solves, each agent communicates a shifted prediction and an announced update budget. A hard trajectory trust region makes that budget enforceable, while an edge-wise feasibility cap computed from the shifted packets keeps the fallback feasible without using any current optimizer output. Distance and relative-attitude constraints are tightened with explicit Lipschitz constants and two budget layers: one accounts for the simultaneous neighbor update and the other retains a checkable shift reserve. We prove hard pairwise constraint satisfaction and recursive feasibility under stated nominal-execution and terminal assumptions, give the additional residual caused by execution error, and derive a local practical value-decrease bound. A spacecraft formation example uses hard terminal and pairwise constraints, a geodesic relative- attitude constraint on $\\mathrm{SO}(3)$, and reproducible terminal-set checks. Comparisons with fixed, trajectory-only, and windowed online margins show that the proposed budget reduces conservatism while preserving a positive shifted-feasibility margin.",
-      "arxiv_url": "https://arxiv.org/abs/2609.30655v1",
-      "directions": [
-        "safety-critical",
-        "distributed"
-      ],
-      "summary": "该文为乘积流形上的分布式模型预测控制设计可行性证书。节点先交换信息并固定邻接约束预算，再在硬信赖域与两层约束收紧下独立优化；移位的旧预测轨迹构成可行回退方案。在名义精确执行、相容终端条件及规定的同步通信流程下，证书维持成对耦合约束与递归可行性，并给出局部实用型价值下降结果。执行误差需要额外预算，不能把名义保证直接解释为任意扰动下安全或全局稳定。",
-      "reason": "推荐关注先固定邻居预算、再开展本地优化的顺序：它切断了并行更新中相互依赖的可行性循环。历史可行轨迹与硬约束证书结合，是分布式安全优化中可直接研究的算法结构。",
-      "order": 24
-    },
-    {
       "arxiv_id": "2609.30898",
       "version": 1,
       "title": "A Bregman inertial iteratively regularized extragradient method for bilevel variational inequality problems",
@@ -599,7 +577,7 @@
       ],
       "summary": "针对双层变分不等式，该文把惯性外推放在 Bregman 对偶坐标中，使其与三点恒等式和近端几何相容。对单调 Lipschitz 算子、适当的强凸 Legendre 核及有界间隙域、惯性误差可求和等条件，递减正则化分别给出最优性 $O(k^{-(1-b)})$ 与可行性 $O(k^{-b})$ 的平均间隙界；常正则化可以得到 $O(k^{-1})$ 迭代项，但保留与正则化参数相关的可行性偏差。惯性结构本身并不意味着这些复杂度阶得到加速。",
       "reason": "推荐阅读外推位置如何由几何恒等式决定，以及正则化偏差与历史位移如何进入同一个误差账本。对非欧式双层算法，这比直接把欧式动量公式替换进去更有方法价值。",
-      "order": 25
+      "order": 24
     },
     {
       "arxiv_id": "2609.21089",
@@ -618,7 +596,7 @@
       ],
       "summary": "该文研究欧氏球的半正定表示究竟需要多大的矩阵。利用半正定锥面的维数与极点集合的半代数维数，作者证明直接线性矩阵不等式表示的最小尺寸为 $n$，允许扩展变量时最小尺寸为 $\\lceil2\\sqrt{n-1}\\rceil$（$n\\ge2$），并给出达到界的构造。论证还产生基于极点维数的更一般表示下界，区分直接表示与投影扩展的不同能力。",
       "reason": "推荐阅读用几何维数获得精确表示规模下界的方法。对连续优化建模而言，辅助变量能节省多少半正定矩阵尺寸是实质性的计算问题；这篇工作给出了既有下界又有匹配构造的清晰范例。",
-      "order": 26
+      "order": 25
     },
     {
       "arxiv_id": "2604.22138",
@@ -637,7 +615,7 @@
       ],
       "summary": "该文分析标量折扣 LQR 中无偏置、单隐层残差 ReLU 策略的精确梯度训练。神经参数更新在两个半轴上诱导不同的有效反馈增益，并带来状态相关预条件、二阶修正和激活切换误差。对可控系统，在最优折扣增益同时稳定、初始状态两侧具有正的有限二阶矩，以及指定高斯初始化尺度和足够宽度等条件下，作者证明高概率初始化事件上所有更新均留在稳定裕度区域，代价与有效增益几何收敛。固定问题和初始化尺度后，可用步长无需随宽度缩小；结论针对标量模型与精确梯度。",
       "reason": "推荐阅读神经参数化如何改变策略梯度的预条件结构，以及逐次稳定性如何与几何收敛共同证明。它给出了一个可以逐项追踪激活切换误差的安全优化范例，而非仅以最终控制性能判断训练是否稳定。",
-      "order": 27
+      "order": 26
     },
     {
       "arxiv_id": "2605.05660",
@@ -659,7 +637,7 @@
       ],
       "summary": "分布鲁棒多目标优化中，即使原始损失梯度有界，分布鲁棒对偶变量的梯度仍可能无界。该文对散度惩罚的多目标模型提出单循环 DoubleClip，同时控制原始、对偶和偏好更新，避免反复求解内层对偶问题及双重采样。在损失 Lipschitz、光滑、方差有界，以及散度共轭满足光滑性等条件下，固定置信度时达到近似 Pareto 驻点的样本复杂度为 $O(\\epsilon^{-4})$，改进所比较双循环跟踪方案的八次精度依赖。结论涉及特定驻点证书，不保证找到全局 Pareto 前沿。",
       "reason": "最值得读的是裁剪如何替代高精度对偶跟踪，并处理原始梯度与对偶梯度增长行为不一致的问题。对含鲁棒内层的随机优化，这一误差控制方式比简单增加批量更有算法设计价值。",
-      "order": 28
+      "order": 27
     },
     {
       "arxiv_id": "2605.17963",
@@ -678,7 +656,7 @@
       ],
       "summary": "该文将 saddle-free Newton 推广到概率测度上的 Wasserstein 优化，以平滑绝对 Hessian 的逆作用于梯度，保留负曲率方向上的排斥作用，并用与核算子平方协方差匹配的高斯扰动逃离鞍点。在 Hessian 有界、沿耦合 Lipschitz、近临界区域乘法算子部分足够小等条件下，作者给出近似二阶驻点复杂度 $\\widetilde O(\\epsilon^{-2}+\\delta^{-3})$，其中还要求一阶精度与曲率阈值相容。相对比较方法，改善的是鞍点逃逸项；若取 $\\epsilon=\\Theta(\\delta^2)$，整体仍由四次精度项主导。局部谱分析进一步区分正谱隙下的几何衰减与谱源条件下的多项式衰减。",
       "reason": "推荐阅读无限维 Hessian 的乘法—核分解及扰动协方差设计。它把有限维负曲率逃逸的直觉转化为需要可追踪谱条件的测度空间算法，且清楚揭示局部快速收敛与全局逃逸复杂度来自不同机制。",
-      "order": 29
+      "order": 28
     },
     {
       "arxiv_id": "2605.23061",
@@ -701,7 +679,7 @@
       ],
       "summary": "SFNorMuon 将 schedule-free 三序列平均与谱归一化矩阵方向结合，并研究权重衰减应该作用于哪个序列。该文对理想化谱方向方法，在 Frobenius 光滑、无偏有限方差和快速序列有界等条件下，建立平均核范数梯度的随机 $\\widetilde O(T^{-1/4})$ 与确定性 $\\widetilde O(T^{-1/2})$ 界；证明中相应参数随分析时域选择，固定参数界保留噪声与离散化余项。快速序列上的适当衰减可用于保证有界性。语言模型实验支持持续训练的实用性，但理论不等于任意固定参数都具有无误差的任意时刻保证。",
       "reason": "推荐关注历史平均、矩阵方向和权重衰减位置之间的相互作用。把实践中的免日程训练与定理中的参数依赖分开阅读，有助于判断哪些稳定性来自算法结构，哪些仍依赖分析时域。",
-      "order": 30
+      "order": 29
     },
     {
       "arxiv_id": "2607.21975",
@@ -722,7 +700,7 @@
       ],
       "summary": "LoRA 的双线性参数化使原目标光滑也不能保证因子目标全局光滑。该文首先构造普通 LoRA-SGD 的反例：原梯度具有有限方差时，一步后因子目标或梯度矩仍可发散。作者随后同时归一化两因子的更新并加入动量，在规定的光滑性与无偏有限方差条件下给出 $O(\\epsilon^{-8})$ 因子驻点复杂度；增加同样本均方光滑信息的 STORM 版本改进到 $O(\\epsilon^{-6})$。确定性自适应步长分析也把相应的指数复杂度界改进为多项式界。驻点指标针对因子目标，不等同于完整权重空间的一阶最优性。",
       "reason": "最值得读的是双线性重参数化如何放大尾部，并使常规有限方差假设失效。反例与归一化、递归估计的正面结果配套，给研究低秩随机优化的稳定性提供了具体路线。",
-      "order": 31
+      "order": 30
     },
     {
       "arxiv_id": "2609.32195",
@@ -742,7 +720,7 @@
       ],
       "summary": "该文用 Orlicz 空间描述比任意次 Weibull 尾更重、但仍具有所有多项式矩的梯度噪声，涵盖对数正态型尾部。对样本损失一致光滑、原点梯度和初始差距受控，且步长及沿轨迹梯度位移满足规定条件的普通 SGD，作者建立经验与总体梯度的高概率加权平均界，并在 PL 条件下分析末次风险。尾部代价显式表现为次多项式、但通常快于多对数的置信度因子。裁剪变体放宽部分轨迹与步长限制，但使用不同的驻点度量。这里的重尾模型不包含无限方差噪声。",
       "reason": "推荐关注噪声尾部、步长累积量和轨迹一般化误差的分离。它填补了次 Weibull 分析与仅有限低阶矩分析之间的一类分布，也提醒比较重尾结果时必须核对矩条件和驻点指标。",
-      "order": 32
+      "order": 31
     },
     {
       "arxiv_id": "2609.32290",
@@ -761,7 +739,7 @@
       ],
       "summary": "该文通过密集学习率扫描，研究训练进入稳定性边缘之前动量优化器如何影响轨迹。对可写成线性梯度滤波器的一组方法，作者以滤波器直流增益归一化学习率，观察到多种 MLP、CNN 和小型 ViT 任务中，损失、尖锐度及相邻梯度对齐曲线在相当范围内近似重合；较大学习率下，滤波器的稳定边界才决定脱离共同曲线的位置。低、中、高学习率区间由此对应不同机制。主要发现来自指定任务和大批量实验，结合线性稳定性分析解释，不是任意模型或 Adam 类自适应预条件方法的普遍定理。",
       "reason": "推荐阅读直流增益归一化这一比较实验的方法：它先消除历史滤波对有效步长的影响，再辨认优化器真正改变的稳定边界。这比直接用同一名义学习率比较动量算法更容易形成可检验的机制判断。",
-      "order": 33
+      "order": 32
     },
     {
       "arxiv_id": "2609.32393",
@@ -779,7 +757,7 @@
       ],
       "summary": "退火去噪强度会使 plug-and-play 优化的隐式目标随迭代改变。该文对可由势函数表示的梯度步或近端去噪器，在联合光滑、次解析、强制性和统一增长控制等条件下，允许噪声水平任意单调下降到正的终值，并证明相应 RED 迭代的渐近终端驻点性质；移动目标的最小梯度平方具有 $O(1/K)$ 界。随机 SNORE 在非可求和、平方可求和步长下几乎必然趋近其期望平滑终端目标的驻点。确定性整列点收敛和更强终端速率需要额外退火速度条件，且 RED 与 SNORE 的终端目标不同。",
       "reason": "推荐关注随机逼近中如何容纳不断变化却最终稳定的目标，以及哪些结论需要误差可求和。论文把退火调参从经验操作变成可分析的优化过程，但所需保守势结构不能自动套用于任意神经去噪器。",
-      "order": 34
+      "order": 33
     },
     {
       "arxiv_id": "2609.32573",
@@ -797,9 +775,9 @@
       "directions": [
         "distributed"
       ],
-      "summary": "该文研究联邦 on-policy 蒸馏中，聚合误差如何通过下一轮的自生成轨迹继续放大。在两阶段高斯自回归模型中，即使客户端共享同一目标且局部步长稳定，多步本地更新后再平均也会落后于集中更新；上游偏差进一步改变下游可访问的训练轨迹，形成聚合—采样反馈。作者据此提出 FedTOPS，复用当前教师反馈，按客户端预测变化约束调节聚合更新幅度，并在六个数学推理基准上报告改进。理论描述可解模型中的机制，不是一般语言模型的全局收敛或逐步安全保证。",
-      "reason": "推荐关注本地多步聚合误差如何改变后续数据分布。它把分布式优化中的客户端漂移与内生采样联系起来，源交换实验也帮助区分单轮聚合误差和跨轮反馈。",
-      "order": 35
+      "summary": "该文研究联邦 on-policy 蒸馏中，多步本地更新的聚合偏差如何改变下一轮自生成数据，继而影响后续优化。作者在共享最优解、稳定步长的两阶段高斯模型中证明，联邦更新仍可能落后于集中更新，并用交换采样源的比较分离直接聚合滞后与下游监督延迟。对一般光滑局部模型，二阶展开把单轮偏差写成客户端 Hessian 与梯度异质性的协方差项；跨轮传播另包含数据源随参数变化的导数，该项并不总会放大偏差。FedTOPS 据此复用当前教师反馈，在各客户端的预测变化约束下调节聚合幅度，六个数学推理基准的实验报告了改善。可解模型的精确比较与一般模型的局部展开各有适用范围，不构成语言模型训练的全局收敛保证。",
+      "reason": "推荐重点阅读定理 1 的采样源交换比较和命题 2 的局部偏差分解：前者隔离“聚合影响未来监督”的反馈，后者区分偏差的产生与传播。它们把客户端异质性导致的优化漂移拓展到参数会改变训练数据分布的情形，具有明确的分布式优化机理价值；FedTOPS 的实验收益应与这些理论结论分别理解。",
+      "order": 34
     },
     {
       "arxiv_id": "2609.27577",
@@ -820,9 +798,9 @@
       "directions": [
         "historical-information"
       ],
-      "summary": "多模态训练只缩放当前梯度，无法同步改变优化器已经积累的历史记忆。VCMM 用分类器探针的分批梯度差估计小批量噪声，再从相邻梯度变化中提取漂移信号，以类似稳态 Kalman 增益的控制器设置各模态动量。跨模态居中的控制量保留基准记忆尺度，并对时变系数执行初始化偏差校正。作者在四个多模态基准报告改进，无需额外网络前向；工作主要贡献是自适应历史记忆机制与实验，未给出一般非凸收敛保证。",
-      "reason": "推荐关注根据噪声与漂移的相对大小选择“记多久”，而不只调节当前步幅。分批探针、时间差分和跨模态居中各自承担明确作用，适合研究历史梯度控制器的设计与消融。",
-      "order": 36
+      "summary": "多模态训练只缩放当前梯度，无法同步改变优化器已积累的历史记忆。VCMM 从原有前向计算构造分类器梯度探针，用同批两半的梯度差估计噪声，再从相邻时刻的变化中扣除噪声项，估计梯度漂移。作者借助随机游走模型的稳态 Kalman 增益关系，将漂移与噪声之比映射为模态动量，并在 log-odds 空间跨模态居中，以保留基准记忆尺度；时变系数的乘积归一化用于校正零初始化。四个多模态基准报告了改进，探针与编码器统计的相关性、固定动量及冻结控制器等消融支持该设计。证据主要是面向多模态训练的机制设计和实验，未证明探针在一般网络中可靠，也未给出一般非凸收敛率。",
+      "reason": "推荐阅读如何用噪声与漂移的相对强度决定历史梯度的保留长度，以及如何让不同参数组的记忆尺度共同校准。相较只调节当前梯度，VCMM 直接改变历史信息的权重；固定不对称动量、冻结控制器、去噪声扣除和去居中消融分别检验设计环节。Kalman 增益关系沿用已有模型，值得借鉴的是探针估计与时变动量的组合，而不能将其表述为已证明的通用加速理论。",
+      "order": 35
     },
     {
       "arxiv_id": "2409.01770",
@@ -839,31 +817,11 @@
       "abstract": "Optimization over the Stiefel manifold is a fundamental computational problem in many scientific and engineering applications. Despite considerable research effort, high-dimensional optimization problems over the Stiefel manifold remain challenging, particularly when the objective function is nonsmooth. In this paper, we propose a novel coordinate-type algorithm, named randomized submanifold subgradient method (RSSM), for minimizing a possibly nonsmooth weakly convex function over the Stiefel manifold and study its convergence behavior. In contrast to existing algorithms, RSSM operates on ``coordinate blocks'' defined by subsets of the columns of the matrix variable. Similar to coordinate-type algorithms in the Euclidean setting, RSSM exhibits low per-iteration cost and is suitable for high-dimensional problems. We prove that RSSM has an iteration complexity of $\\mathcal O(\\ell^{2/3}\\varepsilon^{-4})$ for driving a natural stationarity measure below $\\varepsilon$ in expectation, where $\\ell$ represents the number of blocks. We also establish the almost-sure convergence of RSSM and provide the almost-sure asymptotic convergence rate. To the best of our knowledge, this is the first convergence guarantee for coordinate-type algorithms for nonsmooth optimization over the Stiefel manifold. Lastly, we present numerical results on robust subspace recovery, orthogonal dictionary learning, and sparse principal component analysis to demonstrate the viability of our proposed method.",
       "arxiv_url": "https://arxiv.org/abs/2409.01770v3",
       "directions": [
-        "stochastic",
-        "safety-critical"
+        "stochastic"
       ],
       "summary": "该文为 Stiefel 流形上的非光滑弱凸优化提出随机子流形次梯度方法 RSSM。每次均匀抽取一对列块，在未更新列的正交补中执行低维投影回缩，因此整个矩阵始终满足正交约束。作者建立流形次梯度不等式与平均算子诱导的自适应度量，在适当步长下达到替代驻点指标的 $O(\\ell^{2/3}\\epsilon^{-4})$ 迭代复杂度，并证明递减步长下的几乎必然驻点性质。给定部分次梯度后，每步几何运算约为 $O(np^2/\\ell)$；总成本优势还取决于部分次梯度是否便宜。",
-      "reason": "推荐关注随机块更新如何在不可直接分离的正交约束上保持逐步可行，以及平均算子如何恢复下降分析。把迭代次数与部分梯度计算成本分开核算，是判断随机坐标方法是否真正高效的关键。",
-      "order": 37
-    },
-    {
-      "arxiv_id": "2609.30885",
-      "version": 1,
-      "title": "Retraction-Based Gradient Projection Algorithms on Manifolds",
-      "authors": [
-        "Conglong Xu",
-        "Hao Wu"
-      ],
-      "submitted": "2026-09-25",
-      "updated": "2026-09-25",
-      "abstract": "We introduce a framework for retraction-based convex optimization on Riemannian manifolds, which includes a notion of retraction-specific convex sets and retraction-based gradient projection algorithms. The standard theory of gradient projection algorithms generalizes easily to this framework. Within this framework, we establish convergence results for retraction-based gradient projection algorithms with various stepsize rules. As an application, we use our framework to study the weighted low-rank approximation. We also provide numerical validation of our convergence results on the image completion task.",
-      "arxiv_url": "https://arxiv.org/abs/2609.30885v1",
-      "directions": [
-        "safety-critical"
-      ],
-      "summary": "该文用回缩映射及其切空间凸纤维定义 R-凸约束集，将欧式投影梯度的可行方向框架推广到流形。算法先把负梯度投影到当前凸纤维，再沿回缩弧更新；纤维含零且其回缩像位于约束集，因此迭代始终可行。对连续可微目标，精确线搜索或两类 Armijo 规则保证每个聚点为约束驻点；常步长情形另要求统一的回缩 Lipschitz 梯度及步长小于 $2/L$。R-凸集合可不连通，结论不自动保证全局最优或整列收敛。",
-      "reason": "推荐阅读如何用可计算的切空间凸约束替代直接在流形上投影，并将可行性嵌入更新映射。其价值在于明确构造逐步可行算法所需的几何条件，而不只是最后惩罚约束违反。",
-      "order": 38
+      "reason": "推荐关注非光滑随机坐标方法如何处理不可分离的正交约束：在子流形上更新列块，再用平均算子诱导的度量恢复下降与驻点复杂度分析。其贡献属于随机块优化与流形几何；正交可行性是问题结构，不能据此推断安全关键应用保证。评估计算收益时还需把部分次梯度成本与每步几何运算分开。",
+      "order": 36
     }
   ]
 }
