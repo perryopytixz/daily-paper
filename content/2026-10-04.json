@@ -1,0 +1,194 @@
+{
+  "date": "2026-10-04",
+  "status": "complete",
+  "frontiers_status": "recommendations",
+  "highlights": [
+    {
+      "arxiv_id": "2608.29507",
+      "label": "去噪即近似投影｜用值误差统一约束优化分析",
+      "text": "单次梯度与去噪更新，覆盖凸集、线性高斯支撑和局部 $C^2$ 流形；以投影值误差控制下降及可行性，无须流形去噪器 Jacobian 界。",
+      "types": [
+        "field"
+      ]
+    },
+    {
+      "arxiv_id": "2609.17197",
+      "label": "非光滑测度控制｜构造 Clarke 最大值原理",
+      "text": "内在次微分、正则化与拉回稳定性连接非光滑目标和状态约束乘子；动力学仍须可微，运行成本需计划凸性或分离结构。",
+      "types": [
+        "field"
+      ]
+    }
+  ],
+  "papers": [
+    {
+      "arxiv_id": "2608.29507",
+      "version": 2,
+      "title": "Denoising as Projection: Constrained Optimization with Gradient-Guided Diffusion",
+      "authors": [
+        "Runyu Zhang",
+        "Jiawei Zhang",
+        "Gioele Zardini",
+        "Saurabh Amin",
+        "Asuman Ozdaglar"
+      ],
+      "abstract": "Diffusion models are increasingly used not only for sampling from learned data distributions, but also for generating samples that optimize task-specific objectives. A common approach is to guide the reverse diffusion process using gradients of an external objective. However, when the data distribution is supported on a structured feasible set, such as a manifold or a constraint set, gradient guidance can move samples away from the learned data geometry. In this paper, we study a simple projected-gradient-guided diffusion update based on the observation that the Stein denoising operator can act as an approximate projection onto the data geometry. The proposed update incorporates the objective gradient inside the denoising step, yielding an inference-time method that uses only a pretrained denoiser and gradient evaluations. We analyze this update as an inexact projected-gradient method for constrained optimization over learned feasible geometries. Our theory covers three settings: linear manifolds, compact convex feasible sets, and compact Riemannian submanifolds. In all these settings, we prove descent and finite-time convergence guarantees. Numerical experiments support the theoretical interpretation and illustrate how the proposed update balances objective descent with preservation of the learned geometry.",
+      "submitted": "2026-08-30",
+      "updated": "2026-09-11",
+      "arxiv_url": "https://arxiv.org/abs/2608.29507v2",
+      "summary": "论文研究只通过去噪器访问约束集合时的非凸优化。DCG 将目标梯度步放入 Stein 去噪器输入，并把返回值与当前点松弛混合；每轮只需一次梯度和一次去噪调用。分析把去噪器看作近似投影，以统一的值误差控制目标下降和法向可行性误差。在相应密度、光滑性和步长条件下，论文覆盖线性高斯支撑、紧凸集及局部管状邻域内的紧 $C^2$ 流形；强凸情形得到几何收敛至误差邻域，非凸情形得到最佳迭代点投影梯度平方的 $O(1/T)$ 界及噪声误差项。流形分析不要求控制去噪器 Jacobian，但需要初始点足够接近流形。学习去噪器的额外逼近误差进入最终界，算法一般不保证每个迭代点严格可行。",
+      "reason": "值得优先读去噪误差怎样替代精确投影进入下降与可行性分析。相较只把生成模型当采样先验，论文给出明确的约束优化更新及三类几何下的误差证书；相较依赖导数控制的分析，值级误差与 $C^2$ 流形条件是一条具体的新分析路线。",
+      "order": 1,
+      "directions": [
+        "optimization-frontiers"
+      ]
+    },
+    {
+      "arxiv_id": "2609.17197",
+      "version": 1,
+      "title": "Pontryagin maximum principle for non-smooth state-constrained control problems over Wasserstein spaces",
+      "authors": [
+        "Fernanda Urrea",
+        "Ernesto Treumún"
+      ],
+      "abstract": "We study a state-constrained Bolza optimal control problem governed by a non-local continuity equation in the Wasserstein space $\\mathcal{P}_2(\\mathbb{R}^d)$. We develop a Pontryagin maximum principle for these problems in which both the cost functionals and the constraints are only locally Lipschitz, and the initial measure does not necessarily have compact support. To derive the main result, we introduce a notion of a Clarke-type deterministic subdifferential over $\\mathcal{P}_2(\\mathbb{R}^d)$. The proof of the main result combines a careful adaptation of the Lasry-Lions regularization to the Wasserstein space coupled with stability results of the Clarke subdifferential that allow us to recover the first-order information. We also show that, for functionals convex along plans, this subdifferential admits a global supporting characterization and provides a first-order characterization of global minimizers.",
+      "submitted": "2026-09-15",
+      "updated": "2026-09-15",
+      "arxiv_url": "https://arxiv.org/abs/2609.17197v1",
+      "summary": "论文为概率测度空间中带状态约束的非光滑最优控制建立 Pontryagin 必要条件。成本与约束仅局部 Lipschitz 时，通常的 Wasserstein Fréchet 次微分可能为空，作者用确定性传输映射定义内在 Clarke 次微分，再通过 Lasry–Lions 正则化和拉回稳定性传递光滑最大值原理。所得伴随测度具有有界变差轨迹，状态约束乘子是集中于活跃时刻的非负测度，并满足非平凡性、互补松弛与 Hamiltonian 最大化条件。初始分布只需有限二阶矩；动力学仍须对状态和测度可微。运行成本还须沿所有传输计划凸，或具有时间控制项与测度项分离的结构，因此不是任意 Lipschitz 控制问题的通用原理。",
+      "reason": "推荐读非光滑测度目标的次微分与正则化极限如何闭合。论文把质量分裂、状态约束乘子和伴随轨迹集中结构放进同一必要条件，并明确区分“沿所有计划凸”与一般位移凸；这为测度空间约束优化提供了具体分析工具，而不只是把有限维 KKT 条件形式化搬过去。",
+      "order": 2,
+      "directions": [
+        "optimization-frontiers"
+      ]
+    },
+    {
+      "arxiv_id": "2601.20139",
+      "version": 3,
+      "title": "Model Risk Static-Hedging a Constrained Distributionally Robust Optimization approach",
+      "authors": [
+        "Nathan Sauldubois"
+      ],
+      "abstract": "We investigate model risk and distributionally robust optimization (DRO) under marginal and martingale constraints. Building on our previous work, we address the previously open case of static hedging with second-period maturity vanilla options and hedging strategies involving a vanilla payoff. We also extend recent sensitivity results to settings where admissible models must satisfy a martingale coupling constraint. Our approach relies on a weak implicit function theorem argument to construct families of measures satisfying the prescribed constraints. We derive closed-form sensitivity formulas and characterize the corresponding hedging strategies when the underlying process is real-valued.",
+      "submitted": "2026-01-28",
+      "updated": "2026-09-30",
+      "arxiv_url": "https://arxiv.org/abs/2601.20139v3",
+      "summary": "论文研究保留两期边缘分布和鞅耦合约束的分布鲁棒优化，计算适应 Wasserstein 球半径趋零时的模型风险敏感度。普通最坏方向推送参考分布后，往往会破坏约束；作者采用弱隐函数定理构造可行分布修正，并以线性化约束残差控制修正距离。在一维两期模型、条件密度与第二边缘密度正则性、信息非退化和目标可微等条件下，约束鲁棒值与对冲上值具有相同的一阶导数，该导数由适应梯度到对冲方向空间的最小 $L^{p\\prime}$ 距离表示。二次距离情形进一步给出条件期望及 Fredholm 方程刻画的对冲策略。结论是小半径局部敏感度，不能直接当作有限半径求解器或无条件强对偶定理。",
+      "reason": "最值得读的是“先找到线性化最坏方向，再修复分布约束”的证明方法。它解决第二期边缘与鞅条件同时存在时自然扰动不再可行的困难，比单纯计算某个金融模型的风险系数更有独立的约束 DRO 分析价值。",
+      "order": 3,
+      "directions": [
+        "optimization-frontiers"
+      ]
+    },
+    {
+      "arxiv_id": "2605.02317",
+      "version": 3,
+      "title": "Anon: Extrapolating Adaptivity Beyond SGD and Adam",
+      "authors": [
+        "Yiheng Zhang",
+        "Kaiyan Zhao",
+        "Shaowu Wu",
+        "Yiming Wang",
+        "Jiajun Wu",
+        "Leong Hou U",
+        "Steve Drew",
+        "Xiaoguang Niu"
+      ],
+      "abstract": "Adaptive optimizers such as Adam and non-adaptive methods like SGD exhibit distinct generalization capabilities across different architectures. Prior tunable optimizers attempt to bridge this gap by strictly interpolating between SGD and Adam, effectively confining adaptivity within the 0-to-1 bound. However, this restricted interpolation is fundamentally insufficient: we reveal that optimal adaptivity often requires extrapolation, such as negative adaptivity for classical CNNs and adaptivity of at least one ($\\gamma \\geq 1$) for Transformers. Extrapolating adaptivity theoretically violates the strict non-decreasing pre-conditioner assumption, often leading to divergence in existing methods. To break this barrier, we propose Anon, an optimizer that achieves fully continuous adaptivity extrapolation across the entire real-number spectrum. To guarantee provable stability in these out-of-bound regimes, we introduce Incremental Delay Update (IDU), a novel mechanism that bypasses hard max-tracking strategies. We theoretically establish Anon's convergence in both convex and non-convex settings. Empirically, by exploring previously unreachable adaptivity landscapes, Anon demonstrates highly competitive and scalable performance among state-of-the-art element-wise optimizers on representative image classification, diffusion, and large language modeling tasks.",
+      "submitted": "2026-05-04",
+      "updated": "2026-09-23",
+      "arxiv_url": "https://arxiv.org/abs/2605.02317v3",
+      "summary": "Anon 研究历史二阶梯度状态如何决定自适应优化的缩放程度，将 SGD 与 Adam 的插值推广到实参数控制的更广范围。核心设计采用指数增长的更新区间：区间内冻结对角预条件器，区间边界用多尺度平滑刷新历史状态，从而控制累计度量变化，而不要求预条件器逐步单调。凸分析在有界域、梯度有界和衰减动量条件下给出 $O(\\sqrt{T})$ 后悔界；光滑非凸随机分析在无偏且有界梯度、预条件器一致有界等条件下，以平方根衰减步长得到平均梯度平方 $O(\\log T/\\sqrt{T})$ 的界。图像、语言及扩散模型实验显示合适的缩放区间依任务而变，不能把某个参数选择视为普遍最优。",
+      "reason": "推荐看冻结区间与历史平滑如何把非单调预条件器的变化成本纳入证明。与课题组历史迭代信息主题的直接联系在于状态更新时序和累计变化的控制，而不是仅仅沿用 Adam；凸结论要求衰减动量，值得与实际常动量实现分开理解。",
+      "order": 4,
+      "directions": [
+        "historical-information",
+        "stochastic"
+      ]
+    },
+    {
+      "arxiv_id": "2609.34681",
+      "version": 1,
+      "title": "SOLAR: A State-Driven Online Learning Rate Scheduler for LLM Pretraining",
+      "authors": [
+        "Qiulin Shang",
+        "Binyu Wang",
+        "Yongqi Qiao",
+        "Songde Rao",
+        "Zhoutong Wu",
+        "Kun Yuan"
+      ],
+      "abstract": "Learning-rate (LR) scheduling plays a central role in large language model (LLM) pretraining, yet current practice still relies heavily on hand-crafted heuristics such as Warmup-Cosine-Decay and Warmup-Stable-Decay. Because these schedules are fixed in advance, they cannot adapt to evolving optimization dynamics. Online learned scheduling within the Learning to Optimize (L2O) framework offers a dynamic alternative, but remains brittle at LLM scale due to noisy signals, delayed feedback, and the risk of catastrophic divergence. We propose SOLAR (State-driven Online Learning rAte scheduleR), a stabilized framework for reliable online LR adaptation. SOLAR uses a base schedule as a reference and learns bounded, state-dependent residual corrections for individual parameter groups. Each correction re-anchors to the base at every step, allowing the policy to adapt the LR without relearning the warmup-decay profile. A lightweight state representation and progress-aware reward guide online learning, while a Circuit-Breaker restores training after rare unsafe actions. Across autoregressive language-model pretraining, SOLAR improves final perplexity over tuned static schedules and automatic LR tuners for dense models from 60M to 1B, AdamW and Muon, and two MoE settings up to 3B. Matched 130M controls show that adding base anchoring and action bounds improves a global PPO controller from 27.09 to 23.74 final PPL, while group-wise control reaches 22.87 on the same two seeds. A residual policy trained on a 60M proxy can also be frozen and reused at larger dense scales without target PPO updates, remaining effective across a fourfold base-LR range. These results establish SOLAR as a practical learned LR controller for LLM pretraining.",
+      "submitted": "2026-09-28",
+      "updated": "2026-09-28",
+      "arxiv_url": "https://arxiv.org/abs/2609.34681v1",
+      "summary": "SOLAR 将学习率调度改写为基准日程上的有界反馈校正。共享策略读取短长窗口损失趋势、梯度范数及其变化、前一动作和参数组信息，输出各组乘性残差；每轮重新锚定当前 warmup/decay 基准，避免动作递归积累造成尺度漂移。策略通过 PPO 在训练中更新，也可从小模型训练后冻结迁移；异常损失尖峰触发回滚和策略更新。论文在 AdamW 与 Muon 的多种规模预训练中进行对照，固定算力控制实验分别考察基准锚定、动作有界、分组和历史状态的作用。其贡献主要是有机制对照的优化器反馈设计，目前没有一般收敛定理；回滚规则也不是数学意义上的逐步可行性保证。",
+      "reason": "值得读的是把历史损失与局部梯度变化转化为受控步长反馈，以及为何保留基准日程。相比直接学习绝对学习率或递归缩放，匹配设置下的消融能分辨锚定和分组反馈的贡献；这些证据支持具体机制判断，尚不支持任意任务的普遍改进结论。",
+      "order": 5,
+      "directions": [
+        "historical-information"
+      ]
+    },
+    {
+      "arxiv_id": "2607.09907",
+      "version": 2,
+      "title": "An Occupation-Measure and Frank-Wolfe Framework for Heterogeneous Mean-Field Control",
+      "authors": [
+        "Di Yu",
+        "Sixiong You",
+        "Chaoying Pei"
+      ],
+      "abstract": "Heterogeneous mean-field control (MFC) involves multiple interacting populations with distinct dynamics, control constraints, and coupling structures. We develop a heterogeneous occupation-measure mean-field control (OM-MFC) framework that reformulates the population-distribution control problem as an optimization problem over occupation measures. In this representation, potentially nonlinear dynamics enter through linear weak Liouville constraints, while nonlocal inter-population interactions become structured bilinear functionals of the occupation-measure marginals. Exploiting this structure, we derive a Frank--Wolfe (FW) method and show that its linear minimization oracle decomposes into independent population-wise optimal control problems once the current population distributions are fixed, enabling parallel computation without an a priori discretization of the measure space. We further establish a sufficient convexity condition based on the symmetrized matrix-valued interaction kernel, under which Frank--Wolfe with an exact oracle admits the standard $O(1/k)$ convergence rate. Numerical examples on heterogeneous UAV coordination and three-dimensional search-and-rescue illustrate the framework both within the certified convex regime and for directional interactions beyond that regime.",
+      "submitted": "2026-07-10",
+      "updated": "2026-09-12",
+      "arxiv_url": "https://arxiv.org/abs/2607.09907v2",
+      "summary": "论文将多类异质群体的平均场控制提升为带弱 Liouville 约束的占据测度优化。动力学可行集在测度变量中为凸集，跨群体交互成本成为边缘测度的双线性项；作者通过对称化矩阵核的正半定条件识别整体目标凸性。Frank–Wolfe 线性化后，各群体的线性最优控制 oracle 可以分别求解，再以凸组合更新测度。在紧性、动力学正则性、核有界和精确线性 oracle 等条件下，标准步长给出 $O(1/k)$ 目标差界。数值示例用近似轨迹求解展示不同动力学群体的协调；精确 oracle 的理论保证不能自动覆盖该近似实现，障碍代价也是软惩罚。",
+      "reason": "推荐读异质耦合怎样通过矩阵核正半定性变成可验证的凸性条件，以及整体梯度怎样拆成各群体 oracle。相比直接套用单群体平均场算法，这里有明确的异质结构和曲率控制；阅读时应区分测度可行性、轨迹恢复条件及数值 oracle 误差。",
+      "order": 6,
+      "directions": [
+        "optimization-frontiers"
+      ]
+    },
+    {
+      "arxiv_id": "2609.16158",
+      "version": 1,
+      "title": "The fixed-point bundle method over product-of-simplex domains arising from game equilibria",
+      "authors": [
+        "Hongbo Sun"
+      ],
+      "abstract": "This paper extends the fixed-point bundle framework for finite-dimensional variational inequalities (VIs) from the simplex domain to the product-of-simplex domain, which is directly applicable to solving Nash equilibria. The fixed-point bundle for VIs on the product-of-simplex domain reveals a composite fiber bundle structure. The key innovation is to construct an equivalent VI on the simplex domain and establish the equivalence between the two fixed-point bundle frameworks via a fiber bundle isomorphism. Exploiting this geometric equivalence, the predictor-corrector path-following algorithm for the VI on the product-of-simplex domain is shown to inherit the convergence guarantee of the simplex-domain framework, namely, global convergence with linear gap reduction near solutions. Numerical experiments on 5600 randomly generated instances with dimensions ranging from 2-player 128-action to 128-player 2-action demonstrate robust performance. The algorithm converges in every tested instance.",
+      "submitted": "2026-09-14",
+      "updated": "2026-09-14",
+      "arxiv_url": "https://arxiv.org/abs/2609.16158v1",
+      "summary": "论文把单纯形上的固定点纤维丛 VI 框架推广到单纯形乘积，以处理多参与者混合策略等连续变分不等式。作者构造乘积域与增广单纯形之间的几何同构，证明间隙、互补和微分表述的对应关系；再在固定权重切片上构造闭单纯形的解析算子，将已有预测校正路径跟踪的收敛性质转移到乘积域。分析针对解析算子及相应路径跟踪规则，一般连续问题须先做域与算子的近似归约。实验在随机解析 VI 和低秩收益模型中测试 5600 个实例；实用奇点规避会重新分配权重，不能把固定切片的转移证明无条件视为这一变体的同一保证。这里的 bundle 指几何纤维丛，非历史切平面束。",
+      "reason": "值得读乘积约束的几何结构如何与单纯形算法建立精确对应。新增内容是纤维丛同构、切片延拓与收敛转移的技术，而不是又一条博弈应用；它提供了处理非单调 VI 的不同视角，同时清楚暴露理论算法与实用权重重分配之间的边界。",
+      "order": 7,
+      "directions": [
+        "optimization-frontiers"
+      ]
+    },
+    {
+      "arxiv_id": "2609.04087",
+      "version": 1,
+      "title": "Global Multi-Maturity SPX-VIX Calibration Beyond Markovian Stitching",
+      "authors": [
+        "Atithi Acharya",
+        "Yue Sun",
+        "Brandon Augustino",
+        "Shouvanik Chakrabarti",
+        "Shree Hari Sureshbabu",
+        "Charlie Che"
+      ],
+      "abstract": "We develop a global framework for joint S&P 500 (SPX)-VIX smile calibration across multiple maturities without the conditional-independence restriction induced by Markovian stitching. Exact local and global feasibility are equivalent: every globally feasible law has a block-preserving SPX-Markovization that leaves each monthly $(S_i,V_i,S_{i+1})$ law unchanged. Nevertheless, stitched laws can form a strict subset of globally feasible path laws because Markovization discards dependence on earlier history beyond the current SPX level. Adjacent smiles therefore cannot identify this dependence, and laws with identical monthly calibrations can price multi-period claims differently. Under the standard Markov reference, relative entropy selects the stitched minimum-information completion; non-Markov dependence requires cross-period information, an appropriate objective, or a history-dependent prior. For finite discretizations, we introduce an augmented-Bregman mirror-descent scheme. It preserves the fit to observable quote moments while controlling martingale and dispersion residuals. In a controlled infeasible affine system, this split keeps prescribed marginals about $25$ times tighter than cyclic row projection by exposing the discrepancy in the conditional rows. An exact finite-state example verifies block preservation and exhibits material cross-period price changes after Markovization. On smoothed SPX and VIX surfaces, numerical calculations illustrate a finite-budget penalty path: the worst fitted-smile error remains below $0.70$ volatility points across the reported sweep while the bulk conditional diagnostics improve substantially.",
+      "submitted": "2026-09-03",
+      "updated": "2026-09-03",
+      "arxiv_url": "https://arxiv.org/abs/2609.04087v1",
+      "summary": "论文研究带边缘报价、鞅与方差约束的多期限联合校准，区分局部可行性与整条路径分布的识别问题。作者证明精确局部块可拼接为全局可行分布，但 Markov 化会丢失跨期依赖；相同月度校准可对应不同跨期价格，标准 Markov 参考下的 KL 最小化还会选回拼接分布。有限网格上，增广 Bregman 镜像步惩罚条件残差，并循环修正报价行；精确求解的惩罚问题在非空报价可行集上趋向最小违反条件约束且 KL 最小的分布。固定预算实现没有相同的收敛保证，单轮修正也不保持全部报价行精确可行。受控不可行算例展示硬软优先级分配，不能据此断言真实市场数据不可行。",
+      "reason": "推荐读可行性、可识别性和数值约束优先级为何是三个不同问题。文章的明确反例和 KL 完成规律说明仅增加熵优化不一定恢复历史依赖；硬软拆分及其惩罚极限也为不一致约束系统提供可检查的优化解释。",
+      "order": 8,
+      "directions": [
+        "optimization-frontiers"
+      ]
+    }
+  ]
+}
