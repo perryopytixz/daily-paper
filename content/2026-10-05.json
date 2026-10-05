@@ -1,0 +1,308 @@
+{
+  "date": "2026-10-05",
+  "status": "complete",
+  "frontiers_status": "recommendations",
+  "highlights": [
+    {
+      "arxiv_id": "2608.16271",
+      "label": "窗口连通到单步耗散｜随机梯度跟踪达到中央主随机项",
+      "text": "用时变二次范数替代窗口展开；允许单轮图断开，在双随机、条件无偏独立噪声下获得强凸 $\\widetilde O(1/(NK))$ 与凸 $O(1/\\sqrt{NK})$ 主项，并明确网络暂态。",
+      "types": [
+        "field",
+        "group"
+      ]
+    },
+    {
+      "arxiv_id": "2606.09070",
+      "label": "AdaDQN｜本地计算预算不再直接缩小步长",
+      "text": "共识感知终止、事件触发与有界 BFGS 方向联合控制误差；固定无向网络上给出 $O(1/T)$ 联合残差平方界及不显含最大本地更新数的梯度计数。",
+      "types": [
+        "field",
+        "group"
+      ]
+    },
+    {
+      "arxiv_id": "2608.09013",
+      "label": "退化 SDP｜把 Hölder 误差界常数写成径向模量",
+      "text": "面约化给出无 Slater 的显式半径依赖；分析部分结构的维数渐近紧性，并在严格互补下去掉最优性系统误差界中的解唯一性要求。",
+      "types": [
+        "field"
+      ]
+    },
+    {
+      "arxiv_id": "2609.14935",
+      "label": "共享安全约束｜精确诊断并优化责任分配",
+      "text": "支持函数分离约束需求与执行能力；以最大化最差局部余量分配责任，多面体输入集下化为 LP。非负余量支持安全输入构造，瞬时证书仍需沿途可行条件。",
+      "types": [
+        "group"
+      ]
+    }
+  ],
+  "papers": [
+    {
+      "arxiv_id": "2608.16271",
+      "version": 1,
+      "title": "Stochastic Gradient Tracking over Time-Varying Networks: One-Step Lyapunov Analysis",
+      "authors": [
+        "Sulaiman A. Alghunaim"
+      ],
+      "submitted": "2026-08-17",
+      "updated": "2026-08-17",
+      "arxiv_url": "https://arxiv.org/abs/2608.16271v1",
+      "abstract": "We study decentralized stochastic gradient tracking over a time-varying network of $N$ agents under a uniform window-mixing condition. Products of $\\tau$ consecutive doubly stochastic mixing matrices contract disagreement by a factor $\\lambda<1$, although individual matrices need not contract disagreement strictly and individual communication graphs may be disconnected. We construct a time-varying quadratic norm that turns this window contraction into an exact one-step Lyapunov identity. This leads to coupled one-step recursions for the centroid and disagreement errors, without unrolling the dynamics over communication windows. For smooth strongly convex objectives, the leading stochastic term is $\\widetilde{\\mathcal O}(1/(NK))$; for smooth convex objectives, it is $\\mathcal O(1/\\sqrt{NK})$. Both match their centralized mini-batch counterparts and yield linear speedup after a network-dependent transient.",
+      "summary": "论文研究仅在有限时间窗口内联合连通的时变网络上进行随机梯度跟踪。既有分析通常展开多步递推，网络误差与优化误差难以在单轮闭合。作者根据未来混合矩阵的乘积构造时变二次范数，将窗口收缩转换为单步耗散，再与目标下降组成 Lyapunov 递推。该范数用于证明，算法不需要预知未来网络。混合矩阵须为非负双随机矩阵，满足统一窗口收缩；单轮图可不连通，也不要求矩阵对称。在光滑、条件无偏且满足相应独立性和方差界的随机梯度条件下，强凸问题达到中央算法的 $\\widetilde O(\\sigma^2/(NK))$ 主项，一般凸问题的遍历界具有 $O(\\sigma/\\sqrt{NK})$ 主项，并显式保留网络暂态项。无噪声强凸情形可使用固定步长获得几何收敛。",
+      "reason": "优先阅读窗口连通性如何被编码为单步时变能量，而不把整个窗口当成一个算法周期。这一证明工具直接处理梯度跟踪的共识与跟踪误差，给出中央随机主项及网络代价的分离；条件仍是双随机、统一窗口收缩，不能直接用于任意有向行随机网络。",
+      "order": 1,
+      "directions": [
+        "time-varying-networks",
+        "distributed",
+        "stochastic",
+        "optimization-frontiers"
+      ]
+    },
+    {
+      "arxiv_id": "2606.09070",
+      "version": 2,
+      "title": "An Adaptive Decentralized Quasi-Newton Method with Stepsizes Independent of the Local-Update Budget",
+      "authors": [
+        "Hao Wu",
+        "Liping Wang"
+      ],
+      "submitted": "2026-06-08",
+      "updated": "2026-08-10",
+      "arxiv_url": "https://arxiv.org/abs/2606.09070v2",
+      "abstract": "This paper proposes a novel Adaptive Decentralized Quasi-Newton (AdaDQN) method for solving smooth nonconvex optimization problems over undirected networks. While standard decentralized algorithms with multiple fixed local updates typically admit a convergence stepsize inversely proportional to the number of local updates, we show that this scaling is worst-case tight for the typical unscaled fixed-local-update scheme. We revisit a class of gradient-tracking methods with this scheme from a surrogate-based perspective and establish a Robust Inexact Algorithm (RIA) framework. Inspired by this framework, AdaDQN integrates a safeguarded consensus-aware termination criterion, a standard event-triggered communication protocol, and a scalable memoryless BFGS update. We establish an $\\mathcal{O}(1/T)$ best-iterate rate for first-order stationarity. For a squared stationarity tolerance $\\delta$, the guaranteed gradient complexity of the fixed scheme is $\\mathcal{O}(nK_g/\\delta)$, whereas AdaDQN attains $\\mathcal{O}(n/\\delta+n\\alpha\\tilde\\varepsilon^{-2})$, independent of the maximum local-update budget ($K_g$). Numerical experiments demonstrate that AdaDQN achieves a superior computation-communication tradeoff, outperforming state-of-the-art decentralized methods across various performance metrics.",
+      "summary": "论文研究固定无向网络中允许各节点进行不同数量本地更新的光滑非凸分布式优化。常见证明让步长随最大本地计算预算缩小，AdaDQN 改为以共识感知准则终止本地求解，并将事件触发通信、有界无记忆 BFGS 方向与梯度跟踪联合分析。局部计算在达到误差要求或误差底限时停止，因此不要求用最大本地更新数直接缩小外层步长。在固定连通网络、目标有下界、梯度光滑、准 Newton 矩阵一致有界及触发阈值平方可求和等条件下，最佳迭代点的联合驻点、共识与跟踪残差平方为 $O(1/T)$。达到残差精度的梯度计数还包含本地终止底限的成本；步长仍受网络和光滑常数限制。实验比较通信及梯度成本，不能把预算独立性解释为本地计算没有代价。",
+      "reason": "值得读本地终止规则怎样替代“统一限制每轮更新次数”的误差控制。核心贡献是局部计算预算、共识误差和准 Newton 历史信息的协同设计，直接回应分布式优化中通信与本地计算耦合的问题；梯度计数和网络条件一起阅读才能准确理解其改进。",
+      "order": 2,
+      "directions": [
+        "distributed",
+        "historical-information",
+        "optimization-frontiers"
+      ]
+    },
+    {
+      "arxiv_id": "2608.09013",
+      "version": 2,
+      "title": "Radial-type error bounds for semidefinite feasibility problems without strict feasibility: qualitative estimates and asymptotic tightness",
+      "authors": [
+        "Mitsuhiro Nishijima",
+        "Guoyin Li",
+        "Bruno F. Lourenço"
+      ],
+      "submitted": "2026-08-10",
+      "updated": "2026-08-28",
+      "arxiv_url": "https://arxiv.org/abs/2608.09013v2",
+      "abstract": "In this paper, we develop a systematic framework for deriving explicit error bounds for semidefinite feasibility problems without assuming strict feasibility (Slater's condition), a setting in which existing results are limited. Our main technical contribution is the introduction of radial-type Hölder error bounds, where the error bound constant depends explicitly on the norm of the reference matrix through radial modulus functions. By combining facial reduction with recently developed facial residual functions, we obtain explicit descriptions of these modulus functions, yielding qualitative radial-type Hölder error bounds \\emph{without imposing any constraint qualifications}. Our results complement the classical work of Sturm by providing explicit estimates for the constants involved in Sturm's local Hölder error bounds over bounded sets with a given size. We further analyze the asymptotic behavior of these bounds as the dimension of the underlying matrix space grows, identifying regimes in which they can be asymptotically tight up to a dimension-free constant. As an application, we establish explicit error bounds for the optimality system of semidefinite programs by reformulating them as feasibility problems, a setting where Slater's condition typically fails. Under the generically satisfied strict complementarity condition, we derive radial-type error bounds without assuming the usual solution uniqueness requirement, and demonstrate their asymptotic tightness through an explicit example.",
+      "summary": "论文研究缺少严格可行性时半正定可行性问题的显式误差界。经典局部 Hölder 界通常隐藏依赖有界区域大小的常数，作者结合面约化与面残差函数，引入依赖参考矩阵范数的径向模量，写出残差到可行集合距离的半径依赖。可行性结果不要求 Slater 条件或一般约束资格条件，Hölder 指数和模量由面约化结构决定。论文进一步考察矩阵维数增大时的常数，并证明部分结构下达到与维数无关常数相差的渐近紧性，不能推广为所有面约化深度均已紧。将 SDP 最优性系统写成可行性系统后，作者在严格互补条件下给出相应径向误差界，去掉此前常见的最优解唯一性要求。",
+      "reason": "推荐读“半径显式化”如何补足退化 SDP 的局部误差界，以及面约化次数怎样进入可计算的常数。它提供比存在性结论更具体的定量分析工具；最优性系统的结果仍依赖严格互补，应与完全无资格条件的可行性结果区分。",
+      "order": 3,
+      "directions": [
+        "optimization-frontiers"
+      ]
+    },
+    {
+      "arxiv_id": "2609.14935",
+      "version": 1,
+      "title": "Exact Feasibility Certification and Optimal Responsibility Allocation for Multi-Robot CBF Safety Filters",
+      "authors": [
+        "Chandan Kumar Sah",
+        "Jishnu Keshavan"
+      ],
+      "submitted": "2026-09-14",
+      "updated": "2026-09-14",
+      "arxiv_url": "https://arxiv.org/abs/2609.14935v1",
+      "abstract": "Multi-robot Control Barrier Function (CBF) safety filters can become infeasible, but a failed quadratic program (QP) does not indicate why the conflict occurred or how to resolve it. To address this, we develop an exact feasibility certificate for multi-agent CBF filters with heterogeneous control-affine dynamics and convex input sets. The certificate quantifies a feasibility reserve by separating the demand imposed by safety constraints from the available actuator supply. This decomposition shows when CBF gain tuning or increased actuation can and cannot resolve infeasibility, and identifies the agents and interactions responsible for the conflict. We further propose an algorithm to optimally allocate shared safety constraints by maximizing the worst local feasibility margin, yielding a linear program for polyhedral input sets. In $320$ paired closed-loop simulations, the proposed allocation reduces infeasible control steps from roughly $50\\%$ to $6.2\\%$, and reduces safety-violating runs from $118/160$ to $24/160$. In addition, across $52$ infeasibility events, the certificate identifies an interaction whose relaxation restores feasibility in $94\\%$ of cases.",
+      "summary": "论文研究多机器人共享 CBF 安全约束的可行性诊断与责任分配。局部安全 QP 失败通常不能识别冲突来源，作者利用紧凸输入集的支持函数，将联合约束的需求与各执行器的供应分离，并通过单纯形权重给出精确的瞬时可行性证书。随后以最大化最差局部可行余量为目标优化非负责任份额，份额按共享约束求和为一；输入集为多面体时可化为线性规划。最优余量非负时可构造满足所分配安全约束的局部输入，负余量则用于诊断而非保证安全。连续时间安全结论仍需要相应 CBF/HOCBF 条件及沿轨迹的持续可行性，某一时刻的证书不能单独保证未来始终安全。闭环实验检验责任分配与冲突定位的效果。",
+      "reason": "优先读支持函数的精确证书与最大最小责任分配如何共同处理耦合安全约束。优化贡献不是简单在控制器中加入 QP，而是明确刻画安全需求、执行能力和分配后的局部可行性，贴近安全关键分布式优化中“如何获得可执行的安全输入”的难点。",
+      "order": 4,
+      "directions": [
+        "safety-critical",
+        "distributed"
+      ]
+    },
+    {
+      "arxiv_id": "2609.29481",
+      "version": 1,
+      "title": "Noise-Robust Distributed Optimization Over Directed Graphs With Row Stochastic Matrices",
+      "authors": [
+        "Yifan Wang",
+        "Mufeng Wang",
+        "Xianghui Cao"
+      ],
+      "submitted": "2026-08-24",
+      "updated": "2026-08-24",
+      "arxiv_url": "https://arxiv.org/abs/2609.29481v1",
+      "abstract": "In the presence of information-sharing noise, row-stochastic distributed optimization over directed and unbalanced graphs can suffer not only from noise accumulation in gradient tracking, but also from distortion of the left eigenvector-based gradient scaling used for imbalance compensation. To address these issues, this paper proposes a noise-robust distributed optimization algorithm using only row-stochastic weights, termed Robust Xi-row (R-Xi-row). The optimization update is driven by the increment of an auxiliary cumulative variable to exclude historical tracking noise, while two decaying gains and a normalized scaling gain are used to suppress the effect of noisy eigenvector estimation and asymptotically recover the required gradient scaling almost surely. Under strongly convex and smooth objectives and appropriate decaying gains, we prove almost sure convergence to the optimal solution. For polynomially decaying gains, we further establish a near-$\\mathcal{O}(k^{-1/3})$ expected convergence rate. Numerical experiments validate the theoretical results.",
+      "summary": "论文研究固定有向网络中使用行随机矩阵、通信同时含持续随机噪声的分布式强凸优化。R-Xi-row 通过累积增量递推，避免梯度跟踪器不断累加历史通信噪声，再结合 Perron 权重估计及两类衰减增益修正有向网络偏差。分析要求混合矩阵本原、目标强凸光滑，主要通信噪声条件均值为零且条件方差有界；特征向量估计通道的扰动另须一致有界。在规定的增益衰减关系下，各节点几乎必然收敛到全局最优点，并给出期望目标差、共识和跟踪误差平方的多项式速率，典型阶为 $O(k^{-1/3+\\varepsilon})$，其中 $\\varepsilon$ 需足够小。结论针对通信噪声，不能直接当作随机梯度 oracle 的复杂度结果。",
+      "reason": "值得阅读持续通信噪声为何在传统梯度跟踪中累积，以及增量结构如何阻断这一机制。论文同时闭合行随机权重偏差与噪声误差，得到精确收敛而非固定误差邻域；噪声条件和较慢速率是理解其适用范围的关键。",
+      "order": 5,
+      "directions": [
+        "distributed"
+      ]
+    },
+    {
+      "arxiv_id": "2407.02765",
+      "version": 4,
+      "title": "Graphon Particle Systems, Part II: Dynamics of Distributed Stochastic Continuum Optimization",
+      "authors": [
+        "Yan Chen",
+        "Tao Li",
+        "Xiaofeng Zong"
+      ],
+      "submitted": "2024-07-03",
+      "updated": "2026-08-21",
+      "arxiv_url": "https://arxiv.org/abs/2407.02765v4",
+      "abstract": "We study the distributed optimization problem over a graphon with a continuum of nodes, which is regarded as the limit of the distributed networked optimization as the number of nodes goes to infinity. Each node has a private local cost function. The global cost function, which all nodes cooperatively minimize, is the integral of the local cost functions on the node set. We propose stochastic gradient descent and gradient tracking algorithms over the graphon. We establish a general lemma for the upper bound estimation related to a class of time-varying differential inequalities with negative linear terms, based upon which, we prove that for both kinds of algorithms, the second moments of the nodes' states are uniformly bounded. Especially, for the stochastic gradient tracking algorithm, we transform the convergence analysis into the asymptotic property of coupled nonlinear differential inequalities with time-varying coefficients and develop a decoupling method. For both kinds of algorithms, we show that by choosing the time-varying algorithm gains properly, all nodes' states achieve $\\mathcal{L}^{\\infty}$-consensus for a connected graphon. Furthermore, if the local cost functions are strongly convex, then all nodes' states converge to the minimizer of the global cost function and the auxiliary states in the stochastic gradient tracking algorithm converge to the gradient value of the global cost function at the minimizer uniformly in mean square.",
+      "summary": "论文把有限节点分布式随机优化提升到图极限上的连续体节点系统，每个节点具有局部成本，公共目标是局部成本的积分。作者建立随机梯度下降和随机梯度跟踪的 graphon 动力学，用相互耦合的微分不等式处理无穷多节点的一致共识与优化误差。在固定对称连通 graphon、局部目标一致强凸光滑及适当增长、矩和增益条件下，节点状态以一致均方意义收敛到全局最优点；梯度跟踪辅助状态也一致均方收敛到全局梯度值。适当增益选择还给出 $\\mathcal L^\\infty$ 共识。有限网络近似连续体系统的联系需要额外正则性；本文分析的基础图极限固定，时变增益不等于时变通信拓扑。",
+      "reason": "推荐读从有限维误差递推转向连续体一致估计的分析，尤其是随机梯度跟踪辅助系统如何与共识解耦。它实质研究大规模网络极限中的协同优化，而不是仅用 graphon 表达网络；固定对称连通与一致强凸是其结论的明确边界。",
+      "order": 6,
+      "directions": [
+        "distributed",
+        "stochastic"
+      ]
+    },
+    {
+      "arxiv_id": "2608.12710",
+      "version": 2,
+      "title": "Federated Compositional Muon Optimizer for Matrix-Wise Models",
+      "authors": [
+        "Wang Yan",
+        "Feihu Huang"
+      ],
+      "submitted": "2026-08-13",
+      "updated": "2026-08-18",
+      "arxiv_url": "https://arxiv.org/abs/2608.12710v2",
+      "abstract": "Muon, a more recently developed optimizer, is useful for matrix-wise models in AI areas. Although many works have studied Muon and its variants, these methods are still not particularly well-suited for hierarchical structured problems. To fill this gap, we propose an effective federated compositional Muon (FedCoMuon) optimizer to solve distributed matrix-wise compositional optimization problems. Specifically, our FedCoMuon optimizer builds on compositional gradient tracking and orthogonalized momentum. Moreover, we propose a variance reduced variant of FedCoMuon (FedCoMuon-VR) based on a momentum-based variance reduced technique. In theory, we analyze the convergence properties of our algorithms under the non-i.i.d. and non-convex settings. In particular, we prove that our FedCoMuon-VR obtains a lower sample complexity of $O(\\epsilon^{-3})$ for finding an $\\epsilon$-stationary solution than the existing FedMuon algorithms. Extensive numerical experiments on robust federated learning and task-distributed risk-sensitive meta learning show that our proposed methods are competitive with existing compositional baselines and achieve the best reported accuracy in several settings.",
+      "summary": "论文研究矩阵变量上的联邦复合非凸优化，目标梯度同时含内层映射值、Jacobian 与外层梯度的估计误差。FedCoMuon 将复合梯度跟踪与正交化动量结合，方差缩减版以递归历史估计控制嵌套误差。在非独立同分布、光滑和有界异质性等条件下，基础方法达到每客户端 $O(\\epsilon^{-4})$ 样本复杂度和 $O(\\epsilon^{-3})$ 通信复杂度；方差缩减版在额外均方光滑条件下将样本与通信复杂度均降至 $O(\\epsilon^{-3})$，对应论文定义的 $\\epsilon$ 驻点标准。理论采用精确 SVD 极分解产生的正交方向，不能自动覆盖有限轮 Newton–Schulz 近似。实验覆盖鲁棒联邦学习和风险敏感元学习；与 FedMuon 的对比还须注意目标结构及 oracle 条件不同。",
+      "reason": "值得读复合梯度链条中的多层历史估计怎样与矩阵正交化方向共同进入下降界。其贡献在于联邦复合问题的误差闭合与样本／通信计数，而不只是把已有 Muon 换到联邦场景；精确极分解与实际近似实现的区别也应保留。",
+      "order": 7,
+      "directions": [
+        "distributed",
+        "stochastic",
+        "historical-information"
+      ]
+    },
+    {
+      "arxiv_id": "2508.18764",
+      "version": 3,
+      "title": "Constrained Optimization via Constraint-Induced Geometry: Implicit Feasible Dynamics and Optimality from Stationarity",
+      "authors": [
+        "Valentin Leplat"
+      ],
+      "submitted": "2025-08-26",
+      "updated": "2026-08-01",
+      "arxiv_url": "https://arxiv.org/abs/2508.18764v3",
+      "abstract": "We introduce Gravidy, a geometry-aware framework for constrained optimization in which constraints are encoded directly into the dynamics, so the motion remains feasible by construction. The geometric mechanism depends on the feasible set: componentwise reparameterizations and induced Hessian geometries for the nonnegative orthant and box constraints, Fisher-Shahshahani and KL geometry for the simplex, and canonical Riemannian geometry for the Stiefel manifold. We derive feasible continuous-time flows and implicit discretizations adapted to each geometry. On the vector domains, the implicit updates admit exact Bregman-proximal interpretations, yielding monotone descent and convergence guarantees for convex objectives, linear contraction under relative strong convexity, and a Kurdyka-Lojasiewicz analysis for nonconvex problems under compact-interiority, decrease, and relative-error assumptions. We also show that convergent trajectories generated from the interior recover the Karush-Kuhn-Tucker conditions on the orthant, simplex, and box. The same holds for convergent implicit sequences generated from the interior when their stepsizes are bounded away from zero. On the Stiefel manifold, stationarity of the canonical Riemannian gradient is equivalent to the usual first-order optimality condition. The algorithms combine large implicit outer steps with problem-adapted Newton, modified Gauss-Newton, Newton-KKT, and Newton-Krylov inner solvers. Numerical experiments on nonnegative, simplex-constrained, box-constrained, and orthogonality-constrained problems show rapid convergence to high accuracy in a small number of outer iterations while preserving feasibility of accepted iterates. A sparse elastic-obstacle experiment further shows that the orthant construction can exploit large structured systems directly. This illustrates their accuracy and ability to exploit sparsity in sparse settings.",
+      "summary": "论文提出 Gravidy，将正交象限、盒、单纯形和 Stiefel 约束编码进动力学几何，使接受的外层迭代保持可行。向量约束用分量重参数化和 Hessian 几何，单纯形采用 Fisher–Shahshahani/KL 几何，Stiefel 更新采用规范黎曼梯度及相应隐式构造。向量域上的隐式步可解释为精确 Bregman 近端更新，得到凸目标单调下降，以及相对强凸条件下的线性收缩。非凸 KL 分析还要求紧的内点区域、充分下降与相对误差条件；从内点出发且确实收敛的轨迹可恢复 KKT，离散结论还需步长有正下界。大隐式步由 Newton、Newton–KKT 或 Krylov 内求解器实现，外层步数少不等于总计算成本低；实验保留的是接受迭代的可行性。",
+      "reason": "推荐读可行几何、隐式离散和边界 KKT 恢复怎样形成完整链条。它提供始终可行优化的一条具体路线，尤其澄清“几何驻点”何时足以推出原约束最优性；非凸内点假设与隐式内求解成本决定了可迁移的范围。",
+      "order": 8,
+      "directions": [
+        "safety-critical",
+        "optimization-frontiers"
+      ]
+    },
+    {
+      "arxiv_id": "2605.07386",
+      "version": 2,
+      "title": "Convex Optimization with Nested Evolving Feasible Sets",
+      "authors": [
+        "Karthick Krishna M.",
+        "Haricharan Balasundaram",
+        "Rahul Vaze"
+      ],
+      "submitted": "2026-05-08",
+      "updated": "2026-08-16",
+      "arxiv_url": "https://arxiv.org/abs/2605.07386v2",
+      "abstract": "\\emph{Convex Optimization with Nested Evolving Feasible Sets (CONES)} is considered where the objective function \\(f\\) remains fixed but the feasible region evolves over time as a nested sequence \\(S_1 \\supseteq S_2 \\supseteq \\cdots \\supseteq S_T\\). The goal of an online algorithm is to simultaneously minimize the regret with respect to hindsight static optimal benchmark and the total movement cost $M_\\mathcal{A}(T)$ while ensuring feasibility at all times. CONES is an optimization-oriented generalization of the well-known \\emph{nested convex body chasing} (NCBC). When the loss function is convex, we propose a lazy-algorithm and show that it achieves $O(T^{1-\\beta}), O(T^\\beta)$ simultaneous regret and movement cost for any $\\beta \\in (0,1]$, over a time horizon of $T$. When the loss function is strongly convex, we propose a \\textsc{Frugal} algorithm that simultaneously achieves zero regret and a movement cost of $O(\\log T)$. To complement this, we show that any online algorithm with $o(T)$ regret has a movement cost of $\\Omega\\left(\\sqrt{\\frac{\\log{T}}{\\log \\log T}}\\right)$.",
+      "summary": "论文提出固定凸目标、嵌套收缩可行集的在线优化模型 CONES，同时控制相对最终集合静态最优解的后悔与总移动量。目标为 Lipschitz 凸函数、可行集为有界紧凸嵌套序列时，惰性算法对任意 $\\beta\\in(0,1]$ 给出 $O(T^{1-\\beta})$ 后悔与 $O(T^\\beta)$ 移动量，常数依赖几何和维数。光滑强凸情形的 FRUGAL 保持非正的前缀后悔并将移动量控制为 $O(\\log T)$；同一类问题中贪心方法可有平方根时间阶移动。论文还证明次线性后悔算法的移动下界 $\\Omega(\\sqrt{\\log T/\\log\\log T})$。这一公式下界与对数上界之间仍有缺口，不能称为匹配下界。",
+      "reason": "值得关注把嵌套凸体追逐转化为同时衡量优化质量与移动代价的模型，以及惰性和强凸结构怎样改变二者的权衡。推荐读算法势函数和移动下界的具体构造；可行集嵌套与目标固定是关键，不能直接推广到任意动态在线优化。",
+      "order": 9,
+      "directions": [
+        "optimization-frontiers"
+      ]
+    },
+    {
+      "arxiv_id": "2509.12613",
+      "version": 3,
+      "title": "Randomized Feasibility-Update Algorithms for Stochastic Variational Inequality Problems",
+      "authors": [
+        "Abhishek Chakraborty",
+        "Angelia Nedić"
+      ],
+      "submitted": "2025-09-16",
+      "updated": "2026-10-01",
+      "arxiv_url": "https://arxiv.org/abs/2509.12613v3",
+      "abstract": "This paper considers stochastic monotone variational inequalities whose feasible region is the intersection of a (possibly infinite) number of convex functional level sets. A projection-based approach or direct Lagrangian-based techniques for such problems can be computationally expensive if not impossible to implement. To deal with the problem, we consider randomized methods that avoid the projection step on the whole constraint set by employing random feasibility updates. In particular, we propose and analyze modified stochastic Korpelevich and Popov methods for solving monotone stochastic VIs. We introduce a modified dual gap function and prove the convergence rates with respect to this function. We illustrate the performance of the methods in simulations on a zero-sum matrix game.",
+      "summary": "论文研究可行域由可能无限多个凸函数水平集相交构成的随机单调变分不等式。全集合投影昂贵时，作者在随机 Korpelevich 和 Popov 步后抽取约束，进行次梯度式可行性修复，同时保留对一个简单有界外集合的投影。分析允许算子具有有界变动，并在相应无偏方差条件、约束采样误差界和次梯度界下，分别控制修改后的对偶间隙与不可行距离。主要有限时域加权平均界达到平方根迭代次数倒数阶；修改间隙使用原间隙的绝对值来处理不可行点。随机修复避免全交集投影，但中间迭代一般仍可能不可行，不能解读为逐轮安全保证。",
+      "reason": "推荐读随机约束修复怎样进入外梯度与 Popov 的误差分析，以及为何需修改不可行点上的间隙定义。该方法对大规模函数约束提供实质的随机 VI 算法及收敛度量；简单外集合、采样误差界和算子条件仍需逐项核对。",
+      "order": 10,
+      "directions": [
+        "optimization-frontiers"
+      ]
+    },
+    {
+      "arxiv_id": "2609.19080",
+      "version": 1,
+      "title": "ElastiQP: An Always-Feasible QP Solver for Constrained Robot Control",
+      "authors": [
+        "Daniel Morton",
+        "Jon Arrizabalaga",
+        "Zachary Manchester",
+        "Marco Pavone"
+      ],
+      "submitted": "2026-09-16",
+      "updated": "2026-09-16",
+      "arxiv_url": "https://arxiv.org/abs/2609.19080v1",
+      "abstract": "As robot capabilities increase, quadratic programming (QP)-based controllers must account for a similarly increasing number of constraints to ensure safe, reliable operation. Yet, with each added constraint, this introduces more chances of momentary conflict: in which case, a QP solver that returns an \"infeasible\" status leaves the controller with nothing to execute. To address this, we introduce ElastiQP, a modified dual active-set QP solver that relaxes every inequality constraint with an exact, per-constraint l1 penalty while keeping equality constraints (dynamics) hard. Notably, ElastiQP does so by folding the slack variables into the solver analytically, maintaining a constant size of the condensed linear system. On a suite of robot control benchmarks, ElastiQP achieves microsecond-level performance, matching or outperforming leading modern solvers on feasible problems. On infeasible problems, ElastiQP handles these gracefully, confining violations to strictly the conflicting inequality terms, returning a usable solution up to 40x faster than the best alternative solvers. ElastiQP is available as an open-source C++ header-only library, with Python and JAX interfaces, at this https URL .",
+      "summary": "论文研究含大量不等式的机器人控制 QP 在约束冲突时如何仍输出可用解。ElastiQP 将每个不等式配上独立的精确一范数罚项，等式仍保持为硬约束。作者在对偶主动集求解中解析消去松弛变量，使不等式乘子处于罚权重限定的盒内，并区分未激活、激活和饱和状态；因此增加软约束不需要扩大凝聚线性系统。原硬 QP 可行且罚权重大于适当最优乘子时，可恢复硬问题最优解；若硬不等式冲突，则返回弹性解，允许相应违反，不能保证原安全约束始终满足。等式自身须一致。小中规模控制实验报告微秒级求解和冲突场景加速，这些性能是实验结果而非通用复杂度优势。",
+      "reason": "值得读解析消去松弛与有界对偶主动集如何让弹性处理保持固定系统规模。中心贡献是具体 QP 求解器结构及约束冲突的计算处理；标题中的 always-feasible 指弹性问题，不能据此归入严格可行的安全优化。",
+      "order": 11,
+      "directions": [
+        "optimization-frontiers"
+      ]
+    },
+    {
+      "arxiv_id": "2308.03550",
+      "version": 4,
+      "title": "Feasible approximation of matching equilibria for large-scale matching for teams problems",
+      "authors": [
+        "Ariel Neufeld",
+        "Qikun Xiang"
+      ],
+      "submitted": "2023-08-07",
+      "updated": "2026-08-30",
+      "arxiv_url": "https://arxiv.org/abs/2308.03550v4",
+      "abstract": "We propose a numerical algorithm for computing feasible and approximately optimal solutions of the matching for teams problem. Specifically, we introduce the notion of approximate matching equilibrium as a feasible approximation of a matching equilibrium with relaxed rationality, and we show that a true equilibrium is recovered in the limit of a sequence of approximate matching equilibria with sub-optimality approaching 0. In our approximation scheme, we parametrize the so-called transfer functions, and we show that tackling the resulting parametric primal and dual optimization problems yields two approximate matching equilibria as well as provable and computable lower and upper bounds for the optimal social welfare. Under a flexible Euclidean setting, we show that the approximation error of our scheme can be controlled to be arbitrarily close to 0, we derive an explicit computational complexity bound, and we develop an algorithm for computing approximate matching equilibria that is efficient for large-scale problems involving a large number of agent populations. We study three problems in our numerical experiments: a retail business problem, the Wasserstein barycenter problem, and a large-scale problem involving up to 1000 agent populations. We show that the proposed algorithm can produce nearly optimal approximate matching equilibria to provide quantitative managerial insights for policymakers, and that the computed sub-optimality estimates are much less conservative than theoretical estimates.",
+      "summary": "论文研究连续类型和连续质量空间中的多群体 matching for teams 均衡，而非整数匹配算法。作者以有限维函数参数化转移支付，形成线性半无限规划及其矩约束对偶，再从解构造具有真实边缘分布和共同质量分布的近似均衡。构造保持匹配可行性，允许有界的理性条件误差，并给出可计算的社会福利上下界；逼近误差趋零时恢复真均衡。紧度量空间、Lipschitz 成本等条件支撑误差估计，在欧氏设定下另有显式计算复杂度界。理论复杂度所用的体积中心算法与实际约束生成实现需区分；数值实验包含 Wasserstein 重心及上千群体案例。",
+      "reason": "推荐读半无限规划、矩对偶与可行恢复如何同时提供均衡和福利证书。这项工作对连续最优传输与多边耦合优化有明确价值，特别是区分离散近似求解与保持真实边缘约束的输出，而不是只报告数值目标值。",
+      "order": 12,
+      "directions": [
+        "optimization-frontiers"
+      ]
+    },
+    {
+      "arxiv_id": "2610.03071",
+      "version": 1,
+      "title": "Learn Feasibility Once, Optimize All Objectives: Derivative-Free Diffusion Models for Chance-Constrained Programming",
+      "authors": [
+        "Ziwen Liu",
+        "Yan Liu",
+        "Congying Han",
+        "Tiande Guo",
+        "Yao Yan",
+        "Weichen Zhao"
+      ],
+      "submitted": "2026-10-02",
+      "updated": "2026-10-02",
+      "arxiv_url": "https://arxiv.org/abs/2610.03071v1",
+      "abstract": "Chance-constrained programs (CCPs) optimize decisions under uncertainty by limiting the probability of constraint violation. Despite advances in traditional and learning-based approaches, optimizing non-convex or non-smooth objectives and adapting to different objectives under fixed chance constraints remain challenging. In this paper, we propose a \\textbf{D}erivative-free \\textbf{D}iffusion-based framework that \\textbf{D}isentangles constraint modeling from objective optimization, termed \\textbf{D$^3$Opt}. We learn the chance-feasible structure once, independently of any particular objective, by training a risk-conditioned diffusion model solely on constraint-filtered decisions and freezing it as a reusable prior for post-specified objectives. At inference time, we propose an annealed, particle-based Feynman--Kac correction along the frozen reverse diffusion process to optimize post-specified objectives using only function evaluations. This enables derivative-free optimization of non-convex and non-smooth objectives without objective-specific retraining. We prove that the correction preserves feasibility when this property holds for the frozen prior, and derive an optimization-error bound separating learned-prior coverage, finite-particle approximation, and finite-temperature effects. Experiments on linear Gaussian CCPs, objective-transfer tasks, and chance-constrained economic dispatch demonstrate effective optimization across smooth and non-smooth objectives, including non-convex cases, and objective generalization under fixed chance constraints without retraining.",
+      "summary": "论文研究固定机会约束下不断更换非凸或非光滑目标的优化。D3Opt 先只用通过约束过滤的样本训练风险条件扩散先验，冻结模型后通过退火粒子 Feynman–Kac 校正，仅使用新目标函数值进行优化，无需目标专属重训。误差界区分先验覆盖、有限粒子近似和有限温度三项；先验须在近最优区域分配足够概率，粒子项依赖固定时域 SMC 正则条件，渐近论证需先增加粒子数再降低温度。校正对先验绝对连续，因此仅当冻结先验本身几乎必然可行时继承可行性；有限训练数据和学习模型不自动提供这一保证。实验展示机会约束下的目标迁移与非光滑优化，理论并非所有学习先验都精确可行的保证。",
+      "reason": "推荐读把约束学习与目标优化分离的值查询框架，尤其是覆盖误差和粒子误差怎样限制目标迁移。它提出明确的约束优化算法和误差分解；保留条件化的可行性与先验覆盖边界，有助于判断生成模型何时真正能作为可复用的优化基础。",
+      "order": 13,
+      "directions": [
+        "optimization-frontiers"
+      ]
+    }
+  ]
+}
