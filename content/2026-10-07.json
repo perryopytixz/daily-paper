@@ -1,0 +1,477 @@
+{
+  "date": "2026-10-07",
+  "status": "complete",
+  "frontiers_status": "recommendations",
+  "highlights": [
+    {
+      "arxiv_id": "2610.06557",
+      "types": [
+        "field",
+        "group"
+      ],
+      "label": "历史子空间｜用少量二阶查询实现可认证加速",
+      "text": "三次模型结合历史梯度与位移，在凸光滑及 Hessian Lipschitz 条件下，经重启得到二次反比误差率；每个接受步骤至多三次 Hessian–向量乘积。"
+    },
+    {
+      "arxiv_id": "2610.05789",
+      "types": [
+        "field",
+        "group"
+      ],
+      "label": "去中心化非光滑优化｜移除复杂度中的维数幂次",
+      "text": "在线到非凸转换结合加速 gossip，在固定连通网络与受控随机 oracle 下，采样与通信达到不含维数幂次的 Goldstein 驻点界。"
+    },
+    {
+      "arxiv_id": "2605.02043",
+      "types": [
+        "group"
+      ],
+      "label": "异步动量｜按发起次序控制数据相关延迟",
+      "text": "有序历史权重保留迟到梯度；光滑凸、紧域及有界样本梯度等条件下，双动量使主要随机误差不随工作节点数增长。"
+    },
+    {
+      "arxiv_id": "2610.07750",
+      "types": [
+        "group"
+      ],
+      "label": "流形分布式优化｜以 landing 协调正交性与一致性",
+      "text": "固定网络、管状邻域初始化与步长条件下，每轮一次通信且无需回缩；线性节点加速须等待异质性和暂态项衰减。"
+    },
+    {
+      "arxiv_id": "2610.07777",
+      "types": [
+        "field"
+      ],
+      "label": "随机次梯度｜揭示有界噪声仍可困在排斥点",
+      "text": "构造几乎必然收敛到非极小 Clarke 临界点的反例；正定高斯噪声和指定幂次步长则能避免给定的非限制临界点。"
+    },
+    {
+      "arxiv_id": "2610.05038",
+      "types": [
+        "field"
+      ],
+      "label": "有限和单调包含｜消除反复全量扫描的对数成本",
+      "text": "跨阶段保留方差缩减估计器，达到 $O(n+\\sqrt n LR/\\epsilon)$ 查询阶；匹配下界限定于随机线性张成 oracle 类。"
+    },
+    {
+      "arxiv_id": "2609.09035",
+      "types": [
+        "field"
+      ],
+      "label": "量子凸优化｜把 membership 下界推进到线性维数",
+      "text": "Fourier rank 归约在指定椭球、目标精度和可行性尺度下给出 $\\Omega(n)$ 查询下界，并连接二次优化与矩阵问题。"
+    }
+  ],
+  "papers": [
+    {
+      "arxiv_id": "2610.06557",
+      "version": 1,
+      "title": "CaCuTe Meets SESOP: Better Theory and Practice with Lipschitz Hessians",
+      "authors": [
+        "Nazarii Tupitsa"
+      ],
+      "submitted": "2026-10-05",
+      "updated": "2026-10-05",
+      "directions": [
+        "historical-information",
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2610.06557v1",
+      "abstract": "We combine CaCuTe with sequential subspace optimization (SESOP) for smooth convex minimization under Lipschitz continuity of the Hessian. The resulting method, CaCuSESOP, achieves the global rate $O(k^{-2})$ with a fixed number of Hessian--vector products per iteration, while removing key limitations of classical SESOP. In particular, exact minimization of the original objective is replaced by minimization of a low-dimensional cubic upper model, which needs only be solved to a computable accuracy. The cubic regularization parameter is selected by backtracking. If the Hessian at the minimizer is positive definite, CaCuSESOP automatically attains an accelerated local linear rate with complexity $O(\\sqrt{\\kappa_\\star}\\log(1/\\varepsilon))$. Neither the local strong-convexity parameter, the condition number $\\kappa_\\star$, nor the optimal value is supplied to the algorithm. We give finite bounds for entering this regime and adapting the restart schedule. Finally, we prove that the global $O(k^{-2})$ rate is optimal for the considered fixed-budget gradient/Hessian--vector-product linear-span oracle class, even with momentum and unrestricted memory.",
+      "summary": "历史搜索方向能够帮助加速，但把子空间计算、二阶信息成本和全局速率同时纳入分析并不容易。该文将 CaCuTe 的三次模型与 SESOP 子空间结合：子空间包含当前梯度、相对初始点的位移、加权历史梯度及近期位移，在低维空间求解受控精度的三次子问题，每个接受步骤至多使用三次 Hessian–向量乘积。对凸、二阶连续可微、初始水平集有界且 Hessian Lipschitz 的目标，基础界带有对数因子，配合受控重启可得到 $O(K^{-2})$ 的目标误差。若最优点处 Hessian 正定，还建立进入局部区域后的条件数平方根依赖；该局部保证不需要预先输入强凸参数或最优值。作者同时给出限定线性张成 oracle 类中的下界，用于比较历史子空间与二阶查询的效率。",
+      "reason": "推荐重点阅读历史方向的选择及子问题精度证书。它把历史信息怎样产生加速、每步二阶计算需要多少、何时可重启串成一个可核查的框架；对研究历史梯度与曲率复用的加速方法，子空间构造和重启论证比单独的实验提速更有借鉴价值。",
+      "order": 1
+    },
+    {
+      "arxiv_id": "2610.05789",
+      "version": 1,
+      "title": "Dimension-Free Decentralized Nonsmooth Nonconvex Stochastic Optimization",
+      "authors": [
+        "Yuanyu Wan",
+        "Lan Xue",
+        "Haomin Bai",
+        "Tong Wei",
+        "Mingli Song"
+      ],
+      "submitted": "2026-10-05",
+      "updated": "2026-10-05",
+      "directions": [
+        "distributed",
+        "stochastic",
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2610.05789v1",
+      "abstract": "We investigate decentralized nonsmooth nonconvex stochastic optimization over a network of $n$ nodes, with the goal of finding an $(\\delta,\\epsilon)$-Goldstein stationary point. The best existing algorithm achieves $O(\\delta^{-1}(\\epsilon^{-3}+d\\epsilon^{-1}))$ sample complexity and $\\widetilde{O}(\\gamma^{-1/2}\\delta^{-1}(\\epsilon^{-3}+d\\epsilon^{-1}))$ communication complexity, where $d$ is the problem dimension and $\\gamma$ is the spectral gap of the communication matrix. However, the polynomial dependence on $d$ can be a major bottleneck in high-dimensional regimes. In this paper, we propose a novel algorithm that achieves $O(\\delta^{-1}\\epsilon^{-3})$ sample complexity and $\\widetilde{O}(\\gamma^{-1/2}\\delta^{-1}\\epsilon^{-3})$ communication complexity. The primary technique is an elegant decentralized online-to-nonconvex conversion that reduces the original problem to a decentralized online convex optimization (D-OCO) problem. A key property of our conversion is that its consensus requirements can be inherited directly from the consensus of the underlying D-OCO decisions. In particular, this property enables us to establish an explicit connection between the dimension dependence and the consensus error, which in turn shows that the polynomial dependence on $d$ can be removed with only logarithmic additional communication.",
+      "summary": "非光滑非凸分布式优化常因平滑或一致性误差而引入维数成本。该文建立一般的去中心化在线到非凸转换，将在线遗憾和网络一致性误差共同转化为 Goldstein 驻点保证，再以加速通信的 FTRL 实现实例化算法。对下有界目标、平方可积的样本 Lipschitz 常数、无偏且二阶矩受控的随机 oracle，以及固定连通对称混合矩阵，找到 $(\\delta,\\epsilon)$ 驻点所需采样为 $O(\\delta^{-1}\\epsilon^{-3})$，通信为 $\\widetilde O(\\gamma^{-1/2}\\delta^{-1}\\epsilon^{-3})$，其中 $\\gamma$ 是网络谱隙。额外的对数级 gossip 使一致性项足够小，从而移除复杂度中的维数幂次；网络条件和对数因素仍保留。",
+      "reason": "最值得读的是能直接替换在线子程序的转换定理，以及通信精度如何吸收维数误差。它直接推进去中心化非光滑随机优化的采样与通信分析，给出了比某个特定更新式更可复用的设计接口。",
+      "order": 2
+    },
+    {
+      "arxiv_id": "2605.02043",
+      "version": 3,
+      "title": "Bringing Order to Asynchronous SGD: Towards Optimality under Data-Dependent Delays with Momentum",
+      "authors": [
+        "Tehila Dahan",
+        "Roie Reshef",
+        "Sharon Goldstein",
+        "Kfir Y. Levy"
+      ],
+      "submitted": "2026-05-03",
+      "updated": "2026-10-04",
+      "directions": [
+        "asynchronous-distributed",
+        "distributed",
+        "stochastic",
+        "historical-information"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2605.02043v3",
+      "abstract": "Asynchronous SGD enables scalable distributed training but suffers from stale gradients. When delays depend on the data, slower samples may be underrepresented, biasing training toward faster samples. We introduce ordered momentum, a unified framework that attains the best-known rates for smooth convex and non-convex objectives under both data-independent and data-dependent delays. Notably, we establish (i) the first convergence guarantee for smooth convex objectives with data-dependent delays and, among analyses of data-dependent delays, the first to (ii) benefit from parallelization and (iii) match the tight data-independent rate, with a leading stochastic term independent of the number of workers. Finally, we derive robust learning rates that simplify hyperparameter tuning across convex and non-convex settings.",
+      "summary": "异步 SGD 中梯度的完成次序会随样本而变化，普通动量可能因此把不同时间、不同数据的梯度赋予不合适的权重。该文按梯度发起次序定义有序动量，收到延迟为 $\\tau$ 的梯度时使用与发起时间一致的指数权重，从而无需丢弃迟到梯度。在光滑非凸、噪声独立于延迟且方差有界的设置下，平均梯度平方界包含 $O(L\\Delta M/T+\\sigma\\sqrt{L\\Delta/T})$；允许数据相关延迟时，需要额外的样本梯度有界条件并出现新的三分之二次幂项。对紧凸可行域和样本梯度 Lipschitz 的凸问题，数据相关延迟情形还要求样本梯度有界。作者进一步用同一样本的配对梯度构造双动量方差缩减，使主要随机误差按 $T^{-1/2}$ 衰减且不随工作节点数 $M$ 增长，节点影响进入 $M/T$ 项。结果还刻画了可保持该速率的较宽步长区间。",
+      "reason": "优先阅读把动量时间戳与延迟关联起来的分析。数据相关延迟正是异步优化难以直接沿用同步方差分析的原因；该文同时控制历史权重、延迟偏差和噪声，提供了有明确条件的鲁棒更新机制。凸与非凸结果的条件差异也值得在设计异步算法时逐项对照。",
+      "order": 3
+    },
+    {
+      "arxiv_id": "2610.07750",
+      "version": 1,
+      "title": "PLADOS: A Parameter-free Landing Algorithm for Decentralized Optimization on the Stiefel Manifold",
+      "authors": [
+        "Shu Li",
+        "Jiang Hu"
+      ],
+      "submitted": "2026-10-06",
+      "updated": "2026-10-06",
+      "directions": [
+        "distributed",
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2610.07750v1",
+      "abstract": "Decentralized optimization on the Stiefel manifold has broad applications in machine learning and signal processing. We propose PLADOS, a parameter-free landing algorithm for decentralized optimization on the Stiefel manifold. Each iteration combines local stochastic gradient updates with a single retraction-free communication step over the communication graph. A key convex-like property of the intersection of the nonconvex Stiefel manifold and consensus constraints is characterized through a restricted secant inequality for the penalty-only scheme, ensuring local contraction of the manifold consensus error without introducing additional parameters that require tuning. For $n$ nodes using independent local batches of size $b$, we prove that PLADOS achieves linear speedup with respect to the number of nodes with an asymptotic convergence rate of $O(\\sigma/\\sqrt{nbK}+(n\\xi^2)^{1/3}/K^{2/3})$ after $K$ iterations, where $\\sigma^2>0$ is the sampling variance and $\\xi^2$ quantifies gradient heterogeneity. Experiments demonstrate stability across tested stepsizes and networks, time efficiency, and linear speedup with respect to the number of nodes.",
+      "summary": "Stiefel 约束下的分布式优化需要同时控制网络一致性与正交性，反复回缩和惩罚参数调节会增加实现成本。该文提出 PLADOS，以 landing 机制在约束附近更新，每轮一次通信，不进行回缩，并避免额外调节约束惩罚参数。理论要求目标在紧管状邻域内二阶光滑、独立随机梯度及其方差受控、网络混合矩阵固定且对称双随机，初始化落在指定邻域内，并采用满足上界的步长。在这些条件下，平均黎曼梯度平方得到 $O(\\sigma/\\sqrt{nbK}+(n\\xi^2)^{1/3}/K^{2/3}+n^2/K)$ 型界，常数还依赖网络；$n$、$b$、$\\xi$ 分别刻画节点数、批量与异质性。线性节点加速是在暂态项小于随机项后的结论，参数无关也不意味着步长没有限制。",
+      "reason": "推荐关注正交性偏差与一致性误差共用的控制机制。它对带几何约束的去中心化随机算法给出每轮通信与可行邻域的具体协调方式，避免把流形方法的性能仅归因于更少回缩。",
+      "order": 4
+    },
+    {
+      "arxiv_id": "2610.07777",
+      "version": 1,
+      "title": "Stochastic Subgradient Descent at Sharply Repulsive Points: A Bounded Noise Counterexample and Gaussian Noise Avoidance",
+      "authors": [
+        "Shu Li",
+        "Jiang Hu"
+      ],
+      "submitted": "2026-10-06",
+      "updated": "2026-10-06",
+      "directions": [
+        "stochastic",
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2610.07777v1",
+      "abstract": "Motivated by the open question of Bianchi, Hachem, and Schechtman (Bianchi et al., 2024, Remark 4), we show that in the non-weakly convex definable setting, omnidirectional noise with conditional fourth-moment control does not suffice for universal almost-sure avoidance of sharply repulsive critical points. We demonstrate this failure by constructing a globally Lipschitz, coercive, definable objective that is not weakly convex. For this objective and its sufficiently small linear perturbations, stochastic subgradient descent with independent noise uniformly distributed on a ball in $\\mathbb{R}^2$ converges with probability $1$ to a nonminimal sharply repulsive critical point from every initial point in a specified ball. A two-cycle argument establishes uniform bounds on the rescaled iterates, yielding convergence to the sharply repulsive critical point. In contrast, for locally Lipschitz definable objectives, Gaussian noise ensures simultaneous almost-sure avoidance of any finite collection of sharply repulsive points. Through a construction of difference quotient functions, we show that convergence to any such point with positive probability would produce a stationary distribution with expected descent $0$, whereas a global positive lower bound on the Fr\\'echet subgradient norms of the limiting functions forces strictly positive expected descent under the same distribution. This contradiction proves avoidance, with the everywhere positive Gaussian density playing a key role.",
+      "summary": "随机扰动是否会使次梯度算法离开排斥临界点，取决于目标的非光滑结构和噪声分布。该文构造可定义、可扩展为强制性的分段目标：原点是 Clarke 临界点，却不是限制次微分临界点。在指定初始化、调和递减步长及均匀球内有界噪声下，随机次梯度迭代仍可几乎必然收敛到这个非极小点，且反例对小倾斜扰动保持成立。另一方面，对局部 Lipschitz 可定义函数、正定协方差的独立高斯噪声，以及指数处于 $(1/2,1]$ 的幂次步长，作者证明迭代几乎必然避免指定的非限制临界点及相应有限集合。这不是对所有非极小点或全局最优收敛的统一保证。",
+      "reason": "反例与避免定理放在一起，明确划出了“有噪声就会逃逸”这一直觉的边界。推荐阅读局部分片几何和噪声支持的作用：它直接关系到非光滑随机优化应选择什么驻点概念，以及为何仅有方差条件不足以描述逃逸行为。",
+      "order": 5
+    },
+    {
+      "arxiv_id": "2610.05038",
+      "version": 1,
+      "title": "Optimal Oracle Complexity for Finite-Sum Monotone Inclusions",
+      "authors": [
+        "Qihao Zhou"
+      ],
+      "submitted": "2026-10-04",
+      "updated": "2026-10-04",
+      "directions": [
+        "stochastic",
+        "historical-information",
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2610.05038v1",
+      "abstract": "We present an oracle-optimal method for finite-sum monotone inclusions under mean-square Lipschitz continuity. Our switching regularization method finds a point $y$ and a certificate $g\\in G(y)$ with $(\\mathbb{E}\\|F(y)+g\\|^2)^{1/2}\\le\\varepsilon$ using $\\mathcal{O}(n+\\sqrt{n}LR/\\varepsilon)$ expected component evaluations and resolvent evaluations. It removes the additive $n\\log n$ cost of restarting a variance-reduced solver at every regularization stage by switching to a centered stochastic proximal iteration at regularization strength $L/\\sqrt{n}$. Carrying an operator estimate between the remaining stages limits their total cost to $\\mathcal{O}(n)$. A matching $\\Omega(n+\\sqrt{n}LR/\\varepsilon)$ lower bound holds for randomized linear-span component-oracle algorithms with adaptive stopping and expected query budgets. Thus, for $0<\\varepsilon\\le LR/2$, our method attains the optimal worst-case expected component complexity in this oracle model, up to universal constants.",
+      "summary": "该文研究有限和单调包含 $0\\in F(x)+G(x)$，其中平均算子 $F$ 单调、分量满足均方 Lipschitz 条件，$G$ 是可调用 resolvent 的极大单调算子。作者将递归正则化与方差缩减结合，在不同精度阶段之间保留算子估计，避免每次重启支付一次全量扫描的额外对数成本。在已知 Lipschitz 与初始距离界等条件下，达到均方根残差精度 $\\epsilon$ 的分量查询和 resolvent 成本为 $O(n+\\sqrt n LR/\\epsilon)$，消除了附加的 $n\\log n$ 项。匹配下界针对随机线性张成算法，允许自适应停止并按期望查询预算衡量，因而说明该 oracle 模型下的紧致性。",
+      "reason": "最有价值的是跨阶段复用估计器为何能消掉全量扫描的对数损失，以及如何定义与下界可比的残差证书。它把随机方差缩减、历史状态保留和单调算子求解连接起来，可供近端与原始—对偶算法的复杂度设计对照。",
+      "order": 6
+    },
+    {
+      "arxiv_id": "2609.09035",
+      "version": 2,
+      "title": "Near-Optimal Quantum Lower Bounds for Convex Optimization via Fourier Rank",
+      "authors": [
+        "Brandon Augustino",
+        "Shouvanik Chakrabarti",
+        "Enrico Fontana",
+        "Dylan Herman",
+        "Junhyung Lyle Kim",
+        "Guneykan Ozgul",
+        "Nadezhda Voronova"
+      ],
+      "submitted": "2026-09-08",
+      "updated": "2026-10-05",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.09035v2",
+      "abstract": "We establish a linear quantum query lower bound for high-accuracy convex optimization over an explicit family of $n$-dimensional ellipsoids. We focus on linear optimization with an explicitly given objective, where the feasible set is accessed through a membership oracle. We show that any algorithm that, for every unit linear objective, returns an exactly feasible point with additive objective error $\\Theta(n^{-1/2})$ requires $\\Omega(n)$ membership queries, where the ellipsoids are contained in the unit ball. The same lower bound can be shown to hold if the returned point is only required to be approximately feasible, within $\\Theta(n^{-3/2})$ distance from the feasible set. This resolves an open question posed by Chakrabarti, Childs, Li, and Wu~(\\textit{Quantum}, 2020) and by van Apeldoorn, Gily\\'en, Gribling, and de Wolf~(\\textit{Quantum}, 2020). Coupled with the upper bounds in these papers, the query complexity of high-accuracy convex optimization is characterized tightly up to logarithmic factors. The proof is built around a lower bound for determinant computation that is derived via a novel polynomial method based on Fourier-rank. In the continuous matrix phase-query model, computing the determinant of a real $n\\times n$ matrix requires at least $n/2$ matrix-vector product queries. The construction also yields an $\\Omega(n)$ phase-query lower bound for estimating the minimum eigenvalue of a real symmetric $n\\times n$ matrix to additive accuracy $\\Theta(n^{-2})$. These results extend the determinant and minimum-eigenvalue lower bounds of Childs, Hung, and Li~(ICALP 2021) from finite fields to the real-valued setting. Based on the same constructions, we also prove an $\\Omega(\\min\\{\\sqrt\\kappa,n\\})$ gradient-query lower bound for constant-accuracy optimization of $1$-strongly convex and $\\kappa$-smooth functions, which is optimal up to a logarithmic factor.",
+      "summary": "量子查询能否大幅减少连续凸优化的维数成本，需要与具体 oracle 和精度相匹配的下界。该文用 Fourier rank 与矩阵相位的多项式方法构造难实例，将凸体 membership 查询的下界推进到 $\\Omega(n)$。核心实例是包含于单位球、内半径为 $\\Theta(1/n)$ 的椭球，线性目标精度为 $\\Theta(n^{-1/2})$；即使允许指定量级的近似可行性，仍保留线性维数下界。作者还给出行列式、最小特征值及二次优化梯度 oracle 的关联下界，其中后者呈现 $\\Omega(\\min\\{\\sqrt\\kappa,n\\})$ 的依赖。当前版本通过单目标归约等论证去掉此前的对数损失，各结论均对应特定查询模型。",
+      "reason": "推荐阅读 Fourier rank 怎样把几何优化查询归约为可量化的信息难度。它给连续凸优化的量子加速预期提供了具体边界，同时展示了能够连接矩阵问题和优化下界的分析工具。",
+      "order": 7
+    },
+    {
+      "arxiv_id": "2610.04944",
+      "version": 1,
+      "title": "Near-Optimal Complexity of Finite-Sum Nonconvex-Strongly-Concave Minimax Optimization",
+      "authors": [
+        "Qihao Zhou"
+      ],
+      "submitted": "2026-10-04",
+      "updated": "2026-10-04",
+      "directions": [
+        "stochastic",
+        "historical-information",
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2610.04944v1",
+      "abstract": "We characterize, up to logarithmic factors, the minimax expected query complexity of finite-sum nonconvex-strongly-concave optimization under mean-squared averaged smoothness. For randomized zero-respecting incremental first-order algorithms, the complexity is $\\tilde{\\Theta}(n+\\min\\{\\sqrt{n}\\,\\kappa,n^{3/4}\\sqrt{\\kappa}\\}\\,L\\Delta\\varepsilon^{-2})$ throughout $\\kappa=L/\\mu\\ge1$, under exact dual initialization and for $0<\\varepsilon^2\\le c_0L\\Delta$, where $c_0>0$ is universal. This characterization is our main result. A dual-chain construction provides the lower bound and matches the existing Catalyst upper bound for $\\kappa\\ge\\sqrt{n}$. For $1\\le\\kappa\\le\\sqrt{n}$, we introduce recursive proximal descent-ascent (RPDA), which retains a recursive gradient estimator across proximal subproblems and attains $\\tilde{O}(n+\\sqrt{n}\\,\\kappa L\\Delta\\varepsilon^{-2})$ with a fixed query budget. Both upper bounds guarantee an expected squared primal gradient at most $\\varepsilon^2$. Under individual smoothness, we also prove $\\Omega(n+\\min\\{\\kappa,\\sqrt{n\\kappa}\\}\\,L\\Delta\\varepsilon^{-2})$ for every $\\kappa\\ge1$. It matches the polynomial upper rate for a bilinear subclass when $\\kappa\\ge n$; the intermediate-condition-number gap remains open.",
+      "summary": "有限和非凸—强凹极小极大优化的复杂度会随样本数 $n$ 与对偶条件数 $\\kappa$ 改变，单一算法未必在所有区间都有效。该文在平均光滑、对偶强凹及理论所用精确对偶初始化条件下，刻画找到原问题梯度范数不超过 $\\epsilon$ 的复杂度：$\\widetilde O(n+\\min\\{\\sqrt n\\kappa,n^{3/4}\\sqrt\\kappa\\}L\\Delta/\\epsilon^2)$。高条件数区间由 Catalyst 路线达到相应界，低于 $\\sqrt n$ 的区间则用 RPDA 的递归估计器和固定预算设计补齐。作者在随机 zero-respecting 增量一阶 oracle 类中给出匹配下界，说明两个参数区间的切换有理论依据；这里的平均光滑假设不应替换为另一类逐分量光滑模型。",
+      "reason": "推荐关注复杂度相图与递归估计状态如何跨子过程保留。它把有限和随机优化中的批量成本和条件数影响分开，使算法选择可以依据明确的参数区间，而不是只比较一个渐近精度阶。",
+      "order": 8
+    },
+    {
+      "arxiv_id": "2610.06115",
+      "version": 1,
+      "title": "Descent--Ascent Structure of Uniform Nondegeneracy",
+      "authors": [
+        "Hua Su",
+        "Lei Zhang",
+        "Jin Zhao"
+      ],
+      "submitted": "2026-10-05",
+      "updated": "2026-10-05",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2610.06115v1",
+      "abstract": "Classical models such as smooth strongly convex minimization and strongly convex--strongly concave optimization combine two types of curvature information: curvature remains uniformly separated from zero, and its positive and negative orientations are prescribed in advance. Uniform nondegeneracy disentangles these roles, retaining the separation from zero while allowing the curvature orientation to vary across the domain. We identify a family of descent--ascent inequalities (DAI) that characterizes uniform nondegeneracy and naturally gives rise to Alternating Descent Ascent (ADA), a simple explicit method that alternates full-gradient descent and ascent. ADA converges globally and linearly to the unique stationary point from arbitrary initialization, with dimension-free first-order complexity. The framework recovers the smooth strongly convex setting as a limit and encompasses the strongly convex--strongly concave and linearly constrained settings, highlighting uniform nondegeneracy as a common first-order structure across various classical regimes.",
+      "summary": "Hessian 一致远离奇异但允许同时有正、负特征值时，目标既不必凸，也未必具有预先指定的鞍点变量分块。该文用 descent–ascent inequalities 刻画这种全局一致非退化结构，并给出可用一阶割线条件表达的版本。在正、负谱均有统一上下界等全局条件下，交替进行全梯度下降与上升的 ADA 算法，通过合适的固定步长在唯一驻点处实现全局线性收敛，迭代界对维数无显式依赖，条件数以乘积形式进入。结论针对驻点：当 Hessian 不定时，该点可以是鞍点，不能解释为通常的全局极小点。",
+      "reason": "最值得读的是从谱非退化到下降—上升不等式的等价刻画。它提供了无需固定变量划分的结构化非凸求解视角，并明确展示强全局结构如何替代凸性来支持线性收敛。",
+      "order": 9
+    },
+    {
+      "arxiv_id": "2610.05517",
+      "version": 1,
+      "title": "Minimax Call Complexity, Rounds and Admissible Noise in Zeroth-Order Optimization of Highly Smooth Functions",
+      "authors": [
+        "Timofei Loginov",
+        "Darina Dvinskikh",
+        "Nazarii Tupitsa",
+        "Osman Osmanov",
+        "Yuriy Dorn",
+        "Alexander Gasnikov"
+      ],
+      "submitted": "2026-10-04",
+      "updated": "2026-10-04",
+      "directions": [
+        "stochastic",
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2610.05517v1",
+      "abstract": "We study zeroth-order optimization of convex and strongly convex functions with H\\\"older smoothness of order $\\beta>2$ from values corrupted by random noise with bias independent of the method's random directions, a Lipschitz systematic error and a bounded adversarial error. We measure the number of function evaluations (calls), of sequential rounds of parallel calls, and the largest tolerable systematic and adversarial errors. For strongly convex functions with a bounded Hessian, we prove a lower bound of order $d^2\\varepsilon^{-\\beta/(\\beta-1)}$ on the number of calls, where $d$ is the dimension and $\\varepsilon$ the accuracy, and find the sharp power of $d$ under the stronger Hilbert--Schmidt smoothness for all $\\beta>2$. An accelerated finite-difference method attains them in $O(\\sqrt{\\kappa}\\log(1/\\varepsilon))$ rounds for condition number $\\kappa$, like Nesterov's method with exact gradients, and tolerates the optimal systematic and, up to logarithms, adversarial errors; rate-optimal methods need $\\Omega(\\log d)$ rounds. The same number of calls is attained when the Hessian grows at most linearly with the gradient and, for centered noise, without an upper bound on the Hessian, also in logarithmically many rounds. For convex functions, our lower bound improves the known one polynomially in $d$ and is tight at the curvature of the hard instances; the systematic level is again optimal. These bounds extend to general norms and constraints; on the $\\ell_1$ ball, mirror descent needs calls nearly linear in $d$. Experiments confirm the theory.",
+      "summary": "高阶光滑是否真正减少带噪函数值优化的查询成本，还要同时考虑维数、并行轮数和系统误差。该文研究光滑阶 $\\beta>2$、强凸且 Hessian 受控的目标，在方向无关随机观测噪声等指定 oracle 条件下，为算子范数光滑类建立匹配的 $d^2\\epsilon^{-\\beta/(\\beta-1)}$ 型极小极大查询阶；采用 Hilbert–Schmidt 光滑度时维数依赖不同。作者进一步分析加速方案的条件数平方根型轮数，以及达到最优查询阶时不可省去的对数维数轮数成本，同时量化 Lipschitz 系统偏差与有界误差可容忍的大小。随机噪声、固定偏差和自适应误差分别受不同约束，因此不能推广为任意对抗性函数值 oracle 的结论。",
+      "reason": "推荐重点阅读查询数、轮数与容许噪声三者之间的对应关系。它为高阶平滑零阶随机优化给出紧致基准，也解释了为什么提高光滑阶并不自动消除维数或偏差成本；这补充了当天一阶随机方法无法覆盖的 oracle 认识。",
+      "order": 10
+    },
+    {
+      "arxiv_id": "2610.08087",
+      "version": 1,
+      "title": "A Logarithmic-dual-update Bregman ADMM for Optimal Transport",
+      "authors": [
+        "Di Hou",
+        "Kim-Chuan Toh"
+      ],
+      "submitted": "2026-10-06",
+      "updated": "2026-10-06",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2610.08087v1",
+      "abstract": "This paper studies an entropy Bregman alternating direction method of multipliers (BADMM) with logarithmic dual update for solving discrete optimal transport (OT) problems. The algorithm uses simple row and column normalizations without inner iterations, allowing efficient CPU and GPU implementations. However, the convergence of this method for general OT problems has not been established. Starting from a strictly positive feasible primal point and a zero multiplier, we establish $R$-linear convergence of the primal--dual sequence for general OT costs with any fixed multiplier stepsize in $(0,2)$ and a sufficiently large fixed penalty, even when the primal limit lies on the boundary. Our analysis further characterizes the primal limit as the entropy Bregman projection of the initial point onto the optimal solution set and establishes strict complementarity of the limiting OT primal--dual solution. For separable costs on two-dimensional grids, we exploit the kernel structure to accelerate matrix--vector products and reduce storage requirements. Numerical experiments show competitive performance for general cost matrices and substantial speedups over state-of-the-art solvers, including HOT and HALO, for squared Euclidean costs on two-dimensional-grid marginals. The largest tested problem, with $2048\\times2048$ grid points in each marginal, is solved in approximately 100 seconds on a single GPU.",
+      "summary": "最优传输的熵型 Bregman ADMM 可以利用行、列边缘约束做闭式更新，但边界最优解与非唯一性会使收敛论证困难。该文在对偶步骤中使用两份原始变量的对数比更新，并只保留行列尺度的状态。在严格正的可行初始化、零对偶初值、松弛系数处于 $(0,2)$，以及足够大的固定惩罚参数条件下，作者证明有限路径长度和向 KKT 点的 R 线性收敛；惩罚阈值依赖数据、初值及松弛系数。结论允许最优传输计划位于边界且不唯一，并以熵投影刻画实际选出的极限。这一结果来自特定传输结构，不是一般非凸 ADMM 的无条件线性收敛。",
+      "reason": "推荐阅读对数对偶更新如何处理零元素极限，以及熵几何如何确定非唯一解中的极限。它将可实现的闭式算法与边界解收敛连接起来，对研究 Bregman 分裂及解选择机制具有具体价值。",
+      "order": 11
+    },
+    {
+      "arxiv_id": "2610.05164",
+      "version": 1,
+      "title": "Chebyshev-Exact Acceleration under Hessian Variation, II: Computer-Assisted Variational Lower Bound",
+      "authors": [
+        "Dmitry Pasechnyuk-Vilensky",
+        "Martin Takáč"
+      ],
+      "submitted": "2026-10-04",
+      "updated": "2026-10-04",
+      "directions": [
+        "historical-information",
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2610.05164v1",
+      "abstract": "We study two-step recurrences with positive step sizes and nonnegative momentum coefficients whose terminal residual is the Chebyshev minimax polynomial on a prescribed spectral interval $[\\mu,L]$. These recurrences have the same terminal error on a fixed quadratic, but their first-order responses to stepwise Hessian perturbations can differ. We prove that the sine-Jacobi recurrence of Part I is asymptotically optimal for this response norm within a factor of $1.000004$, uniformly over $0<\\mu<L$. Every terminal-exact recurrence satisfies $A_N\\ge(2\\sqrt{c_{cert}}-o(1))N^{3/2}\\epsilon_N^\\star/(L-\\mu)$ with $c_{cert}>1.14268353624$, whereas the sine-Jacobi recurrence attains the constant $2\\sqrt{c_{\\sin}}$ with $c_{\\sin}<1.14269218$. The proof reduces the gain to the diagonal energy of a Jacobi Green matrix. A centering lift represents this matrix by an exponential kernel; packing its diagonal into a density on the line preserves the energy and controls the change in the Birman-Schwinger spectrum. A calibrated identity gives a lower bound using the ground parameter and one Fredholm determinant. Two further determinants and a trace observation improve the bound through a pointwise inequality on an explicit compact state region. One rational certificate verifies this inequality by interval arithmetic. A second certificate constructs a density satisfying the selected observations and both normalizations with energy below the sine value. Finally, no $C^1$ function of finitely many observations of the specified kinds gives a locally sharp lower bound at the sine density.",
+      "summary": "相同的末端 Chebyshev 多项式可以由不同的带动量递推实现，但它们对沿途 Hessian 漂移的敏感性并不相同。作为该系列的第二部分，本文在正步长、非负动量、末端精确等约束下，将一阶漂移响应写成 Green 核能量，建立相应变分下界。作者结合解析降维和有理区间计算证书，证明第一部分的 Sine–Jacobi 构造在渐近响应常数上距该类最优值不超过约 $1.000004$ 的乘性因子，并对谱区间保持统一。这个近最优结论针对受限递推类与一阶 Hessian 响应指标，不能直接替换为任意非二次目标的全局加速复杂度。",
+      "reason": "推荐将它与第一部分配合阅读：第一部分给可实现的历史递推，第二部分解释该递推还剩多少改进空间。将算法设计指标变为可认证的变分下界，比仅说明某组动量系数更稳定更有判断力。",
+      "order": 12
+    },
+    {
+      "arxiv_id": "2606.16671",
+      "version": 2,
+      "title": "Chebyshev-Exact Acceleration under Hessian Variation, I: Sine-Jacobi Method",
+      "authors": [
+        "Dmitry Pasechnyuk-Vilensky",
+        "Martin Takáč"
+      ],
+      "submitted": "2026-06-15",
+      "updated": "2026-10-04",
+      "directions": [
+        "historical-information"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2606.16671v2",
+      "abstract": "We study finite-horizon one-gradient realizations with the Chebyshev minimax terminal residual on $[\\mu,L]$. Under time-dependent Hessian perturbations, the terminal first variation is governed by a time-ordered spectral kernel $K_s(\\lambda,\\nu)$; its sharp $\\ell_2$ gain is $A_N$. For the prefix-exact Chebyshev recurrence, $$A_N^{pref}=\\frac4{\\sqrt3}\\frac{N^{3/2}}{L-\\mu}\\epsilon_N^\\star(1+o(1)),$$ and this is sharp in the causal two-term class with Chebyshev exactness at every prefix. For terminal-only exactness, Jacobi coordinates give $P_N=2^{1-N}T_N$: the spectrum is fixed at the midpoint Chebyshev nodes, while the spectral weights parametrize the realizations. The sine weights give a final-exact Jacobi method with the same terminal residual and $$A_N(J_N^{\\sin})=2\\sqrt{c_{\\sin}}\\frac{N^{3/2}}{L-\\mu}\\epsilon_N^\\star(1+o(1)), 2\\sqrt{c_{\\sin}}\\approx2.1379<4/\\sqrt3.$$ Thus the Chebyshev terminal polynomial does not determine the first-order Hessian-drift gain. Momentum is necessary for this order: every Chebyshev-exact stepsize schedule has $A_N\\ge2\\sqrt{2/3} N^2\\epsilon_N^\\star/(L-\\mu)$. Beyond first order, the response to drift $E_s=H_s-H$ of size $\\delta=\\max_s\\|E_s\\|$ is a finite polynomial expansion, and for both realizations the terminal error is at most $\\epsilon_N^\\star T_N(1+2\\delta/(L-\\mu))$, the Chebyshev bound of the interval widened by $\\delta$. This bound is attained, holds for objectives with Lipschitz Hessian, and shows that drift reduces the accelerated rate exponent by the factor $1-\\sqrt{\\delta/\\mu}$. The two realizations thus share the worst-case response and differ in the $\\ell_2$-in-time response measured by $A_N$. The experiments show the finite-horizon effect: lower stochastic curvature overhead, larger admissible-block frontiers, accurate time-varying quadratic predictions, and lower restart cost on an endpoint-coupled smooth strongly convex GLM.",
+      "summary": "固定时域的 Chebyshev 加速在二次模型上有精确末端误差，但逐步 Hessian 变化会放大中间响应。该文给出 Sine–Jacobi 两项递推，在保持末端 Chebyshev 精确性的同时优化历史权重。对时间平方可和的一阶 Hessian 扰动响应，无动量方案的任意步长排序都有二次时域增长的下界，而两项递推将相应增长降为 $N^{3/2}$；正弦权重还改善前缀常数。作者同时证明扩大谱区间下的最坏阶界并不会因排序而普遍改变，因此其优势是指定漂移响应指标下的稳健性，不能表述为对所有非二次问题更快。",
+      "reason": "最值得读的是如何在相同末端多项式下设计不同的历史实现。对加速方法研究，它说明终端收敛率之外还有可优化的沿途敏感性，提供了研究动量与变化曲率相互作用的明确指标。",
+      "order": 13
+    },
+    {
+      "arxiv_id": "2610.06150",
+      "version": 1,
+      "title": "Polynomial Acceleration of Alternating Projections: Chebyshev Acceleration, Convergence Rates, and Retractions",
+      "authors": [
+        "Dengyu Zheng",
+        "Shixiang Chen"
+      ],
+      "submitted": "2026-10-05",
+      "updated": "2026-10-05",
+      "directions": [
+        "historical-information"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2610.06150v1",
+      "abstract": "Alternating projections (AP) near a clean intersection of smooth manifolds can converge slowly when the Friedrichs angle is small. We develop the \\emph{Fixed-Point Manifold Acceleration (FPMA) framework} for {local convergence and polynomial acceleration of} smooth maps that fix a manifold pointwise. {Under suitable regularity and uniform normal spectral stability, FPMA establishes local R-linear convergence and a smooth limiting map inducing a local retraction. At fixed points, consistent polynomial acceleration with $p(1)=1$ preserves the selected limit's first-order response to normal initial perturbations whenever the transformed normal blocks are uniformly spectrally stable. Under sufficient smoothness, we give a curvature criterion for second-order induced retractions and show that stable consistent polynomial acceleration preserves both the quadratic retraction expansion and this criterion. {As a special case, we establish new local R-linear convergence guarantees for fixed-degree Chebyshev-accelerated exact AP and second-order induced retractions. For uniform Friedrichs angle $\\theta_F\\in(0,\\pi/2)$, acceleration strictly improves the local convergence rate per AP evaluation. The large-degree limiting spectral factor at fixed $\\theta_F$ predicts $O(\\theta_F^{-1})$ evaluations for fixed relative error reduction as $\\theta_F\\downarrow0$, versus $O(\\theta_F^{-2})$ for ordinary AP.}} {The framework also covers} inexact, relaxed, and generalized AP {under their respective regularity and stability conditions.}",
+      "summary": "交替投影的多项式加速既改变局部速度，也可能改变迭代最终选出的交点。该文围绕光滑流形的干净交集，对满足 $p(1)=1$ 的固定多项式与一致的法向谱稳定条件，建立加速迭代的局部收敛和极限回缩分析。在相应曲率条件下，固定多项式可保留原交替投影的一阶、二阶回缩响应；Chebyshev 选择则按基础映射求值成本改善小夹角情形的局部渐近速率，将典型的角度平方反比依赖推进到角度反比。每个固定次数的局部邻域与常数仍需满足定理条件，这不是自适应 Anderson 加速的全局保证。",
+      "reason": "推荐关注速度与解选择几何的联合分析。它直接讨论历史组合加速会不会改变投影极限，对于以历史信息加速固定点或约束投影方法的研究，比只给谱半径界更完整。",
+      "order": 14
+    },
+    {
+      "arxiv_id": "2610.05742",
+      "version": 1,
+      "title": "An Inexact Halpern-accelerated Preconditioned Generalized Proximal Point Algorithm for the Maximal Monotone Inclusion Problem",
+      "authors": [
+        "Lei Yang",
+        "Haihang Lan",
+        "Di Hou",
+        "Ling Liang",
+        "Kim-Chuan Toh"
+      ],
+      "submitted": "2026-10-05",
+      "updated": "2026-10-05",
+      "directions": [
+        "historical-information"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2610.05742v1",
+      "abstract": "This paper studies an inexact Halpern-accelerated generalized proximal point algorithm with an admissible positive semidefinite preconditioner $\\mathcal{M}$ for solving maximal monotone inclusion problems. The proposed framework combines Halpern anchoring, resolvent inexactness, and relaxation over the full weight range $\\rho\\in(0,2]$, thereby covering both under-relaxed and over-relaxed proximal iterations within a unified scheme. We first establish convergence of the inexact resolvent sequence under conditions that allow general anchoring parameters and certain nonsummable tolerances. For anchoring parameters $\\beta_{k}=1/(k+r)$ with $r\\geq2$, we then derive explicit bounds on the squared fixed-point residual in the $\\mathcal{M}$-seminorm. In particular, if the tolerances satisfy $\\varepsilon_{k}=\\mathcal{O}((k+1)^{-\\alpha})$ with $\\alpha>3/2$ for $0<\\rho<2$ and $\\alpha>2$ for $\\rho=2$, these bounds yield an $\\mathcal{O}(1/k^{2})$ convergence rate. The stronger decay condition on the inexactness tolerances at $\\rho=2$ highlights a qualitative distinction between the endpoint and the interior regime in the inexact setting. Finally, we develop inexact accelerated versions of the preconditioned alternating direction method of multipliers (pADMM) and the preconditioned primal--dual hybrid gradient (PDHG) method based on this framework, derive inexactness criteria based on subproblem residuals, and establish a nonergodic $\\mathcal{O}(1/k)$ KKT residual rate for their inexact iterates.",
+      "summary": "Halpern 锚定可加速单调包含，但实际 resolvent 与分裂子问题往往只能近似求解。该文在半正定容许预条件器、零点集合非空及锚定系数 $1/(k+r)$ 等条件下，给出非精确广义近端点法的误差预算。内点松弛 $0<\\rho<2$ 可用衰减快于 $k^{-3/2}$ 的误差控制，而端点 $\\rho=2$ 需要快于 $k^{-2}$ 的控制，获得残差半范数平方 $O(k^{-2})$ 的界。作者分析 resolvent 序列的收敛，并指出奇异预条件器配合端点松弛时原始迭代序列可能不收敛；进一步将可检查的非精确准则落实到预条件 ADMM 与 PDHG 子问题。",
+      "reason": "推荐重点阅读端点松弛为什么需要更强误差控制，以及怎样把理论误差改写成子问题残差。它直接服务于历史锚定加速与原始—对偶分裂的实际实现，避免用精确求解假设掩盖内循环成本。",
+      "order": 15
+    },
+    {
+      "arxiv_id": "2607.22510",
+      "version": 2,
+      "title": "Fully Convergent Projection-based Methods with Momentum under Nonconvex Geometric Constraints",
+      "authors": [
+        "Matteo Lapucci",
+        "Diego Scuppa"
+      ],
+      "submitted": "2026-07-24",
+      "updated": "2026-10-05",
+      "directions": [
+        "historical-information"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2607.22510v2",
+      "abstract": "Nonlinear optimization problems with complicated, nonconvex, yet geometrically structured constraints can be tackled by projected-gradient methods: under weak regularity assumptions, these approaches were recently proved to possess convergence properties to the strongest stationarity conditions. In this work, we show how momentum terms, commonly used in nonlinear optimization to speed up the convergence process, can be integrated within this algorithmic framework without harming convergence guarantees. Preliminarily, we highlight an intrinsic issue induced by the direct replacement of the negative gradient with a general descent direction within the projected approach. Then, we present suitable backtracking mechanisms for the pre-projection step, allowing us to integrate momentum terms in the direction. By this technique, we can specifically ensure, without any smoothness assumptions, convergence to Mordukhovich stationarity as long as the base directions asymptotically revert to the negative gradient for small stepsizes; moreover, if the base search direction reverts exactly to the negative gradient for the smallest steps, the algorithm is proved to converge to Bouligand and Proximally stationary points, with and without (local) smoothness assumptions respectively. Finally, the proposed procedure is numerically tested on some classes of problems, namely, sparsity and bounded-rank constrained problems; the results indicate that the proposed method is computationally effective, taking advantage of the additional information provided by the momentum term.",
+      "summary": "在一般闭非凸几何约束上加入动量，下降性质并不足以自动推出合适的驻点保证。该文采用精确投影与回溯，并在必要时缩小动量、退回梯度更新。在目标连续可微及有界水平集等条件下，建立聚点的 M 驻性；进一步要求小步长的精确退回机制时得到 B 驻性，局部梯度 Lipschitz 时可加强为近端驻性。理论区分这些不同的约束驻点概念与算法回退条件，没有宣称动量在任意非凸集合上都带来加速率。",
+      "reason": "推荐阅读从动量回退到约束驻点类型的推理。它与历史信息方法在非凸可行集中的稳定性直接相关，尤其能帮助辨别“下降了”与“收敛到哪类驻点”之间仍缺少哪些条件。",
+      "order": 16
+    },
+    {
+      "arxiv_id": "2610.05138",
+      "version": 1,
+      "title": "Single-call Polyak-Type Extragradient Methods for Monotone Root-Finding Problems",
+      "authors": [
+        "Keke Li"
+      ],
+      "submitted": "2026-10-04",
+      "updated": "2026-10-04",
+      "directions": [
+        "historical-information"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2610.05138v1",
+      "abstract": "We propose a single-call variant of Polyak extragradient, termed SPolyakEG, by recycling the previous extrapolation operator evaluation. Under a delayed critical condition, we establish that SPolyakEG achieves an $O(1/K)$ residual convergence rate for monotone operators and linear convergence under strong monotonicity. Compared with PolyakEG, SPolyakEG reduces the number of operator evaluations from two to one per iteration.",
+      "summary": "外梯度法通常每轮调用算子两次，直接照搬 Polyak 步长又可能无法控制非梯度单调算子的延迟误差。该文复用上一轮外推点的算子值，让每轮只增加一次新调用，并设计相应的 Polyak 型系数。对单调根求解，在延迟项满足严格临界界、步长有正下界等条件下，最小平方残差为 $O(1/K)$；强单调时配合额外步长限制可得到线性收敛。Lipschitz 算子给出可验证的充分条件，但仍包含与 Lipschitz 常数有关的容许步长范围，不能理解为无条件免调参。",
+      "reason": "值得阅读的是如何把算子历史复用的延迟效应纳入能量估计。它为减少单调问题的 oracle 调用提供了明确机制，与近端、变分不等式和原始—对偶求解中的单调用设计直接相关。",
+      "order": 17
+    },
+    {
+      "arxiv_id": "2610.05915",
+      "version": 1,
+      "title": "Large Stepsizes Federated Learning on Logistic Regression with Linearly Separable Data: The Case of Heterogeneous Devices",
+      "authors": [
+        "Hok Fong Wong",
+        "Hoi-To Wai",
+        "Chung-Yiu Yau"
+      ],
+      "submitted": "2026-10-05",
+      "updated": "2026-10-05",
+      "directions": [
+        "distributed"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2610.05915v1",
+      "abstract": "This paper revisits the distributed learning problem for training a multinomial logistic regression model with the Federated Averaging ($\\texttt{FedAvg}$) algorithm. We concentrate on a scenario with arbitrarily large stepsizes and heterogeneous update rules where the devices may perform a different number of local updates in each round. We show that, with linearly separable data, $\\texttt{FedAvg}$ is stable with any stepsizes and the objective values converge to zero at the rate of ${\\cal O}(1/R)$, where $R$ is the number of communication rounds. Our result also demonstrates that the effects of device heterogeneity vanish asymptotically. For sufficiently large $R$, the objective values decrease monotonically and is bounded by ${\\cal O}( 1 / (R T_{\\rm avg}))$, where $T_{\\rm avg}$ is the average number of local update steps per communication round across devices. Numerical experiments support our findings.",
+      "summary": "在线性可分的多分类逻辑回归中，FedAvg 的风险与不同设备本地步数、较大步长之间的关系需要单独分析。该文对有界特征及全局线性可分数据，允许设备使用不同本地迭代数，并在任意固定正本地与服务器步长下得到全局最佳迭代风险控制；主定理保留 $\\log^2 R/R$ 型因素，不能简写为无对数的 $1/R$。当本地迭代数相对差异满足额外界、且风险进入足够小的区域后，可建立稳定单调阶段和 $O(1/(R T_{\\rm avg}))$ 型末次风险率。后一个局部阶段的结论并不覆盖任意异质本地步数。",
+      "reason": "推荐关注本地计算量如何真正进入风险界，以及从一般大步长结果进入稳定阶段需要哪些限制。它对联邦优化的异质本地更新给出具体理论边界，使“多做本地步骤节省通信”可以用条件明确的结果讨论。",
+      "order": 18
+    },
+    {
+      "arxiv_id": "2610.05666",
+      "version": 1,
+      "title": "Scalar Communication via Random Direction Refreshing for Distributed Optimization",
+      "authors": [
+        "Mohammadreza Rostami",
+        "Solmaz S. Kia"
+      ],
+      "submitted": "2026-10-05",
+      "updated": "2026-10-05",
+      "directions": [
+        "distributed"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2610.05666v1",
+      "abstract": "Distributed optimization over networks requires agents to repeatedly exchange decision variables with their neighbors. When the decision dimension $d$ is large, these exchanges dominate the communication cost, which is critical for bandwidth-constrained agents. Existing remedies quantize or sparsify the exchanged vectors, yet each message still scales with $d$ and the compression error must be compensated by additional states. To address this limitation, we propose a scalar-communication mechanism in which every neighbor message carries a single real number regardless of $d$. Agents regenerate a common random direction from a shared seed, transmit only the inner product of their state with that direction, and act on the resulting rank-one surrogate of their neighbors' states while retaining full local gradients. We develop and analyze the mechanism for an existing continuous-time distributed optimization algorithm. For strongly convex local costs with Lipschitz gradients, we show that the optimizer remains the unique consensus equilibrium, that a fixed direction admits spurious equilibria, and that refreshing the direction at a sufficiently high rate yields exponential mean-square and almost-sure convergence with constant gains and no residual error. The framework admits any isotropic fixed-norm direction distribution, including Rademacher, scaled-coordinate, and sphere-normalized Gaussian directions; all three attain lower fresh-encoding variance than unnormalized Gaussian directions. The effects of the direction distribution and the refresh interval are illustrated in~simulations.",
+      "summary": "固定方向的标量 gossip 会遗漏其他方向的一致性误差。该文让所有节点共享独立、各向同性、固定范数的随机方向，邻居只交换该方向上的一个标量，并在连续时间原始—对偶一致性动态中定期刷新方向。对固定无向连通图、强凸且梯度 Lipschitz 的局部目标，以及积分状态零和初始化，当刷新间隔足够短、具有 $O(1/d)$ 量级限制时，得到向精确最优点的均方及几乎必然指数收敛。节省的是单次消息维数；随维数提高的刷新需求仍计入实现成本，不能据此称总通信复杂度与维数无关。",
+      "reason": "推荐阅读随机方向刷新如何排除固定投影的伪平衡点。它为压缩通信提供了可分析的机制，也明确区分每条消息更短和总通信更少这两个不同目标。",
+      "order": 19
+    },
+    {
+      "arxiv_id": "2610.04854",
+      "version": 1,
+      "title": "Communication-Efficient Differentially Private Gradient Tracking for Distributed Optimization via Local Updates",
+      "authors": [
+        "Mihitha Maithripala",
+        "Chenyang Qiu",
+        "Zongli Lin"
+      ],
+      "submitted": "2026-10-04",
+      "updated": "2026-10-04",
+      "directions": [
+        "distributed"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2610.04854v1",
+      "abstract": "This paper studies privacy-preserving distributed optimization using gradient tracking with one communication-free local update between consecutive communication rounds. Since local computation alone does not protect gradient information, we perturb both the primal state and the gradient-tracking direction at communication iterations while keeping local updates noise-free. We establish an aggregate variable for tracking, characterize the limiting consensus point in the presence of added random noise, and prove convergence in mean under certain parameter conditions. We also establish infinite-horizon pure differential privacy for the complete communication transcript under an affine objective adjacency relation and geometrically decaying Laplace perturbations. Simulation results illustrate the advantages of the proposed method in terms of the convergence and optimization accuracy given a privacy budget.",
+      "summary": "多次不通信的本地更新可以减少梯度跟踪的消息数，却不会自动保护本地目标隐私。该文先证明，在初始化已知且完整通信记录可见时，观察者仍能恢复梯度轨迹；随后分别对传输的原始变量和跟踪变量加入几何衰减 Laplace 噪声。对固定网络、强凸光滑局部目标、指定小步长和敏感度衰减条件，在相邻目标只差仿射项、因而梯度差恒定的邻接定义下，建立无限时域纯差分隐私保证。加噪跟踪量累积改变守恒状态，平均动态收敛到随机平移的一致最优点，而非无误差恢复原目标最优解。",
+      "reason": "最值得读的是通信记录的可恢复性分析与双通道噪声的必要性。它直接回应分布式梯度跟踪中本地更新、通信节省和隐私之间的关系，也把无限时域隐私代价明确落在最终偏移上。",
+      "order": 20
+    }
+  ]
+}
