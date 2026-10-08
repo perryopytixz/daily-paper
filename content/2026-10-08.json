@@ -1,0 +1,459 @@
+{
+  "date": "2026-10-08",
+  "status": "complete",
+  "frontiers_status": "recommendations",
+  "highlights": [
+    {
+      "arxiv_id": "2610.09912",
+      "types": [
+        "field",
+        "group"
+      ],
+      "label": "重球动力学｜确定 Polyak 参数的精确失稳边界",
+      "text": "在光滑强凸函数类求出维数一致的最坏指数因子；经典参数对所有函数收敛的充要条件为 $\\kappa<9+4\\sqrt5$，边界循环与发散例揭示二次谱分析的局限。"
+    },
+    {
+      "arxiv_id": "2609.30499",
+      "types": [
+        "group"
+      ],
+      "label": "距离增长噪声｜SGD 新增一次无限运行的驻性保证",
+      "text": "新版联立位移和下降，采用足够小尺度的对数修正 $t^{-2/3}$ 步长，证明梯度几乎必然趋零，并给出平均梯度平方的有限时域界。"
+    },
+    {
+      "arxiv_id": "2601.20571",
+      "types": [
+        "group"
+      ],
+      "label": "异步 gossip｜以度数无关存储处理非光滑目标",
+      "text": "GoalPD 每次只激活一条边，每节点保存两个向量；固定连通图及可解凸 KKT 下几乎必然收敛，分段线性二次目标和有界轨迹下还有期望线性率。"
+    },
+    {
+      "arxiv_id": "2610.08508",
+      "types": [
+        "group"
+      ],
+      "label": "通信预算｜从 DGD 误差界求解一致性轮数分配",
+      "text": "固定网络、局部凸光滑和整体强凸下，把步长与混合收缩联动；固定计算及通信预算时，该误差上界的最优每轮通信次数只取相邻整数。"
+    },
+    {
+      "arxiv_id": "2504.05798",
+      "types": [
+        "group"
+      ],
+      "label": "历史点外推｜获得高阶时变目标跟踪误差",
+      "text": "SHARP 以历史点插值预测并在过大位移时回退；目标解轨迹具有相应高阶正则性、修正器足够收缩时，稳态跟踪误差达到 $O(h^p)$。"
+    },
+    {
+      "arxiv_id": "2610.09356",
+      "types": [
+        "field"
+      ],
+      "label": "线性网络训练｜用守恒谱间隙认证全局指数收敛",
+      "text": "协方差闭合与带符号谱守恒把初始化转成持续的预条件下界；光滑 PL 损失和正支撑间隙下保证梯度流与小步长下降，重球结论另需相能量证书。"
+    },
+    {
+      "arxiv_id": "2608.09513",
+      "types": [
+        "field"
+      ],
+      "label": "多边缘最优传输｜加速求解并精确补全边缘",
+      "text": "packing 归约与秩一补全给出更快经典算法；量子方法输出稀疏经典耦合，并将访问模型、查询下界和输出成本分别说明。"
+    },
+    {
+      "arxiv_id": "2610.09919",
+      "types": [
+        "field"
+      ],
+      "label": "Hessian 谱簇｜从高阶对称性解释曲率退化",
+      "text": "三层 ReLU 的指定模型中，高阶微分形式揭示权重点对称性遗漏的平方量级核与谱重数；邻近对称参考及其破缺解释零附近谱簇和离群值。"
+    }
+  ],
+  "papers": [
+    {
+      "arxiv_id": "2610.09912",
+      "version": 1,
+      "title": "Two Answers on Heavy-Ball Dynamics",
+      "authors": [
+        "Dmitry Pasechnyuk-Vilensky"
+      ],
+      "submitted": "2026-10-07",
+      "updated": "2026-10-07",
+      "directions": [
+        "historical-information",
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2610.09912v1",
+      "abstract": "We answer two questions about the heavy-ball method on smooth strongly convex functions. The first concerns Polyak's tuning. Its dimension-uniform worst-case exponential rate equals the largest growth factor of an interpolable mixture of rotating geometric sequences, and we determine this factor for every condition number. The optimal mixtures form four algebraic families; the classification combines exact polynomial certificates, a rational parametrization, an exact solution in a quintic number field at the critical three-cycle, and verified interval continuation. Two frequencies suffice, one function in dimension five attains the rate at every horizon, the upper and lower bounds differ by constant factors, and the method converges on the whole class if and only if $\\kappa<9+4\\sqrt5$, the threshold located by Badithela and Seiler. The second question concerns arbitrary step sizes and momenta, in particular the regions of the parameter plane between the computed Lyapunov and cycle regions. We describe the phase diagram through the angle $\\Theta(\\omega)$ between the characteristic polynomials of the two extreme quadratics. The method converges when $\\Theta(\\omega)>\\omega/2$, has a $k$-periodic orbit when $\\Theta(2\\pi j/k)\\le\\pi/k$, and the remaining regions are rotation-number gaps organized by Farey fractions. A single strict certificate at one growth exponent bounds the rate, so convergence can be certified at the threshold exponent. In the first level of the gaps, fans of Farey fractions accumulating at a resonant endpoint carry periodic orbits with several harmonics, explicit fan-lag inequalities certify convergence, and both behaviors occur in the regions left open before.",
+      "summary": "Polyak 重球参数在二次函数上给出的加速率，并不直接代表一般光滑强凸函数上的表现。该文对 $L$-光滑、$\\mu$-强凸函数类，采用固定 Polyak 参数与相同初始两点，求出维数一致的精确最坏指数因子，并用四类代数谱结构描述决定性轨迹。一个五维函数即可在所有迭代长度上以常数因子匹配最坏界；对条件数 $\\kappa=L/\\mu$，所有该类函数上收敛的充要范围是 $\\kappa<9+4\\sqrt5$，边界出现循环，更大的条件数存在发散例。对一般步长和动量，作者还构造第一层周期轨道及收敛证书，展示其参数区域的细致结构；这部分没有把所有剩余区域都完全分类。",
+      "reason": "推荐优先阅读精确最坏轨迹与插值、对偶证书的配合：它把历史惯性在非二次曲率下何时加速、何时失稳，落实为可验证的函数和参数边界。相较只分析二次谱半径或给保守充分条件，这项结果直接检验经典调参规则的适用范围。",
+      "order": 1
+    },
+    {
+      "arxiv_id": "2609.30499",
+      "version": 2,
+      "title": "Ordinary Nonconvex SGD under Distance-Dependent Moments: Finite-Horizon Stationarity and Nagaev Bounds",
+      "authors": [
+        "Wei Biao Wu"
+      ],
+      "submitted": "2026-09-24",
+      "updated": "2026-10-07",
+      "directions": [
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.30499v2",
+      "abstract": "Uniform noise-moment bounds exclude stochastic gradients whose variability increases with the iterate. We study ordinary, single-sample stochastic gradient descent for smooth, lower-bounded, possibly nonconvex objectives under distance-dependent conditional moments. Under second moments alone, a direct descent--displacement argument yields $T^{-1/3}$ expected average squared-gradient stationarity with a horizon-dependent stepsize. An explicit oracle-complexity corollary matches the known smooth Blum--Gladyshev (BG-0) lower bound, including the $Lb_2\\Delta^3\\varepsilon^{-6}$ and $L\\Delta\\sigma^2\\varepsilon^{-4}$ stochastic terms, where $\\Delta$ is the initial objective gap and $\\sigma^2+b_2\\|x-x_1\\|^2$ bounds the variance. Thus unchanged SGD attains the minimax stochastic complexity in this second-moment class. For $p>2$, predictable localization and a Hilbert-space Fuk--Nagaev inequality yield a high-probability bound separating logarithmic variance and polynomial rare-shock contributions. The localization radius is derived from the recursion: no bounded-iterate assumption, clipping, normalization, momentum, or increasing batch size is needed. We also give increasing-confidence rates, an objective-gap-growth refinement recovering root-$T$ stationarity, and stochastic $L^p$-Lipschitz examples. The broad BG-0 optimality statement is distinguished from the smaller mean-square-smooth class, in which additional oracle structure permits faster algorithms.",
+      "summary": "该文研究普通非凸 SGD 的梯度噪声随迭代点到初值的距离增长的情形，允许条件二阶矩受 $\\sigma^2+b\\|x-x_1\\|^2$ 控制，而非假设全局有界方差。有限时域分析联立位移与下降，并把最大位移放入期望内控制；在目标光滑且下有界、梯度估计条件无偏等条件下得到驻点与重尾概率界。新版进一步采用 $\\eta_t=a t^{-2/3}(\\log(et))^{-\\nu}$、$\\nu>1/3$，在尺度 $a$ 足够小、位移反馈常数满足吸收条件时，证明一次无限运行中梯度范数几乎必然趋零，并给出期望平均梯度平方 $O(T^{-1/3}(\\log T)^\\nu)$ 的界。该结论是梯度驻性及位移控制，不等于迭代点收敛到全局极小点。",
+      "reason": "新增无限时域结果值得与有限预算的步长设计一起读：位移依赖噪声形成的反馈，通过可求和量和小尺度条件被闭合，避免把有界方差直接套到无界轨迹。其证明也明确展示了几乎必然驻性与有限时域平均界之间所需的额外控制。",
+      "order": 2,
+      "update_note": "此前于 2026-09-29 推荐 v1。v2 新增 Theorem 3.5 与 Corollary 3.6：在足够小尺度的对数修正幂次步长下，给出无需预定终止时刻的一次无限运行及几乎必然梯度驻性；同时加强最大位移的期望控制。"
+    },
+    {
+      "arxiv_id": "2601.20571",
+      "version": 3,
+      "title": "Fast and Efficient Asynchronous Gossip Algorithm for Robust and Non-Smooth Convex Decentralized Learning",
+      "authors": [
+        "Anna van Elst",
+        "Olivier Fercoq",
+        "Igor Colin",
+        "Stephan Clémençon"
+      ],
+      "submitted": "2026-01-28",
+      "updated": "2026-10-06",
+      "directions": [
+        "asynchronous-distributed",
+        "distributed"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2601.20571v3",
+      "abstract": "Asynchronous primal-dual methods for decentralized non-smooth convex optimization often require each node to maintain $\\mathcal{O}(d)$ auxiliary variables, where $d$ is its degree. This dependence on degree increases memory requirements and can amplify the effects of stale information, especially in dense networks. Motivated by the challenge of frugal memory management in decentralized learning, we introduce Goal-PD, an asynchronous gossip-based primal-dual algorithm that maintains only two variables per node, regardless of the node's degree. We establish almost-sure convergence of Goal-PD to a minimizer of the underlying optimization problem, and prove linear convergence when the objective functions are piecewise linear-quadratic. For decentralized mean estimation, we show that pairwise averaging is a special case of Goal-PD, which establishes a direct link between the proposed primal-dual framework and classical gossip. Experiments on synthetic and real datasets over various network topologies, with non-smooth objectives including median estimation, show that Goal-PD converges faster than existing asynchronous baselines while requiring significantly less memory by design.",
+      "summary": "去中心化非光滑学习中，常见 gossip 原始对偶方法的节点存储会随度数增长。作者提出 GoalPD：每次随机激活一条边，仅两个端点做近端与平均更新，每个节点保存两个向量，且无需全网同步。在固定连通无向图、每条边具有正激活概率、本地函数闭真凸且 KKT 系统可解的条件下，给出原始、对偶及一致性的几乎必然收敛；边概率进入本地步长设计。若本地函数进一步为分段线性二次且轨迹有界，则期望 Lyapunov 误差线性衰减。这里的异步是随机边事件，不是允许任意计算延迟的保证。",
+      "reason": "值得阅读的是如何用聚合对偶状态消除度数相关存储，同时保留非光滑近端与随机事件收敛分析。线性率由分段线性二次结构产生的误差界支撑，便于研究 gossip 中通信、状态存储与收敛条件的取舍。",
+      "order": 3
+    },
+    {
+      "arxiv_id": "2610.08508",
+      "version": 1,
+      "title": "Budget-Constrained Multi-Consensus Decentralized Gradient Descent",
+      "authors": [
+        "Shuyi Ren",
+        "Nicolò Michelusi",
+        "Erik G. Larsson"
+      ],
+      "submitted": "2026-10-06",
+      "updated": "2026-10-06",
+      "directions": [
+        "distributed"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2610.08508v1",
+      "abstract": "We investigate decentralized gradient descent (DGD) with emphasis on efficient communication and computation resource utilization under budget constraints. As a first step toward the broader communication-computation allocation problem, we consider and analyze a multi-consensus decentralized gradient descent (mcDGD) scheme, where the number of consensus rounds and the stepsize are allowed to vary across iterations. Building on a unified analytical framework for DGD, we derive finite-time convergence bounds that explicitly characterize the interaction between consensus quality and optimization dynamics. Our analysis requires only convexity of the local objective functions while assuming smoothness and strong convexity of the global objective. The resulting bounds enable a principled consensus-allocation strategy under resource constraints, for which we show that equal allocation of consensus rounds across iterations is optimal under our stepsize rule, up to integer rounding. Numerical experiments corroborate the theoretical findings and demonstrate favorable communication-computation tradeoffs compared with existing multi-consensus decentralized optimization baselines.",
+      "summary": "多轮一致性可以减小 DGD 的节点分歧，但会挤占有限通信预算。该文在固定无向网络上研究每次梯度更新前执行可变次数一致性的方法；混合矩阵的非一致性谱严格位于单位圆内，本地目标凸且光滑、总目标强凸。作者把步长与本轮混合收缩量联动，建立优化误差和一致性误差的联合有限时域上界，并说明常步长偏差可随步长尺度缩小。给定梯度更新次数及总通信轮数，在该步长规则下最小化所推导的上界，最优每轮通信次数只取预算均值两侧的相邻整数。所得最优性针对这一上界与策略族，不是所有分布式算法的资源最优结论。",
+      "reason": "推荐关注预算怎样直接进入误差递推与整数通信分配。它为计算和通信共同受限的分布式迭代提供可解析的设计基准，比固定每轮通信次数更具体，也便于检验上界指导与实际性能之间的差异。",
+      "order": 4
+    },
+    {
+      "arxiv_id": "2504.05798",
+      "version": 2,
+      "title": "A Simple yet Highly Accurate Prediction-Correction Algorithm for Time-Varying Optimization",
+      "authors": [
+        "Tomoya Kamijima",
+        "Naoki Marumo",
+        "Akiko Takeda"
+      ],
+      "submitted": "2025-04-08",
+      "updated": "2026-10-06",
+      "directions": [
+        "historical-information"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2504.05798v2",
+      "abstract": "This paper proposes a simple yet highly accurate prediction-correction algorithm, SHARP, for unconstrained time-varying optimization problems. Its prediction is based on an extrapolation derived from the Lagrange interpolation of past solutions. Since this extrapolation can be computed without Hessian matrices or even gradients, the computational cost is low. To ensure the stability of the prediction, the algorithm includes an acceptance condition that rejects the prediction when the update is excessively large. The proposed method achieves a tracking error of $O(h^{p})$, where $h$ is the sampling period, assuming that the $p$-th derivative of the target trajectory is bounded and the convergence of the correction step is locally linear. We also prove that the method can track a trajectory of stationary points even if the objective function is non-convex. Numerical experiments demonstrate the high accuracy of the proposed algorithm.",
+      "summary": "时变目标的跟踪精度受采样间隔和每次修正成本共同限制。该文提出 SHARP，使用若干历史解点做 Lagrange 多项式外推，再调用能收缩到当前解的修正器；预测位移过大时自动退回低阶预测。在强凸、解轨迹具有所需有界高阶导数及修正收缩因子足够小等条件下，使用 $p$ 阶历史预测可获得 $O(h^p)$ 稳态跟踪误差，并分离几何衰减的初始误差。非凸推广只针对具备局部正则性、速度控制和合适初始化的可跟踪驻点分支；局部 PL 条件可支持梯度修正器。它处理目标随时间变化，网络拓扑变化并非本文问题。",
+      "reason": "重点是历史点外推与回退保护怎样共同支撑高阶误差，而非依赖求解目标的时间导数。对研究历史复用的人，阶数、轨迹正则性与修正收缩要求之间的关系，比单纯增加历史窗口更有借鉴价值。",
+      "order": 5
+    },
+    {
+      "arxiv_id": "2509.08483",
+      "version": 2,
+      "title": "Modified Loss of Momentum Gradient Descent: Fine-Grained Analysis",
+      "authors": [
+        "Matias D. Cattaneo",
+        "Boris Shigida"
+      ],
+      "submitted": "2025-09-10",
+      "updated": "2026-10-07",
+      "directions": [
+        "historical-information",
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2509.08483v2",
+      "abstract": "We analyze gradient descent with Polyak (1964) heavy-ball momentum (HB) whose fixed momentum hyperparameter $\\beta \\in (0, 1)$ provides exponential decay of memory. Building on Kovachki and Stuart (2021), we prove that on an exponentially attractive invariant manifold the algorithm is exactly plain gradient descent with a modified loss, provided that the step size $h$ is small enough. Although the modified loss does not admit a closed-form expression, we describe it up to $O(h^{\\mathcal{R}})$-errors for arbitrary finite order $\\mathcal{R}$, and prove global (finite \"time\" horizon) trajectory approximation bounds $O(h^{\\mathcal{R}})$. We then conduct a fine-grained analysis of the combinatorics underlying the memoryless approximations of HB, in particular, finding a rich family of polynomials in $\\beta$ hidden inside which include and lie coefficient-wise in between Eulerian and Narayana polynomials. We prove that these polynomials are $h$-polynomials of certain graph-associahedra. As corollaries of the main results, we derive continuous modified equations of arbitrary finite approximation order (with rigorous bounds) and the principal flow that approximates the HB dynamics, generalizing Rosca et al. (2023). Approximation theorems cover both full-batch and mini-batch HB. The results shed new light on the main features of HB and outline a roadmap for similar analysis of other optimization algorithms.",
+      "summary": "动量方法依赖过去状态，直接把其行为理解为当前损失的梯度下降会遗漏历史产生的修正。作者证明，在损失具有全局有界且足够正则的导数、小步长等条件下，重球动力学存在吸引不变流形，其上可精确写成某个修改损失的梯度下降，并保留原损失的临界点与 Morse 指标。对随批次变化的损失，在 Hessian 上界为 $D_2$ 且 $hD_2\\leq(1-\\sqrt\\beta)^2$ 时构造可逆的无记忆单步表示，且该阈值具有尖锐性。作者还以树多项式给出任意有限阶修改损失展开；在所需导数界和轨迹范围条件下，截断表示在固定时间区间内产生 $O(h^R)$ 轨迹误差。",
+      "reason": "推荐阅读历史记忆如何变成可分析的损失修正，以及临界点类型为何保持。精确表示、批次变化的步长阈值与有限阶近似分别有明确适用条件，能帮助区分动量的机制解释与大步长训练中的经验现象。",
+      "order": 6
+    },
+    {
+      "arxiv_id": "2610.09356",
+      "version": 1,
+      "title": "Global Exponential Convergence of Two-Layer Linear Network Training",
+      "authors": [
+        "Stephen Y Zhang",
+        "Gabriel Peyré"
+      ],
+      "submitted": "2026-10-07",
+      "updated": "2026-10-07",
+      "directions": [
+        "historical-information",
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2610.09356v1",
+      "abstract": "We prove global exponential (linear) convergence with an explicit rate in the rich scaling for wide two-layer linear networks trained with smooth Polyak-Lojasiewicz predictor losses. Gradient flow in the factors closes exactly in terms of a finite-dimensional Bures flow of the neuron law covariance, in which the predictor dynamics are preconditioned by hidden covariance blocks. Mean-field conservation laws provide uniform spectral lower bounds on the hidden preconditioning blocks when the initial covariance satisfies a spectral support gap condition. This condition encompasses positive definiteness while still allowing for singular initializations. For an initial covariance $\\Sigma_0 = \\sigma^2 \\mathrm{Id}$, the loss converges to the global minimum with linear rate at least $4\\sigma^2\\kappa$, where $\\kappa$ is the PL constant. We establish stability of this rate under finite-width sampling, as well as global convergence of factor gradient descent for an explicit stepsize interval depending on smoothness, the initial loss, and conserved spectral margins. Our argument extends layerwise to deep linear ResNets, subject to a residual-path bound. In the case of heavy-ball momentum, training dynamics close instead over positions and velocities in terms of a lifted phase covariance. Linear convergence holds under an explicit condition on the energy and damping, specifying a window of admissible dampings. For two-scale white initializations, this interval is nonempty for sufficiently large position scales, with a fixed initial loss gap and velocity covariance. Numerical experiments illustrate the covariance geometry and compare the predicted and observed rates.",
+      "summary": "两层线性网络虽对预测矩阵具有简单损失，对权重因子却是非凸的，隐藏协方差还会改变有效预条件。该文把训练封闭到固定大小的协方差方程，发现输入输出分块的带符号谱守恒量，并据此控制隐藏块的非退化性。若预测损失全局光滑且满足 PL 不等式、初始协方差的支撑谱间隙为正，则梯度流全局指数收敛到最优预测器；允许部分奇异初始化，足够小步长的因子梯度下降也有显式线性界。重球部分把位置与速度共同提升到相空间协方差，结合能量耗散和变形控制，在正定位置协方差及文中相能量证书成立时保证全局指数收敛。深线性残差网络的深度一致界另需训练全过程残差路径有界，不能仅由层间守恒量推出。",
+      "reason": "值得优先阅读的是把初始化几何变成持续有效的谱下界，再把惯性历史引入相空间的闭合分析。它给出了可检查的全局收敛证书，区别于只解释平衡性质或局部稳定性；相关结论限于线性网络、指定尺度和证书条件。",
+      "order": 7
+    },
+    {
+      "arxiv_id": "2608.09513",
+      "version": 2,
+      "title": "Faster Algorithms for Multimarginal Optimal Transport",
+      "authors": [
+        "Brandon Augustino",
+        "Yue Sun",
+        "Atithi Acharya",
+        "Shouvanik Chakrabarti",
+        "Junhyung Lyle Kim",
+        "Shree Hari Sureshbabu",
+        "Charlie Che"
+      ],
+      "submitted": "2026-08-10",
+      "updated": "2026-10-06",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2608.09513v2",
+      "abstract": "We study constructive discrete multimarginal optimal transport (MOT) among $m$ distributions on $n$ points, where the cost tensor $C$ has $N=n^m$ entries. For additive accuracy $\\varepsilon$, let $\\kappa=\\max\\{1,(\\max C-\\min C)/\\varepsilon\\}$. Classically, we give two algorithms that return exactly feasible additive-$\\varepsilon$ couplings. A deterministic box--simplex method with rounding runs in $O(m^2N\\kappa\\log N)=\\widetilde O(m^3N\\kappa)$ time, while an exact reduction to positive packing followed by rank-one completion runs in randomized time $\\widetilde O(m^2N\\kappa)$. At fixed $\\kappa$, both match the $\\Omega(N)$ cost of writing a dense coupling, up to factors in $m$ and logarithms. Quantumly, in the general entry-access model, tensor Sinkhorn followed by sparse recovery returns an exactly feasible additive-$\\varepsilon$ coupling as a classical list of $\\widetilde O(m^2n\\kappa^2)$ atoms, using $\\widetilde O(m^4\\sqrt{Nn}\\,\\kappa^3)$ coherent cost queries without materializing the tensor. Finally, for fixed $m$ and constant normalized accuracy, we prove sparse-output lower bounds of $\\widetilde\\Omega(N)$ randomized classical queries, even with unrestricted output size, and $\\widetilde\\Omega(\\sqrt{Nn})$ quantum queries for outputs with at most $n\\operatorname{polylog}(n)$ atoms. Hence, for fixed $m$ and normalized accuracy between $(\\log n)^{-O(1)}$ and a sufficiently small constant, explicit sparse MOT construction has query complexity $\\widetilde\\Theta(N)$ classically and $\\widetilde\\Theta(\\sqrt{Nn})$ quantumly.",
+      "summary": "多边缘最优传输的显式成本张量具有 $N=n^m$ 个条目，保持精确边缘又常增加近似算法成本。该文将问题化为 packing 线性规划，并以秩一补全修复剩余边缘，给出随机经典算法约 $\\widetilde O(m^2N\\kappa)$ 的算术复杂度，其中 $\\kappa$ 反映成本尺度与加性精度。量子部分结合张量 Sinkhorn、裁剪采样和边缘补全，输出稀疏的经典耦合；其查询界约为 $\\widetilde O(m^4\\sqrt{Nn}\\kappa^3)$，要求相干成本查询、向量访问与边缘态制备，门复杂度另计。在固定边缘数和归一化精度的访问模型下，作者还给出经典与量子查询下界。",
+      "reason": "推荐关注 packing 归约与精确可行补全这一算法接口，及查询、算术、输出成本如何分开计算。经典部分本身提供更快方法；量子优越性有明确输入访问假设，不能据此推断常规数据格式下的直接运行加速。",
+      "order": 8
+    },
+    {
+      "arxiv_id": "2610.09919",
+      "version": 1,
+      "title": "Eigenvalues of the Hessian in Deep Learning: The Origin of Symmetry and Its Breaking",
+      "authors": [
+        "Yossi Arjevani"
+      ],
+      "submitted": "2026-10-07",
+      "updated": "2026-10-07",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2610.09919v1",
+      "abstract": "Hessian spectra at trained models in deep learning exhibit a persistent pattern: eigenvalues organize into distinct clusters, including a large bulk near zero and a few isolated outliers. This paper shows that a natural account of these spectral phenomena emerges when the original setting is understood as a departure from a nearby, otherwise hidden, highly symmetric reference. Modifications, including changes to the architecture, data distribution, or parameter metric, expose a nearby reference configuration whose Hessian exhibits rich invariances-ones not accounted for by weight symmetries. There, symmetry enables a precise description of the spectra, forcing high-dimensional kernels and eigenvalues of large multiplicity. Returning to the original configuration breaks the Hessian symmetry and thereby produces the observed hierarchy of clusters and outliers. The framework is developed in some generality, with a detailed analysis of three-layer ReLU networks and applications to convolutional, graph, and transformer models, as well as to the NTK. The same mechanism is further shown to yield analogous spectral structures in layerwise Hessians and the Gauss-Newton matrix.",
+      "summary": "深度学习 Hessian 的大零附近谱簇和少数离群值，往往无法仅用当前权重点的对称性解释。该文区分架构、损失、数据及高阶微分形式的对称群，构造邻近的高对称参考配置，再分析回到原模型时的对称性破缺。对三层 ReLU 模型，在指定权重区域与正则性条件下识别随宽度平方增长的 Hessian 或 Gauss–Newton 核；对正交中心的高斯混合及特定 Bayes 最优实现，计算零特征值、弱曲率和离群值的精确重数。随机中心偏离参考模型时，谱簇解释由扰动关系给出；He 初始化的概率谱界另需输入二阶矩有限等条件。卷积、图网络及 Transformer 的例子扩展了机制证据，而没有给出所有网络训练都收敛的定理。",
+      "reason": "值得读的是为何损失微分形式拥有比权重稳定子更丰富的对称性，以及怎样用表示分解得到曲率核和重数。它为优化景观中的谱退化提供可计算的结构解释，且明确区分严格模型定理与其他架构上的数值现象。",
+      "order": 9
+    },
+    {
+      "arxiv_id": "2610.09203",
+      "version": 1,
+      "title": "FlexGrad: a root-free approach to adaptive step sizes",
+      "authors": [
+        "Pablo Barros",
+        "Aaron Defazio",
+        "Vincent Guigues"
+      ],
+      "submitted": "2026-10-06",
+      "updated": "2026-10-06",
+      "directions": [
+        "historical-information"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2610.09203v1",
+      "abstract": "We introduce the FlexGrad optimizer, an adaptive gradient method that addresses a key limitation of classical AdaGrad-type methods: their inability to exploit correlations between gradients. By scaling steps using both cumulative gradients and cumulative squared gradients, FlexGrad preserves AdaGrad-like behavior in noisy regimes while allowing substantially larger steps when gradient directions are persistent. The method is fully online, horizon-free, and avoids any auxiliary search procedure during optimization. For convex Lipschitz objectives, we prove that FlexGrad attains the optimal asymptotic convergence rate for nonsmooth convex optimization, with guarantees for both global and coordinate-wise variants. FlexGrad is straightforward to implement and is closely connected to practical gradient-normalized methods. Experiments on a range of convex and nonconvex problems show that FlexGrad performs competitively across a range of optimization settings.",
+      "summary": "常见自适应步长将平方梯度和开方，却较少利用历史梯度的方向抵消。FlexGrad 采用双平均结构，从初值沿累计加权梯度更新，并以累计梯度范数除以累计加权梯度平方来设定无开方步长；另有逐坐标版本。对凸目标、有界次梯度和已知最优点距离上界，作者分析加权平均输出，误差界显式依赖历史方向不规则度。多项式权重在指定指数范围内给出 $1/\\sqrt n$ 型界；增长权重还需梯度衰减的非退化因子受控，不能删去该条件声称任意权重都有统一最优率。",
+      "reason": "推荐阅读累计方向抵消与累计能量之间的比值如何产生步长，并与双平均的证明对接。这里的历史利用有具体机制和凸优化依据，适合比较不同梯度历史统计；实验中的非凸训练表现与上述凸理论应分开理解。",
+      "order": 10
+    },
+    {
+      "arxiv_id": "2610.06578",
+      "version": 2,
+      "title": "DGA-Muon: Decoupled Geometry-Aligned Adaptive Scaling for Muon",
+      "authors": [
+        "Wenpeng Zhang",
+        "Runsheng Yu"
+      ],
+      "submitted": "2026-10-05",
+      "updated": "2026-10-07",
+      "directions": [
+        "historical-information"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2610.06578v2",
+      "abstract": "While NorMuon has achieved strong empirical performance in pretraining, its underlying adaptive mechanism remains largely heuristic and poorly understood. In this work, we provide the first systematic theoretical analysis of NorMuon's adaptivity, revealing that it primarily arises from orthogonalization-induced geometry rather than genuine optimization dynamics, serving to offset the resulting geometric non-uniformity. Under exact orthogonalization, the adaptive scaling factors degenerate into a single global scalar for square and wide matrices, while for tall matrices their variation results from unevenly distributed row energy after orthogonalization. Under approximate orthogonalization, the orthogonality residuals introduce additional variation into the scaling, giving rise to a counterintuitive Orthogonalization--Adaptivity Paradox: more accurate orthogonalization weakens adaptivity. We further show that NorMuon's rigid row-wise scaling is geometrically misaligned with the one-sided orthogonal structure of tall matrices by distorting column orthogonality. Motivated by these limitations, we propose two core design principles that a desirable adaptive mechanism for Muon should satisfy. First, adaptive scaling should be decoupled from orthogonalization, with the scaling factors computed directly from raw gradients. Second, adaptive scaling should be aligned with the shape-dependent orthogonal structure of the polar factor, using row-wise scaling for wide matrices and column-wise scaling for tall matrices. We prove that this geometry-aligned scaling preserves the orthogonal structure of the update. By incorporating several other techniques, we obtain Decoupled Geometry-Aligned Muon (DGA-Muon). We establish convergence guarantees for DGA-Muon and empirically validate both our theoretical characterization of NorMuon's scaling degeneration and the superiority of DGA-Muon.",
+      "summary": "Muon 正交化后再做自适应缩放，可能使统计量退化或破坏原有正交几何。作者先说明方阵及宽矩阵的精确正交更新具有恒定行能量，因此相应行统计会退化为全局缩放；高矩阵的行差异则具有几何含义，逐行缩放还会扰动列正交性。DGA-Muon 将自适应统计改为原始梯度的历史二阶矩，并按矩阵长宽关系选择对齐的缩放方向，分离方向整形与幅度估计。光滑目标、条件无偏且噪声及缩放因子有界等假设下，固定步长的平均驻性界保留步长与噪声残差；不是一般噪声下趋零的统一加速率。语言模型等实验支持了这一解耦设计。",
+      "reason": "值得看的是正交化究竟抹去了哪些历史幅度信息，以及缩放应该作用在哪个几何方向。相较直接在正交化输出上积累统计，文中的矩阵形状分析给出了可复核的机制依据，而非只报告性能提升。",
+      "order": 11
+    },
+    {
+      "arxiv_id": "2610.09512",
+      "version": 1,
+      "title": "A Distributed Accelerated Preconditioned ADMM for Solving Quadratically Regularized Optimal Transport on Bipartite Graphs",
+      "authors": [
+        "Jiayi Zhu",
+        "Haihang Lan"
+      ],
+      "submitted": "2026-10-07",
+      "updated": "2026-10-07",
+      "directions": [
+        "distributed",
+        "historical-information"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2610.09512v1",
+      "abstract": "Optimal transport (OT) has found broad applications in machine learning, economics, and management. Classical OT models, however, are not directly suited to allocation problems with graph-structured connectivity and unbalanced mass. Distributed OT formulations on bipartite graphs address these requirements but are typically solved by ADMM, whose slow convergence limits communication efficiency. We adapt the accelerated preconditioned ADMM (AP-ADMM) to the quadratically regularized distributed OT model and develop DAP-ADMM, a fully distributed algorithm in which each node communicates only with its graph neighbors. For fixed local penalty parameters, we establish global convergence and non-ergodic $O(1/k)$ bounds for both the KKT-residual norm and the primal objective gap. We derive an exact solver-free routine for the interval-constrained projections arising in the local ADMM subproblems. We propose a distributed self-adaptive penalty mechanism that updates node-specific penalties using locally computable KKT-residual components without global aggregation. Numerical experiments confirm the efficiency of the solver-free routine and the practical acceleration of DAP-ADMM over standard distributed ADMM.",
+      "summary": "稀疏二部图上的最优传输存在供需边缘的全局耦合，直接 ADMM 往往需要全局矩阵运算。该文对二次正则化传输模型构造 QR 分解和正对角预条件，把关键更新分解为供给、需求节点的局部近端步骤及邻边通信，并允许广义凸边缘损失和可选熵项。作者进一步加入 Halpern 初值锚定形成加速版本。在 KKT 解集非空、预条件参数为正、松弛参数满足规定范围且本地子问题按算法求解时，迭代收敛到原始对偶解，非遍历 KKT 残差为 $O(1/k)$。该速度控制的是残差，不是直接证明目标误差同阶。",
+      "reason": "推荐关注怎样消掉全局逆运算并保留耦合约束的原始对偶结构，以及历史锚定如何接入预条件算子分析。它把分布式可执行性与非遍历保证同时落实到具体网络优化问题。",
+      "order": 12
+    },
+    {
+      "arxiv_id": "2510.20246",
+      "version": 3,
+      "title": "Convergence Analysis of Noisy Distributed Gradient Descent for Non-convex Optimization -- Saddle Point Escape",
+      "authors": [
+        "Lei Qin",
+        "Michael Cantoni",
+        "Ye Pu"
+      ],
+      "submitted": "2025-10-23",
+      "updated": "2026-10-07",
+      "directions": [
+        "distributed",
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2510.20246v3",
+      "abstract": "This paper studies noisy distributed gradient descent (\\textbf{NDGD}) for smooth non-convex finite-sum optimization over networks. Random perturbations enable saddle-point escape while preserving distributed implementation and consensus. Under suitable regularity conditions, \\textbf{NDGD} converges with high probability to a neighborhood of a common local minimizer. Its convergence complexity is comparable to centralized first-order saddle-point escape methods, reducing exponential dependence on problem dimension to polynomial dependence. Numerical experiments demonstrate improved saddle-point escape over standard \\textbf{DGD}.",
+      "summary": "非凸 DGD 的共识误差与鞍点附近的小梯度会相互干扰。该文为固定网络 DGD 加入独立高斯扰动，联立分歧控制、局部下降和负曲率逃逸。在混合矩阵对称正定、局部梯度与 Hessian Lipschitz、强制性及节点梯度差异有界等条件下，并按全局问题与网络常数选择参数，从共识初值出发，在多项式有限时间内以高概率达到近似二阶驻性与一致性。若再满足严格鞍点及附加局部正则性，有限时节点到局部极小集的距离可控制到步长尺度的平方根量级。没有把高概率近似结果提升为任意初始化的全局极小收敛。",
+      "reason": "重点是噪声逃逸分析如何兼容网络分歧与有限步长偏差。该工作比仅证明梯度趋小更进一步控制二阶性质，适合阅读分布式非凸算法中网络条件、扰动强度与精度的联合设计。",
+      "order": 13
+    },
+    {
+      "arxiv_id": "2602.08127",
+      "version": 2,
+      "title": "On Busemann subgradient methods for stochastic minimization in Hadamard spaces",
+      "authors": [
+        "Nicholas Pischke"
+      ],
+      "submitted": "2026-02-08",
+      "updated": "2026-10-06",
+      "directions": [
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2602.08127v2",
+      "abstract": "We study the recently introduced Busemann subgradient method due to Goodwin, Lewis, López-Acedo and Nicolae, extending it to minimize the mean of a stochastic function over general Hadamard spaces. We prove a strong convergence theorem under a local compactness assumption and further prove weak convergence of the method over separable Hadamard spaces. The proof is based on a general (weak) convergence theorem for stochastic processes in Hadamard spaces which confine to a stochastic variant of quasi-Fejér monotonicity, together with a nonlinear variant of Pettis' theorem, which are of independent interest. Lastly, we provide best function value estimates as well as a strong convergence result under a strong convexity assumption, and in that latter case in particular derive explicit rates of convergence. We illustrate the practical use of the general mean minimization problem and the associated Busemann subgradient method through statistical models for phylogenetic inference via the Billera-Holmes-Vogtmann tree space.",
+      "summary": "在非正曲率 Hadamard 空间中，普通线性次梯度需要由几何对象替代。该文以 Busemann 次梯度构造随机下降步骤，对可分、具有测地延伸的空间，要求随机 oracle 可测、样本 Lipschitz 上界具有有限二阶矩、样本独立同分布且最优解存在。在 Robbins–Monro 步长下，一般情形得到几乎必然弱收敛，局部紧空间中得到强收敛。有界直径条件下，另用适合有限预算的步长给最佳函数值的期望 $1/\\sqrt n$ 型界；强凸样本条件支持进一步强收敛与显式模数。这些结论分别依赖各自几何与步长假设。",
+      "reason": "推荐关注随机次梯度的距离递推如何被保留下来，以及弱、强收敛与有限预算函数值界怎样在非线性空间分离。它拓展了随机迭代方法的几何适用范围，而不是把一般随机控制工作归入梯度优化。",
+      "order": 14
+    },
+    {
+      "arxiv_id": "2604.04235",
+      "version": 2,
+      "title": "Feasibility and Explicit Safety Filters for Control Barrier Functions in Linear Systems",
+      "authors": [
+        "Shima Sadat Mousavi",
+        "Max H. Cohen",
+        "Pol Mestres",
+        "Aaron D. Ames"
+      ],
+      "submitted": "2026-04-05",
+      "updated": "2026-10-06",
+      "directions": [
+        "safety-critical",
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2604.04235v2",
+      "abstract": "Safety filters based on control barrier functions (CBFs) and high-order control barrier functions (HOCBFs) are commonly implemented through quadratic programs (QPs), which may become infeasible under conflicting safety and actuator constraints. For linear systems with affine safety functions, we exploit repeated input-space directions to obtain an explicit polyhedral feasibility domain, linear-program certificates for regional feasibility and final-gain selection, and conditions identifying gain-independent obstructions and the minimum common final gain. A compatible QP metric yields an exact saturation-based filter and, together with the regional certificate, persistent feasibility and safety. For a single exterior ellipsoidal CBF with unrestricted inputs, we also derive an exact, gain-independent linear matrix inequality (LMI) test. Double-integrator and aircraft examples illustrate the results.",
+      "summary": "控制障碍函数安全 QP 能否始终可解，常比每次求解速度更基础。该文针对线性系统的高阶障碍约束，将法向量整理为若干独立的平行族，把可行性条件化成区间关系；仿射障碍与多面体区域下，通过 LP 对偶证书验证区域可行性并设计障碍增益。若方向在代价矩阵的逆度量下正交，且输入约束具有文中规定的预像结构，安全 QP 可用显式饱和形式求解；普通逐分量饱和的精确性还需要相应矩阵为对角形式。安全集合内的区域证书和名义控制器等 Lipschitz 条件进一步保证持续可行及安全不变性。",
+      "reason": "值得阅读的是先认证可行性再构造显式过滤器的顺序，及线性结构怎样把全域安全条件转成可求解的 LP。它直接处理安全关键优化的持续可行问题，避免把只在当前线性化约束上可行的学习步当作安全保证。",
+      "order": 15
+    },
+    {
+      "arxiv_id": "2606.14289",
+      "version": 3,
+      "title": "Operator Calculus for Population-Based Optimization: Modular Convergence and Finite-Population Guarantees",
+      "authors": [
+        "Pekka Malo",
+        "Lauri Viitasaari",
+        "Patrik Nummi",
+        "Antti Suominen",
+        "Ankur Sinha",
+        "Olli Tahvonen"
+      ],
+      "submitted": "2026-06-12",
+      "updated": "2026-10-07",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2606.14289v3",
+      "abstract": "Population-based optimizers combine update rules such as mutation, selection, and recombination. When one rule changes, it is often unclear which convergence guarantees survive or how the new combination should be assessed. We develop an operator calculus: an operator is a population-update rule, and the calculus specifies how separately checked effects can be combined. Under explicit regularity and small-step conditions, the leading changes caused by the updates add, yielding reusable building blocks for convergence analysis. The framework distinguishes finding and retaining a good solution, reducing the population's mean objective, and concentrating candidates near an optimizer, and identifies the extra approximation conditions needed for finite evaluation-budget guarantees. Applications include distribution adaptation, recombinative evolution, and consensus dynamics, with verified nonconvex cases. Controlled experiments on a common nonconvex problem collection show how component effects change with population geometry and the performance measure: a rule can worsen the mean objective yet produce better candidates.",
+      "summary": "种群优化中，搜索、选择、重采样等模块相互组合，单个算法的收敛证明往往难以复用。该文建立分布空间上的算子演算：在统一矩、连续性和小步长条件下，组合模块的一阶生成元可相加，再用 Lyapunov 漂移组织收敛分析。对无界 Lyapunov 函数，还必须验证截断与算子核的兼容性；满足相应负漂移条件时可得到平均场分布误差或平均目标的指数控制。有限种群与有限预算结论另外依赖具体算法的 Wasserstein 近似、采样核稳定性、水平集密度和新鲜条件独立样本等条件。它区分最佳目标值、平均目标与质量集中，没有给所有演化算法统一的无条件有限样本保证。",
+      "reason": "推荐阅读模块级生成元与 Lyapunov 条件这一证明接口。它使不同种群算法的证明义务可以拆开检查，也指出平均场收敛为何不能直接推出有限群体找优点的概率。",
+      "order": 16
+    },
+    {
+      "arxiv_id": "2610.08883",
+      "version": 1,
+      "title": "Trust-Region Optimization for Smooth Potential-Interaction Energies in Wasserstein Space",
+      "authors": [
+        "You Wan",
+        "Ting Gao",
+        "Jinqiao Duan"
+      ],
+      "submitted": "2026-10-06",
+      "updated": "2026-10-06",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2610.08883v1",
+      "abstract": "Finding low-energy configurations of interacting particles and approximating probability distributions lead to the minimization of potential-interaction energies in Wasserstein space. These energies can be nonconvex, making it important to exploit second-order information while controlling the reliability of local approximations. We study trust-region optimization of smooth potential-interaction energies on the Wasserstein space of probability measures with finite second moment. The method uses a quadratic model along pushforward curves, an $L^2(\\rho)$ step radius, and a Steihaug-Toint subsolver with an explicit self-adjoint second-variation operator. A ratio test determines acceptance and guides the radius update. Under a lower energy bound and globally bounded Hessians of the potential and interaction kernel, we prove that the objective is nonincreasing, the Wasserstein-gradient norms converge to zero, and an $\\varepsilon$-stationary iterate is reached within $O(\\varepsilon^{-2})$ total outer trials, including rejected trials. If the potential is quadratically coercive, every weak accumulation point is stationary. The analysis applies to arbitrary initial measures with finite second moment. For empirical measures, the iteration is a finite-dimensional trust-region method in the $L^2(\\rho_N)$ inner product, with complexity constants independent of particle number and dimension when the initial objective gaps are uniformly bounded. Numerical experiments include a smooth soft-particle energy, maximum-mean-discrepancy minimization for non-Gaussian targets, component ablations, and scaling studies in particle number and dimension.",
+      "summary": "Wasserstein 空间中的概率分布优化既要构造下降方向，也要控制实际能量变化。该文针对光滑势能与交互能量，在当前分布的 $L^2$ 切空间建立信赖域二次模型，并以推前映射更新分布；截断共轭梯度求内层步，实际与模型下降比决定接受与半径变化。势函数和交互函数 Hessian 全局有界、能量下有界，且内层满足 Cauchy 下降等条件时，达到梯度范数小于 $\\epsilon$ 需要 $O(\\epsilon^{-2})$ 次外层尝试，计入接受及拒绝步，且梯度范数趋零。若初始能隙一致有界，该外层界的常数可不依赖粒子数；内层运算和离散化成本仍另计。",
+      "reason": "值得关注的是把有限维信赖域的模型可信度机制搬到分布更新，同时保留拒绝步也计入的复杂度证明。它提供了适用于连续分布优化的算法框架，而非仅给某个粒子训练任务调参。",
+      "order": 17
+    },
+    {
+      "arxiv_id": "2602.01564",
+      "version": 3,
+      "title": "Local exponential stability of mean-field Langevin descent-ascent and associated particle system",
+      "authors": [
+        "Geuntaek Seo",
+        "Minseop Shin",
+        "Pierre Monmarché",
+        "Beomjun Choi"
+      ],
+      "submitted": "2026-02-02",
+      "updated": "2026-10-06",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2602.01564v3",
+      "abstract": "We study the mean-field Langevin descent-ascent (MFL-DA), a coupled optimization dynamics on the space of probability measures for entropically regularized two-player zero-sum games, together with its associated interacting particle system. For general nonconvex-nonconcave payoffs, Wang and Chizat (COLT 2024) asked whether the original single-timescale MFL-DA converges to the mixed Nash equilibrium and, if so, at what rate. We prove a local affirmative answer in Wasserstein space: if the initial datum is sufficiently close to the mixed Nash equilibrium, then the mean-field dynamics converges to it exponentially fast at a quantitative rate. We further show that the finite-$N$ particle system inherits this stability up to times exponential in $N$, with an $N$-independent exponential rate modulo a finite-particle error floor. Combined with the recent counterexample of Mourrat and Pillaud-Vivien for MFL-DA, which shows that global convergence cannot hold in general, our theorem completes the positive local counterpart of the Wang-Chizat question: the mixed Nash equilibrium has a robust basin of attraction, stable under both the mean-field flow and its finite-particle approximation.",
+      "summary": "一般非凸非凹平均场博弈中，单一时间尺度 Langevin 下降上升的全局收敛没有普遍保证。该文在紧环面上的 $C^2$ 收益与熵正则化设定下，证明混合 Nash 平衡附近的局部指数稳定：在 Wasserstein 邻域内，即使初始分布包含原子，也可由平滑效应进入可分析区域。关键是平衡处的谱隙、局部凸凹性质及正则性传播。相应交互粒子系统在合适邻近初始化等条件下，在随粒子数指数增长的时间窗口内维持到平衡的误差控制；粒子误差地板依赖维数和粒子数。该结论是局部稳定，不是去掉凸凹条件后的全局最优性。",
+      "reason": "推荐阅读平衡附近的凸凹结构如何由熵和谱分析恢复，以及它怎样同粒子近似误差结合。它给非凸非凹分布博弈一个有边界的稳定性解释，能避免将局部混合平衡保证误读为任意起点都能收敛。",
+      "order": 18
+    },
+    {
+      "arxiv_id": "2610.09324",
+      "version": 1,
+      "title": "Random projection with linear equalities and inequalities",
+      "authors": [
+        "Santanu S. Dey",
+        "Jingye Xu"
+      ],
+      "submitted": "2026-10-07",
+      "updated": "2026-10-07",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2610.09324v1",
+      "abstract": "Random projection is a preprocessing technique for optimization that reduces the number of linear equality constraints by replacing them with random linear combinations while approximately preserving the optimal value. In this paper, we emphasize the role of suprema of random processes, and in particular generic chaining, in explaining this phenomenon. By combining Lagrangian duality with generic chaining, we obtain shorter proofs and sharper guarantees that apply beyond the typical polyhedral settings based on the Johnson--Lindenstrauss lemma. More importantly, this perspective allows us to extend random projection to problems with linear inequality constraints. Although randomly projected inequality constraints generally define neither a relaxation nor a restriction of the original feasible region, we show that random projection can nevertheless approximately preserve the dual bound. The key is a new construction for randomly projecting dual certificates that preserves dual feasibility and differs from existing constructions motivated by the Johnson--Lindenstrauss lemma.",
+      "summary": "用随机线性组合压缩约束，可以减少矩阵分解成本，却可能放松或改变原问题。该文从最优对偶乘子构造压缩问题证书，分析一般凸目标、闭凸域和线性等式或不等式约束。等式采用高斯投影，原可行点保持可行；在强对偶、存在最优乘子且域像集的半径与链复杂度有限时，以高概率控制压缩后最优值的向下偏差，主项随投影维数的平方根衰减。不等式部分用高斯正部构造非负对偶乘子，得到同时含两类链复杂度与乘子范数的单边最优值界；高斯压缩不等式并不自动保持原可行域，不能把它写成可行性恢复算法。",
+      "reason": "值得看的是用一个最优乘子的随机证书控制整个凸程序，而不是要求每个约束都逐点近似。几何复杂度决定压缩所需维数，也解释了等式与不等式为何不能沿用相同的可行性论证。",
+      "order": 19
+    }
+  ]
+}
