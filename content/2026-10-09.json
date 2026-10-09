@@ -1,0 +1,377 @@
+{
+  "date": "2026-10-09",
+  "status": "complete",
+  "frontiers_status": "recommendations",
+  "highlights": [
+    {
+      "arxiv_id": "2610.11693",
+      "types": [
+        "field"
+      ],
+      "label": "随机二阶加速｜同时匹配三类误差下界",
+      "text": "收缩三次模型与阻尼加速联立梯度噪声、Hessian 噪声和三阶余项；凸有界域、相应随机 oracle 及精确子问题下，期望间隙三项均达到已知最优阶。"
+    },
+    {
+      "arxiv_id": "2610.10495",
+      "types": [
+        "field"
+      ],
+      "label": "有限和二阶方法｜在平均 Hessian 平滑下闭合复杂度",
+      "text": "整体凸性下允许分量非凸；方差缩减外梯度配合自适应内循环，使分量导数调用在指定采样和线性张成模型内除对数因子外匹配下界。"
+    },
+    {
+      "arxiv_id": "2610.11298",
+      "types": [
+        "field"
+      ],
+      "label": "随机次梯度反例｜半代数性仍容许非极小吸引子",
+      "text": "二维全局 Lipschitz 半代数构造在有界噪声与递减步长下吸引到非极小 Clarke 临界点；收缩四周期揭示次微分正则性不能被省略。"
+    },
+    {
+      "arxiv_id": "2610.11475",
+      "types": [
+        "field"
+      ],
+      "label": "有限批 SGD｜稀有门控事件使梯度流预测失效",
+      "text": "两单元 ReLU 模型中，长源预训练使关键门控分歧指数稀少；总体梯度流可恢复，在线 SGD 却能在高概率下持续失败至步长反比的指数时间。"
+    },
+    {
+      "arxiv_id": "2610.11448",
+      "types": [
+        "group"
+      ],
+      "label": "历史切平面压缩｜在扩展子空间中保留精度证书",
+      "text": "记录每条切平面的创建维数与遗漏梯度界，反向递推聚合不确定性，再以 SOCP 选择权重；二次正则下可认证全局间隙。"
+    },
+    {
+      "arxiv_id": "2610.10369",
+      "types": [
+        "field",
+        "group"
+      ],
+      "label": "重球初始化｜量化尖锐吸引域与可检验暖启动",
+      "text": "Hessian Hölder 连续的强凸目标上，吸引半径随阻尼按 $\\Theta((d/M_\\nu)^{1/\\nu})$ 缩小；修正离散能量、匹配周期反例及梯度阈值给出局部加速的安全入口。"
+    },
+    {
+      "arxiv_id": "2604.09245",
+      "types": [
+        "group"
+      ],
+      "label": "原始—对偶加速｜以简单算子调用统一多类速率",
+      "text": "历史外推与对偶校正无需内层线性系统；凸复合问题的三类结构下给出 $O(t^{-2})$ 鞍点 Bregman 间隙，正二次原始正则下进一步线性加速。"
+    },
+    {
+      "arxiv_id": "2610.10527",
+      "types": [
+        "group"
+      ],
+      "label": "重尾去中心化 SGD｜分离统计主项与网络高阶项",
+      "text": "固定双随机网络、光滑非凸目标及有限 $p$ 阶噪声矩下，局部截断达到 $(nT)^{-2(p-1)/(3p-2)}$ 主导阶；足够长时域保留节点协作收益。"
+    },
+    {
+      "arxiv_id": "2511.19675",
+      "types": [
+        "group"
+      ],
+      "label": "持续可行优化｜二次向内修正保证离散更新安全",
+      "text": "QCQP 方向与实际约束 Armijo 检验配合；可行初始化、平滑性及 MFCQ 下各步可行，方向范数平方有 $O(1/k)$ 驻性界，无需预知平滑常数。"
+    }
+  ],
+  "papers": [
+    {
+      "arxiv_id": "2610.11693",
+      "version": 1,
+      "title": "Matching the Lower Bounds: Stochastic Contracting Cubic Newton and Its Optimal Acceleration",
+      "authors": [
+        "Artem Agafonov",
+        "Aslan Ashabokov",
+        "Dmitry Kamzolov",
+        "Alexander D'yakonov",
+        "Alexander Gasnikov",
+        "Martin Takáč"
+      ],
+      "submitted": "2026-10-08",
+      "updated": "2026-10-08",
+      "arxiv_url": "https://arxiv.org/abs/2610.11693v1",
+      "abstract": "We study second-order methods for convex stochastic optimization, where gradients and Hessians are available only through stochastic estimates with variances $\\sigma_1^2$ and $\\sigma_2^2$, respectively. First, we propose the Stochastic Contracting Cubic Newton method. At each iteration, it minimizes a cubic model with additional quadratic regularization and then contracts the step toward the current point. After $T$ iterations, the method achieves the expected convergence rate $\\mathcal{O}(\\sigma_1/\\sqrt{T}+\\sigma_2/T+1/T^2)$. Building on this construction, we develop an accelerated variant achieving $\\mathcal{O}(\\sigma_1/\\sqrt{T}+\\sigma_2/T^2+1/T^{7/2})$, matching the known lower bounds of Agafonov et al. (2024) in all three terms.",
+      "directions": [
+        "stochastic",
+        "historical-information",
+        "optimization-frontiers"
+      ],
+      "summary": "随机二阶方法需要同时处理梯度误差、Hessian 误差和三阶模型余项，单独改善其中一项并不足以达到整体最优。该文研究闭凸有界域上的二阶可微凸优化，将收缩三次 Newton 模型与二次稳定项结合，再通过 Monteiro–Svaiter 型阻尼和加速累积构造随机算法。基本方法的期望函数值误差包含 $O(\\sigma_1D/\\sqrt T+\\sigma_2D^2/T+L_2D^3/T^2)$ 三项；加速后达到 $O(\\sigma_1D/\\sqrt T+\\sigma_2D^2/T^2+MD^3/T^{7/2})$，在相应随机二阶 oracle 模型中同时匹配已知下界的三种量级。这里 $D$ 为域直径，$\\sigma_1,\\sigma_2$ 控制导数估计的均方误差，$M\\ge L_2$，真实 Hessian 具有 Lipschitz 连续性。分析允许半正定 Hessian 估计存在偏差，但校正步骤的梯度需无偏，且各次导数使用新样本；三次与二次约束子问题按精确求解处理。因而结论是带噪导数条件下的凸优化迭代保证，不能直接等同于每步线性代数成本的最优性。",
+      "reason": "推荐阅读加速过程如何分别控制两类导数噪声：梯度噪声仍保持统计下界量级，Hessian 噪声项与确定性项却获得不同的加速阶。这种逐项闭合下界的分析，比只报告一个总误差阶更能说明随机二阶信息在何种精度下值得使用。",
+      "order": 1
+    },
+    {
+      "arxiv_id": "2610.10495",
+      "version": 1,
+      "title": "An Optimal Second-Order Algorithm for Finite-Sum Optimization under Average Smoothness and Convexity",
+      "authors": [
+        "Artem Tsedenov",
+        "Dmitry Kovalev"
+      ],
+      "submitted": "2026-10-07",
+      "updated": "2026-10-07",
+      "arxiv_url": "https://arxiv.org/abs/2610.10495v1",
+      "abstract": "In this paper, we consider a finite-sum optimization problem, where the objective function is convex, the $n$ component functions are twice continuously differentiable and their Hessians are mean-square Lipschitz. Our contribution is twofold. First, we develop a stochastic algorithm, which requires $\\tilde{\\mathcal{O}}(n + n^{6/7}/\\epsilon^{2/7})$ second-order oracle calls in expectation to find an approximate solution to the problem with the expected accuracy $\\epsilon$. Second, we establish a lower complexity bound of $\\Omega(n + n^{6/7}/\\epsilon^{2/7})$ for any stochastic second-order algorithm satisfying a stochastic second-order version of the first-order linear span assumption, which is widely adopted in the optimization literature. Our lower and upper complexity bounds match up to logarithmic factors and thus resolve an important open question of establishing the optimal complexity of this problem class.",
+      "directions": [
+        "stochastic",
+        "historical-information",
+        "optimization-frontiers"
+      ],
+      "summary": "有限和二阶优化通常用各分量一致的 Hessian 平滑常数控制复杂度，这可能比实际平均正则性强得多。该文只要求整体目标凸、各分量二阶可微，并以分量 Hessian 差的均方平均不超过 $L^2\\|x-y\\|^2$ 描述平均平滑性。算法把方差缩减二阶外梯度、随机参考点刷新和自适应内循环停止结合起来；缓存的导数信息支持线搜索和矩阵求逆，内循环的期望长度为常数量级。若最优解相对初始基准的距离界为 $R$，达到期望函数值误差 $\\varepsilon$ 所需的单分量梯度/Hessian oracle 调用为 $O(n\\log(n+1)+n^{6/7}(LR^3/\\varepsilon)^{2/7})$。论文还在独立均匀分量采样及二阶线性张成算法模型下给出 $\\Omega(n+n^{6/7}(LR^3/\\varepsilon)^{2/7})$ 下界，从而在该模型内除对数因子外最优。分量函数可以非凸；结论仍依赖整体凸性，复杂度计数也没有包含矩阵运算的全部实际时间。",
+      "reason": "核心阅读价值是把平均 Hessian 平滑性、方差缩减和匹配下界放在同一框架中。自适应内循环避免以最坏情形长度支付每次参考更新的成本；下界同时说明所获分量调用阶数来自明确的采样与算法模型，便于判断二阶有限和方法的真实改进和适用边界。",
+      "order": 2
+    },
+    {
+      "arxiv_id": "2610.11298",
+      "version": 1,
+      "title": "Nonminimizing Attractors of Stochastic Subgradient Methods on Semialgebraic Functions",
+      "authors": [
+        "Jiajin Li"
+      ],
+      "submitted": "2026-10-08",
+      "updated": "2026-10-08",
+      "arxiv_url": "https://arxiv.org/abs/2610.11298v1",
+      "abstract": "We disprove a conjecture of Davis, Drusvyatskiy, and Jiang (2026) that subdifferential regularity can be removed from the generic guarantee of convergence to local minimizers for stochastic subgradient methods. We construct a globally Lipschitz, coercive, semialgebraic function in two dimensions for which the method converges to a nonminimizing Clarke critical point. For suitable power-law stepsizes, this convergence holds for open sets of initial points and linear tilts of the objective, uniformly over all perturbation sequences within a prescribed bound.",
+      "directions": [
+        "stochastic",
+        "optimization-frontiers"
+      ],
+      "summary": "半代数结构与递减步长常被用于证明随机次梯度趋向驻点，但驻点概念和次微分正则性会实质改变结论。该文构造二维、全局 Lipschitz、强制且除原点外光滑的半代数函数：对任意给定的有界噪声半径及步长指数 $\\gamma\\in(1/2,1]$，存在开放初始化集合，使指定次梯度迭代在所有允许的有界扰动路径上以 $\\|x_k\\|=\\Theta((K+k)^{-\\gamma})$ 趋向原点，同时邻近迭代点的梯度范数保持正下界。原点是 Clarke 临界点，却既非极小点，也非 limiting 次微分意义下的临界点。构造的关键是归一化变量中的收缩四周期，它使真实轨迹不断缩小而保持不利方向。对 $\\gamma<1$，独立中心均匀噪声也落在反例覆盖范围内；作者还讨论线性扰动下的稳定性。结果针对精心构造的函数和算法选择，揭示的是仅靠半代数性与有界噪声无法替代次微分正则性的保证。",
+      "reason": "推荐优先看四周期吸引机制及 Clarke 与 limiting 驻性的区别。它给出具体、对有界随机扰动稳健的失败轨迹，帮助核对非光滑随机算法定理是否真正排除了非极小吸引子，尤其不能把“收敛到 Clarke 临界点”自动解释成更强的驻性或局部最优性。",
+      "order": 3
+    },
+    {
+      "arxiv_id": "2610.11475",
+      "version": 1,
+      "title": "Rare Gate Disagreements Can Limit Plasticity: When Gradient Flow Mispredicts Finite-Batch SGD",
+      "authors": [
+        "Ruoyu Zhao",
+        "Mingxuan Zhang",
+        "Jianbo Dai",
+        "Jiaqi Wu",
+        "Chenyu Zhu",
+        "Tong Che"
+      ],
+      "submitted": "2026-10-08",
+      "updated": "2026-10-08",
+      "arxiv_url": "https://arxiv.org/abs/2610.11475v1",
+      "abstract": "Population gradient flow is a common tool for reasoning about how neural networks adapt, including after pretraining. We show that it can mispredict finite-batch stochastic gradient descent (SGD) qualitatively, and we trace the discrepancy to a specific mechanism. In a two-unit ReLU regression, a source task drives the two neurons toward positive proportionality and a target task rewards separating them. After source training for time $T$, gradient flow recovers on the target in time linear in $T$. Online SGD with batch size $b$ and step size $\\eta$ in both phases instead fails with high probability throughout a horizon of order $e^{c/\\eta}$ once $T \\gtrsim \\log(b/\\eta)$, uniformly on an explicit set of initializations with Gaussian probability above one percent. For each fixed $T$, small-step SGD still recovers, so the failure requires the joint limit of small steps and long pretraining. At the target clone, the population instability is carried entirely by inputs on which the two ReLU gates disagree. For units at angle $\\delta$ these inputs form a wedge of probability $\\delta/\\pi$, and weight decay shrinks the angle exponentially during pretraining. On every other input both units receive the same random linear update, which contracts their separation in conditional expectation. Bounding the cumulative probability of sampling the wedge along the exact online recursion, without a diffusion approximation, shows that recovery with fixed probability from an identical source-gradient-flow checkpoint, within $e^{c/\\eta}$ updates, requires $Nb \\gtrsim e^{\\lambda T}$ target samples and batch size $b \\gtrsim \\eta e^{\\lambda T}$, where $N$ counts updates and $\\lambda$ is the weight decay. In simulations, recovery is approximately a function of the disagreement budget $b\\delta/\\eta$ and saturates in the horizon.",
+      "directions": [
+        "stochastic",
+        "optimization-frontiers"
+      ],
+      "summary": "源任务训练越充分，某些 ReLU 门控分歧越稀少，有限批 SGD 对目标任务的恢复便可能与总体梯度流预测不同。该文以两个无偏置 ReLU 单元、二维圆盘输入和权重衰减构造可解析模型：源目标分别为单侧线性函数与输入范数，源训练使两个门控方向的夹角随预训练时间指数缩小。总体梯度流仍能在与源训练时间同阶的时间内恢复；有限批在线 SGD 则可能长期只观察到门控一致样本。作者用无分歧时的精确递推和可求和的分歧风险分析，证明在足够长的源预训练、足够小的步长 $\\eta$ 与相应批量 $b$ 条件下，一个具有正 Gaussian 初始化概率的集合会以高概率失去恢复能力，持续至 $\\exp(c/\\eta)$ 次更新。针对源梯度流产生的检查点，恢复还需要总样本数或批量随源训练时间指数增长。论证区分固定预训练时长的 $\\eta\\to0$ 极限与预训练时长随步长变化的联合极限；后者才产生长期差异。该结论属于特定小网络与新鲜在线采样机制，不是对任意网络训练的普遍断言。",
+      "reason": "最值得读的是有限采样对稀有门控事件的遗漏机制：它从离散递推证明梯度流近似为何会在长期训练中失效，而不依赖扩散近似。这个反例与非光滑次梯度的驻点反例互补，说明比较连续模型和随机更新时还须跟踪事件概率、预训练尺度及总样本预算。",
+      "order": 4
+    },
+    {
+      "arxiv_id": "2610.11448",
+      "version": 1,
+      "title": "Dimension-Adaptive Accuracy Certificates for Convex Optimization",
+      "authors": [
+        "Egor Gladin"
+      ],
+      "submitted": "2026-10-08",
+      "updated": "2026-10-08",
+      "arxiv_url": "https://arxiv.org/abs/2610.11448v1",
+      "abstract": "Many convex optimization methods use affine lower models to certify that a candidate solution is near optimal. Keeping full gradients can be costly when the informative directions occupy a small, initially unknown subspace. We develop accuracy certificates that store projected affine minorants together with bounds on the discarded components. The certificates remain valid as the subspace, queries, and certificate weights are chosen adaptively. For quadratic regularization, we derive an exact correction that accounts for when each discarded component was recorded, and a compact problem for selecting certificate weights. We also characterize the strongest lower bound supported by the compressed records when an ambient direction remains unused. The certificates can be used as stopping criteria for methods that provide valid affine minorants. We also analyze an adaptive cutting-plane construction whose oracle bound depends on the discovered dimension. Experiments on kernel SVM and $\\nu$-SVR problems show reduced certificate communication and stopping times under an emulated bandwidth constraint.",
+      "directions": [
+        "historical-information",
+        "optimization-frontiers"
+      ],
+      "summary": "凸优化算法可以把高维梯度投影到逐步发现的低维子空间，却容易在压缩后丢失可靠的最优性证书。该文从历史查询得到的仿射下模型出发，使用递增的嵌套正交基，记录每条切平面创建时的维数以及被省略梯度分量的可验证范数界。对带正二次正则项的目标，反向范数递推精确计算聚合切平面的不确定性，再用二阶锥规划选择历史切平面的组合权重，形成全局函数值间隙证书。证书允许查询点、基扩展和权重自适应选择；在仍有未发现的环境维数时，它达到与已保存信息相容的最坏情形最强下界。作者进一步分析按发现维数付费的切平面过程，其中复杂度保证还需要固定维数的体积缩减求解原语。贡献是让压缩的历史 oracle 信息仍能认证精度，而非宣称任意低秩截断都安全或所有高维问题都自动获得低维复杂度。",
+      "reason": "推荐关注每条历史切平面的“创建维数＋遗漏残差”记录方式。它把历史信息复用与可验证误差明确连接起来，使子空间扩展不会悄悄破坏旧证书；二阶锥权重选择和信息相容的最强下界证明，对研究有限存储下的优化停止准则尤其具体。",
+      "order": 5
+    },
+    {
+      "arxiv_id": "2610.10369",
+      "version": 1,
+      "title": "Sharp Initialization Guarantees for the Heavy-Ball Method",
+      "authors": [
+        "Kang Liu",
+        "Quanen Wu",
+        "Zhan Sun",
+        "Mengxiao Chen",
+        "Suyan Li",
+        "Bohao Qu"
+      ],
+      "submitted": "2026-10-07",
+      "updated": "2026-10-07",
+      "arxiv_url": "https://arxiv.org/abs/2610.10369v1",
+      "abstract": "The heavy-ball method can accelerate convergence near the minimizer, but it may also enter persistent oscillations on general strongly convex objectives. How should it be initialized to reliably realize this local advantage? We study the initialization neighborhood in which convergence can be guaranteed using only curvature and regularity bounds. This neighborhood shrinks as momentum approaches one; for Lipschitz-continuous Hessians, its radius is of the same order as damping. Matching upper and lower bounds show that this initialization requirement cannot be relaxed uniformly over the function class. We then derive a startup rule based on the current gradient: a finite gradient-descent warm-up enters the guaranteed region before switching to heavy-ball. With parameters optimal for strongly convex quadratics, the subsequent iterates satisfy an accelerated local asymptotic rate bound. Code is available at this https URL.",
+      "directions": [
+        "historical-information",
+        "optimization-frontiers"
+      ],
+      "summary": "重球法在二次目标上的优良谱性质不能自动保证一般光滑强凸目标的全局稳定，接近无阻尼时初始化范围尤其关键。该文针对二阶可微、$\\mu$ 强凸、$L$ 光滑且 Hessian 为 $\\nu$-Hölder 连续的函数，研究位置与速度组成的离散状态。在固定 $\\gamma L<4$、阻尼 $d=1-\\beta$ 趋零的 情形 下，证明维数一致的吸引域半径具有 $\\Theta((d/M_\\nu)^{1/\\nu})$ 量级；匹配的光滑周期轨道表明该尺度不能统一扩大。分析用包含梯度—速度交叉项的修正离散能量控制非线性项。论文还给出可检验的梯度阈值：先运行步长 $1/L$ 的梯度下降，达到阈值后重置速度为零，再切换到重球法，从而有限步进入安全初始化区。采用二次最优参数时，局部渐近根收敛因子达到 $(\\sqrt\\kappa-1)/(\\sqrt\\kappa+1)$，其中 $\\kappa=L/\\mu$。这是一套有边界、且边界阶数尖锐的初始化与局部加速保证。",
+      "reason": "推荐阅读修正离散能量及可执行的暖启动判据。它把动量历史带来的稳定性困难转化为位置、速度和阻尼的量化约束，并用反例说明约束的必要尺度；这比仅沿用二次谱参数更能支持一般非线性目标上的算法设计。",
+      "order": 6
+    },
+    {
+      "arxiv_id": "2604.09245",
+      "version": 2,
+      "title": "A Nesterov-Accelerated Primal-Dual Splitting Algorithm for Convex Nonsmooth Optimization",
+      "authors": [
+        "Laurent Condat",
+        "Abdurakhmon Sadiev",
+        "Peter Richtárik"
+      ],
+      "submitted": "2026-04-10",
+      "updated": "2026-10-07",
+      "arxiv_url": "https://arxiv.org/abs/2604.09245v2",
+      "abstract": "We investigate the integration of Nesterov-type acceleration into primal-dual methods for structured convex optimization. While proximal splitting algorithms efficiently handle composite problems of the form $\\min_x f(x) + g(x) + h(K x)$, accelerating their convergence with respect to the smooth term $f$ is notoriously challenging, due to the rotational dynamics in the primal-dual space. Our guiding principle is that Nesterov acceleration exploits the strong convexity of the dual problem. We first revisit accelerated proximal gradient descent and give a unified analysis of its convex and strongly convex regimes, including the weak convergence of its iterates. We then propose the Accelerated Proximal Alternating Predictor-Corrector algorithm (APAPC) for the setting where $g(x) = (\\mu_g/2)\\|x\\|^2$. APAPC is fully split: it only calls $\\nabla f$, $K$, $K^*$ and the proximity operator of $h$, and never solves a linear system. From a single Lyapunov inequality, we derive optimal $O(1/t^2)$ convergence rates, as well as accelerated linear rates when $\\mu_g > 0$, in three regimes where the dual problem is strongly convex: when $h$ is smooth, when $K^*$ is bounded below, and for linearly constrained problems. In the last two regimes, the $O(1/t^2)$ rates without strong convexity of the primal problem are, to our knowledge, the first for fully split algorithms. Finally, leveraging recent results on accelerated gradient descent, we establish the weak convergence of the primal iterates and the strong convergence of the dual iterates to a saddle point.",
+      "directions": [
+        "historical-information",
+        "optimization-frontiers"
+      ],
+      "summary": "复合目标中的线性算子和非光滑项使加速方法常需求解复杂子问题，或者只能在额外结构下给出速率。该文研究 $f(x)+\\mu_g\\|x\\|^2/2+h(Kx)$，其中 $f$ 凸光滑、$h$ 为适当闭凸函数，并假设鞍点存在。作者构造带 Nesterov 动量的原始—对偶分裂：加权原始外推、预测步骤与对偶近端校正只调用 $\\nabla f$、$K$、$K^*$ 以及相应近端算子，不需要内层线性系统求解。统一 Lyapunov 分析在三类结构下给出 $O(t^{-2})$ 鞍点 Bregman 间隙：由光滑 $h$ 产生的对偶强凸性、$K^*$ 的有界下界，以及具有非零谱间隙的线性等式约束。加入正二次原始正则项后可得加速线性率；满足额外阻尼与参数条件时还分析原始弱收敛和对偶强收敛。这里被分离出的原始正则项是二次项，不能把理论直接推广成任意非光滑原始近端项的加速结论；间隙收敛也须与点列收敛分别理解。",
+      "reason": "推荐关注如何在保留简单算子调用的前提下安排历史外推和对偶校正，以及一个能量函数如何覆盖几类不同加速来源。论文把算子几何条件与速率明确对应，对复合约束问题中的动量分裂方法提供可直接核对的分析结构。",
+      "order": 7
+    },
+    {
+      "arxiv_id": "2610.10527",
+      "version": 1,
+      "title": "Decentralized SGD under Heavy-Tailed Noise: Optimal Convergence Rates and the Role of Gradient Clipping",
+      "authors": [
+        "Aleksandar Armacki",
+        "Haoyuan Cai",
+        "Ali H. Sayed"
+      ],
+      "submitted": "2026-10-07",
+      "updated": "2026-10-07",
+      "arxiv_url": "https://arxiv.org/abs/2610.10527v1",
+      "abstract": "Heavy-tailed noise has been widely observed in modern machine learning, motivating the use of methods like gradient clipping and normalization. While these methods are well understood in centralized settings, much less is known in decentralized ones, where applying a nonlinearity to local gradients affects both optimization and consensus. Recent works on decentralized non-convex optimization have studied both clipping and normalization under heavy-tailed noise, with clipping yielding suboptimal rates and normalization needing local momentum or mini-batches to converge. This raises the question: can a baseline decentralized method using a nonlinearity achieve optimal convergence rates under heavy-tailed noise? We answer affirmatively with clipped decentralized SGD ($\\mathtt{DSGD}$). For smooth non-convex costs under bounded $p$-th moment noise, $p \\in (1,2]$, we show that clipped $\\mathtt{DSGD}$ achieves order-optimal rates both with high probability and in expectation. Moreover, we establish a linear speed-up in the number of agents, which, to our knowledge, has not been shown for decentralized methods with clipping. The key technical ingredient is a sharp analysis of the consensus gap that exploits the structure of clipping, relegating network effects to higher-order terms. Our results highlight an important distinction between clipping and normalization in decentralized settings: while normalized $\\mathtt{DSGD}$ can fail to converge, clipping retains magnitude information, enabling $\\mathtt{DSGD}$ to be convergent and order-optimal. Numerical experiments validate our theory.",
+      "directions": [
+        "distributed",
+        "stochastic",
+        "optimization-frontiers"
+      ],
+      "summary": "重尾梯度噪声只有有限 $p$ 阶矩时，分布式算法既要削弱极端样本影响，又要控制截断偏差和网络分歧。该文在固定、本原且双随机的混合矩阵上研究去中心化非凸 SGD，采用各节点局部梯度截断后再混合的更新。通过平均截断方差引理及更细的共识误差分析，得到平均节点梯度平方的期望与高概率界，其主导项达到 $(nT)^{-2(p-1)/(3p-2)}$ 的量级（高概率界带相应对数因素），其中 $1<p\\le2$、$n$ 为节点数、$T$ 为迭代数。网络项在较高阶项中出现，从而在固定节点数、足够长时域下恢复相应的线性节点加速效应。结果要求局部目标光滑、整体目标有下界、节点梯度异质性受控，且噪声满足独立中心化及统一矩界；步长和截断阈值按时域及网络条件选择。作者另给出归一化 DSGD 可能因丢失幅度信息而失败的例子，说明截断和归一化不能混同。",
+      "reason": "最值得读的是把重尾统计误差与共识误差分开的主导项分析，以及归一化失败的机制。它具体回答网络协作能否保留重尾随机优化的样本收益；阅读复杂度结论时，应同时核对高阶网络项和实现主导项所需的时域条件。",
+      "order": 8
+    },
+    {
+      "arxiv_id": "2604.21177",
+      "version": 2,
+      "title": "Revisiting Subgradient Dominance in Robust MDPs: Counterexamples, Hardness, and Sufficient Conditions",
+      "authors": [
+        "Toshinori Kitamura",
+        "Arnob Ghosh",
+        "Alex Ayoub",
+        "Thang D. Chu",
+        "Csaba Szepesvári"
+      ],
+      "submitted": "2026-04-23",
+      "updated": "2026-10-08",
+      "arxiv_url": "https://arxiv.org/abs/2604.21177v2",
+      "abstract": "Projected subgradient descent (PSD) has gained popularity for solving robust Markov decision processes (RMDPs) because it applies to a broader class of uncertainty sets than traditional dynamic programming. Existing work claims that RMDPs with a general compact uncertainty set satisfy the subgradient dominance property, under which exact PSD finds an $\\varepsilon$-optimal policy in a polynomial number of updates (e.g., Wang et al., 2023). We show that these claims are incorrect. Even when the uncertainty set has cardinality two, the RMDP objective need not be subgradient-dominant and can admit suboptimal strict local minima. Moreover, we prove that finding an $\\varepsilon$-optimal policy can be NP-hard even in settings where subgradients are efficiently computable: (i) finite transition uncertainty sets and (ii) $sa$-rectangular finite transition uncertainty sets with finite non-rectangular cost uncertainty sets. Finally, we identify two conditions under which RMDPs do satisfy subgradient dominance: when, for each policy, either the worst-case transition kernel is unique or a robust action-value function exists.",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "summary": "标准 MDP 中的梯度支配性有助于解释策略优化为何可收敛到全局最优，但鲁棒最坏情形目标包含多种转移模型的最大值，原有论证可能失效。该文在直接策略单纯形参数化下构造三状态、两动作、两种转移模型的反例，出现严格次优局部极小点，并存在使任意投影次梯度及足够小步长都无法逃离的邻域。作者进一步证明有限不确定模型下的近似策略求解可以 NP-hard；即使转移不确定集满足逐状态—动作矩形性，有限非矩形成本不确定性仍可带来困难。随后论文给出恢复次梯度支配性的充分条件：每个策略的最坏转移模型唯一，或者存在相应的鲁棒 Q 表示，并配合状态访问覆盖条件。方法把非光滑最大值景观、计算困难与可恢复结构分开讨论，避免把矩形性或可高效计算次梯度单独当成全局可优化的依据。",
+      "reason": "推荐关注局部陷阱反例如何拆解从标准策略梯度到鲁棒目标的推理，以及恢复定理究竟增加了什么结构。它为最坏情形连续优化提供清楚的“失败机制—困难性—充分条件”对照，阅读价值在于辨别非光滑驻性和全局可优化性之间缺少的环节。",
+      "order": 9
+    },
+    {
+      "arxiv_id": "2610.11491",
+      "version": 1,
+      "title": "On error bounds and noncritical Lagrange multipliers",
+      "authors": [
+        "Matúš Benko",
+        "Patrick Mehlitz"
+      ],
+      "submitted": "2026-10-08",
+      "updated": "2026-10-08",
+      "arxiv_url": "https://arxiv.org/abs/2610.11491v1",
+      "abstract": "Critical Lagrange multipliers are known to be responsible for the potentially slow convergence of Newton-type methods, and noncriticality of a given multiplier has been tied to an error bound which estimates the distance of a primal-dual pair associated with a perturbed problem to the primal solution and the multiplier set of the unperturbed one, and is decisive for a local convergence analysis. We investigate this relation in an abstract setting where merely a set-valued mapping assigning primal-dual pairs to a parameter is available, and characterize the error bound of interest in terms of noncriticality of the underlying multiplier and two calmness-type properties of the associated multiplier mapping, one of which is a novel weak inner calmness in the fuzzy sense. No structural assumptions on the underlying problem are needed for that, and the two calmness-type conditions are not only sufficient but also necessary. Afterwards, we specify these findings for composite optimization problems. Whenever the subdifferential of the outer function is a polyhedral mapping, both conditions hold automatically, which explains the equivalence of noncriticality and the error bound observed in the polyhedral setting. Whenever the outer function is $C^2$-decomposable, they are secured by calmness of a restricted multiplier mapping together with a closedness condition, which recovers and extends the known characterization for $C^2$-cone reducible constraint systems.",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "summary": "非临界 Lagrange 乘子常被用来支持局部误差界，但乘子不唯一时，原始解的隔离稳定性与原始—对偶联合误差并不等价。该文以扰动驻性解映射为中心，刻画非临界性和两类误差界之间的准确联系：针对单个乘子，非临界性与原始变量的部分隔离 calmness 等价，还须加入沿非零原始方向的弱内 calmness 条件；若再要求乘子映射 calm，便得到原始—对偶半隔离误差界的对应关系。这些附加稳定性条件在相应刻画中也是必要条件。作者将结果用于二阶光滑外映射与非光滑复合项形成的优化问题；多面体次微分图可使若干条件自动成立，更一般的二阶可分解结构则需另验证限制映射的 calmness 与闭性。贡献是给出精确的逻辑条件，修正只凭“乘子非临界”就断言完整误差界的简化判断。",
+      "reason": "推荐阅读原始变量误差与乘子集合距离为何需要不同稳定性假设，以及这些假设在哪些复合结构下可验证。对于用误差界建立局部收敛率的算法分析，该文提供了具体的定理检查清单和必要性依据。",
+      "order": 10
+    },
+    {
+      "arxiv_id": "2610.11425",
+      "version": 1,
+      "title": "Accelerated Proximal Gradient Method for Non-Strongly Convex Time-Varying Optimization",
+      "authors": [
+        "Tomoya Kamijima",
+        "Naoki Marumo",
+        "Akiko Takeda"
+      ],
+      "submitted": "2026-10-08",
+      "updated": "2026-10-08",
+      "arxiv_url": "https://arxiv.org/abs/2610.11425v1",
+      "abstract": "This paper studies time-varying composite optimization problems with convex but not necessarily strongly convex objective functions, on compact domains and with bounded temporal variability. As a baseline, we first analyze the time-varying proximal gradient (TV-PG) method. We show that its asymptotic function value gap is bounded by $O(\\delta^{1/2})$ as $\\delta\\to0$, where $\\delta$ measures the temporal variability of the objective function. This dependence on $\\delta$ is tight in the worst case for TV-PG. Our main contribution is a time-varying accelerated proximal gradient method that improves the asymptotic upper bound on the function value gap to $O(\\delta^{2/3})$. The method builds on a novel acceleration scheme whose momentum parameter is determined by the current iterates, with no explicit dependence on the iteration index. We establish the bounds for both the baseline and accelerated methods through a unified analysis based on potential functions. Numerical experiments on a synthetic problem and autoregression problems with real-world datasets demonstrate the tracking performance of the proposed algorithm.",
+      "directions": [
+        "historical-information"
+      ],
+      "summary": "目标随时间变化且缺少强凸性时，静态加速速率并不直接给出跟踪保证。该文研究每轮凸光滑损失加固定近端项的在线序列，近端项定义域紧且直径为 $D$，相邻目标的成对函数差变化由 $2\\delta$ 控制。作者先证明近端梯度法的稳态函数值差为 $O(\\sqrt\\delta)$，并给出相应最坏情形下界；随后提出由迭代过程确定动量参数的加速近端梯度法。每轮执行 $n$ 次内部更新时，第 $k$ 轮函数值差界为 $30LD^2/(n^2k^2)+4(LD^2\\delta^2/n^2)^{1/3}+5\\delta$，把静态瞬态误差、变化驱动的稳态误差和每轮计算预算分别展示。保证针对单轮目标值跟踪，不是解点距离或累计动态遗憾；更大的 $n$ 需要更多梯度和近端调用。论文研究的是时变目标，网络通信拓扑并未进入模型。",
+      "reason": "推荐关注动量如何在非强凸跟踪中改善变化量的依赖，以及以每轮内部更新数表示计算—跟踪取舍的方式。与固定目标的加速界相比，这个分解更便于辨别历史迭代外推在持续变化环境中的实际作用。",
+      "order": 11
+    },
+    {
+      "arxiv_id": "2511.19675",
+      "version": 2,
+      "title": "Anytime-Feasible First-Order Optimization via Safe Sequential QCQP",
+      "authors": [
+        "Jiarui Wang",
+        "Mahyar Fazlyab"
+      ],
+      "submitted": "2025-11-24",
+      "updated": "2026-10-07",
+      "arxiv_url": "https://arxiv.org/abs/2511.19675v2",
+      "abstract": "This paper presents the Safe Sequential Quadratically Constrained Quadratic Programming (SS-QCQP) algorithm, a first-order method for smooth inequality-constrained nonconvex optimization that guarantees feasibility at every iteration. The method is derived from a continuous-time dynamical system whose vector field is obtained by solving a convex QCQP that enforces monotonic descent of the objective and forward invariance of the feasible set. The resulting continuous-time dynamics achieve an $O(1/t)$ ergodic convergence rate for the stationarity measure under standard constraint qualification conditions. We then propose a safeguarded Euler discretization with adaptive step-size selection that preserves this convergence rate while maintaining both descent and feasibility in discrete time. To enhance scalability, we develop an active-set variant (SS-QCQP-AS) that selectively enforces constraints near the boundary, substantially reducing computational cost without compromising theoretical guarantees. Numerical experiments on a multi-agent nonlinear optimal control problem demonstrate that SS-QCQP and SS-QCQP-AS maintain feasibility, exhibit the predicted convergence behavior, and deliver solution quality comparable to second-order solvers such as SQP and IPOPT.",
+      "directions": [
+        "safety-critical"
+      ],
+      "summary": "非线性约束边界上的切向下降方向经离散 Euler 更新后仍可能越界，因此一阶可行方向不等于每个实际迭代点可行。该文对光滑非凸不等式约束优化提出 Safe Sequential QCQP：每步选择最接近负目标梯度的方向，并以 $\\nabla g_i(x)^\\top u\\le-\\alpha g_i(x)-w_i\\|u\\|^2$ 加入二次向内修正。随后 Armijo 搜索直接检验实际目标下降和全部原约束。可行初始化、约束与目标梯度 Lipschitz、目标下界及处处 MFCQ 等条件保证方向子问题可解、线搜索有限终止且步长有正下界；算法无需预先给出 Lipschitz 常数。分析证明所有迭代点保持可行，方向为零恰对应 KKT 条件，最小方向范数平方及其遍历量有 $O(1/k)$ 界。对紧可行集，还可只在方向 QCQP 中保留接近边界的约束以降低规模，但线搜索仍检验全部约束。保证建立在精确方向求解上，结论是 KKT 驻性与持续可行性。",
+      "reason": "最值得借鉴的是用二次向内修正弥合连续切向条件和离散可行更新之间的缺口，以及不用已知平滑常数的可验证线搜索。它直接处理安全优化中“每一步都可行”的要求，同时说明削减子问题约束时哪些检查必须保留。",
+      "order": 12
+    },
+    {
+      "arxiv_id": "2412.07317",
+      "version": 2,
+      "title": "A smoothing Anderson acceleration algorithm for nonsmooth fixed point problems with linear convergence",
+      "authors": [
+        "Zekai Li",
+        "Wei Bian"
+      ],
+      "submitted": "2024-12-10",
+      "updated": "2026-10-08",
+      "arxiv_url": "https://arxiv.org/abs/2412.07317v2",
+      "abstract": "In this paper, we consider the Anderson acceleration method for solving the contractive fixed point problem, which is nonsmooth in general. We define a class of smoothing functions for the original nonsmooth fixed point mapping, which can be easily formulated for many cases (see section3). Then, taking advantage of the Anderson acceleration method, we proposed a Smoothing Anderson(m) algorithm, in which we utilized a smoothing function of the original nonsmooth fixed point mapping and update the smoothing parameter adaptively. In theory, we first demonstrate the r-linear convergence of the proposed Smoothing Anderson(m) algorithm for solving the considered nonsmooth contractive fixed point problem with r-factor no larger than c, where c is the contractive factor of the fixed point mapping. Second, we establish that both of the Smoothing Anderson(1) and the Smoothing EDIIS(1) algorithms are q-linear convergent with q-factor no larger than c. Finally, we present three numerical examples with practical applications from elastic net regression, free boundary problems for infinite journal bearings and non-negative least squares problem to illustrate the better performance of the proposed Smoothing Anderson(m) algorithm comparing with some popular methods.",
+      "directions": [
+        "historical-information"
+      ],
+      "summary": "Anderson 加速复用历史残差，但非光滑固定点映射会使常见局部 Taylor 分析失去依据。该文针对具有收缩性的非光滑固定点问题，引入与原映射共享固定点的光滑近似，并自适应调节平滑参数，再对平滑残差实施 Anderson 外推。局部理论要求收缩因子 $c<1$、相应导数与联合差分条件、足够近的初始化、残差不增控制，以及外推系数和为一且绝对值和有统一界。在这些条件下得到不差于 $c$ 的 r-线性收敛因子；记忆长度为一的方案及 EDIIS 变体还有 q-线性结果。数值例涉及弹性网和非负约束 logistic 优化等由近端或投影算子产生的固定点。结果为受控的平滑与历史残差混合提供局部收敛基础，而不保证任意非扩张映射全局加速，也不证明普遍严格优于基础迭代。",
+      "reason": "推荐关注保持固定点的平滑构造与有界历史混合系数如何共同进入证明。这使非光滑场景中的 Anderson 使用条件可逐项核对，尤其有助于区分实验加速、收敛因子上界和全局稳定性三种不同主张。",
+      "order": 13
+    },
+    {
+      "arxiv_id": "2610.10882",
+      "version": 1,
+      "title": "Decentralized collaborative continual learning: A multi-objective minimization-based technique",
+      "authors": [
+        "Yara Zgheib",
+        "Marc Antonini",
+        "Roula Nassif"
+      ],
+      "submitted": "2026-10-07",
+      "updated": "2026-10-07",
+      "arxiv_url": "https://arxiv.org/abs/2610.10882v1",
+      "abstract": "In this work, we formulate decentralized continual learning within a multi-objective optimization framework. For a given inference task t (corresponding to a common minimizer shared by the cost functions of all agents), agents collecting data in a distributed and streamed manner are only allowed to perform local computations and to exchange information with neighboring agents over the underlying communication graph. As tasks evolve sequentially over time, agents must adapt to newly arriving tasks while retaining knowledge acquired from previously learned ones. This requirement leads to the wellknown stability plasticity dilemma, where stability refers to the ability to retain previous knowledge, while plasticity refers to the ability to learn and adapt to new tasks. To address the stability challenge, agents store subsets of samples from past tasks in local memory buffers. Then, through an appropriate multiobjective formulation, the stored information is incorporated into the learning process so that parameter updates account jointly for the current task and previously learned tasks. The proposed decentralized continual learning approach is analyzed in the mean square error sense under general assumptions on the individual cost functions and gradient noise processes. The analysis reveals that cooperation among agents improves the performance of continual learning. In particular, by exchanging information with neighboring agents, decentralized collaborative learning can exploit the diversity of locally observed data and memory buffers to improve the network average mean-square deviation (MSD) across tasks. Finally, simulations illustrate the theoretical findings and the effectiveness of the method in reducing forgetting and improving the average MSD across tasks.",
+      "directions": [
+        "distributed",
+        "stochastic"
+      ],
+      "summary": "去中心化持续学习既要适应当前任务，又要用有限随机记忆缓冲区保留旧任务信息，其误差同时来自网络协作、随机更新和有限记忆偏差。该文把当前经验风险与折扣历史风险组成多目标加权和，采用适应后组合的 diffusion 更新，并通过 Bernoulli 记忆保留及概率归一化得到随机经验目标。理论在固定连通、双随机组合网络、当前任务强凸且 Hessian 一致有界、旧任务损失凸光滑、各节点共享当前任务最优点等条件下展开；梯度噪声条件中心化、方差可随状态增长，旧任务梯度有相应矩界。足够小的常步长 $\\mu$ 下，算法相对随机经验目标的共识均方偏差为 $O(\\mu)$，节点分歧为 $O(\\mu^2)$；任务平均误差进一步区分迭代误差与记忆导致的目标偏差，说明协作聚合缓冲区多样性如何减少后者的方差。任务序列变化与旧数据复用是模型背景，主要贡献是分布式随机更新的均方与偏差分析。",
+      "reason": "推荐阅读误差分解如何把网络分歧、有限记忆产生的随机目标和理想期望多目标风险分开。这为判断节点合作究竟减少哪一种误差提供明确依据；强凸和共享当前任务最优点等条件也清楚标定了结论可迁移的范围。",
+      "order": 14
+    }
+  ]
+}
