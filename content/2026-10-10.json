@@ -1,0 +1,386 @@
+{
+  "date": "2026-10-10",
+  "status": "complete",
+  "frontiers_status": "recommendations",
+  "highlights": [
+    {
+      "arxiv_id": "2610.12328",
+      "types": [
+        "field"
+      ],
+      "label": "复合在线转换｜改善非光滑零阶复杂度",
+      "text": "保留凸正则项的一阶与两点零阶转换无需方差缩减；相应 oracle 和凸子问题条件下达到 $O(\\delta^{-1}\\varepsilon^{-3})$ 与 $O(d\\delta^{-1}\\varepsilon^{-3})$。零阶最优性分别针对各参数依赖。"
+    },
+    {
+      "arxiv_id": "2610.12184",
+      "types": [
+        "field"
+      ],
+      "label": "双曲优化下界｜解除查询几何限制仍匹配上界",
+      "text": "全局 Lipschitz 测地凸目标、确定性一阶 oracle 和维数可增长的最坏情形下，任意空间查询仍需 $\\Omega(\\zeta\\varepsilon^{-2})$ 次调用；固定函数构造揭示曲率代价。"
+    },
+    {
+      "arxiv_id": "2610.12153",
+      "types": [
+        "field",
+        "group"
+      ],
+      "label": "持续可行 MDP｜分离基线与内在安全裕量",
+      "text": "已知严格可行基线下，安全探索学习更大 Slater 裕量；每轮策略期望约束在共同高概率事件上可行，遗憾的裕量依赖为 $\\widetilde O(\\sqrt T/\\rho+1/(d\\rho))$，另有指定区间的匹配下界。"
+    },
+    {
+      "arxiv_id": "2607.10791",
+      "types": [
+        "group"
+      ],
+      "label": "时变鲁棒网络｜把历史草图接入近端共识分析",
+      "text": "历史梯度草图与范数惩罚聚合同时控制估计与网络误差；强凸、平均连通等条件下，常步长线性降至邻域，递减步长给出 $O(1/k)$ 衰减及恶意邻居误差项。"
+    },
+    {
+      "arxiv_id": "2512.14979",
+      "types": [
+        "group"
+      ],
+      "label": "随机线搜索｜共同样本与周期重置控制残差",
+      "text": "SLAM 在一次回溯中复用同批样本，无需预知光滑与方差常数；固定预算调度给出 $O(1/K)$ 期望近端残差平方，增长批量方案为 $O(\\log K/K)$。"
+    },
+    {
+      "arxiv_id": "2610.11821",
+      "types": [
+        "group"
+      ],
+      "label": "约束联邦零阶｜方向聚合拆分投影漂移与方差",
+      "text": "客户端聚合估计方向、服务器只做一次全局投影；明确数据与方向采样成本。固定平滑、递减局部步长及增长采样下，平滑投影残差平方为 $O(\\log T/T)$。"
+    },
+    {
+      "arxiv_id": "2610.12444",
+      "types": [
+        "group"
+      ],
+      "label": "4-bit AdamW｜在预条件器空间修正历史量化",
+      "text": "矩空间无偏舍入可能放大实际更新；预条件器空间分析给出零码点概率的稳定尺度，并用标量二周期反例与语言模型对照支持新的状态量化设计。"
+    }
+  ],
+  "papers": [
+    {
+      "arxiv_id": "2610.12328",
+      "version": 1,
+      "title": "Composite Online-to-Nonconvex Conversion with Optimal Oracle Complexity",
+      "authors": [
+        "Mingyi Li",
+        "Taira Tsuchiya",
+        "Kenji Yamanishi"
+      ],
+      "submitted": "2026-10-08",
+      "updated": "2026-10-08",
+      "arxiv_url": "https://arxiv.org/abs/2610.12328v1",
+      "abstract": "We consider stochastic nonsmooth nonconvex composite optimization, which includes several important problems such as constrained optimization and the regularized training of neural networks. The objective is the sum of a possibly nonsmooth nonconvex Lipschitz function and a convex regularizer, and the function is accessed through stochastic gradients or function values. The goal is to find a point that satisfies a Goldstein-type stationarity condition designed for composite objectives. To our knowledge, no oracle complexity bound for this setting is known under first-order access, and existing complexities under zeroth-order access are suboptimal. To handle this issue, we employ the framework of online-to-nonconvex conversion, which chooses update directions by an online learner and is known to achieve optimal rates for noncomposite problems. We extend the framework to our composite scenario by introducing new losses for the learner, which contain the regularizer itself rather than its linearization and for which a variant of online mirror descent achieves low regret. We show that the resulting algorithm finds such a point with $O(\\delta^{-1}\\varepsilon^{-3})$ stochastic gradient queries or $O(d\\delta^{-1}\\varepsilon^{-3})$ function-value queries, where $\\delta$ is the Goldstein radius, $\\varepsilon$ is the stationarity tolerance, and $d$ is the dimension. These rates match the optimal ones for noncomposite nonsmooth nonconvex optimization, demonstrating that the additional convex regularizer does not worsen the oracle complexity. We also give rates for the smooth case and present numerical experiments.",
+      "directions": [
+        "stochastic",
+        "optimization-frontiers"
+      ],
+      "summary": "非光滑非凸随机目标与凸正则项、可行域指示函数组合后，直接平滑整个目标可能破坏易处理的凸结构。该文把在线到非凸转换扩展到 $f+h$：在线损失保留 $h$，用复合镜像下降控制遗憾，再通过分块锚点、随机插值查询和局部模型最小化构造输出。对于全局 Lipschitz 的 $f$、适当闭凸的 $h$，在对应无偏梯度及二阶矩条件下，一阶 oracle 调用对邻域半径与驻性精度达到 $O(\\delta^{-1}\\varepsilon^{-3})$；共享样本的两点函数值 oracle 在样本 Lipschitz 常数平方可积时达到 $O(d\\delta^{-1}\\varepsilon^{-3})$，不需要方差缩减。复杂度计算以能执行相应凸子问题为前提。一阶结果的半径与精度联合依赖可由已有下界匹配；零阶结果分别匹配维数、半径和精度依赖，不能据此断言同一零阶模型中的联合最优性。",
+      "reason": "推荐优先阅读复合在线损失与输出转换的配合：它把非凸随机部分的 oracle 复杂度与凸正则结构分开，避免把约束或正则项一起平滑。相较已有复合零阶方法，维数依赖由 $d^{3/2}$ 降到 $d$，并移除了该路线中的方差缩减需求。这是研究带约束非光滑随机方法时可直接比较的复杂度与构造进展。",
+      "order": 1
+    },
+    {
+      "arxiv_id": "2610.12184",
+      "version": 1,
+      "title": "Geodesically Convex Optimization in Hyperbolic Space: Matching Lower Bounds",
+      "authors": [
+        "Wendao Wu",
+        "Haihan Zhang",
+        "Chenheng Zhang",
+        "Yanyi Li",
+        "Chunyuan Zheng",
+        "Cong Fang",
+        "Haoxuan Li",
+        "Zhouchen Lin"
+      ],
+      "submitted": "2026-10-08",
+      "updated": "2026-10-08",
+      "arxiv_url": "https://arxiv.org/abs/2610.12184v1",
+      "abstract": "We establish matching lower bounds for deterministic first-order optimization of globally Lipschitz geodesically convex functions on hyperbolic space. A global minimizer lies within distance $r$ of a known point, each query returns an exact function value and a selected Riemannian subgradient, and the target objective gap is $\\varepsilon Lr$, where $L$ is the Lipschitz constant. For sectional curvature $-k^2<0$, let $\\rho=kr$ and $\\zeta=\\rho/\\tanh\\rho$. The optimal worst-case query complexity $Q^\\star$, taken uniformly over dimensions, satisfies $Q^\\star(\\rho,\\varepsilon)=\\Theta(\\zeta\\varepsilon^{-2})$ for every $\\rho>0$ and $0<\\varepsilon\\le1/64$. The new lower bound covers arbitrary adaptive deterministic queries and arbitrary outputs, matching the projected-subgradient upper rate of Zhang and Sra (2016). It removes the geodesic-span and historical-halfspace restrictions of earlier matching lower bounds. The construction extends a radial source from a convex carrier with boundary. A small residual cut selects minimizer candidates while an exact hyperbolic persistence inequality keeps every historical contact valid under future carrier growth. One fixed globally convex objective and one fixed subgradient selection consequently realize all exact replies simultaneously. Each query consumes $O(\\varepsilon^2)$ of a geometric potential whose available budget is $\\Theta(\\zeta)$, yielding the product lower bound in a dimension linear in the query horizon.",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "summary": "负曲率会使测地凸次梯度法的复杂度带上曲率因子，已有下界却常限制查询必须位于历史点张成的几何区域。该文在曲率为 $-\\kappa^2$ 的双曲空间，构造全局 Lipschitz 测地凸函数及固定的单值次梯度 oracle，使任意确定性自适应算法即使可在整个空间查询、也可输出未查询点，仍需要 $\\Omega(\\zeta\\varepsilon^{-2})$ 次调用才能把函数间隙降到 $\\varepsilon Lr$，其中 $\\zeta=\\kappa r/\\tanh(\\kappa r)$，最优点距给定中心不超过 $r$。这与相应次梯度上界匹配。构造通过凸载体、径向边界源和持续保留的历史接触条件，把对抗响应实现为同一个目标函数。结果是维数可随查询预算增长的最坏情形下界；不应扩展为固定维数或随机算法的同阶结论。",
+      "reason": "最值得读的是移除查询几何限制后如何保持一个一致的固定函数与 oracle。这个下界澄清了曲率代价究竟是算法分析松弛，还是一般确定性一阶信息模型本身的困难，也明确解释了固定维数切平面方法与维数一致下界为何并不冲突。",
+      "order": 2
+    },
+    {
+      "arxiv_id": "2610.12153",
+      "version": 1,
+      "title": "Toward Optimal Regret in Adversarial MDPs with Stochastic Hard Constraints",
+      "authors": [
+        "Qian Zuo",
+        "Francesco Emanuele Stradi"
+      ],
+      "submitted": "2026-10-08",
+      "updated": "2026-10-08",
+      "arxiv_url": "https://arxiv.org/abs/2610.12153v1",
+      "abstract": "We study episodic constrained Markov decision processes with adversarial losses under stochastic hard constraints. Specifically, starting from a known strictly feasible policy with margin $d$, we seek to obtain optimal regret while satisfying the expected cost constraints in every episode. In this setting, Stradi et al. (2025) show that a carefully designed mixing rule attains regret of order $\\widetilde{\\mathcal{O}}(\\sqrt{T}/\\min\\{d,d^2\\})$. Interestingly, they also provide a lower bound of order $\\Omega(\\sqrt{T}/\\rho)$ for the same setting, where $\\rho$ is the Slater margin of the offline problem and can be much larger than $d$. In this work, we build on their approach to obtain optimal regret dependence on these margins. Specifically, we propose MA-OPS, an algorithm that combines an optimistic search for the Slater margin with a pessimistic evaluation of the selected policies to safely learn a policy with a large feasibility margin. This policy is then used to minimize regret while satisfying the constraints at every episode. In particular, we show that MA-OPS attains regret $\\widetilde{\\mathcal{O}}(\\sqrt{T}/\\rho + 1/(d\\rho))$. Finally, we provide a matching lower bound, showing that the dependence on $T$, $d$, $\\rho$ in the regret bound is optimal up to logarithmic factors.",
+      "directions": [
+        "safety-critical"
+      ],
+      "summary": "未知转移的有限时域 MDP 中，探索必须同时满足每一轮策略的成本约束；只控制累计违规不能保证训练过程中策略持续可行。该文针对对抗损失、独立同分布随机成本和轨迹反馈，提出 MA-OPS：以已知严格可行基线及其成本上界构造安全的占用测度优化，并在保持可行的探索中学习更大的 Slater 裕量。所有轮次的策略期望成本在同一个高概率事件上满足约束。把状态、动作和时域因素视为固定量，遗憾的主要依赖为 $\\widetilde O(\\sqrt T/\\rho+1/(d\\rho))$，其中 $d$ 是已知基线裕量，$\\rho$ 是问题的最佳可行裕量；因此初始基线较差的代价不再乘到整个 $\\sqrt T$ 主项。论文还给出受限参数区间和足够长时域下匹配这些依赖的下界。这里的持续可行性针对策略的期望约束，并不等于每条实现轨迹的成本都不超限。",
+      "reason": "推荐关注安全探索与裕量学习的耦合：算法利用可行占用测度和基线混合，在学习更好安全余量时仍维持每轮可行。这比事后惩罚违规更接近持续可行优化的核心困难；将基线裕量与内在 Slater 裕量分开，也提供了分析可行初始化代价的清楚方式。",
+      "order": 3
+    },
+    {
+      "arxiv_id": "2607.10791",
+      "version": 2,
+      "title": "Resilient Decentralized Stochastic Preconditioned Proximal Optimization with Gradient Sketching over Time-Varying Networks",
+      "authors": [
+        "Jinhui Hu",
+        "Guo Chen",
+        "Huaqing Li",
+        "Liang Ran",
+        "Tao Han",
+        "Tingwen Huang"
+      ],
+      "submitted": "2026-07-12",
+      "updated": "2026-10-08",
+      "arxiv_url": "https://arxiv.org/abs/2607.10791v2",
+      "abstract": "Variance reduction is indispensable in Byzantine-resilient decentralized stochastic optimization over multi-agent systems (MASs), as it effectively mitigates gradient noise to facilitate the resilient aggregation process. However, most existing Byzantine-resilient decentralized variance-reduced (VR) stochastic gradient algorithms rely on random data sampling, which proves inefficient in data-scarce yet high-dimensional tasks, for instance, image deblurring. This paper aims to pursue an alternative approach that achieves variance reduction via gradient sketching. We first formulate a class of structural risk minimization (SRM) problems over time-varying networks, where the local objectives are not necessarily decomposable and their gradients may be inaccessible. To solve the SRM problems in a decentralized manner, we first incorporate a localized gradient-sketching technique into a preconditioned stochastic proximal gradient framework, proposing a novel gossip-based decentralized algorithm with variance reduction, dubbed Gossip-SEGA. To further enhance its resilience, we substitute the weighted-average aggregation in Gossip-SEGA with a norm-penalized approximation, thereby developing a Byzantine-resilient decentralized algorithm, namely RED-SEGA. Theoretically, we derive sufficient conditions for both consensus among reliable agents and (sub)linear convergence rate of RED-SEGA over time-varying networks provided they do not exceed a 50% breakdown point. This is challenging, as the convergence and consensus errors must be bounded within a transformed variable-metric geometry, where the inherent complexities are further compounded by adversarial Byzantine agents and time-varying networks. The effectiveness and resilience of RED-SEGA are validated by solving a constrained least-squares problem and an image deblurring task under various Byzantine attacks.",
+      "directions": [
+        "distributed",
+        "time-varying-networks",
+        "stochastic",
+        "historical-information"
+      ],
+      "summary": "时变通信、恶意邻居和昂贵本地梯度同时存在时，简单压缩或加权平均难以兼顾抗攻击与计算成本。该文的 RED-SEGA 将局部梯度草图及历史估计、加权度量近端步和邻居差异范数惩罚组合起来；与依赖有限和分解的记忆方法不同，草图估计可直接用于一般光滑局部目标。分析要求局部强凸与矩阵平滑、随机网络的可靠平均连通性，以及相应草图和网络独立性。足够大的惩罚参数使替代目标与原问题的最优共识解一致，但迭代本身并非每步精确共识。常步长下期望 Lyapunov 量线性下降到误差邻域；欧氏度量和递减步长变体给出 $O(1/k)$ 的衰减项，另保留由恶意邻居产生的误差项。论文的收敛保证依赖这些网络、参数与曲率条件，不能简化为无条件容忍任意比例攻击。",
+      "reason": "推荐优先看鲁棒邻居聚合如何与本地历史草图共用 Lyapunov 分析：它同时处理网络扰动和梯度重建误差，直接关联时变网络中的通信与梯度成本。常步长、递减步长两种结论对误差来源的区分，也有助于判断抗攻击机制究竟改变收敛速度还是最终精度。",
+      "order": 4
+    },
+    {
+      "arxiv_id": "2512.14979",
+      "version": 2,
+      "title": "A Stochastic LineseArch Method (SLAM) for Minimizing Expectation Residuals",
+      "authors": [
+        "Qi Wang",
+        "Uday V. Shanbhag",
+        "Yue Xie"
+      ],
+      "submitted": "2025-12-17",
+      "updated": "2026-10-08",
+      "arxiv_url": "https://arxiv.org/abs/2512.14979v2",
+      "abstract": "Most existing rate and complexity guarantees for stochastic gradient methods in $L$-smooth settings mandates that such sequences be non-adaptive, non-increasing, and upper bounded by $\\tfrac{a}{L}$ for $a > 0$. This requires knowledge of $L$ and may preclude larger steps. Motivated by these shortcomings, we present an Armijo-enabled stochastic linesearch framework with common random number (CRN)-enabled stochastic zeroth- and first-order oracles. The resulting steplength sequence is non-monotone and requires neither knowledge of $L$ nor any other problem parameters. We then prove that the expected stationarity residual diminishes at a rate of $\\mathcal{O}(1/\\sqrt{K})$, where $K$ denotes the iteration budget. Furthermore, the resulting iteration and sample complexities for computing an $\\epsilon$-stationary point are $\\mathcal{O}(\\epsilon^{-2})$ and $\\mathcal{O}\\left(\\epsilon^{-4}\\right)$. The proposed method allows for a simple nonsmooth convex component in the objective, addressed through proximal gradient updates. Analogous guarantees are provided in the Polyak-Lojasiewicz (PL) setting and convex regimes. Preliminary numerical experiments are seen to be promising.",
+      "directions": [
+        "stochastic",
+        "optimization-frontiers"
+      ],
+      "summary": "随机复合非凸问题中的 Armijo 检验容易把函数噪声误认作下降，经典随机线搜索因此往往需要额外精度控制。该文提出 SLAM，在一次回溯中固定同一个样本批次计算梯度与函数值，并按周期重置回溯起点；近端步保留凸非光滑正则项。方法无需预先知道光滑常数和噪声方差，但依赖可重复使用同一批样本的函数与梯度访问方式。样本函数共同光滑、真梯度有界及无偏有限方差等条件下，给定预算 $K$ 并把批量与重置周期按 $K$ 设定，可使均匀随机输出的期望近端梯度映射平方为 $O(1/K)$，得到驻性精度 $\\varepsilon$ 的 $O(\\varepsilon^{-4})$ 数据样本复杂度。无需预算的增长批量和倍增周期方案给出的是 $O(\\log K/K)$ 残差界。二者的调度与结论应分别理解。",
+      "reason": "最值得研究的是共同随机数与回溯重置如何避免不可靠的跨样本下降比较，同时保留可分析的随机近端更新。它提供了随机步长选择的一条具体路线；固定预算与随时可运行方案的速率差异，也比只说“自适应且最优”更能指导算法设计。",
+      "order": 5
+    },
+    {
+      "arxiv_id": "2610.11821",
+      "version": 1,
+      "title": "Federated Zeroth-Order Optimization with Direction Aggregation and Variance Reduction",
+      "authors": [
+        "Qianlong Dang",
+        "Baosheng Li"
+      ],
+      "submitted": "2026-10-08",
+      "updated": "2026-10-08",
+      "arxiv_url": "https://arxiv.org/abs/2610.11821v1",
+      "abstract": "We study constrained nonsmooth nonconvex stochastic optimization in federated settings, where clients access only stochastic function evaluations. Existing federated zeroth-order methods primarily combine local zeroth-order updates with model averaging. However, they struggle with client drift induced by local projected updates and sampling variance in stochastic zeroth-order estimates. In this paper, we propose a federated zeroth-order framework based on direction aggregation, equipped with two local sampling schemes. Specifically, FedZOO constructs a local direction from a minibatch shared across multiple spherical queries, thereby controlling the stochastic errors arising from data sampling and gradient approximation. In contrast, FedVRZO forms its local estimator from independent sample--direction pairs, so that its sampling error is controlled directly by the number of sample--direction pairs. In both algorithms, clients compute the mean of the directions evaluated along their projected local trajectories, and the server performs a single projected update using the weighted aggregate of the client directions. Furthermore, we establish convergence guarantees for FedZOO and FedVRZO, respectively. Experiments on black-box adversarial attacks demonstrate the effectiveness of the proposed methods.",
+      "directions": [
+        "distributed",
+        "stochastic"
+      ],
+      "summary": "联邦零阶优化若先对各客户端局部轨迹反复投影，再平均最终模型，投影非线性会引入额外漂移。该文在公共凸约束域上的非光滑非凸问题中，改为聚合客户端的局部估计方向，服务器只做一次全局投影，并提出 FedZOO 与 FedVRZO。前者在同一数据批上使用多个随机方向，将数据噪声与方向噪声分开；后者使用独立的数据—方向对改善固定查询预算下的估计方差。样本目标在扩展邻域 Lipschitz、相应平方矩和独立采样成立、平滑后梯度异质性受控时，理论界明确分解优化下降、局部轨迹漂移和零阶估计误差。固定平滑半径，局部步长按 $t^{-1/2}$ 缩小、采样预算线性增长时，可得到平滑目标投影梯度映射平方的 $O(\\log T/T)$ 界。这是平滑驻性保证，采样增长与局部更新成本也属于算法开销。",
+      "reason": "推荐关注把方向聚合与最终模型聚合分开的设计，以及数据批量和方向数量对方差的不同作用。两者直接处理约束联邦方法的投影漂移与通信间隔问题，提供了比统一放大所有采样参数更细的成本分析。FedVRZO 的方差改进来自采样安排，文中并未把历史控制变量作为主要机制。",
+      "order": 6
+    },
+    {
+      "arxiv_id": "2610.12444",
+      "version": 1,
+      "title": "Rounding in Preconditioner Space: Redesigning 4-bit AdamW Optimizer-State Quantization",
+      "authors": [
+        "Hanyang Li",
+        "Shao Tang",
+        "Daniel Thomas Braithwaite",
+        "Gregory Dexter",
+        "Leonardo Neves",
+        "Aman Gupta",
+        "Hiroto Udagawa",
+        "Abhishek Shivanna",
+        "Daniel Silva",
+        "Rohan Ramanath"
+      ],
+      "submitted": "2026-10-08",
+      "updated": "2026-10-08",
+      "arxiv_url": "https://arxiv.org/abs/2610.12444v1",
+      "abstract": "Quantizing AdamW's optimizer states reduces persistent storage, but quantization errors propagate through the moment recurrences and perturb subsequent adaptive updates. We redesign 4-bit optimizer-state quantization for AdamW from the perspective of \\emph{rounding space}: the coordinate in which a quantizer chooses between adjacent reconstruction levels. For the second moment, a local analysis of the quantization cell adjacent to zero shows that small mean state error need not imply small mean preconditioner error at the next step. A one-dimensional quadratic construction further shows qualitatively different optimization dynamics under state-space and preconditioner-space rounding. These results motivate Zero-Inclusive Preconditioner-space Stochastic Rounding (\\textbf{ZIP-SR}), which retains zero in the second-moment codebook and computes stochastic-rounding probabilities in preconditioner space. As a complementary route, Zero-Excluding EDEN calibration (\\textbf{ZE-EDEN}) uses a zero-excluding second-moment codebook and rescales the quantized second-moment block to mitigate the preconditioner distortion caused by the positive quantization floor. Both configurations use 4-bit NormalFloat (NF4) for the first moment, with targeted stochastic rounding of the LM-head first moment during the final 10\\% of training. Across GPT- and Llama-style pretraining experiments ranging from \\textbf{130M} to \\textbf{2.7B} parameters, both methods reduce TorchAO 4-bit AdamW's mean validation-loss gap to 32-bit AdamW at every evaluated model size, with the largest reported gap reduction reaching \\textbf{70\\%}. In full-parameter supervised fine-tuning, both recipes achieve lower validation loss than TorchAO while remaining close to 32-bit AdamW on downstream tasks.",
+      "directions": [
+        "historical-information"
+      ],
+      "summary": "AdamW 存储的是历史一、二阶矩，更新使用的却是二阶矩经过倒平方根变换后的预条件器；在矩空间无偏的低比特舍入，并不保证更新空间误差小。该文区分 StateSR 与 UpdateSR，通过预条件器空间的插值概率设计 4-bit 状态量化。对含零码点的量化单元，作者证明两种舍入对下一步预条件器具有不同的偏差次序，并刻画稳定性所需的零码点概率：在特定小梯度与小稳定项极限中，概率需要随稳定项缩小，常数概率则会放大误差。一个无动量标量二次模型进一步展示矩空间舍入产生非零二周期，而更新空间舍入在相应参数和初始化下几何收敛。基于这些机制设计的 ZIP-SR、ZE-Eden 与第一矩舍入安排，在语言模型实验中改善相对全精度的训练损失差距；实验结果与标量机制定理分别提供证据，不能合并成一般 AdamW 的全局收敛保证。",
+      "reason": "最值得读的是对历史二阶矩“存储无偏”与“实际更新稳定”的区分。它说明历史信息的误差需要放到后续使用的非线性映射中分析，且以反例和概率尺度给出可操作的修正依据，比单纯报告压缩后精度接近全精度更有机制价值。",
+      "order": 7
+    },
+    {
+      "arxiv_id": "2608.03846",
+      "version": 2,
+      "title": "Sliding Methods for Hölder-Smooth Convex--Concave Minimax Optimization with Bilinear Coupling",
+      "authors": [
+        "Nhat Trung Nguyen",
+        "Alexander Gasnikov"
+      ],
+      "submitted": "2026-08-04",
+      "updated": "2026-10-08",
+      "arxiv_url": "https://arxiv.org/abs/2608.03846v2",
+      "abstract": "We study convex-concave minimax optimization problems with bilinear coupling of the form $\\min_{x\\in \\mathcal X}\\max_{y\\in \\mathcal Y} \\; f(x)+\\langle y,\\mathbf{B}x\\rangle-g(y),$ where the functions $f$ and $g$ have Hölder continuous (sub)gradients. This setting covers a broad range of regimes, from nonsmooth problems with bounded subgradient variation to smooth problems with Lipschitz continuous gradients; for a smooth component used in the coupling-induced regularizer, its Lipschitz-gradient constant is assumed to hold in the ambient space. We propose a sliding method that exploits the composite structure of the problem by querying the oracles associated with $f$, $g$, and the bilinear coupling operator at prescribed frequencies determined by their individual properties. The method is based on a recursive sliding scheme for monotone variational inequalities. We establish convergence guarantees under Hölder continuity and show how the resulting complexity bounds depend explicitly on the Hölder exponents, Hölder constants, strong convexity parameters, and spectral properties of the coupling matrix. Our analysis covers nonstrongly convex and partially strongly convex regimes. For stochastic function oracles, we prove componentwise Hölder guarantees with separate variance costs: a uniform expected-gap bound on bounded domains and, when both functions are strongly convex on their feasible sets, a restarted Lyapunov guarantee without an anchor noise floor. Numerical experiments reproduce the predicted Hölder exponents and confirm that the number of gradient evaluations required for each function separates according to its own smoothness level rather than the worse of the two. A tomographic benchmark shows runtime gains when gradient evaluations are more expensive than the additional matrix-vector products.",
+      "directions": [
+        "stochastic",
+        "optimization-frontiers"
+      ],
+      "summary": "双线性耦合极小极大问题中，两侧函数的平滑程度与查询成本可能不同；用最差 Hölder 指数统一步长会掩盖可节省的梯度调用。该文以递归变分不等式滑动方案分别安排 $f$、$g$ 与耦合矩阵乘法的调用频率，覆盖从有界次梯度变化到 Lipschitz 梯度的结构。确定性分析还处理部分强凸情形，并明确耦合矩阵的谱与值域条件。在随机函数 oracle 条件无偏、方差有界时，有界域上的期望间隙对每个分量分别承担 $\\varepsilon^{-2/(1+3\\nu_i)}$ 的 Hölder 成本与 $\\sigma_i^2\\varepsilon^{-2}$ 的噪声成本。两侧函数在可行域内都强凸时，重启 Lyapunov 分析把各自噪声成本改为 $\\sigma_i^2/(\\mu_i\\varepsilon)$，不保留锚点噪声下限。调度使用相应平滑和方差界；随机强凸结果依赖函数自身的强凸性，不能直接以双线性耦合替代。",
+      "reason": "推荐看分量 oracle 复杂度如何从统一迭代数中拆开。独立 Hölder 指数、方差和矩阵乘法成本，使这一分析与一般随机步长或零阶估计有不同的阅读价值，特别适合梯度计算昂贵、耦合算子调用较便宜的结构化鞍点问题。",
+      "order": 8
+    },
+    {
+      "arxiv_id": "2609.38561",
+      "version": 2,
+      "title": "Parameter-Free Zeroth-Order Optimization with Ellipsoidal Sampling",
+      "authors": [
+        "Alexander Sholokhov",
+        "Alexander Rogozin"
+      ],
+      "submitted": "2026-09-29",
+      "updated": "2026-10-08",
+      "arxiv_url": "https://arxiv.org/abs/2609.38561v2",
+      "abstract": "Zeroth-order optimization methods are essential for solving black-box problems where gradient information is unavailable or expensive to compute. This paper presents POEM-ES, a novel parameter-free stochastic zeroth-order algorithm that extends the recent POEM method by integrating subspace preconditioning with ellipsoidal randomized sampling. In contrast to traditional zeroth-order approaches that rely on isotropic random directions, POEM-ES performs anisotropic sampling guided by a fixed structural symmetric positive semi-definite (SPSD) preconditioner $\\hat{\\Sigma}$ that encodes the underlying low-dimensional geometry. Under a standard structural spectral normalization where $\\lambda_{\\max}(\\hat{\\Sigma}) = 1$, we introduce the use of the empirical effective dimension $d^* = \\operatorname{tr}(\\hat{\\Sigma})$, which reflects the intrinsic dimensionality of the problem and guides both the sampling and randomized smoothing parameter schedules. In practice, such a preconditioner can be effectively obtained via pilot sampling, historical trajectories, or domain-specific expert knowledge. We prove that POEM-ES achieves a dimension-reduced convergence rate under low-rank structural assumptions, requiring only $\\tilde{\\mathcal{O}}\\left( \\frac{\\left( r^2 \\kappa(\\hat{\\Sigma}) + d^* \\right) L^2 D_{\\mathcal{X}}^2}{\\varepsilon^2} \\right)$ stochastic zeroth-order oracle queries. The method remains fully parameter-free and demonstrates significant improvements over the original POEM in problems with low-rank structure where $d^* \\ll d$. Numerical experiments on hinge-loss binary classification tasks using LibSVM datasets confirm the practical superiority of the proposed approach.",
+      "directions": [
+        "stochastic",
+        "optimization-frontiers"
+      ],
+      "summary": "球形零阶采样按环境维数付出方差代价，即使目标的梯度集中在一个结构子空间。该文提出 POEM-ES，在随机凸、样本 Lipschitz、紧凸域问题中用给定半正定矩阵定义椭球采样，并以伪逆校正估计器；步长和光滑半径根据已行进距离调整，不需要预知 Lipschitz 常数或迭代预算。理论要求梯度落在指定活动子空间、采样矩阵与定义域满足相应几何条件。设活动秩为 $r$，归一化采样矩阵的迹为 $d_*$，相应条件数为 $\\kappa$，调用复杂度的结构依赖为 $\\widetilde O((r^2\\kappa+d_*)L^2D^2/\\varepsilon^2)$。因此低秩与谱条件共同决定是否优于环境维数，不能只看矩阵迹。采样矩阵在算法前给定，文章不包含自动学习该结构的同等成本保证。",
+      "reason": "推荐关注椭球采样的结构收益与条件数代价如何一起进入估计方差。这个分析帮助区分“有效维数小”和“预条件器真正有利”两件事，也把参数自适应与结构信息已知这两个前提说得清楚。",
+      "order": 9
+    },
+    {
+      "arxiv_id": "2512.04915",
+      "version": 3,
+      "title": "Distributed Riemannian Optimization in Geodesically Non-convex Environments",
+      "authors": [
+        "Xiuheng Wang",
+        "Ricardo Borsoi",
+        "Cédric Richard",
+        "Ali H. Sayed"
+      ],
+      "submitted": "2025-12-04",
+      "updated": "2026-10-08",
+      "arxiv_url": "https://arxiv.org/abs/2512.04915v3",
+      "abstract": "This paper studies the problem of distributed Riemannian optimization over a network of agents whose cost functions are geodesically smooth but possibly geodesically non-convex. Extending a well-known distributed optimization strategy called diffusion adaptation to Riemannian manifolds, we show that the resulting algorithm, the Riemannian diffusion adaptation, provably exhibits several desirable behaviors when minimizing a sum of geodesically smooth non-convex functions over manifolds of bounded curvature. More specifically, we establish that the algorithm can approximately achieve network agreement in the sense that Fréchet variance of the iterates among the agents is small. Moreover, the algorithm is guaranteed to converge to a neighborhood of a first-order stationary point for general geodesically non-convex cost functions. When the global cost function additionally satisfies the local Riemannian Polyak-Lojasiewicz (PL) condition, we also show that it converges linearly under a constant step size up to a steady-state error. Finally, we apply this algorithm to decentralized robust principal component analysis (PCA) and low-rank matrix completion problems and illustrate its convergence and performance through numerical simulations.",
+      "directions": [
+        "distributed",
+        "stochastic"
+      ],
+      "summary": "黎曼流形上的邻居平均不能直接用欧氏线性组合实现，曲率也会改变分歧与优化误差的关系。该文分析先做本地随机更新、再以指数映射和邻居对数映射组合的 diffusion 方法，把已有框架扩展到测地非凸局部代价。分析采用固定连通、对称双随机混合网络，并假设迭代始终位于紧的测地凸正规区域，曲率、梯度和梯度噪声受控。在小步长与谱隙的相应关系下，节点 Fréchet 分歧平方在过渡期后为步长平方量级，带网络与曲率常数；平均梯度平方界包含暂态项、步长项和正的几何网络误差下限。进入局部 PL 邻域后，还能得到函数间隙线性下降到相应误差邻域。后两个结论保留误差下限，也依赖区域不变性和局部进入条件，不能表述为一般非凸流形上任意精度的全局收敛。",
+      "reason": "推荐阅读曲率比较工具如何进入分布式分歧与下降分析。它说明欧氏 diffusion 中看似可消失的误差，在内在几何平均下可能保留怎样的代价，并为判断网络协作收益提供明确的区域和谱条件。",
+      "order": 10
+    },
+    {
+      "arxiv_id": "2610.12110",
+      "version": 1,
+      "title": "Adaptive dynamic programming using Lyapunov function constraints",
+      "authors": [
+        "Thomas Göhrt",
+        "Pavel Osinenko",
+        "Stefan Streif"
+      ],
+      "submitted": "2026-10-08",
+      "updated": "2026-10-08",
+      "arxiv_url": "https://arxiv.org/abs/2610.12110v1",
+      "abstract": "This work is concerned with a stabilizing adaptive dynamic programming (ADP) approach to approximate solution of a given infinite-horizon optimal control problem. Since the latter problem cannot, in general, be solved exactly, a parametrized function approximator for the infinite-horizon cost function is introduced in ADP (so called ``critic''). This critic is used to adapt the parameters of the function approximator. The so called ``actor'' in turn derives the optimal input of the system. It is a notoriously hard problem to guarantee closed-loop stability of ADP due to the use of approximation structures in the control scheme. Since at least stabilizability is always assumed in the analyses of ADP, it is justified to invoke a respective Lyapunov function. The proposed ADP scheme explicitly uses the said Lyapunov function to simultaneously optimize the critic and guarantee closed-loop stability. A Hessian-free optimization routine is utilized for the actor and critic optimization problems. Convergence to prescribed vicinities of the optima is shown. A computational study showed significant performance improvement for the critic-based approach compared a nominal stabilizing controller for a range of initial conditions.",
+      "directions": [
+        "safety-critical"
+      ],
+      "summary": "在线 actor–critic 优化中的值函数近似会破坏控制稳定性，而每时刻精确求解最优控制又代价高。该文把已知稳定控制器及其 Lyapunov 函数引入 actor 的时变约束，使用凸障碍项和梯度流更新 actor，critic 则优化线性参数值函数的残差。约束对控制输入是仿射的；输入代价强凸、已有可行稳定控制器等条件下，actor 的连续时间轨迹从可行初始化出发持续满足 Lyapunov 约束，系统状态收敛到由松弛参数确定的集合。critic 的持续激励条件保证其优化目标强凸，适当调节两条梯度流的时变增益，使参数跟踪各自时变最优解的预设邻域，无需求逆 Hessian。结果针对松弛后的在线优化和连续时间轨迹，未建立原无限时域控制问题的全局最优性，也不能直接替代离散实现的可行性证明。",
+      "reason": "推荐看可行梯度轨迹与时变最优点跟踪如何在同一个 actor–critic 系统中分析。它直接把稳定性约束作用到优化变量的全过程，而非只证明最终控制策略稳定；预设邻域与增益条件也清楚展示了避免 Hessian 求逆所付出的跟踪代价。",
+      "order": 11
+    },
+    {
+      "arxiv_id": "2610.12130",
+      "version": 1,
+      "title": "Escaping Degeneracy by Following Shadow Edges",
+      "authors": [
+        "Alexander E. Black",
+        "Sean Kafer",
+        "Laura Sanità"
+      ],
+      "submitted": "2026-10-08",
+      "updated": "2026-10-08",
+      "arxiv_url": "https://arxiv.org/abs/2610.12130v1",
+      "abstract": "The Simplex method is among the most widely used approaches for solving linear programs. Starting at a vertex solution of the feasible region, the algorithm proceeds through a sequence of basis exchanges (known as pivots), each corresponding to a move along an improving edge of the polyhedron toward a better vertex. A central challenge affecting the efficiency of the Simplex method is degeneracy, which can cause long sequences of pivot operations that fail to change the current vertex solution. In this paper, we prove the existence of a pivot rule which is able to escape degeneracy and follow any given shadow edge-direction when initialized at some compatible basis, with a linear number of degenerate Simplex pivots. As a byproduct of our result, we obtain an improved bound on the number of degenerate Simplex pivots needed to solve linear programs defined on 0/1 polytopes.",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "summary": "单纯形法在退化顶点可能连续换基却不移动；即使能快速逃离退化，也未必沿希望的边前进。该文证明，在基位于指定二维影子上、且影子边方向已给定时，可以用强多项式计算构造至多线性数量的退化枢轴，使该方向成为可用的枢轴方向。分析通过识别沿影子边紧的约束，逐步增加当前基与这组约束的交集，保证逃离退化时仍控制移动方向。作者进一步将其用于顶点为 0/1 的多面体线性规划，得到 Shifting Shadow 规则的维数多项式枢轴次数。该特殊应用还使用影子边子问题可强多项式求解的结构；一般定理假设方向已知，因此不应解读为解决任意线性规划的强多项式复杂度问题。",
+      "reason": "推荐关注“迅速离开退化顶点”到“迅速沿指定边离开”的区别。这一换基构造补足了几何边路径与实际单纯形执行之间的环节，对分析具有结构的线性规划枢轴规则尤其有价值。",
+      "order": 12
+    },
+    {
+      "arxiv_id": "2505.02002",
+      "version": 2,
+      "title": "Sharp bounds in perturbed smooth optimization",
+      "authors": [
+        "Vladimir Spokoiny"
+      ],
+      "submitted": "2025-05-04",
+      "updated": "2026-10-08",
+      "arxiv_url": "https://arxiv.org/abs/2505.02002v2",
+      "abstract": "This paper studies the problem of perturbed convex and smooth optimization. The main results describe how the solution and the value of the problem change if the objective function is perturbed. Examples include linear, quadratic, and smooth additive perturbations. Such problems naturally arise in statistics and machine learning, stochastic optimization, stability and robustness analysis, inverse problems, optimal control, etc. The results provide accurate expansions for the difference between the solution of the original problem and its perturbed counterpart with an explicit error term.",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "summary": "光滑强凸目标受到线性或更一般光滑扰动时，经典渐近敏感性公式给出最优点的一阶变化，却未必提供有限扰动的误差范围。该文围绕原最优点的 Hessian 椭球建立局部展开：在正定 Hessian、局部曲率变化受控及扰动后极小点落入相应局部区域等条件下，先定位新极小点，再以 Hessian 逆作用于线性扰动作为位移主项，以相应二次型给出最优值变化，并对余项给出显式非渐近界。作者进一步在三阶、四阶方向导数及自协调型条件下，提取偏斜修正并改善高阶余项。二次和一般光滑扰动可通过重写局部梯度与 Hessian 归入这一分析。所有精确展开依赖对应局部导数控制和扰动规模条件，不是任意非凸问题的全局敏感性结论。",
+      "reason": "最值得读的是用局部 Hessian 度量同时量化位置、最优值与高阶修正的分析组织方式。显式余项使常用牛顿式敏感性近似具有可检验的适用范围，可用于判断扰动是否仍处于线性响应区间。",
+      "order": 13
+    },
+    {
+      "arxiv_id": "2609.11105",
+      "version": 2,
+      "title": "The best approximation tuple: an extension of the Cheney-Goldstein algorithm and results to the multiple sets case",
+      "authors": [
+        "Yair Censor",
+        "Daniel Reem"
+      ],
+      "submitted": "2026-09-10",
+      "updated": "2026-10-08",
+      "arxiv_url": "https://arxiv.org/abs/2609.11105v2",
+      "abstract": "We extend the algorithm and several results published in the celebrated 1959 paper of Cheney and Goldstein about the best approximation pair (BAP) problem in two separate directions. One is, for the first time, the ability to consider more than two sets, a task which has been in the mind of researchers for many years without much success in fulfilling it because of a certain theoretical obstacle related to cycles and minimizers of general functionals. The other direction is the ability to handle each set as an intersection of a finite family of sets. We call the resulting problem the \"Best Approximation Tuple (BAT) problem\". The fundamental observation that leads to these extensions is to recognize and handle one set (the \"pivot set\") as different from the remaining sets (the \"satellite sets\") instead of seeking cycles as the minimizers of a target functional. We prove the convergence of the algorithm to the unique solution of the problem in the Euclidean case with strictly convex and compact satellite sets. Because of the lack of Fejér monotonicity, our convergence analysis is not standard, and is based on almost unknown properties of orthogonal projections regarding equality and inequality in the definition of nonexpansiveness.",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "summary": "两个不交凸集的最佳逼近对可由交替投影求得，但把循环投影直接推广到多个集合，通常不能最小化所需的距离泛函。该文采用非对称的最佳逼近元组：选一个枢轴集上的点，最小化它到多个卫星集的加权平方距离，再以各卫星投影组成元组。算法把对卫星集的投影替换成逐渐加长的截断投影循环，并通过松弛的加权组合回到枢轴集。论文分别给出解存在、唯一性和点列收敛条件。完整点列收敛定理是在有限维、所有分量集与枢轴集统一有界、各卫星集严格凸且与枢轴集不交，以及松弛参数趋于正极限等条件下成立。证明利用非扩张映射的等号几何，绕开该情形缺失的 Fejér 单调性；不能概括为任意多个闭凸集的循环投影都收敛到最佳元组。",
+      "reason": "推荐关注目标泛函与投影组合是否一致，而不只是投影迭代有没有极限。非对称枢轴结构及非扩张等号分析，提供了把二集合最佳逼近理论扩展到多集合时一条具体、条件明确的路线。",
+      "order": 14
+    },
+    {
+      "arxiv_id": "2610.11961",
+      "version": 1,
+      "title": "A Bregman proximal linearized ADMM for fractional programming with nonlinear coupling constraints",
+      "authors": [
+        "Pengjie Liu",
+        "Jinhu Chen",
+        "Minh N. Dao",
+        "Hu Shao",
+        "Jinbao Jian"
+      ],
+      "submitted": "2026-10-08",
+      "updated": "2026-10-08",
+      "arxiv_url": "https://arxiv.org/abs/2610.11961v1",
+      "abstract": "This paper considers a nonconvex fractional optimization problem with composite structure and nonlinear equality constraints. We reformulate the problem as a non-fractional min-max problem with corresponding optimal solutions. By linearizing the nonlinear constraint terms in the augmented Lagrangian and incorporating Bregman proximal linearization and a relaxation factor in $(0, 2)$ into the alternating direction method of multipliers (ADMM), we develop a Bregman proximal linearized ADMM with guaranteed subsequential convergence to a lifted critical point. Convergence of the entire sequence is established under the Kurdyka--Łojasiewicz (KL) property. We further derive convergence rates under either a Hölderian value proximity error bound condition or the KL property, with the corresponding exponent in $[0, 1)$. In particular, we establish superlinear convergence for exponents in $(0, 1/2)$, together with finite, linear, and sublinear convergence in the remaining cases. Numerical experiments demonstrate the effectiveness of the proposed algorithm.",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "summary": "带非线性耦合约束的分式目标，同时包含分母的非线性与增广拉格朗日中的非线性映射，直接 ADMM 子问题较难处理。该文对 $f(u)+h(x)/g(x)$、$F(x)=Mu$ 及闭集约束建立 Bregman 近端线性化 ADMM：重写分式结构、线性化耦合项，并用可变 Bregman 核控制步长和子问题曲率。分析要求分子凸且非负、分母凸且在可行集为正、相应局部 Lipschitz 条件、$M$ 满列秩及 $F(S)\\subseteq\\operatorname{Im}(M)$，并假设生成序列有界、参数满足指定下界。作者证明聚点是原问题的提升临界点；Lyapunov 函数具有 KL 性质时得到全序列收敛与有限长度，并按 KL 指数区分有限终止、超线性、线性和次线性情形。另提出沿生成序列的高值近端误差界作为全序列分析条件。结论是临界点收敛，不是分式非凸问题的全局最优保证。",
+      "reason": "推荐阅读分式变换、Bregman 曲率与非线性耦合误差如何共同构造可下降的 Lyapunov 函数。值域条件和参数限制把可执行的线性化步骤与收敛证明连接起来，适合研究非凸分式结构的分裂方法；ADMM 在这里是单个耦合问题的求解工具。",
+      "order": 15
+    }
+  ]
+}
