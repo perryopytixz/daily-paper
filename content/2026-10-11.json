@@ -1,0 +1,332 @@
+{
+  "date": "2026-10-11",
+  "status": "complete",
+  "frontiers_status": "recommendations",
+  "highlights": [
+    {
+      "label": "陈旧梯度聚合扩展到多维特征子空间",
+      "text": "GRASSIA 用环境空间增量聚合和极分解替代切空间传输。在正特征间隙、统一延迟界和指定角度吸引域内，证明吸引域保持与线性收敛，将一维增量分析扩展到多维子空间。",
+      "types": [
+        "field",
+        "group"
+      ],
+      "arxiv_id": "2608.04406"
+    },
+    {
+      "label": "束方法的切平面复用得到更细复杂度界",
+      "text": "对光滑凸函数加有限分段线性函数，作者把近端束方法的 null steps 对应到完全校正 Frank–Wolfe。区分连续与非连续 serious steps 后，得到 $O(\\epsilon^{-8/9}(\\log\\epsilon^{-1})^{2/9})$ 迭代界，常数依赖切平面几何。",
+      "types": [
+        "field",
+        "group"
+      ],
+      "arxiv_id": "2411.15926"
+    },
+    {
+      "label": "随机更新的误差界分析延伸到路径速率",
+      "text": "该文将误差界几何与累计随机下降分开处理，在单调下降及更新长度控制条件下，统一给出期望界和几乎处处速率。局部结论另需有界轨迹等条件；适用于随机坐标／子空间及固定点更新，并非通用含噪 SGD。",
+      "types": [
+        "field"
+      ],
+      "arxiv_id": "2603.17438"
+    },
+    {
+      "label": "光滑凸集只用单切平面仍获线性收敛",
+      "text": "作者用支撑切平面和内切球修复构造全程可行更新。在光滑紧凸体与光滑强凸目标条件下线性收敛，无须集合强凸；避开原集合投影。精确成员判定和已知内外球还支持约 $\\widetilde O(d)$ 次查询的切线实现。",
+      "types": [
+        "field"
+      ],
+      "arxiv_id": "2608.04321"
+    },
+    {
+      "label": "非线性耦合等式得到邻居通信实现",
+      "text": "反馈线性化设计先解耦共识与约束误差，再以快速残差跟踪替代非局部代数求解。在固定连通无向图、满秩 Jacobian 和局部增长条件下，小摄动参数及小离散步长给出局部指数收敛。",
+      "types": [
+        "group"
+      ],
+      "arxiv_id": "2607.25193"
+    },
+    {
+      "label": "无界 gap 乘子的极限驻点层级被厘清",
+      "text": "对下层凸双层问题，作者证明无界 gap 乘子通常只支持 C-stationarity，并以反例阻止直接升级。加入互补松弛结构后，在可行性惩罚相对占优及 MFCQ 条件下可获得 M-stationarity。",
+      "types": [
+        "field"
+      ],
+      "arxiv_id": "2607.17772"
+    },
+    {
+      "label": "分布式广义动量不需统一延迟上界",
+      "text": "在一致严格对角占优 Hessian 与紧凸笛卡尔积约束下，两步广义动量形成收缩算子。公平计算通信和信息最终变新即可允许增长的有限延迟；几何误差界按完整操作周期计数。",
+      "types": [
+        "group"
+      ],
+      "arxiv_id": "2508.08218"
+    }
+  ],
+  "papers": [
+    {
+      "arxiv_id": "2608.04406",
+      "title": "Incremental Aggregation on the Grassmannian for Asynchronous Eigenspace Computation",
+      "submitted": "2026-08-05",
+      "updated": "2026-08-05",
+      "arxiv_url": "https://arxiv.org/abs/2608.04406v1",
+      "abstract": "We study asynchronous optimization for finite-sum eigenspace computation in heterogeneous distributed systems. The theoretical foundations for asynchronous eigenspace computation remain scarce, with existing approaches offering limited coverage of dynamics directly on the Grassmannian under stale information. In this paper, we propose a Grassmannian incremental aggregation method that refreshes only arriving components and reuses cached gradients, retaining low per-update cost without global synchronization. The method employs an extrinsic polar update that preserves the intrinsic subspace geometry without requiring parallel transport of stale tangent vectors. Our analysis establishes a tight angle-dependent gradient-dominance characterization of the objective and a basin-invariance property for stale aggregated updates. These yield two-phase linear convergence, comprising an explicit broad-basin regime and a sharper local regime, with constants controlled by component spectral spreads. Experiments on serial and distributed PCA demonstrate improved sample efficiency and wall-clock convergence over representative baselines.",
+      "version": 1,
+      "authors": [
+        "Xiaolu Wang",
+        "Jiang Hu",
+        "Hoi-To Wai"
+      ],
+      "directions": [
+        "asynchronous-distributed",
+        "distributed",
+        "historical-information",
+        "optimization-frontiers"
+      ],
+      "summary": "有限和特征子空间计算中，异步节点返回的梯度来自不同子空间，欧氏增量聚合分析会遗漏几何误差。该文提出 GRASSIA：缓存分量梯度，增量更新聚合方向，再对环境空间中的更新取极分解以恢复正交性，无须在不同切空间之间传输历史梯度。作者证明依赖最大主角的紧梯度支配不等式，并以 Lyapunov 分析同时控制延迟误差和吸引域不变性。在目标特征间隙为正、全部缓存梯度具有统一陈旧程度上界、初值位于最大主角小于 $\\pi/2$ 的指定吸引域且步长满足定理限制时，迭代线性收敛；较小目标差区域内得到更好的特征间隙依赖。相较此前主要针对一维特征向量的增量方法，这一分析处理多维目标子空间，并对各分量加入标量单位阵保持不变。",
+      "reason": "推荐优先阅读几何曲率、延迟误差与吸引域保持的闭环论证：仅有局部梯度支配条件不足以推出异步收敛，关键是证明陈旧梯度不会把迭代推出有效区域。环境空间聚合与极分解的组合，也为利用缓存信息的流形分布式优化提供了具体可分析的实现。",
+      "order": 1
+    },
+    {
+      "arxiv_id": "2411.15926",
+      "title": "An Absolute-Error Proximal Bundle Method through the Lens of Frank-Wolf",
+      "submitted": "2024-11-24",
+      "updated": "2026-07-04",
+      "arxiv_url": "https://arxiv.org/abs/2411.15926v3",
+      "abstract": "The proximal bundle method (PBM) is a fundamental and computationally effective algorithm for solving optimization problems with nonsmooth components. In this paper, we conduct a theoretical investigation of a modified proximal bundle method, which we call the Modified Proximal Bundle with Fixed Absolute Accuracy (MPB-FA). MPB-FA modifies the serious-step test of the PBM serious-step test. In MPB-FA, it is based on an absolute accuracy criterion, and the accuracy is fixed over iterations, while the standard PBM uses a relative accuracy in the serious-step test, which changes with iterations. Also, similarly to multiple PBM analyses, the proximal parameter in MPB-FA is also fixed over iterations, while it is permitted to change in the standard PBM. These modifications allow us to build the first link between a proximal bundle method and a Frank-Wolfe algorithm on the Moreau envelope of the dual problem. In light of this correspondence, we first extend the linear convergence of Kelley's method on the sum of a smooth strongly convex function and a convex piecewise linear function from the positive homogeneous to the general case. Building on this result, we propose a novel complexity analysis of MPB-FA when the objective is the sum of a smooth and a piecewise function and derive an $\\mathcal{O}(\\epsilon^{-8/9})$ iteration complexity, improving upon the best known $\\mathcal{O}(\\epsilon^{-2})$ guarantee on a related variant of PBM. It is worth-noting that the best known complexity bound for the classical PBM in the general case is $\\mathcal{O}(\\epsilon^{-3})$ and $\\mathcal{O}(\\epsilon^{-2})$ when the proximal parameter is fixed. Our approach also reveals new insights on bundle management and empirical behavior of the proximal bundle methods.",
+      "version": 3,
+      "authors": [
+        "David Fersztand",
+        "Xu Andy Sun"
+      ],
+      "directions": [
+        "historical-information",
+        "optimization-frontiers"
+      ],
+      "summary": "该文研究光滑凸函数与有限个仿射函数最大值之和，利用近端束方法逐步积累切平面。作者将固定绝对误差的 serious-step 检验与对偶 Moreau 包络上的完全校正 Frank–Wolfe 方法建立精确对应，并借助切平面多面体几何分析 null steps。进一步区分连续 serious steps 与两类非连续步，在适当选择固定近端参数后，给出达到 $\\epsilon$ 目标误差所需 $O(\\epsilon^{-8/9}(\\log\\epsilon^{-1})^{2/9})$ 次迭代的界。结论要求光滑部分全域凸且梯度 Lipschitz、非光滑部分具有有限分段线性表示，并沿用保留切平面与精确求解子问题的算法；常数依赖切平面多面体几何。该界改善本文先得到的 $O(\\epsilon^{-1}\\log\\epsilon^{-1})$ 分析，不能直接推广到任意非光滑凸目标。",
+      "reason": "推荐关注相邻近端中心共享历史切平面时，如何定量证明子问题可能只需一次新切平面就达标。它把历史信息减少内层工作的直觉转化为可计数的几何事件，是分析束方法记忆价值的具体工具；复杂度改善的适用结构也交代得较清楚。",
+      "order": 2
+    },
+    {
+      "arxiv_id": "2603.17438",
+      "title": "An error bound-based convergence analysis framework for a class of randomized algorithms",
+      "submitted": "2026-03-18",
+      "updated": "2026-08-31",
+      "arxiv_url": "https://arxiv.org/abs/2603.17438v2",
+      "abstract": "Classical analyses show that randomized coordinate descent (RCD) and gradient descent (GD) share the same convergence rates in terms of objective gap under convexity and specific global EB-type assumptions. However, this rate preservation phenomenon does not extend to iterate rates, almost-sure rates, or general local error bound conditions. In this paper, we study this phenomenon systematically, not only for RCD but also for a much broader class of algorithms that share the same structures. Specifically, we introduce an abstract class of algorithms, called monotone randomized algorithms (MRAs), and new unified error bound (UEB) conditions that are independent of problem class and accommodate general EB moduli. These UEB conditions subsume many EB- and Kurdyka--Åojasiewicz-type assumptions used in the analysis of algorithms for optimization, convex feasibility, and common fixed point problems. We then develop a new analysis framework and a set of technical tools that yield nonasymptotic in-expectation rates and asymptotic almost-sure rates for both the optimality measure and the iterates under the global UEB condition. Under the local UEB condition, we further establish asymptotic almost-sure rates for both quantities. For comparison, we introduce the monotone deterministic algorithms (MDAs), as the corresponding deterministic counterpart of MRAs. We illustrate the tightness of our MRA analysis by showing that the lower bounds of MDAs match the upper bounds of MRAs qualitatively. We also demonstrate the strength and versatility of our framework through three applications, namely generalized randomized subspace descent for unconstrained minimization, randomized block proximal gradient methods for composite optimization, and the randomized Krasnosel'ski\\uÄ±--Mann method for common fixed point problems.",
+      "version": 2,
+      "authors": [
+        "Zhichun Yang",
+        "Li Jiang",
+        "Tianxiang Liu",
+        "Man-Chung Yue"
+      ],
+      "directions": [
+        "stochastic",
+        "optimization-frontiers"
+      ],
+      "summary": "随机坐标、随机子空间和随机固定点方法的误差界分析，往往只能给出期望结果，且难以直接从确定性 KL 分析推出几乎处处速率。该文建立单调随机算法的统一框架：势函数逐路径下降，更新长度具有条件期望下界及逐路径上界，步长有界且总和发散。通过误差界模函数的积分变换，作者将确定性几何分析与随机累计下降控制分开，得到全局统一误差界下的非渐近期望目标差界及几乎处处渐近界；在额外的平方根倒数可积条件下，还得到迭代点收敛与距离界。局部误差界结果需要轨迹有界及进展量趋零等条件，给出局部化后的渐近结论。应用包括随机坐标／子空间下降与随机 Krasnoselskii–Mann 迭代，并以确定性下界说明相应速率的锐性；框架不覆盖任意含噪 SGD。",
+      "reason": "最值得阅读的是绕开每个分量必须在固定长度窗口内更新的分析：独立随机选择一般不满足这种确定性循环性，但累计随机下降仍可支撑几乎处处速率。对于随机局部更新算法，这提供了从误差界得到路径结论的统一证明路线，同时明确区分全局非渐近界与局部渐近界。",
+      "order": 3
+    },
+    {
+      "arxiv_id": "2608.04321",
+      "title": "A Linearly Convergent Projection-Free Algorithm for Smooth Convex Sets",
+      "submitted": "2026-08-05",
+      "updated": "2026-08-18",
+      "arxiv_url": "https://arxiv.org/abs/2608.04321v2",
+      "abstract": "We consider minimizing a smooth, strongly convex function over a convex set. Projected gradient descent is known to converge linearly in this setting, but each iteration requires a projection onto the feasible set, which may be computationally expensive.\nWe show that when the feasible set is smooth, projection can be replaced by one gradient computation and a single supporting-tangent computation per iteration, while preserving linear convergence. Moreover, the required tangent can be approximated to sufficient accuracy using $\\widetilde O(d)$ membership-oracle queries, where $d$ is the ambient dimension. Previously, projection-free linear convergence was known only for polyhedral sets or for sets that are both smooth and strongly convex.",
+      "version": 2,
+      "authors": [
+        "Elad Hazan"
+      ],
+      "directions": [
+        "safety-critical",
+        "optimization-frontiers"
+      ],
+      "summary": "在约束集上投影可能成为强凸优化的主要计算瓶颈。该文针对具有统一内切球半径的光滑紧凸体，提出半径逐步缩小的局部更新：用沿下降方向遇到的一个支撑切平面求局部线性模型，再投影到该点的内切球，将候选修复为原集合中的点。局部线性模型误差为半径的二次量级，因此在目标梯度 Lipschitz、目标强凸、集合满足 rolling-ball 光滑性以及梯度有界时，得到 $O((\\beta/\\alpha+G/(\\alpha\\rho))\\log(H_0/\\epsilon))$ 次迭代的线性收敛界。每步只需一次目标梯度与一次精确支撑切线计算。若另知内外球半径并可调用精确成员判定，则切线可由规范函数差分近似，以每步约 $\\widetilde O(d)$ 次成员查询实现并维持可行性。相较此前要求集合光滑且强凸的结果，这里不要求集合强凸；仍使用闭式球投影，避免的是原约束集投影及线性优化 oracle。",
+      "reason": "推荐阅读一个支撑切平面加内切球修复为何能够同时保住精确可行性和二阶局部模型误差。这为全程可行算法提供了区别于原集合投影、屏障流与 Frank–Wolfe 的具体路线；集合光滑性的作用及角点处失效原因也有明确几何解释。",
+      "order": 4
+    },
+    {
+      "arxiv_id": "2607.25193",
+      "title": "Distributed Nonlinear Equality-Constrained Optimization via Feedback Linearization and Singular Perturbation",
+      "submitted": "2026-07-28",
+      "updated": "2026-07-28",
+      "arxiv_url": "https://arxiv.org/abs/2607.25193v1",
+      "abstract": "Distributed optimization becomes particularly challenging when nonconvex objectives are combined with nonlinear equality constraints: feasibility is network coupled, while most existing exponentially convergent methods rely on convexity or affine constraints. This paper introduces a feedback-linearization and singular-perturbation framework for two representative problem classes involving, respectively, distributed local nonlinear equality constraints and nonlinear aggregate equality constraints. The framework separates the regulation of consensus and feasibility residuals from optimization along the feasible manifold. Specifically, an ideal feedback-linearized dynamics is constructed whose output behavior can be explicitly assigned, while its zero-output dynamics coincides with the projected gradient flow of the aggregate objective on the feasible manifold. The ideal feedback-linearizing input, however, is determined by a state-dependent, network-coupled algebraic equation and is therefore not directly implementable in a distributed manner. To overcome this obstruction, we replace the nonlocal algebraic solution with a fast residual-tracking dynamics, yielding a singular-perturbation realization that uses only local and neighboring information. Under a local quadratic-growth condition imposed only on the feasible manifold, we establish local exponential convergence of both the ideal and distributed dynamics. For sufficiently strong time-scale separation, the convergence rate of the distributed realization can be chosen arbitrarily close to that of the ideal dynamics. Explicit Euler discretizations are also proved to preserve local exponential convergence. Under stronger manifold regularity conditions, the region of attraction extends to a tubular neighborhood of the feasible manifold and, for affine local equality constraints, to the whole admissible state space.",
+      "version": 1,
+      "authors": [
+        "Zihao Ren",
+        "Lei Wang",
+        "Hongye Su",
+        "Guodong Shi"
+      ],
+      "directions": [
+        "distributed",
+        "optimization-frontiers"
+      ],
+      "summary": "非凸分布式优化的非线性等式约束，使共识与可行性调节同时依赖状态。该文先通过反馈线性化将共识误差和约束误差的理想动态显式解耦，使零动态对应约束流形上的目标下降；再用快速残差跟踪实现原本需要非局部代数求解的反馈，得到仅依赖邻居通信的奇异摄动算法。对局部等式和耦合等式两类问题，作者在固定连通无向图、目标与约束光滑、相应约束 Jacobian 满秩及局部二次增长条件下，证明充分小摄动参数下的局部指数收敛，其速率可逼近理想系统的允许速率。显式 Euler 离散化在充分小步长下保留局部指数稳定性。共识和等式残差随时间收敛，并不保证任意初始点全程满足等式。",
+      "reason": "推荐优先阅读非局部理想反馈转为邻居可实现算法的残差跟踪与坐标变换。它直接推进非线性耦合约束分布式优化的实现困难，也展示了如何把局部流形下降与快速代数残差调节组合成可证明的动态算法。",
+      "order": 5
+    },
+    {
+      "arxiv_id": "2607.17772",
+      "title": "Limiting Stationarity of Regularized Gap-Function Reformulations for Bilevel Optimization with Unbounded Multipliers",
+      "submitted": "2026-07-20",
+      "updated": "2026-07-20",
+      "arxiv_url": "https://arxiv.org/abs/2607.17772v1",
+      "abstract": "Value-function-type reformulations have generated a broad class of methods for bilevel optimization. However, the corresponding value-function-type constraints are inherently degenerate and generally fail to satisfy standard constraint qualifications, so the associated multiplier sequences may be unbounded and bounded-multiplier convergence analyses become inapplicable. We study this issue for the regularized gap-function reformulation of bilevel problems with constrained convex lower-level programs. We prove that accumulation points of approximate stationary sequences are C-stationary for the corresponding Karush-Kuhn-Tucker-based mathematical program with complementarity constraints (MPCC), even when the multiplier sequence associated with the regularized gap-function constraint is unbounded. The result holds under Mangasarian-Fromovitz constraint qualification (MFCQ) for the upper- and lower-level constraint systems and MPCC-MFCQ at the limiting MPCC point, without any constraint qualification on the regularized gap-function constraint itself. We further provide an example showing that approximate stationary points of the standard regularized gap-function reformulation may converge to a point that is C-stationary but not M-stationary. To guarantee M-stationarity, we introduce a slack-based two-parameter penalty formulation preserving exact multiplier-slack complementarity and establish M-stationarity under a domination condition on the penalty parameters. We develop an inexact slack-penalty method with adaptive penalty updates and feasibility correction, whose accumulation points are M-stationary under the stated assumptions.",
+      "version": 1,
+      "authors": [
+        "Xiaoning Bai",
+        "Shangzhi Zeng",
+        "Jin Zhang"
+      ],
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "summary": "正则化原始—对偶 gap function 可将下层凸双层优化写为光滑约束问题，但退化的 gap 约束使乘子可能发散，常规有界乘子推理不足以刻画极限。该文分析近似一阶条件：在上下层相应 MFCQ 条件下，有界 gap 乘子给出 S-stationarity；乘子发散时，另需极限点的 MPCC-MFCQ，通常只能保证 C-stationarity，并给出不能直接提升为 M-stationarity 的反例。作者继而引入互补松弛变量，将 gap 与可行性分成两项惩罚；在惩罚参数均发散、可行性惩罚相对 gap 惩罚的比值趋于无穷及相应正则条件下，极限提升到 M-stationarity。文中还设计带非精确子问题与可行性校正的自适应松弛惩罚方法。结果刻画一阶驻点层级，不能解释为全局双层最优性。",
+      "reason": "推荐阅读反例与两项惩罚的相对尺度分析：它说明 gap residual 很小并不自动给出所期待的强驻点概念，也具体指出如何通过显式互补结构补足缺口。这对评价光滑双层重构算法的收敛声明和设计惩罚更新规则都有直接价值。",
+      "order": 6
+    },
+    {
+      "arxiv_id": "2511.03443",
+      "title": "A Support-Set Algorithm for Optimization Problems with Nonnegative and Orthogonal Constraints",
+      "submitted": "2025-11-05",
+      "updated": "2026-07-28",
+      "arxiv_url": "https://arxiv.org/abs/2511.03443v2",
+      "abstract": "In this paper, we investigate optimization problems with nonnegative and orthogonal constraints, where any feasible matrix of size $n \\times p$ exhibits a sparsity pattern such that each row accommodates at most one nonzero entry. Our analysis demonstrates that, by fixing the support set, the global solution of the minimization subproblem for the proximal linearization of the objective function can be computed in closed form with at most $n$ nonzero entries. Exploiting this structural property offers a powerful avenue for dramatically enhancing computational efficiency. Guided by this insight, we propose a support-set algorithm preserving strictly the feasibility of iterates. A central ingredient is a strategically devised update scheme for support sets that adjusts the placement of nonzero entries. We establish the convergence of the support-set algorithm to a first-order stationary point, and show that its iteration complexity required to reach an $\\epsilon$-approximate first-order stationary point is $O (\\epsilon^{-2})$. Numerical results are strongly in favor of our algorithm in real-world applications, including nonnegative PCA, clustering, and community detection.",
+      "version": 2,
+      "authors": [
+        "Lei Wang",
+        "Xin Liu",
+        "Xiaojun Chen"
+      ],
+      "directions": [
+        "safety-critical",
+        "optimization-frontiers"
+      ],
+      "summary": "非负性与列正交性同时成立时，每行至多有一个非零元素，可行集含有会变化的离散支撑结构，常规光滑流形更新不易直接适用。该文提出 Support-Set：在固定支撑上求解可解析得到全局解的近端线性化子问题，再通过支撑切换检查零行的下降机会。整个序列保持非负与正交约束。对于 $1<p<n$、目标连续可微且梯度 Lipschitz、近端参数大于光滑常数的情形，作者证明所有聚点是一阶驻点，并给出达到文中 $\\epsilon$ 近似一阶驻点所需 $O(\\epsilon^{-2})$ 次迭代的界。该驻点检验同时覆盖当前非零支撑的流形梯度和零行的负梯度条件，解决只在固定支撑上驻留可能遗漏的方向；半代数目标下还有全序列收敛分析。",
+      "reason": "推荐关注支撑更新如何补足零行的一阶条件，同时避免使用可能破坏非负性的普通正交流形步。它将结构识别与连续下降结合成始终可行且有复杂度保证的算法，是研究非凸约束下全程可行更新的具体案例。",
+      "order": 7
+    },
+    {
+      "arxiv_id": "2508.08218",
+      "title": "A Distributed Asynchronous Generalized Momentum Algorithm Without Delay Bounds",
+      "submitted": "2025-08-11",
+      "updated": "2026-08-09",
+      "arxiv_url": "https://arxiv.org/abs/2508.08218v2",
+      "abstract": "Asynchronous optimization algorithms often require delay bounds to prove their convergence, though these bounds can be difficult to obtain in practice. Therefore, we introduce a novel distributed generalized momentum algorithm that provides fast convergence and allows arbitrary finite delays. It subsumes Nesterov's accelerated gradient algorithm and the heavy ball algorithm, among others. We first develop conditions on the parameters of the algorithm that ensure asymptotic convergence. Then we show its convergence rate is linear in a function of the number of computations and communications that processors perform (in a way that we make precise). Simulations compare this algorithm to gradient descent, heavy ball, and Nesterov's accelerated gradient algorithm with a text classification problem on the 20 newsgroups dataset. Across a range of scenarios with unbounded delays, the generalized momentum algorithm converges with at least 36% fewer iterations than gradient descent, 28% fewer iterations than the heavy ball algorithm, and 16% fewer iterations than Nesterov's accelerated gradient algorithm.",
+      "version": 2,
+      "authors": [
+        "Ellie Pond",
+        "Yichen Zhao",
+        "Matthew Hale"
+      ],
+      "directions": [
+        "asynchronous-distributed",
+        "distributed",
+        "historical-information"
+      ],
+      "summary": "异步分布式动量方法通常需要预先知道统一延迟界。该文把梯度下降、heavy-ball 与 Nesterov 型动量写入两步广义动量算子，并通过分块最大范数收缩性建立完全异步实现。对非空紧凸笛卡尔积约束、二次连续可微目标及 Hessian 的一致严格对角占优条件，作者给出步长与两类动量参数的允许集合；这是一类较强的强凸结构。节点需无限次计算与通信、接收的信息最终变新，有限延迟可随时间增长而没有统一上界。误差界按完成所有节点必要计算、发送和接收的一次操作周期计数，呈几何衰减，并非按全局迭代或实际时间统一线性收敛。论文还比较参数对应的收缩因子与通信实验，揭示动量改善周期收缩而不改变延迟模型的事实。",
+      "reason": "推荐优先阅读两步动量算子的最大范数收缩构造以及异步操作周期定义。它给出了不依赖延迟上界选择参数的可核查充分条件，直接关联延迟鲁棒优化；对角占优与公平更新等假设也说明这种可实现性从何而来。",
+      "order": 8
+    },
+    {
+      "arxiv_id": "2508.08062",
+      "title": "Anderson Accelerated Primal-Dual Hybrid Gradient for solving LP",
+      "submitted": "2025-08-11",
+      "updated": "2026-07-10",
+      "arxiv_url": "https://arxiv.org/abs/2508.08062v2",
+      "abstract": "We present the Anderson Accelerated Primal--Dual Hybrid Gradient (AA-PDHG), a fixed-point-based framework that integrates Anderson Acceleration into the PDHG method for solving linear programming (LP) problems. A central motivation is to investigate whether Anderson Acceleration, which systematically exploits multi-step historical information, can serve as a viable alternative to the restart strategy for PDHG. We establish the global convergence of AA-PDHG under a safeguard condition and propose a filtered variant (FAA-PDHG) that enforces the uniform boundedness of the coefficient matrix through angle and length filtering, thereby providing a rigorous convergence guarantee. Numerical experiments on LP instances derived from MIPLIB 2017 demonstrate that both AA-PDHG and FAA-PDHG deliver significant speedups over vanilla PDHG. On pre-solved MIPLIB instances, AA-PDHG is the fastest method on about 70% of the benchmark when neither method uses primal-weight updates, and remains competitive when both AA-PDHG and restart PDHG use their respective primal-weight update strategies, establishing Anderson Acceleration as a competitive alternative to the restart mechanism.",
+      "version": 2,
+      "authors": [
+        "Yingxin Zhou",
+        "Stefano Cipolla",
+        "Phan Tu Vuong"
+      ],
+      "directions": [
+        "historical-information"
+      ],
+      "summary": "PDHG 求解线性规划时，历史迭代的 Anderson 仿射混合可能破坏变量域，也可能产生无界拟牛顿修正。该文将混合、显式域投影、预条件 PDHG 与递减残差门槛的 safeguard 结合，并给出过滤历史方向的 FAA-PDHG 变体。在 PDHG 步长满足 $\\sigma\\tau\\|K\\|^2<1$、存在解且修正矩阵一致有界时，AA-PDHG 全局收敛到固定点；作者指出 Tikhonov 正则化仅确保单次混合问题可解，不自动保证这一致有界性。FAA 的角度与长度过滤则在算法层面给出这项界，从而获得全局收敛保证。线性规划实验显示混合可加速固定权重 PDHG，并与带权重调整的重启实现比较；这些是测试集上的结果，没有证明优于所有重启方法的普遍速率。",
+      "reason": "推荐关注如何把 Anderson 历史混合所需的有界性条件变成可执行的过滤步骤。对于约束原始—对偶方法中的多步历史信息，假设、safeguard 与实际过滤的关系，比单看平均加速数字更有借鉴价值。",
+      "order": 9
+    },
+    {
+      "arxiv_id": "2608.08642",
+      "title": "Exact Rank-Space KL Projection for Shared-Marginal Low-Rank Factors: Application to Doubly Stochastic Clustering",
+      "submitted": "2026-08-09",
+      "updated": "2026-08-09",
+      "arxiv_url": "https://arxiv.org/abs/2608.08642v1",
+      "abstract": "We study exact Kullback--Leibler (KL) projection for low-rank factorizations whose two nonnegative factors have prescribed row marginals and a shared, learned column marginal. For arbitrary positive row marginals of equal total mass, the joint KL projection reduces exactly to a strictly convex gauge-fixed dual with only $r-1$ effective variables; its Hessian is a sum of categorical covariance terms and admits $O((n+m)r)$ matrix-free Hessian--vector products. The projection theorem is objective-independent. We then specialize this geometry to doubly stochastic (DS) graph learning through $W=U\\operatorname{Diag}(g)^{-1}V^\\top$, where row-simplex factors with a common column mass induce an exactly DS graph without materializing an $n\\times n$ optimization variable. Combined with observed-edge sparse fitting, a stochastic anchor-reduced manifold regularizer, and Bregman backtracking, the resulting mirror-descent method preserves exact feasibility at every accepted step. Under a nonvanishing latent-mass condition, it satisfies sufficient decrease and an $O(1/N)$ mirror-stationarity bound, while strictly positive accumulation points are KKT stationary. Matched clustering experiments show competitive accuracy, feasibility residuals near numerical precision, and favorable anytime behavior without a dense learned graph.",
+      "version": 1,
+      "authors": [
+        "Enliang Hu"
+      ],
+      "directions": [
+        "safety-critical",
+        "optimization-frontiers"
+      ],
+      "summary": "具有指定行边际且共享列边际的低秩非负因子，可以生成精确满足边际约束的低秩矩阵；困难在于镜像更新后如何联合恢复两组因子的共享边际。该文在已有平衡低秩因子几何基础上，推导完整联合 KL 投影的对偶：消去行乘子后，只需求解去除平移 gauge 的 $r-1$ 维严格凸强制问题。对正参考因子和等总质量的正行边际，投影唯一；Hessian 是分类协方差之和，矩阵向量乘法成本为 $O((n+m)r)$。这一结果不同于已有切空间投影的低维 Schur 系统，也替代逐约束循环 Bregman 投影的实现。作者将其用于双随机聚类的镜像下降：在归一化算子条件、正可行初值、潜在列质量一致远离零及每次 KL 投影精确求解等假设下，回溯有限且所有有限迭代精确可行，并获得镜像驻点残差的复杂度界。",
+      "reason": "推荐阅读投影的秩空间对偶与 gauge 消除：它提供一个与具体目标无关、可嵌入共享边际镜像算法的可行性恢复模块。应区分投影定理对一般边际的保证，和聚类目标下降分析额外要求的非消失潜在质量。",
+      "order": 10
+    },
+    {
+      "arxiv_id": "2407.05433",
+      "title": "An efficient algorithm for solving linear equality-constrained LQR problems",
+      "submitted": "2024-07-07",
+      "updated": "2026-07-30",
+      "arxiv_url": "https://arxiv.org/abs/2407.05433v8",
+      "abstract": "We consider finite-horizon linear-quadratic regulator (LQR) problems with arbitrary stagewise linear equality constraints. We present a two-part reduction to an unconstrained LQR problem. First, every stage is represented by an affine relation between its endpoint states. Composition of adjacent relations eliminates their shared state and is associative. An associative suffix scan therefore computes, for every node, an affine parameterization $x_i=T_i z_i+t_i$ of the states from which the remaining horizon is feasible. Second, once these parameterizations are known, every stage can be transformed independently. The original mixed constraints and the requirement that the successor lie in its feasible domain yield an affine control map $u_i=Y_i z_i+Z_i v_i+y_i$. Substitution produces an ordinary unconstrained LQR problem in the reduced state and control variables $(z_i,v_i)$, with smaller or equal dimensions, possibly varying by stage. We prove equivalence of the two problems and preservation of the standard convexity assumptions. The reduction has linear work and logarithmic depth in the horizon. Finally, we show that multipliers can be recovered by applying the same affine-relation contraction and expansion to the original KKT stationarity equations. We validate work-efficient sequential and logarithmic-depth parallel implementations against dense KKT solutions and original KKT residuals. An optimized C++/CUDA implementation exploits the varying reduced dimensions and provides a substantial end-to-end GPU speedup over sequential C++ in our experiments. We release the JAX and C++/CUDA packages under the MIT License.",
+      "version": 8,
+      "authors": [
+        "João Sousa-Pinto",
+        "Dominique Orban"
+      ],
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "summary": "带阶段和终端线性等式的 LQR，不能只逐阶段消去控制变量，因为后续约束会反过来限制当前可行状态。该文以可组合仿射关系表示区间动力学和约束，通过关联 suffix scan 同时计算各阶段的后缀可行状态域，再局部参数化可行控制，将问题等价改写为维数可变的无约束 LQR。映射对可行轨迹给出双射，目标值只差常数，允许冗余及秩亏等式；标准半正定状态—控制代价与正定控制代价条件下还保持凸性。固定阶段维数和约束行数时，约束消元具有 $O(N)$ 工作量、$O(\\log N)$ 时域深度；结合已有并行无约束 LQR 求解器后，整体原始变量求解保留这一时域复杂度。文中还说明乘子恢复与有限精度的秩判定问题。",
+      "reason": "推荐关注将未来可行性传播和阶段局部消元分开后，如何利用仿射关系的关联性实现并行扫描。它对链式等式约束二次规划给出了可行域参数化与等价性论证，复杂度按时域长度衡量，避免把阶段维数成本隐藏成通用常数。",
+      "order": 11
+    },
+    {
+      "arxiv_id": "2607.25689",
+      "title": "Face Structure in Partial Facial Reduction of Semidefinite Relaxations of Binary Programs",
+      "submitted": "2026-07-28",
+      "updated": "2026-07-28",
+      "arxiv_url": "https://arxiv.org/abs/2607.25689v1",
+      "abstract": "Semidefinite relaxations of binary optimization problems often fail Slater's condition. Full facial reduction restores strict feasibility but may require auxiliary problems as costly as the original relaxation. We analyze partial facial reduction based on tractable inner approximations of the positive semidefinite cone: the nonnegative diagonal, diagonally dominant (DD), and scaled diagonally dominant (SDD) cones.\nFor this class of SDP relaxations, we prove that every terminal face identified by SDD-partial FR is described by variables fixed to zero or one and groups of variables forced to be equal. The face admits a full-column-rank \\(\\{0,1\\}\\) basis matrix with disjoint column supports, yielding a natural reduced formulation that can preserve sparsity. For polyhedral inner approximations, we characterize the face exposed at each step through the inequalities active on the associated outer relaxation.\nWe also establish sharp limitations. We construct a family with singularity degree two for which DD- and SDD-partial FR require the maximum possible number of steps. We further show that factor-width restrictions can prevent detection of dense valid affine equalities. These results characterize both the structure recovered by tractable partial FR and the cost of restricting the exposing-matrix search.",
+      "version": 1,
+      "authors": [
+        "Hao Hu",
+        "Mingming Xu"
+      ],
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "summary": "部分 facial reduction 用对角、对角占优或缩放对角占优锥限制 SDP 暴露矩阵的搜索，但单次辅助问题便宜并不保证预处理整体便宜。该文对含标准归一化及 arrow 约束、包含非空二进制集合所有秩一提升的 SDP 松弛，刻画 SDD 部分约减的终止 face：只记录变量固定为 0／1 及变量相等分组，具有列支撑互不相交的 0–1 基，可用于减少变量并保持部分稀疏性。对多面体内近似，下一 face 可由关联 LP 外松弛上始终活跃的不等式确定。作者同时构造奇异度仅为 2、DD／SDD 部分约减却需要最大可能 $n$ 步的例子，并展示有限 factor width 无法检测稠密有效等式的情况。这里分析二进制 SDP 松弛的连续锥预处理结构与限制，部分约减未必恢复原问题的 Slater 条件。",
+      "reason": "推荐阅读辅助问题规模、约减序列长度和可检测等式的权衡与锐反例。其价值在于揭示连续 SDP 求解预处理的隐藏成本：选用 LP／SOCP 辅助系统时，不能只依据每一步的便宜程度评价整个方案。",
+      "order": 12
+    },
+    {
+      "arxiv_id": "2607.22004",
+      "version": 1,
+      "title": "Energy Manifold Natural Gradient Descent: Riemannian Optimization for Neural PDE Solvers",
+      "authors": [
+        "Zhangyong Liang",
+        "Huanhuan Gao"
+      ],
+      "submitted": "2026-07-24",
+      "updated": "2026-07-24",
+      "arxiv_url": "https://arxiv.org/abs/2607.22004v1",
+      "abstract": "Energy natural gradient descent (ENGD) aligns parameter updates with the curvature of an underlying function-space energy, but existing formulations assume an unconstrained Euclidean parameter domain. We introduce \\EMNGDfull{}, a manifold optimization framework for physics-informed and variational neural PDE solvers whose parameters lie on a Riemannian manifold. EMNGD restricts the energy-induced quadratic model to feasible tangent directions and uses retractions to preserve parameter constraints throughout optimization. Under coercivity, we prove that the push-forward of the undamped EMNGD direction is the best feasible approximation to the function-space Newton vector in the energy metric. We establish coordinate invariance, exact reduction to ENGD in Euclidean space, global first-order convergence with Armijo backtracking, and robustness to inexact tangent solves. For quadratic residual energies and generalized Gauss--Newton pullbacks, the Woodbury identity transfers the tangent system to sample space without changing the direction. Nyström approximation provides scalable sample-space solves with controlled direction error and recovers the exact direction after iterative convergence. On the evaluated neural PDE benchmarks, EMNGD achieves higher accuracy and faster convergence than the compared state-of-the-art baselines. Woodbury preserves the EMNGD direction, while scalable-solver diagnostics quantify the accuracy--cost trade-off of preconditioning and residual subsampling.",
+      "directions": [
+        "safety-critical"
+      ],
+      "order": 13,
+      "summary": "能量自然梯度将函数空间的能量曲率拉回参数空间，但先做无约束更新再投影，一般不等于在可行切空间内最小化同一个二次模型。该文提出 EMNGD：把能量二次模型直接限制在参数流形的切空间，再以 retraction 生成全程可行的参数。能量 Hessian 在函数空间上有界且 coercive、无阻尼切空间方程可解时，更新的函数空间像恰为 Newton 向量在可实现切向变化空间上的能量正交投影；阻尼则对应带正则的投影。对正阻尼、子水平集上的统一度量等价性和 retraction 下降模型等条件，Armijo 回溯有限且梯度范数趋零。二次残差或广义 Gauss–Newton 拉回结构下，Woodbury 恒等式可把切空间求解转移至样本空间而保持方向不变；Nyström 近似与受控非精确求解另有方向误差和下降保证。方法扩展已有欧氏 ENGD，并非只将标准自然梯度外部投影。",
+      "reason": "推荐关注可行切向变化与函数空间能量几何的联合刻画。它明确说明什么约束下的二阶方向仍是最佳可实现 Newton 修正，并把全程可行性与度量预条件结合；精确方向、样本空间等价求解和低秩近似的边界也分别给出依据。"
+    }
+  ]
+}
