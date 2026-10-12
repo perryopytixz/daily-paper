@@ -1,0 +1,319 @@
+{
+  "date": "2026-10-12",
+  "status": "complete",
+  "frontiers_status": "recommendations",
+  "highlights": [
+    {
+      "arxiv_id": "2505.01423",
+      "label": "负步长调度让原形式 GDA 收敛",
+      "text": "Slingshot 用不对称、周期性负步长控制两步净进展。线性梯度情形借助 Chebyshev 多项式加速；光滑凸—凹问题另用随机调度，保证最佳迭代残差，强凸—强凹时保证最后迭代线性收敛。",
+      "types": [
+        "field"
+      ]
+    },
+    {
+      "arxiv_id": "2606.10203",
+      "label": "每阶段两条切面保留维数无关 DDP 界",
+      "text": "FDDP 将束模型更新条件嵌入确定性动态规划，统一 multi-cut 与每阶段只存两条切面的 two-cut 方法。紧凸域及相应强凸／Lipschitz 条件下，遍历次数界没有显式状态维数指数；阶段数、精度与子问题成本仍影响总负担。",
+      "types": [
+        "field",
+        "group"
+      ]
+    },
+    {
+      "arxiv_id": "2606.12675",
+      "label": "非均匀局部结构增加时变网络通信代价",
+      "text": "作者在 expander 上嵌入旋转星形网络，得到 $\\Omega(\\chi_{\\mathcal G}\\sqrt{\\kappa_g}\\log(n/\\chi_{\\mathcal G})\\log(1/\\epsilon))$ 轮通信下界。结果针对同步一阶线性记忆模型，揭示全局正则性不能替代统一局部正则性。",
+      "types": [
+        "field",
+        "group"
+      ]
+    },
+    {
+      "arxiv_id": "2505.03719",
+      "label": "两次对偶化加速复合耦合约束优化",
+      "text": "iD2A 将耦合约束问题拆为可加速光滑外层与非精确鞍点内层。局部光滑强凸及 Slater 条件下允许一般公共闭凸项；更强共轭正则性／秩条件给出线性收敛，并将内层精度与通信成本一并计入。",
+      "types": [
+        "group"
+      ]
+    },
+    {
+      "arxiv_id": "2605.01246",
+      "label": "单循环随机惩罚法刻画更强极限驻点",
+      "text": "SPACO 每轮一次内层随机上升，通过惩罚增长与正则衰减处理非线性耦合约束。紧内层凸域及光滑／凹凸条件下给出残差和违反界；额外约束资格条件下得到增强 KKT 子序列结论。有限时间约化残差不含互补性。",
+      "types": [
+        "field"
+      ]
+    },
+    {
+      "arxiv_id": "2605.24795",
+      "label": "可行的混合分量桥仍有最优性差距",
+      "text": "带标签的高斯混合 bridge 可精确拆成分量桥与熵正则配对。作者用条件标签信息量刻画丢弃标签后的路径熵差：端点可行不代表原问题最优，并给出差项为零的共同路径势条件。",
+      "types": [
+        "field"
+      ]
+    }
+  ],
+  "papers": [
+    {
+      "arxiv_id": "2505.01423",
+      "version": 2,
+      "title": "Negative Stepsizes Make Gradient-Descent-Ascent Converge",
+      "authors": [
+        "Henry Shugart",
+        "Jason M. Altschuler"
+      ],
+      "submitted": "2025-05-02",
+      "updated": "2026-06-28",
+      "arxiv_url": "https://arxiv.org/abs/2505.01423v2",
+      "abstract": "Efficient computation of min-max problems is a central question in optimization, learning, games, and control. Arguably the most natural algorithm is gradient-descent-ascent (GDA). However, since the 1970s, conventional wisdom has argued that GDA fails to converge even on simple problems. This failure spurred an extensive literature on modifying GDA with additional building blocks such as extragradients, optimism, momentum, anchoring, etc. In contrast, we show that GDA converges in its original form by simply using a judicious choice of stepsizes. The key innovation is the proposal of unconventional stepsize schedules (dubbed slingshot stepsize schedules) that are time-varying, asymmetric, and periodically negative. We show that all three properties are necessary for convergence, and that altogether this enables GDA to converge on the classical counterexamples (e.g., unconstrained convex-concave problems). The core algorithmic intuition is that although negative stepsizes make backward progress, they de-synchronize the min and max variables (overcoming the cycling issue of GDA), and lead to a slingshot phenomenon in which the forward progress in the other iterations is overwhelmingly larger. This results in fast overall convergence. Geometrically, the slingshot dynamics leverage the non-reversibility of gradient flow: positive/negative steps cancel to first order, yielding a second-order net movement in a new direction that leads to convergence and is otherwise impossible for GDA to move in. We interpret this as a second-order finite-differencing algorithm and show that, intriguingly, it approximately implements consensus optimization, an empirically popular algorithm for min-max problems involving deep neural networks (e.g., training GANs).",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "summary": "标准 GDA 在无约束双线性问题上会旋转或发散。该文保留同时梯度下降—上升的更新形式，只改变步长：使两侧不对称、随时间变化并周期性取负值，以两步净进展抵消旋转。在线性梯度的双线性及相应二次问题中，作者将配对更新化为多项式迭代，利用 Chebyshev 步长获得加速收敛。非线性梯度需要另一种随机打破两侧对称性的两步调度；在光滑、存在鞍点的无约束凸—凹设定下，后者给出最佳迭代的期望梯度残差界，强凸—强凹时有最后迭代的全局线性收敛。一般凸—凹结果不是最后迭代收敛，线性梯度的调度也不能直接搬到非线性问题。二阶展开解释了负步为何产生原梯度流没有的纠偏方向。",
+      "reason": "推荐优先阅读两步更新的多项式解释和非线性情形的进展证明。它把通常被排除的负步长转化为稳定机制，说明鞍点旋转可以通过时间调度处理；不同目标结构、最佳迭代与最后迭代之间的边界也有清楚区分。",
+      "order": 1
+    },
+    {
+      "arxiv_id": "2606.10203",
+      "version": 2,
+      "title": "Dimension-Free Complexity Guarantees for Dual Dynamic Programming",
+      "authors": [
+        "Pablo Barros",
+        "Vincent Guigues",
+        "Jiaming Liang",
+        "Renato D. C. Monteiro"
+      ],
+      "submitted": "2026-06-08",
+      "updated": "2026-06-10",
+      "arxiv_url": "https://arxiv.org/abs/2606.10203v2",
+      "abstract": "This paper studies the complexity of a dual dynamic programming (DDP) method for solving a class of convex optimization problems with linear coupling constraints. Existing complexity results based on DDP depend on the dimensions of the state vectors and, in particular, grow exponentially with dimension. The goal of this paper is to establish a complexity bound that is independent of the dimension. Our approach first studies an unconstrained strongly convex problem and develops a flexible framework for DDP, called FDDP, for solving the associated dynamic programming equations, and establishes an iteration-complexity bound for it that is independent of the dimension. A dimension-independent complexity bound for the original linearly constrained problem is then obtained by applying FDDP to a corresponding unconstrained strongly convex problem obtained via smoothing and penalization. Inspired by the literature on bundle methods, FDDP updates lower approximations of cost-to-go functions through a generic procedure that includes both the classical multi-cut DDP and a new two-cut DDP variant as special cases. The two-cut variant maintains only two affine cuts per stage at each iteration, making it more memory-efficient while retaining the same theoretical guarantees. Finally, numerical experiments illustrate the practical behavior of multi-cut and two-cut DDP, including their dependence on problem parameters and their performance relative to a direct quadratic constraint reformulation.",
+      "directions": [
+        "historical-information",
+        "optimization-frontiers"
+      ],
+      "summary": "多阶段凸问题的 DDP 用历史切平面逼近未来代价，已有迭代界含状态维数的指数。该文提出 FDDP，以统一下模型更新条件涵盖 multi-cut 方法和每阶段只存两个仿射切面的 two-cut 方法。对紧凸阶段域、阶段目标关于当前状态强凸、关于前一状态 Lipschitz 的确定性问题，作者给出不含显式状态维数的前向／后向遍历次数界；再以线性耦合约束的二次惩罚和小强凸扰动，推广到原约束问题的目标与可行性误差控制。two-cut 继承同一保证，减少切面存储。界仍随阶段数和精度显著恶化，几何常数及各阶段子问题的求解成本也不能视为维数无关；随机 SDDP 的相应结论仍是开放问题。",
+      "reason": "推荐关注如何把束方法的切面聚合条件放入动态规划递归，并在只保留两个切面的情况下控制误差传播。它给出了历史模型压缩的可证明规则，以及不同于维数覆盖论证的复杂度分析，适合研究记忆与计算负担的权衡。",
+      "order": 2
+    },
+    {
+      "arxiv_id": "2606.12675",
+      "version": 1,
+      "title": "A Communication Complexity Lower Bound for Nonuniformly Convex Consensus Optimization",
+      "authors": [
+        "Demyan Yarmoshik",
+        "Maxim Klimenko"
+      ],
+      "submitted": "2026-06-10",
+      "updated": "2026-06-10",
+      "arxiv_url": "https://arxiv.org/abs/2606.12675v1",
+      "abstract": "We study the communication complexity of convex decentralized optimization over time-varying networks, where $n$ nodes hold private functions and must agree on the global minimizer using only synchronous exchanges with neighbors. The cost is the number of communication rounds to reach accuracy $\\varepsilon$ -- a measure akin to round complexity in the LOCAL model, but constrained by nodes sharing only oracle responses. We prove a new lower bound of $\\Omega\\!\\left(\\chi_{\\mathcal G} \\sqrt{\\kappa_g}\\,\\log\\frac{n}{\\chi_{\\mathcal G}}\\log\\frac1\\varepsilon\\right)$ communication rounds, where $\\chi_{\\mathcal G}$ is the condition number of the network Laplacians and $\\kappa_g$ that of the global objective, showing the round complexity attainable under uniform regularity cannot be matched in the nonuniform regime. The construction rests on spectral graph theory: we embed time-rotating star gadgets into the edges of an expander and patch them to preserve spectral connectivity.",
+      "directions": [
+        "distributed",
+        "time-varying-networks",
+        "optimization-frontiers"
+      ],
+      "summary": "全局目标光滑且强凸，并不意味着各节点具有统一局部正则性。该文在节点保存线性张成记忆、调用本地一阶 oracle 并同步交换邻居信息的模型中，用 expander 上的旋转星形结构构造每轮连通、具有统一谱界的无向图序列。对相应网络条件数和节点规模，达到各节点解距离精度 $\\epsilon$ 需要 $\\Omega(\\chi_{\\mathcal G}\\sqrt{\\kappa_g}\\log(n/\\chi_{\\mathcal G})\\log(1/\\epsilon))$ 轮通信。相比统一局部正则设定，多出节点规模或局部与全局光滑常数差异的对数代价。这里是特定一阶线性记忆模型的最坏情形下界，不能解释为所有通信协议或实际网络的固定延迟。",
+      "reason": "推荐优先阅读图构造和信息传播论证。它直接说明只用全局条件数与网络条件数描述复杂度，可能遗漏非均匀局部结构的必要代价；对时变网络算法的最优性比较和假设选择提供了可核查的限制。",
+      "order": 3
+    },
+    {
+      "arxiv_id": "2505.03719",
+      "version": 5,
+      "title": "Accelerated Decentralized Constraint-Coupled Optimization: A Dual$^2$ Approach",
+      "authors": [
+        "Jingwang Li",
+        "Vincent Lau"
+      ],
+      "submitted": "2025-05-06",
+      "updated": "2026-06-24",
+      "arxiv_url": "https://arxiv.org/abs/2505.03719v5",
+      "abstract": "In this paper, we focus on a class of decentralized constraint-coupled optimization problem: $\\min_{x_i \\in \\mathbb{R}^{d_i}, i \\in \\mathcal{I}; y \\in \\mathbb{R}^p}$ $\\sum_{i=1}^n\\left(f_i(x_i) + g_i(x_i)\\right) + h(y) \\ \\text{s.t.} \\ \\sum_{i=1}^{n}A_ix_i = y$, over an undirected and connected network of $n$ agents. Here, $f_i$, $g_i$, and $A_i$ represent private information of agent $i \\in \\mathcal{I} = \\{1, \\cdots, n\\}$, while $h$ is public for all agents. Building on a novel dual$^2$ approach, we develop two accelerated algorithms to solve this problem: the inexact Dual$^2$ Accelerated (iD2A) gradient method and the Multi-consensus inexact Dual$^2$ Accelerated (MiD2A) gradient method. We demonstrate that both iD2A and MiD2A can guarantee asymptotic convergence under a milder condition on $h$ compared to existing algorithms. Furthermore, under additional assumptions, we establish linear convergence rates and derive significantly lower communication and computational complexity bounds than those of existing algorithms. Several numerical experiments validate our theoretical analysis and demonstrate the practical superiority of the proposed algorithms.",
+      "directions": [
+        "distributed",
+        "historical-information",
+        "optimization-frontiers"
+      ],
+      "summary": "该文研究固定连通无向网络上的复合凸优化：节点拥有强凸光滑项、可近端处理的非光滑项和私有线性映射，公共凸函数作用于映射之和。作者通过两次对偶化，将问题化为可加速的光滑无约束问题和计算其梯度的鞍点子问题，得到 iD2A 与多轮共识变体 MiD2A。在 Slater 条件、局部光滑强凸和近端可实现性下，公共函数只需闭、适当、凸，即可获得原始变量渐近收敛及外层对偶目标 $O(k^{-2})$ 界，但要求控制内层误差。公共函数的共轭进一步光滑且强凸，或相应线性映射满行秩等条件成立时，得到线性收敛。总通信和计算复杂度还计入非精确鞍点求解，改善幅度依赖子求解器与参数，不能把外层次数当作总成本。",
+      "reason": "推荐优先研究两次对偶化如何释放 Nesterov 加速，以及原始变量误差与对偶梯度误差怎样共同决定内层精度。它直接处理复合项和全局耦合约束，使加速方案的可实现性与总通信成本成为同一分析的一部分。",
+      "order": 4
+    },
+    {
+      "arxiv_id": "2605.01246",
+      "version": 3,
+      "title": "A Single-Loop Penalty-based Algorithm for Stochastic Minimax Optimization with Nonlinear Coupled Constraints",
+      "authors": [
+        "Qichao Cao",
+        "Shangzhi Zeng",
+        "Jin Zhang",
+        "Yuxuan Zhou"
+      ],
+      "submitted": "2026-05-02",
+      "updated": "2026-06-08",
+      "arxiv_url": "https://arxiv.org/abs/2605.01246v3",
+      "abstract": "We study stochastic nonconvex-concave minimax optimization with nonlinear coupled constraints that are convex in the maximization variable. To address the nonsmoothness arising from such constraints, we develop a penalty-based smooth approximation that combines quadratic penalization of the coupled constraints with quadratic regularization of the inner maximization problem. Based on this approximation, we propose SPACO, a single-loop stochastic gradient algorithm that tracks the inner maximizer by one stochastic ascent step, updates the outer variable using an inexact stochastic descent direction, and adaptively updates the penalty and regularization parameters over the iterations. For the penalty-based smooth approximation, we establish convergence guarantees from both minimizer and stationarity perspectives. In particular, we introduce enhanced KKT conditions and show that stationary points of the smooth approximations can converge to points satisfying these conditions. An example illustrates that the enhanced KKT conditions can help exclude KKT points that are not local minimizers. For SPACO, we prove non-asymptotic complexity bounds for stationarity and feasibility, as well as asymptotic subsequential convergence to enhanced KKT points. Numerical experiments on synthetic examples, fairness-aware classification, and constrained generative adversarial network training demonstrate the effectiveness of the proposed method.",
+      "directions": [
+        "stochastic",
+        "optimization-frontiers"
+      ],
+      "summary": "非线性约束同时依赖极小化和极大化变量时，普通 KKT 条件可能保留并非局部极小解的点。该文用二次约束惩罚与内层二次正则构造光滑值函数近似，提出 SPACO：每轮一次随机上升跟踪内层解，再以非精确随机下降更新外层，同时调整惩罚、正则与步长。结果要求内层域紧凸、目标在内层凹、约束在内层凸、相关梯度 Lipschitz、随机 oracle 无偏且方差受控等条件。作者给出平滑问题驻点残差、内层跟踪误差和约束违反的非渐近界；其有限时间“约化 KKT”残差不含互补性。在 GP-LCQ 及规定参数尺度下，几乎处处的收敛子序列达到 Type-I enhanced KKT；更强尺度条件下可达到 Type-II。增强条件编码惩罚近似的序列信息，不等于局部或全局最优保证。",
+      "reason": "推荐阅读增强驻点条件的必要性例子和单循环中惩罚增长、正则衰减与随机误差控制的协调。它为耦合约束随机鞍点算法提供了新的近似与极限分析，并明确展示有限时间残差与极限互补条件不能混为一谈。",
+      "order": 5
+    },
+    {
+      "arxiv_id": "2605.24795",
+      "version": 2,
+      "title": "Lifted Schrödinger Bridges for Gaussian Mixture Endpoints: Projection Gaps and Path-Space Obstructions",
+      "authors": [
+        "Siddhartha Ganguly",
+        "George Rapakoulias",
+        "Panagiotis Tsiotras"
+      ],
+      "submitted": "2026-05-24",
+      "updated": "2026-06-12",
+      "arxiv_url": "https://arxiv.org/abs/2605.24795v2",
+      "abstract": "We study stochastic density control between Gaussian-mixture endpoint distributions under Brownian prior dynamics. Since the direct Schrödinger bridge between Gaussian mixtures is generally not available in closed form, we introduce a lifted path-space construction in which each trajectory is augmented with a source--target component label. Consequently, the problem decomposes into Gaussian component-to-component Schrödinger bridges with explicit marginal, drift, and cost formulas, while the mixture-level assignment reduces to a finite-dimensional entropic coupling problem with a Sinkhorn scaling form. We then analyze the projection obtained by discarding or forgetting the label. By construction, the projected law satisfies the original Gaussian-mixture endpoint constraints, but its relative entropy generally differs from the lifted relative entropy by a nonnegative conditional label-information gap. This gap reveals a path-space obstruction: the lifted optimizer cannot, in general, be identified with the direct unlabeled Schrödinger bridge after projection. We also derive the posterior-averaged Markov drift associated with the projected marginal flow, prove a kinetic-energy upper bound, and identify a common path-potential condition under which the projection gap vanishes. Several numerical illustrations showing density and shape control are recorded for a self-contained exposition.",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "summary": "高斯混合端点的 Schrödinger bridge 通常没有直接闭式解。该文为路径附加源—目标分量标签，在布朗先验、非退化高斯分量及相应正参考耦合条件下，将带标签的路径熵最小化精确拆成闭式高斯分量桥和有限维熵正则质量配对，后者具有 Sinkhorn 缩放形式。作者随后证明：丢弃标签后端点约束仍满足，但路径相对熵会少掉一个非负的条件标签信息项。因此带标签问题的最优解一般不能直接认作原始无标签 bridge 的最优解。论文还推导保持投影边际流的后验平均 Markov 漂移和能量上界，并给出共同路径势及参考耦合兼容时信息差为零的充分条件。",
+      "reason": "推荐优先阅读路径熵链式分解对最优性判断的影响。把复杂问题拆成易解分量后，可行性可以保留而优化目标并不完全等价；这里给出了精确差项和消失条件，是评价混合模型提升与分解算法的具体工具。",
+      "order": 6
+    },
+    {
+      "arxiv_id": "2606.17364",
+      "version": 1,
+      "title": "A Polyak-Ruppert Central Limit Theorem for SA-Adam with Momentum and Non-Convergent Adaptive Preconditioning",
+      "authors": [
+        "Sunyoung An",
+        "Xiaoming Huo"
+      ],
+      "submitted": "2026-06-15",
+      "updated": "2026-06-15",
+      "arxiv_url": "https://arxiv.org/abs/2606.17364v1",
+      "abstract": "Adaptive optimizers combining preconditioning, momentum, and weight decay (Adam and AdamW) are, under Polyak-Ruppert averaging, candidate engines for one-pass inference. Does the averaged iterate keep the classical Polyak-Ruppert central limit theorem (CLT), with sandwich covariance $H^{-1}SH^{-1}$ (Hessian $H$, gradient covariance $S$), under momentum and non-convergent preconditioning? The preconditioner-only analysis does not carry over: with momentum the canonical decomposition collapses to a tautology. Treating the augmented state (iterate, momentum buffer) as a time-varying linear stochastic approximation (SA), we prove (under local stabilization) positive drift stability, a non-autonomous Polyak-Ruppert CLT, and a projection identity. The upshot: the iterate-marginal covariance is exactly the plain stochastic gradient descent (SGD) sandwich $H^{-1}SH^{-1}$, so the adaptivity is asymptotically invisible. This holds for SA-Adam (sub-linearly vanishing momentum gain, $\\gamma\\in(\\alpha,1)$; the sub-linear regime is essential), not constant-$\\beta$ deployed Adam. Coupled $L_2$ weight decay yields the ridge-penalized sandwich, extending one-pass inference to regularized problems.",
+      "directions": [
+        "stochastic",
+        "historical-information",
+        "optimization-frontiers"
+      ],
+      "summary": "动量缓存和不收敛的自适应预条件器同时存在时，单独针对预条件 SGD 的 Polyak–Ruppert 分解不能直接复用。该文以迭代误差与动量组成增广随机逼近状态，建立时变漂移分析，并证明均值迭代的极限协方差仍为 $H^{-1}SH^{-1}$。定理采用强凸目标、局部二阶展开、轨迹稳定与矩界、可预测且一致正定的预条件器、衰减的预条件变化等条件。具体 SA-Adam 使用迭代步长 $t^{-\\alpha}$、动量增益 $t^{-\\gamma}$，其中 $1/2<\\alpha<\\gamma<1$，及 $t^{-1}$ 的二阶矩增益。结论把分别处理动量或预条件的结果联合起来；普通固定 EMA 参数 Adam 不在覆盖范围，$\\gamma=1$ 的端点动量项也可能改变协方差。耦合 $L_2$ 正则有 penalized sandwich 结论，解耦 AdamW 仍需另行分析。",
+      "reason": "推荐关注增广状态为何能消去一阶渐近协方差中的动量与预条件依赖，以及稳定性假设如何进入证明。它解释历史缓存可以改变有限样本轨迹，却在特定衰减尺度下不改变均值迭代的统计效率，避免误用到默认 Adam 参数。",
+      "order": 7
+    },
+    {
+      "arxiv_id": "2606.21153",
+      "version": 1,
+      "title": "DUET: Decentralized Bilevel Optimization without Lower-Level Strong Convexity",
+      "authors": [
+        "Zhen Qin",
+        "Zhuqing Liu",
+        "Songtao Lu",
+        "Yingbin Liang",
+        "Jia Liu"
+      ],
+      "submitted": "2026-06-19",
+      "updated": "2026-06-19",
+      "arxiv_url": "https://arxiv.org/abs/2606.21153v1",
+      "abstract": "Decentralized bilevel optimization (DBO) provides a powerful framework for multi-agent systems to solve local bilevel tasks in a decentralized fashion without the need for a central server. However, most existing DBO methods rely on lower-level strong convexity (LLSC) to guarantee unique solutions and a well-defined hypergradient for stationarity measure, hindering their applicability in many practical scenarios not satisfying LLSC. To overcome this limitation, we introduce a new single-loop DBO algorithm called diminishing quadratically-regularized bilevel decentralized optimization (DUET), which eliminates the need for LLSC by introducing a diminishing quadratic regularization to the lower-level (LL) objective. We show that DUET achieves an iteration complexity of $O(1/T^{1-5p-\\frac{11}{4}\\tau})$ for approximate KKT-stationary point convergence under relaxed assumptions, where $p$ and $\\tau $ are control parameters for LL learning rate and averaging, respectively. In addition, our DUET algorithm incorporates gradient tracking to address data heterogeneity, a key challenge in DBO settings. To the best of our knowledge, this is the first work to tackle DBO without LLSC under decentralized settings with data heterogeneity. Numerical experiments validate the theoretical findings and demonstrate the practical effectiveness of our proposed algorithms.",
+      "directions": [
+        "distributed",
+        "optimization-frontiers"
+      ],
+      "summary": "去中心化双层优化通常依赖下层强凸，使响应唯一并定义超梯度。该文提出 DUET：对节点的凸下层加入逐渐消失的二次正则，以单循环联合跟踪下层响应、辅助伴随变量和上层梯度，通过梯度跟踪控制异质节点的共识误差。在固定连通无向网络、上下层规定的可微性与 Lipschitz 条件及衰减参数安排下，作者证明同时含正则化上层驻点、共识、下层跟踪和伴随误差的指标按 $O(T^{-(1-5p-11\\tau/4)})$ 衰减。转为原问题的 KKT 残差还需辅助乘子有界，并增加正则偏差项；正则化响应的乘子进一步一致有界时，速率可改善。去掉的是下层强凸，不是下层凸性，也不是全局双层最优性保证。",
+      "reason": "推荐阅读在下层响应非唯一时，怎样用消失正则与联合残差替代固定超梯度分析。它将下层退化和网络异质性放在同一个 Lyapunov 框架中，也提示评价双层算法时应核对残差对应哪一层问题及哪些乘子界。",
+      "order": 8
+    },
+    {
+      "arxiv_id": "2510.01377",
+      "version": 2,
+      "title": "DeMuon: A Decentralized Muon for Matrix Optimization over Graphs",
+      "authors": [
+        "Chuan He",
+        "Shuyi Ren",
+        "Jingwei Mao",
+        "Erik G. Larsson"
+      ],
+      "submitted": "2025-10-01",
+      "updated": "2026-06-02",
+      "arxiv_url": "https://arxiv.org/abs/2510.01377v2",
+      "abstract": "In this paper, we propose DeMuon, a method for decentralized matrix optimization over a given communication topology. DeMuon incorporates matrix orthogonalization via Newton-Schulz iterations-a technique inherited from its centralized predecessor, Muon-and employs gradient tracking to mitigate heterogeneity among local functions. Under heavy-tailed noise conditions and additional mild assumptions, we establish the iteration complexity of DeMuon for reaching an approximate stochastic stationary point. This complexity result matches the best-known complexity bounds of centralized algorithms in terms of dependence on the target tolerance. To the best of our knowledge, DeMuon is the first direct extension of Muon to decentralized optimization over graphs with provable complexity guarantees. We conduct preliminary numerical experiments on decentralized transformer pretraining over graphs with varying degrees of connectivity. Our numerical results demonstrate a clear margin of improvement of DeMuon over other popular decentralized algorithms across different network topologies.",
+      "directions": [
+        "distributed",
+        "stochastic",
+        "historical-information",
+        "optimization-frontiers"
+      ],
+      "summary": "Muon 的矩阵方向与谱范数几何不同于向量化归一化 SGD。该文把本地随机梯度动量、梯度跟踪与矩阵 sign 方向结合为 DeMuon，在固定本原双随机混合矩阵、目标有下界、谱范数到核范数的梯度 Lipschitz 条件及矩阵噪声二阶矩界下，证明平均局部梯度的期望核范数为 $O(K^{-1/4})$，共识误差为 $O(K^{-3/4})$。DeMuon-A 加入多外推历史组合；相应高阶光滑条件下，驻点率提升为 $O(K^{-p/(3p+1)})$，$p\\ge2$。相较既有去中心化归一化向量更新，分析直接适配矩阵几何，以矩阵随机矩界避免显式维数因子；噪声矩阵范数与光滑常数仍可能随规模增长。理论采用精确矩阵 sign，不能自动覆盖近似正交化的误差与成本。",
+      "reason": "推荐关注矩阵方向几何和网络梯度跟踪如何共同进入复杂度证明，以及多外推取消偏差的作用。它把历史组合与去中心化训练扩展到谱／核范数体系，提供了比仅把 Muon 搬到各节点更具体的理论增量。",
+      "order": 9
+    },
+    {
+      "arxiv_id": "2606.12124",
+      "version": 1,
+      "title": "A Unified Zeroth-Order Approach for Decentralized Minimax Optimization",
+      "authors": [
+        "Haoyuan Cai",
+        "Yike Zhao",
+        "Aleksandar Armacki",
+        "Jie Chen",
+        "Ali H. Sayed"
+      ],
+      "submitted": "2026-06-10",
+      "updated": "2026-06-10",
+      "arxiv_url": "https://arxiv.org/abs/2606.12124v1",
+      "abstract": "We propose ZOMA, a unified Zeroth-Order decentralized accelerated MinimAx framework for multi-agent nonconvex Polyak--Łojasiewicz minimax optimization. The proposed framework only requires evaluating the function value and, as such, is tailored to gradient-free environments, where exact gradient information is either unavailable or computationally prohibitive to obtain. A central contribution of our \\textbf{ZOMA} framework is a multi-level unification, along the following directions: (i) \\emph{estimator} - our framework adopts a hybrid zeroth-order estimator, which accommodates, among others, both coordinate-wise and randomized uniform smoothing estimators; (ii) \\emph{bias correction} - our framework subsumes a wide range of bias-correction strategies, including gradient tracking (GT), exact diffusion (ED), and EXTRA and (iii) \\emph{acceleration} - our framework facilitates a broad class of acceleration techniques, including zeroth-order versions of STORM, PAGE, and L2S. The general nature of \\textbf{ZOMA} leads to many novel decentralized zeroth-order minimax methods and allows us to establish unified convergence guarantees, matching the performance of state-of-the-art centralized zeroth-order minimax methods, while providing benefits, such as linear speed-up in the number of users. The unified framework also provides a systematic way to assess algorithmic suitability by specializing the convergence rates to specific problem structures and method designs. We validate the performance of the proposed algorithms via numerical simulations.",
+      "directions": [
+        "distributed",
+        "stochastic"
+      ],
+      "summary": "该文研究仅能查询随机函数值的去中心化非凸—PL 极小极大问题，提出 ZOMA，将坐标差分或随机均匀平滑估计、GT／EXTRA／exact diffusion 偏差校正和 STORM／PAGE／L2S 方差缩减写入统一递推。对固定连通网络、光滑损失、内层 PL 条件、规定的随机噪声及相应估计器条件，作者分解初始误差、网络噪声、大批估计误差、动量误差和平滑偏差，给出多种实例的驻点保证。随机方向估计还需要额外正则条件，复杂度含维数、内层条件数与网络谱隙；线性节点加速出现在指定参数及迭代区间，不能解释为任何网络下均有等比例实际时间加速。",
+      "reason": "推荐阅读统一误差分解如何支持选择不同零阶估计器与网络校正模块。对于梯度不可得的协同优化，该框架把平滑偏差、随机方差和通信误差放在同一比较标准中，有助于判断各组合的复杂度代价。",
+      "order": 10
+    },
+    {
+      "arxiv_id": "2606.19284",
+      "version": 2,
+      "title": "Online Feedback Optimization for Constrained Stochastic Problems with Decision-Dependent Distributions: Extended Version",
+      "authors": [
+        "Caio Kalil Lauand",
+        "Emiliano Dall'Anese"
+      ],
+      "submitted": "2026-06-17",
+      "updated": "2026-07-28",
+      "arxiv_url": "https://arxiv.org/abs/2606.19284v2",
+      "abstract": "Online feedback optimization (OFO) leverages real-time output measurements to optimize the operation of networked systems without requiring full knowledge of system dynamics or disturbances. We develop an OFO approach for constrained stochastic optimization problems in which the distribution of the system's random parameters shifts in response to the control actions. We propose a projected primal-dual algorithm where the true dual constraint sets are replaced by surrogate sets. Our main result is an upper bound on the mean-square tracking error, which decomposes into four interpretable terms reflecting: (i) the stochasticity of the problem, (ii) output measurement errors, (iii) time-variability of the problem, and (iv) the mismatch between surrogate and true dual constraint sets. The theory is illustrated in a numerical experiment for power grids with price-responsive assets.",
+      "directions": [
+        "stochastic"
+      ],
+      "summary": "输入改变后续数据分布时，在线随机反馈优化的目标分布不再固定，真实对偶可行域也未必已知。该文用输出测量驱动投影原始—对偶更新，以可计算的替代集合约束乘子。在紧凸输入／乘子域、相关凸性与光滑性、正原始—对偶正则、分布映射 Lipschitz 且反馈强度小于强单调裕量等条件下，作者给出均方跟踪界，区分随机噪声、输出测量误差、目标时间变化和替代对偶域不匹配四类贡献。跟踪对象是分布冻结后更新的 performatively stable 正则化鞍点，通常与完整决策依赖分布问题的最优鞍点有偏差；减小步长压低噪声却可能放大漂移和集合误差，不能单靠调步长消除全部误差。",
+      "reason": "推荐关注对偶集合近似误差如何与决策依赖分布和随机跟踪统一量化。它对有限反馈、未知乘子范围下的随机原始—对偶方法给出可解释的稳态误差预算，也明确区分反馈稳定点与原问题最优点。",
+      "order": 11
+    },
+    {
+      "arxiv_id": "2606.03904",
+      "version": 2,
+      "title": "MAdam: Metric-Aware Multi-Objective Adam",
+      "authors": [
+        "Fengbei Liu",
+        "Rachit Saluja",
+        "Sunwoo Kwak",
+        "Ruibo Wang",
+        "Ruining Deng",
+        "Heejong Kim",
+        "Johannes C. Paetzold",
+        "Mert R. Sabuncu"
+      ],
+      "submitted": "2026-06-02",
+      "updated": "2026-10-06",
+      "arxiv_url": "https://arxiv.org/abs/2606.03904v2",
+      "abstract": "Multi-objective optimization (MOO) underlies many machine learning problems, yet MOO solvers across the loss-balancing, gradient-balancing, and Pareto-based families almost universally hand their reconciled directions to Adam~\\citep{kingma2015adam}. We show this coupling introduces two systematic gaps between the solver's intent and the optimizer's execution. The first is a weighting mismatch: Adam's second-moment denominator entangles the time-varying preference vector with gradient statistics, marginalizing the preference into a history average and collapsing distinct Pareto trade-offs toward a near-uniform mixture. The second is a geometric mismatch: Adam's adaptive metric distorts the Euclidean geometry MOO solvers assume, turning aligned objectives into apparent conflicts. To resolve both jointly, we introduce MAdam (Metric-Aware Multi-Objective Adam), a drop-in wrapper that leaves both solver and optimizer unchanged. MAdam preconditions the reconciled direction by the preference-conditioned curvature of the scalarized objective; on this whitened input, Adam's second moment collapses to identity, so the realized update is governed by the preference-conditioned metric. Across multi-task learning, Pareto-front recovery, physics-informed neural networks, and medical imaging, MAdam improves over Adam in aggregate for every solver family. Our code is available at this https URL .",
+      "directions": [
+        "historical-information"
+      ],
+      "summary": "多目标求解器组合各目标梯度再交给 Adam；历史二阶矩会把变化中的目标权重和梯度统计混在一起，实际更新几何也可能改变各目标的下降方向。该文提出 MAdam：分别积累目标梯度的交叉二阶矩，再用当前权重组合偏好条件化的对角度量，在进入 Adam 前预条件组合方向。作者在权重与梯度交叉矩独立、窗口统计近似平稳等条件下刻画历史权重平均效应，并用一阶损失变化公式解释度量为何能翻转任务方向。理想白化的单位二阶矩结论依赖统计近似；实际方法随机选择目标对更新交叉矩，在多任务、Pareto 前沿等测试中报告改善。论文提供机制分析与算法验证，没有证明任意变化偏好下所有任务均下降或一般多目标收敛。",
+      "reason": "推荐阅读把历史梯度统计与当前决策权重分开保存的设计。它说明缓存信息的组织方式会影响最终执行的方向，并给出交叉矩保留和输入预条件的修正，适合研究自适应方法中历史信息的偏差机制。",
+      "order": 12
+    }
+  ]
+}
