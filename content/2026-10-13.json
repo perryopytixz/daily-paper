@@ -1,0 +1,403 @@
+{
+  "date": "2026-10-13",
+  "status": "complete",
+  "frontiers_status": "recommendations",
+  "highlights": [
+    {
+      "arxiv_id": "2610.13787",
+      "label": "约束非光滑随机优化达到最优查询阶数",
+      "text": "该文把局部在线线性优化转成约束 Goldstein 驻性，投影与投影无关路线分别获得最优或近最优的一阶、零阶查询量。结论要求凸约束及受控随机 oracle；投影无关路线仍有额外 LMO 成本，两类驻性指标须分别比较。",
+      "types": [
+        "field"
+      ]
+    },
+    {
+      "arxiv_id": "2610.13799",
+      "label": "未知 oracle 光滑性也能自动选择随机收敛率",
+      "text": "两个独立梯度的差触发动量，再接方差缩减并验证输出。同一方法适应普通光滑、均方光滑及无噪声三种情形，无须知道常数。给定总预算有三种对应速率；未知预算的随机保证增加对数因子。",
+      "types": [
+        "group"
+      ]
+    },
+    {
+      "arxiv_id": "2610.13590",
+      "label": "随机化也无法绕过强凸集合的 LMO 下界",
+      "text": "作者在查询前固定隐藏排列分布，证明一般随机一阶 LMO 方法仍有二次调用次数下界，并给出常数概率和停止时刻尾界。方法须在每个实例、每个种子下返回可行点；硬例维数随预算增长，几何参数不能独立调节。",
+      "types": [
+        "field"
+      ]
+    },
+    {
+      "arxiv_id": "2610.12713",
+      "label": "随机前向 SDDP 的时域复杂度可为多项式",
+      "text": "随机路径的一步 Bellman 残差转化为历史下模型的永久增长。在统一阶段正则性与固定状态维数下，达到时域长度乘单阶段误差精度以前的期望坏迭代数，对时域长度只呈线性增长；维数和精度代价、阶段子问题成本仍需保留。",
+      "types": [
+        "field",
+        "group"
+      ]
+    },
+    {
+      "arxiv_id": "2510.15714",
+      "label": "后台曲率计算用平均年龄控制一阶误差",
+      "text": "Split-Client 让梯度步骤继续使用已发布 Hessian，以重叠计数与加权 Hardy 不等式处理延迟和启动期。结论要求延迟有界与作业时长增长受控；固定成本主导界与调好周期的 Lazy Hessian 同阶，二阶界另依赖最大年龄。",
+      "types": [
+        "group"
+      ]
+    },
+    {
+      "arxiv_id": "2602.06824",
+      "label": "随机步长让当前位置 HVP 无偏纠正动量滞后",
+      "text": "RanSOM 用指数步长恒等式消除历史梯度传输偏差，免去中间点的额外前向计算。梯度光滑与规定重尾矩下，无约束路线达到不同梯度／HVP 尾指数的最优精度阶数；保持可行的 Beta 变体目前只有上界。",
+      "types": [
+        "group"
+      ]
+    },
+    {
+      "arxiv_id": "2609.13677",
+      "label": "固定动量 Muon 的非光滑失效有了反例与修正",
+      "text": "作者对每个固定动量因子构造凸 Lipschitz 失效例，即便步长依赖全部次梯度历史也不能消除最优性差。动量趋一与消失步长在有界、正则条件下恢复驻性；MAGD 混合方案另有凸情形的维数依赖复杂度界。",
+      "types": [
+        "field",
+        "group"
+      ]
+    },
+    {
+      "arxiv_id": "2610.12641",
+      "label": "联邦 VI 分开揭示局部深度与并行样本收益",
+      "text": "在 worker 访问同一 oracle 的模型中，强增长、混合噪声与解处插值分别决定 local extragradient 和 minibatch 的收益。仿射问题给出 minimax 率；一般单调上下界部分差对数因子。插值不自动推出强增长，也不能直接套到异质私有目标。",
+      "types": [
+        "field"
+      ]
+    }
+  ],
+  "papers": [
+    {
+      "arxiv_id": "2610.13787",
+      "version": 1,
+      "title": "Optimal Algorithms for Nonsmooth Nonconvex Stochastic Optimization with Constraints",
+      "authors": [
+        "Gon Buzaglo",
+        "Guy Kornowski"
+      ],
+      "submitted": "2026-10-09",
+      "updated": "2026-10-09",
+      "directions": [
+        "stochastic",
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2610.13787v1",
+      "abstract": "We present new algorithms for stochastic optimization problems in which the objective is neither smooth nor convex, subject to a convex constraint set. Our algorithms return a $(\\delta,\\varepsilon)$-Goldstein stationary point, as recently defined for constrained problems by Liu et al. (2024), with improved complexities, and are the first to achieve optimal convergence rates for this task in several settings. In particular, we design projection-based and projection-free algorithms that achieve a $\\widetilde O(\\delta^{-1}\\varepsilon^{-3})$ rate using stochastic gradients, which we show to be optimal, and a $\\widetilde O(d\\delta^{-1}\\varepsilon^{-3})$ rate using zeroth-order queries, which is also optimal in its dependence on the dimension $d$ and improves over prior work. Notably, our lower bound is given in terms of the Frank-Wolfe gap and holds even for smooth problems, which is of independent interest. These results show that in nonconvex stochastic optimization, the convergence rate is degraded neither by the presence of constraints nor by nonsmoothness. Our analysis is based on a reduction to online linear optimization, extending a related technique from unconstrained optimization.",
+      "summary": "非光滑非凸目标加上凸约束后，普通梯度映射不足以统一描述近似驻性。该文将约束 Goldstein 残差与局部在线线性优化连接起来，构造投影方法和不使用投影的方法。对闭凸集合、下界有限的目标及无偏且二阶矩受控的随机梯度，投影路线达到期望 Goldstein 残差精度；紧凸集合上的另一条路线控制 Goldstein Frank–Wolfe gap。一阶查询复杂度分别达到或接近 $\\delta^{-1}\\epsilon^{-3}$，零阶路线达到 $d\\delta^{-1}\\epsilon^{-3}$，相应条件下给出下界。投影无关路线仍需要较多 LMO 调用，不能把梯度查询最优等同于总计算成本最优；两条路线的驻性指标也应分别比较。",
+      "reason": "推荐优先阅读局部在线 regret 如何转成约束驻性，以及投影后的位移如何处理 Goldstein 邻域变化。结果说明凸约束并不必然增加非光滑随机优化的梯度查询阶数，同时明确了 LMO 成本和下界 oracle 模型的限制。",
+      "order": 1
+    },
+    {
+      "arxiv_id": "2610.13799",
+      "version": 1,
+      "title": "Adaptive Variance Reduction without Knowing Oracle Smoothness",
+      "authors": [
+        "Wei Jiang",
+        "Yibo Wang",
+        "Zechao Li"
+      ],
+      "submitted": "2026-10-09",
+      "updated": "2026-10-09",
+      "directions": [
+        "stochastic",
+        "historical-information",
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2610.13799v1",
+      "abstract": "Variance reduction improves the convergence rate of stochastic non-convex optimization under the average smoothness condition. Existing adaptive variance reduction methods are especially designed for average smoothness and do not adapt to standard smoothness. In this paper, we study how one algorithm can adapt to these two settings and the noiseless setting without knowing the smoothness constants or the variance bound. Given the gradient budget $T$, we develop a two-phase method. The first phase compares two independent gradients and switches to normalized momentum when their difference exceeds a threshold. This phase provides both a candidate with standard smooth and noiseless guarantees and also ensures a bounded expected function gap for the second variance reduction phase. The resulting rates are $O(T^{-1/3})$ under average smoothness, $O(T^{-1/4})$ under standard smoothness, and $O(T^{-1/2})$ without noise. When $T$ is unknown, we propose a method with two paths that attain the corresponding rates with logarithmic factors in the stochastic settings. Here, we use a variance reduction path to deal with average smoothness and employ the AdaGrad-Norm for standard smoothness and noiseless setting. Neither method restarts from the initial point or requires a growing number of oracle calls in each round.",
+      "summary": "方差缩减通常利用样本梯度的均方光滑性，而普通光滑随机 oracle 未必满足这一更强条件。该文在目标光滑且下有界、梯度无偏且方差有限的设定下，用两个独立梯度的差触发归一化动量，再接一段方差缩减，并以独立验证样本选择输出。给定总查询预算 $T$ 时，同一方法在普通光滑、均方光滑和无噪声情形分别获得 $O(T^{-1/4})$、$O(T^{-1/3})$ 与 $O(T^{-1/2})$ 的期望梯度范数界，无须知道光滑常数、方差或初始函数差。未知预算版本同时维护方差缩减与 AdaGrad-Norm 路径，随机情形付出对数因子。验证成本计入预算，均方光滑路线仍要求能用同一随机样本在两个点查询。",
+      "reason": "推荐关注如何在未知 oracle 结构时保住普通随机保证，又自动获得方差缩减的更快率。第一阶段对第二阶段起点函数差的控制、历史估计器与独立验证的配合，是比单纯调整步长更关键的分析工具。",
+      "order": 2
+    },
+    {
+      "arxiv_id": "2610.13590",
+      "version": 1,
+      "title": "Lower Bounds for Randomized Linear-Oracle Optimization over Strongly Convex Sets",
+      "authors": [
+        "Sebastian Pokutta"
+      ],
+      "submitted": "2026-10-09",
+      "updated": "2026-10-09",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2610.13590v1",
+      "abstract": "Recent results [ arXiv:2602.04378 , arXiv:2602.22608 ] have established worst-case objective-error lower bounds of order $1/T^2$ after $T$ linear minimization oracle (LMO) calls, matching the upper bound [ arXiv:1406.1305 ] in its dependence on $T$ and thereby resolving a long-standing open question. Upon close inspection, however, both lower bounds are somewhat brittle. The first [ arXiv:2602.04378 ] applies only to the standard Frank--Wolfe algorithm, and, as we show, its prescribed slow exact-line-search trajectories can amplify sufficiently small initialization errors exponentially, corresponding to roughly one additional bit of initialization accuracy per iteration. The second [ arXiv:2602.22608 ] obtains lower bounds for any deterministic LMO-based first-order method via a resisting oracle that adversarially adapts to the queries of the algorithm. In both cases it is conceivable that randomization may circumvent these lower bounds; in particular, neither establishes a lower bound for unrestricted randomized first-order LMO methods. We close this gap by proving an $\\Omega(L\\operatorname{diam}(S)^2/T^2)$ distributional lower bound for randomized first-order linear minimization oracle methods over strongly convex sets. While our construction reuses the family of [ arXiv:2602.22608 ], our proof characterizes the conditional distribution of the hidden permutation after adaptive queries and bounds the expected decrease of a combinatorial statistic controlling optimizer variance. We further show that the same error threshold holds with probability at least $3/4$ and yields a stopping-time tail bound.",
+      "summary": "强凸可行集上的 Frank–Wolfe 型优化已有 $T^{-2}$ 目标误差下界，但具体算法的慢轨迹或适应性 resisting oracle 未能排除一般随机方法。该文沿用一类隐藏坐标排列的强凸集合，在算法随机种子产生前固定均匀实例分布，刻画适应查询后的排列条件分布，并以剩余最优解不确定性控制误差。对所有实例及种子都返回可行点的一阶 LMO 方法，在维数随预算增长的构造上，作者证明 $\\Omega(L\\operatorname{diam}(S)^2/T^2)$ 的分布下界，并给出至少四分之三概率的误差下界和停止时刻尾界。它不限制搜索方向在线性张成空间中，但结论依赖 LMO 访问与普遍最终可行性；构造中的集合曲率和直径不能独立调节。",
+      "reason": "推荐优先阅读如何从 oracle 完整响应恢复条件分布，并把组合不确定性转化为连续优化误差。它闭合了随机化能否突破既有调用次数下界的缺口，同时说明查询阶数最优与所有几何参数同时最优是不同命题。",
+      "order": 3
+    },
+    {
+      "arxiv_id": "2610.12713",
+      "version": 1,
+      "title": "SDDP has polynomial iteration complexity in the horizon",
+      "authors": [
+        "Vincent Leclère"
+      ],
+      "submitted": "2026-10-08",
+      "updated": "2026-10-08",
+      "directions": [
+        "historical-information",
+        "stochastic",
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2610.12713v1",
+      "abstract": "Stochastic dual dynamic programming (SDDP) and its variants are run in practice with forward passes that sample the noise at random. Recent iteration-complexity results favour another choice: when the trial points are selected deterministically, for instance along the scenario with the largest gap, the number of iterations is polynomial in the horizon $T$, whereas every bound we know of for randomly sampled forward passes is exponential in $T$. We show that this is not intrinsic to random sampling, for a broad class of trajectory-following dynamic programming algorithms, which includes SDDP, stochastic dual dynamic integer programming and stochastic Lipschitz dynamic programming. With random sampling, and with Lipschitz constants, diameters and per-stage loss ranges bounded independently of the stage and of the horizon, the expected number of iterations whose policy is not $T\\varepsilon$-optimal is $O(T\\varepsilon^{-(d+1)})$, where $d$ is the state dimension: linear in $T$, as for deterministic selection rules. The proof needs no particular scenario to be sampled: the gap between the expected cost of the current policy and the current lower bound equals the expected sum of one-step Bellman residuals along the sampled path, and Lipschitz cuts that are tight at the visited states turn the positive residuals into permanent increases of a bounded potential. The results extend to noise without finite support, to backward passes on a sample average approximation, and to stationary and periodic infinite-horizon SDDP with geometric pass lengths.",
+      "summary": "SDDP 用随机前向轨迹和历史切面逐步收紧代价下模型，已有随机采样复杂度界常随时域长度指数增长。该文不用“必须采到某条完整场景链”的论证，而将当前策略的期望代价差写成沿采样路径的一步 Bellman 残差总和；访问点紧、单调且 Lipschitz 的下模型更新，把正残差转化为有界势函数的永久增长。在状态维数 $d$ 固定、各阶段 Lipschitz 常数、域直径与单阶段损失范围均独立于时域 $T$ 有界等条件下，达到 $T\\epsilon$ 精度以前的期望坏迭代数量为 $O(T\\epsilon^{-(d+1)})$。框架还讨论无有限支持噪声、误差受控的后向计算和折扣无限时域。这里的线性时域界对应 $T\\epsilon$ 总误差，维数与精度仍有明显代价，也未计入各阶段子问题的求解成本。",
+      "reason": "推荐优先研究历史下模型增长的势函数与随机路径残差之间的连接。它把随机前向采样造成的指数时域代价从固有障碍改写为分析方式的局限，对切面记忆和多阶段误差传播给出了可迁移的计数工具。",
+      "order": 4
+    },
+    {
+      "arxiv_id": "2510.15714",
+      "version": 4,
+      "title": "Second-Order Optimization with Asynchronous Curvature",
+      "authors": [
+        "El Mahdi Chayti",
+        "Martin Jaggi"
+      ],
+      "submitted": "2025-10-17",
+      "updated": "2026-10-09",
+      "directions": [
+        "asynchronous-distributed",
+        "historical-information",
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2510.15714v4",
+      "abstract": "Second-order methods make fast progress per iteration, but forming and factorizing the Hessian often dominates their wall-clock time. We study \\emph{Split-Client}, a task-parallel design in which a curvature client factorizes Hessians in the background while a gradient client takes cubic-regularized steps with the most recently published matrix, so that curvature cost appears as a delay rather than as blocking time. For delayed exact Hessians, we prove a first-order stationarity bound that depends on the average age of the curvature rather than its maximum, using an overlap count and a weighted Hardy inequality that allows any bounded-error initial matrix; the analysis extends to subsampled and uniformly inexact curvature. Under a fixed-cost model, the resulting wall-clock bound matches the scaling of optimally tuned Lazy Hessian without choosing a reuse period. In experiments on two LIBSVM datasets, an implementation decreases the objective earlier in wall-clock time than Lazy and Vanilla cubic Newton, with the largest gains at intermediate accuracy.",
+      "summary": "Hessian 构造与分解的开销可使二阶方法阻塞。该文的 Split-Client 让曲率客户端在后台串行计算，梯度客户端用最新已发布矩阵继续做三次正则步；延迟表现为曲率年龄。对下有界且 Hessian Lipschitz 的目标、延迟有界、相邻曲率作业时长增长有统一上界的模型，作者以 overlap count 和加权 Hardy 不等式控制旧矩阵误差，用与已观测年龄成比例的正则化得到依赖平均年龄的一阶驻性界。任意对称初始矩阵的有界误差只增加启动项；启动后的二阶曲率界另依赖最大年龄。固定成本模型中的主导上界与最优调参 Lazy Hessian 同阶，无须预选复用周期，但仍需要光滑性和作业增长常数的有效界。论文还处理相应非精确曲率，实验加速与理论成本比较各有适用模型。",
+      "reason": "推荐关注延迟窗口如何按重叠次数计费，以及启动期旧曲率如何单独处理。它把任务并行的真实曲率延迟纳入优化分析，特别适合比较异步更新、历史矩阵复用与墙钟成本；一阶平均年龄结论不能直接推广为同一点的二阶保证。",
+      "order": 5
+    },
+    {
+      "arxiv_id": "2602.06824",
+      "version": 3,
+      "title": "RanSOM: Second-Order Momentum with Randomized Scaling for Constrained and Unconstrained Optimization",
+      "authors": [
+        "El Mahdi Chayti",
+        "Mohamad Fakhouri"
+      ],
+      "submitted": "2026-02-06",
+      "updated": "2026-10-09",
+      "directions": [
+        "historical-information",
+        "stochastic",
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2602.06824v3",
+      "abstract": "Second-order momentum corrects the lag of momentum behind the current gradient with a Hessian-vector product (HVP), but existing corrections need either a Lipschitz Hessian or extra forward and backward passes at an auxiliary point. We show that randomizing the step length removes this trade-off: if the step is exponentially distributed with mean $\\eta$, a Stein-type identity makes $\\eta$ times one HVP at the new iterate an estimate of the gradient change that is unbiased in expectation over the step, and this HVP shares its forward pass with the next gradient. The resulting method, RanSOM-E, works with normalized, sign, and Muon-type steps, and a Beta-distributed variant, RanSOM-B, keeps Frank-Wolfe iterates feasible. For objectives with Lipschitz gradient and heavy-tailed gradient and Hessian noise with tail indices $p, q \\in (1,2]$, RanSOM-E attains the optimal oracle-complexity exponents for every pair $(p,q)$, including $p \\neq q$, without a Lipschitz Hessian or clipping ($\\mathcal{O}(\\varepsilon^{-3})$ for $p = q = 2$). On CIFAR-10 with ResNet-20, we detect no accuracy difference from existing second-order momentum methods, and its mean update time is lower than that of the auxiliary-point method.",
+      "summary": "动量平均历史梯度时会落后于当前位置；普通 HVP 纠偏需要 Hessian Lipschitz，而在路径中间另取 HVP 又增加前向计算。该文通过随机化步长解决这一取舍：指数步长的 Stein 型恒等式使新迭代点的一次 HVP，在对步长取期望后无偏估计梯度变化，并能与下一次梯度共享前向图。RanSOM-E 支持归一化、符号和谱范数方向；Beta 步长的 RanSOM-B 用凸组合保持紧凸域上的 Frank–Wolfe 迭代可行。在梯度 Lipschitz、梯度与 HVP oracle 无偏且分别具有 $p,q\\in(1,2]$ 阶矩的条件下，无约束路线达到相应 zero-respecting oracle 下界的精度指数，有限方差时为 $O(\\epsilon^{-3})$，不需要 Hessian Lipschitz 或裁剪。约束路线的相同指数仅是上界，尚无匹配的 Frank–Wolfe gap 下界。",
+      "reason": "推荐优先阅读随机步长为何能消除历史梯度传输的偏差，以及不同梯度／HVP 尾指数如何进入误差平衡。其价值在于用当前位置曲率实现纠偏，避免中间点额外前向计算；广义光滑与仿射噪声扩展另有步长耦合条件，不能直接套用主文最优指数。",
+      "order": 6
+    },
+    {
+      "arxiv_id": "2609.13677",
+      "version": 2,
+      "title": "Nonsmooth Optimization via Orthogonalized Momentum",
+      "authors": [
+        "Lexiao Lai",
+        "Tianyi Lin",
+        "Jiayu Zhang"
+      ],
+      "submitted": "2026-09-12",
+      "updated": "2026-10-09",
+      "directions": [
+        "historical-information",
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2609.13677v2",
+      "abstract": "Modern real application problems involve matrix-valued parameters, yet conventional optimizers treat them as vectors, thereby motivating matrix-aware methods that exploit input-output geometry, such as Muon which orthogonalizes the momentum matrices before parameter updates. Its empirical success raises a conceptual question: can orthogonalized momentum remain effective beyond smooth optimization? This paper studies this question for locally Lipschitz functions using a generalized derivative framework compatible with backpropagation. Our first contribution is to identify a key limitation: for every fixed momentum factor $\\beta\\in[0,1)$, Muon can fail to approach the global optimal solution of a convex Lipschitz objective from almost every initialization, when step sizes adapt to the full gradient history. The failure can occur even along bounded iterates. Our example is inspired by the one of Parshakova et al. which only covers $\\beta\\in[0,\\frac{1}{2})$. Then, we show that the obstruction lies in fixed momentum rather than orthogonalization. Indeed, when the momentum factor is adaptive and approaches 1 together with a vanishing step size, Muon recovers asymptotic convergence for nonconvex nonsmooth optimization under the boundedness and regularity conditions. Moreover, we propose MAGD, which combines orthogonalized momentum with gradient, weighted based on their relative progress. MAGD retains asymptotic convergence in nonconvex settings and achieves an $O(\\min\\{m,n\\}\\epsilon^{-2})$ rate in convex settings. A lower bound shows the optimal dimension dependence. Experiments on synthetic problems, image classification, and LLM pretraining show MAGD is a simple and practical alternative to Muon. Together, our results characterize when orthogonalized momentum fails without smoothness and how it can be made reliable and we hope that the analysis may be useful more broadly.",
+      "summary": "Muon 的谱几何能利用矩阵结构，但固定动量在非光滑优化中可能形成障碍。该文对每个固定动量因子构造凸 Lipschitz 目标：即便步长可依赖全部历史次梯度，精确 Muon 也会从几乎所有初始化停留在严格正的最优性差处，甚至可出现有界迭代。作者进一步证明，在保守广义导数场满足弱 Sard 条件、迭代有界、步长趋零且总和发散、动量因子同步趋一等条件下，Muon 的聚点恢复驻性。MAGD 将正交化动量与次梯度按相对进展混合，在相应有界和步长条件下具有非凸渐近保证；凸 Lipschitz 情形找到目标误差 $\\epsilon$ 所需次梯度调用为 $O(\\min\\{m,n\\}(GR/\\epsilon)^2)$，并有匹配的维数依赖下界。凸界针对最佳访问点，非凸结果也不等于任意固定超参数的保证。",
+      "reason": "推荐优先阅读固定动量失败的二维嵌入构造和恢复收敛的时间尺度。它将谱正交化与动量记忆的责任分开，对历史信息优化中“换几何是否解决非光滑障碍”的判断提供了直接反例与可证明修正。",
+      "order": 7
+    },
+    {
+      "arxiv_id": "2610.12641",
+      "version": 1,
+      "title": "Optimal Rates for Federated Variational Inequalities under different relaxations of bounded variance assumption",
+      "authors": [
+        "Kirill Novoselov",
+        "Yuriy Dorn",
+        "Darina Dvinskikh",
+        "Alexander Gasnikov"
+      ],
+      "submitted": "2026-10-08",
+      "updated": "2026-10-08",
+      "directions": [
+        "distributed",
+        "stochastic",
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2610.12641v1",
+      "abstract": "We study how interpolation affects local steps and parallel sampling in monotone variational inequalities (VIs), with $m$ workers, $K$ oracle calls per worker per round, and $N$ rounds. Under the strong growth condition (SGC), we determine the minimax rate for affine VIs, attained by local extragradient with worker averaging. For nonlinear monotone VIs and convex-concave saddle problems with Lipschitz operators satisfying SGC, we improve the stochastic terms of bounded-variance expected-gap guarantees from $(KN)^{-1/2}$ to $(KN)^{-1}$ with local steps and from $(mKN)^{-1/2}$ to $(mKN)^{-1}$ with minibatches. Under strong monotonicity, we improve the noise-dependent condition-number scaling of existing extragradient bounds from quadratic to linear. The resulting monotone-gap and strongly monotone accuracy bounds match lower bounds up to logarithmic factors in $m$. Under generalized smoothness and SGC, adaptive steps give polynomial dependence on the initial radius. For affine VIs with globally bounded oracle variance, we also attain the minimax rate: the deterministic rate over $KN$ sequential calls plus the statistical rate over all $mKN$ samples. For composite VIs with smooth convex sample interpolation and an exactly evaluated monotone Lipschitz component, accelerated mirror-prox sliding achieves an $N^{-2}$ gradient term, a $(KN)^{-1}$ monotone term, and a $(mKN)^{-1}$ sampling term, without assuming SGC.",
+      "summary": "联邦 VI 的通信间隔允许局部顺序查询，也允许多 worker 同点采样，两种预算在插值噪声下作用不同。该文让所有 worker 访问同一无偏随机 oracle，分别研究强增长、混合噪声和解处噪声模型。仿射单调 VI 在强增长条件下由局部 extragradient 和端点平均达到 minimax 率；对一般单调算子和凸—凹鞍点，顺序查询与共同查询 minibatch 的保证分别刻画局部深度和总样本数。全局有界方差的仿射结果把 $KN$ 次顺序调用的确定性项与 $mKN$ 样本的统计项同时保留；强单调、广义光滑和复合插值情形也有改进。插值本身不推出强增长条件，下界常需随预算增长的维数，部分上下界仍差 worker 数的对数因子；结果不能直接解释为异质客户端私有目标的保证。",
+      "reason": "推荐优先阅读不同噪声假设下，局部计算与并行采样分别在哪里产生收益。它给通信复杂度比较提供了同时计费的基准，避免只看总样本数而忽略顺序深度，或把解处无噪声误当作全轨迹强增长。",
+      "order": 8
+    },
+    {
+      "arxiv_id": "2610.12656",
+      "version": 1,
+      "title": "Complexity of Multiblock Convex-Concave Saddle-Point Problems with General Smooth Coupling",
+      "authors": [
+        "Nhat Trung Nguyen",
+        "Ivan Dorofeev",
+        "Irina Podlipnova",
+        "Yuriy Dorn",
+        "Alexander Gasnikov"
+      ],
+      "submitted": "2026-10-08",
+      "updated": "2026-10-08",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2610.12656v1",
+      "abstract": "We study multiblock convex--concave saddle-point problems of the form $\\min_x\\max_y\\{f(x)+H(x,y)-g(y)\\}$, with separately charged partial-gradient oracles for all three objective components. We impose joint smoothness and strong convexity bounds on the functions $f$ and $g$, together with blockwise Lipschitz conditions on the partial gradients of $H$, so that the resulting oracle complexities reflect the smoothness and dependency parameters specific to each oracle. Under strong convexity, we develop a randomized lifted extragradient method that achieves linear convergence while providing simultaneous complexity guarantees for all oracles. The partial-gradient complexities for $f$ and $g$ exhibit the expected square-root dependence on the corresponding block condition numbers, whereas the coupling-gradient complexities depend on the associated curvature-normalized smoothness parameters. Finite-dimensional bilinear subclasses provide lower-complexity benchmarks within a randomized blockwise linear-span model. When strong convexity of $f$ and $g$ is not assumed, a regularization argument yields expected restricted-gap guarantees with accuracy dependence $\\varepsilon^{-1/2}$ for the objective-gradient oracles and $\\varepsilon^{-1}$ for the coupling-gradient oracles, up to logarithmic factors. Experiments show observed oracle savings and runtime improvements in regimes of poor objective conditioning.",
+      "summary": "多块鞍点问题中，目标梯度与耦合梯度的成本、光滑性及输入依赖可能不同，单一 oracle 次数会隐藏这些差异。该文构造随机 lifted extragradient，在目标的联合光滑／强凸上下界、一般光滑凸—凹耦合及已知块依赖参数下，同一运行同时控制所有局部梯度的期望调用量。目标梯度具有块条件数的平方根依赖，耦合梯度按曲率归一化的行光滑性和输入重叠计费；稀疏相互作用可减少重叠成本。去掉强凸后，二次正则化对含鞍点的紧比较集给出 restricted gap 保证，目标与耦合查询分别呈 $\\epsilon^{-1/2}$ 和 $\\epsilon^{-1}$ 阶，附带对数项。比较集不约束迭代，联合曲率条件也不能仅用单块变动的条件替代；下界匹配只在规定的双线性子类与随机块线性张成模型中成立。",
+      "reason": "推荐关注一次运行如何同时实现各 oracle 的预算，而不是分别调参得到互不兼容的最好界。按输入重叠计费的构造为不同成本和稀疏耦合提供了具体分析工具，也明确区分一般非线性上界与双线性下界的范围。",
+      "order": 9
+    },
+    {
+      "arxiv_id": "2610.13741",
+      "version": 1,
+      "title": "Stabilized SQP Method for Convex Piecewise Linear-Quadratic Composite Optimization Problems",
+      "authors": [
+        "Nguyen T. V. Hang",
+        "Ebrahim Sarabi"
+      ],
+      "submitted": "2026-10-09",
+      "updated": "2026-10-09",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2610.13741v1",
+      "abstract": "This paper addresses the local convergence analysis of the stabilized sequential quadratic programming method for a class of composite optimization problems with convex piecewise linear- quadratic (CPLQ) modeling functions. We demonstrate that an appropriate second-order sufficient condition (SOSC) -formulated for composite problems- alone is sufficient to guarantee local superlin- ear convergence of the primal-dual sequence generated by this method. Furthermore, we examine the relaxation of the SOSC and show that it can be replaced with a weaker noncriticality of the associated Lagrange multiplier, provided, the modeling function is polyhedral and a relative interior condition is satisfied. We also present counterexamples showing that the relative interior condition is indispensable and that this relaxation fails for general CPLQ modeling functions.",
+      "summary": "退化复合优化中，乘子不唯一会使普通 SQP 的局部理论受限。该文研究光滑函数加凸分段线性—二次建模函数的复合问题，用残差量控制对偶稳定化及局部子问题解的位移。作者证明，在 KKT 点附近，适当的二阶充分条件本身即可保证稳定化 SQP 原始—对偶序列的 Q-超线性收敛，无须再假设乘子唯一或附加约束资格。建模函数为多面体时，二阶充分条件可换为非临界乘子，但还需要乘子位于次微分集合的相对内部，并满足相应残差误差界。反例显示相对内部条件不可直接删去，此放宽也不能推广到一般分段二次函数。算法依赖足够近的初始化和局部子问题解选择，尚不是全局化求解保证。",
+      "reason": "推荐阅读子问题可解性、误差界与局部收缩如何在退化情形闭合。结果给出一个清楚的假设层级：较强 SOSC 与较弱非临界性各允许什么建模函数，避免把乘子条件的放宽无边界地移植到其他锥约束问题。",
+      "order": 10
+    },
+    {
+      "arxiv_id": "2602.05622",
+      "version": 3,
+      "title": "Nonsmooth Nonconvex Optimization from Noisy Comparisons: Unbiased Gap Estimation and the Price of Preference Feedback",
+      "authors": [
+        "El Mahdi Chayti",
+        "Taha El Bakkali",
+        "Omar Saadi"
+      ],
+      "submitted": "2026-02-05",
+      "updated": "2026-10-09",
+      "directions": [
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2602.05622v3",
+      "abstract": "We study the minimization of $L$-Lipschitz, possibly nonsmooth and nonconvex $f:R^d\\to R$ from noisy pairwise comparisons: comparing $x$ and $y$ returns a bit equal to $1$ with probability $\\sigma((f(y)-f(x))/\\tau)$, for a known link $\\sigma$ and temperature $\\tau$, and the goal is a $(\\delta,\\epsilon)$-Goldstein stationary point. We give an exactly unbiased estimator of the gap $f(y)-f(x)$ whenever $\\sigma^{-1}$ is analytic on a lens in the complex plane, as for the logistic, probit and cauchit links: compare the pair until the outcome changes and return $\\pm\\tau$ times a partial sum of the expansion coefficients of the inverse link, the harmonic number of the run length for the logistic link. It uses at most $1+1/(1-\\alpha)$ comparisons in expectation, $\\alpha$ the largest queried success probability, and has second moment of order the gap squared plus $\\tau^2$. With randomized smoothing and the online-to-nonconvex conversion this gives $O\\big(d\\,(1+d\\,C_{link}/\\kappa^2)\\,L^2\\Delta_f/(\\delta\\epsilon^3)\\big)$ comparisons when $\\Delta_f\\ge L\\delta$, where $\\kappa$ is the ratio of the largest queried gap to $\\tau$, which the smoothing radius caps at a constant; relative to the optimal rate $O(dL^2\\Delta_f/(\\delta\\epsilon^3))$ for noisy value oracles, comparisons cost a factor $d/\\kappa^2$. We prove that any comparison-based method needs $\\Omega(d^2\\tau^2/(\\epsilon^2\\delta^2))$ comparisons on a smooth convex subclass once $d\\gtrsim(\\epsilon\\delta/\\tau)^2$: in the comparison-noise-dominated regime the bounds agree in $d$ and $\\tau$, and a factor $\\Delta_f/(\\delta\\epsilon)$ remains open. Experiments illustrate the estimator's cost and variance and the $d^2$ growth of the gradient-estimator second moment.",
+      "summary": "只有带噪二元偏好比较时，函数值差的大小不可直接观测。该文假设已知链接函数和噪声温度，并要求逆链接在相应复平面透镜域解析；重复比较直到首次结果变化，用逆链接展开的部分和构造严格无偏的差值估计，logistic 情形对应带符号的调和数。控制所查询的差值与温度之比后，估计具有有限期望成本和二阶矩；结合随机平滑与 online-to-nonconvex 转换，得到 Lipschitz 非光滑非凸目标的 Goldstein 驻性查询界。作者在光滑凸子类证明 $\\Omega(d^2\\tau^2/(\\epsilon^2\\delta^2))$ 比较下界；噪声主导时，上下界的维数与温度依赖一致，但精度和初始函数差的整体匹配仍未解决。估计器的连续运行长度随机且可能很长，不能按每次固定两条比较计费。",
+      "reason": "推荐关注如何把偏好位转换成可用于优化的无偏幅值估计，以及低信息 oracle 带来的额外维数代价。这是区别于标准随机梯度和函数值方法的实质 oracle 进展；未闭合的精度因子也为后续下界比较保留了明确问题。",
+      "order": 11
+    },
+    {
+      "arxiv_id": "2610.13871",
+      "version": 1,
+      "title": "Partially Informed Stochastic Optimization via Zeroth-Order Residual Tracking",
+      "authors": [
+        "El Mahdi Chayti",
+        "Alireza Mirrokni",
+        "Martin Jaggi"
+      ],
+      "submitted": "2026-10-09",
+      "updated": "2026-10-09",
+      "directions": [
+        "stochastic",
+        "historical-information"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2610.13871v1",
+      "abstract": "Many optimization problems provide direct access to only part of the gradient, while the remaining component must be inferred from function evaluations. This structure arises in performative prediction, performative reinforcement learning, and bilevel optimization with a black-box lower level. We introduce Partially Informed Stochastic Optimization (PISO), which combines the available gradient component with a running estimate of the residual. By centring each zeroth-order observation on this estimate, PISO makes the variance due to random probing depend on the tracking error rather than the residual's magnitude. This yields a randomized sketch iteration with an explicit contraction mechanism and a principled interpretation of momentum. For smooth nonconvex objectives, we establish convergence guarantees that depend on the residual's variation and initial magnitude, without requiring a uniform bound on the unavailable gradient component. With independently sampled function evaluations and Gaussian or spherical probes, PISO attains leading function-evaluation complexities of \\(O(d^{2}\\varepsilon^{-6})\\) under Lipschitz gradients and \\(O(d^{2}\\varepsilon^{-5})\\) under an additional Lipschitz-Hessian assumption. These rates require only one probe direction, two function samples, and one known-component sample per update. The analysis also quantifies how batching trades observations for fewer deployments. Across five settings, PISO variants improve on the tested baselines with comparable oracle access in three, reach a comparable solution faster in bilevel routing, and perform best among methods without response-model derivatives in performative reinforcement learning.",
+      "summary": "当只能直接采样梯度的一部分时，重新用零阶观测估计其余部分会让探测方差依赖未知残差的大小。该文的 PISO 维护历史残差估计，以该估计为中心校正方向差分，将探测噪声与跟踪误差联系起来，并用随机 sketch 的收缩解释动量。对光滑下有界目标、Lipschitz 的已知梯度分量、无偏且受控方差的已知分量与函数值 oracle，以及规定的各向同性随机探测，保证依赖残差变化常数和初始残差，无须未知分量在全域一致有界。独立函数采样与 Gaussian／球面方向下，单方向、两个函数样本及一个已知分量样本的主导查询量为 $O(d^2\\epsilon^{-6})$；再有 Hessian Lipschitz 时为 $O(d^2\\epsilon^{-5})$。步长需要有效的变化常数上界，较小的轨迹常数只能事后改善界；共享随机性属于不同 oracle 情形。",
+      "reason": "推荐阅读残差跟踪如何把不完全梯度信息转化为可分析的随机更新，以及均值偏差与探测偏差二阶矩为何需要分开。它直接处理黑箱响应或不透明下层问题中的混合信息结构，不能由完全黑箱零阶或纯一阶方法的复杂度比较覆盖。",
+      "order": 12
+    },
+    {
+      "arxiv_id": "2610.13789",
+      "version": 1,
+      "title": "Randomized Momentum Transport with Cheap Predictors",
+      "authors": [
+        "El Mahdi Chayti",
+        "Martin Jaggi"
+      ],
+      "submitted": "2026-10-09",
+      "updated": "2026-10-09",
+      "directions": [
+        "historical-information",
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2610.13789v1",
+      "abstract": "Momentum methods such as STORM and second-order momentum track the gradient by adding a transport correction to momentum, at the cost of an extra oracle call per iteration. We introduce randomized momentum transport, which evaluates the correction with probability $q$ and otherwise uses a cheap prediction, with importance weighting that preserves the conditional mean and adds $(q^{-1}-1)$ times the prediction loss to the variance. Under transport-bias, second-moment, and residual-control assumptions, linear minimization oracle (LMO) updates, including normalized, sign, and exact spectral (Muon) directions, retain an $O(T^{-1/3})$ stationarity bound for each fixed $q>0$ with a single-gradient initialization. For unnormalized STORM, some $q<1$ lowers the leading coefficient of our sufficient gradient budget if and only if the gradient-difference noise modulus exceeds the smoothness constant, by at most about $10\\%$. An online diagonal predictor admits a regret-to-convergence guarantee. At approximately equal oracle cost, querying a quarter of the corrections lowers the final training loss by $18$ to $43\\%$ on MNIST1D and raises the test accuracy of Hessian-vector transport on CIFAR-10 by $1.5$ points.",
+      "summary": "STORM 与二阶动量通过传输校正补偿历史梯度漂移，却通常每轮多一次 oracle 调用。该文仅以固定概率 $q$ 查询校正，否则使用便宜预测，并以重要性权重保持校正的条件均值及其与当前梯度的协方差；额外方差恰为 $(q^{-1}-1)$ 乘预测损失。在目标光滑下有界、梯度方差有限、传输偏差及二阶矩随步长受控、预测残差受控的条件下，LMO 方向保留 $O(T^{-1/3})$ 驻性阶数。未归一化 STORM 配零预测时，减少查询改善其主导充分预算系数当且仅当梯度差噪声模数超过光滑常数，最大改善约 9.7%。在线对角预测器另给出固定比较器 regret 到收敛的界；预测器不是总能减少噪声，且 HVP 路线仍需要相应 Hessian 正则性。",
+      "reason": "推荐研究怎样为历史传输信息定价：省略一次校正的收益必须与新增方差共同计入。论文既给出可学习的预测路线，也量化了零预测能够带来的有限理论收益，比仅报告较低每轮开销更有助于选择校正频率。",
+      "order": 13
+    },
+    {
+      "arxiv_id": "2302.11962",
+      "version": 7,
+      "title": "Unified Convergence Theory of Stochastic and Variance-Reduced Cubic Newton Methods",
+      "authors": [
+        "El Mahdi Chayti",
+        "Martin Jaggi",
+        "Nikita Doikov"
+      ],
+      "submitted": "2023-02-23",
+      "updated": "2026-10-09",
+      "directions": [
+        "historical-information",
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2302.11962v7",
+      "abstract": "We study stochastic Cubic Newton methods for solving general possibly non-convex minimization problems. We propose a new framework, which we call the helper framework, that provides a unified view of the stochastic and variance-reduced second-order algorithms equipped with global complexity guarantees. It can also be applied to learning with auxiliary information. Our helper framework offers the algorithm designer high flexibility for constructing and analyzing the stochastic Cubic Newton methods, allowing arbitrary size batches, and the use of noisy and possibly biased estimates of the gradients and Hessians, incorporating both the variance reduction and the lazy Hessian updates. We recover the best-known complexities for the stochastic and variance-reduced Cubic Newton, under weak assumptions on the noise. A direct consequence of our theory is the new lazy stochastic second-order method, which significantly improves the arithmetic complexity for large dimension problems. We also establish complexity bounds for the classes of gradient-dominated objectives, that include convex and strongly convex problems. For Auxiliary Learning, we show that using a helper (auxiliary function) can outperform training alone if a given similarity measure is small.",
+      "summary": "随机三次 Newton 的噪声、方差缩减、辅助任务和旧 Hessian 复用通常分开分析。该文以两个 helper 函数分别构造梯度与曲率估计，再在历史 snapshot 上补偿主目标与 helper 的差。对下有界且 Hessian Lipschitz 的目标，梯度误差的 $3/2$ 阶矩与 Hessian 误差的三阶矩给出近似二阶驻性度量的统一界；基本随机 helper 留下误差邻域，而随 snapshot 距离衰减的误差可通过正则化和复用周期平衡。在有限和模型中，作者将方差缩减与 lazy Hessian 结合，高维条件下改善按梯度等价成本计费的复杂度，并在多步间摊销矩阵分解。相似辅助目标也可替代部分全目标正则性常数。算术比较依赖 Hessian 与梯度的成本模型和三次子问题求解；梯度支配情形的额外期望条件须单独核对。此文已于 2024 年发表，本次按近期更新版本首次收录。",
+      "reason": "推荐阅读 helper 与 snapshot 如何统一控制两种不同阶矩误差，并据此设计历史曲率的更新频率。它提供的是可组合的估计器与成本分析框架，有助于同时判断记忆复用的误差收益和矩阵分解的实际负担。",
+      "order": 14
+    },
+    {
+      "arxiv_id": "2608.09022",
+      "version": 2,
+      "title": "Provable Parameter-Free Fixed-Point Algorithms with Linear Convergence Rates",
+      "authors": [
+        "Quoc Tran-Dinh",
+        "Pham Ngoc Anh",
+        "Ha Manh Tien"
+      ],
+      "submitted": "2026-08-10",
+      "updated": "2026-10-08",
+      "directions": [
+        "historical-information"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2608.09022v2",
+      "abstract": "In this paper, we develop provable parameter-free fixed-point algorithms for contractive mappings, with an emphasis on automatically exploiting hidden contractivity without requiring prior knowledge of the contraction factor. Our first method is a parameter-free variant of the Halpern fixed-point iteration with no line-search, bisection, or prior estimate of the contraction factor, while retaining essentially the same per-iteration computational cost as classical fixed-point schemes. We establish explicit linear convergence rates for both the fixed-point residual and the distance to the unique fixed point. The second algorithm is also a parameter-free Halpern method, but it requires a line-search procedure to find a local estimate for the contraction factor, which may need a few additional operator evaluations. This method also enjoys explicit linear convergence guarantees. We further extend these ideas in two directions. First, using the relation between Halpern iterations and Nesterov-type accelerated fixed-point schemes, we derive parameter-free Nesterov-type (three-term) variants that inherit linear convergence in the contractive setting. Second, by combining the proposed fixed-point schemes with Tikhonov regularization, we obtain new methods for solving cocoercive equations and establish an iteration complexity of $\\mathcal{O}({\\epsilon^{-1}\\log(\\epsilon^{-1})})$ for computing an $\\epsilon$-solution, provided that a valid lower bound on the cocoercivity constant is available. Numerical experiments on several examples demonstrate that the proposed algorithms are competitive with, and often outperform, existing adaptive fixed-point methods. In particular, the methods successfully exploit contractive behavior when it is present on the selected nonexpansive test problems.",
+      "summary": "已知收缩因子时可以调节 Halpern 锚点权重，但实际优化映射的收缩程度常未知。该文用已观测残差和迭代几何更新权重，提出无 line-search 的参数自适应 Halpern 方法，并给出带局部收缩估计搜索的第二种方法。对真正收缩的映射，两者都有显式残差与解距离线性界，常数仍依赖实际收缩因子；第一种维持通常固定点方法的单轮算子开销。与 Nesterov 型递推的联系产生三项变体；结合 Tikhonov 正则后，对 cocoercive 方程给出 $O(\\epsilon^{-1}\\log(1/\\epsilon))$ 的迭代界，但这一步仍需要 cocoercivity 常数的有效下界。一般非扩张映射不因此自动具有线性率，额外搜索的算子调用也应单独计费。",
+      "reason": "推荐关注如何用历史残差识别隐藏收缩，并在不预知收缩因子的情况下保持可证明的锚点加速。常数依赖、收缩与非扩张的区别，以及正则化阶段仍需的参数信息，使它适合作为自适应历史信息方法的比较基准。",
+      "order": 15
+    },
+    {
+      "arxiv_id": "2601.07665",
+      "version": 2,
+      "title": "Learning to accelerate Krasnosel'skii-Mann fixed-point iterations with guarantees",
+      "authors": [
+        "Andrea Martin",
+        "Giuseppe Belgioioso"
+      ],
+      "submitted": "2026-01-12",
+      "updated": "2026-10-09",
+      "directions": [
+        "historical-information"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2601.07665v2",
+      "abstract": "We introduce a principled learning to optimize (L2O) framework for solving fixed-point problems involving general nonexpansive mappings. Our idea is to deliberately inject summable perturbations into a standard Krasnosel'skii-Mann iteration to improve its average-case performance over a specific distribution of problems while retaining its convergence guarantees. Under a metric sub-regularity assumption, we prove that the proposed parametrization includes only iterations that locally achieve linear convergence-up to a vanishing bias term-and that it encompasses all iterations that do so at a sufficiently fast rate. We then demonstrate how our framework can be used to augment several widely-used operator splitting methods to accelerate the solution of structured monotone inclusion problems, and validate our approach on a best approximation problem using an L2O-augmented Douglas-Rachford splitting algorithm.",
+      "summary": "学习优化器可以加速特定问题分布上的算子分裂，但任意学得更新会破坏收敛。该文在非扩张映射的 Krasnosel’skii–Mann 迭代中加入可绝对求和的学得扰动，用可保证求和性的神经网络参数化保留收敛，再扩展到三算子分裂的多个扰动位置。非空固定点集是基本前提；局部度量次正则性进一步给出线性收缩加扰动项的距离递推，并证明参数化能表达满足规定速率和局部预算的足够快收敛迭代。绝对求和扰动只趋零而未必几何衰减，因此递推不等于每种学得迭代都有纯线性率。最佳逼近问题的 Douglas–Rachford 实验展示分布上的加速，理论则明确保留局部性和表达能力边界。",
+      "reason": "推荐关注如何把原算法中的误差容忍机制转成可学习的加速自由度，以及对历史迭代依赖的参数化到底能表达哪些更新。其价值在于给学习加速提供可检查的收敛边界，而不是以平均速度提升代替保证。",
+      "order": 16
+    }
+  ]
+}
