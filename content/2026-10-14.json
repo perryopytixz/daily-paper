@@ -1,0 +1,360 @@
+{
+  "date": "2026-10-14",
+  "status": "complete",
+  "frontiers_status": "recommendations",
+  "highlights": [
+    {
+      "arxiv_id": "2606.13287",
+      "label": "裁剪消除异步复杂度中的最大延迟",
+      "text": "Clipped ASGD 用裁剪限制在途更新偏差，给出同质与异质目标的期望／高概率界。复杂度仍含并发度、噪声与异质性；异质情形采用均匀派工和工作队列，不能直接套用任意异步调度。",
+      "types": [
+        "field",
+        "group"
+      ]
+    },
+    {
+      "arxiv_id": "2508.00775",
+      "label": "参数化保留线性收敛与逐步可行",
+      "text": "指数衰减修正刻画给定问题类中的正则线性收敛算法。多面体约束下，用当前投影点的剩余裕量约束学习更新，使全部迭代可行；非单调加速基线另有注入频率与最坏速率退化的权衡。",
+      "types": [
+        "field",
+        "group"
+      ]
+    },
+    {
+      "arxiv_id": "2606.01787",
+      "label": "异步预条件、动量与近似归一化统一分析",
+      "text": "ASADPREC 用块对偶范数与累积方差处理历史尺度和过期信息。光滑、统一有界延迟及结构相容性下得到忽略对数的平均梯度范数界；梯度动量版本另需小步长条件。",
+      "types": [
+        "group"
+      ]
+    },
+    {
+      "arxiv_id": "2606.08255",
+      "label": "闭式安全投影先检查原始—对偶证书",
+      "text": "违反集不一定等于投影活跃集。作者给出完整约束可行与乘子非负的充要证书；满秩条件不满足或证书失败时，回退有限活跃集搜索或 QP，区分可行输入与最近输入。",
+      "types": [
+        "group"
+      ]
+    },
+    {
+      "arxiv_id": "2606.26446",
+      "label": "ICNN 约束方向决定全局或可行局部保证",
+      "text": "ReLU-ICNN 次水平约束可用连续 LP 上图精确编码；超水平集通常非凸，需从可行点用仿射下界构造内逼近。迭代可行性针对代理约束，物理稳定性仍需模型证据。",
+      "types": [
+        "group"
+      ]
+    },
+    {
+      "arxiv_id": "2305.19225",
+      "label": "学习决策导向的不确定集并校准约束风险",
+      "text": "随机增广拉格朗日与非光滑隐函数微分联合学习集合形状／尺度。惩罚有界等条件支持经验 CVaR 可行极限；样本外边际与条件概率保证另需复杂度控制和统计裕量。",
+      "types": [
+        "field"
+      ]
+    }
+  ],
+  "papers": [
+    {
+      "arxiv_id": "2606.13287",
+      "version": 1,
+      "title": "Clipping Makes Distributed and Federated Asynchronous SGD Robust to Stragglers",
+      "authors": [
+        "Samuel Erickson",
+        "Mikael Johansson"
+      ],
+      "abstract": "In modern machine learning, parallelization of training is an important strategy for increasing scale. Asynchronous stochastic gradient descent (ASGD), which maximizes the utilization of available hardware by avoiding waiting for slow workers. However, with constant step sizes, the convergence of ASGD is nonetheless affected negatively by slow workers due to large delays in updates. At the same time, it has been empirically observed in asynchronous training of deep learning models that gradient clipping \"stabilizes\" training. In this work, we provide a theoretical justification for this behavior, as we show that clipping removes the dependence of the maximum delay in the oracle complexity. We employ a sub-Weibull model of gradient noise which generalizes sub-Gaussian and sub-exponential distributions to more heavy-tailed distributions, motivated by empirical observations in deep learning. We show convergence in expectation, and the first time in asynchronous optimization, convergence with high probability.",
+      "submitted": "2026-06-11",
+      "updated": "2026-06-11",
+      "directions": [
+        "asynchronous-distributed",
+        "distributed",
+        "stochastic",
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2606.13287v1",
+      "summary": "异步 SGD 的常步长分析通常受最慢梯度拖累，按延迟丢弃或缩小更新又可能偏向快速客户端。该文用梯度裁剪限制在途更新对真实迭代与虚拟迭代的偏差，在光滑、下有界目标及无偏 sub-Weibull 噪声下，证明平均梯度范数的期望和高概率保证不依赖最大延迟。同质情形的查询复杂度为 $\\widetilde O(\\sigma^2\\varepsilon^{-4}+\\sigma\\tau_C\\varepsilon^{-3}+\\tau_C\\varepsilon^{-2})$，其中 $\\tau_C$ 是并发度。异质情形另需局部梯度与全局梯度的差有界，并采用均匀随机派工、允许工作队列的机制；复杂度保留噪声、异质性和并发度项。高概率结果对失败概率呈多对数依赖，其次数由噪声尾参数决定。",
+      "reason": "推荐优先阅读裁剪如何控制未完成更新的总偏差，以及异质派工为何需要与普通“谁先完成就再派给谁”区别处理。这把经验稳定性解释为可分析的延迟鲁棒机制，同时明确为摆脱最大延迟所付出的裁剪偏差与并发成本；比只给同质期望界更贴近异步训练中的单次运行与客户端差异。",
+      "order": 1
+    },
+    {
+      "arxiv_id": "2508.00775",
+      "version": 2,
+      "title": "Learning to optimize with guarantees: a complete characterization of linearly convergent algorithms",
+      "authors": [
+        "Andrea Martin",
+        "Ian R. Manchester",
+        "Luca Furieri"
+      ],
+      "abstract": "The design of many classical optimization algorithms is driven by the certification of linear convergence rates over classes of optimization problems. In this paper, we consider the problem of improving the average-case performance of an algorithm over a specific distribution of problem instances. While this task can be tackled by embedding trainable components into the algorithm updates, a key challenge is to preserve worst-case guarantees across the entire problem class. For classes of composite optimization problems, we show that all linearly convergent algorithms can be parametrized in terms of a baseline linearly convergent algorithm, and a set of trainable, exponentially-decaying modifications to its update rule; crucially, this parametrization excludes all-and only-the algorithms that do not converge linearly. Our results apply to improving the average-case performance of classical algorithms such as gradient descent for nonconvex, gradient-dominated functions; Nesterov's accelerated method for smooth, strongly convex functions; and projected gradient methods for optimization over polyhedral feasible sets. We illustrate how our characterization can be used for learning to optimize with linear convergence and feasibility guarantees. Numerical results showcase benefits over classical optimizers when solving ill-conditioned systems of linear equations and running a model predictive control scheme on a linear dynamical system.",
+      "submitted": "2025-08-01",
+      "updated": "2026-06-04",
+      "directions": [
+        "safety-critical",
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2508.00775v2",
+      "summary": "学习优化器需要兼顾实例上的平均表现与整个问题类的最坏情形保证。作者从已有线性收敛算法出发，用指数衰减的可训练更新刻画允许的修正；当基线迭代映射 Lipschitz 且距离单调线性收缩时，这一表示涵盖具有同指数率、更新也按该率消失的“正则”算法，修正后的保证允许多项式前因子。对非单调加速基线，更新注入频率与允许的最坏收敛率退化存在定量权衡。多面体约束、光滑强凸目标的扩展在每步给修正施加剩余线性约束，保证全部迭代可行，并保留相应指数收敛率。论文用线性方程组及 MPC 数值实验展示平均计算成本改善；完整性结论有其固定点、正则性与问题类边界。",
+      "reason": "推荐关注“保证可以如何保留”与“哪些算法可以表示”这两个方向同时成立的参数化。可行修正的约束由当前投影点剩余裕量直接给出，使学习模块的自由度与逐步可行性有明确接口；非单调基线的频率—速率权衡也提醒读者，给加速算法任意叠加衰减更新并不会自动保留原保证。",
+      "order": 2
+    },
+    {
+      "arxiv_id": "2606.01787",
+      "version": 1,
+      "title": "Stochastic convergence of parallel asynchronous adaptive first-order methods",
+      "authors": [
+        "Serge Gratton",
+        "Philippe L. Toint"
+      ],
+      "abstract": "A new class of asynchronous adaptive first-order optimization methods is introduced, comprising asynchronous variants of several popular algorithms. Versions of these methods using momentum and/or inexact normalization are also considered. The convergence of methods in the class on non-convex functions is analyzed in a fully stochastic setting, and is shown to be (up to logarithmic factors) of order $O(1/\\sqrt{t})$ under reasonable assumptions. Numerical experiments suggest that such asynchronous adaptive algorithms are very relevant in heterogeneous large-scale machine learning systems.",
+      "submitted": "2026-06-01",
+      "updated": "2026-06-01",
+      "directions": [
+        "asynchronous-distributed",
+        "historical-information",
+        "stochastic",
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2606.01787v1",
+      "summary": "异步更新与自适应预条件结合时，过期变量、累积尺度统计和动量会共同影响下降分析。该文提出 ASADPREC，将不重叠变量块上的异步方法转换为延迟框架，并在块范数与对偶范数下统一处理 AdaNorm、AdaGrad，以及自适应 Shampoo／Muon 类型更新。理论要求目标光滑且下有界、延迟有统一上界、块梯度无偏，并满足预条件器结构相容性与累积方差条件；不要求全局梯度有界。定理控制真实全局梯度范数的平均值，常见噪声情形得到忽略对数后的 $O(t^{-1/2})$ 级界，常数保留延迟与块结构影响。作者进一步分析非精确归一化及两种动量构造；常见梯度动量版本需要额外小步长条件，其速率不能与无动量版本混为一谈。",
+      "reason": "推荐阅读块级累积方差与预条件器如何进入异步下降不等式。它把过期一阶信息、历史尺度估计和近似矩阵归一化放进同一框架，有助于判断自适应方法异步化时究竟需要额外控制什么；与裁剪论文相比，这里解决的是预条件与动量结构，保留了有界延迟假设。",
+      "order": 3
+    },
+    {
+      "arxiv_id": "2606.08255",
+      "version": 2,
+      "title": "Exactness Certificates for Closed-Form CBF Safety-Filter Projections",
+      "authors": [
+        "Ankit Goel"
+      ],
+      "abstract": "For control-affine systems, standard and high-order control barrier function conditions are affine in the control input and are commonly enforced through quadratic-program-based safety filters. Although convex, these optimization problems may be undesirable in embedded, high-rate, or resource-limited implementations. This letter characterizes when the corresponding Euclidean projection can be recovered from the affine inequalities violated by a nominal control input. Given a nominal input, we form the violated set and compute the minimum-norm correction that enforces the violated inequalities with equality. This violated-set correction is closed form, but it need not equal the exact Euclidean projection onto the full feasible set. The main result gives a necessary and sufficient exactness certificate based on primal and dual feasibility, followed by structural sufficient conditions involving interactions among affine-inequality normals. An online certification algorithm is then presented to determine when the closed-form update is exact. When the certificate fails, a finite active-set search can be used to recover the exact projection. Numerical simulations illustrate that the violated-set correction can remain feasible while failing to be the exact projection due to dual infeasibility, and demonstrate computational speedup relative to a standard CBF-QP solver.",
+      "submitted": "2026-06-06",
+      "updated": "2026-06-26",
+      "directions": [
+        "safety-critical",
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2606.08255v2",
+      "summary": "把名义控制违反的 CBF 不等式直接设成等式，可以得到闭式最小范数修正，但违反约束集合未必就是投影的活跃集合。该文在被违反约束法向量满行秩时，给出该闭式候选等于完整多面体欧氏投影的充要证书：候选满足全部原始约束，且相应 KKT 乘子非负。Gram 矩阵的逐分量符号条件进一步提供结构性充分条件，并解释相互正交及单一违反约束的特例。证书失败或违反集秩不足时，作者用有限活跃集枚举或标准 QP 恢复精确投影；在非空可行控制集假设下，每个接受的结果都通过同一原始—对偶证书。枚举量随约束数与控制维数增长，因此快速路径的价值在于先认证简单候选。",
+      "reason": "推荐优先阅读“可行但不是最近点”的反例和双重证书。它直接区分安全约束满足与最小干预最优性，并把多约束安全滤波的快捷公式变为可检查、失败可恢复的算法模块；无需为闭式速度牺牲完整约束，也不能把未通过证书的候选直接执行。",
+      "order": 4
+    },
+    {
+      "arxiv_id": "2606.26446",
+      "version": 1,
+      "title": "Input Convex Neural Network as a Surrogate in Stability-Constrained Optimization for IBR-dominated Power Systems",
+      "authors": [
+        "Wangkun Xu",
+        "Hongyang Jia",
+        "Yi Wang",
+        "Ning Zhang",
+        "Fei Teng"
+      ],
+      "abstract": "Input convex neural networks (ICNNs) are increasingly used as surrogates for stability indices and embedded as constraints in power-system optimization. This letter clarifies two recurring formulation limitations that can negate ICNN convexity benefits: (i) applying generic Big-$M$ mixed-integer reformulations introduces auxiliary binaries that are unnecessary for enforcing ICNN sublevel constraints; and (ii) reversing the stability inequality transforms a convex sublevel set into a generally nonconvex superlevel set, invalidating global-convergence guarantees of cut-based methods. After clarifying the limitations, we provide (i) an exact LP-based epigraph reformulation for ReLU-ICNNs, (ii) an outer-approximation scheme with global guarantees under the sublevel convention, and (iii) a feasibility-preserving inner-approximation scheme for the superlevel convention, with simulations on IEEE 14- and 118-bus unit commitment instances.",
+      "submitted": "2026-06-24",
+      "updated": "2026-06-24",
+      "directions": [
+        "safety-critical",
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2606.26446v1",
+      "summary": "凸神经网络作为约束代理时，凸性是否带来可解性取决于不等式方向。该文证明：非负隐藏权重的 ReLU-ICNN 次水平约束可用连续 LP 上图变量精确表示，网络自身不需要额外二进制编码；外逼近切面是原问题松弛，主问题全局求解且当前点满足代理约束时可认证全局最优。相反，超水平集通常非凸，不能沿用该全局保证。作者从可行点出发，以凸函数的仿射下界构造超水平内逼近并加近端项，使代理约束下的迭代保持可行、目标下降；有界性、正则性等条件下得到驻点结论，混合整数扩展另需离散变量有限步固定。电网实验展示编码与迭代成本差异；可行性结论针对学得的代理，并不单独证明真实物理稳定性。",
+      "reason": "推荐研究同一个 ICNN 在次水平与超水平嵌入中为何必须使用相反的逼近逻辑。论文提供了可迁移的建模检查与可行内逼近机制，能避免把“网络凸”误读为“约束集凸”，也把精确编码、全局证书与局部可行下降三种保证清楚分开。",
+      "order": 5
+    },
+    {
+      "arxiv_id": "2305.19225",
+      "version": 6,
+      "title": "Learning Decision-Focused Uncertainty Sets in Robust Optimization",
+      "authors": [
+        "Irina Wang",
+        "Bart Van Parys",
+        "Bartolomeo Stellato"
+      ],
+      "abstract": "We propose a data-driven technique to automatically learn contextual uncertainty sets in robust optimization, resulting in excellent worst-case and average-case performance while also guaranteeing constraint satisfaction. Our method reshapes the uncertainty sets by minimizing the expected performance across a contextual family of problems, subject to conditional-value-at-risk constraints. Our approach is very flexible, and can learn a wide variety of uncertainty sets while preserving tractability. We solve the constrained learning problem using a stochastic augmented Lagrangian method that relies on differentiating the solutions of the robust optimization problems with respect to the parameters of the uncertainty set. Due to the nonsmooth and nonconvex nature of the augmented Lagrangian function, we apply the nonsmooth conservative implicit function theorem to establish convergence to a critical point, which is a feasible solution of the constrained problem under mild assumptions. Using empirical process theory, we show finite-sample probabilistic guarantees of constraint satisfaction for the resulting solutions. Numerical experiments show that our method outperforms traditional approaches in robust and distributionally robust optimization in terms of out-of-sample performance and constraint satisfaction guarantees.",
+      "submitted": "2023-05-30",
+      "updated": "2026-06-14",
+      "directions": [
+        "stochastic",
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2305.19225v6",
+      "summary": "鲁棒优化中的不确定集若只追求覆盖数据，可能产生过度保守的决策。该文把上下文相关集合的形状与尺度作为优化变量，直接优化内层鲁棒决策的平均／最坏性能，并用 CVaR 约束控制违反概率。作者通过非光滑保守隐函数微分获得内层解的广义导数，再用随机增广拉格朗日法训练集合参数。理论要求相关函数可定义且局部 Lipschitz、内层凸锥问题的解唯一且非退化、迭代有界及适当衰减步长；惩罚参数有界时得到经验 CVaR 可行极限，否则仅保证走向违反函数的驻点。在有界损失类与覆盖数条件下，论文进一步给出边际及条件有限样本概率保证，需要相应校准裕量；这与训练过程中每步可行是不同性质。",
+      "reason": "推荐阅读非光滑解映射、随机训练与样本外约束保证如何连成完整分析链。其新增价值是按决策质量学习集合，而不只估计高覆盖区域；对随机受约束优化研究，惩罚有界和统计裕量分别承担算法可行性与泛化保证的边界尤其值得核对。",
+      "order": 6
+    },
+    {
+      "arxiv_id": "2606.30634",
+      "version": 1,
+      "title": "One-Step Gradient Delay is Not a Barrier for Large-Scale Asynchronous Pipeline Parallel LLM Pretraining",
+      "authors": [
+        "Philip Zmushko",
+        "Egor Petrov",
+        "Nursultan Abdullaev",
+        "Mikhail Khrushchev",
+        "Samuel Horváth"
+      ],
+      "abstract": "Modern large-scale LLM pretraining benefits from utilizing Pipeline Parallelism; however, synchronous implementations leave GPUs idle during pipeline bubbles, wasting computational resources. Asynchronous Pipeline Parallelism eliminates these bubbles, maximizing throughput at the cost of gradient staleness. Among asynchronous schedules, PipeDream-2BW is particularly appealing: unlike the original PipeDream schedule, it ensures a constant one-step gradient delay regardless of pipeline depth. However, its adoption remains limited due to the common belief that optimizing under staleness is fundamentally unstable. In this work, we challenge this assumption, demonstrating that degradation under one-step delay depends strongly on optimizer choice rather than being an intrinsic limitation. We provide the first comprehensive empirical analysis showing that while AdamW, the predominant optimizer at the time when PipeDream-2BW was introduced, indeed suffers from severe degradation, recent methods like Muon exhibit strong robustness under a one-step delay. We introduce an optimizer-agnostic Error Feedback-inspired correction to further mitigate delay effects. We provide supporting theoretical analysis demonstrating convergence for Muon with and without this correction. Extensive evaluation on models up to 10B parameters confirms that our strategies bridge the performance gap with synchronous training, highlighting the practical potential of asynchronous pipeline parallelism at scale.",
+      "submitted": "2026-06-29",
+      "updated": "2026-06-29",
+      "directions": [
+        "asynchronous-distributed",
+        "historical-information",
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2606.30634v1",
+      "summary": "PipeDream-2BW 将梯度滞后固定为一步，但不同优化器对这种滞后的响应可能不同。作者系统比较 AdamW、Muon 等方法，并在更新量层面加入误差反馈：用两倍最近过期更新减去再前一更新，补偿当前位移。这一位移形式与已有 SAPipe-WP 有联系，论文明确讨论了该关系；新增阅读价值还包括统一比较、优化器状态处理及大规模验证。光滑、无偏有界方差条件下，附录给出一般范数 LMO 方法的延迟驻点界；带权重衰减的目标差界另需星凸性和步长—衰减耦合。10B MoE、200B token 实验中，Muon 的同步与异步加反馈最终验证损失相同，但该实验不构成一般深度网络上的星凸或全局最优保证。",
+      "reason": "推荐关注纠偏作用于优化器实际更新量而非原始梯度的区别，以及同样一步延迟为何对不同优化器产生不同误差。这为异步方法提供了可复核的机制比较；一般非凸驻点理论、星凸目标差理论与 LLM 实验应分别阅读，不能互相替代。",
+      "order": 7
+    },
+    {
+      "arxiv_id": "2410.05662",
+      "version": 4,
+      "title": "Communication-Efficient Federated Learning under Dynamic Device Arrival and Departure: Convergence Analysis and Algorithm Design",
+      "authors": [
+        "Zhan-Lun Chang",
+        "Dong-Jun Han",
+        "Seyyedali Hosseinalipour",
+        "Mung Chiang",
+        "Christopher G. Brinton"
+      ],
+      "abstract": "Most federated learning (FL) approaches assume a fixed device set. However, real-world scenarios often involve devices dynamically joining or leaving the system, driven by, e.g., user mobility patterns or handovers across cell boundaries. This dynamic setting introduces unique challenges: (1) the optimization objective evolves with the active device set, unlike traditional FL's static objective; and (2) the current global model may no longer serve as an effective initialization for subsequent rounds, potentially hindering adaptation, delaying convergence, and reducing resource efficiency. To address these challenges, we first provide a convergence analysis for FL under a dynamic device set, accounting for factors such as gradient noise, local training iterations, and data heterogeneity in this practical setting. Motivated by this analysis, we propose a model initialization algorithm that enables rapid adaptation whenever devices join or leave the network. Our key idea is to compute a weighted average of previous global models, guided by gradient similarity, to prioritize models trained on data distributions that closely align with the current device set, thereby accelerating recovery from distribution shifts in fewer training rounds. This plug-and-play algorithm is designed to integrate seamlessly with existing FL methods, offering broad applicability. Experiments demonstrate that our approach achieves convergence speedups typically an order of magnitude or more compared to baselines, which we show drastically reduces energy consumption to reach a target accuracy.",
+      "submitted": "2024-10-08",
+      "updated": "2026-06-08",
+      "directions": [
+        "historical-information",
+        "distributed"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2410.05662v4",
+      "summary": "客户端真正加入或离开时，联邦优化的目标会随会话改变，直接沿用上一模型可能导致较长恢复期。该文在会话级变化模型下，分析光滑非凸本地 SGD 的目标下降与平均梯度范数，将梯度噪声、本地漂移、异质性及初始化影响分别列出。核心定理使用每轮当前客户端全参与、相同本地步数等条件，并把有界初始化视为给定。作者据此建立历史模型库：从共同 pilot 模型做少量辅助训练形成当前会话的伪梯度，再按伪梯度相似性对旧模型加权作为新初始化。该伪梯度不是无偏梯度估计，论文也明确核心定理尚未证明这一具体热启动规则必然改善其初始化项；减少恢复轮数和能耗主要由实验支持。",
+      "reason": "推荐阅读历史模型的比较为何需要共同参考点，以及动态目标误差和本地训练误差如何分别建模。其方法提供一种可接入现有联邦算法的历史复用策略；理论与经验接口写得较清楚，便于研究者进一步分析何种相似性条件能保证热启动有效。",
+      "order": 8
+    },
+    {
+      "arxiv_id": "2606.28124",
+      "version": 1,
+      "title": "Reservoir Zero-Coordinatewise Projected Subspace Search for Minimization Over Sparse Symmetric Sets in Machine Learning",
+      "authors": [
+        "Morteza Kimiaei",
+        "Shima Shabani",
+        "Michael Breuss"
+      ],
+      "abstract": "We study a class of nonconvex cardinality-constrained optimization problems arising in sparse learning. These problems are NP-hard due to the combinatorial nature of sparsity constraints. We introduce a Reservoir Zero-Coordinatewise Projected Subspace Search (RZCW-PSS) algorithm, a simplex-style method on sparse manifolds that integrates coordinatewise search, symmetry-aware swap-based support updates, randomized low-dimensional subspace exploration, and zero-coordinatewise reservoir injection. The proposed method augments classical coordinate and swap moves with sparse-compatible subspace searches constructed from a dynamically maintained reservoir of previously accepted feasible points. A key feature of the approach is a refined reservoir initialization strategy that embeds sparse projection directly into a uniform sampling procedure, preserving geometric diversity within the feasible set. The algorithm also includes an optional support-identification safeguard that enforces full-support stabilization under a fixed support-change decrease threshold. We establish that, under the stated regularity, sampling, and subproblem-accuracy assumptions, every full-support accumulation point of the RZCW-PSS iterates is Beck--Hallak zero-coordinatewise stationary almost surely; with the safeguard and full-support initialization, this conclusion applies to all accumulation points. We further prove a conditional local linear convergence rate after support stabilization and derive the corresponding logarithmic local iteration complexity. Numerical experiments on synthetic sparse learning problems demonstrate that RZCW-PSS improves robustness and solution quality while remaining computationally competitive with Partial Simplex Search, Basic Feasible Search, and Zero-Coordinatewise Search methods.",
+      "submitted": "2026-06-26",
+      "updated": "2026-06-26",
+      "directions": [
+        "historical-information",
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2606.28124v1",
+      "summary": "光滑目标在对称凸集与基数约束交集上的搜索，既要改进当前支持，也要避免停在较弱坐标驻点。该文提出 RZCW-PSS，将已接受的可行点保存为 reservoir，用其构造低维子空间与支持交换，并加入能命中零坐标改进方向的随机注入。紧子水平集、局部梯度 Lipschitz、子问题精度控制，以及注入频率和统一支持命中条件下，满支持聚点几乎必然满足 Beck–Hallak 零坐标驻性。有限支持稳定的 safeguard 与满支持初始化可把结论覆盖到全部聚点。局部线性目标差收敛则另需稳定支持正确、进入相应邻域、受限强凸／误差界、候选充分丰富及相对内层误差控制；它并非无条件的全局线性算法。",
+      "reason": "推荐阅读历史可行点如何参与候选子空间的构造，而不只作为初值或展示轨迹。支持命中与内层精度条件揭示了复用历史几何要换成驻性保证仍需什么；局部速率的条件分解也有助于区分 reservoir 的搜索收益与稳定支持后的经典曲率收益。",
+      "order": 9
+    },
+    {
+      "arxiv_id": "2601.05669",
+      "version": 2,
+      "title": "Two-Stage Robust Sparse Gradient Methods for Regression Under Heavy-Tailed Designs",
+      "authors": [
+        "Kaiyuan Zhou",
+        "Xiaoyu Zhang",
+        "Wenyang Zhang",
+        "Di Wang"
+      ],
+      "abstract": "We study high-dimensional sparse regression under simultaneous heavy-tailed covariates and noise. Heavy-tailed data affect sparse optimization in two different ways: extreme covariates can destabilize the gradient field during global localization, while heavy-tailed noise limits the final statistical accuracy during local refinement. Motivated by this two-phase structure, we propose two-stage RIGHT, a robust sparse first-order method based on coordinate-wise median-of-means (MoM) gradient estimation and delayed sample splitting. The MoM gradient estimator is computationally simple, compatible with hard-thresholded updates, and admits phase-adaptive concentration bounds whose rates depend on the current localization radius. Delayed splitting reuses data during global localization and reserves fresh batches for the shorter refinement stage, reducing the sample-splitting cost. The theoretical results reveal a decoupled rate structure: the design-tail index controls gradient stability and sample complexity, whereas the noise-tail index controls the final statistical rate. We also provide phase-wise lower-bound benchmarks showing that the design-driven localization barrier is intrinsic. Extensive simulation experiments and real data analysis showcase the efficacy of the proposed method over existing competitors.",
+      "submitted": "2026-01-09",
+      "updated": "2026-06-03",
+      "directions": [
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2601.05669v2",
+      "summary": "重尾协变量会破坏远离解时的梯度方向，而重尾响应噪声更多决定接近解后的误差地板。该文提出 TS-RIGHT，以逐坐标 median-of-means 梯度配合硬阈值更新，并把数据使用分成两个阶段：定位阶段复用同一数据，较短的局部精炼阶段才使用新分批数据。作者先在受限曲率与稀疏鲁棒梯度稳定性下给出确定性两阶段收敛，再核实线性与 logistic 回归的矩条件。线性情形允许设计具有 $2+2\\lambda$ 阶矩、噪声驱动 score 具有 $1+\\delta$ 阶矩；设计尾指数进入定位所需样本量，噪声尾指数进入最终统计误差率。模型还需要受限特征值、适当工作稀疏度与初始化半径；这处理重尾抽样，不是任意污染。",
+      "reason": "推荐关注算法路径上的梯度误差如何随定位半径改变，以及为何只在精炼阶段切分样本。它将鲁棒梯度估计和迭代收缩分开，提供能按模型核实的分析接口；与每轮一律使用新样本相比，定位与精炼的信息负担得到更细致的区分。",
+      "order": 10
+    },
+    {
+      "arxiv_id": "2603.01470",
+      "version": 3,
+      "title": "Randomized Kriging Believer for Parallel Bayesian Optimization with Regret Bounds",
+      "authors": [
+        "Shuhei Sugiura",
+        "Ichiro Takeuchi",
+        "Shion Takeno"
+      ],
+      "abstract": "We consider the optimization problem of an expensive-to-evaluate black-box function, in which we can obtain noisy function values in parallel. For this problem, parallel Bayesian optimization (PBO) is a promising approach, which aims to optimize with fewer function evaluations by selecting a diverse input set for parallel evaluation. However, existing PBO methods suffer from poor practical performance or lack theoretical guarantees. In this study, we propose a PBO method, called randomized kriging believer (KB), based on a well-known KB heuristic and inheriting the advantages of the original KB: low computational complexity, a simple implementation, versatility across various BO methods, and applicability to asynchronous parallelization. Furthermore, we show that our randomized KB achieves Bayesian expected regret guarantees. We demonstrate the effectiveness of the proposed method through experiments, including those on real-data emulators.",
+      "submitted": "2026-03-02",
+      "updated": "2026-06-24",
+      "directions": [
+        "asynchronous-distributed"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2603.01470v3",
+      "summary": "并行黑箱优化在部分查询尚未返回时，需要避免重复评估，却又不能把后验均值当成真实观测而丢失遗憾保证。该文提出 randomized kriging believer，从当前 GP 后验联合抽取待返回点的虚拟函数值及噪声，再交给基础 BO 算法选择下一查询。GP 先验、Gaussian 观测噪声及基础算法的后验遗憾条件下，作者利用虚拟数据与完整数据的分布一致性建立 Bayesian 累积遗憾界；未返回查询数上界 $Q$ 与信息增益控制并行代价。简单遗憾界没有显式 $Q$ 惩罚，针对有限域或满足额外 GP 导数尾条件的连续域；累积遗憾并未因此摆脱并发依赖。结果覆盖满足所述条件的 UCB、PIMS 等方法，而不是任意 acquisition rule 的统一保证。",
+      "reason": "推荐阅读联合后验补全如何把“尚未收到信息”的算法困难转换成可分析的随机信息结构。这是异步优化中与过期梯度不同的反馈缺失模型，给出累积与简单遗憾对并发度不同依赖的清楚例子；保证属于 Bayesian GP 设定，应与固定函数的最坏情形结论区分。",
+      "order": 11
+    },
+    {
+      "arxiv_id": "2606.08993",
+      "version": 1,
+      "title": "LEAF: A Learning-Enabled ADMM Framework for Accelerated Convex Optimization",
+      "authors": [
+        "Binh Nguyen",
+        "Trinh Tran",
+        "Truong X. Nghiem"
+      ],
+      "abstract": "We propose LEAF, a learning-enabled ADMM framework for accelerated convex optimization. The key idea is to approximate the Moreau envelope of the objective function using an Input Convex Neural Network (ICNN), resulting in a learned model that preserves convexity and smoothness. This leads to the proposed Moreau Envelope Learning ADMM (MEL-ADMM) and its splitting variant sMEL-ADMM. Unlike existing approaches that learn high-dimensional operators directly, LEAF learns a scalar-valued Moreau envelope, significantly reducing model complexity and improving data efficiency. The framework accommodates a broad class of convex problems with smooth and non-smooth objectives. By embedding convexity explicitly through the ICNN architecture, the proposed approach maintains high approximation accuracy while preserving key structural properties of the optimization problem. Both MEL-ADMM and sMEL-ADMM are developed with theoretical guarantees of convergence and feasibility under the learned model. Rigorous analysis shows that the proposed methods achieve convergence rates comparable to classical ADMM while reducing per-iteration computational cost. Numerical experiments demonstrate up to an order-of-magnitude speedup over state-of-the-art solvers while maintaining low optimality gaps",
+      "submitted": "2026-06-08",
+      "updated": "2026-06-08",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2606.08993v1",
+      "summary": "在 ADMM 中直接学习高维近端映射，常难同时保留单调结构和收敛保证。作者提出 LEAF，改为用光滑 ICNN 学习标量 Moreau 包络，通过包络梯度恢复近端更新，并保留约束投影步骤。学习势函数凸且其梯度 Lipschitz 常数不超过相应惩罚参数时，它可解释为某个闭真凸函数的 Moreau 包络，MEL-ADMM 与分裂版本由此可还原为该学习目标的 ADMM；其收敛解释还需学习约束问题有最优解等标准 ADMM 条件。这个目标一般是由学习模型诱导的 $\\widehat f$；理论没有仅凭训练拟合误差就证明原始 $f$ 的精确最优性。数值实验在匹配可行性与原目标最优性容差后展示每步成本和总求解时间改善。",
+      "reason": "推荐关注学习标量势函数与学习向量算子的结构差别，以及通过 Moreau 对应关系为近端更新补回理论解释。最值得借鉴的是把学习模型的结构保证与原问题的近似偏差分开，避免把“学习问题收敛”误读为“原问题无偏求解”。",
+      "order": 12
+    },
+    {
+      "arxiv_id": "2606.10579",
+      "version": 1,
+      "title": "LieIPM: Lie Group Interior Point Method for Direct Trajectory Optimization of Rigid Bodies",
+      "authors": [
+        "Sangli Teng",
+        "Ruiqi Zhang",
+        "Tzu-Yuan Lin",
+        "William A Clark",
+        "Mark Mueller",
+        "Ram Vasudevan",
+        "Maani Ghaffari",
+        "Koushil Sreenath"
+      ],
+      "abstract": "Designing dynamically feasible trajectories for rigid bodies is a fundamental problem in robotics. While direct methods are widely used, the existing constrained optimizers typically operate in Euclidean space and ignore the manifold structure of rigid body motions. This mismatch may introduce singularities or lead to poorly conditioned optimization problems. To bridge this gap, we develop a structure-aware framework for constrained trajectory optimization directly on matrix Lie groups. Our approach is based on the second-order rigid body models utilizing Lie group structures, which enables efficient Newton-type updates while preserving the underlying geometry. Building on this model, we propose a line-search Lie Group Interior Point Method (LieIPM) to handle constraints on the manifolds. We instantiate the framework for rigid body motion planning using Lie group variational integrators and derive closed-form intrinsic derivatives that exploit group symmetries. The LieIPM preserves the topology of rotation motions by construction and avoids singularities. Numerical results demonstrate superior robustness and faster convergence compared to general-purpose solvers and structure-exploiting optimal control methods.",
+      "submitted": "2026-06-09",
+      "updated": "2026-06-09",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2606.10579v1",
+      "summary": "刚体轨迹优化中的最小坐标可能有旋转奇异性，冗余坐标又增加约束。该文在矩阵 Lie 群上建立直接轨迹优化，用几何离散动力学及内禀一、二阶导数形成 Newton 型 KKT 系统，并设计线搜索、惯性修正和障碍参数更新的 LIEIPM。群上的更新保持配置几何，动力学与其他一般约束则由原始—对偶残差处理。在 KKT 点满足 LICQ、严格互补与二阶充分条件时，论文给出局部超线性保证；障碍参数相对残差更快衰减时可达到局部二次结论。作者明确未使用完整 filter／restoration 机制，因此不声称任意初始化的全局收敛。机器人实验支持其数值效率与鲁棒性。",
+      "reason": "推荐阅读几何结构如何贯穿动力学离散、导数与 KKT 求解，而不只是最后把欧氏步投影回群。该框架为受约束流形优化提供完整实现路径；保持旋转几何与保持全部一般约束可行是不同要求，局部速率条件也应与经验鲁棒性分开。",
+      "order": 13
+    },
+    {
+      "arxiv_id": "2606.11538",
+      "version": 1,
+      "title": "Convex Generalized Differentiation at infinity",
+      "authors": [
+        "Nguyen Xuan Duy Bao",
+        "Nguyen Mau Nam"
+      ],
+      "abstract": "In this paper, we develop a generalized differentiation theory at infinity for convex sets and functions. In particular, we study several fundamental notions of convex analysis at infinity, including tangent cones, normal cones, and subdifferentials. Our work complements the recently developed theories of nonsmooth analysis at infinity by focusing on the convex setting, where these constructions preserve convexity and admit natural connections with recession analysis, polarity, and epigraphical geometry. We show that, in the convex case, many results can be established under weaker assumptions and admit simpler and more explicit representations than those available in the general nonsmooth framework. In addition, we develop calculus rules and geometric characterizations for these constructions and apply them to optimality conditions and attainment criteria for convex optimization problems over unbounded feasible sets. The results obtained in this paper provide new tools for the study of convex sets and functions at infinity and further strengthen the connections between convex analysis, variational analysis, and optimization.",
+      "submitted": "2026-06-10",
+      "updated": "2026-06-10",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2606.11538v1",
+      "summary": "无界凸优化中，逃向无穷远的序列可能隐藏有限点驻性无法描述的困难。该文在凸集合与函数上建立无穷远切锥、法锥、次微分及相应运算法则，区分凸化的渐近构造与通常的极限法锥，并利用凸性给出更直接的极性和上图解释。应用部分在渐近法锥分离条件下，把已经存在的无穷远驻性分解为目标次梯度与约束法向量。若闭真凸目标加集合指示函数的下确界有限，且其无穷远次微分不包含零，作者证明最小值可达到。分离条件本身并不是可达到性的充分条件；乘子分解与排除逃逸驻性的作用需要分别理解。",
+      "reason": "推荐阅读无界可行集上的最小值可达到性与无穷远驻性之间的联系。论文给出超越有限点 KKT 的凸分析工具，并通过反例区分不同渐近法锥；这些工具可用于识别算法序列为何逃逸及何时需要额外紧性，而不是直接给出新的迭代复杂度。",
+      "order": 14
+    }
+  ]
+}
