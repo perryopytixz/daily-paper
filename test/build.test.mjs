@@ -97,16 +97,19 @@ async function workspace(t) {
 test('build keeps archive source, excludes expired content and removes stale output', async t => {
   const root = await workspace(t);
   await fs.writeFile(path.join(root, 'content/2026-09-12.json'), JSON.stringify(copy()));
-  await fs.writeFile(path.join(root, 'content/2026-09-05.json'), 'Expired files are not even parsed');
+  const expired = dateWindow('2026-09-12', config.display_days + 1).at(-1);
+  await fs.writeFile(path.join(root, 'content', `${expired}.json`), 'Expired files are not even parsed');
   await fs.mkdir(path.join(root, 'dist'));
   await fs.writeFile(path.join(root, 'dist/stale.html'), 'old page');
   const result = await build({ root, today: '2026-09-12' });
   assert.equal(result.digestCount, 1);
   await assert.rejects(fs.stat(path.join(root, 'dist/stale.html')), { code: 'ENOENT' });
-  assert.match(await fs.readFile(path.join(root, 'content/2026-09-05.json'), 'utf8'), /Expired/);
+  assert.match(await fs.readFile(path.join(root, 'content', `${expired}.json`), 'utf8'), /Expired/);
   const html = await fs.readFile(path.join(root, 'dist/index.html'), 'utf8');
-  assert.ok(!html.includes('2026-09-05'));
-  await build({ root, today: '2026-09-19' });
+  assert.equal(result.dates.length, config.display_days);
+  assert.ok(!html.includes(expired));
+  const afterWindow = new Date(Date.parse('2026-09-12') + config.display_days * 86400000).toISOString().slice(0, 10);
+  await build({ root, today: afterWindow });
   assert.ok(!(await fs.readFile(path.join(root, 'dist/index.html'), 'utf8')).includes('Delay-adaptive'));
 });
 test('failed validation preserves the last successful output; fixing permits retry', async t => {
