@@ -1,13 +1,13 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { validateConfig, validateDigest, prepareDigest, dateWindow } from './content.mjs';
+import { validateConfig, validateDigest, prepareDigest, weekWindow } from './content.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 export async function build({ root = ROOT, today, demo = false } = {}) {
   const config = validateConfig(JSON.parse(await fs.readFile(path.join(root, 'site.config.json'), 'utf8')));
   today ??= new Intl.DateTimeFormat('en-CA', { timeZone: config.timezone, year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
-  const dates = dateWindow(today, config.display_days);
+  const dates = weekWindow(today, config.display_weeks);
   const digests = [];
   for (const date of dates) {
     let raw;

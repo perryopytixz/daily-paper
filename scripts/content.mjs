@@ -12,14 +12,17 @@ function keys(value, required, optional = []) {
 export function validDate(value) {
   return typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value) && Number.isFinite(Date.parse(value)) && new Date(value).toISOString().slice(0, 10) === value;
 }
-export function dateWindow(today, count) {
+export function weekWindow(today, count) {
   requireThat(validDate(today), 'Build date must be YYYY-MM-DD');
-  return Array.from({ length: count }, (_, i) => new Date(Date.parse(today) - i * 86400000).toISOString().slice(0, 10));
+  requireThat(Number.isInteger(count) && count >= 1 && count <= 8, 'display_weeks must be 1–8');
+  const weekday = (new Date(`${today}T12:00:00Z`).getUTCDay() + 6) % 7;
+  const days = (count - 1) * 7 + weekday + 1;
+  return Array.from({ length: days }, (_, i) => new Date(Date.parse(today) - i * 86400000).toISOString().slice(0, 10));
 }
 export function validateConfig(config) {
-  keys(config, ['title', 'archive_url', 'display_days', 'timezone', 'directions']);
+  keys(config, ['title', 'archive_url', 'display_weeks', 'timezone', 'directions']);
   requireThat(text(config.title) && /^https:\/\/github\.com\//.test(config.archive_url), 'Invalid site title or archive URL');
-  requireThat(Number.isInteger(config.display_days) && config.display_days >= 1 && config.display_days <= 31, 'display_days must be 1–31');
+  requireThat(Number.isInteger(config.display_weeks) && config.display_weeks >= 1 && config.display_weeks <= 8, 'display_weeks must be 1–8');
   new Intl.DateTimeFormat('en', { timeZone: config.timezone });
   requireThat(Array.isArray(config.directions) && config.directions.length > 0, 'Directions must be configured');
   const ids = new Set(), names = new Set();

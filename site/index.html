@@ -25,7 +25,12 @@
       <div class="dp-side-note"><strong id="dp-window-label"></strong>Earlier digests are archived in the repository.</div>
     </aside>
     <main class="dp-main">
-      <nav class="dp-datebar" aria-label="Browse recent dates"></nav>
+      <div class="dp-calendar">
+        <div class="dp-week-navigation"><span id="dp-week-range"></span><div class="dp-week-arrows"><button type="button" class="dp-week-arrow" data-week-step="1" aria-label="Previous week"><span aria-hidden="true">‹</span></button><button type="button" class="dp-week-arrow" data-week-step="-1" aria-label="Next week"><span aria-hidden="true">›</span></button></div></div>
+        <nav class="dp-week-tabs" aria-label="Choose a recent week"></nav>
+        <nav class="dp-datebar" aria-label="Select a day in this week"></nav>
+        <p class="dp-range-hint"></p>
+      </div>
       <div class="dp-heading"><div><h1 id="dp-date-title"></h1><p class="dp-meta" id="dp-status"></p></div></div>
       <div id="dp-results" aria-live="polite"></div>
       <noscript>Please enable JavaScript to browse papers by date and direction.</noscript>

@@ -4,16 +4,34 @@ import fs from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import { build } from '../scripts/build.mjs';
-import { validateConfig, validateDigest, renderText, dateWindow } from '../scripts/content.mjs';
+import { validateConfig, validateDigest, renderText, weekWindow } from '../scripts/content.mjs';
 
 const config = JSON.parse(await fs.readFile(new URL('../site.config.json', import.meta.url), 'utf8'));
 const example = JSON.parse(await fs.readFile(new URL('../examples/daily.example.json', import.meta.url), 'utf8'));
 delete example.example;
 const copy = () => structuredClone(example);
 
-test('rolling window uses calendar days across month and year boundaries', () => {
-  assert.deepEqual(dateWindow('2027-01-03', 7), ['2027-01-03', '2027-01-02', '2027-01-01', '2026-12-31', '2026-12-30', '2026-12-29', '2026-12-28']);
-  assert.throws(() => dateWindow('2026-02-30', 7));
+test('three calendar weeks start on Monday and stop at today across year and leap boundaries', () => {
+  for (const [today, first, count] of [
+    ['2026-10-15', '2026-09-28', 18],
+    ['2026-10-18', '2026-09-28', 21],
+    ['2026-10-19', '2026-10-05', 15],
+    ['2027-01-01', '2026-12-14', 19],
+    ['2028-03-01', '2028-02-14', 17]
+  ]) {
+    const dates = weekWindow(today, 3);
+    assert.equal(dates[0], today);
+    assert.equal(dates.at(-1), first);
+    assert.equal(dates.length, count);
+    assert.equal(new Set(dates).size, count);
+    for (let i = 1; i < dates.length; i++) assert.equal(Date.parse(dates[i - 1]) - Date.parse(dates[i]), 86400000);
+  }
+  assert.ok(weekWindow('2028-03-01', 3).includes('2028-02-29'));
+  assert.throws(() => weekWindow('2026-02-30', 3));
+  for (const weeks of [0, 9, 1.5, '3']) {
+    assert.throws(() => weekWindow('2026-10-15', weeks), /display_weeks/);
+    assert.throws(() => validateConfig({ ...config, display_weeks: weeks }), /display_weeks/);
+  }
 });
 test('new directions require config only, and duplicate IDs are rejected', () => {
   const changed = structuredClone(config);
@@ -97,7 +115,8 @@ async function workspace(t) {
 test('build keeps archive source, excludes expired content and removes stale output', async t => {
   const root = await workspace(t);
   await fs.writeFile(path.join(root, 'content/2026-09-12.json'), JSON.stringify(copy()));
-  const expired = dateWindow('2026-09-12', config.display_days + 1).at(-1);
+  const window = weekWindow('2026-09-12', config.display_weeks);
+  const expired = new Date(Date.parse(window.at(-1)) - 86400000).toISOString().slice(0, 10);
   await fs.writeFile(path.join(root, 'content', `${expired}.json`), 'Expired files are not even parsed');
   await fs.mkdir(path.join(root, 'dist'));
   await fs.writeFile(path.join(root, 'dist/stale.html'), 'old page');
@@ -106,9 +125,9 @@ test('build keeps archive source, excludes expired content and removes stale out
   await assert.rejects(fs.stat(path.join(root, 'dist/stale.html')), { code: 'ENOENT' });
   assert.match(await fs.readFile(path.join(root, 'content', `${expired}.json`), 'utf8'), /Expired/);
   const html = await fs.readFile(path.join(root, 'dist/index.html'), 'utf8');
-  assert.equal(result.dates.length, config.display_days);
+  assert.deepEqual(result.dates, window);
   assert.ok(!html.includes(expired));
-  const afterWindow = new Date(Date.parse('2026-09-12') + config.display_days * 86400000).toISOString().slice(0, 10);
+  const afterWindow = new Date(Date.parse('2026-09-12') + config.display_weeks * 7 * 86400000).toISOString().slice(0, 10);
   await build({ root, today: afterWindow });
   assert.ok(!(await fs.readFile(path.join(root, 'dist/index.html'), 'utf8')).includes('Delay-adaptive'));
 });

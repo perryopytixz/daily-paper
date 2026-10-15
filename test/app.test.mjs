@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import vm from 'node:vm';
-import { prepareDigest } from '../scripts/content.mjs';
+import { prepareDigest, weekWindow } from '../scripts/content.mjs';
 
 const source = await fs.readFile(new URL('../site/app.js', import.meta.url), 'utf8');
 const config = JSON.parse(await fs.readFile(new URL('../site.config.json', import.meta.url), 'utf8'));
@@ -56,8 +56,9 @@ function mountPage(digest, hash = '', { digests = [digest], dates = digests.map(
   });
   return {
     get html() { return root.querySelector('#dp-results').innerHTML; },
+    element(selector) { return root.querySelector(selector); },
     location,
-    click(dataset) { rootEvents.get('click')({ target: { closest: () => ({ dataset }) } }); },
+    click(dataset, disabled = false) { rootEvents.get('click')({ target: { closest: () => ({ dataset, disabled }) } }); },
     navigate(hash) { location.hash = hash; windowEvents.get('hashchange')(); }
   };
 }
@@ -185,4 +186,73 @@ test('date and direction changes still refresh the paper list', () => {
   assert.deepEqual(paperIds(app.html), []);
   app.navigate(`#date=${digest.date}`);
   assert.equal(paperIds(app.html).length, digest.papers.length);
+});
+
+
+const datesInStrip = app => [...app.element('.dp-datebar').innerHTML.matchAll(/data-date="([^"]+)"/g)].map(match => match[1]);
+const weeksInTabs = app => [...app.element('.dp-week-tabs').innerHTML.matchAll(/data-week="([^"]+)"/g)].map(match => match[1]);
+const selectedDate = app => new URLSearchParams(app.location.hash.slice(1)).get('date');
+
+test('three week buttons reach every date once, with a Monday–Sunday row and disabled future days', () => {
+  const dates = weekWindow('2026-10-15', 3);
+  const digest = prepareDigest(fixture());
+  digest.date = dates[0];
+  const app = mountPage(digest, '', { dates });
+  const weeks = weeksInTabs(app);
+  assert.deepEqual(weeks, ['2026-10-12', '2026-10-05', '2026-09-28']);
+  assert.match(app.element('.dp-week-tabs').innerHTML, /This week.*Last week.*2 weeks ago/);
+  assert.deepEqual(datesInStrip(app), ['2026-10-12', '2026-10-13', '2026-10-14', '2026-10-15', '2026-10-16', '2026-10-17', '2026-10-18']);
+  assert.equal(app.element('[data-week-step="-1"]').disabled, true);
+  assert.equal((app.element('.dp-datebar').innerHTML.match(/ disabled/g) || []).length, 3);
+  const reachable = [];
+  for (const week of weeks) {
+    app.click({ week });
+    const row = datesInStrip(app);
+    assert.equal(row.length, 7);
+    for (const date of row.filter(date => dates.includes(date))) {
+      app.click({ date });
+      assert.equal(selectedDate(app), date);
+      reachable.push(date);
+    }
+  }
+  assert.deepEqual(reachable.sort(), [...dates].sort());
+  assert.equal(app.element('[data-week-step="1"]').disabled, true);
+  const before = app.location.hash;
+  app.click({ weekStep: '1' });
+  app.click({ date: '2026-10-16' });
+  app.click({ date: '2026-10-18' }, true);
+  assert.equal(app.location.hash, before);
+});
+
+test('week changes preserve weekday, clamp future selection, and keep shareable direction filters', () => {
+  const dates = weekWindow('2026-10-15', 3);
+  const digests = dates.map(date => ({ ...prepareDigest(fixture()), date }));
+  const app = mountPage(digests[0], '#date=2026-10-04&direction=optimization-frontiers', { dates, digests });
+  assert.match(app.element('.dp-week-tabs').innerHTML, /data-week="2026-09-28"[^>]*aria-pressed="true"/);
+  app.click({ weekStep: '-1' });
+  assert.equal(selectedDate(app), '2026-10-11');
+  assert.equal(paperIds(app.html).length, 1);
+  app.click({ weekStep: '-1' });
+  assert.equal(app.location.hash, '#date=2026-10-15&direction=optimization-frontiers');
+  app.navigate('#date=2026-09-28');
+  assert.match(app.element('.dp-datebar').innerHTML, /data-date="2026-09-28"[^>]*aria-pressed="true"/);
+  app.navigate('#date=2026-09-27');
+  assert.match(app.html, /outside the current reading window/);
+  app.click({ week: '2026-10-05' });
+  assert.equal(selectedDate(app), '2026-10-08');
+  assert.equal(paperIds(app.html).length, digests[0].papers.length);
+});
+
+test('calendar navigation handles year changes and leap day without extra weeks', () => {
+  for (const [today, expected] of [
+    ['2027-01-01', ['2026-12-28', '2026-12-21', '2026-12-14']],
+    ['2028-03-01', ['2028-02-28', '2028-02-21', '2028-02-14']]
+  ]) {
+    const dates = weekWindow(today, 3);
+    const digest = { ...prepareDigest(fixture()), date: today };
+    const app = mountPage(digest, '', { dates });
+    assert.deepEqual(weeksInTabs(app), expected);
+    assert.equal(datesInStrip(app).length, 7);
+    if (today === '2028-03-01') assert.ok(datesInStrip(app).includes('2028-02-29'));
+  }
 });

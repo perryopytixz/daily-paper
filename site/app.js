@@ -9,12 +9,19 @@
   const paperElementId = id => `paper-${id.replace(/[^a-zA-Z0-9_-]/g, '-')}`;
   const formatted = (date, options) => new Intl.DateTimeFormat('en-US', { ...options, timeZone: 'UTC' }).format(new Date(`${date}T12:00:00Z`));
   const longDate = date => formatted(date, { year: 'numeric', month: 'long', day: 'numeric' });
+  const shiftDate = (date, offset) => new Date(Date.parse(date) + offset * 86400000).toISOString().slice(0, 10);
+  const weekdayIndex = date => (new Date(`${date}T12:00:00Z`).getUTCDay() + 6) % 7;
+  const weekOf = date => shiftDate(date, -weekdayIndex(date));
+  const availableDates = new Set(dates);
+  const weeks = [];
+  for (let week = weekOf(dates[0]); week >= weekOf(dates.at(-1)); week = shiftDate(week, -7)) weeks.push(week);
   const state = { date: dates[0], direction: 'all', expired: false };
   document.title = config.title;
   root.querySelector('.dp-brand').innerHTML = `${escape(config.title)}<span class="dp-brand-dot">.</span>`;
   root.querySelector('.dp-preview').hidden = !demo;
   root.querySelector('.dp-archive').href = config.archive_url;
-  root.querySelector('#dp-window-label').textContent = `The latest ${config.display_days} days`;
+  root.querySelector('#dp-window-label').textContent = `The latest ${config.display_weeks} weeks`;
+  root.querySelector('.dp-range-hint').textContent = `The latest ${config.display_weeks} weeks · Monday–Sunday`;
   root.querySelector('.dp-footer').textContent = `${longDate(dates.at(-1))} – ${longDate(dates[0])}`;
 
   function visibleDirections(papers) {
@@ -54,6 +61,26 @@
       <div class="dp-actions">${demo ? '<span class="dp-meta">Illustrative paper · No source link</span>' : `<a class="dp-source" href="https://arxiv.org/abs/${escape(paper.arxiv_id)}v${paper.version}" target="_blank" rel="noopener noreferrer">Read on arXiv ↗</a>`}</div>
     </article>`;
   }
+  function renderCalendar() {
+    const week = weekOf(state.date);
+    const index = weeks.indexOf(week);
+    const end = shiftDate(week, 6);
+    root.querySelector('#dp-week-range').textContent = `${formatted(week, { month: 'short', day: 'numeric' })} – ${formatted(end, { month: 'short', day: 'numeric', year: 'numeric' })}`;
+    root.querySelector('[data-week-step="1"]').disabled = index === weeks.length - 1;
+    root.querySelector('[data-week-step="-1"]').disabled = index === 0;
+    root.querySelector('.dp-week-tabs').innerHTML = weeks.map((start, i) => `<button type="button" class="dp-week-tab" data-week="${start}" aria-label="${longDate(start)} – ${longDate(shiftDate(start, 6))}" aria-pressed="${start === week}">${i === 0 ? 'This week' : i === 1 ? 'Last week' : `${i} weeks ago`}</button>`).join('');
+    root.querySelector('.dp-datebar').innerHTML = Array.from({ length: 7 }, (_, i) => {
+      const date = shiftDate(week, i);
+      return `<button type="button" class="dp-date" data-date="${date}" aria-label="${longDate(date)}" aria-pressed="${!state.expired && state.date === date}" ${availableDates.has(date) ? '' : 'disabled'}><span>${formatted(date, { weekday: 'short' })}</span><b>${Number(date.slice(-2))}</b></button>`;
+    }).join('');
+  }
+  function chooseWeek(week) {
+    if (!weeks.includes(week)) return false;
+    const available = Array.from({ length: 7 }, (_, i) => shiftDate(week, i)).filter(date => availableDates.has(date));
+    const candidate = shiftDate(week, weekdayIndex(state.date));
+    state.date = candidate < available[0] ? available[0] : candidate > available.at(-1) ? available.at(-1) : candidate;
+    return true;
+  }
   function render() {
     const digest = byDate.get(state.date);
     const papers = digest?.papers || [];
@@ -61,7 +88,7 @@
     if (!directions.some(d => d.id === state.direction)) state.direction = 'all';
     root.querySelector('.dp-directions').innerHTML = directions.map(d => `<button type="button" class="dp-direction ${d.id === FRONTIERS ? 'dp-frontier' : ''}" data-direction="${d.id}" aria-pressed="${d.id === state.direction}"><span>${escape(d.name)}</span><small>${d.id === 'all' ? papers.length : papers.filter(p => p.directions.includes(d.id)).length}</small></button>`).join('');
     root.querySelector('.dp-mobile-direction').innerHTML = directions.map(d => `<option value="${d.id}" ${d.id === state.direction ? 'selected' : ''}>${escape(d.name)}</option>`).join('');
-    root.querySelector('.dp-datebar').innerHTML = dates.map(d => `<button type="button" class="dp-date" data-date="${d}" aria-label="${longDate(d)}" aria-pressed="${!state.expired && state.date === d}"><span>${formatted(d, { weekday: 'short' })}</span><b>${d.slice(-2)}</b></button>`).join('');
+    renderCalendar();
     root.querySelector('#dp-date-title').textContent = state.expired ? 'Digest unavailable' : longDate(state.date);
     root.querySelector('#dp-status').textContent = state.expired ? '' : !digest ? 'Not available' : digest.status === 'incomplete' ? 'Retrieval incomplete' : 'Updated';
     if (state.expired) { results.innerHTML = empty('This date is outside the current reading window', 'Use Archive on GitHub for earlier digests, or select a recent date.'); return; }
@@ -84,14 +111,24 @@
   }
   root.addEventListener('click', event => {
     const button = event.target.closest('button');
-    if (!button || !root.contains(button)) return;
-    const direction = button.dataset.direction, date = button.dataset.date;
-    if (!direction && !date) return;
+    if (!button || !root.contains(button) || button.disabled) return;
+    const { direction, date, week, weekStep } = button.dataset;
+    let focusSelector;
+    if (week || weekStep) {
+      const target = week || weeks[weeks.indexOf(weekOf(state.date)) + Number(weekStep)];
+      if (!chooseWeek(target)) return;
+      focusSelector = week ? `[data-week="${target}"]` : `[data-week-step="${weekStep}"]`;
+    } else if (date && availableDates.has(date)) {
+      state.date = date;
+      focusSelector = `[data-date="${date}"]`;
+    } else if (direction) {
+      state.direction = direction;
+      focusSelector = `[data-direction="${direction}"]`;
+    } else return;
     state.expired = false;
-    if (direction) state.direction = direction;
-    if (date) state.date = date;
     render(); saveLocation();
-    root.querySelector(direction ? `[data-direction="${state.direction}"]` : `[data-date="${state.date}"]`)?.focus();
+    const focusTarget = root.querySelector(focusSelector);
+    (focusTarget?.disabled ? root.querySelector(`[data-week="${weekOf(state.date)}"]`) : focusTarget)?.focus();
   });
   root.querySelector('.dp-mobile-direction').addEventListener('change', event => {
     state.direction = event.target.value; state.expired = false; render(); saveLocation();

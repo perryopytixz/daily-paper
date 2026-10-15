@@ -1,7 +1,7 @@
 {
   "title": "Daily Paper",
   "archive_url": "https://github.com/perryopytixz/daily-paper/tree/main/content",
-  "display_days": 30,
+  "display_weeks": 3,
   "timezone": "Asia/Singapore",
   "directions": [
     { "id": "optimization-frontiers", "name": "Optimization Frontiers" },
