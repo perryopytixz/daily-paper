@@ -1,6 +1,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { createHash } from 'node:crypto';
 import { validateConfig, validateDigest, prepareDigest, weekWindow } from './content.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -43,7 +44,11 @@ export async function build({ root = ROOT, today, demo = false } = {}) {
     previous.set(paper.arxiv_id, paper);
   }
   const payload = JSON.stringify({ config, dates, digests, demo }).replace(/</g, '\\u003c').replace(/\u2028/g, '\\u2028').replace(/\u2029/g, '\\u2029');
-  const template = await fs.readFile(path.join(ROOT, 'site/index.html'), 'utf8');
+  let template = await fs.readFile(path.join(ROOT, 'site/index.html'), 'utf8');
+  for (const [file, token] of [['app.js', '__APP_VERSION__'], ['style.css', '__STYLE_VERSION__']]) {
+    const hash = createHash('sha256').update(await fs.readFile(path.join(ROOT, 'site', file))).digest('hex').slice(0, 12);
+    template = template.replace(token, hash);
+  }
   const staging = await fs.mkdtemp(path.join(root, '.build-'));
   const output = path.join(root, demo ? '.preview' : 'dist');
   const backup = `${staging}-previous`;

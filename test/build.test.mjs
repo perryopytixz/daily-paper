@@ -126,6 +126,8 @@ test('build keeps archive source, excludes expired content and removes stale out
   assert.match(await fs.readFile(path.join(root, 'content', `${expired}.json`), 'utf8'), /Expired/);
   const html = await fs.readFile(path.join(root, 'dist/index.html'), 'utf8');
   assert.deepEqual(result.dates, window);
+  assert.match(html, /href="assets\/style\.css\?v=[a-f0-9]{12}"/);
+  assert.match(html, /src="assets\/app\.js\?v=[a-f0-9]{12}"/);
   assert.ok(!html.includes(expired));
   const afterWindow = new Date(Date.parse('2026-09-12') + config.display_weeks * 7 * 86400000).toISOString().slice(0, 10);
   await build({ root, today: afterWindow });
