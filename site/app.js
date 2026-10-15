@@ -68,7 +68,7 @@
     root.querySelector('#dp-week-range').textContent = `${formatted(week, { month: 'short', day: 'numeric' })} – ${formatted(end, { month: 'short', day: 'numeric', year: 'numeric' })}`;
     root.querySelector('[data-week-step="1"]').disabled = index === weeks.length - 1;
     root.querySelector('[data-week-step="-1"]').disabled = index === 0;
-    root.querySelector('.dp-week-tabs').innerHTML = weeks.map((start, i) => `<button type="button" class="dp-week-tab" data-week="${start}" aria-label="${longDate(start)} – ${longDate(shiftDate(start, 6))}" aria-pressed="${start === week}">${i === 0 ? 'This week' : i === 1 ? 'Last week' : `${i} weeks ago`}</button>`).join('');
+    root.querySelector('.dp-week-tabs').innerHTML = weeks.map((start, i) => `<button type="button" class="dp-week-tab" data-week="${start}" aria-label="${longDate(start)} – ${longDate(shiftDate(start, 6))}" aria-pressed="${start === week}">${i === 0 ? 'This week' : i === 1 ? 'Last week' : `${i} weeks ago`}</button>`).reverse().join('');
     root.querySelector('.dp-datebar').innerHTML = Array.from({ length: 7 }, (_, i) => {
       const date = shiftDate(week, i);
       return `<button type="button" class="dp-date" data-date="${date}" aria-label="${longDate(date)}" aria-pressed="${!state.expired && state.date === date}" ${availableDates.has(date) ? '' : 'disabled'}><span>${formatted(date, { weekday: 'short' })}</span><b>${Number(date.slice(-2))}</b></button>`;

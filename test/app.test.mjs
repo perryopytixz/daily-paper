@@ -199,8 +199,8 @@ test('three week buttons reach every date once, with a Monday–Sunday row and d
   digest.date = dates[0];
   const app = mountPage(digest, '', { dates });
   const weeks = weeksInTabs(app);
-  assert.deepEqual(weeks, ['2026-10-12', '2026-10-05', '2026-09-28']);
-  assert.match(app.element('.dp-week-tabs').innerHTML, /This week.*Last week.*2 weeks ago/);
+  assert.deepEqual(weeks, ['2026-09-28', '2026-10-05', '2026-10-12']);
+  assert.match(app.element('.dp-week-tabs').innerHTML, /2 weeks ago.*Last week.*This week/);
   assert.deepEqual(datesInStrip(app), ['2026-10-12', '2026-10-13', '2026-10-14', '2026-10-15', '2026-10-16', '2026-10-17', '2026-10-18']);
   assert.equal(app.element('[data-week-step="-1"]').disabled, true);
   assert.equal((app.element('.dp-datebar').innerHTML.match(/ disabled/g) || []).length, 3);
@@ -216,6 +216,7 @@ test('three week buttons reach every date once, with a Monday–Sunday row and d
     }
   }
   assert.deepEqual(reachable.sort(), [...dates].sort());
+  app.click({ week: weeks[0] });
   assert.equal(app.element('[data-week-step="1"]').disabled, true);
   const before = app.location.hash;
   app.click({ weekStep: '1' });
@@ -245,8 +246,8 @@ test('week changes preserve weekday, clamp future selection, and keep shareable 
 
 test('calendar navigation handles year changes and leap day without extra weeks', () => {
   for (const [today, expected] of [
-    ['2027-01-01', ['2026-12-28', '2026-12-21', '2026-12-14']],
-    ['2028-03-01', ['2028-02-28', '2028-02-21', '2028-02-14']]
+    ['2027-01-01', ['2026-12-14', '2026-12-21', '2026-12-28']],
+    ['2028-03-01', ['2028-02-14', '2028-02-21', '2028-02-28']]
   ]) {
     const dates = weekWindow(today, 3);
     const digest = { ...prepareDigest(fixture()), date: today };
