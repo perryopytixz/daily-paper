@@ -1,0 +1,193 @@
+{
+  "date": "2026-10-17",
+  "status": "complete",
+  "frontiers_status": "recommendations",
+  "highlights": [
+    {
+      "arxiv_id": "2605.06328",
+      "types": [
+        "field",
+        "group"
+      ],
+      "label": "全一阶双层优化推进到时变有向图",
+      "text": "FAB 将值函数罚方法与 Push–Pull 结合，在下层强凸及图／光滑性条件下得到超梯度平方 $O(K^{-2/3})$ 的迭代阶，并给出单层非凸 Push–Pull 的 $O(1/K)$ 界；网络权重因子仍可能随规模恶化。"
+    },
+    {
+      "arxiv_id": "2303.14896",
+      "types": [
+        "field",
+        "group"
+      ],
+      "label": "弱凸束方法给出可计算驻点证书",
+      "text": "PBF 为正则化目标保留切平面和聚合信息，直接产生残差与误差证书，将可执行停止准则连接到方向与 Moreau 近驻点，并给出有效步和总体复杂度；仍需已知弱凸参数。"
+    },
+    {
+      "arxiv_id": "2410.11066",
+      "types": [
+        "group"
+      ],
+      "label": "用周期收缩调节低存储束方法的步长",
+      "text": "Adaptive GPB 根据实际误差收缩放大或减半近端步长，并用单切平面／双切平面模型降低子问题成本。复杂度同时计入成功阶段、失败周期和内层步数，步长阈值保留精度依赖。"
+    },
+    {
+      "arxiv_id": "2605.25837",
+      "types": [
+        "group"
+      ],
+      "label": "均值伪单调下保护随机 Anderson 外推",
+      "text": "两组独立增长批量、线搜索及外推接受门槛共同控制误差，得到几乎必然收敛和最佳迭代残差平方 $O(1/K)$。样本算子无须伪单调，但增长批量与矩条件不可省略。"
+    }
+  ],
+  "papers": [
+    {
+      "arxiv_id": "2605.06328",
+      "version": 1,
+      "title": "FAB: A First-Order AB-based Gradient Algorithm for Distributed Bilevel Optimization over Time-Varying Directed Graphs",
+      "authors": [
+        "Yaoshuai Ma",
+        "Xiao Wang",
+        "Wei Yao",
+        "Jin Zhang"
+      ],
+      "submitted": "2026-05-07",
+      "updated": "2026-05-07",
+      "abstract": "Distributed optimization over time-varying directed graphs has shown promising performance in addressing challenges posed by complex communication constraints in real-world scenarios. In many practical settings, however, the direct application of distributed optimization algorithms encounters additional difficulties, most notably hyperparameter tuning, which our empirical observations suggest can be effectively mitigated by integrating bilevel optimization. Motivated by these findings, we study distributed bilevel optimization over time-varying directed networks, a problem that remains largely unexplored due to the compounded challenges arising from consensus bias in dynamic unbalanced communication and the nested optimization structure. In this work, we propose a fully first-order distributed gradient-based algorithm that integrates the Push-Pull (also known as AB) communication strategy with a value function-based penalty method and establish its non-asymptotic convergence properties. Notably, a simplified variant of our analysis framework for nonconvex single-level distributed optimization establishes a convergence rate for the Push-Pull algorithm, thereby resolving an open question concerning its convergence over time-varying directed graphs. Empirical evaluations across diverse tasks, including hyperparameter tuning, data hyper-cleaning, and reinforcement learning, validate the effectiveness and efficiency of the proposed algorithm.",
+      "arxiv_url": "https://arxiv.org/abs/2605.06328v1",
+      "directions": [
+        "optimization-frontiers",
+        "distributed",
+        "time-varying-networks"
+      ],
+      "summary": "双层优化中的内层求解误差，会与时变有向通信造成的共识偏差相互放大。该文提出 FAB，把值函数罚方法与 AB／Push–Pull 的行随机、列随机混合结合起来，仅计算一阶梯度，同时跟踪上层变量、内层变量及辅助变量。在下层关于内变量强凸、函数具有所需光滑性和 Hessian Lipschitz 正则性、各时刻有向图强连通且非零权重具有统一正下界的假设下，按总迭代数选择步长与罚参数，可得上层超梯度平方的最佳迭代界 $O((ab)^{-n}K^{-2/3})$，其中 $a,b$ 是权重下界、$n$ 是节点数。作者还把分析简化到非凸单层 Push–Pull，得到梯度平方与共识误差的 $O((ab)^{-n}/K)$ 界。新增价值既在于全一阶的分布式双层构造，也在于处理动态不平衡混合的分析；界中的网络因子可能随节点数恶化，不能据此声称线性加速。",
+      "reason": "推荐优先研究罚参数误差、梯度跟踪误差与时变混合误差如何进入同一 Lyapunov 递推。单层非凸 Push–Pull 的结果也有独立阅读价值，可与动态网络上的已有凸分析直接比较；下层强凸及通信权重条件应随复杂度一起引用。",
+      "order": 1
+    },
+    {
+      "arxiv_id": "2303.14896",
+      "version": 3,
+      "title": "Proximal bundle methods for hybrid weakly convex composite optimization problems",
+      "authors": [
+        "Jiaming Liang",
+        "Renato D.C. Monteiro",
+        "Honghao Zhang"
+      ],
+      "submitted": "2023-03-27",
+      "updated": "2026-05-17",
+      "abstract": "This paper establishes the iteration-complexity of proximal bundle methods for solving hybrid (i.e., a blend of smooth and nonsmooth) weakly convex composite optimization (HWC-CO) problems. This is done in a unified manner by considering a proximal bundle framework (PBF), which includes various well-known bundle update schemes. In contrast to hard-to-check stationary conditions (e.g., the Moreau stationarity) used by other methods for solving HWC-CO, PBF uses a stationarity measure that is easily verifiable.",
+      "arxiv_url": "https://arxiv.org/abs/2303.14896v3",
+      "directions": [
+        "optimization-frontiers",
+        "historical-information"
+      ],
+      "summary": "弱凸非光滑复合优化中，Moreau 包络梯度通常难以直接计算，因此复杂度结论未必同时给出可执行的停止办法。该文研究 $f+h$：$f$ 为已知弱凸参数 $m$ 下的弱凸函数，$h$ 为闭凸函数，且所用次梯度满足兼顾光滑与非光滑部分的混合变化界。PBF 在当前近端中心附近对正则化目标构造凸束模型，复用切平面与聚合信息，并区分 serious／null 更新。算法显式输出正则化目标的近似次梯度残差及误差证书，用两个可计算不等式停止；作者进一步给出该准则与方向近驻点、Moreau 近驻点的转换，以及有效步和总体迭代复杂度。与仅使用当前次梯度的近端方法相比，束模型允许较大的近端步长，并改善相关复杂度常数；方法不需要预先知道混合界中的 $M,L$，但仍需要弱凸参数 $m$，目标还须下有界。",
+      "reason": "最值得阅读的是如何把历史切平面产生的模型误差转成可核查的驻点证书，再把该证书接到标准近驻点度量上。它将“保留多少历史信息”“何时结束内层求解”和外层复杂度联系起来，比单纯证明渐近收敛更便于设计和比较弱凸束方法。",
+      "order": 2
+    },
+    {
+      "arxiv_id": "2410.11066",
+      "version": 3,
+      "title": "Complexity and numerical experiments of a new adaptive generic proximal bundle method",
+      "authors": [
+        "Vincent Guigues",
+        "Renato D.C. Monteiro",
+        "Benoit Tran",
+        "Adriana W. Henarejos"
+      ],
+      "submitted": "2024-10-14",
+      "updated": "2026-05-19",
+      "abstract": "This paper develops an adaptive generic proximal bundle method, shows its complexity, and presents numerical experiments comparing this method with other competing methods on a set of optimization problems.",
+      "arxiv_url": "https://arxiv.org/abs/2410.11066v3",
+      "directions": [
+        "optimization-frontiers",
+        "historical-information"
+      ],
+      "summary": "凸复合问题的近端束方法往往对固定近端参数敏感，而多切平面子问题又会增加求解开销。该文提出 Adaptive GPB，在保持 one-cut 或 two-cut 低存储模型的同时，用每个求解周期中可观测的误差收缩检验调节近端步长：收缩表现好则放大，失败则减半。单切平面更新使用近端计算，两切平面子问题可化为标量搜索，从而在具有可计算近端结构的场景中避免通用二次规划求解器。对满足混合次梯度变化界的凸 $f$ 与凸或强凸 $h$，作者分别控制成功阶段、连续失败周期与周期内部迭代数，建立它们乘积形式的总复杂度界，并与固定参数 GPB 和 U-PB 作数值比较。实施不要求已知 $M_f,L_f$ 或强凸模量；但分析中的步长下界依赖目标精度及问题常数，因此复杂度需要连同步长阈值展开理解。",
+      "reason": "推荐关注“用实际收缩验证近端步是否值得继续”的周期控制，而不是把自适应理解为简单调参。它给出低存储束模型、步长增减与总体复杂度相互配合的具体方式，可用于研究历史模型的效用；尤其应阅读失败周期计数，避免只看成功外层迭代的界。",
+      "order": 3
+    },
+    {
+      "arxiv_id": "2605.25837",
+      "version": 2,
+      "title": "An Anderson-accelerated stochastic extragradient method for stochastic variational inequalities",
+      "authors": [
+        "Xin Qu",
+        "Wei Bian",
+        "Xiaojun Chen"
+      ],
+      "submitted": "2026-05-25",
+      "updated": "2026-05-26",
+      "abstract": "In this paper, we propose an Anderson-accelerated stochastic extragradient algorithm for solving a class of stochastic variational inequalities, by incorporating Anderson acceleration into the stochastic extragradient method under a stochastic approximation framework. A key challenge in our setting is that the pseudomonotonicity assumption is only imposed on the expectation of the stochastic operator, rather than on the individual stochastic operator itself and the sample averages utilized in the algorithm. We prove that, despite the lack of pseudomonotonicity in the sampled operators, the sequence generated by the proposed algorithm converges almost surely to a solution of the stochastic variational inequality problem. Additionally, we establish the sublinear convergence rate of the proposed algorithm in terms of the mean residual function, along with its optimal oracle complexity. Finally, we validate the effectiveness of the proposed algorithm through numerical experiments.",
+      "arxiv_url": "https://arxiv.org/abs/2605.25837v2",
+      "directions": [
+        "optimization-frontiers",
+        "stochastic",
+        "historical-information"
+      ],
+      "summary": "把 Anderson 外推加入随机外梯度时，期望算子的伪单调性通常不会传给单次样本或样本均值，确定性收敛论证因而失效。该文提出 Anderson(1)-SEG，以两组相互独立的增长批量估计算子，在随机线搜索后利用阶段残差构造外推系数，并以系数上界和衰减接受门槛保护迭代，否则退回随机外梯度步。只要求均值算子伪单调，但仍需样本算子具有随机 Lipschitz 常数及相应高阶矩条件，并要求批量大小满足 $\\sum_k S_k^{-1/2}<\\infty$。在这些条件和解存在时，作者证明迭代几乎必然收敛至随机变分不等式的解，并得到最佳迭代的期望投影残差平方 $O(1/K)$ 界。原文还对具体增长批量核算 oracle 消耗；上述迭代率不能当作固定批量或同阶样本复杂度。数值例子包括随机分式优化。",
+      "reason": "值得研究的是如何把外推产生的扰动与随机算子误差同时纳入可求和控制，而不要求每个样本算子都伪单调。它为随机优化中的残差信息复用提供了明确的保护机制和条件；与确定性配套论文相比，新增难点在采样、独立性和噪声控制，而非重复一次无噪声分析。",
+      "order": 4
+    },
+    {
+      "arxiv_id": "2408.06606",
+      "version": 2,
+      "title": "An extra gradient Anderson-accelerated algorithm for pseudomonotone variational inequalities",
+      "authors": [
+        "Xin Qu",
+        "Wei Bian",
+        "Xiaojun Chen"
+      ],
+      "submitted": "2024-08-13",
+      "updated": "2026-05-26",
+      "abstract": "This paper proposes an extra gradient Anderson-accelerated algorithm for solving pseudomonotone variational inequalities, which uses the extra gradient scheme with line search to guarantee the global convergence and Anderson acceleration to have fast convergent rate. We prove that the sequence generated by the proposed algorithm from any initial point converges to a solution of the pseudomonotone variational inequality problem without assuming the Lipschitz continuity and contractive condition, which are used for convergence analysis of the extra gradient method and Anderson-accelerated method, respectively in existing literatures. Numerical experiments, particular emphasis on Harker-Pang problem, fractional programming, nonlinear complementarity problem and PDE problem with free boundary, are conducted to validate the effectiveness and good performance of the proposed algorithm comparing with the extra gradient method and Anderson-accelerated method.",
+      "arxiv_url": "https://arxiv.org/abs/2408.06606v2",
+      "directions": [
+        "optimization-frontiers",
+        "historical-information"
+      ],
+      "summary": "伪单调变分不等式的投影固定点映射可能不收缩，直接套用经典 Anderson 加速理论无法保证收敛。该文将深度一的 Anderson 组合嵌入带线搜索的外梯度方法，通过阶段残差的最小二乘系数选择和衰减接受条件决定是否采用外推，并在保护条件未通过时使用外梯度步。在闭凸可行集、解存在、算子连续且伪单调的条件下，作者证明整个迭代序列收敛，无须假设固定点映射收缩或算子全局 Lipschitz 连续；若算子在各解附近局部 Lipschitz 连续，则最佳迭代投影残差平方为 $O(1/K)$。这一理论保证保留了外梯度的残差阶，而加速收益主要由实验展示，不能理解为普遍改善最坏情形复杂度。实验包含二次分式规划及互补问题。",
+      "reason": "推荐阅读外推接受条件如何维持近似 Fejér 下降，以及局部 Lipschitz 条件如何通过序列收敛转成步长下界。对需要复用残差信息、同时保留保底收敛机制的优化算法，这比直接假设整个映射收缩更有参考价值。",
+      "order": 5
+    },
+    {
+      "arxiv_id": "2605.25319",
+      "version": 1,
+      "title": "A Scalable Bundle Method for Exact Reformulation of SDP in Three-Phase Power Flow Feasibility",
+      "authors": [
+        "Bohang Fang",
+        "Lijun Ding",
+        "Cong Chen"
+      ],
+      "submitted": "2026-05-25",
+      "updated": "2026-05-25",
+      "abstract": "Power flow feasibility assessment is computationally challenging for unbalanced three-phase distribution networks. This paper develops a vectorized semidefinite program (SDP) based on the bus injection model (BIM) and reformulates its dual as an exact-penalty problem, enabling us to develop a scalable three-cut proximal bundle method for feasibility assessment. The proposed bundle method is numerically over 400 times faster than MOSEK with less than 1/2000 of its memory; on the decomposed BIM-SDP, approximately 2 times faster with 75% less memory.",
+      "arxiv_url": "https://arxiv.org/abs/2605.25319v1",
+      "directions": [
+        "optimization-frontiers",
+        "historical-information"
+      ],
+      "summary": "三相潮流可行性所对应的半定规划维数较高，通用内点求解的内存与时间成本限制了规模。该文从向量化 BIM-SDP 的对偶出发，将半正定约束改写为最大特征值的精确罚项，再以固定线性切平面、当前特征向量切平面和历史聚合切平面组成三切平面近端束模型。其子问题的对偶仅位于三个分量的概率单纯形上（只有二维自由度），作者按顶点、边和内部依次检验，并借助投影恢复试探点，利用低维结构减少通用 QP 求解开销。精确罚等价命题要求原 SDP 的最优矩阵唯一且罚参数大于该矩阵的迹；将解恢复为真实潮流可行点，还依赖文中引用的径向网络、小损耗罚权重下的秩一条件。IEEE 网络扩展实验相对完整 CVX/MOSEK 模型报告超过 400 倍提速，相对分解后的 BIM-SDP 基线约为 2 倍，二者不可混作同一比较。",
+      "reason": "最值得借鉴的是把领域结构落实到历史模型和近端子问题求解中：固定切平面捕获线性部分，聚合切平面保留过去的信息，再把昂贵子问题压缩为少数乘子的搜索。原文给出了算法、恢复关系与附录证书，超出仅把已有优化求解器用于潮流计算的范围。",
+      "order": 6
+    },
+    {
+      "arxiv_id": "2605.06971",
+      "version": 1,
+      "title": "Decentralized Time-Varying Optimization for Streaming Data via Temporal Weighting",
+      "authors": [
+        "Muhammad Faraz Ul Abrar",
+        "Nicolò Michelusi",
+        "Erik G. Larsson"
+      ],
+      "submitted": "2026-05-07",
+      "updated": "2026-05-07",
+      "abstract": "Classical optimization theory largely focuses on fixed objective functions, whereas many modern learning systems operate in dynamic environments where data arrive sequentially and decisions must be updated continuously. In this work, we study optimization with streaming data over a distributed network of agents. We adopt a structured, weight-based formulation that explicitly captures the streaming-data origin of the time-varying objective: at each time step, every agent receives a new sample, and the network seeks to track the minimizer of a temporally weighted objective formed from all samples observed across the network so far. We focus on decentralized gradient descent (DGD) with a limited communication/computation budget, where at each time step, only a limited number of DGD iterations can be performed before the objective changes again. For strongly convex and smooth losses, we analyze the tracking error with respect to the time-varying minimizer through a fixed-point theory lens. Our analysis reveals that the tracking error decomposes into a fixed-point tracking term and a bias term induced by data heterogeneity across agents. We specialize the analysis to two natural weighting strategies: uniform weights, which treat all samples equally, and exponentially discounted weights, which geometrically decay the influence of older data. Under uniform weighting, DGD tracks the fixed-point at a rate $\\mathcal{O}(1/t)$, whereas discounted weighting yields a non-vanishing fixed-point tracking floor controlled by the discount factor. In both cases, decentralization induces an additional non-zero bias floor under a constant step size. We validate our theoretical findings through numerical simulations.",
+      "arxiv_url": "https://arxiv.org/abs/2605.06971v1",
+      "directions": [
+        "distributed"
+      ],
+      "summary": "流数据持续到达时，分布式算法需要在每次仅执行有限通信／计算步的预算下跟踪变化目标的最优点。该文将目标写成各节点历次损失的时间加权平均，在固定连通无向图上分析多步 DGD，把总跟踪误差分成“跟随当前 DGD 固定点的误差”和“该固定点偏离全局最优点的异质性偏差”。在损失统一强凸光滑、各样本损失最优点有界及步长满足谱稳定条件时，均匀权重使固定点跟踪项以 $O(1/t)$ 衰减；指数遗忘权重则带来由折扣因子和每轮内步数控制的跟踪误差底。恒定步长下，两种权重都还保留分布式异质性偏差，故前一结论并不表示精确收敛至全局最优点。理论以标量决策变量展开，算法计算加权历史目标的梯度，未施加有限存储限制；这里变化的是目标而非通信图。",
+      "reason": "推荐阅读如何从数据累积机制推导漂移量，再把漂移误差与网络固有偏差分开。该分析比只给一个任意最优点漂移上界更能解释均匀记忆与遗忘权重的差别，也便于判断增加内层通信次数究竟减少哪部分误差。",
+      "order": 7
+    }
+  ]
+}
