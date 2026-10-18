@@ -1,0 +1,273 @@
+{
+  "date": "2026-10-18",
+  "status": "complete",
+  "frontiers_status": "recommendations",
+  "highlights": [
+    {
+      "arxiv_id": "2203.07305",
+      "types": [
+        "field"
+      ],
+      "label": "将一阶方法设计转成可认证的全局优化",
+      "text": "BnB-PEP 联合搜索步长、历史梯度系数与性能证书，用定制分支定界处理参数设计的非凸性，并从数值解提取解析证明；最优性相对于给定方法族、预算、假设和容差。"
+    },
+    {
+      "arxiv_id": "2405.08405",
+      "types": [
+        "field"
+      ],
+      "label": "补齐弱凸函数的精确插值条件",
+      "text": "传统弱凸不等式加梯度有界，有限数据上仍可能对应不了任何全局函数。新增球投影修正给出充要刻画，并收紧次梯度法的 Moreau 驻点性能界。"
+    },
+    {
+      "arxiv_id": "1910.09529",
+      "types": [
+        "group"
+      ],
+      "label": "用相邻梯度历史调步长而不要求单步下降",
+      "text": "AdGD 将局部曲率估计与步长增长保护结合，无需函数值回溯。凸且梯度局部 Lipschitz 时点列收敛，加权平均点目标差为 $O(1/k)$。"
+    },
+    {
+      "arxiv_id": "2202.08550",
+      "types": [
+        "group"
+      ],
+      "label": "用延迟窗口中的步长预算保证异步收敛",
+      "text": "在线事件计数测量信息年龄，累计步长约束防止朴素延迟替换失效。PIAG 与异步块坐标法在未知但有界延迟下获得相应速率，并能利用低延迟阶段。"
+    },
+    {
+      "arxiv_id": "2404.07571",
+      "types": [
+        "group"
+      ],
+      "label": "通过局部乘子通信维持耦合约束全过程可行",
+      "text": "等价辅助变量分解与非光滑值函数产生连续时间分布式方法；一般收敛保留局部 Slater 和解存在条件，时变 QP 的有限时间结果另需 LICQ、变化界及足够增益。"
+    },
+    {
+      "arxiv_id": "2302.08781",
+      "types": [
+        "field"
+      ],
+      "label": "把同一线性算子及其转置精确纳入 PEP",
+      "text": "充要插值条件保留矩阵调用的一致性，并导出 Chambolle–Pock 遍历间隙更紧的 $2(N+1)$ 分母界；其他部分的猜想与数值结果分别陈述。"
+    },
+    {
+      "arxiv_id": "2210.00695",
+      "types": [
+        "group"
+      ],
+      "label": "让分布式性能估计的规模不随节点数增长",
+      "text": "共识与正交子空间分解结合谱约束，比较 DGD、DIGing 和 EXTRA。工具给出有效最坏情形上界，多例数值紧性不等于普遍精确性。"
+    }
+  ],
+  "papers": [
+    {
+      "arxiv_id": "2203.07305",
+      "version": 5,
+      "title": "Branch-and-Bound Performance Estimation Programming: A Unified Methodology for Constructing Optimal Optimization Methods",
+      "authors": [
+        "Shuvomoy Das Gupta",
+        "Bart P. G. Van Parys",
+        "Ernest K. Ryu"
+      ],
+      "submitted": "2022-03-14",
+      "updated": "2023-06-08",
+      "abstract": "We present the Branch-and-Bound Performance Estimation Programming (BnB-PEP), a unified methodology for constructing optimal first-order methods for convex and nonconvex optimization. BnB-PEP poses the problem of finding the optimal optimization method as a nonconvex but practically tractable quadratically constrained quadratic optimization problem and solves it to certifiable global optimality using a customized branch-and-bound algorithm. By directly confronting the nonconvexity, BnB-PEP offers significantly more flexibility and removes the many limitations of the prior methodologies. Our customized branch-and-bound algorithm, through exploiting specific problem structures, outperforms the latest off-the-shelf implementations by orders of magnitude, accelerating the solution time from hours to seconds and weeks to minutes. We apply BnB-PEP to several setups for which the prior methodologies do not apply and obtain methods with bounds that improve upon prior state-of-the-art results. Finally, we use the BnB-PEP methodology to find proofs with potential function structures, thereby systematically generating analytical convergence proofs.",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2203.07305v5",
+      "summary": "算法的最坏情形分析可以写成半定规划，但继续优化步长和历史梯度系数时，外层问题往往重新变成非凸。该文提出 BnB-PEP，将固定迭代预算、指定函数类和指定性能指标下的一阶方法设计写成非凸二次约束二次规划，并用定制空间分支定界给出上下界与全局最优性证书。作者利用热启动、变量界和对偶结构降低求解成本，在无动量光滑凸优化、光滑非凸梯度范数和弱凸问题的势函数设计中得到改进方法，并展示如何从数值解提取解析证明。这里的最优性相对于所设定的方法族、预算和指标；涉及 SDP 对偶化的部分保留强对偶假设，计算证书也须连同求解容差理解。",
+      "reason": "最值得阅读的是把“寻找算法”和“寻找它的证明”放进同一个可认证的优化流程。它补上了常规凸 PEP 在参数设计阶段的非凸难点，适合用来判断某个步长或记忆系数的改进空间；小规模设计实验与可推广的解析定理仍应分别核查。",
+      "order": 1
+    },
+    {
+      "arxiv_id": "2405.08405",
+      "version": 3,
+      "title": "A constraint-based approach to function interpolation, with application to performance estimation for weakly convex optimisation",
+      "authors": [
+        "Anne Rubbens",
+        "Julien M. Hendrickx"
+      ],
+      "submitted": "2024-05-14",
+      "updated": "2025-09-15",
+      "abstract": "We consider the problem of obtaining interpolation constraints for function classes, i.e., necessary and sufficient constraints that a set of points, function values and (sub)gradients must satisfy to ensure the existence of a global function of the class considered, consistent with this set. The derivation of such constraints is crucial, e.g., in the performance analysis of optimization methods, since obtaining a priori tight performance guarantees requires using a tight description of function classes of interest. We propose an approach that allows setting aside all analytic properties of the function class to work only at an algebraic level, and to obtain counterexamples when a condition characterizing a function class cannot serve as an interpolation constraint. As an illustration, we provide interpolation constraints for the class of weakly convex functions with bounded subgradients, and rely on these constraints to outperform state-of-the-art bounds on the performance of the subgradient method on this class.",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2405.08405v3",
+      "summary": "在有限个迭代点上满足弱凸不等式和次梯度有界条件，并不保证这些数据来自同一个全局弱凸函数；直接用这类条件分析算法可能留下保守性。该文以“能否逐点扩张有限数据集”为核心，提出检验插值约束的代数框架，并能构造说明某种离散刻画不足的反例。对弱凸且次梯度统一有界的函数类，作者在传统弱凸下界中加入由球投影产生的修正项，证明强化条件对全局可插值性是充要的。随后将其用于次梯度法的有限预算 PEP，以 Moreau 包络梯度平方的平均值衡量近驻点程度，数值上得到比已有分析更紧的界；改进同时来自强化插值约束和利用多步信息，不能全部归因于其中一项。",
+      "reason": "推荐关注“全局性质的两两离散化可能不充分”这一具体障碍，以及如何用可扩张性和反例把它转成可验证的建模问题。对弱凸算法，精确描述可行的函数数据有助于分清算法本身的局限和证明工具的保守性，也能与现有 Moreau 驻点证书形成互补。",
+      "order": 2
+    },
+    {
+      "arxiv_id": "1910.09529",
+      "version": 2,
+      "title": "Adaptive Gradient Descent without Descent",
+      "authors": [
+        "Yura Malitsky",
+        "Konstantin Mishchenko"
+      ],
+      "submitted": "2019-10-21",
+      "updated": "2020-08-15",
+      "abstract": "We present a strikingly simple proof that two rules are sufficient to automate gradient descent: 1) don't increase the stepsize too fast and 2) don't overstep the local curvature. No need for functional values, no line search, no information about the function except for the gradients. By following these rules, you get a method adaptive to the local geometry, with convergence guarantees depending only on the smoothness in a neighborhood of a solution. Given that the problem is convex, our method converges even if the global smoothness constant is infinity. As an illustration, it can minimize arbitrary continuously twice-differentiable convex function. We examine its performance on a range of convex and nonconvex problems, including logistic regression and matrix factorization.",
+      "directions": [
+        "optimization-frontiers",
+        "historical-information"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/1910.09529v2",
+      "summary": "不知道全局光滑常数时，梯度法通常依赖额外函数值计算和回溯来选步长。该文的 AdGD 只使用相邻迭代点与梯度差估计局部曲率，同时限制步长增长速度；每次只做一次梯度更新，不要求目标值单调下降。对有最优解、梯度局部 Lipschitz 的可微凸函数，作者用包含两步位移和函数差的 Lyapunov 量证明整个点列收敛，并给出特定加权平均点目标差的 $O(1/k)$ 界；局部强凸时，采用更保守的步长增长保护还得到线性收敛结果。这里不需要已知有限的全局光滑常数，但凸性和局部正则性仍是该主定理的条件，文中的非凸实验不能代替一般非凸收敛定理。",
+      "reason": "最值得研究的是相邻梯度信息如何与步长增长保护共同作用，而非单独采用一个局部曲率估计。其两步能量分析为历史信息驱动的步长规则提供了简洁基准；阅读时应区分点列收敛与加权平均点的复杂度。",
+      "order": 3
+    },
+    {
+      "arxiv_id": "2202.08550",
+      "version": 3,
+      "title": "Delay-adaptive step-sizes for asynchronous learning",
+      "authors": [
+        "Xuyang Wu",
+        "Sindri Magnússon",
+        "Hamid Reza Feyzmahdavian",
+        "Mikael Johansson"
+      ],
+      "submitted": "2022-02-17",
+      "updated": "2022-04-11",
+      "abstract": "In scalable machine learning systems, model training is often parallelized over multiple nodes that run without tight synchronization. Most analysis results for the related asynchronous algorithms use an upper bound on the information delays in the system to determine learning rates. Not only are such bounds hard to obtain in advance, but they also result in unnecessarily slow convergence. In this paper, we show that it is possible to use learning rates that depend on the actual time-varying delays in the system. We develop general convergence results for delay-adaptive asynchronous iterations and specialize these to proximal incremental gradient descent and block-coordinate descent algorithms. For each of these methods, we demonstrate how delays can be measured on-line, present delay-adaptive step-size policies, and illustrate their theoretical and practical advantages over the state-of-the-art.",
+      "directions": [
+        "optimization-frontiers",
+        "distributed",
+        "asynchronous-distributed"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2202.08550v3",
+      "summary": "异步算法若用预先给定的最大延迟设置固定步长，实际延迟较小时也会承受保守代价。该文通过事件计数在线记录梯度或坐标信息的年龄，并让当前步长与尚未消化的历史步长总量共同满足一个延迟窗口约束；直接把固定步长公式中的最大延迟替换成当前延迟并不总能保证收敛。作者建立处理延迟和变步长的统一递推，应用于 PIAG 与异步块坐标下降：非凸时控制驻点残差，凸 PIAG 给出函数差界，近端 PL 条件下给出线性型界。显式速率通过累计有效步长刻画；在未知但有界的延迟下，两种具体策略恢复相应最坏情形阶，并可在低延迟阶段使用更大步长。",
+      "reason": "推荐优先阅读延迟窗口中的步长预算，以及它如何进入 Lyapunov 递推。它直接回应异步优化中“可测到当前延迟，却不知道未来最大延迟”的参数设置问题，并给出朴素替换规则失效的对照；保证并非针对任意无界延迟。",
+      "order": 4
+    },
+    {
+      "arxiv_id": "2404.07571",
+      "version": 2,
+      "title": "A continuous-time violation-free multi-agent optimization algorithm and its applications to safe distributed control",
+      "authors": [
+        "Xiao Tan",
+        "Changxin Liu",
+        "Karl H. Johansson",
+        "Dimos V. Dimarogonas"
+      ],
+      "submitted": "2024-04-11",
+      "updated": "2025-02-04",
+      "abstract": "In this work, we propose a continuous-time distributed optimization algorithm with guaranteed zero coupling constraint violation and apply it to safe distributed control in the presence of multiple control barrier functions (CBF). The optimization problem is defined over a network that collectively minimizes a separable cost function with coupled linear constraints. An equivalent optimization problem with auxiliary decision variables and a decoupling structure is proposed. A sensitivity analysis demonstrates that the subgradient information can be computed using local information. This then leads to a subgradient algorithm for updating the auxiliary variables. A case with sparse coupling constraints is further considered, and it is shown to have better memory and communication efficiency. For the specific case of a CBF-induced time-varying quadratic program (QP), an update law is proposed that achieves finite-time convergence. Numerical results involving a static resource allocation problem and a safe coordination problem for a multi-agent system demonstrate the efficiency and effectiveness of our proposed algorithms.",
+      "directions": [
+        "optimization-frontiers",
+        "distributed",
+        "safety-critical"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2404.07571v2",
+      "summary": "耦合约束把多个节点的变量绑在一起，局部更新通常难以同时维持全过程可行和精确最优。该文用图 Laplacian 与辅助变量将线性耦合不等式分解为局部约束，证明等价性，并通过局部最优问题的乘子构造外层值函数的次梯度，再设计连续时间分布式更新。对凸局部目标、连通无向图、有限最优值及所有辅助参数下的局部 Slater 条件，在所需 Carathéodory 解存在的前提下，作者证明向最优集合收敛且耦合约束始终满足；稀疏耦合版本减少通信与存储。对控制屏障函数诱导的时变 QP，归一化更新另在局部 LICQ、参数变化有界及增益足够大时获得有限时间收敛与全过程约束满足。",
+      "reason": "值得优先研究的是如何把“每个辅助参数下的局部可解性”与全局可行性、乘子通信和非光滑值函数联系起来。相较仅保证渐近可行的方法，它直接处理可随时停止并实施的原始变量；连续时间证明中的解存在性，以及时变 QP 的正则性和增益条件，都应纳入后续算法设计。",
+      "order": 5
+    },
+    {
+      "arxiv_id": "2302.08781",
+      "version": 3,
+      "title": "Interpolation Conditions for Linear Operators and Applications to Performance Estimation Problems",
+      "authors": [
+        "Nizar Bousselmi",
+        "Julien M. Hendrickx",
+        "François Glineur"
+      ],
+      "submitted": "2023-02-17",
+      "updated": "2024-03-15",
+      "abstract": "The Performance Estimation Problem methodology makes it possible to determine the exact worst-case performance of an optimization method. In this work, we generalize this framework to first-order methods involving linear operators. This extension requires an explicit formulation of interpolation conditions for those linear operators. We consider the class of linear operators $\\mathcal{M}:x \\mapsto Mx$ where matrix $M$ has bounded singular values, and the class of linear operators where $M$ is symmetric and has bounded eigenvalues. We describe interpolation conditions for these classes, i.e. necessary and sufficient conditions that, given a list of pairs $\\{(x_i,y_i)\\}$, characterize the existence of a linear operator mapping $x_i$ to $y_i$ for all $i$. Using these conditions, we first identify the exact worst-case behavior of the gradient method applied to the composed objective $h\\circ \\mathcal{M}$, and observe that it always corresponds to $\\mathcal{M}$ being a scaling operator. We then investigate the Chambolle-Pock method applied to $f+g\\circ \\mathcal{M}$, and improve the existing analysis to obtain a proof of the exact convergence rate of the primal-dual gap. In addition, we study how this method behaves on Lipschitz convex functions, and obtain a numerical convergence rate for the primal accuracy of the last iterate. We also show numerically that averaging iterates is beneficial in this setting.",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2302.08781v3",
+      "summary": "原始对偶方法反复调用同一个线性算子及其转置，仅分别限制每次乘法的范数会丢失它们来自同一矩阵的结构。该文给出范数有界的一般线性算子、谱区间有界的对称算子以及反对称算子的充要插值条件，借助 Gram 矩阵把有限次算子调用精确纳入 PEP。作者将工具用于复合目标的梯度法和 Chambolle–Pock 方法；对凸可近端的 $f,g$、$\\tau\\sigma\\|M\\|^2\\leq1$，把所用初始耦合距离下的遍历原始对偶间隙界从分母 $2N$ 改进为 $2(N+1)$，并给出解析证明。复合梯度法的一些一般最坏情形表达式仍是猜想，最后原始迭代误差及平均效果的部分结果来自数值 PEP，须与已证明定理区分。",
+      "reason": "最值得阅读的是同时约束 $M$ 与 $M^\\top$ 的一致性条件，它避免把每次通信或线性变换当成互不相关的扰动。该工具可以保留复合结构分析算法；Chambolle–Pock 的例子还展示了从数值最坏情形中提取更紧解析界的完整路径。",
+      "order": 6
+    },
+    {
+      "arxiv_id": "2210.00695",
+      "version": 1,
+      "title": "Automated Performance Estimation for Decentralized Optimization via Network Size Independent Problems",
+      "authors": [
+        "Sebastien Colla",
+        "Julien M. Hendrickx"
+      ],
+      "submitted": "2022-10-03",
+      "updated": "2022-10-03",
+      "abstract": "We develop a novel formulation of the Performance Estimation Problem (PEP) for decentralized optimization whose size is independent of the number of agents in the network. The PEP approach allows computing automatically the worst-case performance and worst-case instance of first-order optimization methods by solving an SDP. Unlike previous work, the size of our new PEP formulation is independent of the network size. For this purpose, we take a global view of the decentralized problem and we also decouple the consensus subspace and its orthogonal complement. We apply our methodology to different decentralized methods such as DGD, DIGing and EXTRA and obtain numerically tight performance guarantees that are valid for any network size.",
+      "directions": [
+        "optimization-frontiers",
+        "distributed"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2210.00695v1",
+      "summary": "分布式方法的最坏情形 PEP 若逐个节点建模，半定规划会随网络规模增长。该文改用整体目标，再把变量分解成共识子空间和正交分量，用谱区间约束表示对称广义双随机混合矩阵，从而得到规模不随节点数增加的有限预算问题；节点数在某些设定中仍可能作为缩放系数出现。作者对 DGD、DIGing 和 EXTRA 计算性能界，并比较固定与时变混合矩阵下的行为。该构造放松了目标的可分离性，谱约束也按松弛处理，因此提供有效上界及多个实验中的数值紧性，不能将其概括为所有网络上的普遍精确表征；广义双随机矩阵还允许负权重。",
+      "reason": "推荐关注共识分解如何消除节点数造成的建模增长，以及放松可分离性究竟损失了哪些信息。它可用作比较通信与优化误差、检验步长和构造坏例子的分析工具；特别适合在证明前先检查某个分布式方案对网络变化的敏感性。",
+      "order": 7
+    },
+    {
+      "arxiv_id": "1812.00146",
+      "version": 3,
+      "title": "Operator Splitting Performance Estimation: Tight contraction factors and optimal parameter selection",
+      "authors": [
+        "Ernest K. Ryu",
+        "Adrien B. Taylor",
+        "Carolina Bergeling",
+        "Pontus Giselsson"
+      ],
+      "submitted": "2018-12-01",
+      "updated": "2020-04-30",
+      "abstract": "We propose a methodology for studying the performance of common splitting methods through semidefinite programming. We prove tightness of the methodology and demonstrate its value by presenting two applications of it. First, we use the methodology as a tool for computer-assisted proofs to prove tight analytical contraction factors for Douglas--Rachford splitting that are likely too complicated for a human to find bare-handed. Second, we use the methodology as an algorithmic tool to computationally select the optimal splitting method parameters by solving a series of semidefinite programs.",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/1812.00146v3",
+      "summary": "分裂方法的收缩率常由逐项不等式估计得到，界是否可达到、参数是否最优并不总是清楚。该文提出 OSPEP，用单调、强单调、余强单调与 Lipschitz 等算子类的插值条件，将前向后向、Douglas–Rachford 和 Davis–Yin 分裂的最坏收缩因子写成半定规划；在所述算子类及足够维数下证明表征精确。作者利用 SDP 对偶解发现并验证 Douglas–Rachford 的分段解析紧界，同时通过一系列 SDP 搜索步长和松弛参数。收缩与线性收敛结论依赖具体选择的强单调性、余强单调性等组合；工具并不意味着任意单调问题都具有严格小于一的收缩因子。",
+      "reason": "推荐阅读从插值可实现性到匹配下界，再到参数选择的论证链条。它把“证明得到一个收缩上界”推进到“知道该上界在既定假设下不能再改善”，为比较分裂方法和辨认分析保守性提供了可重复使用的工具。",
+      "order": 8
+    },
+    {
+      "arxiv_id": "2410.14811",
+      "version": 3,
+      "title": "Performance Estimation for Smooth and Strongly Convex Sets",
+      "authors": [
+        "Alan Luner",
+        "Benjamin Grimmer"
+      ],
+      "submitted": "2024-10-18",
+      "updated": "2026-06-02",
+      "abstract": "We extend recent computer-assisted design and analysis techniques for first-order optimization over structured functions--known as performance estimation--to apply to structured sets. We prove ``interpolation theorems'' for smooth and strongly convex sets with interior point conditions and bounded diameter, showing a wide range of extremal questions amount to structured mathematical programs. Prior function interpolation theorems are recovered as a limit of our set interpolation theory. Our theory provides finite-dimensional formulations of performance estimation problems for algorithms utilizing separating hyperplane oracles and linear optimization oracles of smooth/strongly convex sets. As applications of this computer-assisted machinery, we identify a minimax optimal separating hyperplane method and areas for improvement in the theory of Frank-Wolfe and non-Lipschitz Smooth Optimization.",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2410.14811v3",
+      "summary": "传统 PEP 擅长描述目标函数，却较难同时利用约束集合的光滑性、强凸性、直径和内部点信息。该文通过边界点、法向量及内部点的有限观察数据构造集合插值理论，并将函数插值作为其极限情形联系起来。在不施加有效直径约束或不要求集合强凸等情形，可得到充要刻画；一般同时带强凸与直径限制时，必要条件与充分条件之间仍保留至多 $\\sqrt{2}$ 的尺度间隙。作者据此建立分离超平面算法的 PEP 并证明一个 minimax 最优方法，也探索 Frank–Wolfe 与非 Lipschitz 光滑目标；后两类计算中可能保留非凸等式或秩约束，不能一概当成凸 SDP。",
+      "reason": "最值得阅读的是把集合几何作为可插值的信息对象，而不只把约束看成投影或指示函数。它为比较分离、线性最小化等不同 oracle 提供统一建模入口；同时明确标出几何刻画和计算可解性之间尚存的间隙。",
+      "order": 9
+    },
+    {
+      "arxiv_id": "1508.05003",
+      "version": 1,
+      "title": "AdaDelay: Delay Adaptive Distributed Stochastic Convex Optimization",
+      "authors": [
+        "Suvrit Sra",
+        "Adams Wei Yu",
+        "Mu Li",
+        "Alexander J. Smola"
+      ],
+      "submitted": "2015-08-20",
+      "updated": "2015-08-20",
+      "abstract": "We study distributed stochastic convex optimization under the delayed gradient model where the server nodes perform parameter updates, while the worker nodes compute stochastic gradients. We discuss, analyze, and experiment with a setup motivated by the behavior of real-world distributed computation networks, where the machines are differently slow at different time. Therefore, we allow the parameter updates to be sensitive to the actual delays experienced, rather than to worst-case bounds on the maximum delay. This sensitivity leads to larger stepsizes, that can help gain rapid initial convergence without having to wait too long for slower machines, while maintaining the same asymptotic complexity. We obtain encouraging improvements to overall convergence for distributed experiments on real datasets with up to billions of examples and features.",
+      "directions": [
+        "distributed",
+        "asynchronous-distributed",
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/1508.05003v1",
+      "summary": "参数服务器收到的随机梯度具有不同年龄，统一按最大延迟缩小步长可能拖慢低延迟更新。该文的 AdaDelay 让投影随机梯度步长显式依赖当前梯度的实际延迟，例如采用 $\\alpha(t,\\tau_t)=(L+c\\sqrt{t+\\tau_t})^{-1}$，并分析因此产生的非单调、与延迟相关的步长序列。对紧凸域上的光滑凸目标、有限方差及有界梯度，在均匀有界延迟或所述缩放与矩条件的延迟模型下，作者控制平均迭代点的期望目标误差；均匀模型给出 $O(T^{-1/2})$ 主阶及含延迟常数的低阶项。大规模实验说明实际延迟加权的效益，但理论不覆盖任意依赖、任意无界的延迟过程。",
+      "reason": "推荐把它与同日的延迟窗口步长预算配合阅读：这里处理随机梯度和延迟分布引出的期望误差项，后者处理未知最大延迟下的确定性异步递推。两者展示“按实际延迟调参”的不同数学困难，适合作为研究异构计算噪声与时滞耦合的基础对照。",
+      "order": 10
+    }
+  ]
+}
