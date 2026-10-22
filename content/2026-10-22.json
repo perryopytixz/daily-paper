@@ -1,0 +1,313 @@
+{
+  "date": "2026-10-22",
+  "status": "complete",
+  "frontiers_status": "recommendations",
+  "highlights": [
+    {
+      "arxiv_id": "2610.30073",
+      "types": [
+        "group"
+      ],
+      "label": "窗口 Anderson 加速｜刻画历史长度何时保证更快",
+      "text": "作者用余弦矩可行性和多项式证书，刻画仿射压缩下 AA(m) 对所有初值严格改善范数因子 $q$ 的充要条件，并构造完全不加速的反例。只有 $q$ 等于谱半径时，这才直接比较普通迭代的最坏渐近速度。"
+    },
+    {
+      "arxiv_id": "2610.29166",
+      "types": [
+        "field",
+        "group"
+      ],
+      "label": "随机重排末次点｜影子序列放宽步长限制",
+      "text": "影子序列与 RR 共享每轮端点，让一般凸光滑有限和问题的末次点分析支持任意非增轮步长。初始步长上界由 $1/(nL)$ 放宽至 $1/[L\\,\\mathrm{polylog}(nK)]$ 尺度；定理保留有限轮预算和最优点方差依赖。"
+    },
+    {
+      "arxiv_id": "2610.30122",
+      "types": [
+        "field"
+      ],
+      "label": "高维不动点计算｜将总计算量推进到准多项式",
+      "text": "通过递归 boosting 标记与搜索立方体收缩，作者对一般无穷范数不扩张映射给出 $[\\log(1/\\varepsilon)]^{O(\\log^2 d)}$ 的算术及精确求值复杂度。进展同时控制查询与查询点选择成本，不要求映射单调。"
+    },
+    {
+      "arxiv_id": "2610.29261",
+      "types": [
+        "group"
+      ],
+      "label": "去中心化 GDRO｜保证各节点自己的原目标误差",
+      "text": "新的误差分解把 GDRO 化为耦合在线学习与一致性控制，直接保证每个节点的时间平均模型，而非仅分析对偶正则替代目标。凸、有界及固定图条件下达到 $O(\\sqrt{\\log m/T})$；每轮所需多次 gossip 另计通信成本。"
+    },
+    {
+      "arxiv_id": "2610.29548",
+      "types": [
+        "field"
+      ],
+      "label": "算法对偶｜在非单调背景下保留分裂与 ADMM 对应",
+      "text": "广义预解式 Moreau 恒等式给出 FBS–AMA、DR–ADMM 的代数对应，并导出后向—后向分裂的原始算法。对应关系只要求有关更新有定义；PBBS 收敛仍依赖凸性等条件，且针对含二次正则的松弛问题。"
+    },
+    {
+      "arxiv_id": "2610.20420",
+      "types": [
+        "group"
+      ],
+      "label": "Bregman 惯性新版｜二次增长下有限重启并最终线性收敛",
+      "text": "v2 将局部强凸放宽为内点解处的局部二次增长，并把有限重启与最终线性阶段连起来。精确更新、核局部正定及 $\\lambda L<1$ 条件下，从任意内点初始化可获得该保证；所有被拒近端调用也纳入全局成本。"
+    },
+    {
+      "arxiv_id": "2407.20195",
+      "types": [
+        "group"
+      ],
+      "label": "原始—对偶加速｜用速度修正控制双线性不稳定",
+      "text": "从二次博弈谱分析出发，作者构造带速度修正的 Bregman 原始—对偶流与半隐式分裂算法，建立依赖耦合、光滑和凸性参数的非遍历界。一般凸、单侧强凸和双侧强凸分别讨论，离散线性界有相应条件。"
+    },
+    {
+      "arxiv_id": "2610.29192",
+      "types": [
+        "field"
+      ],
+      "label": "广义光滑 SAM｜同时控制小梯度与大梯度失真",
+      "text": "作者给出 SAM 循环、USAM 发散的例子和统一失真控制的必要条件，再用曲率上界缩放扰动与下降步。CS-SAM 在规定广义光滑及参数条件下获得确定性非凸、凸和 PL 保证；小批量训练另作实验评估。"
+    }
+  ],
+  "papers": [
+    {
+      "arxiv_id": "2610.30073",
+      "version": 1,
+      "title": "When Windowed Anderson Acceleration Converges Faster",
+      "authors": [
+        "Gilad Lerman",
+        "Teng Zhang"
+      ],
+      "abstract": "Windowed Anderson acceleration AA($m$) combines at most $m+1$ recent iterates by least squares. For a real affine contraction $x\\mapsto Wx+b$ with $q=\\|W\\| \\in(0,1)$, we determine exactly when AA($m$) converges from every starting point with an asymptotic factor below $q$. We give a polynomial criterion for this improvement and an equivalent spectral condition: there is no probability distribution on the phases of the eigenvalues of modulus $q$ whose first $m$ cosine moments are $q,q^2,\\ldots,q^m$. If such a distribution exists, we construct a starting point from which AA($m$) reproduces fixed-point iteration at every step. Otherwise, over a fixed number of consecutive steps, every run contracts the residual norm by a common factor strictly smaller than the corresponding power of $q$. The polynomial criterion also gives explicit convergence-rate bounds with constants independent of the dimension. When $q$ equals the spectral radius, this characterizes improvement over the asymptotic convergence factor of fixed-point iteration. For general affine contractions, the asymptotic factor never exceeds the numerical radius of $W$, and a related moment condition gives a uniform upper bound strictly below that radius.",
+      "submitted": "2026-10-21",
+      "updated": "2026-10-21",
+      "arxiv_url": "https://arxiv.org/abs/2610.30073v1",
+      "directions": [
+        "historical-information"
+      ],
+      "summary": "有限窗口 Anderson 加速只保留少量历史残差，最小二乘组合却未必改善渐近速度。该文针对实仿射压缩映射，给出 AA(m) 从每个初值都以严格小于工作范数压缩因子 $q=\\|W\\|$ 的速度收敛的充要条件：模长为 $q$ 的特征值相位上，不存在前 $m$ 个余弦矩分别等于 $q,\\ldots,q^m$ 的概率分布。条件成立时，多项式证书给出与维数无关的固定步数残差改进；条件失败时，作者构造 AA 完全复制普通不动点迭代的初值。对自伴压缩，AA(2) 总能改进，而 AA(1) 在同时含正负端点特征值时可能失败。比较对象是 $q$；只有它等于谱半径时，才直接刻画相对普通迭代最坏渐近因子的加速。一般非正规情形下 AA(1) 甚至可能慢于谱半径基准，非线性局部扩展还要求限制混合系数的绝对值和。",
+      "reason": "推荐优先阅读余弦矩障碍与多项式证书之间的等价关系。它把有限历史长度是否足够从经验调参问题变成可核查的谱条件，并同时给出失败初值，直接帮助理解历史残差组合何时有效。尤其应保留工作内积、范数因子和谱半径三个对象的区别，避免将对称线性模型中的加速直觉直接推广到一般网络迭代。",
+      "order": 1
+    },
+    {
+      "arxiv_id": "2610.29166",
+      "version": 1,
+      "title": "A Shadow Sequence Technique for Last-Iterate Convergence Analysis of the Random Reshuffling Method: Relaxed Stepsize Conditions and Beyond",
+      "authors": [
+        "Hai Liu",
+        "Tiande Guo",
+        "Congying Han"
+      ],
+      "abstract": "We prove two last-iterate convergence bounds of the random reshuffling (RR) method in the smooth general convex finite-sum optimization. In the proved results, the stepsize sequence $\\{\\eta_{k}\\}_{k}$ of RR is an arbitrary positive non-increasing sequence with $\\eta_{1}\\lesssim 1/(\\operatorname{polylog}(n)L)$, where $n$ is the number of components of the finite-sum objective and $L$ is the smoothness parameter. Specifically, a last-iterate convergence rate $\\widetilde{\\mathcal{O}}\\left(\\frac{\\Vert x_{1}^{1}-x_{*}\\Vert^2}{n\\sum_{k=1}^{K}\\eta_{k}}+\\sigma_{*}^{2}\\sum_{k=1}^{K}\\frac{\\eta_{k}^{2}}{\\sum_{l=k}^{K}\\eta_{l}}\\right)$ of RR is proved, where $x_{*}$ is a solution of the optimization problem and $\\sigma_{*}^{2}$ is the variance at the solution $x_{*}$. This rate is novel to the last-iterate of RR. Also, a last-iterate convergence rate $\\widetilde{\\mathcal{O}}\\left(\\frac{\\Vert x_{1}^{1}-x_{*}\\Vert^2}{n\\sum_{k=1}^{K}\\eta_{k}}+n\\sigma_{*}^{2}\\sum_{k=1}^{K}\\frac{\\eta_{k}^{3}}{\\sum_{l=k}^{K}\\eta_{l}} \\right)$ of RR is proved. A similar rate exists in the literature, but only under a restrictive stepsize condition $\\eta\\lesssim 1/(n L)$ and does not allow varying stepsizes. At the heart of our proof for the latter rate is an auxiliary sequence named the shadow sequence, which has the same epoch endpoints with the iterate sequence generated by RR. The shadow sequence can be regarded as an iterate sequence generated by performing an inexact RR on an auxiliary interpolated problem or performing a novel variant of random reshuffled SVRG on the original problem. The shadow sequence technique sheds light on deeper understanding of RR and may be useful in the analysis of other shuffling methods.",
+      "submitted": "2026-10-21",
+      "updated": "2026-10-21",
+      "arxiv_url": "https://arxiv.org/abs/2610.29166v1",
+      "directions": [
+        "stochastic",
+        "optimization-frontiers"
+      ],
+      "summary": "随机重排在每轮无放回访问全部分量，其轮内梯度有偏，使一般凸有限和问题的末次点分析长期需要过小的步长。该文构造与真实 RR 序列共享每轮端点的影子序列，将其解释为插值问题上的非精确 RR，或原问题上的一种重排 SVRG，从而建立两类期望末次函数误差界。分量函数凸且 $L$ 光滑、存在最优解时，允许任意正的非增轮步长；精确定理中令 $\\Lambda=1+\\log(nK+1)$，两类结果分别要求初始步长不超过常数倍 $1/(L\\Lambda^{3/2})$ 与 $1/(L\\Lambda^2)$。这将旧分析中的 $1/(nL)$ 限制放宽到依赖样本数和有限轮预算的对数尺度，并保留由最优点分量梯度方差控制的两种噪声项。结论针对第 $K$ 轮结束点，既允许变化步长，也不要求全局有界梯度；这些有限预算上界并不自动说明所有常步长运行都精确收敛。",
+      "reason": "推荐关注影子序列如何保留真实算法输出，又重写轮内误差的相关结构。这为分析无放回随机更新提供了可复用的工具，并同时缩小末次点理论与常用步长之间的差距。相较只给平均点或固定步长结果，该文对非增调度和两类方差界的统一处理具有独立阅读价值；使用结论时应按定理保留轮数的对数依赖。",
+      "order": 2
+    },
+    {
+      "arxiv_id": "2610.30122",
+      "version": 1,
+      "title": "A Quasipolynomial Algorithm for $\\ell_\\infty$ Contractions",
+      "authors": [
+        "Ashkan Soleymani",
+        "Gabriele Farina"
+      ],
+      "abstract": "We give an algorithm for computing an $\\varepsilon$-approximate fixed point of any $d$-dimensional nonexpansion with respect to the $\\ell_\\infty$ norm in time $\\log(1/\\varepsilon)^{O(\\log^2 d)}$. At its core, our method uses a boosting argument to geometrically shrink a search region. Among other consequences, our algorithm implies that simple stochastic games can be solved in quasipolynomial time.",
+      "submitted": "2026-10-21",
+      "updated": "2026-10-21",
+      "arxiv_url": "https://arxiv.org/abs/2610.30122v1",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "summary": "高维无穷范数不扩张映射的近似不动点可以只需多项式次查询，但选择查询点的计算开销仍可能很高。该文通过递归的 boosting 标记程序识别包含不动点的立方体中哪些面可以安全内移，使搜索区域逐轮按固定比例缩小。对 $f:[0,1]^d\\to[0,1]^d$ 的无穷范数不扩张映射，作者给出求残差不超过 $\\varepsilon$ 的确定性算法，算术操作与精确映射求值总数为 $[\\log(1/\\varepsilon)]^{O(\\log^2 d)}$，将此前的维数次指数型指数改为对数平方。对压缩间隙为 $\\gamma$ 的映射，求距离唯一不动点不超过 $\\varepsilon$ 的复杂度相应依赖 $\\log(1/(\\gamma\\varepsilon))$。论文还结合已有归约给出简单随机博弈等问题的准多项式时间结论；核心固定点算法不要求映射逐坐标单调。复杂度在精确求值与算术模型中计算，不能直接解释为通用浮点实现的位复杂度或实际大规模求解效率。",
+      "reason": "推荐优先阅读把局部标记放大为全坐标可靠收缩证书的机制。它推进的是查询复杂度与真实计算开销之间的缺口，而不是仅改善普通压缩迭代的常数。对研究非扩张算子求解的人，递归降维、boosting 和几何搜索的组合提供了与经典迭代法不同的算法路线。",
+      "order": 3
+    },
+    {
+      "arxiv_id": "2610.29261",
+      "version": 1,
+      "title": "Group Distributionally Robust Optimization over Decentralized Networks",
+      "authors": [
+        "Haomin Bai",
+        "Junyan Sun",
+        "Quan Cheng",
+        "Yuanyu Wan",
+        "Lijun Zhang"
+      ],
+      "abstract": "We study group distributionally robust optimization (GDRO) over decentralized networks, where workers collaborate to learn robust models by minimizing the maximum local risk. Existing methods optimize only dual-regularized surrogates and establish guarantees for a globally averaged model that is not available to workers. In this paper, we directly optimize the original GDRO objective and establish guarantees for local models in semi-decentralized (SemiDec) and fully decentralized (Dec) settings. A key difficulty is that applying the primal-dual decomposition from centralized GDRO yields worker-dependent losses whose evaluation requires unavailable cross-worker information. To address this challenge, we develop a novel error decomposition that recasts decentralized GDRO as (i) a decentralized online convex optimization (D-OCO) problem and a prediction-with-expert-advice problem in SemiDec, and as (ii) two coupled D-OCO problems in Dec, with discrepancy terms capturing inconsistencies among local decisions. By isolating consensus errors in analysis, we develop modular frameworks that support different consensus routines. We then establish the \\emph{first} per-worker convergence guarantees for optimizing the original GDRO objective over decentralized networks. Instantiations with accelerated gossip and Choco-gossip achieve an $O(\\sqrt{(\\log m)/T})$ convergence rate over $T$ update rounds, while experiments demonstrate improved worst-worker performance over baselines.",
+      "submitted": "2026-10-21",
+      "updated": "2026-10-21",
+      "arxiv_url": "https://arxiv.org/abs/2610.29261v1",
+      "directions": [
+        "distributed",
+        "stochastic",
+        "optimization-frontiers"
+      ],
+      "summary": "去中心化群体分布鲁棒优化要最小化各节点中的最大风险，但已有方法常优化带对偶正则的替代目标，保证也落在节点无法直接取得的全局平均模型上。该文直接分析原始 GDRO，并将每个节点的目标误差分解为在线学习遗憾、一致性误差和局部决策差异。在有轻量服务器维护对偶权重的半去中心化模型中，得到一个分布式在线凸优化子问题与一个专家建议子问题；完全去中心化模型中则得到两个耦合的在线凸优化子问题。作者以 FTRL 累积梯度和模块化一致性程序实现更新，在凸风险、紧凸可行域、有界随机损失与梯度及固定连通对称通信图下，对每个节点自己的时间平均模型建立 $O(\\sqrt{\\log m/T})$ 原始目标误差界。加速 gossip 和压缩 Choco-gossip 实例均可达到该更新轮数速率，但每个更新轮允许多次通信，次数依赖谱隙、节点数及压缩质量。",
+      "reason": "推荐优先研究局部模型误差的分解方式，以及如何将原始—对偶不一致单独交给通信模块控制。这直接解决网络上耦合优化中本地信息不可得的问题，也使不同压缩和混合程序能共享上层分析。原目标、各节点可部署输出和实际通信成本被分别说明，比仅保证正则化目标或全局平均点更便于判断算法价值。",
+      "order": 4
+    },
+    {
+      "arxiv_id": "2610.29548",
+      "version": 1,
+      "title": "Algorithm duality from resolvent Moreau identities",
+      "authors": [
+        "Andrew Calcan",
+        "Alberto De Marchi",
+        "Scott B. Lindstrom"
+      ],
+      "abstract": "Duality is classically defined as a relationship between objective functions, one that breaks down beyond convexity. We show that a more fundamental duality persists between the resolvent operators used to solve associated problems. We establish a framework from which we obtain complete characterizations of the duality-like correspondences between proximal fixed-point iterations and their alternating minimization scheme counterparts. Namely, we show the known primal-dual relationships between forward--backward splitting and Tseng's alternating minimization algorithm, and between the Douglas-Rachford method and alternating direction method of multipliers, to hold generically and irrespective of problem assumptions. The approach considered herein avoids the machinery of convex analysis entirely, providing a definitive formulation of algorithmic dualities in maximal generality while greatly simplifying their proofs. In particular, assumptions such as monotonicity, weak monotonicity, Lipschitz continuity, and injectivity of linear operators are all shown to be unnecessary. In addition, we utilize our framework to reveal and analyze a novel primal-dual relationship between backward-backward splitting and a special instance of the alternating minimization algorithm. This illustrates how our duality framework provides a principled basis for primal-dual algorithm design and analysis in nonmonotone settings. Finally, our experiments show that our backward--backward splitting--based approach reliably outperforms the FISTA and SR3 algorithms for the LASSO problem.",
+      "submitted": "2026-10-21",
+      "updated": "2026-10-21",
+      "arxiv_url": "https://arxiv.org/abs/2610.29548v1",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "summary": "前向—后向分裂与交替最小化、Douglas–Rachford 与 ADMM 的经典对应通常通过凸对偶建立。该文转向集合值算子的广义预解式，提出完整 Moreau 恒等式与 Gabay 对偶，从代数层面给出这些算法及其迭代序列之间的对应，不再要求单调性、光滑性或线性耦合算子的单射性。这里的普遍性是算法对应关系在有关更新有定义时成立，不等于任意非凸问题都有可解子问题或全局收敛保证。作者进一步由后向—后向分裂构造 PBBS，其对应原始问题含附加二次正则项；在有限维凸性、适当对偶定义域及不动点存在等条件下分析收敛，并以回归实验展示性能。由此，论文将一般的代数对应与需要额外条件的收敛结论放在同一个算子框架中。",
+      "reason": "推荐优先阅读完整 Moreau 恒等式及显式的序列转换公式。其价值在于说明哪些算法对应纯粹来自代数结构，哪些性质仍依赖凸性和适定性，为在非单调背景下设计原始—对偶变体提供了清楚的转换工具。PBBS 的二次松弛也提醒读者，获得一种易实现的对应算法时，应同时核对它实际求解的目标。",
+      "order": 5
+    },
+    {
+      "arxiv_id": "2610.20420",
+      "version": 2,
+      "title": "Dual-Inertial Bregman Methods with Energy-Based Safeguarding",
+      "authors": [
+        "Kangming Chen"
+      ],
+      "abstract": "We develop dual-inertial Bregman proximal methods for convex optimization and analyze their convergence through an exact signed-drift representation. For unrestarted iterations, one-sided directional curvature control yields a last-iterate $\\mathcal{O}((1+\\log k)/k^2)$ rate, improving to $\\mathcal{O}(k^{-2})$ under weighted summability. A computable energy-based safeguard guarantees a global $\\mathcal{O}(N^{-1})$ objective-gap bound, counting all proximal oracle calls. Under a stepsize condition and local quadratic growth with suitable kernel regularity, the safeguarded methods restart finitely and eventually converge linearly. Numerical experiments illustrate the methods on entropy regression and nonnegative least squares.",
+      "submitted": "2026-10-14",
+      "updated": "2026-10-21",
+      "arxiv_url": "https://arxiv.org/abs/2610.20420v2",
+      "directions": [
+        "historical-information",
+        "optimization-frontiers"
+      ],
+      "summary": "Bregman 惯性方法在对偶坐标插值，但其几何与原始仿射组合之间的差异会产生带符号的能量漂移。该文用精确漂移恒等式统一分析 Bregman 近端点、近端梯度与镜像下降的对偶惯性版本。在单侧方向曲率控制下，未重启末次点可达 $O((1+\\log k)/k^2)$，额外加权可和性下达 $O(k^{-2})$；可计算能量保障则把被拒试探也计入全部近端调用，给出最优已接受点的全局 $O(N^{-1})$ 界。新版进一步证明：步长满足 $\\lambda L<1$，内点最优解附近有局部二次增长，且核函数局部二阶光滑、Hessian 正定时，从任意内点出发只发生有限次拒绝与重启，最终轮段的能量和函数误差线性衰减。二次增长针对该最优点给出局部距离控制；结论使用精确近端更新，不应直接扩展到任意边界解或非精确子问题。",
+      "reason": "推荐关注新版将可计算保障与局部快速阶段接起来的证明。它不只在事先足够接近解时分析惯性，而是利用重启点的 Bregman 下降和紧性，证明算法最终进入稳定区域；局部二次增长又比强凸更灵活。这为判断历史外推如何兼顾全局可靠性与局部速度提供了具体的能量工具，也构成值得再次阅读的版本增量。",
+      "order": 6,
+      "update_note": "相较已推荐的 v1，v2 将有限重启条件由局部强凸放宽为内点最优解处的局部二次增长，并证明从任意内点初始化的保障方法最终进入线性收敛阶段；不只是重新表述既有的全局次线性界。"
+    },
+    {
+      "arxiv_id": "2407.20195",
+      "version": 6,
+      "title": "Accelerated Primal-Dual Proximal Gradient Splitting Methods for Convex-Concave Saddle-Point Problems",
+      "authors": [
+        "Hao Luo"
+      ],
+      "abstract": "In this paper, based a novel primal-dual dynamical model with adaptive scaling parameters and Bregman divergences, we propose new accelerated primal-dual proximal gradient splitting methods for solving bilinear saddle-point problems with optimal nonergodic convergence rates. For the first, using the spectral analysis, we show that a naive extension of acceleration to a quadratic game is unstable. Motivated by this, we present an accelerated primal-dual gradient flow which combines acceleration with careful velocity correction. To work with non-Euclidean distances, we also equip our continuous model with general Bregman divergences and prove the exponential decay of a Lyapunov function. Then, new primal-dual splitting methods are developed based on proper semi-implicit Euler schemes of the continuous model, and the theoretical convergence rates are nonergodic and optimal with respect to the matrix norms, Lipschitz constants and convexity parameters. Moreover, we introduce efficient restart variants to further improve the proposed methods and provide some numerical results to validate the practical performance.",
+      "submitted": "2024-07-29",
+      "updated": "2026-10-21",
+      "arxiv_url": "https://arxiv.org/abs/2407.20195v6",
+      "directions": [
+        "historical-information",
+        "optimization-frontiers"
+      ],
+      "summary": "将 Nesterov 加速直接套到原始—对偶双线性耦合上，可能因耦合引起不稳定。该文先通过二次博弈的谱分析展示这一困难，再构造带速度修正、自适应尺度和 Bregman 几何的原始—对偶流，用半隐式离散化得到近端分裂及近端梯度分裂算法。在相应相对凸性、核函数和光滑复合结构条件下，作者对实际迭代点的固定鞍点间隙建立非遍历界：一般凸情形包含耦合项的 $O(k^{-1})$ 与光滑项的 $O(k^{-2})$，单侧强凸可进一步加速，双侧强凸时得到依赖耦合范数和光滑参数的线性界。重启版本在指定周期和双侧强凸条件下同样获得线性保证。论文分别处理流的能量衰减、离散点列以及不同结构参数，不能将连续时间指数衰减直接等同于所有离散问题的线性复杂度。",
+      "reason": "推荐优先研究速度修正怎样消除双线性耦合带来的不稳定，以及同一个 Lyapunov 结构如何指导离散化。相比仅给一个新的惯性递推式，该文把谱反例、Bregman 设计与不同凸性区间的非遍历复杂度联系起来，适合用于研究带耦合约束和历史外推的算法。阅读时应按具体结构选择速率，并保持固定鞍点间隙与更强输出指标的区别。",
+      "order": 7
+    },
+    {
+      "arxiv_id": "2610.29192",
+      "version": 1,
+      "title": "Curvature-Scaled Sharpness-Aware Minimization: Convergence Beyond Smoothness",
+      "authors": [
+        "Dimitris Oikonomou",
+        "Nicolas Loizou"
+      ],
+      "abstract": "Sharpness-Aware Minimization (SAM) has established itself as a widely used method for training deep neural networks. Despite its popularity, existing convergence guarantees for SAM-type methods require smoothness, a restrictive assumption. Generalized smoothness conditions have recently been proposed in the analysis of gradient methods but remain underexplored for SAM. To analyze the effect of SAM's perturbation under generalized smoothness, we use relative gradient distortion to quantify how the sharpness-aware direction departs from the original gradient. Under $(L_0,L_1)$-smoothness, we show that this distortion can become unbounded near stationarity for SAM and at large gradients for its unnormalized variant (USAM), with examples where SAM cycles and USAM diverges. We then establish a necessary condition for uniform distortion control among perturbations along the gradient whose nonnegative multipliers depend only on its norm. Motivated by this condition, we propose Curvature-Scaled SAM (CS-SAM), which scales both the perturbation and the descent step by suitable curvature upper bounds, and prove that it uniformly bounds the distortion. Under both $(L_0,L_1)$- and $(H_0,H_1)$-smoothness, we establish deterministic $\\mathcal{O}(1/T)$ rates for the best squared gradient norm on nonconvex objectives, last-iterate $\\mathcal{O}(1/T)$ rates for the function gap on convex objectives with a minimizer, and linear convergence under the Polyak-Lojasiewicz condition. With zero perturbation, our guarantees recover the rates for gradient descent with $(L_0,L_1)$- or $(H_0,H_1)$-based step-sizes. Minibatch experiments on computer vision tasks demonstrate competitive performance for both variants, with the $(H_0,H_1)$ variant achieving the highest mean best-test accuracy in all four settings against tuned SAM and USAM with constant and cosine annealing schedules.",
+      "submitted": "2026-10-21",
+      "updated": "2026-10-21",
+      "arxiv_url": "https://arxiv.org/abs/2610.29192v1",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "summary": "广义光滑条件下，固定扰动半径的 SAM 在近驻点处可能相对失真失控，固定梯度倍数的 USAM 又可能在大梯度处失稳。该文以相对梯度失真刻画这两个极端，给出循环与发散例，并证明对只依赖梯度范数的非负扰动乘子，统一控制失真要求扰动在小梯度处按梯度范数缩小、在大梯度处保持有界。由此提出 CS-SAM，用梯度相关或函数差相关的曲率上界分别缩放扰动及下降步。在二阶可微及相应 $(L_0,L_1)$ 或 $(H_0,H_1)$ 广义光滑、参数满足规定条件时，作者证明确定性非凸问题的最佳平方梯度范数为 $O(1/T)$，凸问题的末次函数差为 $O(1/T)$，PL 条件下线性收敛。函数差曲率模型使用目标下确界；小批量神经网络结果属于实验验证，论文的这些确定性定理不自动构成一般随机 SAM 收敛保证。",
+      "reason": "值得阅读的是失真必要条件如何同时约束两个梯度尺度，并直接导出扰动和步长的联合设计。这比单纯把广义光滑梯度下降套上一个扰动项更能解释失稳原因，也清楚展示何种曲率信息支持新的收敛论证。对关注非标准光滑条件下优化的人，反例、必要条件和充分设计构成一条完整的研究链。",
+      "order": 8
+    },
+    {
+      "arxiv_id": "2504.11023",
+      "version": 3,
+      "title": "An Inexact Variable Metric Proximal Gradient-subgradient Algorithm for a Class of Fractional Optimization Problems",
+      "authors": [
+        "Lei Yang",
+        "Xiangrui Kong",
+        "Min Zhang",
+        "Yaohua Hu"
+      ],
+      "abstract": "In this paper, we study a class of fractional optimization problems, in which the numerator of the objective is the sum of a convex function and a differentiable function with a Lipschitz continuous gradient, while the denominator is a nonsmooth convex function. This model captures ratio-type formulations arising in sparse learning and related applications. To address this class of problems, we propose an inexact variable metric proximal gradient-subgradient algorithm (iVPGSA), which, to the best of our knowledge, is the first inexact proximal algorithm specifically designed for such type of fractional problems. By incorporating a variable metric proximal term and allowing for approximate subproblem solutions under a flexible error criterion, the proposed algorithm is highly adaptable to a broader range of problems while achieving favorable computational efficiency. Under suitable assumptions, we establish that any accumulation point of the generated sequence is a critical point of the target problem. Moreover, we develop a Kurdyka-Łojasiewicz (KL)-based analysis framework, relying only on the classical KL property and its associated exponent, to prove the global convergence of the entire sequence and characterize its convergence rate, \\textit{without} requiring a strict sufficient descent property. Our results clarify how the classical KL exponent and inexactness jointly influence the convergence rate. Finally, numerical experiments on the $\\ell_1/\\ell_2$ Lasso problem and the constrained $\\ell_1/\\ell_2$ sparse optimization problem demonstrate the computational advantages of the iVPGSA over existing representative algorithms.",
+      "submitted": "2025-04-15",
+      "updated": "2026-10-21",
+      "arxiv_url": "https://arxiv.org/abs/2504.11023v3",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "summary": "分式目标中，分母的非光滑凸结构与子问题求解误差会同时妨碍近端法的下降分析。该文针对分子为凸项加光滑项、分母为非光滑凸项的模型，提出非精确变度量近端梯度—次梯度算法 iVPGSA，允许在可检查的误差准则下提前终止子问题。变度量可适配结构，作者在稀疏比值模型中给出与半光滑 Newton 内层求解相配合的实现。在分母正性、分子非负、相应有界性与度量控制等条件下得到聚点临界性；进一步将累计误差吸收入辅助函数，用原目标的经典 KL 性质而非加强型 KL 不等式，证明满足规定误差衰减条件时整列收敛，并分析 KL 指数与误差衰减如何共同决定速率。结果是非凸分式问题的临界点保证，不能解释为全局最优性。",
+      "reason": "推荐关注非精确误差如何进入辅助函数及其 KL 指数关系。这里的关键不只是允许近端子问题算得不准，而是把实际可验的停止条件与整列收敛及速率接起来，为没有严格单调下降的分式迭代提供了可借鉴分析。内层求解成本和外层理论被一起讨论，也有助于评价变度量带来的实际收益。",
+      "order": 9
+    },
+    {
+      "arxiv_id": "2604.07216",
+      "version": 4,
+      "title": "An Inexact Trust-Region Method for Structured Nonsmooth Optimization with Application to Risk-Averse Stochastic Programming",
+      "authors": [
+        "Drew P. Kouri"
+      ],
+      "abstract": "We develop a trust-region method for efficiently minimizing the sum of a smooth function, a nonsmooth convex function, and the composition of a convex Lipschitz continuous function with a smooth function. Optimization problems with this structure arise in numerous applications including risk-averse stochastic programming and subproblems for nonsmooth penalty nonlinear programming methods. Our algorithm permits the use of inexact value and derivative information, enabling the solution of infinite-dimensional problems governed by, e.g., partial differential equations (PDEs). We prove global convergence of our method and under additional regularity assumptions, demonstrate that the sequence of iterates accumulates at a stationary point of our target problem. We demonstrate our method's efficiency on two PDE-constrained optimization examples, showing that its performance is invariant to the PDE discretization size.",
+      "submitted": "2026-04-08",
+      "updated": "2026-10-21",
+      "arxiv_url": "https://arxiv.org/abs/2604.07216v4",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "summary": "平滑项、非光滑凸项及“凸 Lipschitz 函数复合光滑映射”相加的模型，可表示风险规避优化和非光滑罚函数，但精确函数值与导数在 PDE 等问题中很昂贵。该文扩展非精确近端信赖域方法，以结构化局部模型处理复合项，并通过与驻点性和预测下降相适配的精度要求控制函数及导数误差。在 Hilbert 空间中，目标下有界、光滑映射导数 Lipschitz、复合外函数凸且 Lipschitz，且模型曲率满足规定增长控制时，建立驻点性量下极限为零的全局结果；沿驻点性趋零的强收敛子列可证明极限驻点性。无限维弱聚点的相应结论需要额外正则与紧性条件。两个风险规避 PDE 算例报告随离散网格变化较稳定的表现，但不能据此声称所有问题具有网格无关复杂度或全序列强收敛。",
+      "reason": "推荐阅读误差容忍规则与结构化复合模型的结合。它把昂贵目标评估中的精度分配纳入优化算法本身，避免把风险函数平滑后再要求各层都高精度求解；同样清楚地区分有限维聚点结论与无限维弱收敛所需的额外条件。对研究非精确 oracle 与复合非光滑方法，这些接口和证明结构具有独立价值。",
+      "order": 10
+    },
+    {
+      "arxiv_id": "2610.04498",
+      "version": 2,
+      "title": "Rank-sensitive vertex bounds for semidefinite lifts",
+      "authors": [
+        "Avinash Bhardwaj"
+      ],
+      "abstract": "We study how the ranks of factors in a positive semidefinite slack factorization constrain its size. We bound the number of low-rank vertex factors in any fixed factorization, and use this to determine the asymptotic order of the minimum factorization size under any fixed bound on vertex-factor ranks: $\\Theta(n\\log n)$ for permutahedra $\\Pi_n$ and $\\Theta(\\log N)$ for regular $N$-gons. In the rank-one case this gives the order of the minimum dimension of a space of real functions on the vertices in which every facet slack is a sum of squares, with no symmetry or degree restriction. For unrestricted lifts, the bound gives $\\mathrm{xc}_{\\mathrm{PSD}}(\\Pi_n)\\ge n+\\log_3 n-O(1)$, and shows that a permutahedron factorization of linear size would need vertex factors of rank $\\Omega(\\log n)$ at all but a vanishing fraction of vertices. We also prove that every polytope of real positive semidefinite rank at most four has at most twelve vertices, and construct explicit size-four lifts for every square-symmetric octagon, so eight is attained. The upper bound combines a count of the polygon corners reached by curves of rank-one factors with incidence constraints on factor ranks. Whether eight is the maximum remains open.",
+      "submitted": "2026-10-03",
+      "updated": "2026-10-21",
+      "arxiv_url": "https://arxiv.org/abs/2610.04498v2",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "summary": "半定规划提升可以压缩多面体表示，但压缩程度怎样依赖松弛分解中顶点因子的秩，仍需更细的结构下界。该文对任意固定实 PSD 松弛分解中的低秩顶点因子数量建立计数界，不要求对称、一般位置或多项式次数限制。由此证明：当顶点因子秩被某个固定常数限制时，置换多面体的最小提升规模为 $\\Theta(n\\log n)$，正 $N$ 边形为 $\\Theta(\\log N)$；若置换多面体存在规模线性的提升，则几乎所有顶点因子的秩必须至少按对数增长。对不限制因子秩的置换多面体，得到 $n+\\log_3 n-O(1)$ 的 PSD 扩展复杂度下界。此外，作者证明实 PSD 秩不超过四的多面体至多有十二个顶点，并构造八顶点实例，留下八至十二之间的最优值问题。这是连续锥表示能力的下界，而不是任意组合优化问题求解时间的直接下界。",
+      "reason": "值得关注的是将矩阵因子秩分布纳入 SDP 表示规模分析的计数工具。它说明固定低秩顶点证书为何无法获得某些更小提升，以及较小表示必须付出何种秩代价，为评价半定表示和 SOS 证书复杂度提供了更细的结构视角。秩四情形中仍存在的八至十二缺口也明确保留了结论边界。",
+      "order": 11
+    },
+    {
+      "arxiv_id": "2610.28808",
+      "version": 1,
+      "title": "Deflation-Based Spectral Preconditioning for the Conjugate Gradient Method on Perturbed Systems",
+      "authors": [
+        "Youssef Diouane",
+        "Selime Gürol",
+        "Oussama Mouhtal",
+        "Dominique Orban"
+      ],
+      "abstract": "We consider sequences of large symmetric positive-definite linear systems in which spectral information from a reference matrix $A$ is reused to accelerate the solution of a nearby system with perturbed matrix $A(t)=A+tE$, where $E$ is symmetric, $\\|E\\|_F=1$, and $t\\geq0$ is the perturbation size. We compare deflated conjugate gradient (deflated CG) with preconditioned CG (PCG) equipped with a scaled spectral preconditioner constructed from the same spectral information of $A$. First, we derive an energy-norm error characterization of deflated CG. We then use perturbation analysis to show that, after one additional PCG iteration, the squared PCG error is bounded, up to terms of order $t^2$, by an explicit multiple of the squared deflated CG error. This result clarifies the role of the scaling parameter in the preconditioner. Experiments show that the scaled spectral preconditioner recovers much of the convergence improvement provided by deflation while requiring fewer products with $A(t)$.",
+      "submitted": "2026-10-20",
+      "updated": "2026-10-20",
+      "arxiv_url": "https://arxiv.org/abs/2610.28808v1",
+      "directions": [
+        "historical-information"
+      ],
+      "summary": "连续求解相近 SPD 线性系统时，旧系统的谱信息可作为历史信息复用，但新矩阵上的 deflation 往往还需较昂贵的粗空间构造。该文比较同一参考矩阵谱信息形成的 deflated CG 与带缩放谱预条件的 PCG；这些线性求解也等价于严格凸二次函数最小化。作者先建立 deflated CG 的能量范数误差表示，再对 $A(t)=A+tE$ 作小扰动分析，证明 PCG 多做一次迭代后，其平方能量误差受 deflated CG 平方误差的显式倍数及 $O(t^2)$ 余项控制，揭示谱缩放参数与未消去谱区间之间的关系。理论针对规定谱分离和小扰动条件下的参考特征信息；数值实验支持用较少新矩阵乘法复现大量 deflation 收益，不能把局部比较解释为任意矩阵变化或任意近似特征向量下的统一优势。",
+      "reason": "推荐关注旧谱信息在问题发生变化后还能保留多少加速作用，以及如何把额外初始化成本计入比较。该文不是仅用历史特征向量做一次热启动，而是给出两种复用机制的误差关系及缩放解释，适合研究连续二次子问题和历史子空间的有效性。阅读时应同时考察小扰动理论边界与矩阵乘法开销。",
+      "order": 12
+    }
+  ]
+}
