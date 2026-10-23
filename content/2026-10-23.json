@@ -1,0 +1,399 @@
+{
+  "date": "2026-10-23",
+  "status": "complete",
+  "frontiers_status": "recommendations",
+  "papers": [
+    {
+      "arxiv_id": "2610.30143",
+      "version": 1,
+      "title": "The Last Iterate of the Projected Stochastic Subgradient Method Pays a Logarithm, Even in Dimension One",
+      "authors": [
+        "Guglielmo Beretta",
+        "Tommaso Cesari",
+        "Roberto Colomboni"
+      ],
+      "abstract": "We prove that the projected stochastic subgradient method with the standard anytime stepsizes $\\eta_t = \\gamma/\\sqrt t$ can suffer expected last-iterate optimization error of order $(\\log n)/\\sqrt n$ already on the real line. Combined with the classical in-expectation upper bound, this establishes the sharp worst-case order of the projected stochastic subgradient method.",
+      "submitted": "2026-07-31",
+      "updated": "2026-07-31",
+      "summary": "标准 anytime 步长 $\\eta_t=\\gamma/\\sqrt{t}$ 下，凸随机次梯度法末次点上界中的对数因子是否只是高维或恶劣噪声造成的？该文对每个预算 $n\\ge2$ 构造一维目标 $f(x)=a|x|$，并加入有界、独立同分布的 Rademacher 加性噪声；从最优点零出发，随机次梯度始终有界，仍有期望末次点误差至少为 $\\gamma b^2\\log n/(24\\sqrt n)$。这与经典上界同阶，说明该步长调度本身就能造成对数损失。构造随预算变化，是最坏情形结论，并不声称一个固定目标在所有时刻都达到该下界。",
+      "reason": "推荐优先阅读用加权随机游走与漂移相比较的短证明。它把末次点性能损失定位到具体步长机制，并以一维、有界独立噪声排除了常见的复杂性解释。与已知预算下常步长的一维无对数结果对照，可以帮助判断随机优化分析中该改输出、改调度，还是加强噪声假设。",
+      "directions": [
+        "optimization-frontiers",
+        "stochastic"
+      ],
+      "order": 1,
+      "arxiv_url": "https://arxiv.org/abs/2610.30143v1"
+    },
+    {
+      "arxiv_id": "2610.30300",
+      "version": 1,
+      "title": "Continuous-time analysis and algorithms for linear and convex quadratic programs via exactly solvable differential inclusions",
+      "authors": [
+        "Gabriel P. Langlois",
+        "Akwum Onwunta",
+        "Jérôme Darbon"
+      ],
+      "abstract": "Linear and convex quadratic programs are fundamental problems in optimization. While many methods have been developed for solving these programs in large-scale applications, to our knowledge none have attempted to solve their continuous-time gradient flow, a differential inclusion, in full generality without assumptions beyond feasibility. Recent work solved the gradient flows in two special cases, basis pursuit and the lasso, and obtained competitive algorithms. Motivated by these results, we solve the general case exactly. Using the minimal selection principle for monotone differential inclusions, we show that the trajectory of the gradient flow consists of finitely many pieces, each obtained from one nonnegative least-squares problem. Its final piece yields an optimal solution or a certificate of unboundedness. This analysis leads to two algorithms. The first algorithm is exact, terminates after finitely many steps, and applies to linear programs and projections onto polyhedra. The second algorithm, which we call minimal selection descent, discretizes the gradient flow for general convex quadratic programs. Its iterates converge to an optimal solution when one exists and otherwise certify unboundedness. We apply both algorithms to a positivity-preserving limiter for a discontinuous Galerkin scheme and to optimal control problems for the Poisson and heat equations. In the limiter, the first algorithm conserves the total mass more accurately than the state-of-the-art Douglas--Rachford splitting method. On the control problems, minimal selection descent reaches the optimal value to machine precision and is competitive in time with commercial and open-source solvers.",
+      "submitted": "2026-10-21",
+      "updated": "2026-10-21",
+      "summary": "该文研究多面体上 LP 与凸 QP 的约束梯度流，用最小范数次梯度选取原则将轨迹分为有限个可显式求解的片段，每段方向由一个非负最小二乘问题确定，最终片段给出最优解或无界方向。对 $Q=tI$（包括 LP 和欧氏投影），作者导出精确算术下有限终止的算法；对一般半正定 $Q$，最小选取下降法从可行初值出发，利用活跃约束方向和可行步长保持每次迭代可行，有最优解时整列收敛，严格互补时最终识别活跃面并线性收敛。一般 QP 的离散法不具有前一特殊情形的有限终止保证；每轮还需计入非负最小二乘子问题代价。",
+      "reason": "推荐关注可行方向计算、活跃集切换与无界证书如何由同一条连续轨迹统一解释。它为全过程可行的约束优化提供了可检查的构造，并把微分包含变成算法来源。尤其值得借鉴的是有限片段证明与离散后防止步长堵塞的分析；有限终止不等于多项式复杂度。",
+      "directions": [
+        "optimization-frontiers",
+        "safety-critical"
+      ],
+      "order": 2,
+      "arxiv_url": "https://arxiv.org/abs/2610.30300v1"
+    },
+    {
+      "arxiv_id": "2609.14235",
+      "version": 2,
+      "title": "Optimal Deterministic First-Order Oracle Complexity for Nonconvex-Concave Minimax Optimization",
+      "authors": [
+        "Siyu Pan",
+        "Taoli Zheng",
+        "Jiajin Li"
+      ],
+      "abstract": "We study the deterministic first-order oracle complexity of smooth nonconvex-concave minimax optimization over a bounded convex dual domain under two notions of stationarity: optimization stationarity (OS) and game stationarity (GS). OS concerns stationarity of the value function, viewed as a structured nonsmooth objective obtained by maximizing over the dual variable. GS concerns the joint first-order optimality conditions for both primal minimization and dual maximization, each with the other variable held fixed. Existing upper bounds on the oracle complexity of first-order methods for finding $\\epsilon$-OS and $\\epsilon$-GS points have different dependence on $\\epsilon$, but whether this difference reflects an intrinsic separation in computational hardness remains unresolved. We resolve this question by establishing worst-case lower bounds for arbitrary deterministic first-order methods: $\\Omega(\\epsilon^{-3})$ oracle queries for finding an $\\epsilon$-OS point and $\\Omega(\\epsilon^{-5/2})$ for finding an $\\epsilon$-GS point, with the remaining problem parameters fixed. These bounds match existing upper bounds up to logarithmic factors. To close the remaining logarithmic gap, we introduce Tracked-FOAM, a new first-order algorithm whose oracle complexity matches our lower bounds for both OS and GS. Together, these results establish an intrinsic separation between OS and GS in the optimal accuracy dependence of deterministic first-order oracle complexity.",
+      "submitted": "2026-09-13",
+      "updated": "2026-10-22",
+      "summary": "光滑非凸—凹 minimax 中，优化驻点 OS 衡量最大值函数 Moreau 包络的平稳性，博弈驻点 GS 则同时控制原始和对偶一阶条件。该文新版将确定性 oracle 复杂度同时推进到两种标准：在对偶域有界、其他参数固定的主要精度区间，OS 与 GS 的最优精度依赖分别为 $\\Theta(\\epsilon^{-3})$ 和 $\\Theta(\\epsilon^{-5/2})$。下界适用于任意自适应确定性一阶方法；Tracked-FOAM 跟踪连续强凸—强凹子问题的状态，给出无多余对数因子的匹配上界。新版增加 GS 的困难实例及相应算法分析，表明两种驻点定义之间确有内在难度差异。",
+      "reason": "推荐阅读两种下界构造为何必须采用不同的对偶几何，以及算法如何复用子问题求解状态。这组匹配结果说明评价指标本身怎样改变最优计算成本，也提醒在比较 minimax 方法时先对齐 OS、GS 与 oracle 类别。",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "order": 3,
+      "arxiv_url": "https://arxiv.org/abs/2609.14235v2",
+      "update_note": "相对已推荐 v1 的 OS 匹配复杂度，新版新增 GS 的任意确定性方法下界和 Tracked-FOAM 匹配上界，并在相应参数区间建立 OS 与 GS 的最优复杂度分离；不是再次把去掉 OS 对数因子作为新贡献。"
+    },
+    {
+      "arxiv_id": "2609.18101",
+      "version": 2,
+      "title": "Optimal Network Dependence in Distributed Stochastic Optimization via Tree Routing",
+      "authors": [
+        "Runze You",
+        "Shi Pu"
+      ],
+      "abstract": "Communication is a central bottleneck in distributed optimization, but its effect is often summarized by the spectral gap of a chosen mixing matrix. Since this gap depends on link weights as well as topology, it can obscure the intrinsic effect of the network. We clarify this distinction by relating graph diameter to the inverse spectral gap. We establish a universal one-sided bound that is tight up to constant factors, while constructions across several graph families show that no topology-only converse or universal two-sided scaling law exists. This motivates a class-based view of network optimality: diameter-dependent guarantees can be assessed uniformly over graph classes, whereas spectral-gap optimality requires both the graph--matrix pair class and the admissible algorithm class to be specified. Based on the resulting diameter-based minimax benchmark, we introduce Tree-Routed Gradient Tracking (Tree-RGT), a distributed method for stochastic nonconvex optimization. The method pipelines model dissemination and gradient aggregation over a rooted shortest-path spanning tree. Each iteration uses one round of one-hop communication and one stochastic-gradient evaluation per agent, without inner consensus or multi-gossip. Under smoothness and unbiased bounded-variance oracles, Tree-RGT achieves uniformly optimal network dependence over connected graphs of prescribed size and diameter. It recovers centralized stochastic scaling after $\\mathcal{O}(nD_{\\mathcal{G}}^2)$ transient iterations, where $n$ is the number of agents and $D_{\\mathcal{G}}$ is the graph diameter. This network-dependent transient-iteration bound improves upon or matches those reported for representative distributed methods. Thus, topology-aware routing attains diameter-optimal guarantees without relying on a prescribed mixing matrix.",
+      "submitted": "2026-09-16",
+      "updated": "2026-10-22",
+      "summary": "Tree-RGT 原版通过树上流水下发模型、上收梯度，避免每次优化更新之间重复共识。该文新版在根节点引入一个动量向量，将路由得到的延迟梯度与历史聚合；其他节点仍只转发模型和梯度跟踪信息，不增加通信变量。对固定连通无向图、光滑非凸目标与无偏有界方差 oracle，新的联合分析在规定步长及动量范围内给出根节点平均平方梯度的 $O((nT)^{-1/2}+D/T)$ 界，常数显式包含初始梯度能量；动量可随预算接近一，但必须满足定理中的限制。它保留 $O(nD_{\\mathcal G}^2)$ 过渡轮次后匹配集中式小批量 SGD 的缩放，每轮一次单跳交换及每节点一次随机梯度。",
+      "reason": "推荐优先研究有限树路由记忆与无限几何动量历史的联合表示，以及分层噪声正交性如何避免额外树深因子。这直接关联通信受限优化中历史信息能否无额外消息地利用的问题。新版的价值在于新增带动量算法及其适用范围；过渡轮次数量级本身已在原版出现，不能再次当作新提升。",
+      "directions": [
+        "distributed",
+        "historical-information",
+        "stochastic"
+      ],
+      "order": 4,
+      "arxiv_url": "https://arxiv.org/abs/2609.18101v2",
+      "update_note": "v2 在 v1 的无动量根更新上新增根节点动量，给出有限路由延迟与几何历史的联合传播、噪声相关性和收敛分析；允许预算相关的动量范围，同时保留原有网络过渡阶。"
+    },
+    {
+      "arxiv_id": "2610.30650",
+      "version": 1,
+      "title": "Adaptive Restart under Unknown KL Geometry in Stochastic Weakly-Convex Optimization",
+      "authors": [
+        "Binh T. Nguyen",
+        "Khoa D. Nguyen",
+        "Bao Thai Huynh"
+      ],
+      "abstract": "KL geometry accelerates restart schedules in stochastic weakly-convex optimization, but the schedule depends jointly on an unknown and potentially nonunique geometric description. We introduce CARP-KL, a certified portfolio that adapts over valid KL descriptions while using the same primitive stochastic-subgradient oracle for both optimization and candidate selection. Over declared polynomial parameter ranges, CARP-KL competes with every affordable valid description and preserves the known-description polynomial Moreau-stationarity rate up to logarithmic factors, without objective values, an exact proximal map, direct Moreau-gradient access, or a bounded-domain assumption. Controlled experiments quantify the finite-budget price of this universality. The portfolio repeatedly contains strong candidates, while certification consumes a substantial share of the oracle budget and finite-sample ranking limits their recovery. A common conservative gap bound further reduces the portfolio from $O(\\log^3 T)$ to $O(\\log^2 T)$ candidates with an explicit scale-mismatch penalty. The theory and diagnostics together establish certified unknown-geometry adaptation and pinpoint selection as the principal practical frontier of the current construction.",
+      "submitted": "2026-10-22",
+      "updated": "2026-10-22",
+      "summary": "KL 几何能改善随机弱凸优化的重启速率，但指数、常数和初始间隙界通常未知，生成多个候选后又无法直接比较其 Moreau 驻点性。该文提出 CARP-KL，以保守单向参数网格运行重启组合，再用新随机次梯度样本构造驻点性证书，把生成、认证和选择全部计入同一预算。已知弱凸参数、oracle 二阶矩界与总预算，且 KL 不等式在相关轨迹的共同区域成立、有效参数位于声明的多项式范围并负担得起首阶段时，对每个固定有效描述保留 $\\widetilde O(T^{-\\theta/(4\\theta-1)})$ 的期望 Moreau 梯度范数率。算法需要投影，但不调用目标值、精确近端或直接 Moreau 梯度；有限预算实验显示认证和排序仍可能占据主要成本。",
+      "reason": "推荐关注可观测的候选认证如何补全未知几何重启，而不只比较组合中是否存在一个好点。参数搜索与选择使用相同原始 oracle、共用一个预算，使调参开销进入理论比较。共同区域、已知尺度及可负担描述的限制也给出了清楚的适用性检查。",
+      "directions": [
+        "stochastic"
+      ],
+      "order": 5,
+      "arxiv_url": "https://arxiv.org/abs/2610.30650v1"
+    },
+    {
+      "arxiv_id": "2610.31298",
+      "version": 1,
+      "title": "Strong Duality Thresholds and Minimum Curvature for the Nearest Rectangular Symplectic Matrix Problem",
+      "authors": [
+        "Yulin Xie",
+        "Aiqing Zhu",
+        "Yifa Tang"
+      ],
+      "abstract": "We study the nearest rectangular symplectic matrix problem in the squared Frobenius norm for arbitrary targets $T\\in\\mathbb R^{2n\\times2k}$, with $n\\ge k$. We prove that its semidefinite relaxation is exact for every target if and only if $n\\ge2k-1$. Under this condition, the primal problem, the relaxation, and both Lagrangian dual problems attain the same optimal value. In this range, we derive the exact minimum Rayleigh quotient of the Riemannian Hessian at every feasible point under the Euclidean induced metric, and prove that all second-order stationary points are global minimizers. We also obtain global objective error bounds. We extend the strong-duality and minimum-curvature results to Hermitian positive definite row weights, proving that strong duality holds for every target if and only if the lowest eigenvalue of the weight has complex multiplicity at least $2k-1$. The dual formulation leads to a method whose main iterations use matrices of order $2k$, with $O(k^2)$ iterative storage apart from the full input and output. Across six tested sizes, mean-time speedups are $2.55$--$12.60$ over a Riemannian first-order method and $4.61$--$43.93$ over Jensen--Zimmermann R--TR2; batching gives a further factor of $3.45$--$23.53$ over sequential calls. The theoretical results complete the critical dimensions not covered by Gram convexification and quadratic matrix programming.",
+      "submitted": "2026-10-22",
+      "updated": "2026-10-22",
+      "summary": "最近矩形辛矩阵问题要求在 $X^\\top J_{2n}X=J_{2k}$ 下逼近任意目标矩阵。该文证明，其 SDP 松弛对所有目标均精确的充要维数条件是 $n\\ge2k-1$，并在这个范围内实现原问题、松弛及两种拉格朗日对偶的最优值相等且均取到。作者进一步求出可行点处黎曼 Hessian 的最小曲率，推出所有二阶驻点均为全局最优；在更低的允许维数构造严格对偶间隙。对 Hermitian 正定行权重，统一强对偶的条件相应变为最低特征值的复重数至少为 $2k-1$。对偶算法将主要迭代矩阵压缩到 $2k$ 阶，所述二次存储不包括完整输入输出。",
+      "reason": "推荐阅读精确松弛的维数阈值与曲率证书之间的联系。它补齐临界维数，并同时给出失败实例、全局误差界和可计算对偶，使二阶点是否足够好成为可以判定的结构问题。最值得借鉴的是从约束几何直接寻找负曲率或全局最优证书的路线。",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "order": 6,
+      "arxiv_url": "https://arxiv.org/abs/2610.31298v1"
+    },
+    {
+      "arxiv_id": "2610.31264",
+      "version": 1,
+      "title": "Deep ReLU Networks Can Fail the Best Approximation Property for Continuous Target Functions",
+      "authors": [
+        "Sebastian Kassing"
+      ],
+      "abstract": "We construct a continuous function on $[-1,1]^2$ for which the infimum of the $L^2$-approximation error over the class of ReLU networks with two hidden layers and architecture $(2,2,1,1)$ is not attained. This counterexample shows that deep ReLU networks do not satisfy the best approximation property in general, even for continuous target functions. Our findings contrast with existing results for shallow neural networks, where ReLU is one of the few activation functions that guarantee the existence of global minima in typical regression tasks. The proof is based on the fact that the breaklines for neurons in the second hidden layer can bend, which breaks the symmetry arguments used in the one-hidden-layer case.",
+      "submitted": "2026-10-22",
+      "updated": "2026-10-22",
+      "summary": "固定架构的神经网络训练，即使目标函数连续，也未必存在达到最小总体平方误差的参数。该文为输入域 $[-1,1]^2$ 上的一个连续目标构造反例：两隐层 ReLU 架构 $(2,2,1,1)$ 的 $L^2$ 逼近误差下确界不被任何网络实现。关键是第二隐层使折线能够弯折，从而破坏浅层情形用于证明最优逼近存在的对称性论证。由于损失对有限维参数连续，任何趋近该下确界的参数序列都不能保持有界。这是特定固定架构上的存在性反例，不是对所有深网络或任意有限训练集的无最优解结论。",
+      "reason": "推荐关注优化理论中经常被默认的解存在前提。一个很小的深网络就能使连续目标的最优逼近不取到，说明单凭 ReLU 的浅层存在性或通用逼近能力，无法保证固定深架构的训练问题适定。它为区分参数发散、逼近误差趋优与算法收敛提供了具体反例。",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "order": 7,
+      "arxiv_url": "https://arxiv.org/abs/2610.31264v1"
+    },
+    {
+      "arxiv_id": "2610.30706",
+      "version": 1,
+      "title": "Hidden Convexity of the Joint Range of Three Quadratic Forms and Applications",
+      "authors": [
+        "Tuan Ngoc Hoang",
+        "Huy Quang Nguyen"
+      ],
+      "abstract": "We investigate a hidden convexity phenomenon for triples of homogeneous quadratic forms. We give a complete characterization of the convexity of the upper image obtained by adding the nonnegative orthant to their joint range. More precisely, the upper image is convex if and only if either a nonzero nonnegative linear combination of the three associated matrices is positive semidefinite, or the three quadratic forms admit a common strict negative direction. In particular, the upper image is convex whenever one of the three quadratic forms is convex. As applications, we establish the convexity of an associated value function and derive a generalized S-lemma for implications involving two quadratic inequalities and a strict theorem of the alternative for quadratic systems.",
+      "submitted": "2026-10-22",
+      "updated": "2026-10-22",
+      "summary": "两个齐次二次型的联合值域有经典凸性，三个二次型则可能失效。该文完整刻画三者联合值域加非负正交锥后的上像：它为凸集，当且仅当存在非零非负系数使相应矩阵组合半正定，或三个二次型有共同严格负方向；后一情形上像就是整个三维空间。因此，只要其中一个二次型凸，上像已必为凸，无需加强为严格凸。秩一约化引理是证明核心，作者据此导出相关值函数凸性、带 Slater 条件的广义 S 引理，以及严格替代定理。这里刻画的是上像，不能改称三个二次型的联合值域总是凸。",
+      "reason": "推荐阅读将半正定矩阵解约化为不增三个二次值的秩一解的证明。它给出了何时可用凸分离处理非凸二次系统的明确条件，也让 S 程序的适用边界可以从矩阵数据判断。这一充要刻画适合作为后续强对偶分析的工具。",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "order": 8,
+      "arxiv_url": "https://arxiv.org/abs/2610.30706v1"
+    },
+    {
+      "arxiv_id": "2610.31486",
+      "version": 1,
+      "title": "Effective Dual Subgradient Methods Through Sequential Subgradient-Aligned Rays",
+      "authors": [
+        "Hansi Abeynanda",
+        "Chathuranga Weeraddana",
+        "Carlo Fischione"
+      ],
+      "abstract": "In this paper, we propose an efficient subgradient-based framework, referred to as the sequential subgradient-aligned rays (SSAR) method, for improving the convergence performance of the dual subgradient method. In particular, the proposed method identifies and exploits a finite sequence of rays, when available, as the dual subgradient method evolves, along each of which a subgradient of the negative dual function remains constant and aligns with the ray. While the dual variable iterates remain on each identified ray, a constant stepsize associated with the ray is employed, with the associated constant stepsizes decreasing from one ray to the next. This approach yields constant decrements in the negative dual function values while the dual variable iterates remain on the associated rays, enabling the dual variable iterates to progress more quickly toward a dual optimal solution. We then show that the proposed SSAR method can be leveraged to improve the performance of the dual decomposition method for minimizing the average of local loss functions associated with multiple agents that share a common decision variable, a widely used problem formulation in many large-scale real-world applications. In particular, the SSAR method improves the convergence performance of the corresponding dual decomposition method while also reducing its communication cost. Numerical experiments on a least squares regression problem and a logistic regression problem using real datasets are conducted to evaluate the performance of the SSAR method.",
+      "submitted": "2026-10-22",
+      "updated": "2026-10-22",
+      "summary": "对偶次梯度沿某些射线可能保持同一个次梯度，反复重新计算和传输就浪费了这种结构。该文将只利用初始射线的 FSGOR 扩展为 SSAR：在可认证的有限串次梯度对齐射线上分别使用常步长，离开一条后尝试识别下一条，并逐条减小步长；相邻迭代仍在同一射线上时负对偶函数有固定下降量。射线阶段结束后切回已有收敛步长规则，因而在文中凸性、边界次梯度及对偶解存在等条件下保留对偶收敛。用于多代理共识模型时采用中央服务器协调，节点可用状态位及顶点索引替代部分完整向量通信。原始最优解恢复另需强对偶及原始可行性；没有给出任意问题的统一复杂度加速定理。",
+      "reason": "推荐优先研究如何认证历史次梯度仍然有效，以及如何把认证变成减少消息的协议。它把局部几何结构、更新重用和通信计数放在同一框架中，与分布式约束优化中的历史信息利用直接相关。应把射线段精确下降、整体收敛继承和实验通信节省分开评价。",
+      "directions": [
+        "distributed",
+        "historical-information"
+      ],
+      "order": 9,
+      "arxiv_url": "https://arxiv.org/abs/2610.31486v1"
+    },
+    {
+      "arxiv_id": "2610.31540",
+      "version": 1,
+      "title": "Dispersive Tree Agreements for Multi-Robot Coordination",
+      "authors": [
+        "Shashank A. Deshpande",
+        "Blake T. Edwards",
+        "Jonathan P. How"
+      ],
+      "abstract": "Multi-robot coordination of nonlinear systems is naturally formulated as joint-space optimal control subject to constraints over groups of robots. Existing methods that approach joint optimality remain largely centralized, offline, and confined to collision-free motion planning, while decentralized, real-time counterparts target safe navigation without pursuing the joint optimum. This paper develops a decentralized, real-time planner that approaches the joint optimum as an anytime process. We extend a recent single-robot framework that searches dispersive trees of forward-propagated commands for differentially flat systems to coordinate a multi-robot team near-optimally. We first show that the inter-robot coupling can be effectively replaced by some local constraints, under which locally grown dispersive trees contain a near-optimal agreement. It is this structure that the robots pursue by decentralized column generation, negotiating rents on the shared space that guide the search of each robot's tree. The negotiation settles on an agreement whose near-optimality is certified at quiescence. Our protocol, WarpWeaver, implements this negotiation as an asynchronous real-time loop over a receding horizon, and demonstrates effective closure to quiesced agreements even when real-time deadlines cut the negotiation short. In simulation, WarpWeaver reduces total travel time by up to 22% against centralized offline planners on the Dynobench suite and by up to 37% against a decentralized real-time baseline, and nearly doubles the success rate of a task-specific planner on graph connectivity. Hardware experiments on six robots planning onboard demonstrate real-world implementability.",
+      "submitted": "2026-10-22",
+      "updated": "2026-10-22",
+      "summary": "该文把具有微分平坦动力学的多机器人联合控制，转为局部离散控制树上的协调选择，并用分散列生成传递空间价格。局部定价搜索的误差与搜索分辨率、鲁棒约束裕量一起进入联合成本证书。WarpWeaver 在各节点异步执行生成列、求受限主问题及相互背书；在消息延迟有上界、相同候选池产生相同最优对偶解、每轮从全体认可的可行方案初始化等条件下，节点在提交时刻选择同一个联合方案。只有在截止前足够早达到静止一致状态，才有相对鲁棒可行解的受限主问题间隙加分辨率误差证书；实时提前截断并不自动保留该近优保证。",
+      "reason": "推荐研究异步计算中的一致提交与优化证书怎样分别建立。它提供了具体的消息截止、共同对偶和方案背书机制，又把连续控制近似误差与离散主问题间隙分开，适合借鉴到时间预算内必须产出一致决策的分布式优化。保证依赖有限延迟和递归可行初始化，不能推广为任意异步延迟下的收敛。",
+      "directions": [
+        "asynchronous-distributed",
+        "distributed"
+      ],
+      "order": 10,
+      "arxiv_url": "https://arxiv.org/abs/2610.31540v1"
+    },
+    {
+      "arxiv_id": "2610.30617",
+      "version": 1,
+      "title": "Retraction-Free Nonsmooth Optimization on the Stiefel Manifold: Subgradient and Proximal Landing Methods",
+      "authors": [
+        "Zilong Cui",
+        "Tongxin Hu",
+        "Bin Gao",
+        "Ran Gu"
+      ],
+      "abstract": "We develop three retraction-free Landing methods for nonsmooth composite optimization over the Stiefel manifold, combining an (approximately) tangential direction with an infeasibility-reducing normal direction. The subgradient Landing method, with normal stepsizes parameterized by $\\alpha\\in[0,1]$, has best-iterate complexity bounds $\\mathcal{O}(\\epsilon^{-4})$ for surrogate stationarity and $\\mathcal{O}(\\epsilon^{-2/(2-\\alpha)})$ for feasibility. For $\\alpha=0$, it converges locally $R$-linearly under local weak sharpness and mild assumptions. The proximal gradient Landing method computes a tangential direction by solving a proximal subproblem and combines it with the same normal direction. Moreover, the inexact proximal gradient Landing method allows the proximal subproblem to be solved approximately and applies an explicit correction to control violations of the tangency condition. Both proximal methods have outer-iteration complexity bounds $\\mathcal{O}(\\epsilon^{-2})$ for stationarity and $\\mathcal{O}(\\epsilon^{-1})$ for feasibility, and every accumulation point is first-order stationary. Under an additional asymptotic Bregman-error condition and the Kurdyka-Lojasiewicz property of a suitable auxiliary function, the primal sequence of the inexact method converges to a first-order stationary point. Numerical experiments illustrate the effectiveness of all three methods. On the tested sparse principal component analysis instances, the inexact method has favorable running times, and both proximal methods maintain small feasibility residuals.",
+      "submitted": "2026-10-22",
+      "updated": "2026-10-22",
+      "summary": "该文将 Landing 框架扩展到 Stiefel 流形上的光滑非凸项加凸非光滑项，组合切向优化方向与降低正交性违反的法向方向，主迭代无需逐步回缩或正交化。次梯度版本对替代驻点性给出 $O(\\epsilon^{-4})$ 的最好迭代复杂度，参数化法向步长控制可行性速度；精确和非精确近端版本分别计算切向子问题，后者另加显式切向修正。在文中安全区域、光滑及 Lipschitz 条件和接受准则下，近端版本的驻点性与可行性外层复杂度分别为 $O(\\epsilon^{-2})$、$O(\\epsilon^{-1})$，聚点为一阶驻点。整列收敛还需辅助函数 KL 性质及额外渐近 Bregman 误差控制；复杂度不包含内层近端求解成本。",
+      "reason": "推荐关注非精确子问题破坏切向性后如何修正，以及为何 KL 性质本身尚不足以直接推出整列收敛。它为避免昂贵几何投影提供了新的非光滑实现路线，同时区分最优性残差、约束残差和内外层代价，便于与已有流形近端法公平比较。",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "order": 11,
+      "arxiv_url": "https://arxiv.org/abs/2610.30617v1"
+    },
+    {
+      "arxiv_id": "2610.31502",
+      "version": 1,
+      "title": "Douglas-Rachford splitting method for nonconvex stochastic optimal control",
+      "authors": [
+        "François Caffier",
+        "Paul Malisani",
+        "Laurent Pfeiffer"
+      ],
+      "abstract": "Motivated by the numerical resolution of stochastic optimal control problems, particularly those involving nonlinear dynamics, we investigate the convergence properties of the Douglas-Rachford splitting algorithm in a nonconvex and infinite-dimensional setting. We introduce an extension of the method that applies when one component of the objective function is continuously differentiable with a locally Lipschitz gradient, while the other is weakly lower semicontinuous with a bounded domain.",
+      "submitted": "2026-10-22",
+      "updated": "2026-10-22",
+      "summary": "非凸 Douglas–Rachford 分裂在无限维空间中，局部光滑性和强聚点存在性是两个独立困难。该文在两项均下有界、弱下半连续，一项梯度在有界集上 Lipschitz、另一项定义域有界的条件下，加入定位与减步长机制；证明步长有限次调整后固定，分裂残差强收敛到零，最好残差为 $o(k^{-1/2})$，任何强聚点都是驻点。对控制仿射动力学及文中控制代价、正则性条件，作者再用时间 Hölder 正则性与紧性证明强聚点存在，将抽象结论用于有限场景树的非凸随机控制。一般 Hilbert 空间的有界性本身不保证强聚点，也未由此推出全局最优或整列收敛。",
+      "reason": "推荐阅读先定位迭代、再利用问题正则性取得强紧性的两层论证。它说明把有限维分裂方法推广到函数空间时，缺失的常常是拓扑紧性而非下降不等式。这个区分对研究非凸分解、场景并行子问题及控制空间上的算法收敛具有可复用价值。",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "order": 12,
+      "arxiv_url": "https://arxiv.org/abs/2610.31502v1"
+    },
+    {
+      "arxiv_id": "2608.22999",
+      "version": 2,
+      "title": "When Is Two-Stage Sample Robust Optimization Asymptotically Optimal? A Simple Perspective",
+      "authors": [
+        "Ling Dai",
+        "Chin Pang Ho"
+      ],
+      "abstract": "Two-stage sample robust optimization with linear decision rules is a standard data-driven approach to two-stage stochastic linear programs with unknown distributions. \\cite{bertsimas2022two} established that this approach is asymptotically optimal under several conditions. Most conditions are mild, but one imposes a technical requirement on the recourse system. Whether this condition is implied by the others was left as an open question. We resolve this open question through a geometric feature of the support set: simpleness, the property that every vertex is incident to exactly as many edges as the dimension of the support. For simple support sets, the technical condition is automatic, and asymptotic optimality holds under the remaining standard assumptions. For every non-simple support, we construct a recourse system that is feasible everywhere in the support but violates the technical condition, and this construction resolves the open question. We further characterize the simpleness of one-sided and two-sided budgeted uncertainty sets and identify when budget perturbations can restore simpleness. We also develop a polynomial-time algorithm that certifies the technical condition at a given vertex using its incident edge directions. Numerical experiments on newsvendor and network lot-sizing problems illustrate the characterization and the effectiveness of the verification algorithm.",
+      "submitted": "2026-08-24",
+      "updated": "2026-10-22",
+      "summary": "两阶段样本鲁棒优化的线性决策规则，已有渐近最优定理依赖一个局部仿射补救可行性条件；它是否能由通常的全局可行性自动推出一直不清楚。该文给出按支撑多面体几何划分的完整答案：在每个顶点恰有内在维数条相邻边的 simple 支撑上，全局可行性自动带来所需局部线性可行性，因此在其余标准条件下继承几乎必然渐近最优。对每个非 simple 支撑，作者构造处处可行却违反该局部条件的补救系统，并给出基于顶点相邻边方向的多项式时间验证程序。反例否定条件冗余性，不等于证明该支撑上的每个具体实例都渐近失败。",
+      "reason": "推荐关注如何把难检查的补救条件转化为支撑集几何性质，以及对所有补救系统成立和某个实例成立的量词区别。结果既提供可安全删去假设的场景，也给出必要时逐顶点检查的算法入口，有助于判断数据驱动近似的保证是否真正适用。",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "order": 13,
+      "arxiv_url": "https://arxiv.org/abs/2608.22999v2"
+    },
+    {
+      "arxiv_id": "2610.17371",
+      "version": 2,
+      "title": "Global Extendability of Local Atoms in Sparse Moment Relaxations",
+      "authors": [
+        "Haoran Sun"
+      ],
+      "abstract": "Moment relaxations provide lower bounds for polynomial optimization problems, while their moment matrices also carry information about solutions. For correlatively sparse relaxations, we study whether atomic candidates extracted from selected clique blocks reveal part of a global minimizer, even when the remaining blocks do not admit the same extraction certificate. We use simplicial regularity: the minimal face of a selected block in the pseudo-moment matrix cone is simplicial and generated by finite point evaluations. A value-exact chain example illustrates how a rank-one clique can identify coordinates shared by every global minimizer. We then give sufficient conditions for global extendability. If the relaxation is value exact and a selected block has maximum rank over the optimal face and satisfies simplicial regularity, then at least one of its atomic candidates is globally extendable. When all candidates satisfy the assigned clique constraints, they give a locally feasible atomic representation through the full relaxation degree. Every positive-weight atom in such a representation minimizes its clique objective given its boundary value. If the relaxation is value exact and the boundary moment block has maximum rank one over the optimal face, every such atom is globally extendable. Examples show why the additional hypotheses are needed, and numerical experiments on unicycle trajectory optimization demonstrate the effectiveness of progressive extraction and fixing.",
+      "submitted": "2026-10-12",
+      "updated": "2026-10-22",
+      "summary": "稀疏矩松弛中，一部分 clique 已能提取原子，其他块却未满足提取条件时，局部候选是否可固定为全局最优解的一部分？该文证明：松弛最优值精确、所选块在整个最优面上达到最大秩且具有单纯正则性时，至少一个原子可全局延拓；若有完整松弛次数上的局部可行原子表示，且边界矩块在整个最优面上的最大秩为一，则每个正权原子都可延拓。原子替换论证利用 clique 只通过边界变量与其余部分耦合。反例显示单个数值解的秩一或很小松弛间隙均不足够，辅助 SDP 用于检查最优面条件；轨迹实验的数值近优结果与精确证书分开陈述。",
+      "reason": "推荐阅读从局部原子可提取到固定它不会丢失全局最优解之间缺少的证据。最大秩、边界条件和原子替换给出可操作的判据，也避免将稀疏 SDP 中看似理想的小块误当成全局解证书。价值在于有条件的部分提取，而非要求所有 clique 同时达到平坦性。",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "order": 14,
+      "arxiv_url": "https://arxiv.org/abs/2610.17371v2"
+    },
+    {
+      "arxiv_id": "2605.27733",
+      "version": 2,
+      "title": "Can Entry-Wise Clipping Give Spectral Control of Stochastic Gradients?",
+      "authors": [
+        "Zitao Song",
+        "Cedar Site Bai",
+        "Zhe Zhang",
+        "Brian Bullins",
+        "David F. Gleich"
+      ],
+      "abstract": "Training instabilities such as loss spikes are frequently the result of stochastic gradient noise. Because of rare expressions in language training data, and multiple layer composition, the noise impact is heavy-tailed and survives mini-batch averaging. Existing remedies trade off structure against cost: vector-norm clipping ignores the matrix structure of weight updates, while spectral normalization (e.g., Muon (Jordan et al., 2024)) respects it at additional cost. We show that this trade-off can be balanced. Real gradient noise appears to be similar to entry-wise heavy-tailed contamination, and a first-order perturbation analysis reveals a localization property of such noise, under which a simple entry-wise method achieves spectral control. Exploiting this, we derive a tractable surrogate for the Bayes-optimal entry-wise estimator under a Gaussian signal prior. We establish $O(\\varepsilon^{-4})$ convergence guarantee under Cauchy-contaminated noise. Empirically, we find that smooth shrinkage improves Adam on NanoGPT pretraining, saving ${\\sim}7\\%$ of training tokens. We further find that applying the entry-wise clipping before spectral normalization yields a ${\\sim}2\\%$ token saving on top of Muon.",
+      "submitted": "2026-05-26",
+      "updated": "2026-10-22",
+      "summary": "该文从矩阵梯度噪声的局部化解释逐元素裁剪何时能影响谱扰动，并从高斯信号先验下的 Bayes 估计推导平滑收缩 $s(z)=z\\exp(-|z|/c)$。谱分析基于首阶扰动与相应谱分离条件，不能解读为任意矩阵上的无条件谱范数控制。对下有界光滑目标、真梯度各坐标有界、跨步独立且符合已知高斯—Cauchy 对称混合结构的加性噪声，作者为直接裁剪更新和先裁剪再作矩阵符号归一化分别给出 $O(\\epsilon^{-4})$ 驻点复杂度；阈值和常数依赖梯度界、噪声尺度及维数，后者还需配套小批量设置。NanoGPT 的 token 节省是具体实验结果，不是对真实训练的统一保证。",
+      "reason": "推荐研究从重尾噪声形状到裁剪偏差与有效下降方向的分析，而不只比较训练曲线。它把低成本坐标处理与矩阵谱方法联系起来，说明相同裁剪操作在局部化噪声和低秩噪声下为何可能表现不同。明确的分布模型也使结论能与更一般的有限矩重尾分析区分。",
+      "directions": [
+        "stochastic"
+      ],
+      "order": 15,
+      "arxiv_url": "https://arxiv.org/abs/2605.27733v2"
+    },
+    {
+      "arxiv_id": "2610.31110",
+      "version": 1,
+      "title": "On Modified Newton Methods for Unconstrained Optimization Based on Lanczos Tridiagonalization",
+      "authors": [
+        "Aban Ansari-Önnestam",
+        "Anders Forsgren",
+        "Philip E. Gill"
+      ],
+      "abstract": "For a strongly convex unconstrained minimization problem, Newton's method with a line search offers rapid convergence to a minimizer by incorporating second-order information. However, for a general unconstrained problem the Hessian need not be positive definite, which can lead to the inability to find a search direction or to search directions that fail to produce descent. Modified Newton methods are designed to handle this situation. This paper considers modifications to a Newton-conjugate-gradient approach based on Lanczos tridiagonalization. Existing methods are extended using dynamic modification schemes that provide a descent direction while keeping the modification bounded. A Lanczos-based scheme and a conjugate-gradient (CG)-based scheme are formulated and analyzed. These methods are mathematically equivalent in exact arithmetic, but their practical behavior differs in finite precision. Finally, it is shown how the convergence and computational cost are affected by varying the amount of additional curvature introduced and by allowing the early termination of the inner iterations.",
+      "submitted": "2026-10-22",
+      "updated": "2026-10-22",
+      "summary": "大规模非凸 Newton 法通常只通过 Hessian–向量乘积建立 Krylov 模型，但用单一曲率参数同时判断是否修正、又决定修正到什么程度，可能导致不合适的搜索方向。该文利用 Lanczos 内层累积的三对角曲率信息，把固定检测阈值与随迭代变化的目标曲率分开；目标在给定上下界内时，证明对三对角模型的修正保持有界，并构造下降方向。作者还推导精确算术等价的 CG 递推，避免显式存储整组 Lanczos 基；有限精度下两种实现的行为可以不同。实验比较动态目标和不同内层早停规则，显示计算代价与方向质量的取舍，没有将其表述成统一优于既有方法的复杂度结论。",
+      "reason": "推荐关注已积累的 Krylov 曲率信息如何既控制模型修正，又支持较早结束内层求解。这与利用历史方向改善迭代的思路直接相关，但这里的历史发生在 Newton 子问题内部。阈值与目标曲率的分离、修正界和无显式基的实现，提供了可在其他历史子空间方法中检查和借鉴的具体设计。",
+      "directions": [
+        "historical-information"
+      ],
+      "order": 16,
+      "arxiv_url": "https://arxiv.org/abs/2610.31110v1"
+    }
+  ],
+  "highlights": [
+    {
+      "arxiv_id": "2610.30143",
+      "types": [
+        "field",
+        "group"
+      ],
+      "label": "随机次梯度末次点｜一维也有不可去的对数损失",
+      "text": "作者对每个预算构造一维凸目标与有界独立噪声，证明标准 $\\gamma/\\sqrt t$ 步长的末次点误差可达 $\\Omega(\\log n/\\sqrt n)$。与已知预算下常步长结果对照，对数损失可以来自调度本身。"
+    },
+    {
+      "arxiv_id": "2610.30300",
+      "types": [
+        "field",
+        "group"
+      ],
+      "label": "全程可行 LP/QP｜从精确梯度流导出算法",
+      "text": "最小选取原则将多面体约束梯度流分成有限片段，每段解一个非负最小二乘问题。LP 与欧氏投影有精确有限终止算法；一般凸 QP 的离散法保持每步可行，有解时收敛，严格互补时最终线性。"
+    },
+    {
+      "arxiv_id": "2609.14235",
+      "types": [
+        "field"
+      ],
+      "label": "Minimax 驻点标准｜新版补齐博弈驻点复杂度",
+      "text": "在主要精度区间，任意确定性一阶方法求 OS 与 GS 的最优精度阶分别为 $\\epsilon^{-3}$、$\\epsilon^{-5/2}$，Tracked-FOAM 给出匹配上界。新增 GS 下界与算法分析，揭示两种评价标准的内在难度差异。"
+    },
+    {
+      "arxiv_id": "2609.18101",
+      "types": [
+        "group"
+      ],
+      "label": "Tree-RGT 新版｜根节点动量无需增加通信变量",
+      "text": "新版将延迟路由梯度与根节点历史聚合，并联合分析有限树记忆和几何动量。固定连通无向图上，规定步长与动量范围内仍保留 $O(nD_{\\mathcal G}^2)$ 过渡阶；这一阶数已见原版，新增价值是带动量算法与保证。"
+    },
+    {
+      "arxiv_id": "2610.30650",
+      "types": [
+        "group"
+      ],
+      "label": "未知 KL 几何｜把重启、认证和选择放进同一预算",
+      "text": "CARP-KL 用保守参数网格及新样本驻点证书竞争有效 KL 描述，仅调用原始随机次梯度与投影。共同区域、已知尺度及可负担范围内保留已知几何的多项式速率；有限预算的主要瓶颈仍是认证和排序。"
+    },
+    {
+      "arxiv_id": "2610.31298",
+      "types": [
+        "field"
+      ],
+      "label": "矩形辛矩阵逼近｜刻画松弛精确的临界维数",
+      "text": "SDP 松弛对任意目标均精确，当且仅当 $n\\ge2k-1$；同一范围内二阶驻点均全局最优。最小 Hessian 曲率、低维严格对偶间隙与小矩阵对偶算法，让维数阈值同时连接几何、证书和计算。"
+    },
+    {
+      "arxiv_id": "2610.31264",
+      "types": [
+        "field"
+      ],
+      "label": "深 ReLU 训练｜连续目标的最小误差也可能不取到",
+      "text": "一个两隐层小架构 $(2,2,1,1)$ 就能对某连续目标没有最优 $L^2$ 逼近，任何趋优参数序列均不能有界。反例区分了浅层存在性、通用逼近与固定深架构的优化适定性。"
+    },
+    {
+      "arxiv_id": "2610.31486",
+      "types": [
+        "group"
+      ],
+      "label": "对偶次梯度复用｜沿多条可认证射线减少消息",
+      "text": "SSAR 从只利用初始射线推广到有限串恒次梯度射线，段内常步长带来固定下降，随后恢复已有收敛规则。服务器协调的共识模型可复用信息、用状态位替代部分向量通信；未声称任意问题的统一复杂度加速。"
+    }
+  ]
+}
