@@ -1,0 +1,364 @@
+{
+  "date": "2026-10-24",
+  "status": "complete",
+  "frontiers_status": "recommendations",
+  "highlights": [
+    {
+      "arxiv_id": "2110.05282",
+      "types": [
+        "field",
+        "group"
+      ],
+      "label": "OGT｜单循环同时优化梯度与通信复杂度",
+      "text": "快照跟踪节省梯度调用，无内循环 Chebyshev 递推复用历史状态。固定对称半正定混合矩阵下，同时达到期望 $O(\\sqrt{\\kappa}\\log(1/\\epsilon))$ 梯度次数与 $O(\\sqrt{\\kappa/\\theta}\\log(1/\\epsilon))$ 通信次数。"
+    },
+    {
+      "arxiv_id": "1901.08788",
+      "types": [
+        "field"
+      ],
+      "label": "随机估计序列｜区分可消除方差与持续扰动",
+      "text": "统一分析 SGD 与多种方差缩减方法，并构造抗扰动的加速近端 SVRG。复杂度分为加速有限和项和不可消除的噪声项；非均匀抽样可改善光滑项，也可能放大噪声代价。"
+    },
+    {
+      "arxiv_id": "2605.17027",
+      "types": [
+        "field",
+        "group"
+      ],
+      "label": "局部光滑 GT｜用移动裁剪控制模型与重启",
+      "text": "相对一致连续性 RUC 连接局部光滑估计和有限移动，错开 epoch 的方差缩减控制重启成本。固定网络与轨迹局部估计有界等条件下，得到平方裁剪梯度映射和共识误差的 $O(1/T)$ 界。"
+    },
+    {
+      "arxiv_id": "2104.02596",
+      "types": [
+        "group"
+      ],
+      "label": "时变网络加速｜分清单循环与额外共识成本",
+      "text": "窗口乘积收缩允许单个图不连通。加速 GT 获得凸、强凸的精度最优阶；多次共识进一步改善网络依赖。固定图 Chebyshev 匹配下界与一般时变图保证分别成立。"
+    },
+    {
+      "arxiv_id": "2309.06330",
+      "types": [
+        "group"
+      ],
+      "label": "非精确对偶 GT｜秩亏耦合也可线性收敛",
+      "text": "在约束像空间利用强凹性，按几何预算控制本地子问题误差，无需约束矩阵满行秩。结论要求可双随机化有向图和规定初始化；内层求解成本仍需单独计费。"
+    },
+    {
+      "arxiv_id": "2311.01317",
+      "types": [
+        "group"
+      ],
+      "label": "有限步共识图｜用整段乘积替代逐图谱隙",
+      "text": "构造周期乘积恰为全局平均的稀疏图序列，并分析随机非凸 GT。速率依赖周期长度，允许单图不连通；更好的显式界还使用首周期一致化，优化本身不因此有限步终止。"
+    },
+    {
+      "arxiv_id": "2001.08876",
+      "types": [
+        "field"
+      ],
+      "label": "流形加速｜把几何障碍化为度量失真",
+      "text": "切空间势函数与曲率比较给出可计算失真控制。测地光滑强凸、唯一测地线和可计算指数映射等条件下全局收敛，过渡后趋向完整加速率；不把它概括为从首步起曲率无关。"
+    }
+  ],
+  "papers": [
+    {
+      "arxiv_id": "2110.05282",
+      "version": 4,
+      "title": "Optimal Gradient Tracking for Decentralized Optimization",
+      "authors": [
+        "Zhuoqing Song",
+        "Lei Shi",
+        "Shi Pu",
+        "Ming Yan"
+      ],
+      "submitted": "2021-10-11",
+      "updated": "2024-04-20",
+      "arxiv_url": "https://arxiv.org/abs/2110.05282v4",
+      "abstract": "In this paper, we focus on solving the decentralized optimization problem of minimizing the sum of $n$ objective functions over a multi-agent network. The agents are embedded in an undirected graph where they can only send/receive information directly to/from their immediate neighbors. Assuming smooth and strongly convex objective functions, we propose an Optimal Gradient Tracking (OGT) method that achieves the optimal gradient computation complexity $O\\left(\\sqrt{\\kappa}\\log\\frac{1}{\\epsilon}\\right)$ and the optimal communication complexity $O\\left(\\sqrt{\\frac{\\kappa}{\\theta}}\\log\\frac{1}{\\epsilon}\\right)$ simultaneously, where $\\kappa$ and $\\frac{1}{\\theta}$ denote the condition numbers related to the objective functions and the communication graph, respectively. To our knowledge, OGT is the first single-loop decentralized gradient-type method that is optimal in both gradient computation and communication complexities. The development of OGT involves two building blocks which are also of independent interest. The first one is another new decentralized gradient tracking method termed \"Snapshot\" Gradient Tracking (SS-GT), which achieves the gradient computation and communication complexities of $O\\left(\\sqrt{\\kappa}\\log\\frac{1}{\\epsilon}\\right)$ and $O\\left(\\frac{\\sqrt{\\kappa}}{\\theta}\\log\\frac{1}{\\epsilon}\\right)$, respectively. SS-GT can be potentially extended to more general settings compared to OGT. The second one is a technique termed Loopless Chebyshev Acceleration (LCA) which can be implemented \"looplessly\" but achieve similar effect with adding multiple inner loops of Chebyshev acceleration in the algorithms. In addition to SS-GT, this LCA technique can accelerate many other gradient tracking based methods with respect to the graph condition number $\\frac{1}{\\theta}$.",
+      "summary": "在光滑强凸去中心化优化中，梯度计算次数与通信轮数需要分别优化。该文先用随机快照梯度跟踪 SS-GT 减少梯度计算，再提出无内循环的 Chebyshev 加速 LCA，把共识加速嵌入状态递推。对固定无向图、对称半正定双随机混合矩阵，OGT 同时达到期望梯度复杂度 $O(\\sqrt{\\kappa}\\log(1/\\epsilon))$ 与通信复杂度 $O(\\sqrt{\\kappa/\\theta}\\log(1/\\epsilon))$，其中 $\\kappa=L/\\mu$，$\\theta$ 衡量网络谱隙。最优性对应论文的一阶局部通信模型；SS-GT 允许的混合矩阵比完整 OGT 更一般。",
+      "reason": "推荐优先阅读随机快照与二阶共识递推如何分担计算和通信成本。LCA 用常数个历史状态替代显式多轮内循环，给出可复用的网络加速构件；复杂度同时最优的结论则为比较历史信息、通信复用与梯度调用提供了清楚基准。论文的最优阶数属于理论调参保证，实际步长表现仍需单独比较。",
+      "directions": [
+        "distributed",
+        "historical-information",
+        "optimization-frontiers"
+      ],
+      "order": 1
+    },
+    {
+      "arxiv_id": "1901.08788",
+      "version": 4,
+      "title": "Estimate Sequences for Stochastic Composite Optimization: Variance Reduction, Acceleration, and Robustness to Noise",
+      "authors": [
+        "Andrei Kulunchakov",
+        "Julien Mairal"
+      ],
+      "submitted": "2019-01-25",
+      "updated": "2020-09-04",
+      "arxiv_url": "https://arxiv.org/abs/1901.08788v4",
+      "abstract": "In this paper, we propose a unified view of gradient-based algorithms for stochastic convex composite optimization by extending the concept of estimate sequence introduced by Nesterov. More precisely, we interpret a large class of stochastic optimization methods as procedures that iteratively minimize a surrogate of the objective, which covers the stochastic gradient descent method and variants of the incremental approaches SAGA, SVRG, and MISO/Finito/SDCA. This point of view has several advantages: (i) we provide a simple generic proof of convergence for all of the aforementioned methods; (ii) we naturally obtain new algorithms with the same guarantees; (iii) we derive generic strategies to make these algorithms robust to stochastic noise, which is useful when data is corrupted by small random perturbations. Finally, we propose a new accelerated stochastic gradient descent algorithm and an accelerated SVRG algorithm with optimal complexity that is robust to stochastic noise.",
+      "summary": "有限和中的样本抽样方差可以通过记忆消除，数据持续扰动产生的噪声却不能同样消失。该文把随机估计序列用于凸复合目标，统一 SGD、SAGA、SVRG 和 MISO 等方法的收敛分析，并设计对扰动稳健的加速近端 SGD 与 SVRG。对光滑强凸有限和、无偏且方差有界的分量梯度扰动，加速 SVRG 的梯度复杂度为 $O((n+\\sqrt{nL_Q/\\mu})\\log(\\Delta_0/\\epsilon))+O(\\rho_Q\\widetilde\\sigma^2/(\\mu\\epsilon))$。这里 $L_Q$ 与 $\\rho_Q$ 分别体现非均匀抽样的光滑性收益与噪声代价；持续噪声下通过相应步长策略得到精度保证，不能只保留无噪声的线性项。",
+      "reason": "最值得补读的是把估计序列、控制变量方差和输出平均规则放进同一证明框架。它明确解释历史梯度能消除哪部分随机性，以及非均匀抽样为什么可能同时改善确定性项、放大噪声项。这个分解适合研究随机更新的调度与方差缩减，也有助于审视把无噪声加速结果直接用于随机训练时遗漏的成本。",
+      "directions": [
+        "stochastic",
+        "optimization-frontiers"
+      ],
+      "order": 2
+    },
+    {
+      "arxiv_id": "2605.17027",
+      "version": 1,
+      "title": "Clipped Stochastic Gradient Tracking For Locally Smooth Functions",
+      "authors": [
+        "Leilei Mei",
+        "Junyu Zhang"
+      ],
+      "submitted": "2026-05-16",
+      "updated": "2026-05-16",
+      "arxiv_url": "https://arxiv.org/abs/2605.17027v1",
+      "abstract": "Most stochastic gradient tracking (GT) methods adopt pre-scheduled stepsize rules, while a few recent works studied adaptive stepsizes that attempt to respond to the problem's local landscape. These methods are typically built upon the problem's global smoothness constant in both analysis and implementation, even for the adaptive ones. On the one hand, for many problems the local smoothness constant may vary drastically across the domain, and sometimes even unbounded, using the global upper bound of the local constants is too conservative. On the other hand, drastic stepsize changes can cause difficulties in the analysis of convergence and consensus of distributed algorithms, making the direct use of local smoothness constants risky and theoretically challenging. In this paper, we propose a \\emph{Relative Uniform Continuity} (RUC) regularity condition for the local smoothness constant as a function of sets. The RUC condition covers most common growth functions for local smoothness constant, ranging from constant and logarithmic to polynomial and even exponential. For RUC-regular distributed optimization problems with finite-sum structure, we derive a clipped gradient tracking method with staggered variance reduction, which only relies on the local smoothness of objective functions, and an $\\mathcal{O}(\\sum_in_i^{1.5}+n_i^{0.5}\\epsilon^{-1})$ complexity has been established for our algorithm.",
+      "summary": "局部光滑常数可能随位置剧烈变化，直接把全局常数换成局部估计会破坏梯度跟踪中的共识控制。该文提出集合局部光滑常数的相对一致连续性 RUC，将有界移动裁剪与错开检查点的方差缩减结合，让各节点可按本地条件提前重启有限和梯度估计。在固定双随机网络、RUC 与参数条件下，并额外假设沿轨迹使用的局部光滑估计有统一上界，作者证明随机输出点的期望平方裁剪梯度映射和共识误差为 $O(1/T)$；达到该映射精度 $\\epsilon$ 的总样本复杂度为 $O(\\sum_i(n_i^{3/2}+n_i^{1/2}/\\epsilon))$。映射与真梯度的联系由局部估计和裁剪阈值控制，不能直接省略这些条件。",
+      "reason": "推荐研究“限制移动距离—维持局部正则性—控制重启次数”的分析链条。裁剪在这里用于保护网络共识与局部模型，而非仅处理重尾噪声；重启计数又保证不会频繁退化为全梯度法。这个工具为非全局光滑的分布式方差缩减提供了可操作路径。错开本地 epoch 不等同于任意消息延迟下的完全异步通信。",
+      "directions": [
+        "distributed",
+        "stochastic",
+        "optimization-frontiers"
+      ],
+      "order": 3
+    },
+    {
+      "arxiv_id": "2104.02596",
+      "version": 5,
+      "title": "Accelerated Gradient Tracking over Time-varying Graphs for Decentralized Optimization",
+      "authors": [
+        "Huan Li",
+        "Zhouchen Lin"
+      ],
+      "submitted": "2021-04-06",
+      "updated": "2024-12-06",
+      "arxiv_url": "https://arxiv.org/abs/2104.02596v5",
+      "abstract": "Decentralized optimization over time-varying graphs has been increasingly common in modern machine learning with massive data stored on millions of mobile devices, such as in federated learning. This paper revisits the widely used accelerated gradient tracking and extends it to time-varying graphs. We prove that the practical single loop accelerated gradient tracking needs $O((\\frac{\\gamma}{1-\\sigma_{\\gamma}})^2\\sqrt{\\frac{L}{\\epsilon}})$ and $O((\\frac{\\gamma}{1-\\sigma_{\\gamma}})^{1.5}\\sqrt{\\frac{L}{\\mu}}\\log\\frac{1}{\\epsilon})$ iterations to reach an $\\epsilon$-optimal solution over time-varying graphs when the problems are nonstrongly convex and strongly convex, respectively, where $\\gamma$ and $\\sigma_{\\gamma}$ are two common constants charactering the network connectivity, $L$ and $\\mu$ are the smoothness and strong convexity constants, respectively, and one iteration corresponds to one gradient oracle call and one communication round. Our convergence rates improve significantly over the ones of $O(\\frac{1}{\\epsilon^{5/7}})$ and $O((\\frac{L}{\\mu})^{5/7}\\frac{1}{(1-\\sigma)^{1.5}}\\log\\frac{1}{\\epsilon})$, respectively, which were proved in the original literature of accelerated gradient tracking only for static graphs, where $\\frac{\\gamma}{1-\\sigma_{\\gamma}}$ equals $\\frac{1}{1-\\sigma}$ when the network is time-invariant. When combining with a multiple consensus subroutine, the dependence on the network connectivity constants can be further improved to $O(1)$ and $O(\\frac{\\gamma}{1-\\sigma_{\\gamma}})$ for the gradient oracle and communication round complexities, respectively. When the network is static, by employing the Chebyshev acceleration, our complexities exactly match the lower bounds without hiding any poly-logarithmic factor for both nonstrongly convex and strongly convex problems.",
+      "summary": "时变通信使加速迭代中的优化误差与窗口共识误差相互作用。该文对加速梯度跟踪重新分析，在各时刻双随机、长度 $\\gamma$ 的矩阵乘积以 $\\sigma_\\gamma<1$ 收缩的条件下，允许单个图不连通。令 $\\chi=\\gamma/(1-\\sigma_\\gamma)$，单循环方法对光滑凸与强凸问题分别取得 $O(\\chi^2\\sqrt{L/\\epsilon})$ 和 $O(\\chi^{3/2}\\sqrt{L/\\mu}\\log(1/\\epsilon))$ 的梯度及通信阶数，省略问题初始量。再加入多次共识，可把梯度次数对网络的依赖移除、通信依赖改善到线性 $\\chi$。固定对称图上的 Chebyshev 变体达到匹配下界；这一更强结论不直接推广到任意时变图。",
+      "reason": "推荐优先研究跨窗口的加速势函数与共识递推如何配合。它区分单循环、额外多次共识和固定图 Chebyshev 三种实现的真实成本，适合作为时变网络算法的比较基准。主要目标界在网络平均点建立，本地点保证或实际输出还涉及共识误差；原文理论步长常数较保守，应与实践调参分开理解。",
+      "directions": [
+        "time-varying-networks",
+        "distributed",
+        "optimization-frontiers"
+      ],
+      "order": 4
+    },
+    {
+      "arxiv_id": "2309.06330",
+      "version": 2,
+      "title": "Inexact Decentralized Dual Gradient Tracking for Constraint-Coupled Optimization",
+      "authors": [
+        "Jingwang Li",
+        "Housheng Su"
+      ],
+      "submitted": "2023-09-12",
+      "updated": "2023-09-13",
+      "arxiv_url": "https://arxiv.org/abs/2309.06330v2",
+      "abstract": "We propose an inexact decentralized dual gradient tracking method (iDDGT) for distributed optimization problems with a globally coupled equality constraint. Unlike existing algorithms that rely on either the exact dual gradient or an inexact one obtained through single-step gradient descent, iDDGT introduces a new approach: utilizing an inexact dual gradient with controllable levels of inexactness. Numerical experiments demonstrate that iDDGT achieves significantly higher computational efficiency compared to state-of-the-art methods. Furthermore, it is proved that iDDGT can achieve linear convergence over directed graphs without imposing any conditions on the constraint matrix. This expands its applicability beyond existing algorithms that require the constraint matrix to have full row rank and undirected graphs for achieving linear convergence.",
+      "summary": "一般线性耦合等式约束下，对偶梯度往往需要精确求解各节点子问题，而约束矩阵秩亏又使全空间强凹性失效。该文提出 iDDGT，用可控误差的子问题解形成非精确对偶梯度，并在约束矩阵像空间上利用对偶强凹性分析。对光滑强凸局部目标、可行问题及支持本原双随机权重的强连通有向图，若步长满足限制、对偶初始化为零、内层解误差按几何速率下降，原始变量线性收敛，不需要约束矩阵满行秩。内层精度可用局部一阶残差认证，梯度法或加速梯度法只是可选求解器。",
+      "reason": "推荐阅读把秩亏、对偶不唯一与可控内层误差同时处理的证明。它直接对应耦合约束分布式优化中的计算负担，允许节点自行选择子问题求解器。线性结论依赖随外层收紧的误差预算与可双随机化图，外层轮数不能代替内层总计算成本，也不保证每一步满足原始耦合约束。",
+      "directions": [
+        "distributed"
+      ],
+      "order": 5
+    },
+    {
+      "arxiv_id": "2311.01317",
+      "version": 3,
+      "title": "On graphs with finite-time consensus and their use in gradient tracking",
+      "authors": [
+        "Edward Duc Hien Nguyen",
+        "Xin Jiang",
+        "Bicheng Ying",
+        "César A. Uribe"
+      ],
+      "submitted": "2023-11-02",
+      "updated": "2025-01-29",
+      "arxiv_url": "https://arxiv.org/abs/2311.01317v3",
+      "abstract": "This paper studies sequences of graphs satisfying the finite-time consensus property (i.e., iterating through such a finite sequence is equivalent to performing global or exact averaging) and their use in Gradient Tracking. We provide an explicit weight matrix representation of the studied sequences and prove their finite-time consensus property. Moreover, we incorporate the studied finite-time consensus topologies into Gradient Tracking and present a new algorithmic scheme called Gradient Tracking for Finite-Time Consensus Topologies (GT-FT). We analyze the new scheme for nonconvex problems with stochastic gradient estimates. Our analysis shows that the convergence rate of GT-FT does not depend on the heterogeneity of the agents' functions or the connectivity of any individual graph in the topology sequence. Furthermore, owing to the sparsity of the graphs, GT-FT requires lower communication costs than Gradient Tracking using the static counterpart of the topology sequence.",
+      "summary": "单个通信图的谱隙可能无法反映整段拓扑序列的联合平均能力。该文构造并分析有限步精确平均的图序列，包括适用于任意节点数的多邻居超长方体，并将其嵌入随机非凸梯度跟踪 GT-FT。若一周期 $\\tau$ 个双随机矩阵的乘积等于精确平均算子，局部目标光滑、随机梯度无偏且方差有界，则收敛界可以用周期长度控制，不依赖每个单图的连通度或函数异质性上界。调参并进行首周期一致化 warm-up 后，平均平方梯度界包含 $O(\\tau^2L/T+\\tau(L\\sigma/T)^{2/3}+\\sqrt{L\\sigma^2/(nT)})$。有限步共识是通信算子的性质，不表示随机优化有限步终止。",
+      "reason": "推荐优先研究用矩阵乘积的精确结构替代逐图最坏谱隙的思路。构造拓扑和分析优化误差相结合，可解释稀疏、甚至单次不连通的通信为什么仍然有效。其阅读价值在于可设计网络中的通信机制；使用条件是能部署相应周期序列，且首周期一致化也有实际通信成本。",
+      "directions": [
+        "time-varying-networks",
+        "distributed",
+        "stochastic",
+        "optimization-frontiers"
+      ],
+      "order": 6
+    },
+    {
+      "arxiv_id": "2001.08876",
+      "version": 1,
+      "title": "From Nesterov's Estimate Sequence to Riemannian Acceleration",
+      "authors": [
+        "Kwangjun Ahn",
+        "Suvrit Sra"
+      ],
+      "submitted": "2020-01-24",
+      "updated": "2020-01-24",
+      "arxiv_url": "https://arxiv.org/abs/2001.08876v1",
+      "abstract": "We propose the first global accelerated gradient method for Riemannian manifolds. Toward establishing our result we revisit Nesterov's estimate sequence technique and develop an alternative analysis for it that may also be of independent interest. Then, we extend this analysis to the Riemannian setting, localizing the key difficulty due to non-Euclidean structure into a certain ``metric distortion.'' We control this distortion by developing a novel geometric inequality, which permits us to propose and analyze a Riemannian counterpart to Nesterov's accelerated gradient method.",
+      "summary": "把欧氏加速直接搬到流形时，不同切空间中的距离失真会破坏势函数。该文重新推导 Nesterov 估计序列的参数关系，采用切空间投影距离构造势函数，并用曲率比较不等式给出每步可计算的失真控制。对唯一测地线、指数及逆指数映射可计算、截面曲率有下界的流形，以及测地光滑且强凸的目标，作者建立全局收敛并证明参数在过渡后趋向完整加速率。完整定理还要求规定的固定步长区间；其渐近加速结论不等于从第一步就具有与曲率无关的欧氏最优复杂度。",
+      "reason": "最值得补读的是把加速失效的障碍集中成一个可估计的度量失真量。这个分析把几何误差与算法参数选择接起来，能帮助理解近期流形加速与曲率相关下界之间的关系。推荐将局部加速、过渡期和最终加速因子分开阅读，尤其留意曲率、初值及条件数如何进入隐藏常数。",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "order": 7
+    },
+    {
+      "arxiv_id": "2202.03836",
+      "version": 1,
+      "title": "An Improved Analysis of Gradient Tracking for Decentralized Machine Learning",
+      "authors": [
+        "Anastasia Koloskova",
+        "Tao Lin",
+        "Sebastian U. Stich"
+      ],
+      "submitted": "2022-02-08",
+      "updated": "2022-02-08",
+      "arxiv_url": "https://arxiv.org/abs/2202.03836v1",
+      "abstract": "We consider decentralized machine learning over a network where the training data is distributed across $n$ agents, each of which can compute stochastic model updates on their local data. The agent's common goal is to find a model that minimizes the average of all local loss functions. While gradient tracking (GT) algorithms can overcome a key challenge, namely accounting for differences between workers' local data distributions, the known convergence rates for GT algorithms are not optimal with respect to their dependence on the mixing parameter $p$ (related to the spectral gap of the connectivity matrix). We provide a tighter analysis of the GT method in the stochastic strongly convex, convex and non-convex settings. We improve the dependency on $p$ from $\\mathcal{O}(p^{-2})$ to $\\mathcal{O}(p^{-1}c^{-1})$ in the noiseless case and from $\\mathcal{O}(p^{-3/2})$ to $\\mathcal{O}(p^{-1/2}c^{-1})$ in the general stochastic case, where $c \\geq p$ is related to the negative eigenvalues of the connectivity matrix (and is a constant in most practical applications). This improvement was possible due to a new proof technique which could be of independent interest.",
+      "summary": "标准随机梯度跟踪的已有分析对网络谱隙依赖过重，与其处理数据异质性的实际表现不符。该文不改变算法，而是重新耦合跟踪误差和共识误差，在固定对称双随机网络、局部光滑和无偏有界方差条件下，覆盖非凸、凸与强凸情形。作者把无噪声网络依赖从 $p^{-2}$ 改进为 $p^{-1}c^{-1}$，随机项从 $p^{-3/2}$ 改进为 $p^{-1/2}c^{-1}$；$p$ 是混合收缩参数，$c$ 反映负特征值影响。经过网络相关过渡期，主导随机项与集中式小批量 SGD 同阶；若 $c$ 随网络退化，不能把它当作统一常数。",
+      "reason": "推荐研究无需改算法就能收紧网络复杂度的误差分解。这为判断新方法的收益来自算法、参数还是旧证明的松弛提供了重要对照。非凸结论是时间平均平方梯度界，凸情形用相应平均或加权输出；这些保证不自动成为任意末次点的目标误差率。",
+      "directions": [
+        "distributed",
+        "stochastic",
+        "optimization-frontiers"
+      ],
+      "order": 8
+    },
+    {
+      "arxiv_id": "2509.18129",
+      "version": 2,
+      "title": "Pareto-optimal Trade-offs Between Communication and Computation with Flexible Gradient Tracking",
+      "authors": [
+        "Yan Huang",
+        "Jinming Xu",
+        "Li Chai",
+        "Jiming Chen",
+        "Karl H. Johansson"
+      ],
+      "submitted": "2025-09-11",
+      "updated": "2026-02-15",
+      "arxiv_url": "https://arxiv.org/abs/2509.18129v2",
+      "abstract": "This paper addresses distributed stochastic optimization problems under non-i.i.d. data, focusing on the inherent trade-offs between communication and computational efficiency. To this end, we propose FlexGT, a flexible snapshot gradient tracking method that enables tunable numbers of local updates and neighbor communications per round, thereby adapting efficiently to diverse system resource conditions. Leveraging a unified convergence analysis framework, we derive tight communication and computational complexity for FlexGT with explicit dependence on objective properties and certain tunable parameters. Moreover, we introduce an accelerated variant, termed Acc-FlexGT, and prove that, with prior knowledge of the graph, it achieves Pareto-optimal trade-offs between communication and computation. Particularly, in the nonconvex case, Acc-FlexGT achieves the optimal iteration complexity of $\\tilde{\\mathcal{O}}\\left( \\left( L\\sigma ^2 \\right) /\\left( n\\epsilon ^2 \\right) +L/\\left( \\epsilon \\sqrt{1-\\sqrt{\\rho _W}} \\right) \\right) $ and optimal communication complexity of $\\tilde{\\mathcal{O}}\\left( L/\\left( \\epsilon \\sqrt{1-\\sqrt{\\rho _W}} \\right) \\right)$ for appropriately chosen numbers of local updates, matching existing lower bounds up to logarithmic factors. And, it improves the existing results for the strongly convex case by a factor of $\\tilde{\\mathcal{O}} \\left( 1/\\sqrt{\\epsilon} \\right)$, where $\\epsilon$ is the targeted accuracy, $n$ the number of nodes, $L$ the Lipschitz constant, $\\rho_W$ the connectivity of the graph, and $\\sigma$ the stochastic gradient variance. Numerical experiments corroborate the theoretical results and demonstrate the effectiveness of the proposed methods.",
+      "summary": "本地更新与邻居通信的单位成本不同，固定二者比例会限制去中心化训练效率。该文提出 FlexGT，将每轮本地随机更新数与通信数独立设为可调参数，并用快照跟踪保留对非同分布数据的校正。统一分析覆盖强凸、凸和非凸目标；在固定双随机网络、光滑及有界随机梯度方差等条件下，给出两种资源的显式复杂度。已知图连通参数时，Acc-FlexGT 用加速 gossip，在合适配置下达到与相应下界匹配至对数因子的计算—通信权衡。理论中的迭代、梯度调用和通信轮数分别计费，最优权衡依赖目标精度与网络参数。",
+      "reason": "推荐阅读把本地步数、通信次数和快照误差统一放进 Lyapunov 分析的做法。相比仅报告更少通信，它给出了两种资源可以怎样交换的依据，便于按设备与链路成本选择实现。这里的网络是固定图，多个通信子步以及预先获知谱信息的成本需要在实际比较中保留。",
+      "directions": [
+        "distributed",
+        "stochastic",
+        "optimization-frontiers"
+      ],
+      "order": 9
+    },
+    {
+      "arxiv_id": "2412.09556",
+      "version": 1,
+      "title": "Enhancing Convergence of Decentralized Gradient Tracking under the KL Property",
+      "authors": [
+        "Xiaokai Chen",
+        "Tianyu Cao",
+        "Gesualdo Scutari"
+      ],
+      "submitted": "2024-12-12",
+      "updated": "2024-12-12",
+      "arxiv_url": "https://arxiv.org/abs/2412.09556v1",
+      "abstract": "We study decentralized multiagent optimization over networks, modeled as undirected graphs. The optimization problem consists of minimizing a nonconvex smooth function plus a convex extended-value function, which enforces constraints or extra structure on the solution (e.g., sparsity, low-rank). We further assume that the objective function satisfies the Kurdyka-{\\L}ojasiewicz (KL) property, with given exponent $\\theta\\in [0,1)$. The KL property is satisfied by several (nonconvex) functions of practical interest, e.g., arising from machine learning applications; in the centralized setting, it permits to achieve strong convergence guarantees. Here we establish convergence of the same type for the notorious decentralized gradient-tracking-based algorithm SONATA. Specifically, $\\textbf{(i)}$ when $\\theta\\in (0,1/2]$, the sequence generated by SONATA converges to a stationary solution of the problem at R-linear rate;$ \\textbf{(ii)} $when $\\theta\\in (1/2,1)$, sublinear rate is certified; and finally $\\textbf{(iii)}$ when $\\theta=0$, the iterates will either converge in a finite number of steps or converges at R-linear rate. This matches the convergence behavior of centralized proximal-gradient algorithms except when $\\theta=0$. Numerical results validate our theoretical findings.",
+      "summary": "非凸复合目标满足 KL 性质时，集中式方法常有整列收敛和更快局部速率，但网络误差使目标值不再单调。该文分析 SONATA，分离目标进展与共识、跟踪误差，从目标本身的 KL 条件出发证明点列收敛。对固定连通无向图、光滑局部损失与凸非光滑正则，按规定调参且混合强度足够、迭代存在聚点时，KL 指数 $\\theta\\in(0,1/2]$ 给出 R 线性点列收敛，$\\theta\\in(1/2,1)$ 给出相应次线性率。$\\theta=0$ 时可能有限步终止，也可能仅 R 线性收敛。聚点存在与足够混合是定理前提，不能只凭 KL 名称略去。",
+      "reason": "推荐阅读如何绕开“构造的网络 Lyapunov 函数是否继承相同 KL 指数”的困难。作者直接利用目标函数的几何性质，同时把网络误差作为独立受控项，这对研究分布式非凸算法的整列收敛有明确借鉴价值。尤其值得核对零指数边界，它与集中式有限终止的直觉不同。",
+      "directions": [
+        "distributed"
+      ],
+      "order": 10
+    },
+    {
+      "arxiv_id": "2203.02210",
+      "version": 2,
+      "title": "Triggered Gradient Tracking for Asynchronous Distributed Optimization",
+      "authors": [
+        "Guido Carnevale",
+        "Ivano Notarnicola",
+        "Lorenzo Marconi",
+        "Giuseppe Notarstefano"
+      ],
+      "submitted": "2022-03-04",
+      "updated": "2023-09-12",
+      "arxiv_url": "https://arxiv.org/abs/2203.02210v2",
+      "abstract": "This paper proposes Asynchronous Triggered Gradient Tracking, i.e., a distributed optimization algorithm to solve consensus optimization over networks with asynchronous communication. As a building block, we devise the continuous-time counterpart of the recently proposed (discrete-time) distributed gradient tracking called Continuous Gradient Tracking. By using a Lyapunov approach, we prove exponential stability of the equilibrium corresponding to agents' estimates being consensual to the optimal solution, with arbitrary initialization of the local estimates. Then, we propose two triggered versions of the algorithm. In the first one, the agents continuously integrate their local dynamics and exchange with neighbors their current local variables in a synchronous way. In Asynchronous Triggered Gradient Tracking, we propose a totally asynchronous scheme in which each agent sends to neighbors its current local variables based on a triggering condition that depends on a locally verifiable condition. The triggering protocol preserves the linear convergence of the algorithm and avoids the Zeno behavior, i.e., an infinite number of triggering events over a finite interval of time is excluded. By using the stability analysis of Continuous Gradient Tracking as a preparatory result, we show exponential stability of the equilibrium point holds for both triggered algorithms and any estimate initialization. Finally, the simulations validate the effectiveness of the proposed methods on a data analytics problem, showing also improved performance in terms of inter-agent communication.",
+      "summary": "持续交换变量的连续时间梯度跟踪难以直接实现，统一时隙又限制各节点通信自主性。该文先建立连续梯度跟踪的指数稳定性，再构造周期通信与局部事件触发两种实现。在固定连通无向网络、局部目标强凸且梯度 Lipschitz、辅助跟踪状态总和为零等初始化条件下，独立触发机制保持指数收敛，并排除有限时间内无限次触发的 Zeno 现象。原始决策变量可任意初始化，触发阈值和衰减参数须满足定理要求；“异步”指局部通信事件，无需统一发送时隙，不是任意计算和传输延迟模型。",
+      "reason": "推荐研究将采样保持误差视为稳定系统扰动，再用动态局部阈值同时保证收敛与可实现性的证明。它对异步分布式算法中“何时通信”给出具体机制，且清楚分离原始变量与辅助变量的初始化要求。连续时间收敛率不能直接当成离散程序的每步复杂度。",
+      "directions": [
+        "asynchronous-distributed",
+        "distributed"
+      ],
+      "order": 11
+    },
+    {
+      "arxiv_id": "2605.00281",
+      "version": 1,
+      "title": "High-Probability Convergence in Decentralized Stochastic Optimization with Gradient Tracking",
+      "authors": [
+        "Aleksandar Armacki",
+        "Haoyuan Cai",
+        "Ali H. Sayed"
+      ],
+      "submitted": "2026-04-30",
+      "updated": "2026-04-30",
+      "arxiv_url": "https://arxiv.org/abs/2605.00281v1",
+      "abstract": "We study high-probability (HP) convergence guarantees in decentralized stochastic optimization, where multiple agents collaborate to jointly train a model over a network. Existing HP results in decentralized settings almost exclusively focus on the Decentralized Stochastic Gradient Descent ($\\mathtt{DSGD}$) algorithm, which requires strong assumptions, such as bounded data heterogeneity, or strong convexity of each agent's cost. This is contrary to the mean-squared error (MSE) results, where methods incorporating bias-correction techniques are known to converge under relaxed assumptions and achieve better practical performance. In this paper we provide the first step toward bridging the gap, by studying HP convergence of $\\mathtt{DSGD}$ incorporating the gradient tracking technique, in the presence of noise satisfying a relaxed sub-Gaussian condition. We show that the resulting method, dubbed $\\mathtt{GT-DSGD}$, achieves order-optimal HP convergence rates for both non-convex and Polyak-\\L{}ojasiewicz costs, of order $\\mathcal{O}\\Big(\\frac{\\log(1/\\delta)}{\\sqrt{nT}}\\Big)$ and $\\mathcal{O}\\Big(\\frac{\\log(1/\\delta)}{nT}\\Big)$, respectively, where $n$ is the number of agents, $T$ is the time horizon and $\\delta \\in (0,1)$ is the confidence parameter. Our results establish that $\\mathtt{GT-DSGD}$ converges in the HP sense under the same conditions on the cost as in the MSE sense, while achieving comparable transient times. To the best of our knowledge, these are the first HP guarantees for decentralized optimization methods incorporating bias-correction. Numerical experiments on real and synthetic data verify our theoretical findings, underlining the superior performance of $\\mathtt{GT-DSGD}$ and highlighting that the benefits of incorporating bias-correction are also maintained in the HP sense.",
+      "summary": "已有随机梯度跟踪结果主要控制均方误差，难以直接说明单次运行的可靠性。该文在固定本原双随机通信矩阵、局部光滑及条件无偏随机梯度下，分析放宽的次高斯噪声模型，利用矩母函数递推同时控制优化、共识与跟踪误差。经过网络及噪声相关过渡期，一般非凸目标的时空平均平方梯度主项为 $O(\\log(d/\\delta)/\\sqrt{nT})$，全局 PL 目标有相应的 $O(\\log(d/\\delta)/(nT))$ 高概率主项。这里 $d,n,T$ 分别是维数、节点数与预算，成功概率至少 $1-\\delta$；放宽噪声条件与步长耦合，完整界还包含初值、网络和额外噪声项。",
+      "reason": "推荐阅读如何把去偏校正的优势从均方结论提升为有限预算高概率保证。它允许不以统一梯度异质性上界作为核心前提，并揭示置信度、维数和过渡成本的作用。放宽次高斯仍是尾部条件，不等同于只假设有限方差的任意重尾模型；主导线性加速也不消除网络过渡开销。",
+      "directions": [
+        "distributed",
+        "stochastic"
+      ],
+      "order": 12
+    },
+    {
+      "arxiv_id": "1310.2887",
+      "version": 2,
+      "title": "An Accelerated Randomized Kaczmarz Algorithm",
+      "authors": [
+        "Ji Liu",
+        "Stephen J. Wright"
+      ],
+      "submitted": "2013-10-10",
+      "updated": "2014-06-07",
+      "arxiv_url": "https://arxiv.org/abs/1310.2887v2",
+      "abstract": "The randomized Kaczmarz ($\\mathrm{RK}$) algorithm is a simple but powerful approach for solving consistent linear systems $Ax=b$. This paper proposes an accelerated randomized Kaczmarz ($\\mathrm{ARK}$) algorithm with better convergence than the standard $\\mathrm{RK}$ algorithm on ill conditioned problems. The per-iteration cost of $\\mathrm{RK}$ and $\\mathrm{ARK}$ are similar if $A$ is dense, but $\\mathrm{RK}$ is much more able to exploit sparsity in $A$ than is $\\mathrm{ARK}$. To deal with the sparse case, an efficient implementation for $\\mathrm{ARK}$, called $\\mathrm{SARK}$, is proposed. A comparison of convergence rates and average per-iteration complexities among $\\mathrm{RK}$, $\\mathrm{ARK}$, and $\\mathrm{SARK}$ is given, taking into account different levels of sparseness and conditioning. Comparisons with the leading deterministic algorithm --- conjugate gradient applied to the normal equations --- are also given. Finally, the analysis is validated via computational testing.",
+      "summary": "随机 Kaczmarz 单行投影能利用稀疏性，但病态系统下收敛较慢。该文将 Nesterov 型历史状态耦合引入随机投影，提出 ARK，并用缓存的线性组合实现保持相同精确算术轨迹的稀疏版本 SARK。对一致、无零行的线性系统，分析采用行归一化，并允许秩亏；若参数 $\\lambda$ 是归一化矩阵 $A^\\top A$ 最小正特征值的有效下界，正参数给出加速线性率，取零仍有 $O(1/k^2)$ 型界。SARK 在文中稀疏分布与批处理条件下把平均每步成本从 $O(n)$ 降到 $O(\\sqrt{\\eta}n)$，$\\eta$ 为非零比例。",
+      "reason": "推荐把加速的迭代收益与历史状态维护的真实成本一起阅读。缓存递推显示，历史向量的线性组合不必每次立即物化，这对大规模随机迭代的实现很有价值；但稀疏度和条件数不同，标准 RK、ARK、SARK 的优劣也会改变。原始定理针对一致系统，不直接保证一般不一致最小二乘的同样结果。",
+      "directions": [
+        "historical-information",
+        "stochastic",
+        "optimization-frontiers"
+      ],
+      "order": 13
+    },
+    {
+      "arxiv_id": "2609.20265",
+      "version": 1,
+      "title": "Optimal Design of Distributed Inexact Gradient Tracking: Exact Worst-case Convergence Rate and Explicit Parameters",
+      "authors": [
+        "Qiuchen Tian",
+        "Li Chai",
+        "Jinming Xu"
+      ],
+      "submitted": "2026-07-29",
+      "updated": "2026-07-29",
+      "arxiv_url": "https://arxiv.org/abs/2609.20265v1",
+      "abstract": "This paper addresses the problem of designing distributed optimization algorithms. Different to existing methods that usually give sufficient conditions and conservative convergence rates, we propose a framework for determining the exact worst-case convergence rate. The worst-case convergence is defined over the set of $\\mu$-strongly convex and $L$-Lipschitz objective functions and the set of connected graphs with given algebraic connectivity. Focusing on the Distributed Inexact Gradient Tracking (DIGing)--an algorithm widely deployed in applications and extensively studied in recent years, we develop a systematic design methodology by integrating techniques from graph signal processing and robust control theory. First, we present a novel decomposition structure that enables partial subsystem decoupling. Then we derive explicit formulas for the exact worst-case convergence rate and the corresponding parameters. Numerical experiments validate the correctness and effectiveness of our theoretical results.",
+      "summary": "分布式算法的充分收敛条件通常较保守，也难以区分结构缺陷与调参不佳。该文研究带梯度步长和通信参数的 DIGing 家族，在局部目标光滑强凸、固定连通无向图及给定 Laplacian 正特征值区间下，借助图 Fourier 变换和鲁棒控制，把最坏情形收敛率设计转成参数化稳定性问题。作者先在二次目标子类取得下界，再证明同一参数对完整函数类达到该界，得到显式最优参数与最坏率。最优性限定在所分析的两参数算法家族和函数、网络不确定性类中，不能解释为所有分布式一阶算法的最优复杂度。",
+      "reason": "推荐阅读把“保证可行的参数”进一步推进到“该家族的精确最坏参数”的设计链条。显式公式显示目标条件数与网络谱比怎样共同限制收敛，适合作为梯度跟踪调参和算法比较的依据。结论中的固定无向图、精确梯度及跟踪初始化均有实质作用，不能照搬到随机、时变或异步模型。",
+      "directions": [
+        "distributed"
+      ],
+      "order": 14
+    }
+  ]
+}
