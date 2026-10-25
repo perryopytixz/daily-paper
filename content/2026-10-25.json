@@ -1,0 +1,88 @@
+{
+  "date": "2026-10-25",
+  "status": "complete",
+  "frontiers_status": "recommendations",
+  "highlights": [
+    {
+      "arxiv_id": "1812.02138",
+      "types": [
+        "field",
+        "group"
+      ],
+      "label": "惯性 HPE｜用欠松弛放宽外推与误差耦合",
+      "text": "显式松弛政策允许较宽的惯性参数和相对求解误差，证明弱收敛及有限步残差界。最好点残差为 $O(k^{-1/2})$；固定惯性后，步长加权遍历残差与扩大误差均为 $O(k^{-1})$，不等同于末次点加速。"
+    },
+    {
+      "arxiv_id": "2404.07609",
+      "types": [
+        "group"
+      ],
+      "label": "零违反分布式优化｜离散加速仍保持耦合可行",
+      "text": "辅助变量等价分解把外层梯度写为邻居 KKT 乘子的线性组合。约束子图连通、局部相关约束满行秩且目标光滑强凸时，全时可行输出的目标差为 $O(t^{-2})$；每轮仍需精确解局部问题。"
+    }
+  ],
+  "papers": [
+    {
+      "arxiv_id": "1812.02138",
+      "version": 1,
+      "title": "On inexact relative-error hybrid proximal extragradient, forward-backward and Tseng's modified forward-backward methods with inertial effects",
+      "authors": [
+        "M. Marques Alves",
+        "Raul T. Marcavillaca"
+      ],
+      "submitted": "2018-12-05",
+      "updated": "2018-12-05",
+      "arxiv_url": "https://arxiv.org/abs/1812.02138v1",
+      "abstract": "In this paper, we propose and study the asymptotic convergence and nonasymptotic global convergence rates (iteration-complexity) of an inertial under-relaxed version of the relative-error hybrid proximal extragradient (HPE) method for solving monotone inclusion problems. We analyze the proposed method under more flexible assumptions than existing ones on the extrapolation and relative-error parameters. As applications, we propose and/or study inertial under-relaxed forward-backward and Tseng's modified forward-backward type methods for solving structured monotone inclusions.",
+      "directions": [
+        "optimization-frontiers",
+        "historical-information"
+      ],
+      "summary": "历史迭代外推与非精确近端求解同时使用时，已有惯性 HPE 的参数条件会把相对误差容限与惯性强度紧密绑定：误差容限接近 1，允许的惯性就趋近于零。该文引入可计算的欠松弛步，把惯性外推后的近端残差和算子扩大误差纳入同一证书。在极大单调包含有解、近端步长有正下界，且非负惯性参数单调不减并满足明确的惯性—松弛耦合条件时，证明点列弱收敛。取惯性上界严格小于 $1/3$ 时，可令松弛系数为 $\\tau=1/(1+\\sigma)>1/2$，对任意 $0\\leq\\sigma<1$ 保留该保证；惯性上界也可接近 1，但必须相应缩小松弛。有限步分析给出前 $k$ 步中某一点的残差范数 $O(k^{-1/2})$ 与扩大误差 $O(k^{-1})$；额外固定惯性参数后，步长加权遍历输出的两项均为 $O(k^{-1})$。作者还将单调 Lipschitz 的 Tseng 分裂和余强单调的前向—后向分裂嵌入同一框架；这些是残差证书与收敛保证，并非一般凸目标上的 Nesterov 加速率。",
+      "reason": "最值得研究的是用欠松弛交换更宽的历史外推与内层求解误差范围，而不是把惯性视为免费加速。原文给出显式参数政策、可累计的位移能量以及包含扩大误差的遍历运输公式，使“允许多大历史信息、内层算到什么精度、输出哪一个点”能够一并分析。相较只证明弱收敛的早期惯性 HPE，这项工作补上可核验的有限步残差界，适合用来设计带近似子问题的历史信息方法。",
+      "order": 1
+    },
+    {
+      "arxiv_id": "2404.07609",
+      "version": 1,
+      "title": "Achieving violation-free distributed optimization under coupling constraints",
+      "authors": [
+        "Changxin Liu",
+        "Xiao Tan",
+        "Xuyang Wu",
+        "Dimos V. Dimarogonas",
+        "Karl H. Johansson"
+      ],
+      "submitted": "2024-04-11",
+      "updated": "2024-04-11",
+      "arxiv_url": "https://arxiv.org/abs/2404.07609v1",
+      "abstract": "Constraint satisfaction is a critical component in a wide range of engineering applications, including but not limited to safe multi-agent control and economic dispatch in power systems. This study explores violation-free distributed optimization techniques for problems characterized by separable objective functions and coupling constraints. First, we incorporate auxiliary decision variables together with a network-dependent linear mapping to each coupling constraint. For the reformulated problem, we show that the projection of its feasible set onto the space of primal variables is identical to that of the original problem, which is the key to achieving all-time constraint satisfaction. Upon treating the reformulated problem as a min-min optimization problem with respect to auxiliary and primal variables, we demonstrate that the gradients in the outer minimization problem have a locally computable closed-form. Then, two violation-free distributed optimization algorithms are developed and their convergence under reasonable assumptions is analyzed. Finally, the proposed algorithm is applied to implement a control barrier function based controller in a distributed manner, and the results verify its effectiveness.",
+      "directions": [
+        "optimization-frontiers",
+        "distributed",
+        "safety-critical"
+      ],
+      "summary": "耦合约束下，渐近消失的约束残差不能保证算法中途停止时输出可实施。该文为每条线性等式或不等式引入辅助变量及与通信网络一致的线性映射，证明重构可行集在原始变量上的投影恰为原问题可行集。固定辅助变量后，各节点精确求解局部约束问题，再交换其 KKT 乘子，便可计算外层值函数的梯度。每条约束所涉及的诱导子图须无向连通，且各节点相关约束行须线性独立；在这些条件及局部目标光滑强凸、问题有最优解时，分布式加速对偶平均得到全时可行的原始输出，目标差为 $O(t^{-2})$。该速率对应在加权辅助变量处重新求解的原始点，并计量外层轮数，局部求解成本仍须单独考虑。一般凸扩展把辅助变量限制到包含最优分配的紧盒，并在局部最优解可取得等条件下给出最好已访问原始点的 $O(t^{-1/2})$ 界。原文也讨论秩条件不满足时的罚松弛，但这一替代形式不再保留原约束的全时可行性。",
+      "reason": "推荐重点是等价可行分解、乘子敏感性与离散加速更新之间的衔接：通信只在受同一约束影响的节点间进行，而每次输出都直接满足原耦合约束。此前的连续时间零违反方法已说明值函数分解的作用；本篇补充了离散算法、明确输出规则和外层目标差速率，便于比较通信轮数与精确内层求解的代价。从安全优化研究看，尤其应保留局部约束秩条件及罚松弛会丢失全时可行保证这一边界。",
+      "order": 2
+    },
+    {
+      "arxiv_id": "1204.1353",
+      "version": 3,
+      "title": "A class of Fejer convergent algorithms, approximate resolvents and the Hybrid Proximal-Extragradient method",
+      "authors": [
+        "B. F. Svaiter"
+      ],
+      "submitted": "2012-04-05",
+      "updated": "2012-04-18",
+      "arxiv_url": "https://arxiv.org/abs/1204.1353v3",
+      "abstract": "A new framework for analyzing Fejer convergent algorithms is presented. Using this framework we define a very general class of Fejer convergent algorithms and establish its convergence properties. We also introduce a new definition of approximations of resolvents which preserve some useful features of the exact resolvent, and use this concept to present an unifying view of the Forward-Backward splitting method, Tseng's Modified Forward-Backward splitting method and Korpelevich's method. We show that methods based on families of approximate resolvents fall within the aforementioned class of Fejer convergent methods. We prove that such approximate resolvents are the iteration maps of the Hybrid Proximal-Extragradient method.",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "summary": "前向—后向、Tseng 分裂与外梯度往往各自证明收敛，非精确实现还需重新追踪误差。该文将相对误差近端步骤定义为集合值的“近似预解式”：通过算子扩大中的一个近似图点及相对残差不等式，给出可以接受的更新集合。作者先抽象出朝解集的 Fejér 下降和“下降消失时弱聚点必为解”两条性质，证明满足它们的迭代在附加误差范数可求和时仍弱收敛。对极大单调且零点非空的算子，固定相对误差上界 $\\sigma<1$、近端步长有正下界的近似预解式满足这两条性质，其迭代恰好对应 HPE。利用余强单调算子的运输公式，原文把前向—后向法识别为该框架的特例，并统一解释 Tseng 与 Korpelevich 方法。它提供的是收敛与误差容忍的结构性分析工具，没有给出这些方法的新加速复杂度，也不允许任意不可求和扰动。",
+      "reason": "补读价值在于把“算法具体怎么算”与“证明真正需要哪些性质”分离。近似预解式让不同分裂步骤共享一个相对误差证书，而两条抽象性质说明可求和扰动下的收敛可以从统一定理继承。推荐将它作为审视非精确近端和分裂算法的证明工具：新增求和误差结论本身未必意味着实质算法推进，还应检查是否改善了可计算的误差政策、复杂度或适用结构。",
+      "order": 3
+    }
+  ]
+}
