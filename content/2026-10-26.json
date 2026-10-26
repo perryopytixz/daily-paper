@@ -1,0 +1,318 @@
+{
+  "date": "2026-10-26",
+  "status": "complete",
+  "frontiers_status": "recommendations",
+  "highlights": [
+    {
+      "arxiv_id": "2610.32422",
+      "label": "时变 Push-Pull｜线性加速由有效节点数决定",
+      "text": "周期二反例表明，节点增多未必带来线性加速。作者用相位权重定义有效节点数，给出固定周期网络上常步长 Push-Pull 的匹配随机上下界；静态网络恢复通常节点数。",
+      "types": [
+        "field",
+        "group"
+      ]
+    },
+    {
+      "arxiv_id": "2610.31992",
+      "label": "非光滑 Newton｜次梯度选面连接全局与局部快速收敛",
+      "text": "近端步给出的次梯度选出正则项线性化精确的面，二次子问题产生原目标下降方向。多面体正则、倾斜稳定与局部 Hessian 正则条件下，无需非退化条件即可二次收敛。",
+      "types": [
+        "field"
+      ]
+    },
+    {
+      "arxiv_id": "2511.12665",
+      "label": "含误差 FISTA｜临界加速下证明迭代点收敛",
+      "text": "加权可求和的梯度与近端误差下保留加速率并取得弱收敛。随机变体还需噪声增长与相容条件：零加性噪声可用常步长，持续方差噪声须递减步长，不能照搬加速率。",
+      "types": [
+        "field",
+        "group"
+      ]
+    },
+    {
+      "arxiv_id": "2610.32705",
+      "label": "历史 Ritz 步长｜把延迟谱递推转成真实超线性收敛",
+      "text": "严格凸二次问题中，精确刻画历史步长的生成与使用错位，在指定活跃谱维数和例外集条件下证明双指数收敛。重建历史可扩大保证范围，但必须计入额外采样更新。",
+      "types": [
+        "group"
+      ]
+    },
+    {
+      "arxiv_id": "2606.04031",
+      "label": "级联梯度法｜精确分离静态敏感度与瞬态共振",
+      "text": "单向线性级联的最坏瞬态由二维对齐实例达到，谱稳定仍可伴随巨大放大。二次从问题的结构可在附加条件下消除逆谱隙放大；前瞻 Newton 的最优性限于规定的精确跟踪类。",
+      "types": [
+        "field"
+      ]
+    }
+  ],
+  "papers": [
+    {
+      "arxiv_id": "2610.32422",
+      "version": 1,
+      "title": "On the Limits of Stochastic Push-Pull over Time-Varying Digraphs",
+      "authors": [
+        "Feiming Wang",
+        "Yutong He",
+        "Sulaiman Alghunaim",
+        "Kun Yuan"
+      ],
+      "submitted": "2026-10-23",
+      "updated": "2026-10-23",
+      "abstract": "Stochastic Push-Pull achieves linear speedup with respect to the network size $n$ on static strongly connected digraphs, but whether this speedup persists on time-varying networks remains unclear. In this work, we construct a quadratic decentralized problem on period-two networks showing that stochastic Push-Pull may fail to attain linear speedup over time-varying digraphs. For $p$-periodic networks, we identify an effective node count $n_{\\mathrm{eff}}\\le n$ that governs the leading stochastic term. Specifically, for smooth nonconvex objectives, we establish convergence upper bounds and matching lower bounds for stochastic Push-Pull with constant stepsizes, both exhibiting the leading-order dependence $\\Theta(1/\\sqrt{n_{\\mathrm{eff}} T})$. When $p=1$, the identity $n_{\\mathrm{eff}}=n$ recovers the usual linear speedup for static digraphs. However, periodic networks can have $n_{\\mathrm{eff}}=o(n)$, demonstrating the loss of linear speedup under temporal variation. Numerical experiments illustrate effective-count scaling and the separation between static and periodic networks, consistent with our theoretical findings.",
+      "directions": [
+        "optimization-frontiers",
+        "distributed",
+        "stochastic",
+        "time-varying-networks"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2610.32422v1",
+      "summary": "时变有向图上的梯度跟踪能否保留静态网络的节点数线性加速？该文为随机 Push-Pull 构造周期为二的二次问题，表明即使每期图强连通且混合满足统一正权条件，增加节点也未必降低主导随机误差。作者从周期相位的梯度传播权重定义有效节点数 $n_{\\mathrm{eff}}=h^2/q\\le n$，对光滑、下有界的非凸目标给出平均迭代点处梯度平方范数的时间平均上界，主导项为 $O(1/\\sqrt{n_{\\mathrm{eff}}T})$；同质一维二次目标给出对常步长优化后的匹配下界。结论针对预先固定、独立于采样噪声的周期网络，噪声条件无偏、跨节点条件独立且方差有界。静态情形恢复 $n_{\\mathrm{eff}}=n$，周期变化则可使其远小于实际节点数；这不是所有时变网络算法的统一不可能性结论。",
+      "reason": "推荐优先研究相位权重如何同时决定有效下降和噪声能量。匹配的算法上、下界把收敛与保留并行加速分开，为设计时变有向网络的混合、梯度跟踪与随机更新提供了具体反例和可计算诊断量，比仅观察谱隙更能解释效率损失。",
+      "order": 1
+    },
+    {
+      "arxiv_id": "2610.31992",
+      "version": 1,
+      "title": "A Globally Convergent Newton Method for Nonsmooth Optimization in the absence of Smooth Surrogates",
+      "authors": [
+        "Tran T. A. Nghia",
+        "Nghia V. Vo",
+        "Khoa V. H. Vu"
+      ],
+      "submitted": "2026-10-22",
+      "updated": "2026-10-22",
+      "abstract": "We propose a globally convergent Newton method for convex composite optimization problems with polyhedral regularizers. The method rests on the observation that the proximal gradient step yields not only a new point but also a subgradient, which determines the face on which the linearization of the regularizer is exact. Minimizing a second-order model of the objective over this face produces a Newton direction that involves no generalized second-order information about the regularizer and is a descent direction for the objective itself. The method is therefore globalized by an Armijo line search on the original objective which, unlike forward-backward envelope techniques, requires only evaluations of the smooth component. We establish global convergence and local quadratic convergence to tilt-stable minimizers without any nondegeneracy condition, and show that the unit step is always accepted when the smooth component is quadratic, which yields a line-search-free method. The subproblems require only projections onto faces, which are explicit for the Lasso and nonnegative least squares and computable in linear time for the fused Lasso. Numerical experiments show that the method compares favorably with state-of-the-art solvers.",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2610.31992v1",
+      "summary": "凸复合优化的二阶方法常需解非光滑子问题、计算广义导数，或借助光滑包络做线搜索。该文利用近端梯度步同时产生的点与次梯度，确定正则项线性化恰好成立的多面体面，再在这个面上解二次模型。由此得到原目标的下降方向，Armijo 检查只需评价光滑项。对于梯度 Lipschitz 的凸光滑项与适当闭凸多面体正则项，论文建立全局收敛分析；在倾斜稳定解附近、Hessian 局部 Lipschitz 等条件下得到二次收敛，无需非退化的相对内点条件。二次光滑项允许单位步长，并在局部精确模型下有限终止。实现仍需近端步及受限二次子问题；论文给出可核验的非精确求解条件，并以 Lasso、非负最小二乘和 fused Lasso 展示面的计算。",
+      "reason": "值得优先阅读由次梯度选面这一步：它保留近端 Newton 的准确模型，又避开正则项广义 Hessian 的专门推导。原目标下降、可检验的内层误差与无非退化局部快速收敛连成一套算法论证，为结构化非光滑二阶方法提供了清晰的设计路径。",
+      "order": 2
+    },
+    {
+      "arxiv_id": "2511.12665",
+      "version": 4,
+      "title": "The iterates of FISTA converge even under inexact computations and stochastic gradients",
+      "authors": [
+        "Saverio Salzo"
+      ],
+      "submitted": "2025-11-16",
+      "updated": "2026-10-23",
+      "abstract": "Very recently, the papers \"Point Convergence of Nesterov's Accelerated Gradient Method: An AI-Assisted Proof\" by Jang and Ryu, and \"The Iterates of Nesterov's Accelerated Algorithm Converge in the Critical Regimes\" by Bot, Fadili, and Nguyen have simultaneously resolved a long-standing open problem concerning Nesterov's accelerated gradient method. These works show that the iterates of the algorithm (known in its composite form as FISTA) indeed converge to an optimal solution. In this work, we extend these results and prove that, in infinite dimensional Hilbert spaces, the iterates of such an algorithm still converge (in the weak sense) even when the proximity operator and the gradient are computed inexactly, with the latter possibly stochastic. Our framework covers both absolute and relative errors in proximal computations. In the stochastic setting, it allows for uniformly bounded variance as well as proximal counterparts of strong growth conditions, under which iterate convergence can be established while retaining accelerated objective-value rates.",
+      "directions": [
+        "optimization-frontiers",
+        "historical-information",
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2511.12665v4",
+      "summary": "加速近端梯度的目标值速率，并不自动保证迭代点收敛；临界 FISTA 参数下，计算误差与随机噪声使问题更难。该文将近期精确算法的点收敛分析推广到 Hilbert 空间中的非精确 FISTA 及其随机变体。对凸光滑项与适当闭凸正则项，在梯度和近端误差满足加速参数加权可求和条件时，证明迭代弱收敛并保留 $O(k^{-2})$ 目标值率，也处理规定的相对近端误差。随机情形采用无偏梯度、近端型增长条件及噪声与内层误差的相容控制，得到几乎处处弱收敛。无加性噪声的增长模型允许常步长和加速率；持续有界方差则使用递减步长，目标值率接近 $O(k^{-1/2})$、带对数损失，不能沿用常步长的 $O(k^{-2})$ 结论。",
+      "reason": "推荐重点看带扰动能量差、加速型 Opial 引理与误差预算如何配合。它直接连接历史外推、内层近端计算与随机梯度，说明何种误差控制足以把目标值保证提升为点收敛，适合借鉴到需要非精确子问题的加速分裂与束方法分析。",
+      "order": 3
+    },
+    {
+      "arxiv_id": "2610.32705",
+      "version": 1,
+      "title": "Superlinear Convergence of Cyclic Gradient Methods with Historical Ritz Step Sizes",
+      "authors": [
+        "Ran Gu"
+      ],
+      "submitted": "2026-10-23",
+      "updated": "2026-10-23",
+      "abstract": "Simplified spectral models predict dimension-dependent superlinear convergence for gradient methods, but the corresponding behavior of actual iterations remains only partially understood. Historical methods introduce an additional difficulty: the gradients defining the step sizes differ from those receiving them. We study this offset for cyclic reuse of historical Ritz step sizes on strictly convex quadratics. Within the existing limited memory steepest descent with retards (LMSDR) family, a rolling cyclic Ritz (RCR) rule reuses $m$ historical Ritz values $\\ell$ times per cycle, ending with a complete sweep. At $q=m+1$ active distinct eigenvalues, an exact delayed recurrence gives almost-everywhere doubly exponential convergence with an explicit rate and exceptional weights. Nonempty open basins also exist for $m+1<q\\le2m$ and $\\ell\\ge4$. Rebuilding the history from each cycle-start gradient costs $m$ additional updates and gives sampled cyclic Ritz reuse (SCR) a cycle-end map determined by the current weights. Under uniform sampling bounds, SCR converges doubly exponentially almost everywhere when $(2\\ell-1)^m>\\binom{q-1}{m}$. Increasing $\\ell$ admits larger $q$ for fixed $m$. The guarantee extends to history-dependent choices from finite sampling menus under a bound on the number of admissible sampling sequences. Geometrically spaced decisions retain the SCR condition and rate range. Every update is counted, including sampling; a numerical illustration compares finite-tolerance update counts.",
+      "directions": [
+        "optimization-frontiers",
+        "historical-information"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2610.32705v1",
+      "summary": "历史 Ritz 步长由过去梯度生成，却作用于已经变化的当前梯度，简化谱模型因而不能直接解释真实迭代。该文在已有 LMSDR 家族中研究循环重复使用历史 Ritz 值的规则，以精确延迟递推控制谱权重和实际梯度衰减。在严格凸二次问题、精确算术及满秩历史等规定条件下，当活跃不同特征值数 $q=m+1$ 时，得到除显式例外权重外的几乎处处双指数收敛；对 $m+1<q\\le2m$、重复数 $\\ell\\ge4$ 则证明存在非空开放吸引域。重建历史的采样变体付出每周期额外 $m$ 次更新，在统一采样界及 $(2\\ell-1)^m>\\binom{q-1}{m}$ 时扩大几乎处处收敛范围。所有采样更新均计入成本；结论限制在所述谱维数与初始化范围，不是一般高维非二次问题的超线性保证。",
+      "reason": "推荐优先研究历史信息的生成时刻与使用时刻错位怎样进入可证明的递推。其价值是把谱权重增长真正转化为梯度衰减，并明确重建历史的额外计算成本，能帮助设计可分析的历史步长策略。",
+      "order": 4
+    },
+    {
+      "arxiv_id": "2606.04031",
+      "version": 3,
+      "title": "Transient Amplification in Cascaded Gradient Methods: Exact Minimax Laws and Tracking without Resonance",
+      "authors": [
+        "Ahanaf Hasan Ariq",
+        "Davide Wiest"
+      ],
+      "submitted": "2026-06-01",
+      "updated": "2026-10-23",
+      "abstract": "Leader-follower gradient iterations, including bilevel and two-time-scale methods, can exhibit large finite-time excursions despite asymptotic stability. For cascaded iterations with block matrix J = [[A,0],[C,D]], symmetric diagonal blocks of norm at most gamma < 1, and coupling norm at most c, we prove an exact, dimension-free minimax formula: at every horizon t, the worst-case amplification equals the spectral norm of [[gamma^t,0],[c t gamma^(t-1),gamma^t]], attained by an aligned two-dimensional quadratic. Consequently, the worst transient is on the order of 1 + c/(1-gamma), and eigenvalues alone cannot predict finite-time gain. Under martingale noise, the aligned system has stationary follower variance sigma^2 c^2 (1+gamma^2)/(1-gamma^2)^3, establishing cubic inverse-gap scaling. For quadratic followers, the coupling is linked to follower sensitivity R by C = (I-D)R. When the leader is isotropic and the follower map is positive semidefinite, amplification is at most 1 plus the operator norm of R, independently of the spectral gaps. A look-ahead Newton update eliminates follower memory and is minimax-optimal among linear updates that track the leader exactly. Experiments validate the bounds and show that accelerated or inexact follower solvers can exceed the sensitivity bound when their effective maps have negative eigenvalues. Code and experiment scripts: this https URL",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2606.04031v3",
+      "summary": "双时间尺度与主从梯度法即使渐近稳定，也可能先发生很大的瞬态放大。该文对单向块三角线性级联给出精确的、与维数无关的极小极大放大公式：当两个对角块的算子范数不超过 $\\gamma<1$、耦合范数不超过 $c$ 时，每个时刻的最坏值由二维对齐实例达到，峰值尺度为 $1+c/(1-\\gamma)$。在该对齐模型中，持续主变量噪声可产生逆谱隙三次方量级的从变量稳态方差。对二次从问题，作者进一步利用 $C=(I-D)R$，在主映射各向同性、从映射半正定等条件下，将放大界压到 $1+\\|R\\|$，分离静态敏感度与动态共振。前瞻 Newton 可移除从变量记忆，并在所定义的精确跟踪线性更新类中达到最优；一般非线性或双向耦合不在这一精确结论内。",
+      "reason": "值得优先阅读对谱稳定但轨迹仍可能大幅放大的精确刻画。作者把任意耦合矩阵界与优化结构诱导的敏感度界分开，还指出加速从求解器出现负特征值时可能离开后一保证；这为选择内外层更新顺序和预条件提供了具体的机制依据。",
+      "order": 5
+    },
+    {
+      "arxiv_id": "2610.32465",
+      "version": 1,
+      "title": "Sharpness-aware Orthogonalized Momentum Algorithms",
+      "authors": [
+        "Geetika",
+        "Shivani Singh Chauhan",
+        "Gauranshi Gupta",
+        "Anant Jain",
+        "Kaushik Kalyanaraman",
+        "Bapi Chatterjee"
+      ],
+      "submitted": "2026-10-23",
+      "updated": "2026-10-23",
+      "abstract": "Adversarial sharpness penalty per iteration of a base optimizer, known as sharpness-aware minimization (SAM), is an accepted technique to improve generalization in deep learning. Recently, Muon has emerged as a dominant optimization algorithm for training large language models (LLMs). It achieves lower sample complexity for heavy-tailed gradient updates - a phenomenon common in LLM training. However, sharpness penalties with Muon updates are yet largely unexplored in the literature. Moreover, the behavior of SAM under heavy-tailed noise is unknown both theoretically and empirically. A potential reason for this gap is the additional cost of extra gradient computation per iteration for penalty perturbations in SAM, which becomes prohibitive for LLMs. This paper introduces Sharpness-aware Orthogonalized Momentum Algorithm (SOMA) to combine a computationally efficient and theoretically grounded perturbation scheme with the Muon algorithm. The key idea is to use stale (purely) stochastic gradient noise for adversarial perturbations. Theoretically, we show that SOMA's sample complexity is invariant to the perturbation direction. We provide explorations and insights into SOMA's robustness to heavy-tailed gradient noise. We extensively explore SOMA's efficacy in (a) mitigating quality degradation due to post-training quantization, and (b) catastrophic forgetting during fine-tuning of LLMs.",
+      "directions": [
+        "historical-information",
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2610.32465v1",
+      "summary": "将 sharpness-aware 扰动与 Muon 结合，通常会增加一次梯度计算。该文提出 SOMA，用前一轮随机梯度与动量构造陈旧噪声扰动，在 $T$ 次更新中只需 $T+1$ 次梯度评价，并分析去除上一步方向分量的变体。在矩阵目标满足指定 Hölder 光滑性、梯度噪声具有有界 $p$ 阶中心矩的条件下，作者给出平均核范数梯度的收敛界，包含近似正交化误差。固定扰动半径 $\\rho>0$ 会留下 $O(\\chi_q L\\rho^\\nu)$ 误差平台；扰动方向不改变这一上界的主要阶数，并不证明各种方向具有相同实际效果。量化后性能与微调遗忘实验用于比较扰动设计，不能把该站稳性界理解为泛化或遗忘的理论保证。",
+      "reason": "推荐关注用已有梯度和动量节省扰动成本的具体构造，以及陈旧信息误差如何与重尾噪声、扰动半径和正交化精度分别计入。它为比较历史梯度复用的计算收益与不可消失偏差提供了可操作的分析对象。",
+      "order": 6
+    },
+    {
+      "arxiv_id": "2610.31728",
+      "version": 1,
+      "title": "When and How Does Muon Precondition? The Role of Structured Gradient Noise",
+      "authors": [
+        "Xiaoran Chen",
+        "Binghui Li",
+        "Liwei Wang",
+        "Pinyan Lu"
+      ],
+      "submitted": "2026-10-22",
+      "updated": "2026-10-22",
+      "abstract": "Muon has become a popular optimizer for large language model training, yet its theoretical foundations remain poorly understood. In this work, we study how gradient noise geometry shapes Muon's preconditioning benefits. We first show, theoretically and empirically, that under the classical isotropic noise assumption, Muon offers no acceleration beyond a rescaling of the learning rate. This motivates us to investigate structured noise arising from mini-batch sampling in associative memory with heterogeneous task frequencies. We establish an exact balancing threshold for two tasks and extend the analysis to multiple tasks, revealing how task coverage and gradient reliability jointly shape learning. Our analysis shows that Muon can soften the dependence on task frequency from linear to square-root, helping balance the learning of frequent and rare tasks. We further identify rotation-induced negative transfer in SignSGD that Muon avoids, and explain how momentum reduces sampling noise while tracking changing gradients. Controlled numerical experiments validate these mechanisms, and a preliminary LLM pretraining study illustrates the practical promise of fast-slow momentum.",
+      "directions": [
+        "historical-information",
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2610.31728v1",
+      "summary": "逐样本极分解归一化为何能改善某些任务，却在另一些噪声模型中只有步长缩放效果？该文首先证明固定维数、低信噪比的各向同性高斯噪声下，Muon 条件均值更新的一阶项只是总体梯度的标量倍数。随后在正交联想记忆模型中分析不均衡任务采样，给出两任务的精确批量平衡阈值，并区分任务是否被采到与梯度是否可靠。含标签噪声时，平方根频率收缩规律依赖局部同质频率与各向同性协方差闭合近似；它与前述精确结论分开。作者还构造旋转后的 SignSGD 负迁移实例，并用冻结状态方差等效批量及局部跟踪误差说明长动量的降噪与滞后权衡。初步语言模型实验只作机制验证线索。",
+      "reason": "推荐阅读精确采样结论、局部近似与实验三者如何相互约束。相较只用单一方差上界解释优化器，该文显示噪声方向、任务覆盖与历史平均共同决定预条件收益，为研究随机梯度和记忆长度提供更细的比较坐标。",
+      "order": 7
+    },
+    {
+      "arxiv_id": "2606.30930",
+      "version": 2,
+      "title": "Convergence of Large-Stepsize SGD for the Cross-entropy Loss via Stochastic Lyapunov Stability",
+      "authors": [
+        "Konstantinos Emmanouilidis",
+        "Lachlan MacDonald",
+        "Salma Tarmoun",
+        "Rene Vidal"
+      ],
+      "submitted": "2026-06-29",
+      "updated": "2026-10-22",
+      "abstract": "Modern deep learning has been shown to operate using learning rates far larger than those justified by classical optimization theory. Most prior analyses of this phenomenon focus on deterministic gradient descent, leaving the stochastic setting largely unexplored. In this work, we provide sharp convergence guarantees for Stochastic Gradient Descent (SGD) applied to the multiclass cross-entropy loss, for both linear classifiers and two-layer neural networks. We show that the stochasticity of SGD may cause the dynamics to alternate between an edge-of-stability regime that is dominated by curvature-driven oscillations, and a stable regime in which the expected loss decreases at a controlled rate. Despite that, we prove that SGD stabilizes the dynamics, ensuring that the iterates return to stability in a fixed number of iterations and allowing convergence in the best-iterate sense even with large learning rates. Experiments validate our theoretical findings and illustrate the benefits of SGD in the large-stepsize regime.",
+      "directions": [
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2606.30930v2",
+      "summary": "大步长 SGD 的训练损失可能反复振荡，确定性梯度下降的一次性进入稳定区解释并不充分。该文对有界且线性可分的多分类数据分析交叉熵 SGD，以随机 Lyapunov 稳定性描述曲率与小批量噪声的平衡。对任意固定正步长，作者给出最好迭代的期望损失界，主衰减为带对数因子的 $1/t$，但常数和过渡时间依赖步长、间隔与批量。稳定区内另有末次点界；高概率进入或返回稳定区的结论需与之后始终停留在区内区分。两层网络扩展还要求规定的激活导数、曲率和可分性条件。实验覆盖更深网络，但不把这些实验等同于一般深网的大步长收敛定理。",
+      "reason": "值得看随机稳定区域如何替代单纯的 Hessian 阈值，以及最好点、条件末次点和高概率返回怎样分别证明。它为理解随机优化中的大步长振荡提供了明确的数学机制，也避免把短时不单调直接当作算法失稳。",
+      "order": 8
+    },
+    {
+      "arxiv_id": "2610.32303",
+      "version": 1,
+      "title": "A stochastic mirror descent algorithm for mean-field control problems",
+      "authors": [
+        "Noufel Frikha",
+        "Aymen Haouas"
+      ],
+      "submitted": "2026-10-23",
+      "updated": "2026-10-23",
+      "abstract": "We develop a stochastic mirror descent method for continuous-time McKean-Vlasov control with measure-valued controls and general Bregman regularisation. The dependence on the state law leads to a coupled Wasserstein-Bregman stability problem and to a McKean-Vlasov adjoint equation, which have no counterpart in classical stochastic control. We establish a first-order representation of the cost and prove its relative smoothness in two regimes: nonlinear dynamics with bounded cost derivatives, and affine state-law dynamics with linearly growing cost derivatives, the latter covering linear-quadratic (LQ) and more general nonquadratic models. Our regularity conditions in the control measure are formulated through directional finite increments and do not require second-order flat derivatives. We further introduce relative semiconvexity along admissible forward-backward trajectories, allowing compensation between the dynamics, running cost, and terminal cost beyond pointwise Hamiltonian convexity. This yields energy dissipation, an O(1/n) convergence rate at the convexity threshold, and geometric convergence when regularisation dominates relative nonconvexity. Explicit LQ criteria and numerical experiments illustrate the scope of the results.",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2610.32303v1",
+      "summary": "McKean–Vlasov 控制中，策略扰动同时改变个体状态和总体分布，经典随机控制的镜像下降估计不能直接沿用。该文在测度值控制上建立一阶变分及 Wasserstein–Bregman 联合稳定性，再证明目标的相对光滑性。理论区分非线性动力学且成本导数有界，以及状态与分布仿射结构且成本导数允许线性增长的两套条件，后者覆盖二次成本；还需镜像子问题可解等假设。作者用沿可行前后向轨迹的相对半凸性控制非凸缺陷，正则强度达到缺陷阈值时得到 $O(1/n)$，严格超过阈值时得到几何率，并在仿射二次模型中给出可核验条件及高斯策略的不变更新。这里的迭代保证针对理想镜像步骤，不自动包含有限粒子、时间离散或随机梯度估计的误差复杂度。",
+      "reason": "推荐阅读把内生分布变化纳入 Bregman 下降估计的工具，以及如何把抽象半凸条件转成均值与波动的二次型检查。它把非欧几里得优化从静态测度问题推进到带分布反馈的随机动力系统，价值超出单个控制应用。",
+      "order": 9
+    },
+    {
+      "arxiv_id": "2603.05196",
+      "version": 2,
+      "title": "Optimization with Parametric Variational Inequality Constraints on a Moving Set Based on a Smoothing Method",
+      "authors": [
+        "Xiaojun Chen",
+        "Jin Zhang",
+        "Yixuan Zhang"
+      ],
+      "submitted": "2026-03-05",
+      "updated": "2026-10-23",
+      "abstract": "This paper focuses on optimization problems constrained by Parametric Variational Inequalities (PVI) defined on a moving set. Unlike most existing works on mathematical programs with equilibrium constraints, the equilibrium constraints have parameters not only in the function but also in the related set. We show that the solution function of the PVI is Lipschitz continuous with respect to the upper-level decision variables and the solution set of the optimization problem is nonempty and bounded. Moreover, we prove that the metric regularity of the constraints holds automatically, which allows us to characterize stationary points without any additional assumptions. A Smoothing Implicit Gradient Algorithm (SIGA) is proposed based on the smoothing approximation of the PVI with a novel scheme for updating the smoothing parameter. We prove the convergence of SIGA to a stationary point and validate the efficiency of SIGA by numerical examples from synthetic problems and portfolio management with real data.",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2603.05196v2",
+      "summary": "均衡约束优化中，若下层 VI 的可行集也随上层决策改变，投影固定点约束既非光滑又具有参数依赖。该文在联合局部 Lipschitz 的参数投影及下层固定点映射统一收缩的前提下，证明唯一解映射的 Lipschitz 性，并由这一结构取得约束度量正则性。SIGA 对投影固定点约束进行平滑，用隐函数导数构造上层更新，并联动缩小平滑参数与站稳误差，证明聚点满足所述站稳条件。原文给出强单调且 Lipschitz 的 VI 作为满足收缩前提的充分情形。所谓无需附加约束资格，限于这些基础结构已经成立时；结果不是任意移动集、非单调或多解下层均衡的通用保证。",
+      "reason": "值得关注参数依赖投影、固定点收缩和平滑隐式梯度三者的连接。它明确指出移动约束集给双层算法带来的额外困难，并提供可验证的结构条件与参数更新规则，适合借鉴到带均衡响应的连续优化。",
+      "order": 10
+    },
+    {
+      "arxiv_id": "2604.04206",
+      "version": 2,
+      "title": "On the optimal relaxation parameter of graph-based splitting methods for subspaces",
+      "authors": [
+        "Francisco J. Aragón-Artacho",
+        "César López-Pastor"
+      ],
+      "submitted": "2026-04-05",
+      "updated": "2026-10-23",
+      "abstract": "In this paper, we investigate the behavior of the family of graph-based splitting algorithms specialized to the problem of finding a point in the intersection of linear subspaces. The algorithms in this family, which encompasses several classical methods such as the Douglas-Rachford algorithm, are defined by a connected graph and a subgraph. Our main result establishes that when the graph and subgraph coincide, the optimal relaxation parameter is exactly $1$, thereby extending known results for the Douglas-Rachford algorithm to a much broader class of methods. Our analysis hinges on some properties of iso-averaged linear operators, which are defined as the average of an isometry and the identity, and are characterized by a specific symmetry of the norm of their relaxation.",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2604.04206v2",
+      "summary": "图结构分裂方法由一张图及其子图定义，松弛参数如何影响线性收敛并非仅凭数值调参就能确定。该文将各算子取为线性子空间投影，引入恒等映射与等距映射平均的 iso-averaged 线性算子，推导其松弛后的精确收敛因子和关于参数的对称性。作者证明相应图结构条件与此类算子性质的联系；当图和子图相同，最优松弛参数为 $1$，将 Douglas–Rachford 两子空间结果推广到更大的分裂家族。反例说明图不一致时可能失去该结构甚至正规性。这些图描述算子分裂的依赖结构，不能直接当作通信网络；最优参数结论也限于线性子空间设置。",
+      "reason": "推荐看从算子几何直接读出最优松弛参数的方法。它把一类经验对称现象转成精确谱结构，并划清图结构改变后失效的边界，为分析分裂算法参数提供了简洁且可复用的范例。",
+      "order": 11
+    },
+    {
+      "arxiv_id": "2510.06615",
+      "version": 3,
+      "title": "Approximate Bregman proximal gradient algorithm with variable metric Armijo line search",
+      "authors": [
+        "Kiwamu Fujiki",
+        "Shota Takahashi",
+        "Akiko Takeda"
+      ],
+      "submitted": "2025-10-08",
+      "updated": "2026-10-23",
+      "abstract": "We propose a variant of the approximate Bregman proximal gradient (ABPG) algorithm for minimizing the sum of a smooth nonconvex function and a nonsmooth convex function. ABPG is known to converge globally to a stationary point even when the smooth part of the objective function does not have a globally Lipschitz continuous gradient, and its iterates can often be expressed in closed form. However, ABPG relies on an Armijo line search to guarantee global convergence, which can slow down its practical performance. To address this issue, we propose a variant of ABPG with a variable metric Armijo line search, which relaxes the Armijo condition. We prove that the line search terminates in finitely many steps for a general nonsmooth convex function. Under the variable metric Armijo condition, we establish global subsequential convergence of the algorithm. Moreover, assuming the Kurdyka--Łojasiewicz property, we also prove that the algorithm globally converges to a stationary point. Numerical experiments on $\\ell_p$-regularized least squares problems, nonnegative linear inverse problems and phase retrieval demonstrate that the proposed algorithm outperforms existing algorithms.",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2510.06615v3",
+      "summary": "近似 Bregman 近端梯度用镜像势的二阶近似简化子问题，但原有 Armijo 条件可能过严，对非零非光滑凸项的全局分析也不完整。该文提出 ABPG-VMA，以可变度量的放松 Armijo 检查选择步长，在可行且受上界限制时允许大于一的步长，并在试探点与子问题解间选目标更小者。基于相对光滑、镜像势强凸、子问题保持在定义域内部及有关有界性等条件，作者证明回溯有限终止、聚点站稳；增加 KL 性质与相应局部正则性后得到整列收敛。算法不要求目标梯度全局 Lipschitz，但仍需解由局部二次度量与凸正则项组成的子问题。实验比较迭代数和运行效率，没有证明统一的最优复杂度改进。",
+      "reason": "推荐关注如何保留易解的局部度量模型，同时放宽线搜索且补齐非光滑复合项的收敛论证。它提供了处理非全局 Lipschitz 梯度的一条实用设计路线，也能帮助区分子问题简化与线搜索代价这两类收益。",
+      "order": 12
+    },
+    {
+      "arxiv_id": "2610.31797",
+      "version": 1,
+      "title": "PnP*: A certifiable solver for Perspective-n-Point",
+      "authors": [
+        "Bang-Shien Chen",
+        "Caitrin E. Eaton",
+        "David M. Rosen"
+      ],
+      "submitted": "2026-10-22",
+      "updated": "2026-10-22",
+      "abstract": "Estimating a camera pose from 3D-2D correspondences - Perspective-n-Point - is one of the most fundamental problems in computer vision. Existing methods either solve a minimal problem or replace the objective with an easier one. Surprisingly, no scalable certifiable solver for the actual Maximum Likelihood Estimation (MLE) exists. We propose PnP*, the first practical solver that guarantees efficient computation and returns a certifiable globally optimal solution. We prove that the underlying convex relaxation is exact under moderate noise, which to our knowledge is the first stability guarantee for any relaxation for the MLE of PnP. Furthermore, we reduce the relaxation by exploiting chordal sparsity pattern and quotient ring reduction such that the relaxation is tractable and scalable. The stability and scalability results are verified numerically, as PnP* returns a provably correct camera pose at over 10 Hz.",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2610.31797v1",
+      "summary": "相机位姿的真实最大似然重投影误差是有理非凸目标，已有快速可认证方法常改用代数替代误差。该文通过辅助变量和冗余约束构造保持星形稀疏结构的 QCQP，证明其 SDP 松弛在无噪声解附近稳定且精确。保证要求至少六个点、相机内参已知且可逆，并排除原文规定的相机重建临界构型；中等噪声应理解为相应局部稳定邻域，不是任意误差水平。作者再用弦稀疏分解与商环降维得到更可计算的等价松弛，以秩恢复和对偶信息认证解。实验显示特定测试条件下可超过每秒十次；这一速度不构成所有实例的统一时间界。",
+      "reason": "值得阅读真实有理目标的改写、松弛精确性的稳定性证明，以及保留该证明所需结构的降维步骤。其优化贡献在于把可认证全局求解推进到原始 MLE，而非仅把现成 SDP 用于一个视觉模型。",
+      "order": 13
+    }
+  ]
+}
