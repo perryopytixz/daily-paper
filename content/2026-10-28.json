@@ -1,0 +1,384 @@
+{
+  "date": "2026-10-28",
+  "status": "complete",
+  "frontiers_status": "recommendations",
+  "highlights": [
+    {
+      "arxiv_id": "2610.37444",
+      "types": [
+        "field",
+        "group"
+      ],
+      "label": "DREAM 分离外推与动量，恢复固定延迟下的加速",
+      "text": "经典 NAG 与 Heavy-Ball 在固定正延迟下失去平方根加速。DREAM 按延迟独立设置查询外推和动量，在精确梯度、光滑强凸且条件数足够大时，达到 $1-\\Theta(1/(\\tau\\sqrt\\kappa))$ 的收缩阶；变化延迟尚不在定理内。"
+    },
+    {
+      "arxiv_id": "2610.36256",
+      "types": [
+        "field"
+      ],
+      "label": "仅用二阶 oracle，达到三阶张量法的驻点复杂度",
+      "text": "近端 Newton 交替使用负曲率与 Newton 步。在 Hessian 和三阶导数 Lipschitz、目标下有界时，以不显含维数的 $\\widetilde O(\\max\\{\\varepsilon_g^{-4/3},\\varepsilon_H^{-2}\\})$ 次二阶调用寻找近似二阶驻点，并提供自适应 Newton–CG 实现。"
+    },
+    {
+      "arxiv_id": "2610.36097",
+      "types": [
+        "field"
+      ],
+      "label": "在线线性优化闭合小损失界及其大参数首常数",
+      "text": "在单位 $\\ell_p$ 球、固定有限 $p\\ge2$ 和有界全信息损失下，径向 FTRL 无需预知时域或比较器平移损失，即可达到两分支极小极大阶；当 $p\\to\\infty$，统一首系数为 $(2+o(1))p/\\log p$，并可同时竞争 FTL。"
+    },
+    {
+      "arxiv_id": "2502.02727",
+      "types": [
+        "group"
+      ],
+      "label": "联邦自适应优化：在梯度进入历史矩之前校正漂移",
+      "text": "FA-GC 先校正梯度再更新持久动量，避免最终方向校正可能留下的伪驻点。分析覆盖部分参与和选择性跟踪；规定日程下的驻点界无独立异质性项，固定动量系数则保留噪声平台。"
+    },
+    {
+      "arxiv_id": "2604.10615",
+      "types": [
+        "group"
+      ],
+      "label": "局部压缩误差可控，一次精确首轮改善非凸迭代阶",
+      "text": "固定无向连通图上，动态缩放让单比特和饱和量化满足非凸分析。规定参数下，平均梯度平方加一致性误差为 $O(T^{-1/2})$；首次精确通信可提升到 $O(T^{-2/3})$，显式调参使用目标下界。"
+    },
+    {
+      "arxiv_id": "2610.37362",
+      "types": [
+        "group"
+      ],
+      "label": "分量近端切换减少联合投影，保留可行外层输出",
+      "text": "MGSPG 用目标／最违反约束切换求解 DC 代理问题。可行次水平集有界且代理满足统一 Slater 裕度时，以 $O(\\varepsilon^{-4})$ 次分量更新返回近似 KKT 证书；接受的外层点可行，内层允许试探违约。"
+    }
+  ],
+  "papers": [
+    {
+      "arxiv_id": "2610.37444",
+      "version": 1,
+      "title": "DREAM: Delay-Resistant Acceleration with Momentum",
+      "authors": [
+        "Mert Gürbüzbalaban",
+        "M. Hamza Rafi",
+        "Necdet Serhat Aybat",
+        "Waheed U. Bajwa"
+      ],
+      "submitted": "2026-10-27",
+      "updated": "2026-10-27",
+      "directions": [
+        "asynchronous-distributed",
+        "historical-information",
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2610.37444v1",
+      "abstract": "With exact, delay-free gradients, Nesterov's accelerated gradient (NAG) achieves optimal $\\sqrt{\\kappa}$ dependence for $L$-smooth, $\\mu$-strongly convex objectives, where $\\kappa=L/\\mu$; heavy-ball (HB) achieves the same scaling on strongly convex quadratics. In asynchronous and distributed settings, gradients can be inexact, with delays varying across workers and iterations. We isolate staleness using a fixed delay $\\tau\\ge1$, replacing $\\nabla f(y_k)$ with $\\nabla f(y_{k-\\tau})$ at iteration $k$. Arjevani, Shamir, and Srebro establish a worst-case lower bound of $\\Omega(\\tau\\sqrt{\\kappa}\\log(1/\\varepsilon))$ iterations to reach objective error at most $\\varepsilon$ as $\\varepsilon\\to0$. We show that for any fixed positive delay, neither NAG nor HB retains $\\sqrt{\\kappa}$-acceleration on strongly convex quadratics when updating every iteration, for any stable constant step size and positive momentum. We introduce delay-resistant accelerated momentum (DREAM), which decouples gradient-query extrapolation from momentum and uses explicit delay-dependent parameters. DREAM attains a linear convergence rate $1-\\Theta(1/(\\tau\\sqrt{\\kappa}))$ for all smooth strongly convex objectives as $\\kappa\\to\\infty$, yielding complexity matching the delayed first-order lower bound up to logarithmic factors. Our proof combines characteristic-polynomial stability analysis on quadratics with an analytic Zames--Falb integral quadratic constraint certificate. We extend DREAM to smooth convex objectives, obtaining near-optimal iteration complexity up to logarithmic factors for sufficiently small target accuracy. Experiments on strongly convex quadratics and regularized logistic regression corroborate DREAM's accelerated condition-number dependence under delay, unlike NAG and HB, and suggest this scaling persists when parameters use a conservative bound on the true delay.",
+      "summary": "梯度固定延迟后，经典动量能否在每轮都更新的同时保留加速？该文先在强凸二次问题上证明：任意固定正延迟下，采用稳定常步长和正动量的 Heavy-Ball、Nesterov 递推均无法维持条件数的平方根加速。DREAM 将查询点的外推系数与动量系数分开，按延迟设置参数。对固定延迟 $\\tau\\ge1$、$L$ 光滑且 $\\mu$ 强凸的目标，在条件数 $\\kappa=L/\\mu$ 足够大时，得到点列收缩因子 $1-c/((2\\tau+1)\\sqrt{\\kappa})$，其中 $0<c<2/3$；常初始历史下还给出关于延迟和条件数为多项式的阈值与前因子。证明结合特征多项式和 Zames–Falb 积分二次约束，并通过加速近端点框架扩展到光滑凸问题的小误差区间。理论使用精确梯度和共同固定延迟；用保守延迟上界调参的额外试验属于经验结果。",
+      "reason": "优先阅读外推与动量分离的设计及其频域证书。它把经典加速递推在陈旧梯度下失效、每轮使用到达梯度仍能加速这两种现象放在同一模型中比较，直接触及异步算法中历史状态与延迟的耦合困难。推荐进一步研究证书如何控制延迟带来的相位变化；推广到变化延迟或随机误差仍需要新的分析。",
+      "order": 1
+    },
+    {
+      "arxiv_id": "2610.36256",
+      "version": 1,
+      "title": "Proximal Point Newton Methods for Nonconvex Optimization",
+      "authors": [
+        "Chang He",
+        "Shuzhong Zhang"
+      ],
+      "submitted": "2026-10-26",
+      "updated": "2026-10-26",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2610.36256v1",
+      "abstract": "Tensor methods offer improved complexity guarantees for nonconvex optimization, but evaluating high-order derivatives and solving the corresponding subproblems can be computationally expensive. In this paper, we develop a proximal point Newton framework that exploits third-derivative smoothness using only gradients and Hessians. Under Hessian Lipschitz continuity, a single-loop proximal point Newton method that alternates between negative-curvature directions and Newton steps finds an $(\\varepsilon_g,\\varepsilon_H)$-approximate second-order stationary point within $\\mathcal{O}(\\max\\{\\varepsilon_g^{-3/2},\\varepsilon_H^{-3}\\})$ second-order oracle evaluations. When the third derivative is also Lipschitz continuous, we introduce an accelerated proximal point Newton method and obtain a dimension-free complexity of $\\widetilde{\\mathcal{O}}(\\max\\{\\varepsilon_g^{-4/3},\\varepsilon_H^{-2}\\})$, matching that of the third-order tensor methods up to logarithmic factors without constructing tensors or solving tensor subproblems. We further develop an adaptive inexact Newton--CG variant that requires no prior knowledge of Lipschitz constants and preserves the improved oracle complexity with high probability. Under uniformly bounded queried Hessians, this variant achieves a Hessian-vector product complexity of $\\widetilde{\\mathcal{O}}(\\max\\{\\varepsilon_g^{-5/3},\\varepsilon_H^{-5/2}\\})$, improving upon the previous $\\widetilde{\\mathcal{O}}(\\max\\{\\varepsilon_g^{-3}\\varepsilon_H^{5/2},\\varepsilon_H^{-7/2}\\})$ result attained by existing second-order methods such as cubic regularized Newton method and Newton--CG method. Preliminary numerical experiments are encouraging.",
+      "summary": "高阶张量法的复杂度优势往往伴随昂贵的张量构造与子问题。该文提出近端点 Newton 框架，用负曲率步与 Newton 步求解二次正则化的近端子问题，整个算法只调用函数值、梯度和 Hessian。目标下有界且 Hessian Lipschitz 时，基本方法以 $O(\\max\\{\\varepsilon_g^{-3/2},\\varepsilon_H^{-3}\\})$ 次二阶 oracle 调用寻找梯度范数至多 $\\varepsilon_g$、最小 Hessian 特征值大于 $-\\varepsilon_H$ 的点。若三阶导数也 Lipschitz，加速版本将调用数改进为不显含维数的 $\\widetilde O(\\max\\{\\varepsilon_g^{-4/3},\\varepsilon_H^{-2}\\})$，在对数因子内匹配三阶张量法。自适应 Newton–CG 版本无需预知 Lipschitz 常数，高概率保留该调用界；再假设被查询的 Hessian 一致有界，可得 $\\widetilde O(\\max\\{\\varepsilon_g^{-5/3},\\varepsilon_H^{-5/2}\\})$ 次 Hessian–向量乘积界。",
+      "reason": "最值得读的是利用更高阶光滑性、同时保持二阶实现的近端子问题分析。相较显式有限差分张量及其维数开销，这一结构给出了不同的实现路线，并把二阶 oracle 次数与实际线性代数成本分开量化。推荐对照大步下降和小步收缩两个分支，理解复杂度改善具体来自何处。",
+      "order": 2
+    },
+    {
+      "arxiv_id": "2610.36097",
+      "version": 1,
+      "title": "Minimax-Optimal Small-Loss Bounds for Online Linear Optimisation on $\\ell_p$ Balls",
+      "authors": [
+        "Jack J. Mayo"
+      ],
+      "submitted": "2026-10-26",
+      "updated": "2026-10-26",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2610.36097v1",
+      "abstract": "We study full-information online linear optimisation on the unit $\\ell_p$ ball in $\\mathbb{R}^d$, for fixed $2\\le p<\\infty$ and losses of dual norm at most one. Let $\\Delta_T$ denote the cumulative loss of the best fixed action above each round's minimum. A follow-the-regularised-leader (FTRL) algorithm attains, on every loss sequence and without knowing $T$ or $\\Delta_T$, regret $O_p(1+\\min\\{\\Delta_T^{1-1/p},\\, d^{1/2-1/p}\\sqrt{\\Delta_T}\\})$. Matching lower bounds show that this rate is minimax for each fixed $p$, and its constant $(2+o(1))p/\\log p$ is optimal as $p\\to\\infty$ among guarantees uniform in $d$ and $T$. The algorithm uses a bounded radial regulariser and switches at most once to its quadratic augmentation. On some paths where follow-the-leader (FTL) has regret one, its regret grows with $T$. A switching extension keeps the sharp constant and also guarantees $\\mathrm{Reg}_T\\le 2\\,\\mathrm{Reg}_T^{\\mathrm{FTL}}$. For i.i.d. losses whose mean has no zero coordinates, we compute the exact $\\log T$ coefficient of the expected regret, which separates FTL's variance term from the bias of the regulariser.",
+      "summary": "在线线性优化的损失可为负，直接用比较器的累计损失刻画“小损失”并不合适。该文在单位 $\\ell_p$ 球、固定 $2\\le p<\\infty$ 和已知对偶范数损失上界 1 下，以 $\\Delta_T=\\sum_{t=1}^T\\|\\theta_t\\|_{p/(p-1)}-\\|\\sum_{t=1}^T\\theta_t\\|_{p/(p-1)}$ 衡量比较器相对逐轮最小损失的累计差。构造有界径向正则项，并至多切换一次到二次增广形式，FTRL 无需预知时域或 $\\Delta_T$，即可达到 $O_p(1+\\min\\{\\Delta_T^{1-1/p},d^{1/2-1/p}\\sqrt{\\Delta_T}\\})$ 遗憾界。匹配下界证明固定 $p$ 时的极小极大阶最优性；统一于维数和时域的系数在 $p\\to\\infty$ 时为 $(2+o(1))p/\\log p$，其首常数也最优。额外的 FTL／FTRL 切换扩展保留该界，并保证遗憾不超过 FTL 的两倍。算法假设精确支持与动作 oracle。",
+      "reason": "推荐关注正则项如何让稳定性由算法自身的平移损失支付，以及维数相关与无维数分支如何在同一个小损失量上接合。这比单纯替换最坏时域上界提供了更细的几何认识；与 FTL 的路径比较还揭示平滑化可能带来的额外代价，并给出有保证的切换补救。",
+      "order": 3
+    },
+    {
+      "arxiv_id": "2502.02727",
+      "version": 4,
+      "title": "Correcting Before Adapting: Gradient Correction for Federated Adaptive Optimization",
+      "authors": [
+        "Evan Chen",
+        "Shiqiang Wang",
+        "Dong-Jun Han",
+        "Shahryar Zehtabi",
+        "Christopher Brinton"
+      ],
+      "submitted": "2025-02-04",
+      "updated": "2026-10-26",
+      "directions": [
+        "distributed",
+        "historical-information",
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2502.02727v4",
+      "abstract": "Client-drift compensation methods mitigate the impact of data heterogeneity in federated learning (FL). While drift correction is well studied for stochastic gradient descent (SGD)-based FL, its interaction with adaptive client optimizers remains less understood. Adaptive optimizers such as Adam build each update from running averages of past gradients, so correcting only the final update direction leaves those averages, and the drift they contain, unchanged. We propose Federated Adaptive Gradient Correction ({\\tt FA-GC}), which corrects each gradient before it enters these running averages, and compare it with Federated Adaptive Naive Tracking ({\\tt FA-NT}), which adds the correction to the final direction. We show that, in an idealized setting without gradient noise, the direction FA-GC follows vanishes only at stationary points of the global objective, whereas the direction FA-NT follows can vanish elsewhere when the optimizer is nonlinear. We also prove convergence of FA-GC for Adam-family methods, gradient normalization, and Muon, which orthogonalizes matrix updates. Unlike our bound for FA-NT, these bounds contain no term for client heterogeneity. On seven image and language tasks, FA-GC with Adam needs the fewest rounds on average to reach the target accuracy, and on the three image tasks it also uses less total communication than uncorrected local Adam and FA-NT. On the QNLI question-entailment task with SOAP, which applies Adam in a rotated basis, and Muon under strong heterogeneity, FA-GC gives the highest accuracy, while FA-NT falls below the uncorrected optimizers.",
+      "summary": "在联邦学习中，把漂移校正加到 Adam 或 Muon 的最终方向，可能留下已经写入历史状态的客户端偏差。该文提出 FA-GC，先校正每个梯度，再更新持续保留的客户端动量和二阶矩；对照方法 FA-NT 则校正最终方向。在无噪声、优化器状态达到固定点的理想模型中，FA-GC 的平均方向只在全局驻点消失，FA-NT 对非线性优化器可能在其他位置抵消。对光滑非凸目标、条件无偏且方差受控的采样，分析允许部分客户端参与、选择性刷新跟踪量，并复用训练梯度。采用规定的随总轮数选择的步长和一阶矩系数时，Adam 类的平均梯度平方范数为 $O(\\sqrt{\\log(T+2)/T})$，归一化及 Muon 分支的相应梯度范数为 $O(T^{-1/4})$，界中无独立的客户端异质性项。固定动量系数时另有噪声平台界；这些结论不能解读为常用固定参数下精确收敛到零。",
+      "reason": "最值得借鉴的是校正应进入历史状态之前的机制判断及其可检验的伪驻点现象。它具体解释了梯度跟踪与非线性自适应变换为何不能简单交换顺序，也把持久动量、陈旧跟踪量和相关噪声放入同一分析。阅读时应对齐各分支使用的梯度范数与参数日程，避免把不同量纲的速率直接排名。",
+      "order": 4
+    },
+    {
+      "arxiv_id": "2604.10615",
+      "version": 3,
+      "title": "Unified Communication Compression Beyond Global Error Bounds for Distributed Nonconvex Optimization",
+      "authors": [
+        "Haonan Wang",
+        "Minghui Liwang",
+        "Yiguang Hong",
+        "Karl H. Johansson",
+        "Xinlei Yi"
+      ],
+      "submitted": "2026-04-12",
+      "updated": "2026-10-27",
+      "directions": [
+        "distributed",
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2604.10615v3",
+      "abstract": "In this paper, we propose a unified compression algorithm for distributed nonconvex opitmization with both the locally- and globally-bounded communication compressors, including 1-bit compressors, saturating quantizers, and the globally-bounded compressors with both relative and absolute compression errors, as well as additional arbitrary bounded noise. We provide a rigorous convergence analysis in nonconvex settings and establish linear convergence under the Polyak-Lojasiewicz (P-L) condition. Notably, we establish an $\\mathcal{O}(1/\\sqrt{T})$ convergence rate for the locally-bounded class in the distributed nonconvex setting, matching that achieved by the centralized algorithms with 1-bit compressors, where $T$ denotes the total number of iterations. Moreover, one initial uncompressed communication round further yields an order-wise improvement to $\\mathcal{O}(1/T^{2/3})$. For the P-L setting and the globally-bounded class, we recover state-of-the-art convergence rates.",
+      "summary": "许多通信压缩理论要求误差在整个空间满足统一相对界，难以覆盖单比特和饱和量化。该文以动态缩放的差分压缩代理统一局部有界、全局有界压缩器，兼容相对／绝对误差及额外有界通信噪声。对固定无向连通图、局部目标梯度 Lipschitz 且全局目标下有界的非凸问题，局部压缩器配合规定的时域相关步长与缩放，得到时间平均的“网络平均点梯度平方范数加节点一致性误差”为 $O(T^{-1/2})$；将首次通信替换为精确未压缩传输后，可提升到 $O(T^{-2/3})$。显式参数还使用目标最优值的已知下界。全局有界压缩情形得到 $O(T^{-1})$ 的对应非凸保证，在 P–L 条件下给出线性收敛。这里的速率针对上述平均指标，压缩尺度需按分析控制。",
+      "reason": "推荐优先看局部有效区间的不变性证明，以及一次精确初始化为何能改变后续压缩误差预算和迭代阶。它直接推进了通信受限非凸协同优化的问题，而非只在已有全局压缩假设下更换量化器。对实际实现有价值的是比较精确首轮成本、后续比特预算与理论步长之间的交换。",
+      "order": 5
+    },
+    {
+      "arxiv_id": "2610.37362",
+      "version": 1,
+      "title": "A switching proximal gradient method for constrained difference-of-convex optimization problems",
+      "authors": [
+        "Yuncheng Liu",
+        "Chuangliang Zhang",
+        "Bo Yang"
+      ],
+      "submitted": "2026-10-27",
+      "updated": "2026-10-27",
+      "directions": [
+        "safety-critical",
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2610.37362v1",
+      "abstract": "We study difference-of-convex optimization problems with several composite inequality constraints and develop a majorization-guided switching proximal gradient (MGSPG) method. Specifically, at each feasible outer point, quadratic majorization and linearization yield a strongly convex composite surrogate problem. To solve this surrogate approximately, we employ a switching proximal gradient (SPG) method, which takes a proximal gradient step for the objective when the current point is nearly feasible and for a most violated constraint otherwise. This construction requires neither projection onto the joint surrogate feasible set nor multiplier computation. By establishing a common invariant ball and using an increasing weight argument, we obtain an \\(O(\\tau^{-1})\\) inner complexity bound for SPG. Building on this bound, we show that, under boundedness of the feasible level set and a uniform Slater condition for the surrogates, MGSPG finds an \\(\\varepsilon\\)-KKT point in \\(O(\\varepsilon^{-2})\\) outer iterations and \\(O(\\varepsilon^{-4})\\) selected component proximal gradient updates. Numerical experiments on SCAD-constrained and groupwise-constrained regression problems demonstrate the viability and computational efficiency of our method compared with existing optimization algorithms.",
+      "summary": "对于目标和多个约束都含差分凸复合项的问题，各项近端映射容易计算，并不意味着联合约束子问题容易求解。该文构造 MGSPG：在可行外层点建立强凸上界模型，内层根据约束违反程度切换到目标或最违反约束的一次分量近端梯度步，无需投影到全部代理约束的交集，也无需显式计算乘子。通过共同不变球和递增权重，内层在精度 $\\tau$ 下达到 $O(\\tau^{-1})$ 次更新。假设初始点可行、可行次水平集有界、光滑部分梯度 Lipschitz，并且规定线性化所生成的代理约束满足统一 Slater 裕度，外层在 $O(\\varepsilon^{-2})$ 次迭代、$O(\\varepsilon^{-4})$ 次所选分量更新内返回 $\\varepsilon$-KKT 证书。接受的外层点保持原约束可行；内层试探点允许违反代理约束，全约束扫描另需计入函数值成本。",
+      "reason": "最值得研究的是把分量算子易算转成可核算的内层代价，同时维持外层可行输出的构造。这与可行迭代优化中避免昂贵联合投影的困难直接对应。统一 Slater 条件保证乘子与内层预算可统一控制；数值实例中的初始严格可行并不能替代对这一条件的核实。",
+      "order": 6
+    },
+    {
+      "arxiv_id": "2605.09552",
+      "version": 2,
+      "title": "Phases of Muon: When Muon Eclipses SignSGD",
+      "authors": [
+        "Elliot Paquette",
+        "Noah Marshall",
+        "Lucas Benigni",
+        "Guangyuan Wang",
+        "Atish Agarwala",
+        "Courtney Paquette"
+      ],
+      "submitted": "2026-05-10",
+      "updated": "2026-10-27",
+      "directions": [
+        "stochastic",
+        "historical-information",
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2605.09552v2",
+      "abstract": "Muon and related spectral optimizers have recently demonstrated strong empirical performance as scalable stochastic methods, often outperforming Adam. Yet their behavior remains poorly understood. We analyze stochastic Muon, which orthogonalizes an exponential moving average of minibatch gradients, on a high-dimensional matrix-valued least squares problem, and we compare it with stochastic SignSGD, a simple baseline comparable to Adam. We derive explicit deterministic dynamics that provide a tractable framework for studying learning behavior. We show that Muon has non-linear sensitivity to the effective batch $B_{\\rm eff}=B(1+\\beta)/(1-\\beta)$. With exact whitening and small $B_{\\rm eff}$ Muon fails to resolve smaller eigenmodes, slowing down convergence. Momentum and finite Newton--Shulz iterations can act as a ridge which lessen this effect. This behavior is in contrast with SignSGD which has no transition, leading to different optimal learning rates, but with matching convergence rate up to a constant factor in the isotropic setting. For anisotropic data, large batch setting Muon performs a square-root preconditioning with respect to the data covariance spectrum while SignSGD provides no preconditioning for generic covariances. We analyze time to target loss in a power law covariance model and derive a phase diagram in the data exponent $\\alpha$ and target exponent $\\zeta$. Muon is favored for steep covariance spectra with rich targets ($\\alpha>2$, $\\zeta<\\alpha+1$), SignSGD is favored for flat spectra ($\\alpha<1$), and in other regions the winner depends on how the target loss scales with dimension. Our results shed light on why replacing Adam with Muon is not trivial even from a pure optimization perspective.",
+      "summary": "Muon 何时比逐坐标符号更新更快，不能仅由同阶最坏情形复杂度回答。该文在高维矩阵最小二乘模型中，用随机矩阵分析建立带指数动量的随机谱优化器的确定性风险动力学。其有限时域跟踪定理针对维数与批量成比例增长、固定正则化和规定步长缩放的极限模型。分析表明，有效批量 $B_{\\rm eff}=B(1+\\beta)/(1-\\beta)$ 控制小谱模态的可分辨性：精确白化且有效批量小时，Muon 可能难以解析小模态；动量及有限次 Newton–Schulz 迭代带来的正则化可缓和这一效应。大批量各向异性模型中，Muon 呈现数据协方差的平方根预条件作用，SignSGD 一般没有这种作用。进一步在幂律谱和匹配风险平台的常步长比较下，给出目标精度、谱衰减与信号结构共同决定的速度相图；这些模型结论并非对一般神经网络或 Adam 的统一优越性保证。",
+      "reason": "推荐阅读从随机矩阵核到风险轨迹、再到达标时间的分析链。它将动量的收益具体化为有效样本秩和谱解析能力，解释了某些小批量条件下白化反而不利的原因。相较只报告模型训练胜负，这一可计算机制更适合用来提出可检验的批量、动量和近似正交化实验。",
+      "order": 7
+    },
+    {
+      "arxiv_id": "2610.36278",
+      "version": 1,
+      "title": "A unified family of multiblock ADMM schemes by means of graph splitting",
+      "authors": [
+        "Rubén Campoy",
+        "Scott B. Lindstrom",
+        "César López-Pastor"
+      ],
+      "submitted": "2026-10-26",
+      "updated": "2026-10-26",
+      "directions": [
+        "distributed",
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2610.36278v1",
+      "abstract": "This paper introduces a novel unified family of multiblock ADMM schemes by combining Gabay duality with a graph-based splitting methodology. This framework allows us to recover existing ADMM algorithms as particular instances, as well as to generate new ones by varying the underlying network topology. We focus specifically on the case of the complete graph, a structure of significant practical interest due to its dense connectivity, for which we provide a fully explicit and directly implementable scheme. We further derive an equivalent reformulation of the proposed family in which the algorithm is expressed in terms of a reduced set of dual variables, which clarifies its connection to the classical ADMM framework. Numerical experiments are conducted to compare the performance of different graph choices, showing particularly favorable results for the complete graph.",
+      "summary": "多块目标直接照搬两块 ADMM 的顺序更新一般不收敛。该文把 Gabay 对偶关系与图分裂结合，为带线性耦合约束的凸多块问题及相应单调包含系统构造统一算法族；算法图、连通生成子图及其 Laplacian 分解决定块间协调方式。框架恢复多种已有方法，并导出完全图的显式更新。存在原始—对偶解且满足算子值域正则条件、松弛参数远离 0 和 2 时，驱动迭代的序列和对偶影子序列弱收敛，总约束残差平方为 $o(1/k)$；主结论保证各块的线性像弱收敛。原始块本身的弱收敛还需对应线性映射单射且值域闭，统一单调性可进一步给出强收敛。等价重写只保留 $n-1$ 个独立对偶变量，并消去对特定 Laplacian 分解的依赖。图在本分析中固定，不能据此推导切换通信网络保证。",
+      "reason": "值得读的是图结构、对偶分裂和多块乘子更新之间的对应，以及减少独立对偶状态的重写。这为线性耦合约束的协调算法提供了系统设计空间；比较完全图与稀疏图时，还能清楚区分状态规模、块更新依赖和数值表现。推荐同时核对线性像收敛与原变量收敛的额外条件。",
+      "order": 8
+    },
+    {
+      "arxiv_id": "2608.02487",
+      "version": 2,
+      "title": "Computational and Statistical Guarantees of the c-Rectified flow",
+      "authors": [
+        "Leda Wang",
+        "Zhehao Xu",
+        "Qiang Liu",
+        "Harrison H. Zhou"
+      ],
+      "submitted": "2026-08-03",
+      "updated": "2026-10-26",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2608.02487v2",
+      "abstract": "Recently, rectified flow has emerged as a fundamental framework for large-scale image generation, powering state-of-the-art systems such as FLUX.1 and Stable Diffusion 3. Despite its remarkable empirical success, the computational and statistical guarantees of iterative rectified flow have remained largely unexplored. We address this problem by studying c-rectified flow, a cost-aware class of rectified flow that projects velocity fields onto a gradient class while preserving endpoint marginals. The ordinary rectified flow can fail to recover the optimal transport coupling: in a Gaussian case study, the iteration converges to the optimal coupling if and only if the source and target covariance matrices commute. More generally, for a Gaussian to log-concave coupling, the ordinary rectified flow can reach a fixed point after one step from independent initialization. In contrast, under suitable regularity and uniform-integrability assumptions, iterative c-rectified flow always converges to the optimal transport coupling. We further establish quantitative one-step contraction and exponential convergence guarantees under projection-stability assumptions for both quadratic and strongly convex displacement costs. Finally, under a Hölder ball assumption, we develop new minimax-optimal score estimation rates and show that, when combined with iterative c-rectified flow, they yield a rate-optimal estimator of the optimal transport for the dimension \\(d \\ge 3\\) and a nearly parametric rate for \\(d=1,2\\).",
+      "summary": "保持端点分布并不断降低传输代价，仍不自动保证流迭代选择最优传输耦合。该文研究将速度场投影到代价相容梯度类的 c-rectified flow。普通 rectified flow 在高斯等模型中可能一步后落入非最优固定点，作者进一步分析这种停滞与代价结构的关系。对二次及更一般位移代价，在一列投影势的一致局部正则性、增长控制和统一可积等条件下，证明代价趋于最优，并在最优耦合唯一时得到耦合弱收敛。更强的 Lipschitz 输运图、Brenier 势强凸性以及沿迭代一致成立的投影稳定性，可将超额传输代价改进为几何衰减。论文还把流迭代与分布估计结合，给出特定光滑分布模型中的统计速率；这些是总体投影和结构条件下的保证，不能直接视作有限训练神经网络的收敛结论。",
+      "reason": "优先阅读代价下降与选择正确极限耦合之间缺少的结构，以及投影稳定性如何补上这一点。它把流方法连接到明确的连续优化目标，并分别处理定性收敛、定量收缩与统计估计，适合用来辨别生成流的数值简化何时确有最优性含义。",
+      "order": 9
+    },
+    {
+      "arxiv_id": "2610.36321",
+      "version": 1,
+      "title": "AHEAD: Adaptive Neural Acceleration for Large-Scale Linear Programming",
+      "authors": [
+        "Sihao Liu",
+        "Zhichao Hou",
+        "Huayue Gu",
+        "Raiyan Rahman",
+        "Liang Wu",
+        "Ruozhou Yu",
+        "Xiaorui Liu"
+      ],
+      "submitted": "2026-10-26",
+      "updated": "2026-10-26",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2610.36321v1",
+      "abstract": "Large-scale linear programs with millions of variables and constraints strain time and memory budgets. First-order methods such as the primal-dual hybrid gradient scale to this regime because they avoid matrix factorizations, but they require many iterations. Learned accelerators can reduce these iterations, yet fewer iterations do not guarantee a shorter solve. Learning inference also takes time, and running the accelerator longer trades solver time for inference time. Existing unrolled accelerators handle this trade-off poorly: each layer processes every variable and constraint, the predicted iterates still need solver refinement, and every instance runs the same layers. We therefore ask: What neural accelerator design achieves end-to-end speedups on large-scale linear programs across sizes and target accuracies? We introduce AHEAD, an accelerator that predicts step sizes for first-order linear programming solvers while keeping their update rules. Its weight-shared predictor reads compact solver statistics and rescales the primal and dual step sizes, so each warm-start iteration stays inexpensive and a short warm-start phase hands the solver a warm start. A learned handoff policy sets the number of warm-start iterations for each instance and target accuracy, after which the solver finishes under its own termination criterion. On packing linear programs with up to $10^7$ variables, AHEAD achieves $6.5$--$11.6\\times$ end-to-end speedups over Gurobi's first-order solver from a cold start, including on instances of unseen sizes and distributions. The gains extend to PageRank linear programs and hold across difficulty levels and target accuracies.",
+      "summary": "学习加速器减少迭代次数后，神经推断和后续精修仍可能吃掉全部收益。该文提出 AHEAD，只读取一阶 LP 求解器的 10 维统计量，使用共享权重预测原始与对偶步长的缩放，而保留求解器的更新形式；另用学习的交接策略按实例和目标精度决定热启动何时结束，再由原求解器按自身终止准则完成。这样把每步推断成本、热启动迭代数和剩余求解时间放入同一个端到端时间目标。作者在最多 $10^7$ 个变量的 packing LP 上报告相对冷启动 Gurobi 一阶求解器约 6.5–11.6 倍端到端加速，并测试未见过的规模、分布及 PageRank LP。结果属于所测问题族与计算配置下的实证；论文没有给出学习步长的通用加速复杂度保证。",
+      "reason": "推荐关注低维求解器统计反馈与自适应交接的组合，尤其是将推断成本和求解器精修都计入比较的实验设计。其价值在于优化整个求解流程的计算预算，而不只是追求更少的展开层数；这提供了将学习组件接入成熟数学优化求解器的一种具体且可审计的方式。",
+      "order": 10
+    },
+    {
+      "arxiv_id": "2507.02131",
+      "version": 2,
+      "title": "Perturbed Gradient Descent Algorithms are Small-Disturbance Input-to-State Stable",
+      "authors": [
+        "Leilei Cui",
+        "Zhong-Ping Jiang",
+        "Eduardo D. Sontag",
+        "Richard D. Braatz"
+      ],
+      "submitted": "2025-07-02",
+      "updated": "2026-10-27",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2507.02131v2",
+      "abstract": "This article investigates the robustness of gradient descent algorithms under perturbations. The concept of small-disturbance input-to-state stability (ISS) for discrete-time nonlinear dynamical systems is introduced, along with its Lyapunov characterization. The conventional linear Polyak-Lojasiewicz (PL) condition is then extended to a nonlinear version, and it is shown that the gradient descent algorithm is small-disturbance ISS provided the objective function satisfies the generalized nonlinear PL condition. This small-disturbance ISS property guarantees that the gradient descent algorithm converges to a small neighborhood of the optimum under sufficiently small perturbations. As a direct application of the developed framework, we demonstrate that the LQR cost satisfies the generalized nonlinear PL condition, thereby establishing that the policy gradient algorithm for LQR is small-disturbance ISS. Additionally, other popular policy gradient algorithms, including natural policy gradient and Gauss-Newton method, are also proven to be small-disturbance ISS.",
+      "summary": "梯度误差持续存在时，名义下降并不足以说明优化迭代对扰动稳健。该文建立离散系统的小扰动输入到状态稳定性及其 Lyapunov 刻画，并将其用于扰动梯度下降。对具有适当紧次水平集、梯度在次水平集上 Lipschitz 的目标，以严格递增的非线性函数给出梯度范数与目标差之间的广义 P–L 下界；配合适当正下界和局部光滑性控制的步长，证明足够小的有界扰动使迭代进入由扰动幅度决定的最优点邻域。相比要求全局线性 P–L，不同强度的误差界对应小扰动 ISS、全幅 ISS 或积分 ISS 的不同稳健性等级。LQR 部分进一步针对稳定控制器域和相应步长规则，分析策略梯度、自然梯度及 Gauss–Newton 更新的稳健性。小扰动结论有扰动幅度限制，并不保证任意大持续误差下稳定。",
+      "reason": "推荐阅读非线性误差界与稳健性等级之间的对应关系。它使梯度近似是否足够好能够用吸引邻域和扰动门槛表达，也清楚展示了名义全局收敛、局部 ISS 和小扰动 ISS 之间的区别。对近似求解及误差传播分析，这比单一的无误差收敛率提供了更直接的诊断工具。",
+      "order": 11
+    },
+    {
+      "arxiv_id": "2209.14937",
+      "version": 3,
+      "title": "NAG-GS: A Semi-Implicit Stochastic Optimizer with Large-Step Stability",
+      "authors": [
+        "Valentin Leplat",
+        "Daniil Merkulov",
+        "Aleksandr Katrutsa",
+        "Daniel Bershatsky",
+        "Olga Tsymboi",
+        "Ivan Oseledets"
+      ],
+      "submitted": "2022-09-29",
+      "updated": "2026-10-27",
+      "directions": [
+        "historical-information",
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2209.14937v3",
+      "abstract": "Stochastic first-order methods are widely used for large-scale optimization and machine learning, where their performance often depends on the learning rate. We study NAG-GS, a stochastic momentum method based on a semi-implicit Gauss--Seidel discretization of a Nesterov-type flow. For strongly convex quadratics, we determine the exact range of stable step sizes for fixed damping and the step size that minimizes the worst-case spectral radius. When the damping equals the strong-convexity parameter, the method recovers the accelerated asymptotic factor $(\\sqrt{\\kappa}-1)/(\\sqrt{\\kappa}+1)$, where $\\kappa$ is the condition number. We also prove that the quadratic iteration converges linearly with dynamic damping when its limiting fixed-damping iteration is stable. For general strongly convex, possibly nonsmooth objectives, we establish an $O(1/k)$ bound on the expected objective gap of the last iterate, using a conditionally unbiased stochastic first-order oracle with bounded second moment. The result holds with dynamic damping from any $\\gamma_0>0$. We show that NAG-GS can also be written as a Heavy-Ball iteration with explicitly determined step sizes and momentum coefficients. We test the stochastic result on nonsmooth hinge-loss classification problems, and further evaluate NAG-GS on quadratic problems, logistic regression, convolutional neural networks, RoBERTa, and Vision Transformers. The experiments show that NAG-GS can remain effective at learning rates where standard optimizers become unstable or lose accuracy.",
+      "summary": "同一个加速流采用不同离散化，稳定步长范围与实际收敛速度可能明显不同。该文研究半隐式 Gauss–Seidel 离散得到的 NAG-GS 动量法，对强凸二次目标给出固定阻尼下的精确 Schur 稳定区间及最优渐近收缩步长；阻尼等于强凸常数时，恢复 $(\\sqrt\\kappa-1)/(\\sqrt\\kappa+1)$ 的谱因子。动态阻尼情形，只要极限固定阻尼矩阵稳定，也可证明二次迭代线性收敛。对于一般强凸、允许非光滑的目标，若条件期望为有效次梯度且迭代上的条件二阶矩有界，采用递减步长可得末次点期望目标差 $O(1/k)$，不要求平均输出。算法还可等价写成参数由离散化决定的 Heavy-Ball 形式。常步长二次谱结论与随机非光滑的递减步长结论应分别理解，深层模型实验不在上述理论范围内。",
+      "reason": "最值得比较的是最大稳定步长与最快谱收缩步长之间的差别，以及动态阻尼如何进入能量分析。对历史状态型算法的设计，它提供了从连续模型到可复核离散稳定区间、再到随机末次点界的完整例子；也便于用等价 Heavy-Ball 形式隔离实现与参数选择的作用。",
+      "order": 12
+    },
+    {
+      "arxiv_id": "2610.37647",
+      "version": 1,
+      "title": "MuonGS: Pretraining LLMs with Relaxed Weight-Norm Control",
+      "authors": [
+        "Athanasios Glentis",
+        "Dawei Li",
+        "Mingyi Hong"
+      ],
+      "submitted": "2026-10-27",
+      "updated": "2026-10-27",
+      "directions": [
+        "historical-information"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2610.37647v1",
+      "abstract": "Weight decay and explicit weight-norm constraints improve optimizer performance in language model pretraining, yet a unified understanding of why such control helps and how much is needed remains incomplete. We analyze norm control in Muon over the entire training trajectory using the \\emph{accumulated effective learning rate}, $C_T=\\sum_{t<T}\\eta_t/\\|W_t\\|_F$, where $\\eta_t$ is the nominal learning rate and $\\eta_t/\\|W_t\\|_F$ is the effective learning rate relative to the weight norm. For bounded update directions, accumulation over any training interval bounds relative weight displacement. We show that vanilla Muon can accumulate only logarithmically, potentially limiting exploration and helping explain its slower empirical progress, whereas MuonW and MuonH guarantee at least linear accumulation under the stated conditions. Going beyond bounded-norm control, we show that sufficiently slow norm growth guarantees faster accumulation than the logarithmic worst case, opening up less restrictive optimizer designs. Based on this insight, we propose MuonGS, which uses Gram--Schmidt (GS) projection to remove the radial component of each Muon update without fixing the weight norm. With bounded update directions and a constant nominal learning rate, we prove that the weight norm grows at most proportionally to $\\sqrt{t}$ after $t$ steps. Consequently, MuonGS guarantees $C_T=\\Omega(\\sqrt{T})$, with accumulation sustained even in later training. Further, for smooth scale-invariant objectives we establish its $O(T^{-1/2})$ stationarity guarantee. In pretraining experiments with 160M- and 400M-parameter dense models as well as a 135M active- and 1B total- parameter MoE model, MuonGS achieves lower validation perplexity than MuonH at long training horizons. In particular, for the dense model it achieves an estimated token-equivalent speedup up to about $15\\%$ at matched validation loss to MuonH.",
+      "summary": "控制 Muon 的权重范数，可以防止更新相对当前参数变得过小，但固定范数是否必要？该文用累计有效学习率 $C_T=\\sum_{t<T}\\eta_t/\\|W_t\\|_F$ 连接范数增长和相对位移：更新方向有界时，若某时间区间内累积很小，该区间的相对位移必受限。MuonGS 用 Gram–Schmidt 投影移除更新的径向分量，在正初始范数、有界更新和常名义步长下，使范数至多按 $\\sqrt t$ 增长，并保证总量及后半段窗口都有 $\\Omega(\\sqrt T)$ 的累计有效学习率。另对光滑尺度不变目标、使用精确当前梯度正交化的特例，证明后半段存在球面梯度范数为 $O(T^{-1/2})$ 的点；该驻点结论不覆盖一般随机动量实现。预训练实验则比较实际带动量的 MuonGS 与固定范数 MuonH，报告长时域验证损失改善。",
+      "reason": "推荐把必要位移条件、可实现的范数增长控制和真正的下降结论分开阅读。累计有效学习率大只是保留移动能力的必要条件，并非自动保证优化进展；论文用精确梯度特例补充了这一缺口，也给出了不必固定权重半径的具体算法设计。",
+      "order": 13
+    },
+    {
+      "arxiv_id": "2610.37225",
+      "version": 1,
+      "title": "Sharpness-Aware Muon: Matrix-Aware Optimization with Momentum-Guided Perturbations",
+      "authors": [
+        "Zhiwei Zhai",
+        "Wenjing Yan",
+        "Ying-Jun Angela Zhang"
+      ],
+      "submitted": "2026-10-27",
+      "updated": "2026-10-27",
+      "directions": [
+        "historical-information",
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2610.37225v1",
+      "abstract": "Muon is a matrix-aware optimizer that combines momentum with orthogonalization to produce structured update directions with strong empirical behavior. However, it only shapes the geometry of the update itself and does not explicitly control neighborhood worst-case loss or bias training toward flat regions, which are often linked to stronger generalization. To address this limitation, we introduce the sharpness-aware formulation of Muon. We first develop \\textsc{MuSAM}, which incorporates Sharpness-Aware Minimization (SAM)-style perturbation into Muon's orthogonalized update and establishes a principled bridge between sharpness-aware training and matrix-aware optimization. We then show that this formulation faces an efficiency--stability tension: constructing the perturbation requires an extra gradient evaluation, while the perturbation itself is generated from a single minibatch gradient and is therefore noisy. To resolve this issue, we propose \\textsc{MoMuSAM}, which turns Muon's momentum from an update variable into a sharpness-probing signal. By using normalized momentum as the perturbation direction, \\textsc{MoMuSAM} removes the extra clean-gradient computation and replaces the single-batch perturbation proxy with a temporally aggregated one. We prove that both \\textsc{MuSAM} and \\textsc{MoMuSAM} attain the same asymptotic first-order stationarity order, and further show that \\textsc{MoMuSAM} yields a more stable stochastic linearization than \\textsc{MuSAM}. Experiments on standard benchmarks demonstrate that sharpness awareness consistently improves Muon.",
+      "summary": "SAM 式锐度探测通常额外计算一次干净点梯度，且单批量上升方向本身噪声较大。该文先构造 MuSAM，再提出 MoMuSAM，直接用 Muon 已有动量的归一化方向产生扰动，只在扰动点计算新的梯度。对目标下有界、逐样本光滑、条件无偏且方差受控的矩阵随机优化模型，在规定的随时域选择的步长、扰动半径和动量系数下，两种方法的平均对偶梯度范数均为 $O(T^{-1/4})$，干净点和扰动点都有相应一阶驻点保证。作者进一步用总体线性化损失定义方向稳定性，给出动量代理的偏差—方差界，说明在相应参数及信噪条件下，其证书可优于原始批量梯度。此处证明的是一阶驻点与特定方向误差界，不等同于一般化误差或总能找到更平坦极小值的保证。",
+      "reason": "值得关注的是让同一个历史状态同时服务于更新和局部上升探测，从而节省一次梯度调用。相较仅把 SAM 和 Muon 拼接，方向线性化误差的定义给出了比较历史平滑作用的具体分析对象；其适用边界也适合与实验中的固定超参数分开核对。",
+      "order": 14
+    },
+    {
+      "arxiv_id": "2610.36376",
+      "version": 1,
+      "title": "Asynchronous Parallel Computation of Lagrangian Bounds for Mixed-Integer Stochastic Programs by Frank-Wolfe Methods within Projective Hedging",
+      "authors": [
+        "Jonathan Eckstein",
+        "Jean-Paul Watson",
+        "David L. Woodruff"
+      ],
+      "submitted": "2026-10-26",
+      "updated": "2026-10-26",
+      "directions": [
+        "asynchronous-distributed",
+        "distributed"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2610.36376v1",
+      "abstract": "We describe an asynchronous parallel method to calculate Lagrangian bounds for mixed-integer stochastic programming problems. As in some prior work, we use a fully corrective Frank-Wolfe method on subproblems within a decomposition method, eventually optimizing subproblems for individual scenarios over the convex hulls of their integer-feasible vertices. However, instead of using progressive hedging as our decomposition algorithm, we employ an asynchronous projective hedging method. Like our earlier work on projective hedging, our algorithm need only solve a subset of the scenario subproblems at each iteration. Here, we further exploit the capabilities of projective hedging to create a parallel implementation capable of fully asynchronous operation. As we demonstrate empirically, this capability can lead to significant efficiency improvements when the subproblems are solved by Frank-Wolfe and have highly variable solve times.",
+      "summary": "混合整数随机规划的场景子问题求解时间差异很大，逐轮等待最慢场景会浪费并行资源。该文将非线性优先的全校正 Frank–Wolfe 子问题过程嵌入异步 projective hedging，在整数可行顶点的凸包上求解连续凸化问题，以得到拉格朗日下界；中央原始—对偶投影只使用已返回的部分场景信息。实现进一步解耦场景任务与中央更新，减少计算瓶颈。组合收敛命题要求问题有解及相应多面体／相对内部正则性、每个场景在有界更新窗口内被处理、信息延迟按迭代数有界；Frank–Wolfe 理论使用零间隙阈值及有限顶点结构。SSLP 实验展示了高度不均匀子问题时间下的并行效率收益。保证针对凸化问题和下界，不是原混合整数解的全局最优性，也不是无界陈旧信息下的收敛。",
+      "reason": "推荐看异步投影分解如何接收不同质量与速度的局部凸模型，以及实际任务调度如何满足数学上的覆盖和延迟条件。尽管应用起点含整数变量，可借鉴的核心是连续凸包模型、局部历史顶点复用与异步原始—对偶协调；阅读时应把理论的精确间隙条件与实际截断子问题求解区分开。",
+      "order": 15
+    }
+  ]
+}
