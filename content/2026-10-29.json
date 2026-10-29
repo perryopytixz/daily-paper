@@ -1,0 +1,202 @@
+{
+  "date": "2026-10-29",
+  "status": "complete",
+  "frontiers_status": "recommendations",
+  "highlights": [
+    {
+      "arxiv_id": "2112.06969",
+      "label": "普通梯度 oracle｜给出高低维非光滑查询界",
+      "text": "随机扰动去除方向可微与非标准 oracle 要求。对 Goldstein 近似驻点，高维给出无显式维数的查询界，低维切平面则以维数换取更好的精度依赖；查询次数与内部计算成本须分开理解。",
+      "types": [
+        "field"
+      ]
+    },
+    {
+      "arxiv_id": "2604.00278",
+      "label": "含噪梯度采样｜分开控制导数误差与分段误判",
+      "text": "在局部广义梯度覆盖等条件下，容噪线搜索对有下界目标几乎必然有限停止。终止精度由导数误差、空间偏移与线搜索容差的立方根共同控制，明确非消失噪声下可得到的证书。",
+      "types": [
+        "field"
+      ]
+    },
+    {
+      "arxiv_id": "2005.07822",
+      "label": "梯度聚合｜用原始—对偶证书容许不精确求解",
+      "text": "将子问题提前停止与对偶加权聚合纳入同一收敛分析。保留完整样本池并按需回退，在降低活跃子问题规模的同时维持 Clarke 驻点聚点保证，为历史信息压缩提供可检查的条件。",
+      "types": [
+        "group"
+      ]
+    },
+    {
+      "arxiv_id": "1806.00125",
+      "label": "曲率校正旧梯度｜把陈旧偏差降到二阶",
+      "text": "CIAG 用缓存点的 Hessian 把历史梯度外推到当前点，A-CIAG 再加入惯性。强凸、Hessian Lipschitz 与有界访问间隔下证明线性收敛；局部可匹配全梯度或加速法的因子，收益须连同曲率成本核算。",
+      "types": [
+        "group"
+      ]
+    },
+    {
+      "arxiv_id": "2309.04980",
+      "label": "流式增量聚合｜显式处理陈旧随机噪声的相关性",
+      "text": "为异构节点的缓存随机梯度建立均方误差界。陈旧上界固定时，随机误差主项保留节点数的线性收益；证明按噪声生成时刻控制相关性。模型要求活跃节点同轮返回，结论不等同于墙钟加速。",
+      "types": [
+        "group"
+      ]
+    }
+  ],
+  "papers": [
+    {
+      "arxiv_id": "2112.06969",
+      "version": 2,
+      "title": "A gradient sampling method with complexity guarantees for Lipschitz functions in high and low dimensions",
+      "authors": [
+        "Damek Davis",
+        "Dmitriy Drusvyatskiy",
+        "Yin Tat Lee",
+        "Swati Padmanabhan",
+        "Guanghao Ye"
+      ],
+      "submitted": "2021-12-13",
+      "updated": "2022-02-15",
+      "arxiv_url": "https://arxiv.org/abs/2112.06969v2",
+      "abstract": "Zhang et al. introduced a novel modification of Goldstein's classical subgradient method, with an efficiency guarantee of $O(\\varepsilon^{-4})$ for minimizing Lipschitz functions. Their work, however, makes use of a nonstandard subgradient oracle model and requires the function to be directionally differentiable. In this paper, we show that both of these assumptions can be dropped by simply adding a small random perturbation in each step of their algorithm. The resulting method works on any Lipschitz function whose value and gradient can be evaluated at points of differentiability. We additionally present a new cutting plane algorithm that achieves better efficiency in low dimensions: $O(d\\varepsilon^{-3})$ for Lipschitz functions and $O(d\\varepsilon^{-2})$ for those that are weakly convex.",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "summary": "对于仅假设 Lipschitz 连续的非凸非光滑目标，经典梯度采样虽能渐近趋于驻点，有限精度复杂度却容易依赖难以实现的 oracle。该文用随机扰动与几乎处处存在的普通梯度，去除既有复杂度方法对方向可微性和非标准 oracle 的依赖。输出满足 $\\operatorname{dist}(0,\\partial_\\delta f(x))\\leq\\varepsilon$，其中 $\\partial_\\delta f(x)$ 是邻域内 Clarke 次梯度的凸包，即 Goldstein 近似驻点条件。设 Lipschitz 常数为 $L$、初始函数值差为 $\\Delta=f(x_0)-\\inf f$，高维方法以高概率使用 $\\widetilde O(\\Delta L^2/(\\delta\\varepsilon^3))$ 次函数值与梯度查询；低维切平面版本将查询界改为 $\\widetilde O(\\Delta Ld/(\\delta\\varepsilon^2))$，弱凸时还能进一步改善。高维界不显含维数，低维界以维数换取更好的精度依赖。上述是 oracle 查询复杂度，切平面内部计算另计；Goldstein 条件也不能直接解释为输出点靠近某个 Clarke 近似驻点。",
+      "reason": "推荐先读非标准 oracle 为什么会改变可实现性，再比较随机扰动与低维切平面的两条实现路线。该文把“非光滑近似驻点能否有效计算”的问题同时落实到 oracle 能力、维数和两个精度参数，而不是只给出一个渐近收敛结论。对比时保留 $\\delta$ 与 $\\varepsilon$ 的不同含义，能避免把邻域凸化得到的证书误写成通常的点态梯度精度；这也是阅读后续非光滑复杂度结果的一条有用基准。",
+      "order": 1
+    },
+    {
+      "arxiv_id": "2604.00278",
+      "version": 3,
+      "title": "A Gradient Sampling Algorithm for Noisy Nonsmooth Nonconvex Optimization",
+      "authors": [
+        "Albert S. Berahas",
+        "Frank E. Curtis",
+        "Lara Zebiane"
+      ],
+      "submitted": "2026-03-31",
+      "updated": "2026-10-19",
+      "arxiv_url": "https://arxiv.org/abs/2604.00278v3",
+      "abstract": "An algorithm is proposed, analyzed, and tested for minimizing locally Lipschitz objective functions that may be nonconvex and/or nonsmooth. The algorithm, which is built upon the gradient-sampling methodology, is designed specifically for cases when objective and generalized gradient values might be subject to bounded, uncontrollable errors. A novel assumption pertaining to such errors in nonsmooth settings is introduced that decouples the noise that may be present due to typical errors in derivative estimates with noise that may be due to misidentification of segments of differentiability of the objective. Similarly to state-of-the-art guarantees for noisy smooth optimization, it is proved for the algorithm that, with probability one, either the sequence of objective values will decrease without bound or the algorithm will generate an iterate at which a measure of stationarity is below a threshold that depends proportionally on the error bounds for the objective function and generalized gradient values. The results of numerical experiments are presented, which show that the algorithm can indeed perform approximate optimization robustly despite errors in objective and generalized gradient values.",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "summary": "非光滑目标的误差不仅来自导数数值偏差，还可能来自把采样点误判到另一段光滑区域。该文为局部 Lipschitz、非凸非光滑优化提出含噪梯度采样算法，把这两种误差分别建模为空间偏移界 $\\epsilon_x$ 与导数误差界 $\\epsilon_g$，并允许函数值有固定有界误差 $\\epsilon_f$。理论使用固定近似 oracle，并要求局部广义梯度的双向覆盖条件、近似次水平集扩张邻域上的已知 Lipschitz 界，以及满足 $\\epsilon_{\\rm ls}>2\\epsilon_f$ 的容噪线搜索。作者证明：几乎必然地，真目标值趋于负无穷，或算法有限停止；因此目标有下界时属于后者。记 $r=\\max\\{\\epsilon_{\\rm ls}^{1/3},\\epsilon_x\\}$，终止采样半径为 $O(r)$，对应 Goldstein 驻点残差为 $O(\\epsilon_g+r)$。函数值误差通过线搜索容差的立方根进入精度边界，不能简化成所有误差的线性和。结果给出非消失误差下的停止保证与可达精度，未给出达到该精度的迭代复杂度。",
+      "reason": "最值得阅读的是噪声假设本身：跨越非光滑分段时，用“真实梯度加一个小向量”描述误差并不充分，局部广义梯度覆盖关系才支撑采样方向的有效性。作者把噪声建模、最小采样尺度和线搜索停止阈值接在同一证明中，明确解释何时能停止、能得到多精确的证书。推荐将其与无噪声 Goldstein 复杂度论文对照，区分 oracle 可实现性、非消失误差和复杂度这三个问题；文中的固定有界误差理论不能直接替代独立随机梯度分析。",
+      "order": 2
+    },
+    {
+      "arxiv_id": "2005.07822",
+      "version": 2,
+      "title": "Gradient Sampling Methods with Inexact Subproblem Solutions and Gradient Aggregation",
+      "authors": [
+        "Frank E. Curtis",
+        "Minhan Li"
+      ],
+      "submitted": "2020-05-15",
+      "updated": "2021-08-06",
+      "arxiv_url": "https://arxiv.org/abs/2005.07822v2",
+      "abstract": "Gradient sampling (GS) has proved to be an effective methodology for the minimization of objective functions that may be nonconvex and/or nonsmooth. The most computationally expensive component of a contemporary GS method is the need to solve a convex quadratic subproblem in each iteration. In this paper, a strategy is proposed that allows the use of inexact solutions of these subproblems, which, as proved in the paper, can be incorporated without the loss of theoretical convergence guarantees. Numerical experiments show that by exploiting inexact subproblem solutions, one can consistently reduce the computational effort required by a GS method. Additionally, a strategy is proposed for aggregating gradient information after a subproblem is solved (potentially inexactly), as has been exploited in bundle methods for nonsmooth optimization. It is proved that the aggregation scheme can be introduced without the loss of theoretical convergence guarantees. Numerical experiments show that incorporating this gradient aggregation approach substantially reduces the computational effort required by a GS method.",
+      "directions": [
+        "historical-information",
+        "optimization-frontiers"
+      ],
+      "summary": "梯度采样算法通常需反复求解由多个邻域梯度构成的凸二次规划；精确求解和样本增长都会增加成本。该文以可计算的原始—对偶条件控制不精确子问题解，并用对偶权重聚合历史梯度，在减少活跃二次规划规模的同时保留收敛证明。其理论不要求所有迭代精确解子问题，也不要求临近解时改回精确求解；内部迭代须满足给定的精度与停止条件，度量矩阵亦须满足保护条件。在目标局部 Lipschitz、有下界，且在一个开且满测度的集合上连续可微等假设下，采样半径趋零时，几乎必然地每个聚点为 Clarke 驻点。聚合版本保留完整样本池，必要时恢复全样本求解，以维持关键下降和驻点判断；因此定理不能解释成任意固定内存压缩都收敛。该文给出渐近保证，未声称迭代复杂度或任意噪声 oracle 下的鲁棒性。",
+      "reason": "推荐关注“压缩信息必须留下什么证书”。聚合梯度来自子问题的对偶权重，误差控制与下降判断相互配合，使复用历史信息和降低内层求解成本成为同一算法设计问题。相比只证明精确子问题下的收敛，这套停止测试更接近实际实现；相比简单丢弃旧样本，保留全池并设置回退机制解释了证明所需的信息完整性。研究历史梯度、束方法或带内层求解器的优化算法时，这些证书和回退条件比单独的压缩公式更值得借鉴。",
+      "order": 3
+    },
+    {
+      "arxiv_id": "1806.00125",
+      "version": 2,
+      "title": "Accelerating Incremental Gradient Optimization with Curvature Information",
+      "authors": [
+        "Hoi-To Wai",
+        "Wei Shi",
+        "Cesar A. Uribe",
+        "Angelia Nedich",
+        "Anna Scaglione"
+      ],
+      "submitted": "2018-05-31",
+      "updated": "2020-02-28",
+      "arxiv_url": "https://arxiv.org/abs/1806.00125v2",
+      "abstract": "This paper studies an acceleration technique for incremental aggregated gradient ({\\sf IAG}) method through the use of \\emph{curvature} information for solving strongly convex finite sum optimization problems. These optimization problems of interest arise in large-scale learning applications. Our technique utilizes a curvature-aided gradient tracking step to produce accurate gradient estimates incrementally using Hessian information. We propose and analyze two methods utilizing the new technique, the curvature-aided IAG ({\\sf CIAG}) method and the accelerated CIAG ({\\sf A-CIAG}) method, which are analogous to gradient method and Nesterov's accelerated gradient method, respectively. Setting $\\kappa$ to be the condition number of the objective function, we prove the $R$ linear convergence rates of $1 - \\frac{4c_0 \\kappa}{(\\kappa+1)^2}$ for the {\\sf CIAG} method, and $1 - \\sqrt{\\frac{c_1}{2\\kappa}}$ for the {\\sf A-CIAG} method, where $c_0,c_1 \\leq 1$ are constants inversely proportional to the distance between the initial point and the optimal solution. When the initial iterate is close to the optimal solution, the $R$ linear convergence rates match with the gradient and accelerated gradient method, albeit {\\sf CIAG} and {\\sf A-CIAG} operate in an incremental setting with strictly lower computation complexity. Numerical experiments confirm our findings. The source codes used for this paper can be found on \\url{ this http URL }.",
+      "directions": [
+        "historical-information",
+        "optimization-frontiers"
+      ],
+      "summary": "有限和增量方法每步只更新少量分量，直接复用旧梯度会受到陈旧偏差限制。该文的 CIAG 对各分量缓存采样点，并用局部 Hessian 把旧梯度外推到当前点：$\\widehat g_i(x)=\\nabla f_i(x_i)+\\nabla^2 f_i(x_i)(x-x_i)$；A-CIAG 再加入 Nesterov 型加速。目标强凸光滑、各分量 Hessian Lipschitz 且分量访问间隔有统一上界时，梯度近似误差对历史位移呈二阶，使作者能证明受步长条件约束的全局 R 线性收敛。步长条件依赖访问间隔、Hessian 变化和初始误差；在靠近解且允许步长常数保持量级时，渐近收敛因子可分别匹配全梯度法和加速全梯度法。算法聚合 Hessian 与梯度截距，无须求逆 Hessian；一般实现每步有 $O(d^2)$ 运算，文中给出 $O(md+d^2)$ 存储实现。其收益需要连同曲率计算、维数和瞬态代价一起评估，不能据局部渐近因子宣称全局复杂度与分量数无关。",
+      "reason": "推荐阅读旧信息如何通过曲率“搬运”到新位置，以及二阶剩余误差如何改变带延迟递推。它为历史信息复用提供了比简单平均更明确的机制：利用结构控制陈旧偏差，再判断剩余误差能否被加速迭代容忍。CIAG 与 A-CIAG 的对照也便于分清曲率校正与惯性加速各自起到的作用。实际借鉴时应同时核算 Hessian 成本和可用步长，论文支持的是有条件的收敛因子改善，而非无需代价的增量加速。",
+      "order": 4
+    },
+    {
+      "arxiv_id": "2309.04980",
+      "version": 1,
+      "title": "Linear Speedup of Incremental Aggregated Gradient Methods on Streaming Data",
+      "authors": [
+        "Xiaolu Wang",
+        "Cheng Jin",
+        "Hoi-To Wai",
+        "Yuantao Gu"
+      ],
+      "submitted": "2023-09-10",
+      "updated": "2023-09-10",
+      "arxiv_url": "https://arxiv.org/abs/2309.04980v1",
+      "abstract": "This paper considers a type of incremental aggregated gradient (IAG) method for large-scale distributed optimization. The IAG method is well suited for the parameter server architecture as the latter can easily aggregate potentially staled gradients contributed by workers. Although the convergence of IAG in the case of deterministic gradient is well known, there are only a few results for the case of its stochastic variant based on streaming data. Considering strongly convex optimization, this paper shows that the streaming IAG method achieves linear speedup when the workers are updating frequently enough, even if the data sample distribution across workers are heterogeneous. We show that the expected squared distance to optimal solution decays at O((1+T)/(nt)), where $n$ is the number of workers, t is the iteration number, and T/n is the update frequency of workers. Our analysis involves careful treatments of the conditional expectations with staled gradients and a recursive system with both delayed and noise terms, which are new to the analysis of IAG-type algorithms. Numerical results are presented to verify our findings.",
+      "directions": [
+        "asynchronous-distributed",
+        "distributed",
+        "stochastic",
+        "historical-information",
+        "optimization-frontiers"
+      ],
+      "summary": "参数服务器在流式数据上保留各工作节点最近一次随机梯度，能减少每轮必须活跃的节点数，但重复使用的噪声会与当前迭代相关。该文分析随机增量聚合梯度方法：各节点允许数据分布不同，活跃节点读取当前参数并在同轮返回新梯度，未活跃节点则沿用历史值。全局目标强凸、分量梯度 Lipschitz，新样本独立无偏且满足带距离项的方差界，所有节点的陈旧年龄不超过 $T$ 时，采用适当递减步长可得 $\\mathbb E\\|w_t-w^*\\|^2\\leq C(T)\\sigma^2/[n(t+\\gamma)]+C_0/(t+\\gamma)^2$，其中 $C(T)=O(1+T)$，常数和步长偏移还依赖问题参数。固定 $T$ 时，随机误差主项保留对工作节点数 $n$ 的线性收益；若 $T$ 随 $n$ 增长，就不能据此得到相同收益。该模型控制的是不活跃造成的梯度陈旧，活跃节点同轮完成计算，不能直接覆盖任意计算或通信延迟；“线性加速”也是迭代误差界中的节点数收益，不是墙钟时间定理。",
+      "reason": "最值得研究的是陈旧随机噪声的相关性处理。作者不把缓存梯度误当成对当前信息条件无偏，而是按噪声生成时刻分解迭代差，显式跟踪复用带来的误差。这给异步参与、历史随机梯度和流式增量算法提供了可检查的证明路线。与直接套用同步 SGD 分析相比，该文说明线性节点收益依赖怎样的陈旧上界和样本独立性；阅读时把这些条件与实际节点参与日程逐项对照，才能判断结论是否适用。",
+      "order": 5
+    },
+    {
+      "arxiv_id": "1711.01136",
+      "version": 3,
+      "title": "Proximal-Like Incremental Aggregated Gradient Method with Linear Convergence under Bregman Distance Growth Conditions",
+      "authors": [
+        "Hui Zhang",
+        "Yu-Hong Dai",
+        "Lei Guo",
+        "Wei Peng"
+      ],
+      "submitted": "2017-11-03",
+      "updated": "2019-08-09",
+      "arxiv_url": "https://arxiv.org/abs/1711.01136v3",
+      "abstract": "We introduce a unified algorithmic framework, called proximal-like incremental aggregated gradient (PLIAG) method, for minimizing the sum of a convex function that consists of additive relatively smooth convex components and a proper lower semi-continuous convex regularization function, over an abstract feasible set whose geometry can be captured by using the domain of a Legendre function. The PLIAG method includes many existing algorithms in the literature as special cases such as the proximal gradient method, the Bregman proximal gradient method (also called NoLips algorithm), the incremental aggregated gradient method, the incremental aggregated proximal method, and the proximal incremental aggregated gradient method. It also includes some novel interesting iteration schemes. First we show the PLIAG method is globally sublinearly convergent without requiring a growth condition, which extends the sublinear convergence result for the proximal gradient algorithm to incremental aggregated type first order methods. Then by embedding a so-called Bregman distance growth condition into a descent-type lemma to construct a special Lyapunov function, we show that the PLIAG method is globally linearly convergent in terms of both function values and Bregman distances to the optimal solution set, provided that the step size is not greater than some positive constant. These convergence results derived in this paper are all established beyond the standard assumptions in the literature (i.e., without requiring the strong convexity and the Lipschitz gradient continuity of the smooth part of the objective). When specialized to many existing algorithms, our results recover or supplement their convergence results under strictly weaker conditions.",
+      "directions": [
+        "historical-information",
+        "optimization-frontiers"
+      ],
+      "summary": "经典增量聚合梯度多依赖欧氏光滑性和强凸性。该文用 Legendre 核诱导的 Bregman 距离统一增量近端与聚合梯度方法：部分分量保留为近端项，其他分量用有界陈旧的一阶模型更新，并以相对光滑条件替代全局欧氏梯度 Lipschitz 条件。在凸复合问题、解集非空紧致和适当子问题可解性等假设下，作者证明一般凸情形的末次函数值误差为 $O(1/k)$；进一步满足 Bregman 距离增长条件时，函数值与到解集的 Bregman 距离具有全局线性界。带延迟的分析还要求显式的 Bregman 链式距离控制条件 B4，以便把长跨度的陈旧误差约束到相邻迭代差之和；这不是任意 Legendre 核自动具备的性质。该框架弱化的是特定欧氏光滑与强凸假设，并用相对几何、增长条件及延迟控制取代它们，而非无条件推广。",
+      "reason": "推荐从 Lyapunov 函数和 B4 的位置切入：历史梯度误差如何进入几何距离，增长条件又如何把下降转成到解集的线性收敛。统一处理“某些分量做近端、某些分量用旧梯度”的设计，让既有 IAG、IAP 和 PIAG 结果能在同一结构下比较。对于研究历史信息和非欧氏算法，这比仅把二范数换成 Bregman 距离更有价值；选择熵核等具体几何时，必须另行验证链式控制和子问题的定义域条件。",
+      "order": 6
+    },
+    {
+      "arxiv_id": "1906.10053",
+      "version": 3,
+      "title": "Block-coordinate and incremental aggregated proximal gradient methods for nonsmooth nonconvex problems",
+      "authors": [
+        "Puya Latafat",
+        "Andreas Themelis",
+        "Panagiotis Patrinos"
+      ],
+      "submitted": "2019-06-24",
+      "updated": "2019-11-26",
+      "arxiv_url": "https://arxiv.org/abs/1906.10053v3",
+      "abstract": "This paper analyzes block-coordinate proximal gradient methods for minimizing the sum of a separable smooth function and a (nonseparable) nonsmooth function, both of which are allowed to be nonconvex. The main tool in our analysis is the forward-backward envelope (FBE), which serves as a particularly suitable continuous and real-valued Lyapunov function. Global and linear convergence results are established when the cost function satisfies the Kurdyka-Łojasiewicz property without imposing convexity requirements on the smooth function. Two prominent special cases of the investigated setting are regularized finite sum minimization and the sharing problem; in particular, an immediate byproduct of our analysis leads to novel convergence results and rates for the popular Finito/MISO algorithm in the nonsmooth and nonconvex setting with very general sampling strategies. This paper analyzes block-coordinate proximal gradient methods for minimizing the sum of a separable smooth function and a (nonseparable) nonsmooth function, both of which are allowed to be nonconvex. The main tool in our analysis is the forward-backward envelope (FBE), which serves as a particularly suitable continuous and real-valued Lyapunov function. Global and linear convergence results are established when the cost function satisfies the Kurdyka-Łojasiewicz property without imposing convexity requirements on the smooth function. Two prominent special cases of the investigated setting are regularized finite sum minimization and the sharing problem; in particular, an immediate byproduct of our analysis leads to novel convergence results and rates for the popular Finito/MISO algorithm in the nonsmooth and nonconvex setting with very general sampling strategies.",
+      "directions": [
+        "historical-information",
+        "optimization-frontiers"
+      ],
+      "summary": "增量与块更新的非凸复合算法可能使原目标值上升，直接依靠目标单调性分析会失效。该文以连续的前向—后向包络（FBE）构造下降量，研究光滑可分离部分与可能非可分、非凸的非光滑项组成的问题，并导出非凸 Finito/MISO 与 sharing 算法。块步长满足相应 Lipschitz 限制、近端子问题精确可解，且各块随机入选的条件概率有正下界时，作者证明残差平方几乎必然可求和，聚点满足驻点条件。整列收敛采用另一组条件：非光滑项凸、更新本质循环、目标强制且满足 KL 性质，此时迭代与近端点收敛到同一驻点；KL 指数不超过 $1/2$ 时可得 R 线性率，而不要求每个光滑分量强凸。一般非凸非光滑项的随机聚点结论，与凸非光滑项下的循环整列收敛须区分，不能混成一个无条件结论。",
+      "reason": "推荐关注如何为不单调的增量迭代寻找真正下降的量。FBE 把历史分量模型、更新残差和目标值联系起来，使更一般的选块日程与非可分近端项能够得到统一分析。对历史代理模型和 Finito/MISO 的研究，包络函数提供了一条不依赖原目标逐步下降的证明路线；同时，文中区分随机选块与本质循环的条件，可帮助定位从聚点收敛提升到整列收敛究竟增加了什么。使用这一路线时，也需确认全局近端映射确实可计算。",
+      "order": 7
+    }
+  ]
+}
