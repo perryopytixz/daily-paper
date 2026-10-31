@@ -1,0 +1,296 @@
+{
+  "date": "2026-10-31",
+  "status": "complete",
+  "frontiers_status": "recommendations",
+  "highlights": [
+    {
+      "arxiv_id": "2608.03246",
+      "label": "弱凸四次方复杂度可由非光滑几何本身造成",
+      "text": "即使每次获得完整次微分，确定性一阶方法仍有 $\\varepsilon^{-4}$ 型最坏查询下界。结论针对 Moreau 驻点、全局 Lipschitz 弱凸目标及可增长维度，不是随机算法下界。",
+      "types": [
+        "field"
+      ]
+    },
+    {
+      "arxiv_id": "2509.02804",
+      "label": "用历史切平面把弱凸近端步骤变成可计算证书",
+      "text": "二次凸化后聚合切平面，以模型间隙控制内层精度。一般 Lipschitz 弱凸情形有 $O(\\delta^{-4})$ 调用界，光滑时改善为 $O(\\delta^{-2})$；仍需已知弱凸常数。",
+      "types": [
+        "group"
+      ]
+    },
+    {
+      "arxiv_id": "2301.12713",
+      "label": "保留复合模型，可把延迟移出收敛主项",
+      "text": "DSPL 的包络梯度平方期望界为 $O(K^{-1/2}+\\mathbb E[\\tau^2]/K)$，需独立延迟与矩条件。工人累计延迟约束下，筛弃过旧结果还能以工人数代替显式延迟；未直接给运行时间最优性。",
+      "types": [
+        "group"
+      ]
+    },
+    {
+      "arxiv_id": "2312.06508",
+      "label": "免延迟参数的网络更新，同时量化固定点偏差",
+      "text": "固定无向网络上，步长不需要延迟上界。强凸可处理完全异步，一般凸要求部分异步；收敛对象是同步 DGD 类固定点，通常保留共识优化偏差。",
+      "types": [
+        "group"
+      ]
+    },
+    {
+      "arxiv_id": "2305.08535",
+      "label": "随机选块与旧值覆盖实现免延迟参数更新",
+      "text": "DEGAS 将平均算子的坐标计算放到主节点—工人架构。一般无界延迟下证明最佳历史期望残差趋零；线性距离率需要收缩等更强条件，且延迟须与选块独立。",
+      "types": [
+        "group"
+      ]
+    },
+    {
+      "arxiv_id": "1803.06523",
+      "label": "用隐式 Moreau 势统一随机局部模型的复杂度",
+      "text": "单侧二次模型误差、弱凸及 Lipschitz 条件下，统一次梯度、近端点与 prox-linear 分析。包络梯度平方期望按 $O(K^{-1/2})$ 衰减，模型子问题求解成本另计。",
+      "types": [
+        "field"
+      ]
+    },
+    {
+      "arxiv_id": "1912.07146",
+      "label": "非光滑逃逸鞍点需要活跃流形结构",
+      "text": "负曲率反例说明光滑情形的直觉并不足够。活跃严格鞍点与适当阻尼下，近端类方法对几乎所有初值，若极限存在则是局部极小点；不是点列收敛或逃逸时间保证。",
+      "types": [
+        "field"
+      ]
+    },
+    {
+      "arxiv_id": "2405.10289",
+      "label": "一条次梯度选择的统一界可控制完整次微分",
+      "text": "对开集上的局部弱凸函数，选择映射差的一致上界控制次微分集合的一致 Hausdorff 距离。由此分析经验与总体驻点景观；开集和全域上确界条件不可删去。",
+      "types": [
+        "field"
+      ]
+    }
+  ],
+  "papers": [
+    {
+      "arxiv_id": "2608.03246",
+      "version": 1,
+      "title": "Optimal Deterministic Oracle Complexity for Weakly Convex Optimization",
+      "authors": [
+        "Jiajin Li",
+        "Siyu Pan"
+      ],
+      "submitted": "2026-08-04",
+      "updated": "2026-08-04",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2608.03246v1",
+      "abstract": "We study the oracle complexity of finding $\\epsilon$-stationary points of $\\rho$-weakly convex and $G$-Lipschitz functions, where stationarity is measured by the gradient of the Moreau envelope. We consider a first-order oracle that returns both the function value and the full subdifferential at every query point. We prove that every deterministic first-order algorithm requires $ \\Omega({\\rho G^2\\Delta}/{\\epsilon^4})$ oracle queries whenever $\\Delta \\leq {G^2}/{\\rho}$, where $f(\\boldsymbol{z})-\\inf f \\leq \\Delta$. This lower bound matches the best known deterministic and stochastic first-order upper bounds, up to universal constants, and establishes the optimal deterministic oracle complexity. The result reveals a fundamental complexity separation between smooth nonconvex and nonsmooth weakly convex optimization. While smooth nonconvex minimization admits a $\\Theta(\\epsilon^{-2})$ oracle complexity, nonsmooth weakly convex optimization incurs an intrinsic additional $\\epsilon^{-2}$ factor arising from nonsmooth geometry rather than stochasticity.",
+      "summary": "弱凸、非光滑目标上的 Moreau 驻点通常需要四次方精度复杂度，这一代价究竟来自随机噪声还是目标几何？该文研究全局 $G$-Lipschitz、$\\rho$-弱凸且初始函数间隙不超过 $\\Delta$ 的目标，允许每次查询同时返回函数值与完整次微分集合。作者构造相互重叠的困难链，并用对角过滤追踪不同块之间的信息传播，再以抵抗型 oracle 将结论推广到任意确定性一阶算法。对充分小的精度，查询下界为 $\\Omega(G^2\\min\\{\\rho\\Delta,G^2\\}/\\varepsilon^4)$；在 $\\Delta\\le G^2/\\rho$ 时，与已有上界在参数上匹配。驻点由参数 $1/(2\\rho)$ 的 Moreau 包络梯度刻画；这是维度可增长的最坏情形确定性下界，不能直接改称固定维度或随机算法下界。",
+      "reason": "最值得阅读的是“完整次微分仍不能突破信息屏障”的构造。它排除了下界只是由挑选不利次梯度造成的解释，并把额外的精度代价定位到非光滑弱凸几何。推荐把集合零链与对角过滤作为复杂度证明工具阅读，并与本日的近端模型、内层可解性结果对照：更强的近端或模型 oracle 可以改变迭代数，但其成本必须另计。",
+      "order": 1
+    },
+    {
+      "arxiv_id": "2509.02804",
+      "version": 1,
+      "title": "A Proximal Descent Method for Minimizing Weakly Convex Optimization",
+      "authors": [
+        "Feng-Yi Liao",
+        "Yang Zheng"
+      ],
+      "submitted": "2025-09-02",
+      "updated": "2025-09-02",
+      "directions": [
+        "optimization-frontiers",
+        "historical-information"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2509.02804v1",
+      "abstract": "We study the problem of minimizing a $m$-weakly convex and possibly nonsmooth function. Weak convexity provides a broad framework that subsumes convex, smooth, and many composite nonconvex functions. In this work, we propose a $\\textit{proximal descent method}$, a simple and efficient first-order algorithm that combines the inexact proximal point method with classical convex bundle techniques. Our analysis establishes explicit non-asymptotic convergence rates in terms of $(\\eta,\\epsilon)$-inexact stationarity. In particular, the method finds an $(\\eta,\\epsilon)$-inexact stationary point using at most $\\mathcal{O}\\!\\left( \\Big(\\tfrac{1}{\\eta^2} + \\tfrac{1}{\\epsilon}\\Big) \\max\\!\\left\\{\\tfrac{1}{\\eta^2}, \\tfrac{1}{\\epsilon}\\right\\} \\right)$ function value and subgradient evaluations. Consequently, the algorithm also achieves the best-known complexity of $\\mathcal{O}(1/\\delta^4)$ for finding an approximate Moreau stationary point with $\\|\\nabla f_{2m}(x)\\|\\leq \\delta$. A distinctive feature of our method is its \\emph{automatic adaptivity}: with no parameter tuning or algorithmic modification, it accelerates to $\\mathcal{O}(1/\\delta^2)$ complexity under smoothness and further achieves linear convergence under quadratic growth. Overall, this work bridges convex bundle methods and weakly convex optimization, while providing accelerated guarantees under structural assumptions.",
+      "summary": "弱凸函数没有全局仿射下模型，直接沿用凸 bundle 方法会失去切平面的有效性。该文先对目标作二次凸化，再用聚合切平面近似近端子问题，通过可计算的模型间隙与实际下降量决定接受点。对于有下界、已知弱凸常数 $m$ 的 $L$-Lipschitz 目标，达到 $\\operatorname{dist}(0,\\partial_{\\epsilon}f(x))\\le\\eta$ 的函数值与次梯度调用量为 $O((\\eta^{-2}+\\epsilon^{-1})\\max\\{\\eta^{-2},\\epsilon^{-1}\\})$，从而得到 $O(\\delta^{-4})$ 的 Moreau 驻点复杂度。该计数使用满足规定下模型、聚合和次梯度条件的精简 bundle 子程序。目标额外光滑时，同一方法达到梯度范数精度的调用量改善为 $O(\\delta^{-2})$；二次增长常数超过弱凸常数时还可进一步改善，光滑与该增长条件共同成立时得到线性收敛。算法仍需给定有效的 $m$，并非完全无参数。",
+      "reason": "推荐重点阅读内层历史切平面如何形成可检查的停止证书，以及外层接受准则怎样同时控制近似次微分误差和下降量。这比只给近端外层迭代数更接近可实现算法，也与历史模型聚合的研究直接相连。光滑性和增长条件出现时无需换算法便获得更好界，适合研究 bundle 方法的结构自适应分析；这些更快界仍依赖各自条件，不能仅凭“弱凸”推断线性率。",
+      "order": 2
+    },
+    {
+      "arxiv_id": "2301.12713",
+      "version": 4,
+      "title": "Delayed Stochastic Algorithms for Distributed Weakly Convex Optimization",
+      "authors": [
+        "Wenzhi Gao",
+        "Qi Deng"
+      ],
+      "submitted": "2023-01-30",
+      "updated": "2023-11-01",
+      "directions": [
+        "optimization-frontiers",
+        "asynchronous-distributed",
+        "distributed",
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2301.12713v4",
+      "abstract": "This paper studies delayed stochastic algorithms for weakly convex optimization in a distributed network with workers connected to a master node. Recently, Xu et al. 2022 showed that an inertial stochastic subgradient method converges at a rate of $\\mathcal{O}(\\tau_{\\text{max}}/\\sqrt{K})$ which depends on the maximum information delay $\\tau_{\\text{max}}$. In this work, we show that the delayed stochastic subgradient method ($\\texttt{DSGD}$) obtains a tighter convergence rate which depends on the expected delay $\\bar{\\tau}$. Furthermore, for an important class of composition weakly convex problems, we develop a new delayed stochastic prox-linear ($\\texttt{DSPL}$) method in which the delays only affect the high-order term in the complexity rate and hence, are negligible after a certain number of $\\texttt{DSPL}$ iterations. In addition, we demonstrate the robustness of our proposed algorithms against arbitrary delays. By incorporating a simple safeguarding step in both methods, we achieve convergence rates that depend solely on the number of workers, eliminating the effect of the delay. Our numerical experiments further confirm the empirical superiority of our proposed methods.",
+      "summary": "异步随机次梯度在非光滑弱凸问题中，延迟可能进入收敛主项。该文在主节点—工人结构下比较延迟随机次梯度 DSGD 与保留凸外层函数的延迟 prox-linear 方法 DSPL。对独立同分布数据、满足 Lipschitz 与弱凸条件的目标及正则项，在延迟独立于数据采样和算法、且一二阶矩受控的模型下，随机输出点的 Moreau 梯度平方期望分别有 $O((1+\\bar\\tau)/\\sqrt K+\\mathbb E[\\tau^2]/K)$ 与 $O(K^{-1/2}+\\mathbb E[\\tau^2]/K)$ 型界。DSPL 将延迟从主项移到高阶项。作者进一步利用 $m$ 工人架构的累计延迟约束，跳过过旧结果，以工人数代替显式延迟参数：相应界为 $O(\\sqrt{m/K}+m/K)$ 和 $O(K^{-1/2}+m^2/K)$。这些是处理事件／迭代口径的界，仍需构造和求解模型子问题，未直接给出任意工人运行时间模型的最优保证。",
+      "reason": "最有价值的比较是同一个非光滑问题上，“陈旧次梯度”与“陈旧局部模型”承受不同的延迟代价。它提供了可直接借鉴的误差分解：保留复合结构，再用累计延迟和筛弃阈值控制偶发大延迟。推荐结合随机算法中的样本独立性、通信负载与每轮模型成本阅读，区分减少延迟敏感性和真正缩短运行时间这两个结论。",
+      "order": 3
+    },
+    {
+      "arxiv_id": "2312.06508",
+      "version": 2,
+      "title": "Asynchronous Distributed Optimization with Delay-free Parameters",
+      "authors": [
+        "Xuyang Wu",
+        "Changxin Liu",
+        "Sindri Magnusson",
+        "Mikael Johansson"
+      ],
+      "submitted": "2023-12-11",
+      "updated": "2024-11-07",
+      "directions": [
+        "asynchronous-distributed",
+        "distributed"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2312.06508v2",
+      "abstract": "Existing asynchronous distributed optimization algorithms often use diminishing step-sizes that cause slow practical convergence, or use fixed step-sizes that depend on and decrease with an upper bound of the delays. Not only are such delay bounds hard to obtain in advance, but they also tend to be large and rarely attained, resulting in unnecessarily slow convergence. This paper develops asynchronous versions of two distributed algorithms, Prox-DGD and DGD-ATC, for solving consensus optimization problems over undirected networks. In contrast to alternatives, our algorithms can converge to the fixed point set of their synchronous counterparts using step-sizes that are independent of the delays. We establish convergence guarantees for convex and strongly convex problems under both partial and total asynchrony. We also show that the convergence speed of the two asynchronous methods adjusts to the actual level of asynchrony rather than being constrained by the worst-case. Numerical experiments demonstrate a strong practical performance of our asynchronous algorithms.",
+      "summary": "固定最坏延迟上界既难估计，也会使异步分布式方法的步长过于保守。该文为固定连通无向网络上的 Prox-DGD 和 DGD-ATC 构造异步实现，给出只依赖局部光滑常数、混合权重等问题信息的固定步长条件。强凸目标在完全异步条件下渐近收敛到同步算法固定点；一般凸目标的相应结论要求部分异步条件，强凸加部分异步时可进一步得到线性率。作者还以实际更新时间和延迟构造收敛刻画，使少数极大延迟不再通过全程步长惩罚所有更新。固定步长保留了同步 DGD 类方法的惩罚偏差，因此极限一般不是原共识优化问题的精确最优解；论文另行量化该误差。所谓完全异步仍要求每个节点持续更新、旧信息最终被淘汰，网络本身并非时变模型。",
+      "reason": "推荐阅读块最大范数下的收缩分析，以及步长条件与实际异步进展指标的分离。它直接回应延迟鲁棒分布式算法如何在部署前选参、运行中适应真实延迟的问题。尤其值得保留的是固定点误差与收敛速度的双重刻画：获得免延迟参数并没有自动消除共识偏差，后续算法设计需要同时处理两者。",
+      "order": 4
+    },
+    {
+      "arxiv_id": "2305.08535",
+      "version": 1,
+      "title": "Delay-agnostic Asynchronous Coordinate Update Algorithm",
+      "authors": [
+        "Xuyang Wu",
+        "Changxin Liu",
+        "Sindri Magnusson",
+        "Mikael Johansson"
+      ],
+      "submitted": "2023-05-15",
+      "updated": "2023-05-15",
+      "directions": [
+        "optimization-frontiers",
+        "asynchronous-distributed",
+        "distributed"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2305.08535v1",
+      "abstract": "We propose a delay-agnostic asynchronous coordinate update algorithm (DEGAS) for computing operator fixed points, with applications to asynchronous optimization. DEGAS includes novel asynchronous variants of ADMM and block-coordinate descent as special cases. We prove that DEGAS converges under both bounded and unbounded delays under delay-free parameter conditions. We also validate by theory and experiments that DEGAS adapts well to the actual delays. The effectiveness of DEGAS is demonstrated by numerical experiments on classification problems.",
+      "summary": "DEGAS 将算子固定点的异步坐标更新放到主节点—工人架构中：工人读取一个完整旧状态，均匀随机选择坐标块，主节点用返回的块值覆盖对应坐标。该文证明，在延迟与随机选块独立的条件下，平均算子在有界延迟时有固定点残差收敛保证；若算子进一步满足文中相对于固定点的欧氏范数收缩条件，则得到均方距离的线性率，并分析有界随机延迟分布对速度的影响。完全异步、无统一延迟上界时，只需所用信息时间戳趋于无穷，平均算子的最佳历史期望残差仍趋于零；更具体的速度需要额外延迟增长条件。算法参数不使用延迟上界，且框架包含异步 BCD 与 ADMM 实例。一般平均算子下的残差结论不应提升为全部点列的强收敛或线性收敛。",
+      "reason": "最值得借鉴的是更新形式和随机选块规则的配合：直接覆盖旧状态计算出的块值，配合算子结构，获得不依赖延迟上界的参数条件。论文将可允许的算子、延迟模型和能证明的收敛对象分开处理，适合构造异步优化及加速固定点方法时作为分析基线。应用中还须核实选块与延迟的独立性，块计算量差异可能使该假设失效。",
+      "order": 5
+    },
+    {
+      "arxiv_id": "1803.06523",
+      "version": 3,
+      "title": "Stochastic model-based minimization of weakly convex functions",
+      "authors": [
+        "Damek Davis",
+        "Dmitriy Drusvyatskiy"
+      ],
+      "submitted": "2018-03-17",
+      "updated": "2018-08-26",
+      "directions": [
+        "optimization-frontiers",
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/1803.06523v3",
+      "abstract": "We consider a family of algorithms that successively sample and minimize simple stochastic models of the objective function. We show that under reasonable conditions on approximation quality and regularity of the models, any such algorithm drives a natural stationarity measure to zero at the rate $O(k^{-1/4})$. As a consequence, we obtain the first complexity guarantees for the stochastic proximal point, proximal subgradient, and regularized Gauss-Newton methods for minimizing compositions of convex functions with smooth maps. The guiding principle, underlying the complexity guarantees, is that all algorithms under consideration can be interpreted as approximate descent methods on an implicit smoothing of the problem, given by the Moreau envelope. Specializing to classical circumstances, we obtain the long-sought convergence rate of the stochastic projected gradient method, without batching, for minimizing a smooth function on a closed convex set.",
+      "summary": "非光滑非凸问题中，迭代点的最小范数次梯度未必连续，也可能沿算法轨迹一直不小。该文以 Moreau 包络作为隐式势函数，统一分析逐次采样并最小化局部随机模型的算法。其模型在基点期望一致，对真函数的高估具有单侧二次误差界；同时要求模型加正则项弱凸，以及可积平方的 Lipschitz 控制。独立采样、适当正则参数和模型子问题精确求解下，按规定权重抽取的迭代点满足包络梯度平方期望 $O(K^{-1/2})$，对应期望梯度范数精度的 $O(\\varepsilon^{-4})$ 迭代／模型采样界。随机近端次梯度、随机近端点和随机 prox-linear 方法均可纳入。小包络梯度表示附近存在近似驻点，并不要求当前点的原次微分残差同样小；近端点和 prox-linear 的子问题成本也不包含在一次模型采样中。",
+      "reason": "这是理解非光滑随机优化复杂度的一篇基础补读。推荐重点看单侧模型精度如何转化为同一包络下降不等式：算法并未显式计算包络，却可以用它连接不同局部模型的收敛分析。该框架已被小批量、动量和延迟模型方法实质发展；将它与本日的确定性下界及自适应近端 oracle 对照，有助于准确区分驻点证书、模型信息和计算成本。",
+      "order": 6
+    },
+    {
+      "arxiv_id": "1912.07146",
+      "version": 2,
+      "title": "Proximal methods avoid active strict saddles of weakly convex functions",
+      "authors": [
+        "Damek Davis",
+        "Dmitriy Drusvyatskiy"
+      ],
+      "submitted": "2019-12-16",
+      "updated": "2021-02-16",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/1912.07146v2",
+      "abstract": "We introduce a geometrically transparent strict saddle property for nonsmooth functions. This property guarantees that simple proximal algorithms on weakly convex problems converge only to local minimizers, when randomly initialized. We argue that the strict saddle property may be a realistic assumption in applications, since it provably holds for generic semi-algebraic optimization problems.",
+      "summary": "把光滑优化中的“有负曲率就能逃离鞍点”直接搬到非光滑问题会失败：该文给出带负曲率却吸引正测度初值的弱凸反例。作者引入活跃严格鞍点：函数沿活跃流形光滑并存在负曲率，离开流形的次梯度范数则有正下界。借助参数化近端映射的局部光滑性和中心稳定流形定理，论文证明在相应严格鞍点、光滑模型及步长条件下，阻尼近端点、近端梯度和 prox-linear 方法对几乎所有初值避开这类鞍点。精确表述是点列若存在极限，该极限必须是局部极小点；该结论本身不保证点列收敛，也不提供多项式逃逸时间。对弱凸半代数／可定义目标，所需几何结构具有几乎处处线性扰动下的泛性。",
+      "reason": "推荐优先阅读负曲率反例与活跃流形条件之间的对照。它解释了为什么仅看 Moreau 包络光滑或 Hessian 有负特征值还不够，并展示阻尼如何恢复全局映射的可逆性，从而让动力系统工具适用。其价值在于辨明非光滑二阶分析真正需要的几何结构；泛性结论可作为研究线索，具体应用仍须核查结构，不能替代验证。",
+      "order": 7
+    },
+    {
+      "arxiv_id": "2405.10289",
+      "version": 3,
+      "title": "Subgradient Convergence Implies Subdifferential Convergence on Weakly Convex Functions: With Uniform Rates Guarantees",
+      "authors": [
+        "Feng Ruan"
+      ],
+      "submitted": "2024-05-16",
+      "updated": "2025-08-25",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2405.10289v3",
+      "abstract": "In nonsmooth, nonconvex stochastic optimization, understanding the uniform convergence of subdifferential mappings is crucial for analyzing stationary points of sample average approximations of risk as they approach the population risk. Yet, characterizing this convergence remains a fundamental challenge. This work introduces a novel perspective by connecting the uniform convergence of subdifferential mappings to that of subgradient mappings as empirical risk converges to the population risk. We prove that, for stochastic weakly-convex objectives, and within any open set, a uniform bound on the convergence of subgradients -- chosen arbitrarily from the corresponding subdifferential sets -- translates to a uniform bound on the convergence of the subdifferential sets itself, measured by the Hausdorff metric. Using this technique, we derive uniform convergence rates for subdifferential sets of stochastic convex-composite objectives. Our results do not rely on key distributional assumptions in the literature, which require the population and finite sample subdifferentials to be continuous in the Hausdorff metric, yet still provide tight convergence rates. These guarantees lead to new insights into the nonsmooth landscapes of such objectives within finite samples.",
+      "summary": "样本平均目标的函数值接近总体目标，并不直接保证两者在同一点的次微分集合接近。该文证明一个确定性选择原理：对开集上两个实值、局部弱凸函数，任意各选一条次梯度映射，其差的一致上界就能控制两组完整次微分在该开集上的一致 Hausdorff 距离。开集以及对整个集合取上确界至关重要，不能将它改写为单点选中次梯度距离控制单点集合距离。作者据此为随机凸复合目标建立经验与总体次微分的一致收敛率，无须此前常用的次微分 Hausdorff 连续性假设。具体统计率仍依赖模型结构、尾部和复杂度条件；例如相位恢复的次高斯测量模型中，可得带对数因子的 $\\sqrt{d/m}$ 型界，并保留有限样本高阶项。",
+      "reason": "最值得阅读的是把集合值映射的比较转化为任意选择映射比较的原理。它让传统经验过程与 VC 维数工具能够用于非光滑驻点景观，而不必先平滑掉目标。推荐同时检查 Hausdorff 距离和图距离的区别：二者度量不同，不能仅用精度指数的改善宣称在完全相同假设下全面优于已有结果。",
+      "order": 8
+    },
+    {
+      "arxiv_id": "2106.03034",
+      "version": 2,
+      "title": "Minibatch and Momentum Model-based Methods for Stochastic Weakly Convex Optimization",
+      "authors": [
+        "Qi Deng",
+        "Wenzhi Gao"
+      ],
+      "submitted": "2021-06-06",
+      "updated": "2021-11-13",
+      "directions": [
+        "optimization-frontiers",
+        "stochastic",
+        "historical-information"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2106.03034v2",
+      "abstract": "Stochastic model-based methods have received increasing attention lately due to their appealing robustness to the stepsize selection and provable efficiency guarantee. We make two important extensions for improving model-based methods on stochastic weakly convex optimization. First, we propose new minibatch model-based methods by involving a set of samples to approximate the model function in each iteration. For the first time, we show that stochastic algorithms achieve linear speedup over the batch size even for non-smooth and non-convex (particularly, weakly convex) problems. To this end, we develop a novel sensitivity analysis of the proximal mapping involved in each algorithm iteration. Our analysis appears to be of independent interests in more general settings. Second, motivated by the success of momentum stochastic gradient descent, we propose a new stochastic extrapolated model-based method, greatly extending the classic Polyak momentum technique to a wider class of stochastic algorithms for weakly convex optimization. The rate of convergence to some natural stationarity condition is established over a fairly flexible range of extrapolation terms. While mainly focusing on weakly convex optimization, we also extend our work to convex optimization. We apply the minibatch and extrapolated model-based methods to stochastic convex optimization, for which we provide a new complexity bound and promising linear speedup in batch size. Moreover, an accelerated model-based method based on Nesterov's momentum is presented, for which we establish an optimal complexity bound for reaching optimality.",
+      "summary": "随机模型方法的原有弱凸驻点界没有体现小批量收益。该文用替换单个样本的近端解稳定性分析，证明当局部模型与样本目标满足双侧二次近似、模型具有适当弱凸与 Lipschitz 控制时，随机近端点和 prox-linear 方法达到期望包络梯度范数精度所需迭代数为 $O(\\varepsilon^{-2}+(b\\varepsilon^4)^{-1})$，其中 $b$ 为批量大小。批量收益依赖模型信息：一般非光滑次梯度线性模型不满足该双侧条件，不能照搬同一加速结论。作者还引入 Polyak 型外推，以联合 Lyapunov 势函数给出弱凸情形下的 $O(\\varepsilon^{-4})$ 界；动量本身并未改善一般弱凸问题的最坏精度阶数。凸情形进一步有 Nesterov 型加速结果。每轮需最小化批量模型，迭代减少不等于总样本数或运行时间同比减少。",
+      "reason": "推荐重点看稳定性分析怎样识别“小批量何时真正有效”，以及历史迭代外推项如何进入包络势函数。它为随机近端模型与动量设计提供了比泛称降噪更具体的结构条件，也能作为延迟 prox-linear 方法的分析前置。将一般次梯度、双侧模型和凸加速三组结果分开阅读，可避免把不同信息模型的收益混在一起。",
+      "order": 9
+    },
+    {
+      "arxiv_id": "2312.16775",
+      "version": 3,
+      "title": "Error bounds, PL condition, and quadratic growth for weakly convex functions, and linear convergences of proximal point methods",
+      "authors": [
+        "Feng-Yi Liao",
+        "Lijun Ding",
+        "Yang Zheng"
+      ],
+      "submitted": "2023-12-28",
+      "updated": "2026-02-03",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2312.16775v3",
+      "abstract": "Many practical optimization problems lack strong convexity. Fortunately, recent studies have revealed that first-order algorithms also enjoy linear convergences under various weaker regularity conditions. While the relationship among different conditions for convex and smooth functions is well-understood, it is not the case for the nonsmooth setting. In this paper, we go beyond convexity and smoothness, and clarify the connections among common regularity conditions in the class of weakly convex functions, including $\\textit{strong convexity}$, $\\textit{restricted secant inequality}$, $\\textit{subdifferential error bound}$, $\\textit{Polyak-Łojasiewicz inequality}$, and $\\textit{quadratic growth}$. In addition, using these regularity conditions, we present a simple and modular proof for the linear convergence of the proximal point method (PPM) for convex and weakly convex optimization problems. The linear convergence also holds when the subproblems of PPM are solved inexactly with a proper control of inexactness.",
+      "summary": "误差界、PL 条件与二次增长常被互换使用，但非光滑弱凸问题中这些替换需要额外条件。该文在同一次水平集上建立强凸、限制割线不等式、次微分误差界、PL 条件和二次增长之间的蕴含关系；其中误差界与 PL 等价，PL 蕴含二次增长，而反向等价要求二次增长系数 $\\mu_q$ 严格大于弱凸常数 $\\rho$。利用这些转换，作者给出近端点法函数间隙与解集距离线性下降的模块化证明。弱凸情形要求从满足增长条件的次水平集内初始化，且近端参数使子问题强凸；全局增长条件成立时才允许任意初始化。论文另外对凸目标给出满足绝对及相对误差控制的不精确近端点法最终线性率，不应把该不精确定理直接推广成一般弱凸版本。",
+      "reason": "最值得保留的是条件转换中的阈值与适用区域，而不仅是“近端点法线性收敛”这一结果。推荐将其用作 bundle、惩罚和近端模型分析的工具表：先确认增长系数、弱凸程度和初始化区域，再选最便于验证的误差条件。它也展示了如何把内层可解性、局部几何和外层收敛对象拆开证明。",
+      "order": 10
+    },
+    {
+      "arxiv_id": "2606.17285",
+      "version": 3,
+      "title": "An Adaptive Proximal Framework for Stochastic Weakly Convex Optimization",
+      "authors": [
+        "Miaolan Xie"
+      ],
+      "submitted": "2026-06-15",
+      "updated": "2026-08-10",
+      "directions": [
+        "optimization-frontiers",
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2606.17285v3",
+      "abstract": "Many nonsmooth, nonconvex objectives in learning and signal recovery are $\\rho$-weakly convex. We minimize such a function when the weak-convexity parameter $\\rho$ is unknown and only stochastic candidate and function-difference information is available. We propose the Adaptive Prox-Guided Scheme (APS), a single-trial framework that adapts the proximal parameter online and bidirectionally through a noisy descent test. APS attains a high-probability $O(\\varepsilon^{-2})$ iteration bound for Moreau-envelope stationarity. The result allows biased, heavy-tailed function-difference estimates, while the candidate oracle need only be sufficiently accurate with constant probability when the proximal parameter is small and may be arbitrary otherwise. APS does not need to identify which case applies. A model-based extension covers adaptive proximal-point, prox-linear, and proximal-gradient methods. When the oracles are exact, the same analysis yields a deterministic $O(\\varepsilon^{-2})$ bound and, for the proximal-point instance, an $\\varepsilon$-subgradient stationary point.",
+      "summary": "弱凸常数未知时，固定近端参数难以兼顾子问题可解性与进展速度。该文提出 APS：每轮只生成一个候选并估计一次函数差，通过含噪下降检验接受或拒绝候选，再双向增减近端参数。分析把参数区间分成保证近端子问题强凸的安全区与不保证候选质量的区域；算法无需识别区间，接受步由可观察下降控制，拒绝步将参数拉回安全区。对安全区候选有足够的条件可靠率、函数差误差满足相应矩条件，且可靠率超过定理阈值、误差随目标精度按 $\\varepsilon^2$ 尺度控制时，APS 以高概率在 $O(\\varepsilon^{-2})$ 外层迭代内到达固定参考尺度的 Moreau 驻点。该次数不是一阶采样复杂度：文中一种统一矩假设下的实现每次函数差估计需 $O(\\varepsilon^{-4})$ 对样本，总计 $O(\\varepsilon^{-6})$；安全区近端候选的随机次梯度实现总计 $O(\\varepsilon^{-4})$ 次调用。",
+      "reason": "推荐阅读安全与非安全两种状态的计数论证：它允许候选在非凸子问题区间任意失准，却仍通过接受检验组织整体进展。这为未知曲率下的随机模型算法提供了可移植的自适应机制。它与本日确定性一阶下界并不矛盾，因为每次调用的是具有精度要求的近端／函数差 oracle；比较效率时必须把这些实现成本和误差尺度一起计入。",
+      "order": 11
+    }
+  ]
+}
