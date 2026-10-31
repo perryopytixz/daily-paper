@@ -54,7 +54,7 @@
     {
       "arxiv_id": "1912.07146",
       "label": "非光滑逃逸鞍点需要活跃流形结构",
-      "text": "负曲率反例说明光滑情形的直觉并不足够。活跃严格鞍点与适当阻尼下，近端类方法对几乎所有初值，若极限存在则是局部极小点；不是点列收敛或逃逸时间保证。",
+      "text": "负曲率反例说明光滑直觉并不足够。活跃严格鞍点与适当阻尼下，近端点／近端梯度方法若有极限，几乎处处为局部极小点；prox-linear 仅有局部逃逸保证。",
       "types": [
         "field"
       ]
@@ -210,7 +210,7 @@
       ],
       "arxiv_url": "https://arxiv.org/abs/1912.07146v2",
       "abstract": "We introduce a geometrically transparent strict saddle property for nonsmooth functions. This property guarantees that simple proximal algorithms on weakly convex problems converge only to local minimizers, when randomly initialized. We argue that the strict saddle property may be a realistic assumption in applications, since it provably holds for generic semi-algebraic optimization problems.",
-      "summary": "把光滑优化中的“有负曲率就能逃离鞍点”直接搬到非光滑问题会失败：该文给出带负曲率却吸引正测度初值的弱凸反例。作者引入活跃严格鞍点：函数沿活跃流形光滑并存在负曲率，离开流形的次梯度范数则有正下界。借助参数化近端映射的局部光滑性和中心稳定流形定理，论文证明在相应严格鞍点、光滑模型及步长条件下，阻尼近端点、近端梯度和 prox-linear 方法对几乎所有初值避开这类鞍点。精确表述是点列若存在极限，该极限必须是局部极小点；该结论本身不保证点列收敛，也不提供多项式逃逸时间。对弱凸半代数／可定义目标，所需几何结构具有几乎处处线性扰动下的泛性。",
+      "summary": "把光滑优化中的“有负曲率就能逃离鞍点”直接搬到非光滑问题会失败：该文给出带负曲率却吸引正测度初值的弱凸反例。作者引入活跃严格鞍点：函数沿活跃流形光滑并存在负曲率，离开流形的次梯度范数则有正下界。借助近端映射的局部光滑性和中心稳定流形定理，论文证明在相应严格鞍点、光滑模型及步长条件下，阻尼近端点与近端梯度方法对几乎所有初值，点列若存在极限，该极限必须是局部极小点。对于阻尼 prox-linear 方法，本文只证明活跃严格鞍点邻域内的局部逃逸，一般全局逃逸仍被列为开放问题。这些逃逸结论本身不保证点列收敛，也不提供多项式逃逸时间。对弱凸半代数／可定义目标，所需几何结构具有几乎处处线性扰动下的泛性。",
       "reason": "推荐优先阅读负曲率反例与活跃流形条件之间的对照。它解释了为什么仅看 Moreau 包络光滑或 Hessian 有负特征值还不够，并展示阻尼如何恢复全局映射的可逆性，从而让动力系统工具适用。其价值在于辨明非光滑二阶分析真正需要的几何结构；泛性结论可作为研究线索，具体应用仍须核查结构，不能替代验证。",
       "order": 7
     },
