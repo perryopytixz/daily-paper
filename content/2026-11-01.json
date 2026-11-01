@@ -1,0 +1,66 @@
+{
+  "date": "2026-11-01",
+  "status": "complete",
+  "frontiers_status": "recommendations",
+  "highlights": [
+    {
+      "arxiv_id": "1502.05666",
+      "label": "充要插值条件使一阶方法的最坏界可精确计算",
+      "text": "该文给出光滑强凸函数的充要插值条件，并将预定系数一阶方法的有限步性能化为 SDP；当 $d\\geq N+2$ 时可同时获得精确最坏值和匹配坏例。低维需加秩约束，部分算法的闭式公式仍是猜想。",
+      "types": [
+        "field"
+      ]
+    },
+    {
+      "arxiv_id": "1903.04626",
+      "label": "未知线性约束下耦合采样与步长，保证迭代轨迹安全",
+      "text": "Safe Frank–Wolfe 用累计约束测量和置信安全集控制更新，在严格可行初值、次高斯噪声及规定采样量下，以高概率保持有限时域全部迭代可行，并取得含对数因子的 $1/T$ 误差界。探测可在可行域邻域进行，轨迹安全不等于所有测量点安全。",
+      "types": [
+        "group"
+      ]
+    }
+  ],
+  "papers": [
+    {
+      "arxiv_id": "1502.05666",
+      "version": 6,
+      "title": "Smooth Strongly Convex Interpolation and Exact Worst-case Performance of First-order Methods",
+      "authors": [
+        "Adrien B. Taylor",
+        "Julien M. Hendrickx",
+        "François Glineur"
+      ],
+      "submitted": "2015-02-19",
+      "updated": "2016-10-31",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/1502.05666v6",
+      "abstract": "We show that the exact worst-case performance of fixed-step first-order methods for unconstrained optimization of smooth (possibly strongly) convex functions can be obtained by solving convex programs. Finding the worst-case performance of a black-box first-order method is formulated as an optimization problem over a set of smooth (strongly) convex functions and initial conditions. We develop closed-form necessary and sufficient conditions for smooth (strongly) convex interpolation, which provide a finite representation for those functions. This allows us to reformulate the worst-case performance estimation problem as an equivalent finite dimension-independent semidefinite optimization problem, whose exact solution can be recovered up to numerical precision. Optimal solutions to this performance estimation problem provide both worst-case performance bounds and explicit functions matching them, as our smooth (strongly) convex interpolation procedure is constructive. Our works build on those of Drori and Teboulle in [Math. Prog. 145 (1-2), 2014] who introduced and solved relaxations of the performance estimation problem for smooth convex functions. We apply our approach to different fixed-step first-order methods with several performance criteria, including objective function accuracy and gradient norm. We conjecture several numerically supported worst-case bounds on the performance of the fixed-step gradient, fast gradient and optimized gradient methods, both in the smooth convex and the smooth strongly convex cases, and deduce tight estimates of the optimal step size for the gradient method.",
+      "summary": "只把凸性与梯度 Lipschitz 条件逐点写成不等式，未必能保证这些函数值和梯度来自同一个光滑凸函数，因而最坏情形分析可能包含无法实现的坏例。该文通过减去最小曲率和 Fenchel 共轭，把 $0\\leq\\mu<L$ 的光滑强凸插值化为凸插值，给出有限组点、函数值和梯度可被同一函数实现的充要条件，并提供构造插值函数的方法。对系数预先给定、每步可组合历史梯度的一阶方法，作者再用 Gram 矩阵将有限步性能估计写成 SDP；当问题维数 $d\\geq N+2$ 时，该 SDP 给出 $N$ 步的精确最坏值，低维问题则还需非凸秩约束。原始可行解可恢复具体坏例，对偶可行解可转成性能上界的证明，函数误差、梯度范数平方和距离平方等准则均可处理。文中针对梯度法及加速法的若干闭式最坏界仍是数值支持的猜想，不能与已证明的插值及 SDP 等价性混同。",
+      "reason": "最值得补读的是“有限信息是否真的来自某个函数”这一层：充要插值条件把可实现的下界实例与上界证明连接起来，使研究者能辨认收敛分析的保守性。相较只给渐近阶数或使用必要条件松弛的分析，这套构造还提供精确常数与坏例证据。推荐将其作为理解后续集合、线性算子和弱凸插值工具的基础，同时留意精确性所需的维数及预定系数条件。",
+      "order": 1
+    },
+    {
+      "arxiv_id": "1903.04626",
+      "version": 2,
+      "title": "Safe Convex Learning under Uncertain Constraints",
+      "authors": [
+        "Ilnura Usmanova",
+        "Andreas Krause",
+        "Maryam Kamgarpour"
+      ],
+      "submitted": "2019-03-11",
+      "updated": "2019-12-09",
+      "directions": [
+        "optimization-frontiers",
+        "safety-critical"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/1903.04626v2",
+      "abstract": "We address the problem of minimizing a convex smooth function $f(x)$ over a compact polyhedral set $D$ given a stochastic zeroth-order constraint feedback model. This problem arises in safety-critical machine learning applications, such as personalized medicine and robotics. In such cases, one needs to ensure constraints are satisfied while exploring the decision space to find optimum of the loss function. We propose a new variant of the Frank-Wolfe algorithm, which applies to the case of uncertain linear constraints. Using robust optimization, we provide the convergence rate of the algorithm while guaranteeing feasibility of all iterates, with high probability.",
+      "summary": "当线性约束的系数未知、只能获得带噪约束值时，在估计可行域上直接运行普通优化方法可能使中间迭代越界。该文提出 Safe Frank–Wolfe：在当前点附近沿坐标方向采样，用累计数据做最小二乘估计，在估计多面体上解线性子问题，再以递减步长更新；分析通过参数置信椭球构造安全集，并让测量量随迭代增加，以控制估计误差与靠近边界的速度。对于紧且有非空内部的多面体、凸光滑且 Lipschitz 的目标，使用精确目标梯度、严格可行初值、独立次高斯约束噪声及满足几何常数下界的采样计划，作者证明有限时域内全体迭代点以至少 $1-\\delta$ 的概率可行，并给出含对数因子的 $1/T$ 目标误差界。达到 $\\epsilon$ 精度需约 $\\widetilde O(\\epsilon^{-1})$ 次线性子问题和 $\\widetilde O(\\epsilon^{-2})$ 次约束测量，此处隐藏维数、置信水平及几何常数。安全结论针对优化迭代点；测量模型允许在可行域的固定半径邻域取样，不能据此声称所有探测点都在原可行域内。",
+      "reason": "推荐关注采样精度、置信安全集与 Frank–Wolfe 步长之间的定量耦合。它把逐步可行优化推进到约束本身需要在线辨识的情形，并展示仅有目标下降或平均约束违反控制为何不足以保证轨迹安全。与先固定估计一个鲁棒内域再优化相比，沿轨迹持续积累约束信息能随精度要求减少保守性；对设计可行迭代方法，测量位置与实际决策点的区别同样值得认真检查。",
+      "order": 2
+    }
+  ]
+}
