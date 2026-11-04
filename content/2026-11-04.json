@@ -1,0 +1,397 @@
+{
+  "date": "2026-11-04",
+  "status": "complete",
+  "frontiers_status": "recommendations",
+  "highlights": [
+    {
+      "arxiv_id": "2611.04171",
+      "label": "广义光滑有限和：刻画异质性带来的查询代价",
+      "types": [
+        "field"
+      ],
+      "text": "YETI 结合加速近端、局部方差缩减与分离步骤，给出含异质性项的上下界。需已知距离及初始差距等界，并限定精度区间；查询计数包含内层求解和启发式验证，对数因子仍未闭合。"
+    },
+    {
+      "arxiv_id": "2611.05243",
+      "label": "交替镜像下降：总遗憾降至对数阶",
+      "types": [
+        "field"
+      ],
+      "text": "高阶修正 Hamiltonian 分析将双线性零和博弈中标准交替镜像下降的双方总遗憾控制为 $O(\\log T)$，平均对偶间隙为 $O(\\log T/T)$。正则器需满足解析增长条件，运行步长依赖预设时域。"
+    },
+    {
+      "arxiv_id": "2611.04151",
+      "label": "VI 的可解性：欧氏球与其他范数球出现分界",
+      "types": [
+        "field"
+      ],
+      "text": "一般仿射 VI 在欧氏球上可多项式时间求解，矩阵不必对称；在其他固定范数球上，逆多项式精度已为 PPAD 完全。欧氏球上的二次算子也会变难，说明约束几何与算子结构必须一起考察。"
+    },
+    {
+      "arxiv_id": "2609.20701",
+      "label": "束模型与集合追逐：补齐随机算法的近最优性",
+      "types": [
+        "field",
+        "group"
+      ],
+      "text": "v2 继续用历史切平面束和稳定选择器减少查询，并新增随机局部预言机下界，使高维区间的近最优性覆盖随机实现。推荐补读新增下界及可行选择器构造；每次查询仍涉及凸子问题，不能视为廉价梯度步。"
+    },
+    {
+      "arxiv_id": "2611.05334",
+      "label": "历史仿射模型：统一平方范数下的自适应加速",
+      "types": [
+        "group"
+      ],
+      "text": "A²ODA 用累积梯度、仿射下模型和乐观预测显式更新正则参数，在 $p\\in[2,\\infty]$ 几何中实现统一分析。局部光滑特例恢复主要加速指数；主迭代无须线搜索，可选初始化校准仍有试探。"
+    },
+    {
+      "arxiv_id": "2505.15537",
+      "label": "Riemannian EXTRA：校正法向误差并保持单消息通信",
+      "types": [
+        "group"
+      ],
+      "text": "REXTRA 将法向校正嵌入通信和辅助递推，联合控制一致性、切向和法向误差。对紧流形、固定无向网络和局部初始化，给出 $O(1/k)$ 最佳驻点与一致性指标界，并分析回缩变体。"
+    },
+    {
+      "arxiv_id": "2611.04448",
+      "label": "复合联邦优化：客户端独立验收相对误差",
+      "types": [
+        "group"
+      ],
+      "text": "REC-FedDyn 让客户端自行检查内层精度，每轮只做一次服务器近端，同时支持部分参与和异质目标下的精确收敛。理论使用确定性局部梯度；其价值在于把可实施的停止规则与通信、近端成本一起分析。"
+    }
+  ],
+  "papers": [
+    {
+      "arxiv_id": "2611.04171",
+      "version": 1,
+      "title": "Descending Everest, Part II: Oracle Complexity of Minimizing a Sum of Convex $(L_0,L_1)$-Smooth Functions",
+      "authors": [
+        "Mikhail Rudomanov",
+        "Ivan Fomin",
+        "Alexander V. Gasnikov",
+        "Fedor S. Stonyakin"
+      ],
+      "submitted": "2026-11-03",
+      "updated": "2026-11-03",
+      "arxiv_url": "https://arxiv.org/abs/2611.04171v1",
+      "abstract": "We study the minimization of the average of $n$ convex $(L_0,L_1)$-smooth functions: the Hessian norm of each function is bounded by an affine function of its gradient norm. We assume known upper bounds $R$ on the distance from the starting point to a minimizer and $\\delta$ on the difference between the minimum of the average and the average of the infima of the components. We derive upper and lower bounds on the oracle complexity of reaching accuracy $\\varepsilon$ in function value in expectation. Up to logarithmic factors, both bounds are of order $n(1+(L_1R)^{2/3}) +\\sqrt{\\frac{n(L_0+L_1^2\\delta)R^2}{\\varepsilon}+n(L_1R)^2}$. The upper bound is attained by the proposed method YETI. The method combines ideas of accelerated proximal methods and variance reduction methods with a heuristic for choosing additional points. The number of oracle calls made by the heuristic is bounded, which preserves the upper bound on the total number of queries needed to reach the target accuracy. In the experiments, YETI is compared with first-order methods on synthetic problems and Poisson regression problems. We also examine the stopping criterion and the effect of the heuristic separately. The lower bound is obtained by an explicit construction of families of instances that are hard for any first-order method.",
+      "directions": [
+        "stochastic",
+        "optimization-frontiers"
+      ],
+      "summary": "有限和的每个分量即使都满足 $(L_0,L_1)$ 广义光滑性，平均梯度在最优点消失也不能控制各分量的曲率；分量异质性因此会进入复杂度。该文提出 YETI，将加速近端框架、局部 SVRG、曲率过大时的分离半空间和有查询预算的启发式组合起来。对下有界的二阶可微凸分量，已知光滑参数、最优解距离界 $R$、初始差距界及异质性界 $\\delta$，并在 $L_1^2R^2\\delta/\\varepsilon\\geq3$ 的精度区间，得到期望分量函数值／梯度查询数的上下界，其共同主尺度为 $n(1+(L_1R)^{2/3})+\\sqrt{n(L_0+L_1^2\\delta)R^2/\\varepsilon+n(L_1R)^2}$。上下界仍相差对数因子；上界的对数含初始差距，极大初始差距时不能把这部分视为无关常数。",
+      "reason": "推荐关注异质性如何通过分量曲率进入上下界，以及加速外层如何在局部方差缩减和分离步骤之间切换。它把广义光滑性下的有限和优化推进到算法与预言机极限的比较；全梯度、子问题和启发式验证的成本均纳入分量查询计数，适合研究大规模随机算法时借鉴。",
+      "order": 1
+    },
+    {
+      "arxiv_id": "2611.05243",
+      "version": 1,
+      "title": "Logarithmic Regret for Alternating Mirror Descent",
+      "authors": [
+        "Tianlong Nan",
+        "Christian Kroer"
+      ],
+      "submitted": "2026-11-03",
+      "updated": "2026-11-03",
+      "arxiv_url": "https://arxiv.org/abs/2611.05243v1",
+      "abstract": "Alternating online mirror descent (AltOMD) is a simple learning rule for zero-sum games, which improves upon simultaneous OMD numerically and theoretically. Previous work obtained $O(T^{1/3})$ and $O(T^{1/5})$ regret bounds for AltOMD, by leveraging modified-energy-function-based analyses. However, settling whether AltOMD achieves near-constant regret has remained an open question. In this paper we resolve the question of whether AltOMD achieves near-constant regret in the affirmative. In particular, we show an $O(log(T))$ regret bound on the sum of the players' external regrets for any two-player zero-sum bilinear game with compact convex strategy sets, under mild regularity assumptions on the regularizers. We verify that our assumptions hold for the negative entropy regularizer, thereby obtaining logarithmic regret for the alternating multiplicative weights updates algorithm. The regret bound also yields an $O(log(T)/T)$ duality gap bound for the averaged strategies.",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "summary": "标准交替镜像下降在双线性零和博弈中的行为比同时更新更稳定，但既有修正能量分析只给出 $O(T^{1/3})$ 或 $O(T^{1/5})$ 的总遗憾界。作者控制随时域增长的截断修正 Hamiltonian 及其高阶余项，证明双方外部遗憾之和为 $O(\\log T)$，从而平均策略的对偶间隙为 $O(\\log T/T)$。结论针对紧凸策略集上的双线性博弈，要求 Legendre 正则器共轭的 Taylor 系数满足全局几何增长界，并有有限初始 Bregman 半径；负熵正则器满足条件。步长按预先给定的 $T$ 取 $\\Theta(1/\\log T)$，一次运行内固定，不是任意固定步长的最后迭代收敛结论。",
+      "reason": "最值得阅读的是把固定阶能量分析推进到对数阶截断时，如何同时控制系数增长和离散化余项。该文为未修改的交替镜像下降给出接近常数的总遗憾分析，补上实际稳定性与既有多项式界之间的缺口，为分析交替优化提供了不同于增加乐观修正的工具。",
+      "order": 2
+    },
+    {
+      "arxiv_id": "2611.04151",
+      "version": 1,
+      "title": "On the Role of Geometry in Solving Variational Inequalities",
+      "authors": [
+        "Ioannis Anagnostides",
+        "Ioannis Panageas",
+        "Jingming Yan"
+      ],
+      "submitted": "2026-11-03",
+      "updated": "2026-11-03",
+      "arxiv_url": "https://arxiv.org/abs/2611.04151v1",
+      "abstract": "The geometry of constraints in variational inequalities (VIs) plays a central role in applications ranging from resource allocation and equilibrium computation to constrained optimization. Yet, its effect on computational complexity has received surprisingly little attention beyond special cases. We examine this question when the constraint set is an $\\ell_p$ ball. This family of problems encompasses two of the most extensively studied classes of problems in algorithmic game theory: symmetric bimatrix games for $p = 1$ and multi-player polymatrix games for $p = \\infty$. Both of these problems are known to be PPAD-complete even for affine operators. We establish a comprehensive complexity landscape for VIs over $\\ell_p$ balls across the full range $p\\in[1,\\infty]$. First, for any $p\\neq 2$, we show that finding an inverse-polynomial approximate VI solution is PPAD-complete even for affine operators. In contrast, for $p=2$, we give a polynomial-time algorithm for affine VIs, extending a classic result of Ye (1992) beyond symmetric operators. On the other hand, once the operator becomes quadratic, we establish PPAD-completeness even at inverse polynomial precision. From a technical standpoint, we develop a new toolkit for exploiting the geometry of the constraint set and the structure of the operator to characterize the complexity of equilibrium and optimization problems, which is of independent interest.",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "summary": "同样的仿射算子，放在不同范数球上求解变分不等式，计算难度可能发生根本变化。该文证明：对固定 $p\\neq2$ 的 $\\ell_p$ 球，逆多项式精度的近似 VI 即使算子为仿射也为 PPAD 完全；对欧氏球，任意仿射算子则有关于输入长度和 $\\log(1/\\varepsilon)$ 的多项式时间算法，矩阵无需对称。若欧氏球上的算子提升为二次，逆多项式精度下又变为 PPAD 完全。作者通过约束几何实现困难性归约，并在欧氏情形利用乘子的结构构造算法。困难性针对一般、未必单调的算子，不能据此否定单调 VI 的快速算法。",
+      "reason": "推荐从算子结构与可行域几何共同决定可解性的角度阅读。欧氏球上的仿射 VI 算法把经典对称二次优化结果扩展到非对称矩阵，而其他范数球的困难性说明，更换几何会改变问题本身的计算性质，远不止影响迭代界中的常数。",
+      "order": 3
+    },
+    {
+      "arxiv_id": "2609.20701",
+      "version": 2,
+      "title": "Stable Movement for Nondual Lipschitz Convex Optimization: Efficiency and Nearly Optimal Oracle Rates",
+      "authors": [
+        "David Martínez-Rubio",
+        "Cristóbal Guzmán"
+      ],
+      "submitted": "2026-09-17",
+      "updated": "2026-11-03",
+      "arxiv_url": "https://arxiv.org/abs/2609.20701v2",
+      "abstract": "We study efficient algorithms for realizing the first-order oracle complexity of optimization of $G$-Lipschitz convex functions with respect to the $\\ell_q$-norm over an $\\ell_p$-ball of radius $R$, where $1\\leq p,q\\leq\\infty$. For $p<q$, we obtain error $\\widetilde{O}_{p,q}(GR/T^{1/p-(1/q-1/2)_{+}})$ after $T$ oracle queries, attaining the lower bounds in a COLT 2015 open problem (Guz15b) with efficient algorithms. In particular, the rate is $\\widetilde{O}(GR/T)$ for Euclidean Lipschitzness with an $\\ell_1$-ball domain of radius $R$ ($p=1,q=2$). Our solution consists of reducing convex Lipschitz optimization to the chasing nested convex sets problem (BBE+20) in sublevel sets of an evolving maximum of affine lower bounds, that is, the bundle (LNN95): at each query we either find a point with low function value or we produce a deep cut in the current sublevel of the bundle that we chase. The dichotomy between stability of selectors and forced movement by deep cuts bounds the number of iterations of the algorithm nearly optimally. For nested convex subsets of the $\\ell_p$ ball $R B_p^d$, we introduce novel stable selectors whose movement is nearly optimal in high dimensions. A Monte Carlo average of the proposed selector achieves near-optimal rates with high probability and can be implemented for our optimization algorithm in polynomial time in the real-arithmetic model.",
+      "directions": [
+        "historical-information",
+        "optimization-frontiers"
+      ],
+      "summary": "该文把全部历史一阶切平面组成束模型，通过追逐其嵌套次水平集求解非对偶几何中的凸 Lipschitz 优化。对于在 $\\ell_q$ 范数下 $G$-Lipschitz、定义域为半径 $R$ 的 $\\ell_p$ 球的问题，稳定选择器的总移动量控制分离切割次数，得到约 $\\widetilde O(GR/T^{1/p-(1/q-1/2)_+})$ 的误差界；例如 $p=1,q=2$ 时为 $\\widetilde O(GR/T)$。v2 保留核心束方法，并扩展移动量构造的几何范围，新增针对随机算法的局部预言机下界，使高维区间 $T\\leq c_{p,q}d$ 中的近最优性不再仅依赖确定性下界。可行随机实现依赖实数运算模型和凸子问题求解，其多项式时间保证不表示每次查询的计算成本与普通梯度步相同。",
+      "reason": "推荐重点补读 v2 的随机下界及可行选择器实现，并回看切平面束、嵌套集合追逐和查询复杂度的连接。历史信息在这里形成可证的全局下模型；选择器稳定性给出了分析束方法效率的另一条路径。新增下界补足旧版随机实现与最优性比较之间的缺环，值得再次阅读。",
+      "update_note": "2026-09-19 已推荐 v1。v2 新增第7节随机局部预言机下界（Theorem 13），扩展稳定选择器的几何范围并细化可行随机实现；本次重点为这些新增研究内容。",
+      "order": 4
+    },
+    {
+      "arxiv_id": "2611.05334",
+      "version": 1,
+      "title": "A simple adaptive accelerated optimistic dual averaging method for unconstrained convex optimization in $p$-norm geometry",
+      "authors": [
+        "Bowen Li",
+        "Danqing Zhou",
+        "Chuan He"
+      ],
+      "submitted": "2026-11-03",
+      "updated": "2026-11-03",
+      "arxiv_url": "https://arxiv.org/abs/2611.05334v1",
+      "abstract": "Efficient preconditioning plays an important role in large-scale first-order optimization. In this paper, we propose an adaptive accelerated optimistic dual averaging ($\\text{A}^2$ODA) method for unconstrained convex optimization that adopts low-cost preconditioning based on $p$-norm geometry for $p\\in[2,\\infty]$. The method is line-search-free and employs a new stepsize selection technique based on an aggregated affine lower model. Its update structure is simple and unified across $p\\in[2,\\infty]$, with the case $p>2$ requiring no more elaborate updates than the Euclidean case $p=2$. Under a generalized local smoothness condition, we derive a convergence bound that separates the effects of constant and gap-dependent curvature, with the latter potentially yielding faster-decaying terms. In the special case of local smoothness, this bound recovers a nearly optimal convergence rate.",
+      "directions": [
+        "historical-information",
+        "optimization-frontiers"
+      ],
+      "summary": "如何在 $p\\in[2,\\infty]$ 的范数几何中同时实现自适应和加速，而不依赖复杂的 $p$ 次幂近端更新？作者提出 A²ODA，将过去梯度及仿射下模型递归聚合，用最近梯度作乐观预测，并在加权平均点计算新梯度。新的可计算模型比较式显式调整正则参数；松弛的对偶势展开使算法可以统一使用平方 $p$ 范数。对有最优解的可微凸函数，在余强制型广义局部光滑条件下，分析分离常曲率和目标差距相关曲率；局部光滑特例恢复 $O(T^{-(1+2/p)})$ 的主要指数，差距相关部分可更快衰减。主迭代无需线搜索；用于改善参数依赖的可选初始化校准仍进行回溯试探，部分临界参数还伴随对数因子。",
+      "reason": "最值得借鉴的是用历史仿射模型直接调节正则强度。模型只需递推保存梯度和与一个标量，就能同时服务于参数选择、轨迹有界性和加速证明，与基于历史信息构造优化模型的研究直接相关。平方范数下的统一势分析也提供了研究非欧氏加速的新工具。",
+      "order": 5
+    },
+    {
+      "arxiv_id": "2505.15537",
+      "version": 2,
+      "title": "Riemannian EXTRA: Communication-efficient decentralized optimization over compact submanifolds with data heterogeneity",
+      "authors": [
+        "Jiayuan Wu",
+        "Zhanwang Deng",
+        "Jiang Hu",
+        "Weijie Su",
+        "Zaiwen Wen"
+      ],
+      "submitted": "2025-05-21",
+      "updated": "2026-11-03",
+      "arxiv_url": "https://arxiv.org/abs/2505.15537v2",
+      "abstract": "We consider decentralized optimization over a compact Riemannian submanifold in a network of $n$ nodes, where each node $i$ owns a smooth nonconvex local objective $f_i$ defined by its private data, and the goal is to minimize the global objective $F(x)=\\frac{1}{n}\\sum_{i=1}^n f_i(x)$ using only local communications. A naive Riemannian extension of EXTRA leaves the auxiliary normal-space error uncontrolled and does not inherit the Euclidean convergence guarantees. We develop projection-based Riemannian EXTRA (REXTRA) and a retraction-based counterpart that incorporate a normal correction into both the communicated variable and the auxiliary update, while using only one local-variable-sized message per optimization iteration. By jointly controlling consensus, tangent, and normal errors, our analysis interprets the update as a network-based Riemannian inexact-gradient step. For projection-based REXTRA, a sufficiently small constant stepsize and a local initialization yield vanishing consensus, stationary accumulation points, and an $\\mathcal O(1/k)$ best-iterate stationarity--consensus bound. For the retraction-based method, we prove that its difference from the projection update is uniformly second order and establish the same convergence properties and rate under a local initialization. Numerical experiments on representative manifold-valued learning tasks demonstrate the communication efficiency of the REXTRA updates.",
+      "directions": [
+        "distributed",
+        "optimization-frontiers"
+      ],
+      "summary": "把欧氏 EXTRA 直接投影到流形上，会留下未被切向最优性条件控制的辅助法向误差。该文研究紧光滑嵌入子流形上的非凸网络平均优化，提出投影式 REXTRA 及回缩变体，将法向校正同时加入通信变量和辅助递推，每次优化迭代只交换一个局部变量大小的消息。在固定连通无向网络、局部光滑性、充分小常步长及规定的局部初始化下，算法达到渐近一致，聚点为驻点，并对驻点残差平方与一致性误差平方之和给出 $O(1/k)$ 的最佳迭代界。回缩变体通过与投影更新的统一二阶比较获得相同类型结论。这是局部初始化下的非凸驻点保证，不能理解为从任意初值全局求最优。",
+      "reason": "优先关注法向误差如何与一致性、切向误差一起闭合递推。它解释了欧氏去中心化方法向流形扩展时，为何仅更换投影或回缩不足以继承证明，并给出保持单消息通信结构的修正。对研究网络递推与几何约束的相互作用，这提供了具体的方法与分析接口。",
+      "order": 6
+    },
+    {
+      "arxiv_id": "2611.04448",
+      "version": 1,
+      "title": "Relative-Error Composite Federated Optimization with One Server-Side Proximal Step per Round",
+      "authors": [
+        "Sirong Dai",
+        "Jianting Pan",
+        "Ming Yan"
+      ],
+      "submitted": "2026-11-03",
+      "updated": "2026-11-03",
+      "arxiv_url": "https://arxiv.org/abs/2611.04448v1",
+      "abstract": "We consider deterministic composite federated optimization, in which distributed smooth client objectives are combined with a shared, possibly nonsmooth, regularizer. We propose Relative-Error Composite FedDyn (REC-FedDyn), an inexact method that supports partial participation, with one server-side proximal evaluation per communication round. REC-FedDyn employs a directly testable relative-error criterion that allows each client to independently control the accuracy of its local subproblem, without a server-side acceptance test. We establish almost-sure iterate convergence for strongly convex and convex problems, almost-sure asymptotic stationarity for nonconvex problems, and communication and parallel gradient-evaluation complexity bounds, all under partial participation and without assuming bounded data heterogeneity. Experiments on image inpainting, fMRI prediction, and neural-network classification with structured regularization demonstrate efficiency and robustness across levels of data heterogeneity and client participation.",
+      "directions": [
+        "distributed"
+      ],
+      "summary": "复合联邦优化中，精确求解客户端子问题通常昂贵，而服务器统一验收相对误差又可能带来额外通信。作者提出 REC-FedDyn：客户端独立检查可计算的相对误差条件，服务器每轮只对共享正则项作一次近端计算，并允许部分客户端参与。对具有确定性精确局部梯度的光滑客户端目标，在相应步长、采样与正则性条件下，强凸情形有线性收敛，凸情形有 $O(1/R)$ 遍历目标率，非凸／弱凸复合情形有 $O(1/R)$ 平方驻点指标率，并建立对应的几乎处处收敛与复杂度结果。分析无需有界数据异质性假设。部分参与的随机性不等于论文已经覆盖随机小批量局部梯度。",
+      "reason": "推荐研究客户端可以自行验收的相对误差规则，以及它如何与漂移校正、单次服务器近端和精确收敛配合。对含非光滑正则的分布式方法，内层精度和通信开销必须一起分析；该文把依赖未知精确近端点或服务器回退的条件变成局部可检验量，具有直接的设计价值。",
+      "order": 7
+    },
+    {
+      "arxiv_id": "2611.04310",
+      "version": 1,
+      "title": "Beyond Expected Profit: How Risk Aversion Alters Learning in the Data-Driven Newsvendor",
+      "authors": [
+        "Omar Besbes",
+        "Alon Rieger"
+      ],
+      "submitted": "2026-11-03",
+      "updated": "2026-11-03",
+      "arxiv_url": "https://arxiv.org/abs/2611.04310v1",
+      "abstract": "We study how risk aversion changes learning and the value of data in the classical newsvendor problem. We evaluate data-driven policies through the Conditional Value-at-Risk (CVaR) of realized loss on the combined draw of an i.i.d.\\ historical sample and an independent future demand from the same distribution. We measure worst-case regret over demand distributions on a bounded interval relative to an oracle that knows the distribution. We show that, for every fixed positive risk level, Sample Average Approximation (SAA) can retain regret bounded away from zero as the sample size \\(n\\) grows, even at a fixed demand distribution, and characterize its asymptotic worst-case regret. We trace this failure to persistent variability in the learned order, which contributes to tail risk under this combined-risk evaluation. We establish that risk aversion also slows the minimax learning rate over all data-driven policies from \\(\\Theta(n^{-1/2})\\) under expectation to \\(\\Theta(n^{-1/4})\\). We construct policies that average nearby order statistics and attain this optimal rate. For finite samples, we reduce worst-case analysis for mixtures of convex combinations of order statistics to Bernoulli demand on the endpoints of the interval. We use this reduction to formulate a linear program for computing minimax policies within this class to any accuracy. In numerical experiments, we find that minimizing this objective alone can leave substantial average CVaR regret when each learned order is evaluated over future demand alone. We therefore develop a two-stage linear program that minimizes the worst-case value of this average regret while allowing a prescribed increase in the original objective. This yields improvements across a broad range of scenarios. Our results show that risk aversion changes both the rate at which data improve decisions and the policies needed to realize that improvement.",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "summary": "风险厌恶决策若同时对训练样本和未来需求的随机性计算 CVaR，传统样本平均近似的结论可能失效。作者在有界需求的报童问题中证明：任意固定正风险水平下，存在固定两点需求分布使 SAA 的遗憾趋向正数；即使已知分布下每个被选订单都最优，样本导致的订单切换仍会产生尾部风险。对全部数据驱动策略，最坏情形最优学习率从期望目标下的 $\\Theta(n^{-1/2})$ 变为 $\\Theta(n^{-1/4})$。平均邻近次序统计量的窗口策略达到该率；对相应策略类，最坏分布可归约至区间端点的 Bernoulli 分布，并据此构造带离散误差控制的有限样本线性规划。结论依赖合并训练和未来随机性的风险定义，不是对固定订单的通常 CVaR 一概否定 SAA。",
+      "reason": "推荐关注风险评估对象的改变如何同时改变一致性、最优速率和策略结构。它不仅给出 SAA 失效的反例，还用匹配上下界及可计算策略说明应如何修正；对研究风险厌恶随机优化的数据依赖性，这提供了清楚的机制认识。",
+      "order": 8
+    },
+    {
+      "arxiv_id": "2611.05076",
+      "version": 1,
+      "title": "Reformulation Techniques for PDLP with Applications to QUBO and Joint Replenishment",
+      "authors": [
+        "Jacob Dentes",
+        "Haihao Lu"
+      ],
+      "submitted": "2026-11-03",
+      "updated": "2026-11-03",
+      "arxiv_url": "https://arxiv.org/abs/2611.05076v1",
+      "abstract": "Practitioners of linear programming widely believe that reformulating a linear program (LP) offers little benefit to interior-point methods: their iteration counts are famously insensitive to the formulation, so the payoff of reformulation beyond automatic presolve and customized linear solve is modest. This paper presents evidence that the same is not true of first-order solvers built on the primal-dual hybrid gradient method (PDHG), such as PDLP. Unlike interior-point methods, PDHG-type methods have per-iteration costs governed by the matrix representation of the formulation and iteration counts governed by its geometry, and both change under equivalent reformulations. We describe a general reformulation recipe: constraints drawn from a catalogue of projection-friendly polyhedra can be absorbed into the projection step of PDHG. We analyze what absorption does to the four constants that govern restarted PDHG: the coupling norm, the termination certificate, the distance scale, and the sharpness modulus. We perform the reformulation on two case studies. On the LP relaxation of quadratic unconstrained binary optimization (QUBO), absorption makes any step size below $1$ admissible on every instance, and yields a fully explicit linear rate. On the LP relaxation of the joint replenishment problem (JRP), whose optimum certifies a $2$-approximation for an NP-hard inventory problem, absorption improves the coupling norm and eliminates every matrix-vector product. Both reformulations run on GPUs with custom kernels in place of sparse matrix-vector products. We benchmark both against the GPU LP solver cuPDLPx applied to the original formulations. By solve time, the reformulated solvers are $6.4$-$9.6\\times$ faster on QUBO and $6.1$-$28.9\\times$ faster on the JRP. They take $1.7$-$4.3\\times$ and $13.6$-$52.3\\times$ fewer iterations respectively.",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "summary": "线性规划的等价表示，可能显著改变一阶求解器的迭代成本和收敛几何。作者提出将易投影的部分多面体约束吸收到 PDHG 投影集合中，保留其余约束的对偶变量，并分析耦合范数、终止证书、距离尺度和尖锐性模量如何一起变化。在 QUBO 的 LP 松弛上，利用半整性得到显式线性率；在联合补货的 LP 松弛上，改写消除矩阵向量乘法，并给出仅依赖实例规模的次线性保证。GPU 实现相对原始表示上的 cuPDLPx 报告了明显提速，但收益来自特定投影结构与实现，不能推广为所有 LP 都应吸收更多约束。",
+      "reason": "最值得阅读的是建模方式如何成为一阶算法设计的一部分。论文将模型改写对四类收敛常数和每步计算的影响一起展开，避免只用矩阵谱范数预测收益。虽然例子来自组合问题的松弛，贡献直接作用于连续 LP 和 PDHG，具有跨应用的算法借鉴价值。",
+      "order": 9
+    },
+    {
+      "arxiv_id": "2607.15980",
+      "version": 3,
+      "title": "A Minimax Analysis of the Last Iterate of the SubGradient Method in Finite Dimension",
+      "authors": [
+        "Guglielmo Beretta",
+        "Tommaso Cesari",
+        "Roberto Colomboni",
+        "Andrea Paudice"
+      ],
+      "submitted": "2026-07-17",
+      "updated": "2026-11-03",
+      "arxiv_url": "https://arxiv.org/abs/2607.15980v3",
+      "abstract": "We study the last iterate of the projected subGradient Method with a constant stepsize for convex $L$-Lipschitz objectives in $\\mathbb{R}^d$, minimized over closed convex sets. Assuming that the initial iterate $x_1$ has distance at most $R$ from a minimizer, we establish matching upper and lower bounds on the minimax optimization error at $x_n$, where the infimum is taken over constant stepsizes. Specifically, this error is of order $L\\cdot R\\cdot\\sqrt{\\min\\{d,\\log n\\}/n}$. Notably, when the dimension is fixed, the minimax error decays as $1/\\sqrt{n}$, without the extra logarithmic factor intrinsic to dimension-free analyses. Our analysis exploits a combinatorial argument based on linear algebra and novel geometric constructions.",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "summary": "常步长投影次梯度法的最后迭代，是否必须比平均迭代多付一个关于时域的对数因子？该文在 $d$ 维闭凸可行域、凸 $L$-Lipschitz 目标及初值到某个最优解距离不超过 $R$ 的条件下，给出对常步长进行优化后的匹配上下界：最后迭代最坏误差为 $\\Theta(LR\\sqrt{\\min\\{d,\\log n\\}/n})$。固定维数时恢复 $n^{-1/2}$ 的时域指数，并揭示维数超过约 $\\log n$ 后向维数无关界饱和。上界利用线性代数的组合结构，下界用几何实例实现。结论针对确定性精确次梯度、可依赖 $n,d,L,R$ 选择的单个常步长；不能直接转为随机噪声或任意停止时刻保证。",
+      "reason": "推荐把固定维数和维数无关的最后迭代分析对照阅读。它既解释了既有对数损失为何在高维下必要，也用匹配构造说明低维改善的精确范围。最优常步长所达指标与默认步长、平均输出的保证被明确分开，适合校准对经典算法的认识。",
+      "order": 10
+    },
+    {
+      "arxiv_id": "2601.19003",
+      "version": 3,
+      "title": "Asymptotically Strong Dual of Smooth Nonconvex Problems: A Smooth Shapley-Folkman Perspective",
+      "authors": [
+        "Santanu S Dey",
+        "Jingye Xu"
+      ],
+      "submitted": "2026-01-26",
+      "updated": "2026-11-03",
+      "arxiv_url": "https://arxiv.org/abs/2601.19003v3",
+      "abstract": "In convex geometry, the Shapley-Folkman Lemma asserts that the nonconvexity of a Minkowski sum of $n$ dimensional bounded nonconvex sets does not accumulate once the number of summands exceeds the dimension $n$, and thus the sum becomes approximately convex. Originally published by Starr in the context of quasi-equilibrium in nonconvex market models in economics, the lemma has since found widespread use in optimization, particularly for estimating the duality gap of the Lagrangian dual of separable nonconvex problems. Given its foundational nature, we pose the following geometric question: Is it possible for the nonconvexity of the Minkowski sum of $n$-dimensional nonconvex sets to even diminish instead of just not accumulating as the number of summands increases, under some general conditions? We answer this affirmatively. First, we provide an elementary geometric proof of the Shapley-Folkman Lemma based on the facial structure of the convex hull of each set. This leads to refinement of the classical error bound derived from the lemma. Building on this new geometric perspective, we further show that when most of the sets satisfy a certain local smoothness condition which naturally arises in the epigraphs of smooth functions, their Minkowski sum converges directly to a convex set, with a vanishing nonconvexity measure. In optimization, this implies that the Lagrangian dual of block-structured smooth nonconvex problems with potentially additional sparsity constraints is asymptotically tight under mild assumptions, which contracts nonvanishing duality gap obtained via classical Shapley-Folkman Lemma.",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "summary": "经典 Shapley–Folkman 引理说明非凸求和的误差不会随块数不断累积，却通常不给绝对误差趋零。作者从凸包的面结构重证并细化引理，再利用隐藏凸成分的局部光滑几何，证明在统一非凸性界和足够多统一正半径成分等条件下，Minkowski 和到其凸包的距离可以随块数趋零；这里研究的是未取平均的和。对带线性耦合和可选稀疏约束的光滑非凸分块问题，结论还要求凸化强对偶、闭性／强制性和适当满秩等条件，并得到右端放松与目标误差同时趋零的对偶证书。具体形式为 $\\mathrm{OPT}(b+E\\mathbf1)-E\\leq\\mathrm{DUAL}(b)\\leq\\mathrm{OPT}(b)$、$E\\to0$；未核实价值函数稳定性时，不能将其直接写成原右端处的无条件精确强对偶。",
+      "reason": "推荐关注非凸性为何会因局部光滑成分的累积而真正消失，以及几何结论如何转化为定量对偶证书。它为理解大规模分块非凸问题中拉格朗日松弛为何接近准确提供了结构性解释；区分扰动右端证书和固定右端对偶间隙，也有助于准确使用近凸化理论。",
+      "order": 11
+    },
+    {
+      "arxiv_id": "2611.04597",
+      "version": 1,
+      "title": "Continuized Quasar-Convex Acceleration via an Unbiased Finite-Mixing Network Oracle",
+      "authors": [
+        "Ilya Kuruzov",
+        "Artem Agafonov",
+        "Vadim Abronin",
+        "Darina Dvinskikh",
+        "Alexander Gasnikov"
+      ],
+      "submitted": "2026-11-03",
+      "updated": "2026-11-03",
+      "arxiv_url": "https://arxiv.org/abs/2611.04597v1",
+      "abstract": "We study decentralized minimization of a smooth network average that is globally quasar-convex with respect to a fixed minimizer; the node functions may be nonconvex and need not share a minimizer. A unit-rate Poisson clock drives an exactly simulable continuized process: between events the state follows a closed-form accelerated flow, and each event uses one oracle vector. One master theorem covers oracles with a predictable bias and a state-dependent variance and keeps the inverse-quadratic term $\\mathcal{O}(LR_0^2/(\\gamma^2T^2))$; one selected-row lemma supplies the oracle moments of three network implementations. CQA-Net keeps a common state, mixes local rows for finitely many rounds, and disseminates one uniformly selected row; its oracle is unbiased at every mixing depth, so incomplete averaging affects only the variance. A walking token removes dissemination, the shared clock, and the shared root, and an importance weight keeps it unbiased on fixed graphs. D-CQA keeps local states and mixes them; under bounded heterogeneity it needs $\\widetilde{\\mathcal{O}}(\\sqrt{\\chi}\\sqrt{L}R_0/(\\gamma\\theta\\sqrt{\\varepsilon}))$ communication rounds and no dissemination. Changing graphs enter through certified operator norms. Experiments on a certified nonconvex regression on static and changing graphs compare the three implementations.",
+      "directions": [
+        "distributed",
+        "time-varying-networks"
+      ],
+      "summary": "有限轮网络混合产生的平均误差，通常会妨碍加速分析。作者对全局 quasar-convex、光滑的网络平均目标构造 Poisson 事件驱动的可精确模拟加速过程，并证明有限混合后均匀抽取一行可产生无偏预言机：未完成平均进入方差，而非偏差。统一 Lyapunov 定理保留 $O(LR_0^2/(\\gamma^2T^2))$ 主项并显式计入偏差／方差。CQA-Net 需要共享状态、事件时钟及所选行的精确广播；游走令牌去掉广播，但其无偏重要性权重针对固定图；保留局部状态的 D-CQA 在有界异质性和相应混合证书下给出加速通信界。时变图通过已认证的混合算子范数进入分析，论文不处理物理异步或节点故障。",
+      "reason": "推荐研究把有限通信误差转成可吸收方差的预言机构造，以及同一加速势如何对应不同网络实现。它与分布式、时变网络优化中通信不精确如何影响收敛的困难直接相关。阅读时应同时核对广播、共享时钟和混合证书的成本，不能只把 Poisson 事件形式当成异步保证。",
+      "order": 12
+    },
+    {
+      "arxiv_id": "2409.15955",
+      "version": 6,
+      "title": "A Historical Trajectory Assisted Optimization Method for Zeroth-Order Federated Learning",
+      "authors": [
+        "Yu Cai",
+        "Canxi Huang",
+        "Zike Li",
+        "Jing Gong",
+        "Xiaoyu He"
+      ],
+      "submitted": "2024-09-24",
+      "updated": "2026-11-03",
+      "arxiv_url": "https://arxiv.org/abs/2409.15955v6",
+      "abstract": "Federated learning heavily relies on distributed gradient descent techniques. In the situation where gradient information is not available, the gradients need to be estimated from zeroth-order information, which typically involves computing finite-differences along isotropic random directions. This method suffers from high estimation errors, as the geometric features of the objective landscape may be overlooked during the isotropic sampling. In this work, we propose a non-isotropic sampling method to improve zeroth-order gradient estimation. The method uses historical solution trajectories to identify a promising subspace and constructs a non-isotropic Gaussian smoothing that balances exploitation in this subspace with global exploration. We implement this method in zeroth-order federated settings, and show that the convergence rate aligns with existing ones while introducing no significant overheads in communication or local computation. The effectiveness of our proposal is verified on several numerical experiments in comparison to several commonly-used zeroth-order federated optimization algorithms. The experiments cover both independent and identically distributed data and heterogeneous client data distributions.",
+      "directions": [
+        "historical-information",
+        "distributed",
+        "stochastic"
+      ],
+      "summary": "零阶联邦优化的各向同性随机差分容易忽略迭代轨迹暴露出的低维结构。作者提出 ZOFedHT：服务器周期性对最近更新差分作 QR 分解，构造低秩子空间，并以 $C=(1-\\alpha)I+\\alpha QQ^\\top$ 调整客户端高斯搜索方向，兼顾历史子空间利用与全空间探索。客户端用双点函数值差沿采样方向更新，服务器按联邦方式聚合。在样本目标光滑、采样方差和客户端异质性有界等条件下，给出平均梯度范数平方的有限轮数上界，保持已有零阶联邦方法的主要收敛阶，但含 $1/(1-\\alpha)$ 及平滑偏差项；理论未证明历史子空间必然改善最坏情形阶数。额外子空间通信和 QR 成本亦被量化。",
+      "reason": "直接阅读价值在于把历史迭代差分转为搜索分布。它为历史信息在无梯度和联邦设置中的使用提供了具体接口；保留全维探索与显式各向异性代价之间的权衡也值得比较。推荐关注这一机制和成本分析，而不把实验加速解释为更优复杂度。",
+      "order": 13
+    },
+    {
+      "arxiv_id": "2607.17607",
+      "version": 4,
+      "title": "Optimizing the Preconditioner: A Black-box Online-to-Nonconvex Conversion with Static Regret Minimization Oracles",
+      "authors": [
+        "Haichen Hu",
+        "David Simchi-Levi"
+      ],
+      "submitted": "2026-07-20",
+      "updated": "2026-11-03",
+      "arxiv_url": "https://arxiv.org/abs/2607.17607v4",
+      "abstract": "Stochastic nonconvex optimization is central to training deep networks and LLMs in modern machine learning. We give a black-box reduction from stochastic nonconvex optimization to ordinary static regret minimization in online convex optimization (OCO), addressing the open problem posed by Chen and Hazan (2024). Our reduction maintains a predictable gradient tracker, while a black-box online learner $\\mathcal A$ selects a preconditioner that transforms this tracker into the update direction. Given a $\\beta$-smooth function with initial gap at most $M$ and an unbiased gradient oracle with variance bounded by $\\sigma^2$, we bound the expected average squared gradient norm by $O(\\sigma\\sqrt{M\\beta/T}+\\sqrt{M\\beta}\\mathrm{Reg}_T(\\mathcal A)/T+\\frac{M\\beta}{T})$, where $\\mathrm{Reg}_T(\\mathcal A)$ is the static regret of $\\mathcal A$ against the identity preconditioner. Thus, any OCO oracle with $O(\\sqrt T)$ regret recovers the classical $O(T^{-1/2})$ convergence rate. We also prove that the additive variance term cannot be removed: every conversion making a constant number of stochastic-oracle queries per round, whose guarantee is stated through static regret against a comparator that the online learner can play, must contain an additive term of order $\\sigma\\sqrt{M\\beta/T}$ for sufficiently large $T$. Moreover, for every online learner, our conversion bound is tight up to universal constants. We also extend the framework to nonsmooth nonconvex optimization, still relying only on ordinary static regret, and attain the optimal convergence rate for Goldstein-type stationarity. Finally, we conduct numerical experiments on nonconvex objectives to illustrate how the reduction exploits online-selected preconditioners while using the same stochastic-oracle budget as stochastic gradient descent.",
+      "directions": [
+        "stochastic",
+        "historical-information"
+      ],
+      "summary": "该文将随机非凸优化归约到普通静态遗憾最小化：可预测梯度跟踪器给出方向，在线算法选择预条件矩阵，并通过未折扣、未重启的线性损失接受反馈。对 $\\beta$-光滑、初始目标差距不超过 $M$、无偏梯度噪声方差不超过 $\\sigma^2$ 的问题，平均平方梯度界含 $O(\\sigma\\sqrt{M\\beta/T}+\\sqrt{M\\beta}\\,\\mathrm{Reg}_T/T+M\\beta/T)$，其中遗憾相对恒等预条件器。v4 将旧版全局值域界放宽为初始差距界，并新增下界：每轮常数次随机查询、以可选比较器的静态遗憾表达保证的转换，不能消除上述加性方差尺度；对提出的转换，还给出包含遗憾项的匹配困难实例。非光滑部分另使用随机线段查询和松弛驻点指标，不与通常梯度范数混同。",
+      "reason": "本次优先补读新增的转换下界：即使在线学习器对某个可实现比较器具有零遗憾，随机优化仍需支付独立噪声成本。这个结果划清了黑盒转换能够保证什么；初始差距假设的放宽也使分析更贴近通常的随机非凸优化模型。",
+      "update_note": "2026-09-17 已推荐 v3。v4 新增第8节静态遗憾转换的不可消除方差下界与自身转换的紧性结果（Theorems 8.2–8.3），并将全局值域界放宽为初始目标差距界。",
+      "order": 14
+    },
+    {
+      "arxiv_id": "2610.19652",
+      "version": 2,
+      "title": "On Global Joint Lower Bounds in Zeroth-Order Nonconvex Optimization",
+      "authors": [
+        "Yuxuan Xia",
+        "Xiao-Tong Yuan"
+      ],
+      "submitted": "2026-10-14",
+      "updated": "2026-11-03",
+      "arxiv_url": "https://arxiv.org/abs/2610.19652v2",
+      "abstract": "Must the dimension and accuracy costs of zeroth-order optimization multiply? Global upper bounds for smooth stochastic nonconvex optimization scale as $O(d\\epsilon^{-4})$, with both factors separately necessary. We show that their product is unavoidable. We establish an $\\Omega(d\\epsilon^{-4})$ lower bound for smooth stochastic nonconvex optimization, yielding an $\\Omega(d\\delta^{-1}\\epsilon^{-3})$ bound for nonsmooth Goldstein stationarity. Both match the best-known full-space upper bounds, establishing joint minimax optimality in dimension and accuracy. These bounds hold against fully adaptive randomized algorithms with unrestricted queries and outputs, even under arbitrary sample reuse. As a byproduct, we establish noiseless exact-value lower bounds for both smooth and Goldstein stationarity, even against randomized algorithms.",
+      "directions": [
+        "stochastic"
+      ],
+      "summary": "零阶随机非凸优化中，维数代价和精度代价分别必要，并不能自动推出二者必须相乘。作者对允许完全自适应查询、重复访问同一随机样本函数和任意输出点的标量函数值模型，构造联合下界。样本函数的 Lipschitz 常数具有有界二阶矩，平均目标全局光滑且初始差距有界；在规定的精度与维数区间，基本界为 $\\Omega(dL_0^2\\min\\{\\Delta H,L_0^2\\}/\\varepsilon^4)$，固定其余参数时给出 $d\\varepsilon^{-4}$ 的联合尺度。通过平滑转移还得到 Goldstein 驻点的联合界，并分析较大初始差距和无噪声精确函数值的扩展。高维条件与差距截断是结论的一部分，不能把摘要中的尺度视为对所有维数、所有参数同时成立。",
+      "reason": "推荐关注如何让每阶段的方向辨识成本反复出现，从而阻止算法先学一次方向、随后反复复用信息来绕开维数乘子。它为比较随机零阶方法提供了更严格的基准，适合与利用历史子空间的算法对照：结构性经验收益与无结构最坏情形下界可以同时成立。",
+      "order": 15
+    },
+    {
+      "arxiv_id": "2611.04612",
+      "version": 1,
+      "title": "Decentralized Sparse Quantile Regression",
+      "authors": [
+        "Changxin Yang",
+        "Jianwei Shi",
+        "Zhongyi Zhu"
+      ],
+      "submitted": "2026-11-03",
+      "updated": "2026-11-03",
+      "arxiv_url": "https://arxiv.org/abs/2611.04612v1",
+      "abstract": "Distributed statistical learning has recently attracted significant attention owing to its computational efficiency and scalability in large-scale systems. However, the non-smooth quantile loss poses substantial challenges to the development of efficient decentralized algorithms for quantile regression. Existing methods may either suffer from slow convergence or rely on smoothing-based approximations that require additional stringent assumptions, particularly in high-dimensional settings. To address these issues, we propose a decentralized framework that integrates gradient tracking with iterative hard thresholding for sparse quantile estimation. The proposed method avoids smoothing approximations and relaxes the initialization requirement. Theoretically, we show that the proposed algorithm achieves linear convergence under stated regularity conditions and that the resulting estimator attains the same order of statistical accuracy as its centralized counterpart. We further develop a decentralized information criterion for selecting the working sparsity level and establish support screening guarantees. Numerical experiments and a real-data study illustrate the finite-sample performance of the proposed method.",
+      "directions": [
+        "distributed"
+      ],
+      "summary": "非光滑分位数损失与高维稀疏约束，使普通光滑梯度跟踪分析难以直接使用。该文将次梯度跟踪与迭代硬阈值结合，在固定无向网络上用邻居通信逼近集中式稀疏分位数回归，无需平滑 check loss，也不要求误差与协变量独立。对次高斯协变量、局部总体曲率和密度条件、局部初始化、适当工作稀疏度以及充分强的有效混合，证明误差几何收缩至统计误差尺度，达到集中式同阶统计准确性。原始理论要求每节点样本量至少为 $CMs\\log(pM)$，有效混合因子约不超过 $c/(sM^2)$；必要时每个优化迭代需多轮通信，不能理解为任意网络上单轮线性收敛。作者还给出分布式稀疏度选择与支持筛选保证。",
+      "reason": "值得研究的是非光滑经验次梯度的统计误差、一致性误差和硬阈值误差如何在同一递推中闭合。它提供了与光滑代理、ADMM 或凸稀疏正则不同的去中心化路线，并展示局部样本量、初始化和混合强度之间的代价交换，与非光滑网络优化的困难直接对应。",
+      "order": 16
+    }
+  ]
+}
