@@ -1,0 +1,384 @@
+{
+  "date": "2026-11-05",
+  "status": "complete",
+  "frontiers_status": "recommendations",
+  "highlights": [
+    {
+      "arxiv_id": "2611.06404",
+      "types": [
+        "field"
+      ],
+      "label": "三维幂锥：确定最优障碍参数",
+      "text": "对数齐次自协调障碍的最优参数为 $3/(1+\\min\\{c,1-c\\})$。普适下界与显式障碍相匹配，闭合既有差距；在对称情形恢复二阶锥的参数 2。"
+    },
+    {
+      "arxiv_id": "2611.05527",
+      "types": [
+        "field"
+      ],
+      "label": "高阶一致凸优化：补齐匹配阶复杂度下界",
+      "text": "当一致凸阶数等于光滑总阶数时，多尺度短链构造得到与已有上界匹配的“条件比幂次 × 对数精度”下界。结果适用于高维、参数满足要求的确定性高阶预言机模型。"
+    },
+    {
+      "arxiv_id": "2611.05807",
+      "types": [
+        "field",
+        "group"
+      ],
+      "label": "非凸有限和：匹配高精度局部极小点复杂度",
+      "text": "在平均光滑性和规定的高精度区间，扩展 FastCubic 并建立匹配随机下界；低精度另由 PathVR 达到近最优查询阶。计数包含分量 Hessian–向量积，逐分量光滑情形的差距仍未闭合。"
+    },
+    {
+      "arxiv_id": "2611.06722",
+      "types": [
+        "group"
+      ],
+      "label": "异步流形优化：同时容许计算与通信延迟",
+      "text": "分布式 Riemannian 分块下降在有限延迟、测地完备及全局梯度 Lipschitz 条件下实现梯度趋零，并给出最佳梯度平方 $O(1/K)$ 界。无需流形紧性，理论步长仍依赖延迟与节点数。"
+    },
+    {
+      "arxiv_id": "2605.05944",
+      "types": [
+        "group"
+      ],
+      "label": "自适应近端法：累积梯度映射而非原梯度",
+      "text": "历史梯度映射在复合驻点处消失，使同一更新适应三类目标。凸加速变体给出 $\\widetilde O(1/t^2+\\sigma/\\sqrt t)$，但需要直径界；随机分析保留相应有界性与方差条件。"
+    },
+    {
+      "arxiv_id": "2606.03899",
+      "types": [
+        "group"
+      ],
+      "label": "Muon 动量：先降噪再正交化的谱机制",
+      "text": "在持久低秩信号与规定噪声结构下，历史动量先扩大谱隙，再让正交化提取可靠方向。大窗口的对齐优势有理论与实验支持；这不是一般目标的加速收敛定理，Nesterov 输入也未被主体理论覆盖。"
+    },
+    {
+      "arxiv_id": "2611.06315",
+      "types": [
+        "field"
+      ],
+      "label": "SOS 数值解：用结构化修复生成精确证书",
+      "text": "严格单位分解修复逐块残差，衰退方向吸收常数预算，最终得到精确有理证书并刻画最小目标损失。固定阶结构条件须成立，仅有 Archimedean 性或很小的求解残差并不足够。"
+    }
+  ],
+  "papers": [
+    {
+      "arxiv_id": "2611.06404",
+      "version": 1,
+      "authors": [
+        "Rui-Jin Zhang",
+        "Wenhao Fu",
+        "Yu-Hong Dai"
+      ],
+      "submitted": "2026-11-04",
+      "updated": "2026-11-04",
+      "abstract": "We determine the optimal logarithmically homogeneous self-concordant barrier parameter for the three-dimensional power cone. Although several self-concordant barriers for this cone have been constructed, its optimal barrier parameter had remained unknown. For a power cone with exponent $c\\in(0,1)$, we prove that the optimal parameter is $\\frac{3}{1+\\min\\{c,1-c\\}}$. Except at $c=1/2$, this value is strictly smaller than the parameter $3-2\\min\\{c,1-c\\}$ of Chares' conjectured barrier. At $c=1/2$, the optimal parameter equals $2$, in agreement with the optimal barrier parameter of the second-order cone. The proof combines a sharp lower bound for arbitrary logarithmically homogeneous self-concordant barriers with an explicit barrier attaining the bound.",
+      "title": "The optimal barrier parameter of the three-dimensional power cone",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2611.06404v1",
+      "summary": "三维幂锥的障碍参数直接影响短步内点法的迭代界，但已知障碍构造与一般下界之间一直存在差距。该文证明，对指数 $c\\in(0,1)$ 的幂锥，所有对数齐次自协调障碍中的最优参数为 $3/(1+\\min\\{c,1-c\\})$，并给出达到该值的显式障碍。证明一方面利用二维截面、Dikin 椭球与射影自协调不等式建立普适下界，另一方面把候选障碍的自协调性归结为二元六次多项式的精确非负性验证。在 $c=1/2$ 时恢复二阶锥的参数 2；其他指数下，该值还严格小于 Chares 猜测障碍的参数。这里确定的是对数齐次自协调障碍类的最优值，并非某个求解器的实测加速比。",
+      "reason": "推荐优先阅读下界与显式构造如何相互匹配。它把一个常用非对称锥的障碍设计从可用参数推进到最优参数，也展示了借助低维截面和代数证书研究障碍几何的具体路径。",
+      "order": 1
+    },
+    {
+      "arxiv_id": "2611.05527",
+      "version": 1,
+      "authors": [
+        "Cedar Site Bai"
+      ],
+      "submitted": "2026-11-03",
+      "updated": "2026-11-03",
+      "abstract": "In this paper, we provide tight lower bounds for minimizing high-order Hölder-smooth and uniformly convex functions when their orders match. Specifically, we consider functions whose $p^{th}$-order derivatives are Hölder continuous with degree $\\nu$ and parameter $H$, and that are uniformly convex with degree $q$ and parameter $\\sigma$. When these orders match, namely, $q = p + \\nu$, we show that any deterministic algorithm with access to derivatives up to order $p$ requires $\\Omega\\left(\\left(\\frac{H}{\\sigma}\\right)^{\\frac{2}{3(p+\\nu)-2}}\\log\\frac{\\Delta_0}{\\epsilon}\\right)$ oracle calls to reduce an initial optimality gap of $\\Delta_0$ to $\\epsilon$. This matches the corresponding upper bound and establishes a higher-order uniformly convex counterpart to Nesterov's classical first-order lower bound for strongly convex functions. Rather than directly generalizing Nesterov's classical quadratic-chain construction, we develop a multiscale phase-wise construction that preserves previous oracle responses while maintaining global Hölder smoothness and uniform convexity. Our result resolves the matched case left open by existing lower bounds for the two asymmetric regimes.",
+      "title": "Tight Lower Bounds under Matched High-Order Hölder Smoothness and Uniform Convexity",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2611.05527v1",
+      "summary": "高阶光滑与一致凸性的阶数相匹配时，已有重启算法给出线性收敛，但相应高阶预言机下界尚未闭合。该文考虑 $p\\ge2$、$0<\\nu\\le1$ 和 $q=p+\\nu$：$p$ 阶导数为参数 $H$ 的 Hölder 连续映射，目标具有模量 $\\sigma$、阶数 $q$ 的欧氏一致凸性。在条件比足够大、精度处于定理区间且维数足够高时，作者证明任意确定性 $p$ 阶局部预言机算法至少需要 $\\Omega((H/\\sigma)^{2/(3q-2)}\\log(\\Delta_0/\\epsilon))$ 次查询，与已有上界匹配。核心构造在逐级缩小的尺度上布置短链，同时通过多中心凸基函数与光滑拼接保留此前的预言机回答，避免欧氏一致凸性模量随链长或阶段数恶化。结论针对确定性算法，不自动给出随机算法下界。",
+      "reason": "最值得关注的是如何把条件比代价与对数精度代价放进同一个全局函数。多尺度构造解决了直接推广二次零链时的范数失配，为设计高阶复杂度下界提供了比单条长链更灵活的工具。",
+      "order": 2
+    },
+    {
+      "arxiv_id": "2611.05807",
+      "version": 1,
+      "authors": [
+        "Qihao Zhou"
+      ],
+      "submitted": "2026-11-04",
+      "updated": "2026-11-04",
+      "abstract": "We study the component-oracle complexity of finding approximate local minima of nonconvex finite sums under mean-squared averaged smoothness with parameter $L$ and a $\\rho$-Lipschitz average Hessian. Each query returns the value, gradient, and one Hessian-vector product of a component. We show that the complexity in the high-accuracy regime $\\varepsilon\\le c_0L^2/(n\\rho)$ is $\\tilde\\Theta(n^{3/4}L^{1/2}\\rho^{1/4}\\Delta\\varepsilon^{-7/4})$ for a sufficiently large initial gap $\\Delta$. We attain the upper bound by adapting the inverse solver and eigenvector routine of FastCubic to averaged smoothness. Our lower bound assigns the bridge edges of a nested chain to random components; a replicated spectral construction gives the same bound for unrestricted randomized algorithms. Under individual smoothness, a factor of $n^{1/4}$ remains for $\\varepsilon\\le cL^2/(n^2\\rho)$, up to logarithmic factors. In the complementary low-accuracy regime, we propose PathVR, which uses $\\tilde O(n+\\sqrt{n}L\\Delta\\varepsilon^{-2})$ queries and matches a lower bound from dense weak hiding.",
+      "title": "Near-Optimal Complexity of Finding Approximate Local Minima of Nonconvex Finite Sums",
+      "directions": [
+        "optimization-frontiers",
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2611.05807v1",
+      "summary": "该文研究非凸有限和中近似局部极小点的分量查询复杂度，目标同时满足梯度范数至多 $\\epsilon$、最小 Hessian 特征值至少 $-\\sqrt{\\rho\\epsilon}$。每次分量查询返回函数值、梯度和一次 Hessian–向量积。在均方平均光滑参数为 $L$、平均 Hessian 为 $\\rho$-Lipschitz、高精度 $\\epsilon\\le c_0L^2/(n\\rho)$ 且初始差距足够大的区间，作者把 FastCubic 的线性求解和特征向量子程序扩展到平均光滑性，得到 $\\widetilde O(n^{3/4}L^{1/2}\\rho^{1/4}\\Delta\\epsilon^{-7/4})$ 上界，并通过随机分配桥边及谱构造证明匹配的随机算法下界。低精度区间另用按路径长度调整批量和刷新时机的 PathVR，达到 $\\widetilde O(n+\\sqrt n L\\Delta\\epsilon^{-2})$。若改用逐分量光滑假设，高精度上下界仍有 $n^{1/4}$ 的差距；全文 Hessian 预言机也对应不同的复杂度。",
+      "reason": "推荐把有限和规模、平均光滑性和逃逸鞍点成本放在同一张复杂度图中阅读。随机桥边解释了 $n^{3/4}$ 从何而来，PathVR 则把采样预算与实际路径长度联系起来，分别提供下界构造和方差缩减设计的可借鉴内容。",
+      "order": 3
+    },
+    {
+      "arxiv_id": "2611.06722",
+      "version": 1,
+      "authors": [
+        "Adam Pooley",
+        "William Warke",
+        "Matthew T. Hale"
+      ],
+      "submitted": "2026-11-04",
+      "updated": "2026-11-04",
+      "abstract": "There is a large body of work on distributed optimization for problems in Euclidean space. However, many existing algorithms and analyses do not directly transfer to problems defined on smooth manifolds. Therefore, in this paper we propose a distributed asynchronous optimization algorithm for problems on Riemannian manifolds. The algorithm we develop is a parallelized form of Riemannian block coordinate descent in which all agents can compute and communicate asynchronously. We assume only \"partial asynchrony\", namely that all delays in computations and communications obey some finite bound. We relax common assumptions by requiring neither convexity of the objective nor compactness of the manifold. Under mild conditions, we prove that agents' iterates drive the Riemannian gradient of their objective to zero, and we derive a rate of convergence for the norm of the gradient. Under different communication delays and numbers of agents over a finite horizon, we empirically show that our algorithm achieves a suboptimality of up to 730 times smaller than that of a synchronous baseline algorithm in an example simulation.",
+      "title": "Technical Report: Partially Asynchronous Distributed Optimization on Riemannian Manifolds",
+      "directions": [
+        "asynchronous-distributed",
+        "distributed"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2611.06722v1",
+      "summary": "流形分布式算法已有的异步保证往往仍要求相同计算速率、固定更新顺序或中央服务器。该文在乘积 Riemannian 流形上把分块坐标下降分配给各节点，允许节点按不同速率计算，并使用收到的滞后变量独立更新。对测地完备流形、下有界光滑目标，以及沿最短测地线平行移动意义下的全局 $L$-Lipschitz Riemannian 梯度，作者在每个节点于 $B$ 个分析时刻内至少更新一次、通信信息至多滞后 $B-1$ 的部分异步条件下，证明全局真实迭代与节点本地副本上的梯度均趋零。步长需满足 $0<\\eta<2/[L(B+N(B-1))]$；最佳梯度平方具有 $O(1/K)$ 量级界。算法使用指数映射，平行移动仅用于分析；无需目标凸性或流形紧性，但步长保证仍依赖延迟界，不能解释为完全异步或延迟无关参数。",
+      "reason": "推荐优先研究乘积流形中如何把陈旧信息误差转成可吸收的下降损失。它直接推进通信与计算同时异步的收敛分析，并清楚暴露节点数、延迟界与步长的关系，便于与欧氏异步坐标法对照。",
+      "order": 4
+    },
+    {
+      "arxiv_id": "2605.05944",
+      "version": 2,
+      "authors": [
+        "Zimeng Wang",
+        "Alp Yurtsever"
+      ],
+      "submitted": "2026-05-07",
+      "updated": "2026-11-03",
+      "abstract": "We propose an adaptive proximal gradient method for minimizing the sum of two functions, where one is a simple convex function, and the other belongs to one of the three classes: nonconvex smooth, convex nonsmooth, or convex smooth. The key feature of the method is an adaptive step size that accumulates historical gradient mapping norms in the denominator. Without any modification or knowledge of problem parameters, the method converges across all three problem classes under mild bounded-iterates and bounded-variance assumptions, with rates matching those of the proximal gradient method up to logarithmic factors, in both deterministic and stochastic settings. For the convex setting, we further propose an accelerated variant. It retains a similar near-optimal convergence rate for the nonsmooth case and achieves an improved rate of order $\\widetilde{O}\\big(1/t^2 + \\sigma/\\sqrt{t}\\big)$ for the smooth case, which is optimal up to logarithmic factors. Notably, we develop new techniques for controlling the effect of stochastic noise, which are applicable across all three problem classes in the stochastic setting and enable a simplified analysis.",
+      "title": "Universal Adaptive Proximal Gradient Methods via Gradient Mapping Accumulation",
+      "directions": [
+        "historical-information",
+        "stochastic",
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2605.05944v2",
+      "summary": "复合优化的最优点上，光滑项梯度通常不为零，直接累积梯度平方的 AdaGrad 步长因而可能持续衰减。该文改为累积历史梯度映射范数，用同一近端更新适应非凸光滑、凸光滑和凸非光滑三类目标。确定性非凸情形得到梯度映射平方的 $O(1/t)$ 驻点界；在相应有界迭代与有界方差条件下，作者进一步分析随机情形，凸光滑问题的平均目标差距为 $\\widetilde O(1/t+\\sigma/\\sqrt t)$。凸问题的加速变体在已知直径界、满足规定的尺度参数条件时达到 $\\widetilde O(1/t^2+\\sigma/\\sqrt t)$，并扩展到 Hölder 光滑的插值速率。关键分析控制噪声与自适应步长、迭代差的相关项，不再统一要求随机梯度几乎处处有界；基础方法不需要光滑或噪声参数，但不能把加速变体也描述为无需直径信息。",
+      "reason": "推荐关注历史信息的选择如何与复合问题的正确驻点残差一致。用梯度映射替换原梯度，不只是形式上的步长修改，而是避免最优点残留梯度污染累积尺度；随机内积估计也适合对照其他历史自适应算法阅读。",
+      "order": 5
+    },
+    {
+      "arxiv_id": "2606.03899",
+      "version": 3,
+      "authors": [
+        "Xianliang Li",
+        "Zihan Zhang",
+        "Weiyang Liu",
+        "Han Bao"
+      ],
+      "submitted": "2026-06-02",
+      "updated": "2026-11-04",
+      "abstract": "Muon has recently demonstrated strong empirical performance in large language model training, but the theoretical role of momentum in Muon remains unclear. Existing analyses of Muon either remove momentum to study spectral updates in isolation, or retain momentum without explaining why it improves empirical performance. Our work bridges this gap by showing momentum in Muon acts as a spectral filter. Under a structured signal-plus-perturbation gradient model, we prove that momentum suppresses perturbations while preserving the dominant signal, thereby enlarging the spectral gap between them. This enlarged gap stabilizes the singular subspaces of the matrix passed to Muon's orthogonalization step, making the resulting update more reliable. We further show that applying momentum before orthogonalization achieves provably stronger alignment with the signal component of the gradient than either reversing this order or simply removing momentum. Experiments across diverse tasks, including LLM pretraining, support our theoretical analysis. More broadly, our theory offers a starting point for understanding the benefits of momentum in other matrix-based optimizers.",
+      "title": "Denoise First, Orthogonalize Later: Understanding Momentum in Muon via Spectral Filtering",
+      "directions": [
+        "historical-information"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2606.03899v3",
+      "summary": "该文从谱滤波解释 Muon 中历史动量为何应先于正交化。作者把梯度流写成持久低秩信号与均值为零、跨时刻二阶正交的扰动之和，并要求信号在动量窗口内不被抵消。在这一结构模型下，指数加权历史梯度抑制扰动尾部奇异值、扩大信号谱隙，并稳定主奇异子空间。对固定信号和相应连续扰动分布，大窗口下先动量后取极分解，比先取极分解再动量、或完全不用动量具有更好的期望信号对齐；低信噪比的秩一高斯模型进一步给出定量分离。合成梯度、图像任务与语言模型训练支持这些预测。这里的理论刻画信号恢复与更新方向可靠性，不是一般非凸目标上的新收敛速率；常见 Nesterov 混合输入不在主体分析范围内。",
+      "reason": "推荐研究历史平均与非线性谱变换的次序效应。极分解会抹去奇异值幅度，先做噪声过滤与后做过滤因此并不等价；这一机制解释比单纯比较最终训练曲线更适合用于分析其他矩阵预条件和历史信息方法。",
+      "order": 6
+    },
+    {
+      "arxiv_id": "2611.06315",
+      "version": 1,
+      "authors": [
+        "Didier Henrion",
+        "Alaa Ibrahim",
+        "Victor Magron"
+      ],
+      "submitted": "2026-11-04",
+      "updated": "2026-11-04",
+      "abstract": "We consider linear conic problems whose cone is a product of truncated quadratic modules, the sum-of-squares (SOS) side of the moment-SOS hierarchy. A floating-point solution is turned into an exact rational certificate in three steps: rounding, repair of each block residual by a constant, and absorption of the constants along a recession direction of the problem. The repair relies on strict partitions of unity in the quadratic modules. We characterize their existence, relate the canonical one to the analytic center of the dual pseudo-moment cone, Christoffel-Darboux polynomials and Pell equations, and we derive closed-form rational partitions for balls and boxes. The loss incurred by the certification is the optimal value of a recession problem, equal to a support function of the masses of the dual feasible pseudomoments. The method is illustrated on polynomial optimization, volume computation and positivity of polynomials along D-finite trajectories.",
+      "title": "Exact certification for conic optimization over quadratic modules: partitions of unity and recession directions",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2611.06315v1",
+      "summary": "矩与 SOS 松弛的浮点解即使残差很小，也未必给出有效的严格界。该文对锥为截断二次模乘积的线性锥问题，提出“有理舍入—逐块常数修复—沿衰退方向吸收修复量”的精确认证框架。严格单位分解把系数残差转成每个锥块的常数预算，衰退方向再把这些预算映射为满足原耦合约束的未知量校正。作者刻画固定松弛阶上严格单位分解的存在性，在额外内点条件下联系对偶伪矩体解析中心，并给出球与盒上的显式有理构造；相应存在条件强于仅有 Archimedean 性。两项结构条件成立时得到强对偶，最小认证损失可由对偶可行伪矩质量向量的支撑函数表示。配合有理单位分解和有理衰退方向，可生成精确有理证书，无需数值 Gram 矩阵本身严格正定。",
+      "reason": "最值得借鉴的是把局部残差修复与整个锥问题的耦合约束分开处理，并量化修复所牺牲的目标值。它提供了从数值近似走向可验证结论的统一工具，也明确说明固定阶上的几何条件为何不可被求解器容差替代。",
+      "order": 7
+    },
+    {
+      "arxiv_id": "2611.06713",
+      "version": 1,
+      "authors": [
+        "Wanli Hong",
+        "Shuyang Ling"
+      ],
+      "submitted": "2026-11-04",
+      "updated": "2026-11-04",
+      "abstract": "Gradient descent is a fundamental algorithm in machine learning and statistical inference. Performance estimation provides a systematic framework for obtaining sharp convergence bounds through semidefinite programming. We study the worst-case performance of constant-stepsize gradient descent over the class of $L$-smooth functions satisfying the $\\mu$-Polyak--Łojasiewicz (PŁ) inequality. We formulate the $N$-step objective-gap analysis as a semidefinite programming (SDP) relaxation based on pairwise smoothness constraints and pointwise PŁ inequalities. Since an exact interpolation condition for smooth PŁ functions is not currently available, the resulting SDP provides a valid upper bound on the true worst-case performance. We solve a reduced SDP retaining only consecutive-pair smoothness constraints analytically for every horizon $N$ and every stepsize $t\\in(0,2/L)$. The solution exhibits three stepsize regimes. For $0<t\\leq 1/L$ and $1/L<t\\leq \\sqrt{3}/L$, the reduced and full pairwise SDPs have the same optimal value, and the one-step SDP contraction factor tensorizes to a geometric $N$-step rate. For $\\sqrt{3}/L<t<2/L$, the reduced-SDP value is nongeometric in the horizon: an initial transient phase is followed by eventual geometric decay. The resulting asymptotic contraction factor is tight for the full pairwise SDP and strictly improves the bound obtained by recursively applying the one-step estimate. Explicit primal and dual feasible solutions certify the results, with numerical SDP experiments guiding their construction. Our results show that analyzing several iterations together can give a better convergence bound than repeatedly applying the sharp one-step SDP bound in the Regime III.",
+      "title": "Multi-Step Performance Estimation for Gradient Descent under the Polyak Lojasiewicz Condition",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2611.06713v1",
+      "summary": "对满足全局 PŁ 条件的光滑目标，重复使用最优单步界是否给出最优多步界，并不能由单步精确性推出。该文用两两光滑插值约束和逐点 PŁ 不等式建立梯度下降性能的 SDP 上界，再解析求解仅保留相邻迭代约束的松弛。在步长 $0<t\\le\\sqrt3/L$ 内，多步值等于单步因子的幂，且与完整两两约束 SDP 一致；在 $\\sqrt3/L<t<2/L$ 内，先出现非几何过渡，再进入几何衰减，渐近因子严格优于递推单步界，并对完整 SDP 渐近紧。证明提供显式原始与对偶可行证书。由于一般光滑 PŁ 函数尚缺精确插值刻画，文中的 SDP 精确解仍是函数类真实最坏性能的有效上界，不能直接称为实现这些界的最坏目标函数。",
+      "reason": "推荐关注为何最坏单步数据无法总是拼成最坏轨迹，以及如何通过多步证书捕捉这种不相容性。该工作同时提供改进收敛界的工具和一条重要解释边界：松弛问题的紧性与原函数类的紧性是两个需分别验证的问题。",
+      "order": 8
+    },
+    {
+      "arxiv_id": "2605.22045",
+      "version": 2,
+      "authors": [
+        "Dan Greenstein",
+        "Nadav Hallak"
+      ],
+      "submitted": "2026-05-21",
+      "updated": "2026-11-04",
+      "abstract": "This paper addresses the challenge of obtaining strong optimality guarantees in constrained nonsmooth nonconvex optimization under mild regularity conditions, namely local Lipschitz continuity and existence of directional derivatives. While standard methods typically ensure weak stationarity notions, achieving directional (d-)stationarity remains nontrivial. We show that a random direction exploration step is sufficient to attain d-stationarity. The proposed approach augments any feasible base method with one additional randomized exploration step per iteration, which samples a direction and step size and accepts the candidate based on a function value comparison. The resulting scheme guarantees that all accumulation points are d-stationary almost surely, independently of the behavior of the underlying method. Moreover, under conditions on the base method, it preserves convergence rates of the base method, as established for the difference-of-convex algorithm (DCA), prox-linear-type schemes, and interpolated normalized gradient descent (INGD). The theoretical results are complemented by numerical experiments illustrating the effect and guarantees of the exploration step.",
+      "title": "Achieving Directional-Stationarity from a Single Random Direction Step",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2605.22045v2",
+      "summary": "非光滑非凸约束优化中，常用临界性或 Clarke 驻点可能仍存在可行下降方向。该文在任意输出可行点的基础方法外，每轮加入一次独立随机方向和随机步长探索：只有可行且目标下降超过二次步长罚项时才接受，再与基础方法候选点按目标值择优。对闭凸可行集，以及局部 Lipschitz、方向可微且下有界的目标，若方向覆盖仿射包单位球、步长覆盖规定区间，作者证明所有聚点几乎必然是方向驻点。每轮新增一次可行性检查和至多一次目标评价，不需要显式 DC 分解。结论是渐近性质；聚点存在仍需例如有界水平集的条件。保持基础方法速率也有额外要求，文中分别验证 DCA、prox-linear 类型方法和梯度采样的相应指标，并非无条件保留任意算法的复杂度。",
+      "reason": "推荐阅读把“廉价探索”与“更强极限最优性”连接起来的证明。随机探索与基础求解器解耦，给出一种可组合的驻点升级机制；同时值得核对它保留的原方法残差与最终方向驻点之间的区别。",
+      "order": 9
+    },
+    {
+      "arxiv_id": "2611.06739",
+      "version": 1,
+      "authors": [
+        "Yixi Ding",
+        "Ya-xiang Yuan"
+      ],
+      "submitted": "2026-11-04",
+      "updated": "2026-11-04",
+      "abstract": "We consider the deterministic oracle complexity of finding a $(\\delta,\\epsilon)$-Goldstein stationary point of a Lipschitz function under constraints. The problem is posed in $\\mathbb{R}^d$, where $d$ denotes the dimension; constraints are specified either by a closed feasible set or by a single explicit inequality. For closed feasible sets that are star-shaped with respect to an interior ball, including all convex bodies, we use a resisting-oracle construction to show that every deterministic algorithm needs $\\Omega(\\epsilon^{-2})$ objective-oracle calls in the worst case when $d\\gtrsim\\epsilon^{-2}$ and $\\delta\\lesssim\\epsilon$. For explicit inequalities satisfying uniform Goldstein constraint qualification and strict feasibility, finding Goldstein KKT stationary points requires exponentially many oracle calls in $d$ in the worst case, even at fixed stationarity accuracy. This exponential dependence holds under dimension-independent constraint regularity and strict-feasibility bounds, with a sufficiently small neighborhood radius and complementary slackness error. The result covers common constraints such as ball and box constraints and also allows nonconvex feasible regions. For convex coercive constraints with a Slater point, the resisting-oracle argument also gives an $\\Omega(\\epsilon^{-2})$ oracle-call bound in the same dimension and radius regime while allowing a larger complementary slackness error. These results hold for all deterministic algorithms using a local oracle, whether or not the returned point was queried. Each constructed objective has a strictly feasible global minimizer; the lower bounds therefore concern the information required to find stationary points, not their existence.",
+      "title": "Deterministic Oracle Complexity for Goldstein Stationarity in Nonsmooth Nonconvex Optimization with Constraints",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2611.06739v1",
+      "summary": "该文刻画约束非光滑非凸问题中确定性算法寻找 Goldstein 驻点所需的信息量，并分别处理集合约束与显式函数不等式。对相对某内球星形的闭集，作者把抵抗预言机的仿射片与径向项结合，控制邻域内目标次微分与法锥的抵消；在维数 $d\\gtrsim\\epsilon^{-2}$、邻域半径 $\\delta\\lesssim\\epsilon$ 时得到 $\\Omega(\\epsilon^{-2})$ 次目标查询下界。对满足统一 Goldstein 约束资格和严格可行性的显式不等式，有限点插值进一步得到固定容许精度下随维数指数增长的 Goldstein KKT 查询下界，适用范围还约束邻域与互补松弛误差。预言机可返回在某邻域与目标一致的局部函数，强于仅函数值或单个次梯度；结论仍覆盖未查询过的输出点，构造目标也具有严格可行的全局极小点。两类下界针对不同驻点标准，不宜直接互换。",
+      "reason": "推荐关注约束几何如何改变信息复杂度。硬实例必须同时防止法向量抵消目标下降方向；显式区分可行集型驻点和 KKT 型驻点，也为比较随机算法、约束采样方法与确定性算法的保证提供了必要基准。",
+      "order": 10
+    },
+    {
+      "arxiv_id": "2611.06125",
+      "version": 1,
+      "authors": [
+        "Chengzhi Huang"
+      ],
+      "submitted": "2026-11-04",
+      "updated": "2026-11-04",
+      "abstract": "We study accelerated proximal gradient methods with general stepsizes for convex composite multiobjective optimization, in which every objective is the sum of a smooth convex term and a proper closed convex extended-valued term, and the proximal subproblem retains a separate offset for each objective. The momentum coefficient may depend on the computed trajectory. For a two-parameter root momentum rule we prove boundedness, weighted square summability of the displacements, a merit-function rate of $o(k^{-2})$, and displacement decay of $o(k^{-1})$ whenever the first parameter converges to a value in $(0,1)$; the second parameter need not converge or have bounded total variation. The analysis is organized as a chain of basic estimates, an energy identity, coefficient asymptotics, and auxiliary lemmas that are reused in every regime. For the critical parameter $\\alpha=3$ we establish the finite bound $u_0(x^N)\\le 2\\ell R/[N(N+3)]$, square summability of the displacements, displacement decay $O(1/N)$, and convergence of the full sequence to a weak Pareto point. The remaining little-o question at $\\alpha=3$ is shown to be exactly the vanishing of a nonnegative critical energy, so it is separated from the large-$O$ estimate rather than left as a missing step. For $1<\\alpha<3$ we give the rate $O(N^{-(\\alpha-1)})$ and for every $\\alpha>0$ the qualitative conclusion $u_0(x^k)\\to0$, $F_i(x^k)\\to c_i$, and $\\sum_k D_k/k<\\infty$. A table summarizes the rate picture over the whole positive range of $\\alpha$, and a JOS1 experiment illustrates the predicted little-$o$ separation.",
+      "title": "The Convergence Rate of Accelerated Proximal Gradient Methods with General Inertia Term for Convex Composite Multiobjective Optimization",
+      "directions": [
+        "historical-information",
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2611.06125v1",
+      "summary": "该文研究凸复合多目标近端梯度法，保留各目标独立的偏移项，并允许惯性系数依赖已生成轨迹。在各光滑项具有全局 Lipschitz 梯度、步长为 $1/\\ell$ 且 $\\ell\\ge L$、近端子问题精确求解，以及弱 Pareto 值具有统一有界代表点的条件下，作者分析两参数根式动量：第一参数收敛到 $(0,1)$ 内一点，第二参数满足逐步区间约束但无需收敛或有界总变差，即可得到 merit 函数 $o(k^{-2})$ 和位移 $o(k^{-1})$。对有理惯性 $\\beta_k=(k-1)/(k+\\alpha-1)$，临界 $\\alpha=3$ 时证明 $O(k^{-2})$ 界及全序列收敛到弱 Pareto 点；该处更强的 little-o 速率仍等价于一项非负临界能量消失，文中没有声称已经解决。对 $1<\\alpha<3$ 另给较弱多项式界。",
+      "reason": "推荐关注带符号比较量和临界能量的处理。多目标 merit 是对比较点取上确界，不能把标量目标差距的非负性直接搬过来；这套分析说明历史自适应动量能获得多大自由度，也把已证结果与临界未决问题清楚分开。",
+      "order": 11
+    },
+    {
+      "arxiv_id": "2412.11098",
+      "version": 2,
+      "authors": [
+        "Zhinan Hou",
+        "Keyou You"
+      ],
+      "submitted": "2024-12-15",
+      "updated": "2026-11-04",
+      "abstract": "In a wide range of applications, we are required to rapidly solve a sequence of convex multiparametric quadratic programs (mp-QPs) on resource-limited hardwares. This is a nontrivial task and has been an active topic for decades in control and optimization communities. Observe that the main computational cost of existing solution algorithms lies in addressing many linear inequality constraints, though their majority are redundant and removing them will not change the optimal solution. This work learns from the results of previously solved mp-QP(s), based on which we propose novel methods to reliably trim (unsolved) mp-QPs via constraint removal, and the trimmed mp-QPs can be much cheaper to solve. Then, we extend to trim mp-QPs of model predictive control (MPC) whose parameter vectors are sampled from linear systems. Importantly, both online and offline solved mp-QPs can be utilized to adaptively trim mp-QPs in the closed-loop system. We show that the number of linear inequalities in the trimmed mp-QP of MPC decreases to zero in a finite timestep, which also can be reduced by increasing offline computation. Finally, simulations are performed to demonstrate the efficiency of our trimming method in removing redundant constraints.",
+      "title": "Reliably Learn to Trim Multiparametric Quadratic Programs via Constraint Removal",
+      "directions": [
+        "historical-information"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2412.11098v2",
+      "summary": "连续求解相近参数的强凸二次规划时，大量不影响当前最优解的不等式仍会消耗求解成本。该文复用历史实例的最优解与活跃集，结合解映射的全局 Lipschitz 上界，为新实例构造包围区域，再用低成本标量比较认证哪些约束可以删除。单个历史实例的裁剪保持原最优解；融合多个实例时，作者指出直接相交裁剪集合可能失效，并在 LICQ 条件下给出保留最优解的融合方法和剩余约束数界。全局 Lipschitz 上界与相关阈值可经离线混合整数规划计算。在递归可行、指数稳定的线性 MPC 中，若原点还位于各约束集合内部，裁剪后约束可在有限步后全部消失。这里删除约束的保证是最优解保持，并不意味着完整可行集相同，也不能脱离稳定性和内点条件推广该有限步结论。",
+      "reason": "值得研究的是怎样把历史解变成可验证的模型简化证书，而不只是用作热启动。多实例融合的反例与修正尤其有价值：多份单独正确的历史证书并不能随意取交，这与其他累积历史模型方法有直接的方法论联系。",
+      "order": 12
+    },
+    {
+      "arxiv_id": "2511.06774",
+      "version": 2,
+      "authors": [
+        "Mohammad Sadegh Salehi",
+        "Subhadip Mukherjee",
+        "Lindon Roberts",
+        "Matthias J. Ehrhardt"
+      ],
+      "submitted": "2025-11-10",
+      "updated": "2026-11-04",
+      "abstract": "Bilevel optimization is a central tool in computational imaging for high-dimensional hyperparameter tuning; prominent applications include learning data-adaptive regularizers and optimizing forward operators in variational regularization. However, due to the nested nature of the problem, exact gradients with respect to the parameters (so-called hypergradients) are not available: the precision of the hypergradient is linearly related to the computational cost, thus requiring algorithms which can solve the problem without unnecessary precision. In learned-regularizer pipelines, the inner reconstruction solver is typically run for a fixed number of iterations, leaving the hypergradient accuracy uncontrolled and existing convergence theory inapplicable. In this work, we analyze the schedules that practitioners actually run: we prove convergence of inexact stochastic bilevel optimization and establish rates under both decaying accuracy and step size schedules, showing that, with optimal configurations, convergence occurs at an $O(k^{-1/4})$ rate in expectation. This is the optimal rate of nonconvex stochastic gradient descent and matches single-loop stochastic bilevel methods; with warm-started inner solves, total costs also agree up to constants. Experiments on image denoising and inpainting with convex ridge regularizers and input-convex neural networks confirm our analysis: decreasing step sizes improve stability, accuracy scheduling is more critical than step size strategy, and adaptive preconditioning (e.g., Adam) further boosts performance, particularly for input-convex neural networks. In a budget-matched comparison with four state-of-the-art single-loop methods, accuracy-scheduled stochastic gradient descent and its Adam variant attain the highest test peak signal-to-noise ratio.",
+      "title": "Bilevel Learning via Strategically Inexact Stochastic Gradient Descent",
+      "directions": [
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2511.06774v2",
+      "summary": "双层学习的超梯度精度与内层计算量相互制约，固定内层迭代次数又常无法满足理论误差条件。该文把按精度求解的随机超梯度写成带可控偏差的 SGD，并在内层强凸、二阶光滑和交叉导数有界等条件下，将超梯度误差显式分解为内层解误差与线性系统残差。作者分析精度和步长的多项式、对数衰减计划；采用按时域调整的参数可达到期望梯度范数 $O(K^{-1/4})$，而无限时域的可求和衰减计划需保留相应小指数损失。在额外暖启动条件下，总计算成本可与单循环方法比较到常数级。图像去噪与修复实验还在匹配计算预算下比较单循环基线，显示精度调度本身会明显影响效果；实验中 Adam 的优势不等同于本文对 SGD 的收敛定理。",
+      "reason": "推荐阅读从可实施的内层停止条件到外层随机收敛界的连接。它把精度预算视为算法参数，区分迭代速率、真实内层工作量和固定时域保证，便于设计有偏或不精确随机梯度算法。",
+      "order": 13
+    },
+    {
+      "arxiv_id": "2603.19106",
+      "version": 3,
+      "authors": [
+        "Luca Santosuosso",
+        "Fei Teng",
+        "Sonja Wogrin"
+      ],
+      "submitted": "2026-03-19",
+      "updated": "2026-11-04",
+      "abstract": "This paper addresses the energy dispatch of a virtual power plant comprising renewable generation, energy storage, and thermal units under uncertainty in renewable output, energy prices, and energy demand. The nonlinear dynamics and multiple sources of uncertainty render traditional stochastic model predictive control (MPC) computationally intractable as the dispatch horizon, scenario set, and asset portfolio expand. To overcome this limitation, we propose a novel controller that seamlessly integrates MPC with time series aggregation and distributed optimization, simultaneously reducing the temporal, asset, and scenario dimensions of the problem. The resulting controller provides a rigorous performance guarantee through theoretically validated bounds on its approximation error, while leveraging dual information from previous MPC iterations to adaptively optimize the temporal aggregation. Numerical results show that the proposed controller reduces runtime by over 50% relative to traditional stochastic MPC and, crucially, restores tractability where the full-scale dispatch model proves intractable.",
+      "title": "Stochastic Virtual Power Plant Dispatch via Temporally Aggregated Distributed Predictive Control with Performance Guarantees",
+      "directions": [
+        "distributed",
+        "historical-information"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2603.19106v3",
+      "summary": "该文针对具有时间耦合与多场景的凸 QCQP 调度，联合设计时间聚合和分布式求解，而不只是在既有模型上运行 ADMM。资产与场景维度由共识 ADMM 分解，时间维度则利用上一 MPC 时刻的对偶边际成本构造代表时段，并逐步细化聚合。作者证明，全尺度可行解经指定平均映射后仍对聚合模型可行且目标不增，因而聚合最优值提供原问题下界；把聚合所得首个控制固定，再解全尺度可行性与优化问题则提供上界，形成可检查的近似损失区间。保证依赖模型的凸结构和精确求解意义下的界，数值 ADMM 仅用严格残差容差近似；上下界构造还需要额外全尺度校正求解。虚拟电厂实验展示运行时间下降，不能据此称为一般非凸分布式优化的复杂度改进。",
+      "reason": "推荐关注聚合模型的可行映射和上下界证书，而不只看并行实现。它把历史对偶信息用于选择压缩结构，并让精度损失与分解成本一起可见，为带耦合约束的分布式近似求解提供了具体设计样例。",
+      "order": 14
+    },
+    {
+      "arxiv_id": "2611.05884",
+      "version": 1,
+      "authors": [
+        "Minh N. Dao",
+        "Matthew K. Tam",
+        "Thang D. Truong"
+      ],
+      "submitted": "2026-11-04",
+      "updated": "2026-11-04",
+      "abstract": "In this paper, we study a general forward-backward splitting approach for monotone inclusion problems that simultaneously accommodate set-valued, monotone Lipschitz continuous, and cocoercive operators. Weak convergence is established under a general setting. Strong convergence is obtained when both the maximally monotone operators are linear relations and the monotone Lipschitz continuous and cocoercive operators are linear. When the set-valued operators are normal cones to closed linear subspaces, we derive an explicit characterization of limit points of generated sequences using a new technique. Numerical experiments on a quadratic minimization problem with multiple-set split feasibility constraints are presented to illustrate the theoretical results.",
+      "title": "Weak and strong convergence of a general splitting approach for monotone multioperator inclusions",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2611.05884v1",
+      "summary": "单调包含的分裂算法面对不同算子时，应分别利用可计算预解算子、单调 Lipschitz 性和余强单调性。该文扩展图结构的前向后向分裂框架，在同一包含问题中同时处理这三类算子，并在解集非空、耦合矩阵与步长满足规定条件、松弛序列具有充分累积作用时证明弱收敛。当所有集值算子是线性关系、其余两类算子均为线性算子时，作者进一步证明范数意义下的强收敛；松弛参数只需满足相应发散级数条件。若集值算子是闭线性子空间的法锥，还能显式刻画固定点投影与最终选取的解。该强收敛结论依赖线性结构，不适用于一般非线性单调包含；图结构用于组织算子计算，也不自动等于异步通信协议。",
+      "reason": "推荐阅读线性结构如何把弱收敛提升为强收敛，以及如何确定算法从多个解中选到哪一个。显式极限比仅有残差下降提供更多信息，对比较多算子分裂和理解初始化的作用都有价值。",
+      "order": 15
+    },
+    {
+      "arxiv_id": "2606.07841",
+      "version": 2,
+      "authors": [
+        "Trevor Campbell",
+        "Jonathan H. Huggins",
+        "Kyurae Kim",
+        "Charles C. Margossian"
+      ],
+      "submitted": "2026-06-05",
+      "updated": "2026-11-04",
+      "abstract": "Black-box variational inference (BBVI) is a methodology for posterior approximation that relies on stochastic optimization. In practice, the stochastic optimizers underpinning BBVI generally require extensive problem-specific tuning, which undermines its promise as a truly \"black box\" inference algorithm. However, over the past decade, many new adaptive stochastic optimization algorithms have been developed that reduce or remove entirely the need for tuning. In this work, we investigate this new collection of adaptive methods in the context of BBVI, with the goal of establishing the current state of the art in tuning-free optimization-based inference. In particular, we present a large-scale empirical evaluation of 56 stochastic gradient-based optimization algorithms applied to 1092 Bayesian inference optimization problems, involving over 550,000 individual optimization runs and 15 core-years of compute. The optimization algorithms we evaluate are chosen to represent a wide spectrum of recent approaches and the benchmark problems are chosen to span a range of difficulty, with posterior target dimension 1-10^4, condition number 1-10^8, and a range of variational families. Our results show that no single method dominates, but running a selection of 5 algorithms suffices to reliably get close to the best-possible observed performance. We thus provide a strong baseline for applications where expert tuning is not possible and for comparison when developing new stochastic optimization algorithms.",
+      "title": "Large-scale empirical tuning and comparison of default optimizers for variational inference",
+      "directions": [
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2606.07841v2",
+      "summary": "该文系统比较无需逐问题调参的随机优化器在变分推断中的表现。作者以 146 个后验目标构造 MAP、对角与全协方差 Gaussian VI、神经网络变分族等 1092 个优化问题，并纳入数据子采样噪声；对 56 种梯度型算法进行超过 55 万次运行，在统一指标下比较默认步长、目标进展、梯度和失败情况。结果没有显示单一默认方法普遍占优，即使总体较好的 Adam 也只在少数问题上排名第一。两种 Adam 步长、DoWG、Lion 与自适应批量的 SAA-LBFGS 组成的小面板，在所测问题上较少失效，并接近候选集合内的最佳表现。作者还提出流式 RABVI 和批量增加规则。这里的接近最优是相对测试方法与预算的经验比较，不是对未知全局最优值的保证，也不意味着五方法组合免费获得所有单方法预算。",
+      "reason": "推荐把它作为随机自适应算法的外部检验基准。跨噪声、维数和条件数的失败分布，比单个训练任务的平均名次更能暴露默认步长的局限；阅读时还可检查新方法的效果是否超出了适当调参或小算法面板所能提供的基线。",
+      "order": 16
+    }
+  ]
+}
