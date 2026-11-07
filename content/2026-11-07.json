@@ -1,0 +1,93 @@
+{
+  "date": "2026-11-07",
+  "status": "complete",
+  "frontiers_status": "recommendations",
+  "highlights": [
+    {
+      "arxiv_id": "2105.07874",
+      "label": "经典 bundle 方法的结构自适应与最优非光滑界",
+      "text": "历史补读：统一计算下降步与空步，解释固定参数如何自动适应光滑或增长结构；合适的非恒定参数达到最优非光滑预言机复杂度。多参数实例可减少精确调参依赖，但需额外工作量，且理论不计内层求解成本。",
+      "types": [
+        "field",
+        "group"
+      ]
+    },
+    {
+      "arxiv_id": "1808.03971",
+      "label": "正则化、重启与回退保障 Anderson 全局收敛",
+      "text": "历史补读：对非扩张且有不动点的映射，有限记忆 Type-I 更新经三种稳定化机制得到整个点列的全局收敛，无需可微性或线搜索。一般加速速率未获证明，速度收益来自实验。",
+      "types": [
+        "group"
+      ]
+    },
+    {
+      "arxiv_id": "1506.01556",
+      "label": "分裂法的线性速率界由最坏例子验证紧性",
+      "text": "历史补读：在三类强单调与余强单调或 Lipschitz 条件下，利用反射预解算子和负平均性推导收敛因子、选择参数，并构造可达例子；不同正则性配置的紧性范围须分别理解。",
+      "types": [
+        "field"
+      ]
+    }
+  ],
+  "papers": [
+    {
+      "arxiv_id": "2105.07874",
+      "version": 2,
+      "title": "Optimal Convergence Rates for the Proximal Bundle Method",
+      "authors": [
+        "Mateo Díaz",
+        "Benjamin Grimmer"
+      ],
+      "submitted": "2021-05-17",
+      "updated": "2023-05-01",
+      "arxiv_url": "https://arxiv.org/abs/2105.07874v2",
+      "abstract": "We study convergence rates of the classic proximal bundle method for a variety of nonsmooth convex optimization problems. We show that, without any modification, this algorithm adapts to converge faster in the presence of smoothness or a Hölder growth condition. Our analysis reveals that with a constant stepsize, the bundle method is adaptive, yet it exhibits suboptimal convergence rates. We overcome this shortcoming by proposing nonconstant stepsize schemes with optimal rates. These schemes use function information such as growth constants, which might be prohibitive in practice. We provide a parallelizable variant of the bundle method that can be applied without prior knowledge of function parameters while maintaining near-optimal rates. The practical impact of this scheme is limited since we incur a (parallelizable) log factor in the complexity. These results improve on the scarce existing convergence rates and provide a unified analysis approach across problem settings and algorithmic details. Numerical experiments support our findings.",
+      "directions": [
+        "historical-information",
+        "optimization-frontiers"
+      ],
+      "order": 1,
+      "summary": "本次为历史补读。经典近端 bundle 方法通过历史切平面与聚合模型逼近凸目标，并以实际下降是否达到预测下降的一定比例决定接受点；其稳健性早已被观察到，但不同结构下的复杂度缺少统一解释。该文在无约束、最优解存在的凸问题上，给出覆盖 Lipschitz、光滑和 Hölder 增长条件的分析：固定近端参数也会随目标结构改善而自动获得更快保证，但通常并非最优。对 Lipschitz 目标，利用最优值、初始水平集半径或增长常数设计非恒定参数，可达到一般情形的 $O(\\epsilon^{-2})$、二次增长下的 $O(\\epsilon^{-1})$，以及尖锐增长下的 $O(\\log(1/\\epsilon))$ 一阶预言机复杂度。光滑情形的界达到梯度下降级别，并非加速梯度级别。作者还以几何网格上的多组固定参数实例共享更优点，在参数区间覆盖所需尺度时，用对数级实例开销避免精确依赖未知问题常数。理论要求精确函数值、次梯度和模型近端解；计数包含下降步与空步，不计内层子问题求解成本，且并行分析采用同步轮次。",
+      "reason": "推荐重点阅读模型保留条件与下降步、空步的分开计数。只需保留新切平面和旧模型在试探点的聚合支撑面，分析便可同时容纳全记忆、有限记忆和更丰富的下模型，这为比较历史信息的作用提供了清楚基线。其独立阅读价值在于区分结构自适应、参数调优和加速三件事：固定参数已有自适应性，最优非光滑界还需适当参数策略，而同时运行多个参数实例要支付额外工作量。适合用来审视新 bundle 方法究竟改进了哪一环，以及理论复杂度对应什么实际成本。"
+    },
+    {
+      "arxiv_id": "1808.03971",
+      "version": 1,
+      "title": "Globally Convergent Type-I Anderson Acceleration for Non-Smooth Fixed-Point Iterations",
+      "authors": [
+        "Junzi Zhang",
+        "Brendan O'Donoghue",
+        "Stephen Boyd"
+      ],
+      "submitted": "2018-08-12",
+      "updated": "2018-08-12",
+      "arxiv_url": "https://arxiv.org/abs/1808.03971v1",
+      "abstract": "We consider the application of the type-I Anderson acceleration to solving general non-smooth fixed-point problems. By interleaving with safe-guarding steps, and employing a Powell-type regularization and a re-start checking for strong linear independence of the updates, we propose the first globally convergent variant of Anderson acceleration assuming only that the fixed-point iteration is non-expansive. We show by extensive numerical experiments that many first order algorithms can be improved, especially in their terminal convergence, with the proposed algorithm. Our proposed method of acceleration is being implemented in SCS 2.0, one of the default solvers used in the convex optimization parser-solver CVXPY 1.0.",
+      "directions": [
+        "historical-information",
+        "optimization-frontiers"
+      ],
+      "order": 2,
+      "summary": "本次为历史补读。Anderson 加速利用历史迭代与残差构造多割线近似，但直接使用有限记忆 Type-I 更新可能因割线退化或不稳定外推失去收敛。该文针对欧氏空间中非扩张且不动点非空的映射，将三种机制组合起来：Powell 型正则化避免拟 Jacobian 更新奇异；按历史位移的强线性独立性和记忆上限重启；当当前残差未达到随已接受加速步次数衰减的阈值时，退回平均化的 Krasnoselskii–Mann 步。作者先控制近似逆矩阵，再证明残差趋零和整个点列收敛到某个不动点，全局保证无需映射可微或严格压缩，也不依赖线搜索。原文以梯度法、近端梯度、Douglas–Rachford 分裂和锥规划等检验实用性，实验尤其改善高精度阶段。该文没有给出一般情形下优于基准迭代的理论速率；全局收敛定理针对上述完整稳定化算法，不能直接用于任意 Anderson 变体或异步实现。",
+      "reason": "最值得研究的是历史信息进入收敛证明的方式：正则化和重启先保证多割线步长度可控，再用可求和的加速扰动配合平均化回退步建立全局收敛。三者各自承担明确任务，适合分析含投影、近端等非光滑算子的历史外推，而不必先假定局部 Jacobian 存在。相较只报告加速曲线，这一框架提供了可以检查的稳定性机制；阅读时应把“完整算法全局收敛”与“实验上更快”分别理解，再评估具体实现能否保持相同的控制条件。"
+    },
+    {
+      "arxiv_id": "1506.01556",
+      "version": 4,
+      "title": "Tight Global Linear Convergence Rate Bounds for Douglas-Rachford Splitting",
+      "authors": [
+        "Pontus Giselsson"
+      ],
+      "submitted": "2015-06-04",
+      "updated": "2017-04-04",
+      "arxiv_url": "https://arxiv.org/abs/1506.01556v4",
+      "abstract": "Recently, several authors have shown local and global convergence rate results for Douglas-Rachford splitting under strong monotonicity, Lipschitz continuity, and cocoercivity assumptions. Most of these focus on the convex optimization setting. In the more general monotone inclusion setting, Lions and Mercier showed a linear convergence rate bound under the assumption that one of the two operators is strongly monotone and Lipschitz continuous. We show that this bound is not tight, meaning that no problem from the considered class converges exactly with that rate. In this paper, we present tight global linear convergence rate bounds for that class of problems. We also provide tight linear convergence rate bounds under the assumptions that one of the operators is strongly monotone and cocoercive, and that one of the operators is strongly monotone and the other is cocoercive. All our linear convergence results are obtained by proving the stronger property that the Douglas-Rachford operator is contractive.",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "order": 3,
+      "summary": "本次为历史补读。Douglas–Rachford 分裂在强单调条件下可线性收敛，但已有速率上界可能无法被任何同类问题达到，因而不足以准确指导参数选择。该文研究两个极大单调算子的和，分别处理强单调性与余强单调性分置于两个算子、同一算子同时强单调且 Lipschitz，以及同一算子同时强单调且余强单调三种情形。作者通过反射预解算子的压缩性及负平均算子工具，推导带松弛参数的全局距离收敛因子，并构造二维例子验证紧性。以同一算子 $\\sigma$-强单调且 $\\beta$-Lipschitz 为例，在 $T=(1-\\alpha)I+\\alpha R_{\\gamma A}R_{\\gamma B}$ 的参数记号下，优化所得 $\\alpha=1$、$\\gamma=1/\\beta$，最坏收敛因子为 $\\sqrt{(\\beta/\\sigma-1)/(\\beta/\\sigma+1)}$，改进此前非紧上界。同一算子具有余强单调性时可得到更好的条件数依赖。这两类结果对全部允许参数证明紧性；正则性分置两算子的情形只对文中给定的参数范围证明紧性。一般单调包含中的紧界也不能直接视为光滑凸目标子类的最紧界。",
+      "reason": "推荐关注从正则性条件到可达最坏例子的完整闭环。负平均性把不能单独判为压缩的反射算子组合起来，给出比逐个套 Lipschitz 常数更细的估计；二维旋转构造进一步解释了上界为何不能继续统一改善。它为分裂法的参数调优提供了可检验基准，也提醒研究者区分一般单调算子与梯度算子能够利用的不同结构。今天补读的价值在于建立这一分析尺度，与历史模型和多割线稳定化提供互补的阅读视角。"
+    }
+  ]
+}
