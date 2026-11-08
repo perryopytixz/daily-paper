@@ -1,0 +1,97 @@
+{
+  "date": "2026-11-08",
+  "status": "complete",
+  "frontiers_status": "recommendations",
+  "highlights": [
+    {
+      "arxiv_id": "1702.08704",
+      "label": "网络传播与局部条件数的匹配复杂度界",
+      "text": "历史补读：MSDA 在固定无向网络上结合对偶加速与 Chebyshev 多轮通信，达到指定 gossip 黑箱模型的最坏情形下界。精确结果按共轭梯度预言机计费，比较实际方法时须另核内层求解成本。",
+      "types": [
+        "field",
+        "group"
+      ]
+    },
+    {
+      "arxiv_id": "1609.04746",
+      "label": "用历史增量能量控制无界异步延迟",
+      "text": "历史补读：ARock 在随机分块与相应延迟假设下，以无限加权历史能量证明收敛。随机延迟可按尾分布取常步长；确定性无界延迟需按当前延迟调步长，保证限于有界延迟子序列。",
+      "types": [
+        "group"
+      ]
+    },
+    {
+      "arxiv_id": "2204.09228",
+      "label": "切向残差打通约束问题的末次迭代分析",
+      "text": "历史补读：为单调 Lipschitz 变分不等式构造适应约束几何的残差与修正势函数，证明 EG、OGDA 的 $O(T^{-1/2})$ 末次迭代界。结论控制残差及局部 gap，紧性限于对应算法类。",
+      "types": [
+        "field"
+      ]
+    }
+  ],
+  "papers": [
+    {
+      "arxiv_id": "1702.08704",
+      "version": 2,
+      "title": "Optimal algorithms for smooth and strongly convex distributed optimization in networks",
+      "authors": [
+        "Kevin Scaman",
+        "Francis Bach",
+        "Sébastien Bubeck",
+        "Yin Tat Lee",
+        "Laurent Massoulié"
+      ],
+      "submitted": "2017-02-28",
+      "updated": "2017-04-07",
+      "arxiv_url": "https://arxiv.org/abs/1702.08704v2",
+      "abstract": "In this paper, we determine the optimal convergence rates for strongly convex and smooth distributed optimization in two settings: centralized and decentralized communications over a network. For centralized (i.e. master/slave) algorithms, we show that distributing Nesterov's accelerated gradient descent is optimal and achieves a precision $\\varepsilon > 0$ in time $O(\\sqrt{\\kappa_g}(1+\\Delta\\tau)\\ln(1/\\varepsilon))$, where $\\kappa_g$ is the condition number of the (global) function to optimize, $\\Delta$ is the diameter of the network, and $\\tau$ (resp. $1$) is the time needed to communicate values between two neighbors (resp. perform local computations). For decentralized algorithms based on gossip, we provide the first optimal algorithm, called the multi-step dual accelerated (MSDA) method, that achieves a precision $\\varepsilon > 0$ in time $O(\\sqrt{\\kappa_l}(1+\\frac{\\tau}{\\sqrt{\\gamma}})\\ln(1/\\varepsilon))$, where $\\kappa_l$ is the condition number of the local functions and $\\gamma$ is the (normalized) eigengap of the gossip matrix used for communication between nodes. We then verify the efficiency of MSDA against state-of-the-art methods for two problems: least-squares regression and classification by logistic regression.",
+      "order": 1,
+      "directions": [
+        "distributed",
+        "optimization-frontiers"
+      ],
+      "summary": "历史补读：分布式强凸光滑优化中，局部计算难度和网络传播速度如何共同限制求解时间？该文在明确的分布式黑箱模型下，分别给出集中式通信与固定 gossip 通信的匹配上、下界。对于固定连通无向网络上的对称半正定 gossip 矩阵，作者把共识约束对偶化，在对偶加速梯度的每一步嵌入 Chebyshev 多轮通信，得到 MSDA；若各局部函数均强凸且光滑，时间复杂度为 $O(\\sqrt{\\kappa_l}(1+\\tau/\\sqrt{\\gamma})\\log(1/\\varepsilon))$，其中 $\\kappa_l$ 是局部条件数、$\\gamma$ 是归一化谱隙、$\\tau$ 是相邻通信相对一次局部计算的耗时。这与该 gossip 黑箱模型的最坏情形下界匹配。允许集中聚合时，对应基准为 $O(\\sqrt{\\kappa_g}(1+\\Delta\\tau)\\log(1/\\varepsilon))$，涉及全局条件数和图直径。精确 MSDA 把计算局部共轭梯度计为一次预言机调用；仅能计算原函数梯度时，文中另给带额外对数因子的变体，不能直接沿用同一成本。其最优性针对指定参数和通信模型，不能由此推出每张图或时变网络上的普遍最优性。",
+      "reason": "推荐重点阅读黑箱模型、谱隙下界和多轮通信预条件三者如何对齐。它把“更多通信能否换取更少局部求解”转成可比较的时间复杂度，而不只比较迭代次数；对共识、梯度跟踪和分布式加速方法，这是判断网络依赖是否仍可改进的具体基准。相对近期已推荐的随机网络优化与灵活通信方法，这篇补齐确定性强凸光滑情形的下界和对偶设计逻辑。阅读时尤其应核对共轭预言机的实际求解成本，以及局部、全局条件数的区别，避免在不同信息模型下宣称同等最优。"
+    },
+    {
+      "arxiv_id": "1609.04746",
+      "version": 2,
+      "title": "On Unbounded Delays in Asynchronous Parallel Fixed-Point Algorithms",
+      "authors": [
+        "Robert Hannah",
+        "Wotao Yin"
+      ],
+      "submitted": "2016-09-15",
+      "updated": "2017-08-17",
+      "arxiv_url": "https://arxiv.org/abs/1609.04746v2",
+      "abstract": "The need for scalable numerical solutions has motivated the development of asynchronous parallel algorithms, where a set of nodes run in parallel with little or no synchronization, thus computing with delayed information. This paper studies the convergence of the asynchronous parallel algorithm ARock under potentially unbounded delays. ARock is a general asynchronous algorithm that has many applications. It parallelizes fixed-point iterations by letting a set of nodes randomly choose solution coordinates and update them in an asynchronous parallel fashion. ARock takes some recent asynchronous coordinate descent algorithms as special cases and gives rise to new asynchronous operator-splitting algorithms. Existing analysis of ARock assumes the delays to be bounded, and uses this bound to set a step size that is important to both convergence and efficiency. Other work, though allowing unbounded delays, imposes strict conditions on the underlying fixed-point operator, resulting in limited applications. In this paper, convergence is established under unbounded delays, which can be either stochastic or deterministic. The proposed step sizes are more practical and generally larger than those in the existing work. The step size adapts to the delay distribution or the current delay being experienced in the system. New Lyapunov functions, which are the key to analyzing asynchronous algorithms, are generated to obtain our results. A set of applicable optimization algorithms with large-scale applications are given, including machine learning and scientific computing algorithms.",
+      "order": 2,
+      "directions": [
+        "asynchronous-distributed",
+        "optimization-frontiers"
+      ],
+      "summary": "历史补读：异步方法常用最坏延迟上界设步长，偶发大延迟便会使参数过于保守。该文研究非扩张且有不动点的映射所对应的 ARock 随机分块迭代，用当前点到解的距离加上历史增量的无限加权和，构造能够吸收陈旧信息误差的 Lyapunov 函数。在均匀独立分块、延迟向量独立同分布且独立于分块序列、同一时刻各块信息年龄之差有统一界等条件下，若延迟尾概率满足文中可求和条件，按延迟分布选择常步长即可得到整个点列几乎必然弱收敛。对独立于分块序列的确定性无界延迟，作者让步长随当前延迟衰减；当 $\\liminf_k j(k)<\\infty$ 时，几乎必然弱收敛保证落在每个有界延迟子序列上，且极限相同，不能泛化为任意无界延迟下的全点列收敛。实际延迟有界但上界未知时，后一结果恢复全点列弱收敛。该框架覆盖可分块实现的梯度、近端及算子分裂方法；本文主要提供收敛与分析工具，没有给出一般迭代复杂度或墙钟加速保证。",
+      "reason": "推荐关注第 2 节从误差递推生成 Lyapunov 函数的过程：保留无法直接消去的历史增量项，再反向选择权重闭合条件期望不等式。这为研究延迟鲁棒步长提供了可检查的构造方法。与已推荐的 delay-free 参数及 delay-agnostic 坐标更新工作相比，这篇补齐无界延迟下“分布信息换常步长”与“当前延迟换自适应步长”的早期机制，也明确揭示了确定性情形为什么只得到子序列保证。研究异步分块算法时，尤其适合据此检查更新随机性、延迟独立性与可实现步长之间的关系。"
+    },
+    {
+      "arxiv_id": "2204.09228",
+      "version": 3,
+      "title": "Tight Last-Iterate Convergence of the Extragradient and the Optimistic Gradient Descent-Ascent Algorithm for Constrained Monotone Variational Inequalities",
+      "authors": [
+        "Yang Cai",
+        "Argyris Oikonomou",
+        "Weiqiang Zheng"
+      ],
+      "submitted": "2022-04-20",
+      "updated": "2022-05-16",
+      "arxiv_url": "https://arxiv.org/abs/2204.09228v3",
+      "abstract": "The monotone variational inequality is a central problem in mathematical programming that unifies and generalizes many important settings such as smooth convex optimization, two-player zero-sum games, convex-concave saddle point problems, etc. The extragradient algorithm by Korpelevich [1976] and the optimistic gradient descent-ascent algorithm by Popov [1980] are arguably the two most classical and popular methods for solving monotone variational inequalities. Despite their long histories, the following major problem remains open. What is the last-iterate convergence rate of the extragradient algorithm or the optimistic gradient descent-ascent algorithm for monotone and Lipschitz variational inequalities with constraints? We resolve this open problem by showing that both the extragradient algorithm and the optimistic gradient descent-ascent algorithm have a tight $O\\left(\\frac{1}{\\sqrt{T}}\\right)$ last-iterate convergence rate for arbitrary convex feasible sets, which matches the lower bound by Golowich et al. [2020a,b]. Our rate is measured in terms of the standard gap function. At the core of our results lies a non-standard performance measure -- the tangent residual, which can be viewed as an adaptation of the norm of the operator that takes the local constraints into account. We use the tangent residual (or a slight variation of the tangent residual) as the the potential function in our analysis of the extragradient algorithm (or the optimistic gradient descent-ascent algorithm) and prove that it is non-increasing between two consecutive iterates.",
+      "order": 3,
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "summary": "历史补读：对有解、单调且 Lipschitz 连续的变分不等式，EG 和 OGDA 的遍历平均已有速率，但投影约束使无约束末次迭代分析难以直接延用。该文引入反映当前点约束几何的切向残差：将负算子沿切锥投影后取范数。作者证明 EG 的该残差单调不增，并为 OGDA 构造带修正项的势函数；结合最佳迭代界，得到任意闭凸可行集上的 $O(T^{-1/2})$ 末次迭代收敛。EG 可取固定步长 $0<\\eta<1/L$，OGDA 可取 $0<\\eta<1/(2L)$；结论控制切向残差、自然残差及固定半径内的局部 gap，集合有界时可相应覆盖全域 gap，不能在无界集合上无条件宣称全局 gap 有限。相应参数依赖与 EG、OGDA 所属平稳线性迭代类的已有下界匹配，而非所有一阶算法的普遍最优率。分析还借助平方和规划发现证书及势函数，原文同时给出可核查的代数证明。",
+      "reason": "推荐优先阅读“为什么自然残差不够”与切向残差的单调性证明。边界上的算子范数未必趋零，自然残差又可能波动，改换能与法锥几何配合的性能指标才打通末次迭代分析；这比只记住一个速率更有方法价值。它补齐此前分裂收敛、性能估计和外梯度推荐中尚未展开的约束几何机制。平方和搜索如何帮助发现 OGDA 修正势函数，也提供了从计算证据走向解析证明的具体范例。该结果针对单调 Lipschitz 算子，向非单调模型延伸仍需另行论证。"
+    }
+  ]
+}
