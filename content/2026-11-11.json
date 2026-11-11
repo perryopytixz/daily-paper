@@ -1,0 +1,376 @@
+{
+  "date": "2026-11-11",
+  "status": "complete",
+  "frontiers_status": "recommendations",
+  "highlights": [
+    {
+      "arxiv_id": "2611.13584",
+      "label": "动量查询的半步相位决定全类加速",
+      "text": "相同慢动力学和二次谱不能决定动量法在整个光滑强凸类上的速度。作者以有限滞后证书与单目标螺旋轨迹匹配渐近距离率，定位梯度外推的半步边界，并刻画三重动量的最优参数角。半步边界有独立尺度，不能简单判定边界以下全部不加速。",
+      "types": [
+        "field",
+        "group"
+      ]
+    },
+    {
+      "arxiv_id": "2611.13521",
+      "label": "Fast PG-EXTRA 获得末次平方残差加速",
+      "text": "由加速 Condat–Vũ 分裂推导分散梯度近端算法，在固定连通无向图、凸复合目标及相应步长条件下，把最优性与共识等平方残差推进到非遍历的 $o(k^{-2})$。值得研究历史外推如何保留本地运算和邻居通信；该率不是目标函数差的保证。",
+      "types": [
+        "group"
+      ]
+    },
+    {
+      "arxiv_id": "2611.13846",
+      "label": "随机非扩张迭代的末次界与步长反例",
+      "text": "将随机轨道与从早前随机点重启的无噪轨道比较，获得三类噪声下接近最优的末次均方残差界。噪声随迭代点增长时，平方不可和步长可导致残差发散；常数方差下则允许临界平方根步长。结论针对标准随机 KM 及所研究步长族。",
+      "types": [
+        "field"
+      ]
+    },
+    {
+      "arxiv_id": "2410.20751",
+      "label": "自适应 bundle 同时调整步长和实步判据",
+      "text": "空步中模型不等式失败便减小近端步长并继续推进，配合更宽松的实步判据缩短周期，无需输入光滑性参数或回溯线搜索。已知最优值与维护下界的版本前提不同，后者使用有界有效域；这一区别对把历史切面模型用于实际算法很关键。",
+      "types": [
+        "group"
+      ]
+    },
+    {
+      "arxiv_id": "2611.14239",
+      "label": "部分参与 FedAvg 摆脱梯度差异假设",
+      "text": "用虚拟局部轨迹分开随机梯度与客户端抽样误差，在光滑下有界目标、无偏 ABC 噪声及均匀无放回抽样下分析 FedAvg，无需有界梯度差异。领先采样误差不随局部步数放大，递减步长还给出期望及几乎处处的末次驻点收敛。",
+      "types": [
+        "group"
+      ]
+    },
+    {
+      "arxiv_id": "2611.13872",
+      "label": "固定预言机设定再形式验证复杂度",
+      "text": "LongTails 在 Lean 4 中固定问题类、可用信息、预言机和成功指标，再验证算法预算可达性；算法不能读取隐藏实例。广义光滑示例结合局部曲率与加速阻尼，改善仅梯度复杂度。形式验证不替代人工审查问题设定、新颖性或实际计算价值。",
+      "types": [
+        "field"
+      ]
+    },
+    {
+      "arxiv_id": "2611.14319",
+      "label": "专门 SOS 半定规划精确化为谱盒凸 QP",
+      "text": "对指定无自旋五块 SOS 模型，精确消元得到单矩阵谱盒二次规划，并把 Frank–Wolfe 间隙等同于原 SOS 坐标的恢复证书间隔。缓存昂贵算子作用使校正步骤复用计算；认证针对所选松弛，不能把其最优值等同真实基态能量。",
+      "types": [
+        "field"
+      ]
+    }
+  ],
+  "papers": [
+    {
+      "arxiv_id": "2611.13584",
+      "version": 1,
+      "title": "Exact (Non-)Accelerations of Heavy-Ball Discretizations",
+      "authors": [
+        "Dmitry Pasechnyuk-Vilensky",
+        "Martin Takáč"
+      ],
+      "submitted": "2026-11-10",
+      "updated": "2026-11-10",
+      "arxiv_url": "https://arxiv.org/abs/2611.13584v1",
+      "abstract": "Momentum methods with the same slow dynamics can have different worst-case rates on smooth strongly convex functions. We identify a half-step phase barrier in the gradient query that governs this difference. For momentum with extrapolation $\\tau_\\kappa\\to\\tau$, $\\beta=1-\\theta/\\sqrt\\kappa+o(\\kappa^{-1/2})$ and $hL\\to y$, where $\\kappa=L/\\mu$ and $\\theta,y>0$, the exact uniform distance factor is $1-c/\\sqrt\\kappa+o(\\kappa^{-1/2})$, with $c=\\min\\{\\theta/3,c_Q(\\theta,y)\\}$, when $\\tau>1/2$ and $y(1+2\\tau)<4$; $c_Q$ is the slowest quadratic decay exponent. Quadratically accelerated families with $\\limsup\\tau_\\kappa<1/2$ have divergent trajectories on the full function class. Upper bounds use finite-lag certificates: nonnegative combinations of inequalities for values and gradients at finitely separated query points, together with comparisons to the minimizer. For any prescribed accuracy, spiral mixtures or quadratic trajectories of one finite-dimensional objective give matching lower bounds at all iteration horizons. We resolve the parameter layer near $\\tau=1/2$ and classify all tunings of this family attaining the optimal leading constant 1. The flow also bounds the leading constant of every second-order stationary linear family with the same slow parameters $(\\theta,y)$ and fixed finite memory.",
+      "summary": "具有相同慢时间尺度动力学的动量离散化，可能在二次函数上都加速，却在整个光滑强凸函数类上表现不同。该文统一研究在外推点查询梯度的固定系数动量族，以最坏统一距离因子 $1-c/\\sqrt{\\kappa}+o(\\kappa^{-1/2})$ 的首项常数刻画速度。固定加速尺度下，当外推系数极限大于半步且满足步长稳定条件时，作者得到 $c=\\min\\{\\theta/3,c_Q(\\theta,y)\\}$，其中 $\\kappa=L/\\mu$，$\\theta$ 为动量偏离一的缩放系数，$y$ 为归一化步长极限，第二项是最慢二次模态，并用有限滞后插值证书及单个目标上的螺旋混合轨迹匹配上下界。外推系数长期严格低于半步的二次加速族，在完整函数类上可出现发散；半步边界本身须作单独尺度分析，三重动量可从其下方接近并达到最优首项常数一。结论采用先取实例最坏情形再取迭代极限的距离率，不等同于固定函数的渐近率或函数值率。",
+      "reason": "值得优先阅读半步相位机制与有限滞后证书，它解释了连续流和二次谱为何不足以决定动量法的全类加速。相对分别研究 Heavy-ball 或 Nesterov 的结果，本作把查询位置、阻尼和稳定边界纳入同一可比较框架。",
+      "directions": [
+        "historical-information",
+        "optimization-frontiers"
+      ],
+      "order": 1
+    },
+    {
+      "arxiv_id": "2611.13521",
+      "version": 1,
+      "title": "A Fast Proximal-Gradient Algorithm for Decentralised Optimisation",
+      "authors": [
+        "Ye Pu",
+        "Matthew K Tam",
+        "Liam Timms"
+      ],
+      "submitted": "2026-11-10",
+      "updated": "2026-11-10",
+      "arxiv_url": "https://arxiv.org/abs/2611.13521v1",
+      "abstract": "We consider a connected multi-agent network where agents coordinate to minimise a finite sum of convex functions. Each function in the sum can be further expressed as the sum of a smooth and nonsmooth component and is known only to a single agent in the network. We propose a decentralised proximal-gradient-type algorithm for solving this problem, which we term Fast PG-EXTRA. In each iteration, agents evaluate the gradient of the smooth component of their local objective functions and the proximal operator of the nonsmooth component, followed by communicating the results with neighbouring agents in the network. Fast PG-EXTRA can be viewed as an accelerated variant of PG-EXTRA, in the sense that it enjoys non-ergodic $o(1/k^2)$ convergence rates in terms of the first-order optimality residual, successive iterates, and consensus error, compared to PG-EXTRA's ergodic $O(1/k)$ convergence rates. Our analysis of Fast PG-EXTRA is based on an accelerated variant of the Condat--Vũ algorithm for non-distributed convex minimisation, which has similarly improved convergence rates compared to the Condat--Vũ algorithm. We validate our convergence results for Fast PG-EXTRA and demonstrate its potential advantages compared to PG-EXTRA with numerical experiments for power state system estimation and $l_1$-regularised logistic regression.",
+      "summary": "分散复合凸优化中，PG-EXTRA 能让节点只计算本地梯度和近端映射，但末次输出的残差保证仍有提升空间。该文从加速 Condat–Vũ 分裂推导 Fast PG-EXTRA，利用带时间系数的历史外推，在固定连通无向网络上保持邻居通信和本地梯度、近端操作。局部光滑项梯度 Lipschitz、非光滑项闭凸、存在鞍点且步长受混合矩阵最小特征值约束时，节点解收敛到共同最优解；一阶最优性残差、共识误差和指定迭代差的平方量均获得非遍历的二次倒数小阶界。这里的二次率针对平方残差，不能直接写成目标函数差的二次加速。原文还补充说明普通 PG-EXTRA 可得到较弱的非遍历率，因此比较不应只停留于旧的遍历界。",
+      "reason": "推荐优先读加速分裂如何在不引入中心节点的情况下消去对偶变量并得到可实现的网络迭代。平方残差的末次保证及其势函数证明，与研究历史信息加速分散复合优化直接相关。",
+      "directions": [
+        "distributed",
+        "historical-information",
+        "optimization-frontiers"
+      ],
+      "order": 2
+    },
+    {
+      "arxiv_id": "2611.13846",
+      "version": 1,
+      "title": "Optimal Last-Iterate Bounds for Nonexpansive Stochastic Approximation",
+      "authors": [
+        "Ramanan Tamizholi",
+        "Siddharth Chandak",
+        "Rahul Singh"
+      ],
+      "submitted": "2026-11-10",
+      "updated": "2026-11-10",
+      "arxiv_url": "https://arxiv.org/abs/2611.13846v1",
+      "abstract": "We establish last-iterate mean-square residual bounds for nonexpansive stochastic approximation (SA), or stochastic Krasnoselskii-Mann (KM) iterations. In particular, we consider fixed-point mappings that are nonexpansive with respect to the Euclidean norm, and focus on polynomially decaying stepsizes. We study three conditions on the conditional second moment of the noise, and obtain bounds that are optimal up to logarithmic factors in each case. When it scales linearly with the squared residual, the best rate is $O(1/k^{1-\\epsilon})$ for any $\\epsilon>0$. In this case, for all considered stepsizes, our bounds match those of the noiseless KM iteration. When it is bounded by a constant, the best rate is $O(\\log^2 k/\\sqrt{k})$. When it scales affinely with the squared norm of the iterate, the best rate is $O(1/k^{1/2-\\epsilon})$, and the mean-square residual can diverge if the stepsizes are not square-summable. Thus, unlike for contractive SA, square-summable stepsizes are necessary for nonexpansive SA. We demonstrate how various algorithms with cocoercive maps, such as stochastic gradient descent, linear SA, and learning in cocoercive games, fit into our framework, and how the different noise conditions arise in each of them.",
+      "summary": "非扩张映射的随机 Krasnoselskii–Mann 迭代不必收缩，固定点也可能不唯一，因此末次输出的可靠性不能直接由收缩型随机逼近理论推出。该文针对欧氏非扩张且有固定点的映射、鞅差噪声和多项式递减步长，给出末次均方残差界，并分别构造下界。残差相关噪声下可达 $O(k^{-1+\\epsilon})$，常数二阶矩下为 $O(\\log^2 k/\\sqrt{k})$，随迭代点范数仿射增长时为 $O(k^{-1/2+\\epsilon})$，其中 $\\epsilon>0$ 可任意小。最后一种情形必须采用平方可和步长，否则存在均方残差发散反例。关键分析将随机轨道与从较早随机点重新启动的无噪声轨道比较，得到末次而非仅遍历界；最优性限于所研究的迭代、步长及噪声模型。",
+      "reason": "推荐优先读重启辅助轨道的证明工具，以及噪声增长如何使步长平方可和条件重新变得必要。它对凸随机梯度和余强单调问题给出清晰的末次残差基准，也提醒不能把残差率改写成到固定点的距离率。",
+      "directions": [
+        "stochastic",
+        "optimization-frontiers"
+      ],
+      "order": 3
+    },
+    {
+      "arxiv_id": "2410.20751",
+      "version": 2,
+      "title": "Parameter-free proximal bundle methods with adaptive stepsizes for hybrid convex composite optimization problems",
+      "authors": [
+        "Renato D.C. Monteiro",
+        "Honghao Zhang"
+      ],
+      "submitted": "2024-10-28",
+      "updated": "2026-11-09",
+      "arxiv_url": "https://arxiv.org/abs/2410.20751v2",
+      "abstract": "This paper develops a parameter-free adaptive proximal bundle method with two important features: 1) adaptive choice of variable prox stepsizes that \"closely fits\" the instance under consideration; and 2) adaptive criterion for making the occurrence of serious steps easier. Computational experiments show that our method performs substantially fewer consecutive null steps (i.e., a shorter cycle) while maintaining the number of serious steps under control. As a result, our method performs significantly less number of iterations than its counterparts based on a constant prox stepsize choice and a non-adaptive cycle termination criterion. Moreover, our method is very robust relative to the user-provided initial stepsize.",
+      "summary": "近端 bundle 法通过历史切平面近似目标，但过大的近端步长可能产生很长的空步周期。该文提出无需光滑性参数、无需回溯线搜索的 Ad-GPB 系列：在空步中检查模型不等式，失败便缩小步长并直接推进；同时利用目标差或可计算下界放宽实步终止条件，从而缩短周期。已知最优值的 Ad-GPB* 与不知道最优值的 Ad-GPB 具有不同前提，后者在有界有效域上维护下界；强凸重启变体无需知道强凸参数，但其复杂度保证仍依赖该参数。分析针对满足混合次梯度增长条件的凸复合问题，实验比较周期长度、总迭代数和对初始步长的敏感性。",
+      "reason": "推荐优先研究模型误差、步长调整与实步判据的共同设计。它直接回应历史切面模型如何减少无效内层工作的困难，且明确区分使用已知最优值的基准算法和可计算下界的实际变体。",
+      "directions": [
+        "historical-information"
+      ],
+      "order": 4
+    },
+    {
+      "arxiv_id": "2611.14239",
+      "version": 1,
+      "title": "On Federated Averaging with Partial Participation under a General Variance Condition",
+      "authors": [
+        "Ziming Wang",
+        "Kun Huang",
+        "Karl Henrik Johansson",
+        "Shi Pu"
+      ],
+      "submitted": "2026-11-10",
+      "updated": "2026-11-10",
+      "arxiv_url": "https://arxiv.org/abs/2611.14239v1",
+      "abstract": "In this paper, we study the convergence of Federated Averaging (FedAvg) with partial participation under a general variance condition. In each communication round, the server samples $S$ of the $n$ clients uniformly at random without replacement. The stochastic gradients are assumed to satisfy the so-called ABC condition, which allows their variance to grow with the local objective gaps. For smooth nonconvex objectives, we establish a finite-time stationarity bound in terms of the heterogeneity measure $\\sigma_f^\\star:=f^\\star-\\frac{1}{n}\\sum_{i=1}^n f_i^\\star$ and the client sampling factor $I_S:=(n-S)/(n-1)$. Here, $f^\\star$ and $f_i^\\star$ denote the infima of the global average objective and client $i$'s local objective, respectively. The bound exhibits a linear speedup in the number of sampled clients $S$ and recovers the full-participation result when $S=n$. Under diminishing stepsizes, we further prove that the gradient norm converges to zero both in expectation and almost surely. Notably, compared with existing analyses of FedAvg with partial participation, our results require no additional data heterogeneity assumption such as bounded gradient dissimilarity (BGD), and the sampling-induced term in our bound is not amplified by the number of local updates at the leading order. The importance of removing the BGD assumption is illustrated by an example that is smooth and lower bounded but violates BGD, yet is covered by our analysis.",
+      "summary": "部分客户端参与使 FedAvg 同时受到随机梯度和客户端抽样两种误差影响，已有分析常要求有界方差及有界梯度差异。该文在局部目标光滑且下有界、随机梯度无偏并满足 ABC 方差条件时，以全局最优下界与各局部下界的差刻画异质性，避免额外的梯度差异假设。通过为所有客户端引入虚拟局部轨迹，作者分离两类随机性：噪声项显示参与数和局部步数的线性加速，客户端采样项由参与比例控制，其领先项不再随局部步数放大。结果针对每轮均匀无放回抽样；适当递减步长下还证明末次梯度范数在期望及几乎处处意义下趋零，并给出违反传统异质性假设而仍被本分析覆盖的例子。",
+      "reason": "推荐阅读虚拟轨迹和基于函数差的异质性控制，它直接涉及局部随机更新与通信轮数的权衡。特别值得区分两类误差的不同缩放，避免把局部计算增加理解成所有误差项都按同一比例改善。",
+      "directions": [
+        "distributed",
+        "stochastic"
+      ],
+      "order": 5
+    },
+    {
+      "arxiv_id": "2611.13872",
+      "version": 1,
+      "title": "LongTails: Automated Research in Optimization",
+      "authors": [
+        "Alexander Tyurin",
+        "QuocViet Pham",
+        "Valentin Khrulkov",
+        "Ivan Oseledets"
+      ],
+      "submitted": "2026-11-10",
+      "updated": "2026-11-10",
+      "arxiv_url": "https://arxiv.org/abs/2611.13872v1",
+      "abstract": "We introduce LongTails, a framework for discovering and improving oracle-complexity bounds with formal verification in Lean 4. Using LongTails, we have already obtained more than 100 new results across a broad range of optimization problems, including generalized smoothness, heavy-tailed noise, finite-sum and composite optimization, and higher-order and zeroth-order methods. Our goal is to scale discovery and continually develop new methods with non-trivial and valuable theoretical guarantees using modern agentic systems. The framework is specialized for optimization, where we separate a Setup, specifying the problem class, assumptions, available information, and success criterion, from a Complexity, specifying a sufficient oracle-call budget. Once a Setup is fixed (e.g., $L$-smooth convex optimization with the goal of finding $x_{\\mathrm{out}}$ such that $f(x_{\\mathrm{out}}) - f(x^\\star) \\leq \\varepsilon$), agents search for better Complexities (e.g., $O(\\sqrt{L R^2 / \\varepsilon})$, where $R \\geq \\|x_0 - x^\\star\\|$) by designing algorithms and proving their convergence. The framework then checks the proofs and guarantees that every accepted Complexity can indeed be attained under the given Setup. This turns the search for new methods into an ongoing effort to improve their theoretical guarantees. To the best of our knowledge, LongTails is the first framework to scale automated research in optimization across such a broad range of problems with formally verified theoretical guarantees.",
+      "summary": "自动生成优化算法的困难不仅在于证明能否通过，还在于算法是否只使用允许的信息、复杂度是否对应同一问题设定。该文提出 LongTails，将问题类、预言机、公开参数和成功指标固定为 Lean 4 的 Setup，再以 Convergence 命题验证某个算法可在指定预算内完成任务；算法构造先于隐藏实例和预言机量化，检查器排除未完成证明及不允许的公理。作为具体例子，作者结合局部曲率估计与加速阻尼，在凸广义光滑问题中改善梯度复杂度对梯度增长参数的依赖，并消除相应既有界中的精确线搜索成本。形式检查保证固定设定下的可达性；设定是否合理、相对文献是否新颖仍由人工复核，不能把证明通过等同于实验加速。",
+      "reason": "推荐把它作为预言机模型与复杂度陈述的形式化方法来读。固定设定后比较预算的接口，以及广义光滑示例中的可审查算法，提供了超出自动写证明的优化研究工具价值。",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "order": 6
+    },
+    {
+      "arxiv_id": "2611.14319",
+      "version": 1,
+      "title": "A New Computational Model for the Spin-Free Sum-of-Squares Energy Bounds of Electronic Hamiltonian",
+      "authors": [
+        "Yuming Bao",
+        "Yancheng Wu",
+        "Dongdong Ge",
+        "Yinyu Ye"
+      ],
+      "submitted": "2026-11-10",
+      "updated": "2026-11-10",
+      "arxiv_url": "https://arxiv.org/abs/2611.14319v1",
+      "abstract": "Optimizing spin-free sum-of-squares (SOS) energy bounds for electronic Hamiltonians leads to semidefinite programs whose expanded size grows rapidly with the orbital dimension. We derive an exact reformulation of an established spin-free SOS model as a convex quadratic problem over a single symmetric matrix constrained between zero and the identity. Explicit recovery maps connect feasible quadratic-program iterates to certificates in the original SOS formulation, and identify the Frank--Wolfe gap with the separation between recovered primal and dual objectives. We implement the quadratic action through GPU-accelerated Coulomb contractions and solve the reformulated problem using a cached implementation of fully corrective Frank--Wolfe, referred to here as the dimension-reduced simplicial method (DRSM) that caches operator products and optimizes convex-combination weights in a small corrective quadratic program. Numerical experiments cover 65 FCIDUMP models, molecular geometries, and regular hydrogen rings, including original-coordinate recovery checks on nine instances and comparisons with FISTA and a boundary-point SDP solver. On eight H100 GPUs, a cold-start calculation for C$_{720}$ with 10,080 spatial orbitals reaches a freshly recomputed Frank--Wolfe gap of $8.82\\times10^{-9}$ hartree in 5.02 hours. Full-space hydrogen-ring calculations reach 10,000 orbitals, with cyclic reduction providing further computational savings. These results show how exact reformulation, data structure exploitation and reuse of Coulomb actions make optimization of the selected large-scale SOS relaxation practical.",
+      "summary": "电子 Hamiltonian 的某一类无自旋平方和下界会产生庞大的半定规划。该文针对指定的实数、无权五块 SOS 模型，利用对称轨道对坐标和半正定矩阵的值域条件精确消去冗余变量，在系数对称、二体算子半正定的条件下，化为单个矩阵满足谱盒约束的凸二次规划。任一可行矩阵都能恢复原 SOS 证书，Frank–Wolfe 间隙恰好给出恢复后的原始对偶目标间隔。作者据此实现缓存 Coulomb 算子作用的完全校正 Frank–Wolfe，在小型权重子问题中复用昂贵计算，并报告大轨道规模实验。该间隔认证的是所选 SOS 松弛的优化误差；其下端才构成基态能量下界，不代表求得真实基态能量。",
+      "reason": "值得读精确消元、可行证书恢复和停止准则之间的闭环，而非仅看 GPU 规模。它示范了如何把专门 SDP 的代数结构转化为标准谱盒上的一阶算法，同时保留原问题坐标中的认证能力。",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "order": 7
+    },
+    {
+      "arxiv_id": "2611.13916",
+      "version": 1,
+      "title": "Dual-Space Preconditioning for Variational Inequalities and Root-Finding Problems",
+      "authors": [
+        "Jan Quan",
+        "Konstantinos Oikonomidis",
+        "Alexander Bodard",
+        "Panagiotis Patrinos"
+      ],
+      "submitted": "2026-11-10",
+      "updated": "2026-11-10",
+      "arxiv_url": "https://arxiv.org/abs/2611.13916v1",
+      "abstract": "This paper develops a dual-space preconditioning framework for variational inequalities and root-finding problems beyond classical cocoercivity and Lipschitz continuity assumptions. To this end, we introduce both a novel cocoercivity-type condition and a relaxed Lipschitz continuity condition, and derive convergence of deterministic and stochastic methods under these generalized conditions. For isotropic preconditioners, the resulting algorithms can be interpreted as variable-stepsize variants of classical methods, extending recent analyses based on $(L_0, L_1)$-type growth conditions while allowing simpler proofs and larger stepsize ranges. We also show that the framework naturally handles variational inequalities through weak Minty-type arguments. Finally, we study the associated continuous-time dynamics and derive a variational and optimal control interpretation of the preconditioned flow. Overall, the results show that dual-space preconditioning provides a flexible mechanism for designing and analyzing operator methods beyond the standard Euclidean Lipschitz setting.",
+      "summary": "变分不等式和求根算法通常依赖全局 Lipschitz 连续性或余强单调性，而实际算子可能具有随位置增长的局部尺度。该文引入与非线性双空间预条件相适应的广义余强单调和 K-Lipschitz 条件，统一分析前向、外梯度及乐观梯度方法。各向同性预条件可解释为变步长，并允许更强的末次残差和步长保证；一般预条件不能直接享有这些性质。外梯度扩展在相应弱 Minty 条件下成立，单调问题可使用预条件 OGDA；随机版本则用较大批量控制非线性预条件造成的偏差。作者还通过 Fitzpatrick 函数给出连续流的变分及最优控制解释。",
+      "reason": "值得阅读的是预条件、增长型光滑条件与弱 Minty 分析如何相互匹配。它把非线性预条件从函数梯度推进到一般算子，并明确哪些结论依赖各向同性，适合用作设计自适应 VI 方法的分析框架。",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "order": 8
+    },
+    {
+      "arxiv_id": "2611.14282",
+      "version": 1,
+      "title": "From Worst-Case to Smoothed Complexity in Continuous Optimization",
+      "authors": [
+        "Daniel Cortild",
+        "Coralia Cartis"
+      ],
+      "submitted": "2026-11-10",
+      "updated": "2026-11-10",
+      "arxiv_url": "https://arxiv.org/abs/2611.14282v1",
+      "abstract": "Worst-case complexity bounds often fail to reflect the practical performance of optimization algorithms, while average-case complexity heavily relies on the distribution of the input. In this work, we develop a smoothed-analysis framework for classical continuous optimization algorithms by studying their behaviour on random perturbations of arbitrary functions. Our main contribution is to apply methods suited for non-degenerate functions to perturbations of degenerate functions, thereby recovering the faster best-known rates for the non-degenerate class. We derive smoothed complexity guarantees for several standard methods, including (Accelerated) Gradient Descent, Conjugate Gradient, and Newton-type methods, under various settings including nonconvex ones, and show that these bounds can substantially improve upon their worst-case guarantees, bringing them closer to the practical behaviour of the respective methods.",
+      "summary": "最坏情形的退化目标常使经典优化方法只有较慢保证。该文采用平滑分析：对任意基准函数加入以固定中心为基点、Wishart 随机矩阵生成的正定二次扰动，再研究扰动目标的期望复杂度。随机矩阵极端特征值的矩估计把原本依赖病态条件数的界转化为可控的平均界，覆盖梯度下降、Nesterov 加速、共轭梯度、立方正则 Newton 及若干 Gauss–Newton 情形。例如，在矩阵维度比例保持于非退化区间的高维设置中，凸光滑目标的扰动版本可获得对精度呈对数依赖的梯度下降复杂度，常数仍依赖扰动幅度。所有结论针对扰动后的函数；回到原目标时须计入二次项引入的偏差，非凸部分也有径向单调等额外条件。",
+      "reason": "推荐关注把函数退化性、随机矩阵条件数和算法复杂度连起来的统一分析方法。它提供一种解释最坏界与典型表现差异的明确数学模型，也使改善速度所支付的扰动偏差可以被单独审视。",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "order": 9
+    },
+    {
+      "arxiv_id": "2611.13201",
+      "version": 1,
+      "title": "RALES: A Risk-Averse Augmented Lagrangian Equality-Constrained SQP Method",
+      "authors": [
+        "Harbir Antil",
+        "Drew P. Kouri",
+        "Denis Ridzal",
+        "Thomas M. Surowiec"
+      ],
+      "submitted": "2026-11-09",
+      "updated": "2026-11-09",
+      "arxiv_url": "https://arxiv.org/abs/2611.13201v1",
+      "abstract": "This paper develops RALES, an augmented Lagrangian method for risk-averse optimization in function spaces with nonsmooth risk measures, nonlinear equality constraints, and convex geometric constraints. The method combines safeguarded risk and constraint multiplier updates with efficient sequential quadratic programming based on inexact subproblem solves. The analysis establishes asymptotic stationarity for nonconvex problems and gives conditions for feasibility of weak primal accumulation points. Under additional assumptions on subproblem accuracy, duality, and boundedness, it provides global primal optimality guarantees and weak convergence of the full stored and candidate multiplier sequences to a common dual maximizer. Dual convergence is strong when all penalty parameters remain bounded. Numerical experiments for a finitely sampled semilinear PDE control problem, with the Conditional Value-at-Risk and the Mean-Plus-Semideviation risk measures, illustrate the method's performance as the spatial mesh is refined and as the number of samples increases.",
+      "summary": "非光滑风险度量与显式非线性等式同时出现时，先消去状态变量往往需要昂贵的精确状态求解。该文提出 RALES，在函数空间中联合构造风险项和几何约束的光滑增广 Lagrangian，用带保护的乘子更新与可不精确求解的等式约束子问题结合，推荐采用全空间 SQP 同时改进状态和控制。在相应正则性、有界性及一阶内层停止条件下，分析得到等式残差消失和渐近变分不等式，并另给弱聚点几何可行性的条件。全局原始最优性需要更强的精确等式可行及近似全局子问题求解；完整对偶序列的弱收敛还要求极小极大恒等式、候选乘子有界及加权内层误差可和。不能把后两类结论直接归于一般局部 SQP 实现。",
+      "reason": "值得读风险乘子与约束乘子的统一接口，以及一阶驻点分析和全局原始对偶分析为何需要分层。它提供一种处理非光滑风险与函数空间约束的算法框架，并把内层求解精度与外层保证对应起来。",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "order": 10
+    },
+    {
+      "arxiv_id": "2509.16915",
+      "version": 2,
+      "title": "Differential Privacy for Euclidean Jordan Algebra with Applications to Private Symmetric Cone Programming",
+      "authors": [
+        "Zhao Song",
+        "Jianfei Xue",
+        "Lichen Zhang"
+      ],
+      "submitted": "2025-09-21",
+      "updated": "2026-11-10",
+      "arxiv_url": "https://arxiv.org/abs/2509.16915v2",
+      "abstract": "In this paper, we study differentially private mechanisms for functions whose outputs lie in a Euclidean Jordan algebra. Euclidean Jordan algebras capture many important mathematical structures and form the foundation of linear programming, second-order cone programming, and semidefinite programming. Our main contribution is a generic Gaussian mechanism for such functions, with sensitivity measured in $\\ell_2$, $\\ell_1$, and $\\ell_\\infty$ norms. Notably, this framework includes the important case where the function outputs are symmetric matrices, and sensitivity is measured in the Frobenius, nuclear, or spectral norm. We further derive private algorithms for solving symmetric cone programs under various settings, using a combination of the multiplicative weights update method and our generic Gaussian mechanism. As an application, we present differentially private algorithms for semidefinite programming, resolving a major open question posed by [Hsu, Roth, Roughgarden, and Ullman, ICALP 2014].",
+      "summary": "差分隐私凸规划的许多方法依赖线性规划结构，难以直接用于半定规划等对称锥问题。该文在欧氏 Jordan 代数中建立按不同谱范数度量灵敏度的 Gaussian 机制，再结合乘法权重更新构造多类私有对称锥算法。高灵敏度约束保护部分针对覆盖型问题，使用公开的最优值，允许一定数量约束发生受控的近似违反；低灵敏度标量、约束和目标保护则分别采用近似最违反约束预言机或目标扰动，并有相应的尺度与归一条件。矩阵情形的核范数、Frobenius 范数和谱范数被统一处理。该框架提供的是各邻接模型下的隐私与近似可行性保证，不能解读为任意 SDP 都能私有且完全可行地求解；当前版本也交代了后续研究在部分参数区间的改进。",
+      "reason": "推荐关注 Jordan 代数几何如何组织噪声机制和带噪预言机的锥优化。不同隐私模型对应不同可行性代价，这种分解有助于判断哪些优化算法接口能够在受扰信息下保留保证。",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "order": 11
+    },
+    {
+      "arxiv_id": "2611.14078",
+      "version": 1,
+      "title": "Decay rates for monotone operator flows in the space of probability measures",
+      "authors": [
+        "Radu Ioan Boţ",
+        "Alberto Domínguez Corella",
+        "Tr\\'ı Minh Lê"
+      ],
+      "submitted": "2026-11-10",
+      "updated": "2026-11-10",
+      "arxiv_url": "https://arxiv.org/abs/2611.14078v1",
+      "abstract": "Motivated by the mean-field dynamics of large populations of interacting agents, we study the long-time behavior of flows driven by monotone demicontinuous operators on the Wasserstein space. For cocoercive operators, we prove that the flow converges to a zero of the operator and that the operator residual and the metric speed decay as $o(t^{-1/2})$, so that the population comes to rest (the agents asymptotically stop moving). We also consider Tikhonov regularized flows of merely monotone demicontinuous operators and show that the operator residual and the metric speed tend to zero, with rate $O(1/t)$ when the Tikhonov parameter is $\\alpha/t$ with $\\alpha\\geq 1$, and that the trajectory converges to the zero of minimal second moment, which is a Dirac mass, so that the agents reach consensus (all agents reach the same point). Finally, we study a discrete analogue for nonexpansive operators and show that the generated sequence converges to the fixed point closest to a reference Dirac mass; this fixed point is again a Dirac mass, so that consensus is also reached under this scheme. The main arguments rely on a specially tailored superposition principle, which represents the flow as a curve in a fixed Hilbert space of random trajectories, where the crucial estimates are derived.",
+      "summary": "概率测度空间中的一般单调算子流不一定来自某个能量的梯度，单调性本身也不能排除持续旋转。该文构造将测度流表示为固定 Hilbert 空间中随机轨迹的叠加原理，进而研究算子残差、Wasserstein 度量速度和零点选择。余强单调且有零点时，残差和速度以小于时间平方根倒数的阶衰减，轨迹在二阶 Wasserstein 距离中收敛到某个零点，该极限未必是 Dirac 质量。对仅单调、半连续的算子，适当消失且不可积的 Tikhonov 正则化恢复渐近静止；反比时间的正则化系数取足够常数时，两种量均有反比时间界，并选择二阶矩最小的 Dirac 零点。文中还给出锚定离散不动点迭代的对应选择结果。",
+      "reason": "推荐关注叠加原理如何把随测度变化的空间问题转回熟悉的算子估计。对研究非梯度的群体下降上升和零点选择，这比仅把欧氏梯度流改写到 Wasserstein 空间提供了更广的分析入口。",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "order": 12
+    },
+    {
+      "arxiv_id": "2611.13383",
+      "version": 1,
+      "title": "Settling the Burn-in Gap: Sharp Risk Bounds for Tail-Averaged SGD in Linear Regression",
+      "authors": [
+        "Qingyue Zhao",
+        "Xuheng Li",
+        "Quanquan Gu"
+      ],
+      "submitted": "2026-11-10",
+      "updated": "2026-11-10",
+      "arxiv_url": "https://arxiv.org/abs/2611.13383v1",
+      "abstract": "We study the excess risk of constant-stepsize online stochastic gradient descent (SGD) with tail-averaging for high-dimensional linear regression. Building on the instance-dependent spectral framework of Zou et al. (2021), we establish matching initialization-explicit upper and lower bounds on the total excess risk of tail-averaged SGD in terms of the population covariance spectrum $\\mathbf{H}$ and initialization $\\mathbf{w}_0-\\mathbf{w}^*$ whenever a trajectory spectral feedback condition holds. Existing analyses exhibit a fundamental gap in the effective variance: the upper bound of Zou et al. (2021) retains an undamped contribution from the initial error in the head eigenspace $\\mathbf{I}_{0:k^\\dagger}$, whereas their lower bound omits the variance induced by the head initialization altogether. We show that both the existing upper and lower bounds are loose: the single-hop fast-mode variance contribution from the head initialization is exponentially damped during the burn-in phase, whereas fourth-moment energy scattered from the head initialization into slow spectral modes during the early burn-in steps survives undamped into the averaging window. We prove that our spectral feedback condition is satisfied in two concrete constant-stepsize regimes: (i) for arbitrary covariance spectra $\\mathbf{H}$ and any finite horizon, under an explicit horizon-dependent stepsize chosen prior to execution; and (ii) for polynomially decaying spectra $\\lambda_i\\asymp i^{-a}$ ($a>1$), under a single horizon-independent positive stepsize. Finally, we complement these positive results with explicit one- and two-dimensional separation constructions proving an exponential-versus-polynomial gap in the lower bound of Zou et al. (2021) and showing why fourth-moment assumptions alone cannot determine the asymptotic exponential decay rate without additional structural conditions.",
+      "summary": "尾平均 SGD 舍弃初始一段迭代以消除初始化影响，但在线线性回归的已有谱风险上下界在快谱模态初始化上并不匹配。该文指出两端都需修正：初始化引发的单次快模态方差会随预热指数衰减，而预热早期经四阶矩散射到慢模态的能量可能保留到平均窗口。作者以精确轨迹算子恒等式和谱反馈比控制反复模态交互，在反馈比严格小于一时得到显式依赖初始化的匹配总风险界；下界还使用正确设定线性模型及四阶矩下界。任意谱的有限时域可用预先依赖时域的小常步长保证反馈条件，多项式衰减谱则允许统一的不依赖时域步长。低维分离例子进一步表明，仅凭常见二阶与四阶矩常数不足以决定精确的指数衰减行为。",
+      "reason": "推荐阅读快慢谱模态间的初始化能量转移，以及额外反馈条件如何进入匹配界。它提供了分析预热、常步长和尾平均相互作用的具体机制，避免把丢弃早期迭代等同于完全消除初始误差。",
+      "directions": [
+        "stochastic",
+        "historical-information"
+      ],
+      "order": 13
+    },
+    {
+      "arxiv_id": "2611.13905",
+      "version": 1,
+      "title": "An Accelerated Dynamic Stochastic Primal-Dual Method for Multi-stage Stochastic Optimization",
+      "authors": [
+        "Bin Zhou",
+        "Zhiyun Guo",
+        "Hailin Sun",
+        "Qi Deng"
+      ],
+      "submitted": "2026-11-10",
+      "updated": "2026-11-10",
+      "arxiv_url": "https://arxiv.org/abs/2611.13905v1",
+      "abstract": "We consider multi-stage stochastic optimization problems with smooth convex stage costs and linear linking constraints. Dynamic stochastic approximation (DSA), a stochastic first-order method, uses a recursive structure whose memory requirement grows only linearly with the number of stages. Its implementation, however, requires an exact solution of the proximal subproblem associated with the stage cost, and this subproblem often admits no closed-form solution. To resolve this issue, we develop an accelerated dynamic stochastic primal-dual (A-DSPD) framework that retains the recursive value-function structure and only requires the gradient of the stage cost. Within this framework, each stagewise saddle-point subproblem is solved by an inexact accelerated stochastic primal-dual method (iASPD), which applies Nesterov acceleration to the smooth stage cost and uses recursively generated stochastic $\\epsilon$-subgradients for the nonsmooth downstream value function. For the stochastic composite saddle-point problem, after $N$ primal-dual updates, iASPD yields optimality and feasibility bounds in which the contribution of the smooth stage cost decays at a faster rate $O(1/N^2)$, while the terms associated with stochastic $\\epsilon$-subgradients of the nonsmooth value function decay as $O(1/\\sqrt{N})$, up to the prescribed oracle inexactness. We also develop bounds for the stochastic $\\epsilon$-subgradient estimators and the dual iterates, which yield complexity guarantees for A-DSPD. Specifically, A-DSPD computes an $\\epsilon$-solution using $O(1/\\epsilon^4)$ sampled scenarios and $O(1/\\epsilon^5)$ primal-dual updates for three-stage problems. We further extend the method and its convergence analysis to problems with an arbitrary finite number of stages. Numerical experiments on three-stage stochastic portfolio models illustrate the empirical advantage of the proposed method.",
+      "summary": "多阶段随机优化的动态随机逼近需要反复计算阶段代价的精确近端子问题，实际代价往往没有闭式近端映射。该文提出 A-DSPD，保留递归值函数和单条情景路径的组织方式，以不精确加速随机原始对偶迭代线性化光滑阶段代价，并由后续阶段生成随机近似次梯度。单阶段界把光滑部分的加速项与下游随机非光滑部分的平方根阶项分开。紧凸决策集、均匀光滑性、有界数据和统一有界的最优乘子选择等条件下，三阶段达到给定期望最优性与可行性精度需要精度倒数四次方阶的情景样本及五次方阶的原始对偶更新。加速改善的是内层光滑贡献，不把整体嵌套样本率改成确定性加速率。",
+      "reason": "推荐关注递归随机预言机误差如何与加速原始对偶势函数兼容，以及如何用梯度代替昂贵的阶段代价近端运算。样本数和更新数被分别计量，适合研究多层不精确随机优化的计算成本。",
+      "directions": [
+        "stochastic"
+      ],
+      "order": 14
+    },
+    {
+      "arxiv_id": "2611.13137",
+      "version": 1,
+      "title": "Byzantine-Robust Muon: Resilient Momentum Orthogonalization for Distributed Learning",
+      "authors": [
+        "Grigory Malinovsky",
+        "Yury Demidovich",
+        "Peter Richtárik"
+      ],
+      "submitted": "2026-11-09",
+      "updated": "2026-11-09",
+      "arxiv_url": "https://arxiv.org/abs/2611.13137v1",
+      "abstract": "Optimization methods, including the Muon optimizer based on the Linear Minimization Oracle (LMO) and momentum orthogonalization, have shown strong empirical performance in large-scale and distributed learning, yet their robustness to adversarial behavior and data heterogeneity is not well understood. We study these methods within a unified first-order trust-region framework and analyze Muon-based updates with robust aggregation for Byzantine-robust distributed and federated learning. Our analysis does not rely on the i.i.d. assumption and introduces a non-Euclidean notion of heterogeneity consistent with the trust-region geometry. Under this framework, we establish convergence guarantees for both general non-convex and star-convex objectives. Our results provide a theoretical characterization of Byzantine-robust Muon-based optimization, with an additive heterogeneity error floor consistent with known impossibility results, under explicit aggregation assumptions. Under an explicit additive oracle-error condition, the guarantees also cover inexact orthogonalization, with the non-convex Byzantine terms in the bound's numerator unchanged but a smaller progress denominator. In simulated federated training with ResNet-18 and ViT-Tiny on CIFAR-10, additional image benchmarks, and a 38M-parameter byte-level language model on TinyStories, the tested Muon configuration attains higher attacked accuracy (lower perplexity) than the tested SGD and normalized-SGD configurations, and than sign updates on CIFAR-10. Fixed-honest controls further show a substantial RFA advantage over averaging under a bounded RFA-query attack, higher attacked accuracy for Muon-NS than tensorwise Euclidean normalization from shared checkpoints, and lower held-out TinyStories perplexity than a tuned AdamW baseline.",
+      "summary": "Muon 在矩阵谱几何中对动量作正交化，但分布式训练里异质的正常客户端更新与恶意更新难以区分。该文把客户端动量的鲁棒聚合与非欧氏信赖域线性最小化结合，在与更新几何一致的对偶范数中定义一阶矩聚合误差和相对异质性，分析非凸及星凸目标。非凸结果在相应光滑、噪声、聚合条件及污染与异质性乘积足够小时，控制平均或随机输出的梯度对偶范数，并保留无法靠调步长消除的异质性误差底；它不是末次迭代驻点保证。带权衰减的星凸版本给出到噪声邻域的线性收缩。对不精确正交化，文中使用显式的加性线性预言机误差模型：进展分母变小，允许的污染条件也收紧，因此不能声称总体对抗误差完全不受影响。",
+      "reason": "推荐关注鲁棒聚合应在哪个范数中控制误差，以及客户端动量如何降低随机噪声却保留持续异质性。它把非欧氏优化几何与分布式非独立同分布分析连接起来，并明确区分算法经验优势与条件化的理论保证。",
+      "directions": [
+        "distributed",
+        "stochastic"
+      ],
+      "order": 15
+    }
+  ]
+}
