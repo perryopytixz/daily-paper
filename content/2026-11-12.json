@@ -1,0 +1,92 @@
+{
+  "date": "2026-11-12",
+  "status": "complete",
+  "frontiers_status": "recommendations",
+  "highlights": [
+    {
+      "arxiv_id": "1805.09639",
+      "label": "把历史外推接入多步算法，并量化扰动放大",
+      "text": "历史补读：在线 RNA 将残差组合与多步迭代统一分析，并通过正则化控制系数。对称收缩线性模型有 Chebyshev 型残差界；非线性最优加速是适当调参下的局部渐近结论，保护策略另需有效参数。",
+      "types": [
+        "group"
+      ]
+    },
+    {
+      "arxiv_id": "1511.05932",
+      "label": "用多面体几何统一 Frank–Wolfe 线性收敛",
+      "text": "历史补读：以 pyramidal width 分离函数与可行域的条件数，统一 away-step、pairwise、完全修正等变体的线性分析。有效下降步不等于总迭代；pairwise 换点步和完全修正的内层成本须分别计入。",
+      "types": [
+        "field"
+      ]
+    },
+    {
+      "arxiv_id": "2006.00558",
+      "label": "解释稀疏最优解何时真正带来维数收益",
+      "text": "历史补读：低维最优面本身仍可能需要 $\\Omega(d)$ 次预言机调用。加入严格互补性与二次增长后，原 away-step FW 经定量过渡阶段获得按最优面维数控制的线性率，并能有限识别该面。",
+      "types": [
+        "field"
+      ]
+    }
+  ],
+  "papers": [
+    {
+      "arxiv_id": "1805.09639",
+      "version": 2,
+      "title": "Online Regularized Nonlinear Acceleration",
+      "authors": [
+        "Damien Scieur",
+        "Edouard Oyallon",
+        "Alexandre d'Aspremont",
+        "Francis Bach"
+      ],
+      "submitted": "2018-05-24",
+      "updated": "2019-06-21",
+      "abstract": "Regularized nonlinear acceleration (RNA) estimates the minimum of a function by post-processing iterates from an algorithm such as the gradient method. It can be seen as a regularized version of Anderson acceleration, a classical acceleration scheme from numerical analysis. The new scheme provably improves the rate of convergence of fixed step gradient descent, and its empirical performance is comparable to that of quasi-Newton methods. However, RNA cannot accelerate faster multistep algorithms like Nesterov's method and often diverges in this context. Here, we adapt RNA to overcome these issues, so that our scheme can be used on fast algorithms such as gradient methods with momentum. We show optimal complexity bounds for quadratics and asymptotically optimal rates on general convex minimization problems. Moreover, this new scheme works online, i.e., extrapolated solution estimates can be reinjected at each iteration, significantly improving numerical performance over classical accelerated methods.",
+      "arxiv_url": "https://arxiv.org/abs/1805.09639v2",
+      "directions": [
+        "historical-information",
+        "optimization-frontiers"
+      ],
+      "summary": "历史补读。直接把原始 RNA 套在 Nesterov 等多步算法上，外推可能失稳；关键在于如何同时使用历史迭代点与基算法的更新关系。该文将基算法写成一致的多项式迭代类，用残差矩阵求带正则或系数范数约束的组合，再引入混合参数构造外推点，使外推结果可以回灌到后续迭代。对于对称半正定、谱落在 $[0,1-\\kappa]$ 的线性收缩映射，无正则化情形得到 Chebyshev 型残差界；在线递推还要求最后一个组合系数非零。对非线性或含噪迭代，作者把误差分解为受约束多项式控制的加速项和由系数范数放大的扰动项。光滑强凸且 Hessian Lipschitz 时，局部二阶线性化误差配合适当减小的正则化，可渐近恢复线性模型的加速率。另给出与 Nesterov 步比较的保护策略，在提供有效光滑性和强凸性参数时继承相应最坏情形保证；一般非凸网络训练主要由实验展示。",
+      "reason": "推荐重点阅读多步迭代的多项式表示、RNA／CNA 的等价参数化，以及“加速收益加扰动放大”的误差分解。它直接回答历史残差组合为何不能简单附加在已有动量上，也提供了控制组合系数和回灌外推的可分析方式。与只给最终后处理估计的原始 RNA 相比，在线闭环和更清楚的稳定性权衡构成独立进展；与此前推荐的全局保护型 Anderson 工作相配合，可对照研究局部加速率、保护条件和实际有限记忆实现之间的距离。",
+      "order": 1
+    },
+    {
+      "arxiv_id": "1511.05932",
+      "version": 1,
+      "title": "On the Global Linear Convergence of Frank-Wolfe Optimization Variants",
+      "authors": [
+        "Simon Lacoste-Julien",
+        "Martin Jaggi"
+      ],
+      "submitted": "2015-11-18",
+      "updated": "2015-11-18",
+      "abstract": "The Frank-Wolfe (FW) optimization algorithm has lately re-gained popularity thanks in particular to its ability to nicely handle the structured constraints appearing in machine learning applications. However, its convergence rate is known to be slow (sublinear) when the solution lies at the boundary. A simple less-known fix is to add the possibility to take 'away steps' during optimization, an operation that importantly does not require a feasibility oracle. In this paper, we highlight and clarify several variants of the Frank-Wolfe optimization algorithm that have been successfully applied in practice: away-steps FW, pairwise FW, fully-corrective FW and Wolfe's minimum norm point algorithm, and prove for the first time that they all enjoy global linear convergence, under a weaker condition than strong convexity of the objective. The constant in the convergence rate has an elegant interpretation as the product of the (classical) condition number of the function with a novel geometric quantity that plays the role of a 'condition number' of the constraint set. We provide pointers to where these algorithms have made a difference in practice, in particular with the flow polytope, the marginal polytope and the base polytope for submodular optimization.",
+      "arxiv_url": "https://arxiv.org/abs/1511.05932v1",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "summary": "历史补读。经典 Frank–Wolfe 在边界最优解附近会出现锯齿式慢收敛，已有 away-step 的局部结果又可能依赖最优解到边界的距离。该文统一分析 away-step、pairwise、fully-corrective 及 Wolfe 最小范数点变体，引入 pyramidal width 刻画有限原子集的几何退化程度。对光滑强凸目标在紧多面体上的优化，目标误差在有效下降步上按 $h_{t+1}\\leq(1-\\rho)h_t$ 收缩，其中 $\\rho=\\frac{\\mu}{4L}(\\delta/D)^2$，$\\delta$ 为 pyramidal width，$D$ 为直径。完全修正变体每个外层步均有效，away-step 和最小范数点变体可控制删点步比例；pairwise 还存在换点步，文中只给出了依赖原子数阶乘的保守计数，不能据此认为四者有相同的总迭代复杂度。全局线性结论也推广到强凸函数与线性映射复合再加线性项的一类非强凸目标。定理按线性优化预言机及规定的修正过程成立，完全修正的内层开销需单独计入。",
+      "reason": "最值得阅读的是将目标条件数与可行域几何条件数分离的证明，以及把有效步收缩转化为真实迭代保证时对删点、换点的分别计数。它为比较投影自由方法提供了统一标尺，也解释了仅有强凸性为何不足以让原始 FW 在一般多面体上自动加速。近期 SDP、SOS 恢复算法中出现完全修正 FW 时，可据此检查有限原子、多面体结构和修正精度是否真正满足理论条件，再区分外层预言机次数与完整求解成本。",
+      "order": 2
+    },
+    {
+      "arxiv_id": "2006.00558",
+      "version": 4,
+      "title": "Revisiting Frank-Wolfe for Polytopes: Strict Complementarity and Sparsity",
+      "authors": [
+        "Dan Garber"
+      ],
+      "submitted": "2020-05-31",
+      "updated": "2021-01-06",
+      "abstract": "In recent years it was proved that simple modifications of the classical Frank-Wolfe algorithm (aka conditional gradient algorithm) for smooth convex minimization over convex and compact polytopes, converge with linear rate, assuming the objective function has the quadratic growth property. However, the rate of these methods depends explicitly on the dimension of the problem which cannot explain their empirical success for large scale problems. In this paper we first demonstrate that already for very simple problems and even when the optimal solution lies on a low-dimensional face of the polytope, such dependence on the dimension cannot be avoided in worst case. We then revisit the addition of a strict complementarity assumption already considered in Wolfe's classical book \\cite{Wolfe1970}, and prove that under this condition, the Frank-Wolfe method with away-steps and line-search converges linearly with rate that depends explicitly only on the dimension of the optimal face. We motivate strict complementarity by proving that it implies sparsity-robustness of optimal solutions to noise.",
+      "arxiv_url": "https://arxiv.org/abs/2006.00558v4",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "summary": "历史补读。最优解落在低维面上，是否就足以消除 Frank–Wolfe 类算法对环境维数的依赖？该文先构造下闭单纯形上的二次目标：即使唯一最优解是顶点，按定义每轮调用一次线性预言机并组合已见原子的算法，在最坏预言机选择下仍需 $\\Omega(d)$ 步才能突破指定精度。作者随后加入严格互补性，即最优面外顶点在最优梯度下具有统一正间隔，并证明它带来小梯度扰动下最优面保持的性质。在光滑凸目标、二次增长和严格互补性下，对原有 away-step FW 加精确线搜索给出新的分析：经过定量过渡阶段，线性率中的显式维数因子由环境维数换成最优面维数；进一步有限识别该面后，可将直径替换为最优面直径。速率仍含面几何、增长常数和互补间隔等量，不是无条件的维数无关结论。最优面为单点顶点时还给出有限步收敛界。",
+      "reason": "推荐把反例、严格互补性和最优面识别连起来阅读：稀疏最优解本身并不保证稀疏复杂度，必须补充能排除错误原子的结构。该文在不更换 away-step 算法、不增加专用预言机的情况下，说明何种条件让局部有效维数进入复杂度。与本日统一线性收敛论文相比，这项结果补上了几何常数隐藏维数依赖的机制认识；其扰动稳定性结论也使额外假设有了可检验的意义。",
+      "order": 3
+    }
+  ]
+}
