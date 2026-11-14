@@ -1,0 +1,435 @@
+{
+  "date": "2026-11-14",
+  "status": "complete",
+  "frontiers_status": "recommendations",
+  "highlights": [
+    {
+      "arxiv_id": "2611.17164",
+      "types": [
+        "field"
+      ],
+      "label": "二阶几何排除解映射的局部分叉",
+      "text": "在可定义、prox-regular 等条件下，作者用二阶次导数刻画度量正则性何时升级为强度量正则性，并证明只在线性部分检验非负曲率即可。这解决了相应猜想的可定义情形，为局部唯一性与稳定性分析提供新工具。"
+    },
+    {
+      "arxiv_id": "2503.20142",
+      "types": [
+        "field"
+      ],
+      "label": "半定规划 ADMM 的线性率摆脱非退化条件",
+      "text": "当实际收敛的 KKT 解严格互补时，作者证明 ADMM 局部 R 线性收敛，无须非退化性。新的半正定锥投影误差界区分谱子空间，解释退化实例仍能达到高精度及接近失去严格互补时的减速。"
+    },
+    {
+      "arxiv_id": "2604.02747",
+      "types": [
+        "field"
+      ],
+      "label": "等式约束三次规划同时控制三类精度",
+      "text": "法向恢复、切向三次正则化和二阶校正相结合，在一致满秩及导数正则条件下，以 $O(\\max\\{\\varepsilon_g^{-3/2},\\varepsilon_c^{-1},\\varepsilon_H^{-3}\\})$ 次外迭代达到近似二阶 KKT 点，兼顾可行性与曲率复杂度。"
+    },
+    {
+      "arxiv_id": "2611.15748",
+      "types": [
+        "field"
+      ],
+      "label": "局部价格稳定性推广一般单调范数优化",
+      "text": "一般单调范数下，旧有 KL 投影的全局收缩会失效。作者改用镜像下降的局部收缩与随机客户调度，以近线性的预言机调用量获得乘法近似；实现成本仍包含各次 KL 投影。"
+    },
+    {
+      "arxiv_id": "2605.15314",
+      "types": [
+        "field"
+      ],
+      "label": "归一化历史估计器应对随距离增长的噪声",
+      "text": "在 BG-0 噪声和无界定义域上，归一化动量以单样本更新达到 $O(\\varepsilon^{-6})$ 复杂度；均方光滑下，带初始化批次的归一化 STORM 达到 $O(\\varepsilon^{-4})$。两者匹配对应下界，揭示稳定化不必依赖逐步增大的批量。"
+    },
+    {
+      "arxiv_id": "2611.17026",
+      "types": [
+        "group"
+      ],
+      "label": "历史外推实现原始—对偶分项最优复杂度",
+      "text": "ATPD 将历史梯度外推与约束空间预条件结合，在强凸及满射条件下分别达到梯度调用和矩阵乘法的已知复杂度下界阶。关键是固定线性 SPD 近似逆的谱误差要求；一般残差停止尚不在该定理覆盖内。"
+    },
+    {
+      "arxiv_id": "2610.20420",
+      "types": [
+        "group"
+      ],
+      "label": "双惯性新版用回退保留加速权重",
+      "text": "v3 新增 DI-FS，不重启而通过双子步消化能量漂移，并证明回退有限终止。外层有 $O(N^{-2})$ 目标差，但总近端调用一般仅保证 $O(T^{-1})$；累计回退成本线性时才得到 $O(T^{-2})$。"
+    },
+    {
+      "arxiv_id": "2611.16871",
+      "types": [
+        "group"
+      ],
+      "label": "三序列平均结合本地准全局动量",
+      "text": "DPA 用历史混合迭代构造动量，在固定图和有界噪声、异质性条件下控制非凸去中心化训练误差。标准算法每轮两次混合，单通信轮变体主要有实验支持；两者都无须传输额外动量跟踪变量。"
+    }
+  ],
+  "papers": [
+    {
+      "arxiv_id": "2611.17164",
+      "version": 1,
+      "title": "From Metric to Strong Metric Regularity: A Second Subderivative Criterion for Definable Prox-regular Subdifferentials",
+      "authors": [
+        "Wenqing Ouyang",
+        "Andre Milzarek"
+      ],
+      "submitted": "2026-11-12",
+      "updated": "2026-11-12",
+      "arxiv_url": "https://arxiv.org/abs/2611.17164v1",
+      "abstract": "We investigate when metric regularity of a subdifferential mapping rules out multiple local inverse branches and therefore upgrades to strong metric regularity. Let $h:\\mathbb{R}^n\\to(-\\infty,\\infty]$ be proper, lower semicontinuous, definable, prox-regular, and subdifferentially continuous at $(\\bar x,\\bar v)\\in\\operatorname{gph}(\\partial h)$. We characterize this ``upgrade'' through the second subderivative $q = \\mathrm{d}^2h(\\bar x|\\bar v)$ of $h$. If $\\partial h$ is metrically regular, then it is strongly metrically regular if and only if the set of negative curvature directions of $q$ on the unit sphere of $\\operatorname{span}(\\operatorname{dom}(q))$ has Euler characteristic $0$ or $2$. We also prove a simpler and directly verifiable sufficient condition: nonnegativity of $q$ on the lineality space $\\operatorname{dom}(q)\\cap(-\\operatorname{dom}(q))$ forces a quadratic lower bound for $q$ on its entire domain and hence yields strong metric regularity. In particular, if $\\bar x$ is a local minimizer and $\\bar v=0$, the second subderivative is nonnegative on its domain $\\operatorname{dom}(q)$, which proves a conjecture of Drusvyatskiy, Mordukhovich, and Nghia in the definable setting. The derived principle strengthens this conjecture by replacing local minimality with a weaker second-order condition on the lineality space.",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "summary": "度量正则性允许扰动后的解映射出现多个局部分支，而强度量正则性要求局部单值且 Lipschitz。该文对可定义、下半连续、prox-regular 且次微分连续的函数，用二阶次导数的负曲率方向集合刻画两者之间的差距：在已有度量正则性的前提下，该集合的 Euler 示性数为 0 或 2 当且仅当强度量正则性成立。作者还给出更便于使用的充分条件：二阶次导数只需在其有效域的线性部分上非负，便可推出整个有效域上的一致二次下界。这证明了 Drusvyatskiy、Mordukhovich 与 Nghia 的猜想在可定义情形下成立，并把局部极小条件进一步弱化为线性部分上的二阶条件。",
+      "reason": "推荐优先阅读线性部分原理与 Moreau 包络的证明路线。它把解分支唯一性、二阶增长和局部稳定性连接到同一个内在二阶模型，适合研究非光滑算法局部收敛所需的正则性条件。结论依赖可定义性、prox-regular 性、次微分连续性及既有度量正则性，不能从可定义性单独推出唯一解分支。",
+      "order": 1
+    },
+    {
+      "arxiv_id": "2503.20142",
+      "version": 5,
+      "title": "Local Linear Convergence of the Alternating Direction Method of Multipliers for Semidefinite Programming under Strict Complementarity",
+      "authors": [
+        "Shucheng Kang",
+        "Xin Jiang",
+        "Heng Yang"
+      ],
+      "submitted": "2025-03-26",
+      "updated": "2026-11-11",
+      "arxiv_url": "https://arxiv.org/abs/2503.20142v5",
+      "abstract": "We investigate the local linear convergence properties of the Alternating Direction Method of Multipliers (ADMM) when applied to Semidefinite Programming (SDP). A longstanding belief suggests that ADMM is only capable of solving SDPs to moderate accuracy, primarily due to its sublinear worst-case complexity and empirical observations of slow convergence. We challenge this notion by introducing a new sufficient condition for local linear convergence: as long as the converged primal-dual optimal solutions satisfy strict complementarity, ADMM attains local linear convergence, independent of nondegeneracy conditions. Our proof is based on a direct local linearization of the ADMM operator and a refined error bound for the projection onto the positive semidefinite cone, improving previous bounds and revealing the anisotropic nature of projection residuals. Extensive numerical experiments confirm the significance of our theoretical results, demonstrating that ADMM achieves local linear convergence and computes high-accuracy solutions in a variety of SDP instances, including those cases where nondegeneracy fails. Furthermore, we identify where ADMM struggles, linking these difficulties with near violations of strict complementarity-a phenomenon that parallels recent findings in linear programming.",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "summary": "该文研究标准半定规划上三步 ADMM 的局部收敛速度。在约束算子满射、KKT 解存在，并且 ADMM 实际收敛到的原始—对偶解严格互补时，作者证明迭代点具有局部 R 线性收敛性，无须另加原始或对偶非退化条件。关键是直接线性化等价的 Douglas–Rachford 算子，并为半正定锥投影建立区分不同谱子空间的精细误差界；先控制最小面之外的分量，再传递到完整迭代。数值实验同时展示退化但严格互补的实例及接近失去严格互补时的减速。该结论针对实际极限点，不能仅凭问题存在某个严格互补解便判定任意轨道都有相同速度。",
+      "reason": "最值得读的是不依赖非退化性的投影残差分析。它说明半定规划的一阶分裂方法为何可能在后期达到高精度，并把慢收敛与严格互补附近的谱几何联系起来。与依赖强凸或多面体结构的常见线性率论证相比，这条路线更直接利用半正定锥的结构。",
+      "order": 2
+    },
+    {
+      "arxiv_id": "2604.02747",
+      "version": 2,
+      "title": "A Sequential Cubic Programming Method with Second-Order Complexity Guarantees for Equality Constrained Optimization",
+      "authors": [
+        "Nikos Dimou",
+        "Michael J. O'Neill"
+      ],
+      "submitted": "2026-04-03",
+      "updated": "2026-11-11",
+      "arxiv_url": "https://arxiv.org/abs/2604.02747v2",
+      "abstract": "We develop a new method for equality constrained optimization problems based on a sequential cubic programming framework. Each iteration utilizes a step decomposition based on the Jacobian of the constraints into a normal and a tangential component, the latter of which is found by solving a subproblem involving cubic regularization. The method incorporates second-order correction steps as necessary to ensure global convergence to second-order stationary points as well as local quadratic convergence. In addition, we show that the algorithm is the first to obtain worst case complexity guarantees on the order of $\\mathcal{O}(\\epsilon_g^{-3/2})$ for the gradient of the Lagrangian, $\\mathcal{O}(\\epsilon_H^{-3})$ in terms of second-order stationarity, and $\\mathcal{O}(\\epsilon_c^{-1})$ in terms of the constraint violation. These are the best known complexity guarantees of any method for this class of problems.",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "summary": "对于光滑非凸等式约束问题，该文把步长分为恢复可行性的法向分量和改进最优性的切向分量，在切向子问题中使用三次正则化，并在必要时加入二阶校正。作者在迭代区域内导数有界与 Lipschitz、约束 Jacobian 一致满秩、模型矩阵受控等条件下，证明达到近似二阶 KKT 点的总迭代数为 $O(\\max\\{\\varepsilon_g^{-3/2},\\varepsilon_c^{-1},\\varepsilon_H^{-3}\\})$。其中梯度和切空间曲率的精度阶与无约束三次正则化一致，可行性阶优于已有相关二阶方法；局部还可得到二次收敛。这里统计的是满足规定子问题求解要求的外层迭代，不能把三次子问题或线性代数成本视为免费。",
+      "reason": "推荐关注法向—切向耦合、二阶校正与复杂度证明如何配合。它将好的可行性复杂度与二阶最优性保证放入同一单阶段框架，提供了研究约束高阶方法的具体基准。一致满秩及 Hessian 正则性对结论至关重要，不能直接推广到退化约束或仅有一阶信息的情形。",
+      "order": 3
+    },
+    {
+      "arxiv_id": "2611.15748",
+      "version": 1,
+      "title": "Minimizing Monotone Norms in Fractional Load Balancing",
+      "authors": [
+        "Daniel Blankenburg",
+        "Antonia Ellerbrock",
+        "Thomas Kesselheim",
+        "Jens Vygen"
+      ],
+      "submitted": "2026-11-11",
+      "updated": "2026-11-11",
+      "arxiv_url": "https://arxiv.org/abs/2611.15748v1",
+      "abstract": "We devise a fully polynomial time approximation scheme for minimizing a monotone norm $\\left\\lVert\\cdot\\right\\rVert$ over a convex set $X\\subseteq \\mathbb{R}^d_{\\geq 0}$. We study the multi-customer setting, where $X=\\sum_{i=1}^n X_i$ and the solution set $X_i\\subseteq \\mathbb{R}^d_{\\geq 0}$ is given by a linear minimization oracle for each customer $i$. Our algorithm computes, for any given $\\varepsilon>0$, a $(1+\\varepsilon)$-approximate solution. With high probability, it uses $\\tilde{\\mathcal{O}}\\left( \\varepsilon^{-2}(n+d) \\right)$ single-customer linear minimization oracle calls and the same number of generalized KL projections to the dual space $Y=\\{y\\in \\mathbb{R}^d_{\\geq 0}: \\left\\lVert y \\right\\rVert^* \\le 1\\}$. We assume no prior knowledge on $X$, and our running time depends only on $n$, $d$, and $\\varepsilon$. Our result is robust in the sense that it allows for approximate linear minimization oracles and approximate KL projections. We show that the (approximate) KL projection can be performed efficiently for large classes of monotone norms, demonstrating the applicability of our approach. While such a result (with exact projection) is well-known for the $\\ell_{\\infty}$ norm via multiplicative weight updates and was recently obtained for ordered norms via a smooth norm approximation and a novel randomization, existing techniques do not extend to general monotone norms. In particular, a key feature used in previous proofs was dual price stability, which was derived from a global contraction property of the KL projection to the dual space $Y$. We show that this property does not extend to general monotone norms. Therefore, we use a different price mechanism, based on the well-known mirror descent paradigm, for which a local contraction property holds and guarantees stability.",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "summary": "该文在各客户可行集仅通过线性最小化预言机访问的模型中，研究非负负载之和的一般单调范数最小化。作者指出，以往处理无穷范数或有序范数时使用的 KL 投影全局价格收缩性质，对一般单调范数并不成立；改为从已投影价格继续更新的镜像下降后，局部收缩足以维持价格稳定。配合随机客户选择机制，可用高概率约 $\\widetilde O(\\varepsilon^{-2}(n+d))$ 次单客户预言机和广义 KL 投影调用获得乘法近似，其中 $n$ 为客户数、$d$ 为负载维数。算法允许具有规定误差性质的近似预言机与投影。总运行时间仍取决于这些预言机的实现成本，投影子问题的目标值误差也不能直接替代文中要求的散度误差条件。",
+      "reason": "推荐优先读全局收缩的反例以及镜像下降局部收缩的替代论证。阅读价值不仅是覆盖更多范数，还在于说明镜像下降与 FTRL 看似接近的价格更新为何在这里产生不同稳定性。虽然应用包含负载均衡，核心结果是在连续凸集与预言机模型中的优化算法和复杂度。",
+      "order": 4
+    },
+    {
+      "arxiv_id": "2605.15314",
+      "version": 2,
+      "title": "Beyond Bounded Variance: Variance-Reduced Normalized Methods for Nonconvex Optimization under Blum-Gladyshev Noise",
+      "authors": [
+        "Antesh Upadhyay",
+        "Arda Fazla",
+        "Abolfazl Hashemi"
+      ],
+      "submitted": "2026-05-14",
+      "updated": "2026-11-12",
+      "arxiv_url": "https://arxiv.org/abs/2605.15314v2",
+      "abstract": "Stochastic optimization theory often assumes that gradient noise has uniformly bounded variance. However, this assumption can be inadequate even in simple settings; e.g., it does not hold for linear least squares regression. The Blum-Gladyshev ($\\mathsf{BG}$-0) noise model instead allows the stochastic gradient variance to grow quadratically with the distance from the initialization and has recently been identified as the weakest known viable variance assumption. We study nonconvex stochastic optimization under $\\mathsf{BG}$-0 noise and prove that normalized momentum converges with one stochastic gradient per iteration, reaching an $\\varepsilon$-stationary point with the optimal $O(\\varepsilon^{-6})$ complexity. We then show that, under mean-square smoothness, a variance-reduced normalized STORM method achieves the minimax optimal complexity of $O(\\varepsilon^{-4})$. We further extend our analysis to the symmetric generalized smoothness framework, which captures objectives whose local curvature can scale with the gradient norm. To our knowledge, these are the first convergence guarantees for normalized methods in nonconvex stochastic optimization under $\\mathsf{BG}$-0 noise without bounded domains.",
+      "directions": [
+        "stochastic",
+        "historical-information",
+        "optimization-frontiers"
+      ],
+      "summary": "该文允许随机梯度方差随到初始化点距离的平方增长，即 Blum–Gladyshev BG-0 噪声，并在无界定义域上研究非凸优化。作者用归一化更新限制每步位移，再通过动量或 STORM 递推控制梯度估计误差。在通常光滑条件下，单样本归一化动量达到 $O(\\varepsilon^{-6})$ 随机梯度复杂度；增加均方光滑性后，归一化 STORM 达到 $O(\\varepsilon^{-4})$，匹配相应已有下界。后者每次转移在两个点复用同一样本，并使用随总迭代数增长的初始化批次；这个初始化成本已包含在总体阶数中。对称广义光滑性下还给出相应较慢复杂度，不能沿用通常光滑情形的最优阶。输出保证是随机选取迭代点的期望梯度范数界。",
+      "reason": "推荐阅读归一化轨迹增长与递归估计误差之间的联合控制。相较已有通过显式锚定和动态批量处理 BG-0 噪声的方案，该文展示了动量与方差缩减的另一条稳定化路径，并清楚量化较弱噪声假设带来的复杂度代价。它对理解随机优化中噪声、轨迹和历史估计器的相互作用有直接价值。",
+      "order": 5
+    },
+    {
+      "arxiv_id": "2611.17026",
+      "version": 1,
+      "title": "Accelerated Transformed Primal Dual Methods for Smooth Convex Optimization Problems with Affine Equality Constraints",
+      "authors": [
+        "Long Chen",
+        "Jingrong Wei"
+      ],
+      "submitted": "2026-11-12",
+      "updated": "2026-11-12",
+      "arxiv_url": "https://arxiv.org/abs/2611.17026v1",
+      "abstract": "Accelerated transformed primal--dual (ATPD) methods are proposed for smooth convex optimization problems with affine equality constraints. The methods combine primal--dual dynamics with a transformation designed to accelerate convergence. In the strongly convex case, ATPD achieves an accelerated linear convergence rate and matches the known lower bounds on first-order oracle complexity in terms of gradient evaluations and matrix--vector products. The analysis distinguishes these two types of computational work when assessing the complexity of the method. For general convex objectives, a homotopy perturbation strategy is introduced, and an accelerated sublinear rate for the modified Lyapunov energy is proved under a uniform boundedness condition on the primal iterates at all homotopy stages. The acceleration mechanism is based on an exponentially stable ATPD flow and a modified discrete Lyapunov function. This continuous-time perspective guides the construction and analysis of the discrete methods. Numerical experiments on policy evaluation and constrained signal reconstruction problems support the theory and illustrate the efficiency of the proposed methods.",
+      "directions": [
+        "historical-information",
+        "optimization-frontiers"
+      ],
+      "summary": "该文针对光滑凸目标与仿射等式约束，设计带历史梯度外推的加速变换原始—对偶方法 ATPD。通过连续时间稳定性和修正离散 Lyapunov 函数，作者在强凸、约束算子满射时证明加速线性率，并分别核算目标梯度调用和约束矩阵乘法，使两种复杂度达到相应已知下界的阶。每步使用缓存梯度及一次约束空间近似线性求解；理论要求该求解器形成固定线性 SPD 近似逆，并满足规定谱误差界。普通残差停止本身不能替代这一条件。一般凸情形采用同伦正则化，在全部同伦阶段原始迭代一致有界的条件下得到修正能量的 $O(N^{-2})$ 衰减。",
+      "reason": "值得优先研究的是历史外推如何与约束预条件共同进入能量估计，以及为什么必须把梯度和通信型矩阵乘法分开计价。这为等式约束加速方法提供了可比较的复杂度分析，避免只看外层线性率。将其用于网络结构问题时，仍需具体核对约束算子的秩和近似逆实现。",
+      "order": 6
+    },
+    {
+      "arxiv_id": "2610.20420",
+      "version": 3,
+      "title": "Dual-Inertial Bregman Methods with Energy-Based Safeguarding",
+      "authors": [
+        "Kangming Chen"
+      ],
+      "submitted": "2026-10-14",
+      "updated": "2026-11-11",
+      "arxiv_url": "https://arxiv.org/abs/2610.20420v3",
+      "abstract": "We study dual-inertial (DI) Bregman proximal methods for convex optimization via an exact representation of the signed energy drift between dual-coordinate and primal affine interpolation. For unrestarted DI, bounded one-sided directional curvature gives a last-iterate objective-gap rate $\\mathcal{O}((1+\\log N)/N^2)$ after $N$ iterations, which improves to $\\mathcal{O}(N^{-2})$ under weighted summability. The energy balance also provides a computable acceptance test, which we use in two safeguards. The restart safeguard attains a global $\\mathcal{O}(T^{-1})$ rate after $T$ proximal calls, including rejected trials. Under local quadratic growth and kernel regularity, it restarts only finitely often and eventually converges linearly. The non-restarting safeguard preserves the quadratic weight recurrence via dual substeps. Every fallback terminates without triangle scaling, yielding a $\\mathcal{O}(N^{-2})$ rate in outer iterations and an $\\mathcal{O}(T^{-1})$ rate in calls, which improves to $\\mathcal{O}(T^{-2})$ when the cumulative fallback cost is $\\mathcal{O}(N)$. Experiments on relative-entropy regression and nonnegative least squares illustrate the results.",
+      "directions": [
+        "historical-information"
+      ],
+      "summary": "该文在 Legendre 核诱导的 Bregman 几何中，通过对偶坐标插值和重构引入惯性，并精确表示对偶插值与原始仿射插值之间的有符号能量漂移。已推荐版本用可计算能量测试进行重启，本次 v3 新增不重启的 DI-FS：测试不通过时，使用双子步完成当前更新，同时保留二次增长的权重。作者在基本相对光滑性步长条件下证明每次回退有限终止，无须三角缩放；外层目标差为 $O(N^{-2})$，计入拒绝和回退的近端调用总数后一般为 $O(T^{-1})$，只有累计额外调用为 $O(N)$ 时才恢复 $O(T^{-2})$。原有重启方案在局部二次增长和内点核正则性下仍可最终线性收敛。",
+      "reason": "推荐重点比较 v3 第六节与旧版重启策略。新增内容把保持加速权重与控制几何不匹配分开处理，给出了可检验的回退能量机制，也明确揭示了外迭代加速可能被内层成本抵消。这对利用历史信息设计稳定加速方法，比仅新增一种惯性公式更有借鉴价值。",
+      "order": 7,
+      "update_note": "相较已推荐 v2，v3 新增不重启的双子步回退方法 DI-FS、回退有限终止证明，以及外层迭代数与真实近端调用数的独立复杂度界；不是仅文字或排版修订。"
+    },
+    {
+      "arxiv_id": "2611.15825",
+      "version": 1,
+      "title": "Optimal higher order convergence rates for the MUON optimizer",
+      "authors": [
+        "Thomas Beretti",
+        "Thang Do",
+        "Steffen Dereich",
+        "Arnulf Jentzen"
+      ],
+      "submitted": "2026-11-11",
+      "updated": "2026-11-11",
+      "arxiv_url": "https://arxiv.org/abs/2611.15825v1",
+      "abstract": "Gradient descent optimization methods are the key tools to train deep neural networks in artificial intelligence systems. In practice, one typically employs suitable accelerated gradient descent optimization methods such as the momentum optimizer, the Adam optimizer, or the MUON optimizer proposed by Jordan et al. in 2024. In 1964 Polyak showed that, in a neighborhood of a local minimizer, the momentum optimizer converges with the rate $(\\sqrt{\\chi}+1)^{-1}(\\sqrt{\\chi}-1)$, which is strictly faster than the rate $(\\chi+1)^{-1}(\\chi-1)$ of the standard gradient descent optimizer, where $\\chi\\in(1,\\infty)$ is the condition number (the ratio of the largest to the smallest eigenvalue) of the Hessian of the objective function at the local minimizer. Recently, the same faster rate has been established for the Adam optimizer. In this work we show that the MUON optimizer achieves the same higher speed of convergence and we establish the optimality of the obtained convergence rates. More specifically, we propose a precise concept for measuring the speed of convergence of gradient descent optimization methods, and we establish optimal convergence rates for the standard gradient descent, the momentum, the RMSprop, the Adam, and the MUON optimizers.",
+      "directions": [
+        "historical-information",
+        "optimization-frontiers"
+      ],
+      "summary": "该文研究带动量、有限次 Newton–Schulz 多项式和正归一化常数的 MUON 在非退化局部极小点附近的收敛速度。作者建立允许小幅步长扰动的局部速率定义，证明当目标二阶连续可微、极小点 Hessian 正定且条件数为 $\\kappa$，动量参数按条件数选取时，MUON 的最优局部速率阈值为 $(\\sqrt\\kappa-1)/(\\sqrt\\kappa+1)$，与重球和相应 Adam 一致。关键机制是正归一化常数使有限步多项式映射在零附近一阶等价于标量乘法，从而恢复经缩放的动量线性化。该结论不等于精确极分解、无正则化或随机深度网络训练中的全局加速保证。",
+      "reason": "值得阅读的是零附近的归一化机制和匹配下界，而不只是 MUON 获得了加速率这一表述。它说明历史动量在局部速率中的作用，也区分了有限多项式实现与理想化极因子更新，适合分析历史加速算法的局部动力学与实现细节。",
+      "order": 8
+    },
+    {
+      "arxiv_id": "2611.16871",
+      "version": 1,
+      "title": "DPA: Decentralized Primal Averaging with Quasi-Global Momentum for Highly Heterogeneous Data",
+      "authors": [
+        "Diyako Ghaderyan",
+        "Stefan Werner"
+      ],
+      "submitted": "2026-11-12",
+      "updated": "2026-11-12",
+      "arxiv_url": "https://arxiv.org/abs/2611.16871v1",
+      "abstract": "Decentralized training of deep learning models keeps training data local and supports on-device learning over networks. In realistic scenarios, heterogeneity across agents' local data poses an optimization challenge and can severely degrade test accuracy, especially on sparse communication graphs. Building on recent advances in centralized primal averaging, we propose Decentralized Primal Averaging (DPA), a decentralized learning algorithm that combines primal averaging with a local quasi-global momentum buffer. DPA maintains three coupled sequences for optimization, gradient evaluation, and output averaging, while using consecutive mixed iterates to construct a network-aware momentum direction without transmitting an auxiliary tracking variable. For smooth nonconvex objectives, we establish a convergence bound for DPA and identify conditions for linear speedup in the number of agents for sufficiently many iterations. We also introduce DPA-1G, a variant that uses one communication round per iteration and matches the per-iteration communication cost of DSGD-style baselines. Experiments following the GUT decentralized image-classification benchmark show that DPA compares favorably with DSGD, gradient tracking, QG-DSGDm, momentum tracking, and QG-GUTm across datasets, architectures, topologies, and heterogeneity levels, with the largest gains under high heterogeneity on sparse rings. At the same total communication cost, both DPA variants achieve higher mean test accuracy than the best baseline on CIFAR-10 and CIFAR-100 with ResNet-20. Our code is publicly available.",
+      "directions": [
+        "distributed",
+        "historical-information",
+        "stochastic"
+      ],
+      "summary": "针对数据异质导致的去中心化训练漂移，该文提出 DPA，把原始平均的优化、梯度评估和输出三个序列与准全局动量结合。动量由相邻混合迭代的差构造，保留在本地，无须传输额外跟踪变量；标准 DPA 每轮需要两次混合通信。在固定无向图、对称双随机权重、光滑非凸目标、无偏有界方差及有界异质性等条件下，作者控制网络平均输出的迭代平均梯度平方范数，并给出网络常数受控、迭代足够长时的线性加速区间。单通信轮变体 DPA-1G 周期性用输出平均替代一次梯度更新，主要由实验验证，不能直接继承标准 DPA 的定理；文中也未证明末次输出的同类保证。",
+      "reason": "推荐优先读三序列平均与准全局动量如何共同处理网络不一致。它直接连接历史迭代复用、异质数据训练和通信负担，且明确区分标准算法与低通信变体。对照实验采用通信预算比较，而理论仍保留网络与异质性常数，适合与分散梯度跟踪及历史模型方法逐项对比。",
+      "order": 9
+    },
+    {
+      "arxiv_id": "2611.15953",
+      "version": 1,
+      "title": "Cooperative Learning of Shared Latent Dynamics for Distributed Online Optimization",
+      "authors": [
+        "Shivanshu Tripathi",
+        "Maziar Raissi"
+      ],
+      "submitted": "2026-11-11",
+      "updated": "2026-11-11",
+      "arxiv_url": "https://arxiv.org/abs/2611.15953v1",
+      "abstract": "We study networked agents that must agree on a decision minimizing the sum of their local costs, where each cost contains unmeasurable stochastic parameters that evolve with linear but unknown dynamics shared by all agents. Each agent receives only finitely many noisy gradient measurements and must then keep tracking the moving minimizer. Our scheme reconstructs the parameters from windows of gradients, learns the shared dynamics cooperatively by averaging instrumental-variable moment matrices over the network, and tracks the minimizer by gradient tracking on forecast gradients. We bound the error of every agent in learning the dynamics and in tracking the minimizer, and show that the learning error, and through it the tracking error, decreases with the number of agents. We demonstrate the approach on two case studies.",
+      "directions": [
+        "distributed"
+      ],
+      "summary": "该文研究只能在有限训练阶段获取含噪梯度、之后必须持续跟踪移动最优解的多智能体问题，各局部代价含有遵循共同未知线性动态的隐参数。作者先从梯度窗口重构参数，再在邻居间平均工具变量矩阵以协同辨识动态，最后用预测梯度驱动梯度跟踪。理论在总体强凸、局部光滑、隐动态 Schur 稳定且可逆、持续激励、独立噪声及固定连通无向图等条件下，分解辨识与跟踪误差，显示增加智能体可降低共享动态的估计误差及相应跟踪项。持续过程噪声和预测误差仍会形成误差项，不能把协作收益理解为停止观测后仍精确追踪任意时变最优解。",
+      "reason": "推荐关注有限梯度观测、系统辨识与分布式跟踪之间的接口。与假设动态已知或每步都能获取真实梯度的方法相比，它处理了信息耗尽后的预测阶段，并把节点数、窗口长度、样本数和一致性轮数放入误差分析。这里变化的是目标参数，通信图本身固定，因此不归入时变网络方向。",
+      "order": 10
+    },
+    {
+      "arxiv_id": "2611.15916",
+      "version": 1,
+      "title": "Proximal random reshuffling with inexact gradients for nonconvex composite optimization",
+      "authors": [
+        "Boris S. Mordukhovich",
+        "Pedro Pérez-Aros"
+      ],
+      "submitted": "2026-11-11",
+      "updated": "2026-11-11",
+      "arxiv_url": "https://arxiv.org/abs/2611.15916v1",
+      "abstract": "We design and justify a proximal inexact random reshuffling method for minimizing sums of the finite average of functions with Lipschitz continuous gradients and lower semicontinuous regularizers that may be nonconvex. Each epoch visits every component once, using inexact gradients with a prescribed tolerance, and ends with a single proximal step. Our analysis is pathwise: it holds for every sequence of permutations and does not depend on how the reshuffling is performed. We show that when the stepsizes and error tolerances satisfy suitable summability conditions, the objective values converge and every accumulation point is stationary. Furthermore, under the Polyak--Łojasiewicz--Kurdyka condition at a single accumulation point and sufficient decrease of stepsizes, the entire sequence has finite length and converges to that point. For polynomial stepsizes and power-type desingularizing functions, we derive convergence rates for objective values and iterates. Finally, faster objective-value rates are derived when the limit is a local minimizer.",
+      "directions": [
+        "stochastic"
+      ],
+      "summary": "该文考虑光滑有限和加可能非凸、非光滑正则项的复合问题，每个 epoch 按某个排列遍历全部分量，允许受控的梯度误差，并只在 epoch 末做一次近端步。作者给出对每一条排列序列均成立的路径分析，在聚合梯度增长、目标下有界、正则项 prox-bounded 且相对其定义域连续，以及步长与误差满足相应可和条件时，证明目标值收敛和聚点的极限次微分驻点性。若一个聚点满足 PLK 条件并进一步控制步长，则整条序列有限长度且收敛；幂型条件下得到目标差和点列的速率。新分析不再要求已有相关论证中的去奇异函数准可加性，也不把随机排列本身当作收敛所必需的平均化来源。",
+      "reason": "推荐读 epoch 内误差、非单调目标和非凸近端步的联合估计，以及去除准可加性所用的重标度引理。它补足了随机重排理论中从聚点驻点到整序列收敛的一段链条，对带内层近似求解的有限和算法有直接分析价值。其保证依赖递减步长和误差控制，不是常步长随机重排的通用复杂度结论。",
+      "order": 11
+    },
+    {
+      "arxiv_id": "2611.14811",
+      "version": 1,
+      "title": "Improved last-iterate bounds for SGD with and without replacement",
+      "authors": [
+        "Yimin Zhong",
+        "Jiaxin Zhou"
+      ],
+      "submitted": "2026-11-10",
+      "updated": "2026-11-10",
+      "arxiv_url": "https://arxiv.org/abs/2611.14811v1",
+      "abstract": "In this work, we study last-iterate convergence bounds for stochastic gradient descent (SGD) on convex and $\\beta$-smooth loss functions and improve the bound from $\\mathcal{O}((\\log T)^3/T)$ to $\\mathcal{O}((\\log T)^3/(T\\log\\log T))$ in the interpolation regime. The improvement comes from applying a horizon-dependent multiscale estimate of gradients to the comparison of trajectories. The bound applies to both sampling with replacement and sampling without replacement within one pass.",
+      "directions": [
+        "stochastic"
+      ],
+      "summary": "该文研究光滑凸有限和问题的 SGD 末次迭代，而非迭代平均。利用依赖总时长的多尺度梯度估计及几何间隔的后缀轨道比较，作者在插值条件下把已有 $O((\\log T)^3/T)$ 界改善为 $O((\\log T)^3/(T\\log\\log T))$。统一论证覆盖有放回采样，以及均匀随机排列中首个 epoch 内的无放回采样；允许常步长位于 $(0,2/\\beta)$，但接近稳定边界时常数恶化。在最优点梯度方差非零时还给出显式噪声项，该项不会随 $T$ 同样消失。因此插值速率不能直接解释为一般带噪 SGD 的末次收敛率，也未证明多 epoch 无放回采样始终优于有放回采样。",
+      "reason": "最值得读的是比较轨道时的多尺度重组，改进幅度虽为一个双对数因子，但使用同一套工具处理两种采样规则，并保留完整稳定步长区间。这为末次迭代分析提供可复用的小而明确的进展，适合与现有后缀平均和重排论证对照。",
+      "order": 12
+    },
+    {
+      "arxiv_id": "2611.17076",
+      "version": 1,
+      "title": "Adaptive Constraint Sampling for Stochastic Gradient Methods in Constrained Optimization",
+      "authors": [
+        "Erik Müller",
+        "Naum Dimitrieski",
+        "Mohamed-Ali Belabbas",
+        "Christian Ebenbauer"
+      ],
+      "submitted": "2026-11-12",
+      "updated": "2026-11-12",
+      "arxiv_url": "https://arxiv.org/abs/2611.17076v1",
+      "abstract": "This paper proposes an adaptive constraint-sampling technique for stochastic gradient-based methods to efficiently solve constrained optimization problems with a large number of inequality constraints. The proposed constraint-sampling technique maintains a set of recently violated constraints and draws the constraint used in each iteration uniformly either from this set or from the set of all constraints. This keeps its per-iteration arithmetic overhead independent of the number of constraints. In simulations on synthetic convex optimization problems and in the synthesis of a control barrier function for the Dubins Car, the constraint-sampling technique is shown to significantly outperform uniform constraint sampling.",
+      "directions": [
+        "historical-information",
+        "stochastic"
+      ],
+      "summary": "面对大量不等式约束，该文提出以历史违反信息维护工作集的采样机制：以一定概率从全部约束均匀抽样，其余从近期重要约束中抽样；通过逐渐缩小的违反裕度和计数阈值加入、保留或移除约束。作者将该机制接入四类随机梯度方法，设计上把每步额外算术开销控制在与约束总数无关的常数量级或摊还常数量级。在含数十万至百万约束的合成凸问题和 Dubins 车控制障碍函数学习中，实验显示相较均匀约束采样的明显收益。正文主要针对仿射约束说明机制，严格收敛和活动集识别分析被明确留待未来；其理论讨论是非正式论证，不能写成已经证明的收敛定理。",
+      "reason": "推荐阅读历史约束信息如何转化为低维护成本的工作集，而不必周期性遍历所有约束。新意集中在历史采样机制，因此主要归入历史信息优化，同时保留随机优化标签。它提供了可直接研究的算法设计，但阅读时应把实验效果、非正式识别机制和待建立的严格理论分别看待。",
+      "order": 13
+    },
+    {
+      "arxiv_id": "2402.13989",
+      "version": 4,
+      "title": "FedADMM-InSa: An Inexact and Self-Adaptive ADMM for Federated Learning",
+      "authors": [
+        "Yongcun Song",
+        "Ziqi Wang",
+        "Enrique Zuazua"
+      ],
+      "submitted": "2024-02-21",
+      "updated": "2026-11-12",
+      "arxiv_url": "https://arxiv.org/abs/2402.13989v4",
+      "abstract": "Federated learning (FL) is a promising framework for learning from distributed data while maintaining privacy. The development of efficient FL algorithms encounters various challenges, including heterogeneous data and systems, limited communication capacities, and constrained local computational resources. Recently developed FedADMM methods show great resilience to both data and system heterogeneity. However, they still suffer from performance deterioration if the hyperparameters are not carefully tuned. To address this issue, we propose an inexact and self-adaptive FedADMM algorithm, termed FedADMM-InSa. First, we design an inexactness criterion for the clients' local updates to eliminate the need for empirically setting the local training accuracy. This inexactness criterion can be assessed by each client independently based on its unique condition, thereby reducing the local computational cost and mitigating the undesirable straggle effect. The convergence of the resulting inexact ADMM is proved under the assumption of strongly convex loss functions. Additionally, we present a self-adaptive scheme that dynamically adjusts each client's penalty parameter, enhancing algorithm robustness by mitigating the need for empirical penalty parameter choices for each client. Extensive numerical experiments on both synthetic and real-world datasets are conducted. As validated by some numerical tests, our proposed algorithm can reduce the clients' local computational load significantly and also accelerate the learning process compared to the vanilla FedADMM. The source code is available at this https URL .",
+      "directions": [
+        "distributed"
+      ],
+      "summary": "该文针对联邦 ADMM 的本地计算和参数敏感性，设计可由每个客户端独立检查的相对不精确性准则，并增加按原始与对偶残差调整各客户端罚参数的机制。作者对固定罚参数、全客户端参与的 FedADMM-In，在每个局部损失光滑且强凸时证明原始—对偶迭代收敛，并给出遍历意义的 $O(1/K)$ 估计。完整 FedADMM-InSa、部分参与、非凸网络及用全局点替换误差准则中本地点的实用修改，主要由实验支持，不能统称为已获同一收敛定理。结果的价值在于用相对残差决定本地精度，减轻过度求解和异构客户端计算负担。",
+      "reason": "推荐关注本地误差准则及其与外层 ADMM 下降估计的配合。它直接回应分布式优化中内层求解应当做到多精确的问题，并将理论覆盖的基本算法与实践中的自适应改动区分清楚。客户端计算不精确或耗时不同本身不构成异步优化保证。",
+      "order": 14
+    },
+    {
+      "arxiv_id": "2601.22204",
+      "version": 3,
+      "title": "FedAdaVR: Adaptive Variance Reduction for Robust Federated Learning under Limited Client Participation",
+      "authors": [
+        "S M Ruhul Kabir Howlader",
+        "Xiao Chen",
+        "Yifei Xie",
+        "Lu Liu"
+      ],
+      "submitted": "2026-01-29",
+      "updated": "2026-11-11",
+      "arxiv_url": "https://arxiv.org/abs/2601.22204v3",
+      "abstract": "Federated learning (FL) encounters substantial challenges due to heterogeneity, leading to gradient noise, client drift, and partial client participation errors, the last of which is the most pervasive but remains insufficiently addressed in current literature. In this paper, we propose FedAdaVR, a novel FL algorithm aimed at solving heterogeneity issues caused by partial client participation by incorporating an adaptive optimiser with a variance reduction technique. This method takes advantage of the most recent stored updates from clients, even when they are absent from the current training round, thereby emulating their presence. Furthermore, we propose FedAdaVR-Quant, a server-side memory compression variant that stores historical client updates in quantised form (while keeping client-server communication in full precision), reducing the server memory footprint of FedAdaVR by 50% (FP16), 75% (Int8), and 87.5% (Int4) while maintaining highly competitive, and occasionally superior model performance. We analyse the non-convex convergence behaviour of FedAdaVR with Adagrad and prove that our proposed framework eliminates the first-order partial client participation bias while improving monotonically with cohort size. Extensive experiments conducted on multiple vision and NLP datasets demonstrate that FedAdaVR consistently outperforms state-of-the-art baseline methods.",
+      "directions": [
+        "distributed",
+        "historical-information",
+        "stochastic"
+      ],
+      "summary": "该文在部分客户端参与的联邦优化中，将每个客户端最近一次更新的记忆表、SAGA 型方差校正和服务器自适应预条件结合。作者强调需要分离校正量与自适应矩累积，并处理初期偏差，不能简单叠加 FedVARP 与现成自适应优化器。对均匀客户端权重、每轮无放回均匀抽样、光滑目标、有界局部方差、异质性和随机梯度的情形，全文对全精度服务器 Adagrad 版本给出非凸收敛界及参与规模的影响。其他自适应优化器和服务器端记忆量化主要通过实验评估；量化压缩的是历史状态存储，客户端—服务器通信仍为全精度。结论不自动覆盖非均匀数据权重或任意参与模式。",
+      "reason": "推荐读历史更新表与坐标步长如何分工，尤其是部分参与误差、客户端漂移和自适应预条件变化的分解。这与分布式学习中复用滞后信息以降低参与噪声直接相关。量化实验还提供了存储成本的取舍，但其收敛理论应与全精度 Adagrad 的保证分开引用。",
+      "order": 15
+    },
+    {
+      "arxiv_id": "2611.16638",
+      "version": 1,
+      "title": "The Query Complexity of Unknown Sparse Gradient Residuals",
+      "authors": [
+        "Yuriy Dorn"
+      ],
+      "submitted": "2026-11-12",
+      "updated": "2026-11-12",
+      "arxiv_url": "https://arxiv.org/abs/2611.16638v1",
+      "abstract": "We study optimization of an average of \\(n\\) functions when gradient predictions are exact except for at most \\(k\\) unknown components. An initial scan may miss these exceptions. For a class of smooth problems, we prove that the optimal worst-case expected number of component-gradient evaluations needed to find an approximate stationary point is \\[ \\Theta\\!\\left(\\min\\left\\{nk+\\mathcal R,\\frac nk\\mathcal R\\right\\}\\right), \\] where \\(\\mathcal R\\) represents the optimal cost when the exceptional components are known. Prediction evaluations are free. This bound shows that discovering even a few exceptions can cost more than one full scan and can account for most of the gradient evaluations.",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "summary": "该文研究有限和优化中梯度预测只在至多 $k$ 个未知分量上不准确时，找出近似驻点究竟需要多少真实分量梯度查询。在规定的全局残差光滑性、残差目标振幅界及精度区间内，作者给出匹配上下界 $\\Theta(\\min\\{nk+\\mathcal R,(n/k)\\mathcal R\\})$，其中 $\\mathcal R$ 是已知异常分量集合时的最优代价。工作集算法把异常发现与后续优化结合，输出前还做精确梯度核查；困难例子显示发现稀疏异常可能比全扫描一次昂贵。该预言机模型把预测求值视为免费，若构建预测需要真实查询则另计成本；有限个点上预测吻合，也不能证明全局稀疏残差假设成立。",
+      "reason": "推荐关注把异常集合当作未知信息时产生的发现成本。这提供了评价学习辅助优化的一种更细标准：预测误差很稀疏并不意味着省掉一次扫描后便能廉价优化。上下界同时刻画信息发现与驻点求解，对设计可验证工作集和预测梯度方法有机制层面的价值。",
+      "order": 16
+    },
+    {
+      "arxiv_id": "2611.16142",
+      "version": 1,
+      "title": "Gradient Flows over Convex Bodies for Learning Optimal Regularizers",
+      "authors": [
+        "Nilava Metya",
+        "Oscar Leong",
+        "Yong Sheng Soh"
+      ],
+      "submitted": "2026-11-12",
+      "updated": "2026-11-12",
+      "arxiv_url": "https://arxiv.org/abs/2611.16142v1",
+      "abstract": "We consider the question of describing gradient flows over the collection of convex bodies. This is motivated by foundational questions arising in inverse problems. Suppose we wish to solve an ill-posed inverse problem using regularization techniques. Can we learn an optimal choice of a convex regularizer directly from prior data? Given a numerical algorithm that computes such an optimal regularizer, is there a principled manner for describing the evolution of its iterates? The objective of this paper is to lay the foundation towards answering these questions. To this end, we consider a criterion of an optimal regularizer based on seeking a convex body that minimizes the expected gauge evaluation with respect to a prior data distribution subject to a volume constraint. The formulation is initially nonconvex, but admits hidden convexity by passing to its polar. We characterize the Karush-Kuhn-Tucker (KKT) conditions that certify global optimality. We also analyze the $L^2$-gradient flow as well as a minimizing movement scheme with the Hausdorff penalty. Our results show that the objective gap decays exponentially along the gradient flow and we obtain dimension-dependent rates for both the objective gap and distance to the optimal body for the Hausdorff scheme. Finally, we apply the KKT conditions to identify explicit optimal convex bodies. For data where the optimal nonconvex regularizer is the $\\ell_p$-quasinorm, $p \\in (0,1)$, the optimal convex regularizer is the volume-normalized $\\ell_1$-ball. For data described by paired basis atoms, the optimal convex regularizer is the polar of a shifted zonotope.",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "summary": "该文把学习正齐次凸正则项表述为凸体上的优化：在体积归一化约束下最小化数据分布的期望 gauge 幂。作者通过极体和支撑函数揭示隐藏凸性，建立全局最优性的 KKT 证书，并在数据每个方向具有正质量及相应矩有限等条件下证明最优体存在且唯一。针对这一特定正则学习问题，二次增长带来 $L^2$ 梯度流的指数目标差衰减及隐式 Euler 的几何收敛；Hausdorff 惩罚离散方案则有依赖维数的速率。文中还给出若干分布的最优凸体实例。一般凸体泛函的流只具有更弱的基准保证，不能把特殊问题的指数率推广到任意形状优化或任意数据驱动正则选择。",
+      "reason": "值得阅读极体变换、支撑函数表示与最优性证书的组合。它将选择正则项的几何偏好变成可分析的连续优化变量，并把最优体识别与迭代动力学放在统一框架中。这里的“最优”对应特定期望 gauge 与体积准则，不能直接等同于所有逆问题中的最佳重建误差。",
+      "order": 17
+    },
+    {
+      "arxiv_id": "2611.14829",
+      "version": 1,
+      "title": "A family of alternating projection examples whose Cesàro means fail to converge strongly",
+      "authors": [
+        "Heinz H. Bauschke",
+        "Tran Thanh Tung"
+      ],
+      "submitted": "2026-11-10",
+      "updated": "2026-11-10",
+      "arxiv_url": "https://arxiv.org/abs/2611.14829v1",
+      "abstract": "In 1965, Bregman proved that the sequence of iterates of the method of alternating projections applied to two closed convex sets with nonempty intersection in a Hilbert space converges weakly to a point in the intersection. The question whether this convergence may actually fail to be strong was settled in a seminal paper by Hundal in 2004. He provided a counterexample featuring a halfspace and a closed convex cone generated by a certain curve. While largely elementary, the details of Hundal's construction and analysis are quite involved. We revisit this seminal example and present a family of such examples that allows for simpler proofs. Our generating curve combines unit vectors with Gaussian inner products and a height determined by a scalar function. The orbits converge weakly --- but not strongly --- to the origin, while their norms have a positive limit for which we give explicit lower bounds. We also prove that the associated Cesàro means behave likewise; in fact, this is generalized to alternating proximal mappings whose composition has a fixed point. Finally, these orbits allow interpretations in the context of projected-gradient, proximal-point, and gradient-descent algorithms.",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "summary": "在无限维实 Hilbert 空间中，交替投影的弱收敛未必能增强为范数收敛。该文重新构造一族由 Gaussian 内积曲线和高度函数生成的凸锥，与一个超平面进行交替投影；非零轨道弱收敛到交点原点，但范数趋于具有显式下界的正数。作者进一步证明一类交替近端序列与其各自 Cesàro 平均在范数上渐近贴合，因此这些平均也不能强收敛。由此还能得到投影梯度、近端点和梯度下降的相应解释。新意在更简洁的反例族及平均序列的结构性关系，而不是首次发现交替投影会弱而不强收敛；有限维情形不受这类反例直接影响。",
+      "reason": "推荐读交替近端序列与 Cesàro 平均渐近贴合的论证，再看显式几何构造。它澄清了平均化能改善哪些性质、不能自动改善哪些性质，为无限维算法中区分弱收敛、残差消失和点列强收敛提供具体测试实例。",
+      "order": 18
+    }
+  ]
+}
