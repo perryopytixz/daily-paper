@@ -1,0 +1,146 @@
+{
+  "date": "2026-11-15",
+  "status": "complete",
+  "frontiers_status": "recommendations",
+  "highlights": [
+    {
+      "arxiv_id": "2109.04522",
+      "label": "用统一序列引理收紧异步优化的延迟界",
+      "text": "历史补读：把 PIAG、异步 SGD 与 ARock 的证明整理为可复用的延迟递推。阈值筛掉过旧梯度后，凸／强凸 SGD 的复杂度可由平均延迟控制；各结果仍有对应的光滑性、噪声、延迟与独立性条件，固定步长存在噪声残差。",
+      "types": [
+        "group",
+        "field"
+      ]
+    },
+    {
+      "arxiv_id": "2109.15292",
+      "label": "稀疏方差修正让无锁 SVRG 保留加速复杂度",
+      "text": "历史补读：在加速耦合中抵消稀疏估计特有的方差项，串行达到 $O(\\max\\{n,\\sqrt{n\\kappa}\\}\\log(1/\\varepsilon))$；受限并发下异步保持同阶。保证依赖二次增长、独立抽样模型和有界重叠；仅内层无锁，epoch 边界仍需同步。",
+      "types": [
+        "group",
+        "field"
+      ]
+    },
+    {
+      "arxiv_id": "1507.06970",
+      "label": "用虚拟串行迭代统一分析不一致读取",
+      "text": "历史补读：把异步读写化为虚拟迭代上的扰动，以三类误差统一分析 Hogwild!、随机坐标下降与稀疏 SVRG。原子写、并发重叠及抽样条件须明确；附录仅为 Hogwild! 移除读取独立性，并收紧可保证的并发范围。",
+      "types": [
+        "field"
+      ]
+    }
+  ],
+  "papers": [
+    {
+      "arxiv_id": "2109.04522",
+      "version": 2,
+      "title": "Asynchronous Iterations in Optimization: New Sequence Results and Sharper Algorithmic Guarantees",
+      "authors": [
+        "Hamid Reza Feyzmahdavian",
+        "Mikael Johansson"
+      ],
+      "abstract": "We introduce novel convergence results for asynchronous iterations that appear in the analysis of parallel and distributed optimization algorithms. The results are simple to apply and give explicit estimates for how the degree of asynchrony impacts the convergence rates of the iterates. Our results shorten, streamline and strengthen existing convergence proofs for several asynchronous optimization methods and allow us to establish convergence guarantees for popular algorithms that were thus far lacking a complete theoretical understanding. Specifically, we use our results to derive better iteration complexity bounds for proximal incremental aggregated gradient methods, to obtain tighter guarantees depending on the average rather than maximum delay for the asynchronous stochastic gradient descent method, to provide less conservative analyses of the speedup conditions for asynchronous block-coordinate implementations of Krasnoselskii-Mann iterations, and to quantify the convergence rates for totally asynchronous iterations under various assumptions on communication delays and update rates.",
+      "submitted": "2021-09-09",
+      "updated": "2023-04-03",
+      "arxiv_url": "https://arxiv.org/abs/2109.04522v2",
+      "directions": [
+        "asynchronous-distributed",
+        "stochastic",
+        "optimization-frontiers"
+      ],
+      "summary": "历史补读。异步算法的收敛证明常被延迟项和累积误差拆散，难以看清步长保守性来自哪里。该文把常见分析归结为两类非负序列递推，分别处理延迟窗口内的最大值以及带负下降项的累积误差，并用统一引理重新分析 PIAG、异步 SGD、ARock 与最大块范数收缩迭代。对于凸光滑分量与凸近端项构成的 PIAG，作者改善了延迟依赖；再有二次函数增长时得到线性收敛。异步 SGD 采用延迟阈值：保留较新梯度、对过旧梯度取零步长。在光滑凸目标、有界梯度方差及有界延迟等条件下，选阈值约为平均延迟的两倍，得到以平均延迟替代最大延迟的精度相关复杂度；凸情形控制加权平均点，强凸情形控制均方距离。固定正步长仍有噪声残差，不能据此宣称精确收敛；阈值需要平均延迟信息，文中也用工作节点数给出替代设置。ARock 的加速比结论另依赖伪收缩、随机块更新与延迟独立性。对于全异步收缩映射，则按具体的延迟增长与更新频率假设量化收敛速度，而非给所有无界延迟统一线性率。",
+      "reason": "推荐重点阅读第 3 节的序列工具，以及第 4.2 节怎样利用负下降项抵消延迟误差。它与延迟鲁棒异步学习中的核心分析困难直接对应：同一个算法递推是否真的必须由最慢节点决定，哪些过旧信息可以丢弃，保留多少有效更新足以推进。相比只针对某一种更新式重复构造归纳证明，这套工具能在 PIAG、随机梯度和块坐标之间复用；相比扰动迭代框架，它更直接保留误差序列的时间结构。推荐将两类分析并读，区分由系统模型造成的限制与估计方式引入的保守性。",
+      "order": 1
+    },
+    {
+      "arxiv_id": "2109.15292",
+      "version": 1,
+      "title": "Accelerating Perturbed Stochastic Iterates in Asynchronous Lock-Free Optimization",
+      "authors": [
+        "Kaiwen Zhou",
+        "Anthony Man-Cho So",
+        "James Cheng"
+      ],
+      "abstract": "We show that stochastic acceleration can be achieved under the perturbed iterate framework (Mania et al., 2017) in asynchronous lock-free optimization, which leads to the optimal incremental gradient complexity for finite-sum objectives. We prove that our new accelerated method requires the same linear speed-up condition as the existing non-accelerated methods. Our core algorithmic discovery is a new accelerated SVRG variant with sparse updates. Empirical results are presented to verify our theoretical findings.",
+      "submitted": "2021-09-30",
+      "updated": "2021-09-30",
+      "arxiv_url": "https://arxiv.org/abs/2109.15292v1",
+      "directions": [
+        "asynchronous-distributed",
+        "historical-information",
+        "stochastic",
+        "optimization-frontiers"
+      ],
+      "summary": "历史补读。稀疏 SVRG 的无偏梯度估计可以维持非加速算法的方差界，但直接加入加速耦合会多出与坐标采样概率有关的项。该文在耦合步骤中加入稀疏方差修正，用快照梯度的对角重加权抵消这一额外项，再构造串行和共享内存无锁异步的加速 SVRG。对凸、分量 L 光滑且整体满足二次增长的有限和问题，串行增量梯度复杂度达到 $O(\\max\\{n,\\sqrt{n\\kappa}\\}\\log(1/\\varepsilon))$，其中 $\\kappa=L/\\mu$，包含每个 epoch 的全梯度成本。异步界增加由重叠上界与最繁忙坐标频率 $\\Delta$ 控制的因子；在 $\\tau=O(n)$ 且 $\\tau=O(\\Delta^{-1/2}\\max\\{n/\\kappa,1\\})$ 的区间，保持同阶总梯度复杂度，允许与非加速 ASAGA 相同量级的并发条件。该结论需要原子写、有界重叠、适当的参数及重启安排，并假定读到的虚拟迭代与样本独立。作者明确指出实际仅读取样本支持及快照抽取与该独立／均匀抽样模型之间的差别，因此理论保证应按分析模型理解。无锁只用于内层；全梯度、快照与 epoch 边界仍有同步，也未覆盖近端复合项。",
+      "reason": "最值得阅读的是稀疏方差修正的设计，而不只是异步版本的最终速率：非加速方法中可以忽略的方差项，为何会阻碍加速，以及如何在保持稀疏更新的同时把它抵消。文章还把动量主要放在 epoch 之间，使异步扰动集中作用于内层 SVRG，这为研究历史信息加速与异步噪声的兼容性提供了具体机制。它在本文设定下给出可比较的加速复杂度与并发条件，比仅凭实验观察动量收益更有分析价值；阅读和实现时须同时检查第 4 节主动说明的抽样模型差异，并把同步边界及全梯度调用计入成本。",
+      "order": 2
+    },
+    {
+      "arxiv_id": "1507.06970",
+      "version": 2,
+      "title": "Perturbed Iterate Analysis for Asynchronous Stochastic Optimization",
+      "authors": [
+        "Horia Mania",
+        "Xinghao Pan",
+        "Dimitris Papailiopoulos",
+        "Benjamin Recht",
+        "Kannan Ramchandran",
+        "Michael I. Jordan"
+      ],
+      "abstract": "We introduce and analyze stochastic optimization methods where the input to each gradient update is perturbed by bounded noise. We show that this framework forms the basis of a unified approach to analyze asynchronous implementations of stochastic optimization this http URL this framework, asynchronous stochastic optimization algorithms can be thought of as serial methods operating on noisy inputs. Using our perturbed iterate framework, we provide new analyses of the Hogwild! algorithm and asynchronous stochastic coordinate descent, that are simpler than earlier analyses, remove many assumptions of previous models, and in some cases yield improved upper bounds on the convergence rates. We proceed to apply our framework to develop and analyze KroMagnon: a novel, parallel, sparse stochastic variance-reduced gradient (SVRG) algorithm. We demonstrate experimentally on a 16-core machine that the sparse and parallel version of SVRG is in some cases more than four orders of magnitude faster than the standard SVRG algorithm.",
+      "submitted": "2015-07-24",
+      "updated": "2016-03-25",
+      "arxiv_url": "https://arxiv.org/abs/1507.06970v2",
+      "directions": [
+        "asynchronous-distributed",
+        "stochastic",
+        "optimization-frontiers"
+      ],
+      "summary": "历史补读。共享内存异步运行时，一次读取可能拼合不同时间的坐标，因而不对应任何真实的完整迭代点。该文引入虚拟串行迭代，把实际读到的向量写成虚拟点加扰动，进而将均方误差递推分成梯度二阶矩、读写不一致的平方误差，以及扰动与梯度的交叉项。通过控制并发重叠和数据支持之间的冲突，作者用同一框架重新分析 Hogwild! 与异步随机坐标下降，并提出稀疏异步 SVRG 方法 KroMagnon。其稀疏估计器按坐标被采样的概率修正全梯度，保持无偏性，避免每次进行稠密写入；光滑强凸等条件下得到相应收敛界，坐标下降和 KroMagnon 在受限并发下具有线性收敛。主文还使用更新／随机梯度有界、原子写、有界重叠，以及读取向量与样本独立等条件，允许并发规模与条件数、稀疏冲突及精度有关。附录 A 专门处理独立性问题：对分量光滑的 Hogwild! 加入额外交叉误差，移除该独立性假设，但换来更严格的并发上界；不能把这一修正直接当作所有主文算法都已解除该假设。",
+      "reason": "推荐把式 (2.5) 的三类误差和第 3 节的更新排序作为阅读重点。它把不一致读取从实现细节变成可计算的分析对象，使不同异步随机方法可以共享一套证明结构，也清楚暴露了抽样独立性与执行顺序的关系。后续稀疏加速 SVRG 明确以这一框架和概率重加权估计器为起点，说明其价值不限于重述一个已有算法的收敛率。与同日的延迟序列论文并读，可比较“先建立虚拟迭代并控制扰动”和“直接保留延迟递推结构”两条路线；这有助于判断新的异步加速设计应在哪一层处理误差。",
+      "order": 3
+    },
+    {
+      "arxiv_id": "2509.14969",
+      "version": 2,
+      "title": "Stochastic Adaptive Gradient Descent Without Descent",
+      "authors": [
+        "Jean-François Aujol",
+        "Jérémie Bigot",
+        "Camille Castera"
+      ],
+      "abstract": "We introduce a new adaptive step-size strategy for convex optimization with stochastic gradient that exploits the local geometry of the objective function only by means of a first-order stochastic oracle and without any hyper-parameter tuning. The method comes from a theoretically-grounded adaptation of the Adaptive Gradient Descent Without Descent method to the stochastic setting. We prove the convergence of stochastic gradient descent with our step-size under various assumptions, and we show that it empirically competes against tuned baselines.",
+      "submitted": "2025-09-18",
+      "updated": "2026-06-17",
+      "arxiv_url": "https://arxiv.org/abs/2509.14969v2",
+      "directions": [
+        "stochastic",
+        "historical-information",
+        "optimization-frontiers"
+      ],
+      "summary": "历史补读。确定性 AdaGD 只用相邻梯度差估计局部曲率，但随机梯度差同时混入采样噪声，原有随机推广仍依赖需要调节的步长系数。该文复用上一 mini-batch，在当前点额外计算一次梯度，用同一样本上的梯度差估计曲率，并限制相邻步长增长；带衰减的两个变体进一步控制噪声累积。分析将随机梯度差拆成采样误差和曲率误差，建立含噪声项的 Lyapunov 递推。有限和的分量全局光滑、统一光滑的期望问题配合适当最优点噪声控制，或有限和的局部光滑配合迭代有界，分别提供收敛分析所需的控制。Lyapunov 几乎必然收敛还要求步长平方可和，论文在分量强凸、最小二乘及特定强凸 ridge 结构下验证带衰减变体满足这一性质。对于分量强凸且满足相应光滑／噪声条件的情形，V-III 给出均方距离 $O(k^{-1/2-\\delta})$ 的渐近界，其中 $0<\\delta<1/2$，并减弱瞬态常数对初始步长的敏感性。方法不需要输入光滑性和强凸性常数，但仍要选择衰减参数及初始步长，且每步比普通 SGD 多一次随机梯度计算；局部光滑的一般问题不能无条件套用上述强凸速率。",
+      "reason": "值得阅读的是怎样用历史样本把曲率变化与采样噪声分开，以及为何确定性自适应步长的收敛证明不能直接照搬到 SGD。相比已经介绍过的确定性 AdaGD，该文提供了新的随机 Lyapunov 递推、可实现的同批次曲率估计与明确的噪声衰减安排，构成独立补充。其主要价值是减少步长调试负担，而非证明快于最优调参 SGD 的复杂度；推荐同时比较额外梯度开销与免去网格搜索的实验收益，并区分 Lyapunov 收敛、迭代点误差速率和仅由实验支持的情形。",
+      "order": 4
+    },
+    {
+      "arxiv_id": "1706.00088",
+      "version": 3,
+      "title": "An Inertial Parallel and Asynchronous Fixed-Point Iteration for Convex Optimization",
+      "authors": [
+        "Giorgos Stathopoulos",
+        "Colin N. Jones"
+      ],
+      "abstract": "Two characteristics that make convex decomposition algorithms attractive are simplicity of operations and generation of parallelizable structures. In principle, these schemes require that all coordinates update at the same time, i.e., they are synchronous by construction. Introducing asynchronicity in the updates can resolve several issues that appear in the synchronous case, like load imbalances in the computations or failing communication links. However, and to the best of our knowledge, there are no instances of asynchronous versions of commonly-known algorithms combined with inertial acceleration techniques. In this work we propose an inertial asynchronous and parallel fixed-point iteration from which several new versions of existing convex optimization algorithms emanate. Departing from the norm that the frequency of the coordinates' updates should comply to some prior distribution, we propose a scheme where the only requirement is that the coordinates update within a bounded interval. We prove convergence of the sequence of iterates generated by the scheme at a linear rate. One instance of the proposed scheme is implemented to solve a distributed optimization load sharing problem in a smart grid setting and its superiority with respect to the non-accelerated version is illustrated.",
+      "submitted": "2017-05-31",
+      "updated": "2018-03-06",
+      "arxiv_url": "https://arxiv.org/abs/1706.00088v3",
+      "directions": [
+        "asynchronous-distributed",
+        "historical-information"
+      ],
+      "summary": "历史补读。随机选择坐标的异步模型不容易描述不同代理以任意频率完成局部近端问题的系统；另一方面，直接加入历史惯性项又会引入额外的过时误差。该文为可分后向算子与前向步的组合构造带协调器的异步惯性固定点迭代，代理保存自己上次写入的历史状态，协调器持续聚合最新收到的局部结果。算法不要求代理更新服从预定概率分布，但每个代理必须在一个有界窗口内写入一次。对于后向算子非扩张、前向算子的底层映射余强单调，以及固定点残差算子具有准强单调性的情形，作者把过时读取与惯性误差界在有限历史窗口上，选择满足显式小步长上界的松弛参数后证明线性收敛，并导出异步近端梯度等实例。线性收敛依赖这些正则性条件，不能推广为任意凸目标的线性率；定理也未证明惯性相对无惯性方法必有更优复杂度。负荷共享实验展示了模拟计算异质性下的惯性收益，但通信延迟取零，使用的松弛值大于理论充分界，因此实验改善与定理覆盖范围应分别理解。",
+      "reason": "推荐关注代理侧历史状态怎样进入局部算子，以及任意更新顺序下如何把多个来源的过时误差并入同一个延迟窗口递推。它对以异质局部子问题和协调器为特征的异步优化更直接，补充了同日共享内存稀疏随机算法之外的确定性模型。与加速 SVRG 依赖抽样独立性的分析相比，该文用有界更新窗口替代预定的随机调度，代价是准强单调性与较保守的松弛条件。阅读价值在于可分析的惯性接口和模型选择，不宜仅凭标题或实验将其称为已证明的最优加速。",
+      "order": 5
+    }
+  ]
+}
