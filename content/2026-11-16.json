@@ -1,0 +1,125 @@
+{
+  "date": "2026-11-16",
+  "status": "complete",
+  "frontiers_status": "recommendations",
+  "highlights": [
+    {
+      "arxiv_id": "1607.03218",
+      "label": "用小增益反馈环证明时变网络上的精确线性收敛",
+      "text": "历史补读：DIGing 跟踪平均梯度，有向版本加入推送求和归一化。在光滑凸局部目标、至少一个分量强凸及窗口连通等条件下，小固定步长得到 R 线性收敛；显式界仍依赖网络与曲率参数。",
+      "types": [
+        "group",
+        "field"
+      ]
+    },
+    {
+      "arxiv_id": "2310.06223",
+      "label": "额外松弛让投影梯度跟踪兼顾可行性与几何收敛",
+      "text": "历史补读：行／列随机通信配合投影和松弛，在共同闭凸集合内保持全程可行。各局部目标强凸光滑、每一时刻的有向图都强连通时，以三类误差的比较矩阵证明几何收敛；反例解释仅缩小梯度步长的分析局限。",
+      "types": [
+        "group"
+      ]
+    },
+    {
+      "arxiv_id": "1703.00887",
+      "label": "阶段性扰动以对数维数代价找到近似二阶驻点",
+      "text": "历史补读：用鞍点附近滞留区域的体积界分析偶发扰动。在梯度及 Hessian 光滑、函数值差有限等条件下，以高概率在 $\\widetilde O(L\\Delta_f/\\varepsilon^2)$ 步达到近似二阶驻点；靠近局部极小点的解释另需定量严格鞍点结构。",
+      "types": [
+        "field"
+      ]
+    }
+  ],
+  "papers": [
+    {
+      "arxiv_id": "1607.03218",
+      "version": 3,
+      "title": "Achieving Geometric Convergence for Distributed Optimization over Time-Varying Graphs",
+      "authors": [
+        "Angelia Nedich",
+        "Alex Olshevsky",
+        "Wei Shi"
+      ],
+      "abstract": "This paper considers the problem of distributed optimization over time-varying graphs. For the case of undirected graphs, we introduce a distributed algorithm, referred to as DIGing, based on a combination of a distributed inexact gradient method and a gradient tracking technique. The DIGing algorithm uses doubly stochastic mixing matrices and employs fixed step-sizes and, yet, drives all the agents' iterates to a global and consensual minimizer. When the graphs are directed, in which case the implementation of doubly stochastic mixing matrices is unrealistic, we construct an algorithm that incorporates the push-sum protocol into the DIGing structure, thus obtaining Push-DIGing algorithm. The Push-DIGing uses column stochastic matrices and fixed step-sizes, but it still converges to a global and consensual minimizer. Under the strong convexity assumption, we prove that the algorithms converge at R-linear (geometric) rates as long as the step-sizes do not exceed some upper bounds. We establish explicit estimates for the convergence rates. When the graph is undirected it shows that DIGing scales polynomially in the number of agents. We also provide some numerical experiments to demonstrate the efficacy of the proposed algorithms and to validate our theoretical findings.",
+      "submitted": "2016-07-12",
+      "updated": "2017-03-20",
+      "arxiv_url": "https://arxiv.org/abs/1607.03218v3",
+      "directions": [
+        "time-varying-networks",
+        "distributed",
+        "optimization-frontiers"
+      ],
+      "summary": "历史补读。时变网络上的普通分布式梯度法使用固定步长时，局部梯度偏差往往使各节点只能靠近最优解；改用递减步长又会牺牲速度。该文提出 DIGing：在混合决策变量的同时，通过相邻两次局部梯度之差跟踪全局平均梯度，并将推送求和归一化嵌入有向图版本 Push-DIGing。对于光滑凸的局部目标，只要至少一个局部目标强凸、从而整体强凸，在足够小的共同固定步长下，节点变量以全局 R 线性率收敛到同一个精确最优解。无向版本使用双随机矩阵与窗口乘积的一致收缩；有向版本允许图在单个时刻不强连通，但须满足一致的有界窗口联合强连通，并按出度构造列随机权重。作者在指数加权序列范数中，把最优性误差、梯度变化、跟踪误差与共识误差接成小增益反馈环，由增益乘积小于一导出显式步长与速率。R 线性率允许前置常数，不等同于每一步误差都按同一比例缩小；参数上界仍依赖目标曲率与网络信息，本文也未给出最优的条件数或网络复杂度。",
+      "reason": "推荐重点阅读第 3.2 节的误差反馈图、定理 10，以及有向网络中引入归一化状态后怎样重建同一个反馈环。它直接对应时变网络优化中的困难：网络只能在若干步后收缩，梯度估计又持续受到局部更新驱动，单看一轮混合或一个误差都无法闭合证明。相比此前已推荐的加速梯度跟踪工作，这篇提供其非加速基础与不平衡有向通信的处理机制，适合用来检查后续加速或历史外推究竟改善了哪个环节。显式充分步长较保守，阅读价值主要在可复用的误差组织与精确收敛机制。",
+      "order": 1
+    },
+    {
+      "arxiv_id": "2310.06223",
+      "version": 1,
+      "title": "Projected Push-Pull For Distributed Constrained Optimization Over Time-Varying Directed Graphs (extended version)",
+      "authors": [
+        "Orhan Eren Akgün",
+        "Arif Kerem Dayı",
+        "Stephanie Gil",
+        "Angelia Nedić"
+      ],
+      "abstract": "We introduce the Projected Push-Pull algorithm that enables multiple agents to solve a distributed constrained optimization problem with private cost functions and global constraints, in a collaborative manner. Our algorithm employs projected gradient descent to deal with constraints and a lazy update rule to control the trade-off between the consensus and optimization steps in the protocol. We prove that our algorithm achieves geometric convergence over time-varying directed graphs while ensuring that the decision variable always stays within the constraint set. We derive explicit bounds for step sizes that guarantee geometric convergence based on the strong-convexity and smoothness of cost functions, and graph properties. Moreover, we provide additional theoretical results on the usefulness of lazy updates, revealing the challenges in the analysis of any gradient tracking method that uses projection operators in a distributed constrained optimization setting. We validate our theoretical results with numerical studies over different graph types, showing that our algorithm achieves geometric convergence empirically.",
+      "submitted": "2023-10-10",
+      "updated": "2023-10-10",
+      "arxiv_url": "https://arxiv.org/abs/2310.06223v1",
+      "directions": [
+        "distributed",
+        "time-varying-networks",
+        "safety-critical",
+        "optimization-frontiers"
+      ],
+      "summary": "历史补读。给梯度跟踪直接加投影并不自动保留无约束情形的证明：约束最优点的全局梯度可能不为零，投影又使网络平均与梯度更新难以交换。该文提出 Projected Push-Pull，以行随机矩阵混合决策变量、列随机矩阵混合梯度跟踪变量，并将投影梯度步与原变量作松弛组合，用额外参数控制优化与共识误差的耦合。对于所有节点共享的已知闭凸约束集，从可行点初始化后，投影、松弛和凸组合保证决策变量始终可行。每个局部目标均强凸且梯度 Lipschitz、每一时刻的有向图都强连通、正权重有统一下界时，作者给出投影步长与松弛参数的显式充分范围，使最优性、共识和跟踪三类误差受一个谱半径小于一的非负矩阵控制，从而得到几何收敛。文中的反例还表明，取消额外松弛后，仅缩小通常的梯度步长，不能让特定误差递推中的交叉系数任意趋于零；这是对该类分析界的限制，不能读成所有不松弛算法都不收敛。定理要求逐时刻强连通，其范围小于只需窗口联合连通的网络模型；可行性保证针对共同集合，不是任意私有耦合约束的直接解法。",
+      "reason": "最值得阅读的是投影为何破坏常用的小步长误差控制，以及额外松弛参数怎样恢复这种控制。第 VI-D 节把困难具体化为一维投影反例，再由三类误差的比较矩阵解释算法改动，能将技术障碍与参数设计对应起来。它直接关联分布式约束优化、时变通信和全程可行迭代的研究问题，也补足本日 DIGing 基础论文未处理的边界最优点。推荐关注共同可行集的凸组合结构与双参数分析，同时按原文的逐时刻连通条件评估能否用于目标网络。",
+      "order": 2
+    },
+    {
+      "arxiv_id": "1703.00887",
+      "version": 1,
+      "title": "How to Escape Saddle Points Efficiently",
+      "authors": [
+        "Chi Jin",
+        "Rong Ge",
+        "Praneeth Netrapalli",
+        "Sham M. Kakade",
+        "Michael I. Jordan"
+      ],
+      "abstract": "This paper shows that a perturbed form of gradient descent converges to a second-order stationary point in a number iterations which depends only poly-logarithmically on dimension (i.e., it is almost \"dimension-free\"). The convergence rate of this procedure matches the well-known convergence rate of gradient descent to first-order stationary points, up to log factors. When all saddle points are non-degenerate, all second-order stationary points are local minima, and our result thus shows that perturbed gradient descent can escape saddle points almost for free. Our results can be directly applied to many machine learning applications, including deep learning. As a particular concrete example of such an application, we show that our results can be used directly to establish sharp global convergence rates for matrix factorization. Our results rely on a novel characterization of the geometry around saddle points, which may be of independent interest to the non-convex optimization community.",
+      "submitted": "2017-03-02",
+      "updated": "2017-03-02",
+      "arxiv_url": "https://arxiv.org/abs/1703.00887v1",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "summary": "历史补读。梯度很小只能说明接近一阶驻点；随机初始化下几乎必然不收敛到严格鞍点，也不能给出需要多久才能离开的上界。该文研究带阶段性随机扰动的梯度下降：梯度降到阈值附近时，在小球内作一次均匀扰动，随后运行一段普通梯度下降，以函数下降量判断是否仍可能存在显著负曲率。作者把鞍点附近长时间无法逃离的初始点限制在很薄的区域内，由体积估计控制扰动失败概率。在梯度 L 光滑、Hessian 为 $\\rho$ Lipschitz、初始函数值差有限等条件下，选定文中参数并取 $\\varepsilon\\leq L^2/\\rho$，算法以至少 $1-\\delta$ 的概率找到满足 $\\|\\nabla f(x)\\|\\leq\\varepsilon$ 且 $\\lambda_{\\min}(\\nabla^2f(x))\\geq-\\sqrt{\\rho\\varepsilon}$ 的点；迭代复杂度为 $\\widetilde O(L\\Delta_f/\\varepsilon^2)$，维数仅进入对数因子，展开时具有四次对数项。算法使用精确梯度、函数值及相应参数界，不依赖 Hessian 向量积。要把近似二阶驻点进一步解释为靠近局部极小点，仍需文中的定量严格鞍点结构；进一步得到局部线性收敛还需局部强凸或相应正则性条件。",
+      "reason": "推荐重点阅读第 5 节的逃逸几何：负曲率方向上的不稳定性，如何通过两条轨迹的比较与薄区域体积界，变成可计入总复杂度的函数下降保证。相较仅排除收敛到鞍点的零测集论证，这项工作直接控制有限步代价，并将维数的多项式依赖降到对数依赖；其二阶驻点复杂度与普通梯度下降的一阶驻点复杂度只差对数因子。这为阅读后续加速逃逸、噪声设计和二阶复杂度结果提供清楚的基线，也提醒读者把算法使用的随机扰动与随机目标梯度噪声区分开。",
+      "order": 3
+    },
+    {
+      "arxiv_id": "1710.07406",
+      "version": 1,
+      "title": "First-order Methods Almost Always Avoid Saddle Points",
+      "authors": [
+        "Jason D. Lee",
+        "Ioannis Panageas",
+        "Georgios Piliouras",
+        "Max Simchowitz",
+        "Michael I. Jordan",
+        "Benjamin Recht"
+      ],
+      "abstract": "We establish that first-order methods avoid saddle points for almost all initializations. Our results apply to a wide variety of first-order methods, including gradient descent, block coordinate descent, mirror descent and variants thereof. The connecting thread is that such algorithms can be studied from a dynamical systems perspective in which appropriate instantiations of the Stable Manifold Theorem allow for a global stability analysis. Thus, neither access to second-order derivative information nor randomness beyond initialization is necessary to provably avoid saddle points.",
+      "submitted": "2017-10-20",
+      "updated": "2017-10-20",
+      "arxiv_url": "https://arxiv.org/abs/1710.07406v1",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "summary": "历史补读。为何没有持续注入噪声的一阶方法，也能在随机初始化下避开严格鞍点？该文把算法视为离散动力系统，将负曲率驻点识别为具有模大于一特征值的不稳定不动点，再用中心稳定流形与可数覆盖论证其全局吸引域为零测集。关键条件是更新映射为 $C^1$，且在整个定义域上局部可逆；仅在鞍点附近存在不稳定方向并不够。对于 $C^2$ 且梯度 L 光滑的欧氏目标，固定步长 $0<\\alpha<1/L$ 可用于梯度下降和近端点映射；文章还针对循环块坐标更新、镜像下降等逐一核查其条件。于是，从对 Lebesgue 测度绝对连续的初始化分布出发，收敛到任何严格鞍点的概率为零，结论也不要求鞍点孤立。它没有给出有限时间逃逸速度，也没有单独保证一般迭代必然收敛。本文流形梯度下降部分关于局部可逆性的原证明另有后续勘误（arXiv:2204.00521），需要补充回缩正则性与步长控制；本次推荐的主线是上述一般判据及已逐项核实的欧氏算法，不能把流形扩展视作无条件结论。",
+      "reason": "最值得阅读的是从局部不稳定性走向全局零测吸引域的两步：中心稳定流形控制局部集合，局部可逆性再保证反复取前像不会把零测集合放大。这给梯度法、近端点和坐标方法提供同一套检查清单，比逐个算法作几何直觉解释更可复用。与本日扰动梯度论文并读，能够明确哪些结论只回答最终会否收敛到鞍点，哪些结论真正控制达到近似二阶驻点的计算量。后续勘误也说明，推广到新几何或新更新映射时，必须重新验证可逆性，不能只沿用负曲率特征值计算。",
+      "order": 4
+    }
+  ]
+}
