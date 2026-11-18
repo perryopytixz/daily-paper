@@ -1,0 +1,355 @@
+{
+  "date": "2026-11-18",
+  "status": "complete",
+  "frontiers_status": "recommendations",
+  "highlights": [
+    {
+      "arxiv_id": "2511.01852",
+      "types": [
+        "field"
+      ],
+      "label": "普通梯度下降具有更强的近端遗憾保证",
+      "text": "在紧凸策略集和有界梯度等条件下，投影梯度下降无需改动，就同时对所有适当下半连续函数的近端偏离取得 $O(\\sqrt{T})$ 遗憾。证明用 Moreau 包络串起每步下降，并将博弈极限细化为近端相关均衡；非凸的是偏离函数，在线损失仍须凸。"
+    },
+    {
+      "arxiv_id": "2608.27774",
+      "types": [
+        "field"
+      ],
+      "label": "低维矩几何给出手性运输的全局近似",
+      "text": "将运输耦合投影到 $d^2$ 维凸集，用线性运输子问题收紧内外多面体。在紧支撑、协方差非退化及投影代价凹性条件下，固定维数后获得关于样本数与逆精度的多项式全局近似；一般非凸代价不适用同一保证。"
+    },
+    {
+      "arxiv_id": "2211.03997",
+      "types": [
+        "field"
+      ],
+      "label": "近似求解误差存在由可行裕量决定的阈值",
+      "text": "对偶镜像下降可容忍多大的局部求解误差，取决于价格相关误差与严格可行裕量的比较。阈值内可控制长期约束违反为 $O(\\sqrt T)$，阈值外有不可能性构造；奖励遗憾仍保留求解误差累积的线性项。"
+    },
+    {
+      "arxiv_id": "2611.18547",
+      "types": [
+        "field"
+      ],
+      "label": "单共享断点的六类非凸拟合可精确多项式求解",
+      "text": "对连续取值的单个共享断点，作者把各维最优误差分段分析后归约到有限代数候选。三种损失、稠密与稀疏六个变体均可精确多项式求解，最小二乘分别只需 $O(JT)$ 和 $O(J^2T\\log J)$ 次运算。"
+    },
+    {
+      "arxiv_id": "2611.20131",
+      "types": [
+        "field"
+      ],
+      "label": "收益求积本身会制造非全局局部极小",
+      "text": "即使状态格式保持非负，仅把实际移除通量换成步初种群收益，也能把严格凸的收获控制变为含额外局部极小的问题。两步反例有严格证书；一维扩散下还给出目标、梯度和 Hessian 的网格一致 $O(\\tau)$ 差界。"
+    },
+    {
+      "arxiv_id": "2611.17813",
+      "types": [
+        "group"
+      ],
+      "label": "单次多目标投影隐式实现 Hessian 阻尼",
+      "text": "通过位置与辅助惯性变量的两个一阶方程，把 Hessian 驱动阻尼写成单个多目标投影调用。凸性、局部 Lipschitz 梯度、有界共同下水平集和缩放条件下，能量估计控制 merit 与 KKT 残差，并得到全局解的弱 Pareto 收敛；理论主体是连续时间。"
+    },
+    {
+      "arxiv_id": "2611.19616",
+      "types": [
+        "group"
+      ],
+      "label": "安全梯度把估计偏差显式纳入约束与驻点界",
+      "text": "扩展鲁棒安全梯度方法至一般轨迹约束与有偏估计，分别控制安全初值的违反、非安全初值的恢复，以及近似 KKT 残差。结论依赖步长、样本数、更新可行性及严格裕量；PPO 硬件实现存在论文明确讨论的理论假设差距。"
+    }
+  ],
+  "papers": [
+    {
+      "arxiv_id": "2511.01852",
+      "version": 3,
+      "title": "Proximal Regret and Proximal Correlated Equilibria: A New Tractable Solution Concept for Online Learning and Games",
+      "authors": [
+        "Yang Cai",
+        "Constantinos Daskalakis",
+        "Haipeng Luo",
+        "Chen-Yu Wei",
+        "Weiqiang Zheng"
+      ],
+      "submitted": "2025-11-03",
+      "updated": "2026-11-13",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2511.01852v3",
+      "abstract": "Learning and computation of equilibria are central problems in game theory, theory of computation, and artificial intelligence. In this work, we introduce proximal regret, a new notion of regret based on proximal operators that lies strictly between external and swap regret. When every player employs a no-proximal-regret algorithm in a general convex game, the empirical distribution of play converges to proximal correlated equilibria (PCE), a refinement of coarse correlated equilibria. Our framework unifies several emerging notions in online learning and game theory-such as gradient equilibrium and semicoarse correlated equilibrium-and introduces new ones. Our main result shows that the classic Online Gradient Descent (GD) algorithm achieves an optimal $O(\\sqrt{T})$ bound on proximal regret, revealing that GD, without modification, minimizes a stronger regret notion than external regret. This provides a new explanation for the empirically superior performance of gradient descent in online learning and games. We further extend our analysis to Mirror Descent in the Bregman setting and to Optimistic Gradient Descent, which yields faster convergence in smooth convex games.",
+      "summary": "普通在线梯度下降通常以外部遗憾衡量，但这不足以描述其输出序列的全部结构。该文用任意适当下半连续函数的近端映射定义策略偏离，提出介于外部遗憾与交换遗憾之间的近端遗憾。作者以 Moreau 包络作势函数，证明在紧凸策略集、有界次梯度及适当递减步长下，未经修改的投影梯度下降同时对所有这些近端偏离取得 $O(\\sqrt{T})$ 遗憾，界与所选函数无关；生成偏离的函数可以非凸，但在线损失仍须凸。由此得到比粗相关均衡更精细的近端相关均衡，并扩展到 Bregman 镜像下降。乐观梯度方法的更快结果另要求相应偏离函数的凸性与博弈光滑性。",
+      "reason": "推荐关注用包络下降解释既有算法能力的证明：不增加每轮子问题，也能证明比传统基准更强的保证。它提供了一个具体例子，说明算法表现的差别有时来自评价对象过弱；近端偏离与均衡概念的联系也值得在线优化研究者借鉴。",
+      "order": 1
+    },
+    {
+      "arxiv_id": "2608.27774",
+      "version": 3,
+      "title": "Beyond Procrustes distances: a multilinear Gromov-Wasserstein distance capturing chirality",
+      "authors": [
+        "Clément Soubrier",
+        "Geoffrey Woollard",
+        "Andrew Warren",
+        "Khanh Dao Duc"
+      ],
+      "submitted": "2026-08-27",
+      "updated": "2026-11-14",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2608.27774v3",
+      "abstract": "Efficiently and robustly analyzing shape data is critical across many scientific disciplines. While chirality is a fundamental property in numerous applications - most notably in molecular science - existing shape analysis metrics either fail to distinguish enantiomers, or rely on costly alignment. To address this gap, we introduce a multilinear generalization of the Gromov-Wasserstein objective, which yields an alignment-free distance between shapes, represented as probability distributions quotiented by a Lie group $G$. In particular, for $G = SO(d)$, we introduce the Chiral Gromov-Wasserstein ($\\mathrm{CGW}$) distance, sensitive to chirality. We establish robustness and sample complexity properties for the multilinear Gromov-Wasserstein distances and develop efficient algorithms to compute them, reformulating the underlying optimization problem by projecting couplings onto a low-dimensional space. We derive algorithms for both local and approximate global solutions, yielding an approximation scheme, which is polynomial in the sample size and precision. We validate the framework through numerical experiments that demonstrate the effectiveness of $\\mathrm{CGW}$ as a shape metric for chiral objects.",
+      "summary": "常见形状距离会把镜像混同，直接联合优化旋转与运输耦合又容易陷入局部解。该文以群不变多线性形式构造 Gromov–Wasserstein 型目标，其中 Chiral GW 能区分手性。算法将运输耦合投影到维数为 $d^2$ 的凸集，再用线性运输子问题构造逐步收紧的内外多面体。对紧支撑、协方差具有统一正下界的离散分布，在投影后的代价于初始外包集上为凹函数时，作者证明：固定维数、支撑半径与非退化常数后，可在关于样本数与逆精度的多项式时间内取得平方距离的加性近似。二维和三维 Chiral GW 需相应参数条件以保证该凹性。一般多线性代价仍依赖非凸求解；用近似 Sinkhorn 子问题替换精确运输求解的版本也未继承同一复杂度保证。",
+      "reason": "最值得阅读的是把高维耦合压缩为低维矩几何，再用可计算内外界控制全局误差的路线。手性是清楚的建模动机，而固定维数和投影代价凹性才是全局近似可解性的关键，适合与通常只保证局部驻点的 GW 方法对照。",
+      "order": 2
+    },
+    {
+      "arxiv_id": "2211.03997",
+      "version": 4,
+      "title": "Online Nonconvex Decision Making with Approximate Oracles",
+      "authors": [
+        "Rui Chen",
+        "Oktay Günlük",
+        "Andrea Lodi",
+        "Guanyi Wang"
+      ],
+      "submitted": "2022-11-08",
+      "updated": "2026-11-13",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2211.03997v4",
+      "abstract": "We study online decision making with possibly nonconvex (for example, combinatorial or integer) local feasible sets and convex long-term constraints. At each period, a decision maker selects a local action to maximize cumulative reward while ensuring that the sequence of actions satisfies the global constraints in the long term. It is known that $O(\\sqrt{T})$ long-term constraint violation and $O(\\sqrt{T})$ reward regret are achievable if given access to a local optimization oracle that exactly solves optimization problems over each local feasible set. Instead of requiring exact optimization over each local feasible set, we assume access to an approximate local optimization oracle that permits optimization errors quantified by two parameters $(\\delta_+,\\delta_\\times)$. We develop an approximate online dual mirror descent algorithm and show that its guarantees depend on a feasibility slack parameter $\\underline d$, which measures the compatibility between local feasible sets and the long-term constraint. Under the standard random permutation model, when $\\delta_+=O(1)$, $\\delta_\\times<\\underline d$ and $\\underline d-\\delta_\\times=\\Omega(1)$, the algorithm achieves $O(\\sqrt T)$ long-term constraint violation and reward regret up to $O\\bigl(\\sqrt T+\\delta_\\times T\\bigr)+\\delta_+ T$. We also show a matching limitation: when $\\delta_+=0$ and $\\delta_\\times>\\underline d$, no online algorithm relying on such approximate oracle outputs can guarantee sublinear long-term constraint violation in general.",
+      "summary": "在线资源决策常需用近似求解器处理每期非凸局部问题，同时满足凸的长期总量约束。该文在对偶镜像下降中允许局部最优性缺口同时包含加性误差与随对偶价格范数增长的误差，并证明误差容忍度取决于可行裕量 $\\underline d$。在局部集合紧、奖励与影响有界、长期目标集具有紧凸集加闭凸锥分解，以及每期局部集合凸包满足统一严格可行条件下，若价格相关误差系数 $\\delta_\\times<\\underline d$ 且差距有正下界，长期约束违反为 $O(\\sqrt T)$；随机排列输入下，奖励遗憾界还包含 $\\delta_+T$ 与 $\\delta_\\times T$ 项。因此固定求解误差并不意味着次线性奖励遗憾。反向构造表明，即使加性误差为零，价格相关误差超过可行裕量时，依赖此类预言机输出的算法一般无法保证次线性约束违反。",
+      "reason": "推荐关注近似预言机误差与可行裕量之间的阈值，而非笼统把内层误差视作一个常数。上界和不可能性结果共同解释了长期约束方法何时能吸收局部求解偏差；这一视角也适用于连续对偶协调方法，不局限于论文举例的整数局部问题。",
+      "order": 3
+    },
+    {
+      "arxiv_id": "2611.18547",
+      "version": 1,
+      "title": "Polynomial-Time Solvability of the Multi-Dimensional Slope Change Problem",
+      "authors": [
+        "Apoorva Narula",
+        "Santanu S. Dey"
+      ],
+      "submitted": "2026-11-13",
+      "updated": "2026-11-13",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2611.18547v1",
+      "abstract": "Slope change detection seeks to identify changes in the trends of time-ordered signals. We study the problem of fitting a multidimensional time series by continuous piecewise-linear functions with a shared continuous breakpoint and unrestricted slopes. We consider both the dense setting, in which every dimension may change slope, and the sparse setting, in which at most $k$ dimensions may change slope. Although the resulting optimization problems are nonconvex mixed integer nonlinear programs and may have irrational optimal solutions even for rational data, we prove that all six variants, corresponding to the $\\ell_1$, $\\ell_2$, and $\\ell_\\infty$ losses in both settings, are exactly solvable in polynomial time. For least-squares loss, we obtain efficient algorithms requiring $O(JT)$ operations in the dense setting and $O(J^2T\\log J)$ operations in the sparse setting, where $T$ is the number of time points and $J$ is the number of dimensions. We implement these least-squares algorithms and evaluate them on simulated data and three real-world time series, namely, surface temperatures (ERA5), hand-tracking data from a mixed-reality headset (HoloAssist), and turbofan engine sensor data (NASA C-MAPSS). The dense algorithm solves instances with up to $J=10^5$ and $T=100$, that is, $10^7$ observations, in less than $0.1$ seconds on a laptop, while the sparse algorithm solves instances with about $10^3$ dimensions and up to $T=240$ in under a second. Compared with a mixed-integer nonlinear programming (MINLP) formulation solved by Gurobi, our algorithms are several orders of magnitude faster (approximately $8.9 \\times 10^3$ to $3.4 \\times 10^6$ times) on instances where Gurobi terminates within its default optimality tolerance of $0.01\\%$ optimality gap. On larger instances, Gurobi frequently reaches a 10,000-second time limit with substantial optimality gaps.",
+      "summary": "该文研究多维时间序列的连续分段仿射拟合：所有维度共享一个连续取值的断点，各维斜率不受符号限制，并允许至多部分维度发生斜率变化。虽然模型可写为非凸混合整数问题，作者证明稠密与稀疏两种情形下的 $\\ell_1$、最小二乘和 $\\ell_\\infty$ 六种变体均具有多项式位复杂度的精确算法。关键是在相邻观测时刻之间分析各维最优拟合误差关于断点的变化，再把连续搜索归约为有限个代数候选及其比较。最小二乘的稠密算法只需 $O(JT)$ 次运算，稀疏算法为 $O(J^2T\\log J)$；其中 $J$ 为维数、$T$ 为观测时刻数。这些快速运算界针对单个共享断点，不是任意多断点拟合的通用结论；精确解允许以代数数表示。",
+      "reason": "值得阅读的是从表面上的混合整数非凸模型中识别可解结构的全过程，尤其是连续断点、稀疏维度选择与代数表示如何同时处理。最小二乘的线性输入规模算法还提供了一个具体例子：利用参数化最优值结构，可能比直接调用通用全局求解器更有效。",
+      "order": 4
+    },
+    {
+      "arxiv_id": "2611.20131",
+      "version": 1,
+      "title": "Quadrature-Induced Local Minima in Structure-Preserving Lotka-Volterra Control",
+      "authors": [
+        "Alexandre Autran"
+      ],
+      "submitted": "2026-11-15",
+      "updated": "2026-11-15",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2611.20131v1",
+      "abstract": "Harvest quadrature can change a discrete optimal control problem even when the state scheme stays fixed. We study this effect for a positivity-preserving Lotka--Volterra scheme. The difference appears in a model with harvesting alone: rewarding the scheme's removal flux gives a strictly convex reduced cost, whereas using prey density at the start of each step overestimates harvest and can create negative curvature and a strict local minimum that is not global. Rational root isolation certifies the two-step global minimizers. With diffusion in one space dimension, nonnegative bounded $H^1$ initial data and positive diffusivities, the costs, weighted gradients and Hessians differ by $O(\\tau)$ uniformly in the spatial mesh, where $\\tau$ is the time step. A uniform positive lower bound on the reduced Hessian gives the same order for the distance between nearby controls. A large enough effort penalty gives unique global discrete minimizers. We also prove positivity, exact population balance and a common variational limit, and derive exact discrete adjoints and Hessian actions. Numerical tests trace changes in curvature and stationary controls across parameters and grids, with costs evaluated on a common reference using adaptive time stepping. The construction extends to weighted production--destruction systems, giving exact harvest accounting and smooth derivatives on fixed grids.",
+      "summary": "保持状态离散格式不变，仅改变收益的求积方式，也可能改变优化问题的局部极小结构。该文以保持非负性的 Lotka–Volterra 收获控制为例，比较用步初状态计算收益和按离散状态实际移除通量计算收益。在仅有收获的子模型中，通量一致的约化目标严格凸，而步初收益会重复奖励已移除的种群，产生负曲率；作者给出两步构造，严格证明存在非全局的约束局部极小点，并用有理根隔离核实全局解。在一维扩散、正扩散系数及非负有界 $H^1$ 初值等条件下，两种目标、加权梯度和 Hessian 的差为对空间网格一致的 $O(\\tau)$。附近控制的同阶稳定性还需 Hessian 的统一正下界。文章同时推导精确离散伴随与 Hessian 作用，并证明相应共同变分极限。",
+      "reason": "推荐优先阅读两步反例及其曲率解释。它把优化器失败与目标离散本身制造的局部极小明确区分开来，并说明仅检查状态正性或连续极限一致性仍不足以保证有限网格上的优化几何。这是评估离散最优控制算法时很具体的诊断工具。",
+      "order": 5
+    },
+    {
+      "arxiv_id": "2611.17813",
+      "version": 1,
+      "title": "An accelerated multiobjective gradient flow with implicit Hessian-driven damping",
+      "authors": [
+        "Wen Jiang",
+        "Hao Luo"
+      ],
+      "submitted": "2026-11-13",
+      "updated": "2026-11-13",
+      "directions": [
+        "historical-information",
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2611.17813v1",
+      "abstract": "In this paper, we propose an accelerated multiobjective gradient flow with implicit Hessian-driven damping for unconstrained convex multiobjective optimization problems in a real Hilbert space. The continuous flow is formulated as a system of two first-order equations involving only a single multiobjective projection operator and suitable time-scaling factors. Formally, it can also be expressed as a second-order system with explicit multiobjective Hessian-driven damping, which corresponds to the usual Hessian-driven damping introduced by Alvarez et al. [J. Math. Pures Appl., 81(8):747--779, 2002]. The first-order formulation, however, involves no Hessian term and can be regarded as an extension of the Hessian-driven Nesterov accelerated gradient flow by Chen and Luo [ arXiv:1912.09276 , 2019]. Assuming that the objective gradients are Lipschitz continuous on bounded sets and that the common lower level sets are bounded, we establish global existence in finite dimensions under suitable time-scaling conditions. An a priori energy estimate confines the solutions to a fixed bounded set, and a Lyapunov argument yields fast decay of a merit function and the KKT residual. Under an additional bound on the time-scaling factors, the trajectory of every global solution converges weakly to a weak Pareto point. Numerical tests illustrate the rapid residual decay and reduced oscillations.",
+      "summary": "多目标加速动力系统中的惯性项有助于加快收敛，却也会带来振荡，而直接使用 Hessian 阻尼不利于构造一阶方法。该文提出由位置与辅助惯性变量组成的两个一阶方程，只调用一个与梯度凸包有关的多目标投影算子，将 Hessian 驱动阻尼隐式编码进去。对凸且连续可微的目标，在梯度于有界集上 Lipschitz、共同下水平集有界及时间缩放条件下，作者证明有限维全局解存在，并以 Lyapunov 能量控制轨迹、merit 函数和 KKT 残差；后两者的衰减由文中累积缩放函数 $\\Sigma(t)$ 控制。附加缩放界下，每个全局解轨迹弱收敛到弱 Pareto 点。数值离散显示振荡减小，但主要定理针对连续时间系统。",
+      "reason": "推荐关注如何以辅助惯性变量和单次投影，把几何阻尼转写为只需一阶信息的模型，以及能量估计如何同时控制目标改进与 Pareto 驻点残差。对历史信息加速研究，值得借鉴的是变量重构和分析工具；离散算法保证仍需另行建立。",
+      "order": 6
+    },
+    {
+      "arxiv_id": "2611.19616",
+      "version": 1,
+      "title": "Towards Probabilistically Safe Reinforcement Learning: Theory and Deployment on Humanoid and Aerial Robots",
+      "authors": [
+        "Pol Mestres",
+        "Varun Gabbita",
+        "Jason H. K. Siu",
+        "Sergio A. Esteban",
+        "Hampus Serneke",
+        "Joel W. Burdick",
+        "Aaron D. Ames"
+      ],
+      "submitted": "2026-11-14",
+      "updated": "2026-11-14",
+      "directions": [
+        "safety-critical"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2611.19616v1",
+      "abstract": "Reinforcement learning (RL) enables robots to acquire complex skills, but standard RL formulations do not guarantee that learned policies satisfy safety constraints, which limits their use in safety-critical settings. Existing safe RL methods with provable guarantees typically support only restricted classes of constraints and require unbiased estimators of the objective and constraint functions, which prevents their direct integration with state-of-the-art algorithms such as proximal policy optimization (PPO). In this paper, we extend the recently introduced robust safe gradient flow-based reinforcement learning (RSGF-RL) framework to overcome these limitations. Our formulation accommodates a general class of trajectory-level safety constraints, including chance constraints such as collision avoidance with a prescribed probability, and our analysis allows for biased value and gradient estimators. We show that, with high probability, the constraint violation throughout training is bounded by the estimator bias plus a term that vanishes as the number of rollouts grows, and decays to this level if the initial policy is unsafe. We also establish the convergence properties of the iterates to approximate KKT points of the original safe RL problem. Finally, we show that RSGF-RL implemented with PPO-style estimates enables zero-shot sim-to-real deployment of whole-body control policies on a Unitree G1 humanoid and collision-free waypoint navigation on a Crazyflie drone.",
+      "summary": "安全策略优化需要在改进目标的过程中控制约束违反，但实际值与梯度估计通常有偏。该文扩展鲁棒安全梯度流方法，将一般轨迹函数的期望约束纳入统一模型，其中包括整个回合的机会安全约束，并允许有偏估计。对有限训练时域，在约束梯度 Lipschitz、样本量和步长满足给定条件、估计更新子问题每步可行时，作者给出以估计偏差和采样误差决定的安全邻域：安全初值的违反保持在该邻域内，非安全初值则衰减至该尺度。在紧参数集、光滑性和严格可行裕量下，又得到精确安全梯度残差的有限步及几乎必然渐近界，并推出近似 KKT 的子序列结论。PPO 式实现用于人形与无人机实验，但文中明确指出部分理论假设不满足，因此硬件结果不能视作这些定理的直接认证。",
+      "reason": "推荐关注把估计偏差显式传递到每步安全和驻点残差的分析。它直接回答安全梯度方法如何容忍现实的有偏信息，且将可行初值保持、不可行初值恢复和优化残差分开量化。阅读时应同时看严格可行条件与理论到 PPO 实现的差距。",
+      "order": 7
+    },
+    {
+      "arxiv_id": "2510.18218",
+      "version": 4,
+      "title": "DualHash: Stochastic Primal-Dual Algorithms for W-Type Regularized Deep Hashing",
+      "authors": [
+        "Luxuan Li",
+        "Xiao Wang",
+        "Chunfeng Cui"
+      ],
+      "submitted": "2025-10-21",
+      "updated": "2026-11-15",
+      "directions": [
+        "stochastic",
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2510.18218v4",
+      "abstract": "Deep hashing encodes high-dimensional image features into compact binary codes, enabling efficient similarity search in large-scale content-based image retrieval, a problem akin to semantic-preserving lossy compression under extreme bit-rate constraints. A fundamental challenge in deep hashing stems from the discrete nature of quantization in generating the codes. W-type regularizations, such as $z\\mapsto\\||z|-1\\|_1$, are widely adopted and empirically effective at pushing network outputs toward binary values. However, existing methods often directly optimize these regularizations without convergence guarantees. While proximal gradient methods offer a promising solution, the coupling between W-type regularizers and neural network outputs results in composite forms that generally lack closed-form proximal solutions. In this paper, using Fenchel duality, we reformulate the nonconvex W-type regularization term through its convex conjugate, yielding a min-max problem with tractable proximal updates. We show that this min-max problem captures the stationarity of the original deep hashing objective up to the quantization error. Building on this problem, we present a stochastic primal-dual hashing algorithm, referred to as DualHash, with oracle complexity guarantees. We derive two algorithm instances: a momentum-based version with $O(\\varepsilon^{-4})$ oracle complexity and an improved $O(\\varepsilon^{-3})$ version using variance reduction, both for $\\varepsilon$-KKT points of the min-max problem, which yield near-stationarity guarantees for the original objective. Experiments on three standard datasets demonstrate competitive retrieval accuracy and reduced quantization error, validating the practical value of DualHash for image retrieval problems. Our implementation of DualHash is available at this https URL .",
+      "summary": "深度哈希的 W 型非凸非光滑正则作用于网络输出，其复合近端子问题通常难解。该文通过变量分裂与 Fenchel 共轭构造具有易计算对偶近端步的鞍点模型。由于原正则非凸，这一模型并不与原问题自动等价；作者证明相应 KKT 驻点的结构偏差可由量化误差控制，正则与双共轭重合时才恢复对应驻点关系。在文中的有界矩、光滑性和参数条件下，随机原始对偶方法的动量版本求近似 KKT 点需要 $O(\\varepsilon^{-4})$ 次随机一阶调用；再有均方光滑性时，递归方差缩减版本改善为 $O(\\varepsilon^{-3})$。返回原始目标的近似驻点保证仍保留量化误差项，不能把鞍点复杂度直接解释为原非凸目标的无偏精确保证。",
+      "reason": "最有价值的是把共轭重构的误差和随机算法误差分开核算。相比仅给出更快训练曲线，文章解释了一个易用原始对偶模型究竟在何种意义上求解原问题，并展示动量与方差缩减如何在多块复合结构中取得不同预言机复杂度。",
+      "order": 8
+    },
+    {
+      "arxiv_id": "2611.03201",
+      "version": 2,
+      "title": "On the Convergence of Vanilla Adam under Heavy-Tailed Noise and Index Sampling",
+      "authors": [
+        "Kanata Oowada",
+        "Hideaki Iiduka"
+      ],
+      "submitted": "2026-11-02",
+      "updated": "2026-11-14",
+      "directions": [
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2611.03201v2",
+      "abstract": "Understanding how stochastic gradient noise affects the convergence of Adaptive Moment Estimation (Adam) is an important problem in stochastic optimization, particularly when the noise exhibits heavy-tailed behavior. In this paper, we investigate the convergence of vanilla Adam in both the expected risk and the empirical risk minimization, focusing on the effects of heavy-tailed noise and its relationship to index sampling. For the expected risk minimization, we establish convergence guarantees under Hölder smoothness and bounded $\\mathfrak{p}$-th moment assumptions, allowing stochastic gradient noise with infinite variance. Our analysis provides explicit upper bounds on the expected squared gradient norm and shows that the iteration-dependent convergence term decays more slowly as $\\mathfrak{p}$ decreases. For the empirical risk minimization, we establish asymptotic and non-asymptotic convergence guarantees and demonstrate that heavy-tailed population noise can deteriorate convergence bounds through dataset-dependent constants as the dataset size increases. Numerical experiments support our theoretical findings on the effects of heavy-tailed noise.",
+      "summary": "该文区分总体分布采样与固定有限数据集的索引采样，分析重尾信息如何影响带偏差修正的 vanilla Adam。总体风险下，作者在有下界的目标、全梯度有界、$h$ 阶 Hölder 光滑和有界 $p$ 阶噪声矩等条件下，给出期望平方梯度范数的显式上界。条件要求 $1+h\\le p$：当 $h=1$ 时须取 $p=2$，所以该定理不能直接声称覆盖 Lipschitz 光滑下的无限方差噪声。适当衰减的步长与一阶动量参数控制迭代项，但固定噪声尺度仍在上界中留下误差项。经验风险下，固定数据集索引采样不会自行产生严格的无限方差噪声；总体重尾通过随数据集变化的常数影响保证，并可用增大批量减弱索引噪声。",
+      "reason": "推荐关注两种随机性来源的拆分和假设之间的耦合。对自适应随机优化分析，这比把所有梯度直方图统一称为重尾更有辨识力；同时应对照残留误差和动量日程，判断文中保证是否对应所研究的实际 Adam 设置。",
+      "order": 9
+    },
+    {
+      "arxiv_id": "2606.23357",
+      "version": 4,
+      "title": "SOAP-Bubbles: Structured Weight Uncertainty for Neural Networks",
+      "authors": [
+        "Adrian Robert Minut",
+        "Nico Carlsen Daheim",
+        "Marco Miani",
+        "Mohammad Emtiyaz Khan",
+        "Wu Lin",
+        "Thomas Möllenhoff"
+      ],
+      "submitted": "2026-06-22",
+      "updated": "2026-11-16",
+      "directions": [
+        "stochastic"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2606.23357v4",
+      "abstract": "Structured weight-uncertainty can improve many aspects of deep learning, but it remains costly to estimate and difficult to implement. Here, we show that these issues can be addressed by adapting the SOAP optimizer. Our key idea is to run IVON, an existing diagonal-covariance variational method, in the eigenspace of SOAP's preconditioner and then use the preconditioner to transform the diagonal estimate into a non-diagonal covariance. The resulting method has costs similar to those of SOAP and requires no drastic changes to training pipelines. We call the posteriors obtained in this way SOAP-Bubbles and our new optimizer Eigenspace-VON (EVON). We show that, for logistic regression, EVON can match the full Gaussian covariance and that, for language model pretraining, it yields significantly better results than existing diagonal-covariance methods. Our work makes it easier to estimate more expressive posterior distributions for deep learning at scale.",
+      "summary": "对角高斯变分方法便于大规模训练，但无法表达参数间相关性；直接估计完整协方差则代价高。该文提出 EVON：在 SOAP 的 Kronecker 特征基中运行对角 IVON，用参数采样和曲率估计联合更新均值与方差，再把协方差旋回原空间。变分目标的坐标变换等价性使这种实现仍可沿用对角更新结构，计算成本与 SOAP 相近。在线性模型、各相关矩阵可同时对角化等条件下，作者证明最佳全高斯变分分布属于该结构族，并给出正交或平行特征等充分情形。这里是变分族的表达能力结论，不能理解为任意神经网络训练均收敛到精确贝叶斯后验。逻辑回归与语言模型实验展示其相对对角方法的协方差与预测收益。",
+      "reason": "值得关注的是把矩阵预条件器的坐标几何用于随机变分优化，而非仅用于缩放梯度。它为在成本受限时联合学习参数均值与结构化不确定性提供了具体算法，也清楚区分了表达能力、优化实现和经验效果三层证据。",
+      "order": 10
+    },
+    {
+      "arxiv_id": "2611.17577",
+      "version": 1,
+      "title": "Fair and Efficient Distributed EV Charging Coordination Using Threshold Cryptography and Machine Learning",
+      "authors": [
+        "Md. Mainul Islam",
+        "Muhammad Ismail",
+        "Hasan Kurban",
+        "Abdulrahman Takiddin",
+        "Erchin Serpedin"
+      ],
+      "submitted": "2026-11-12",
+      "updated": "2026-11-12",
+      "directions": [
+        "distributed"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2611.17577v1",
+      "abstract": "Distributed coordination of electric vehicle (EV) charging with the alternating direction method of multipliers (ADMM) keeps EV constraints private but assumes that every participant follows the algorithm. This assumption fails in practice, where a biased operator or a man-in-the-middle (MITM) attacker can send inconsistent signals to different EVs, and compromised EVs can deviate from their prescribed updates. We first prove that attacks by such arbitrarily malicious, i.e., Byzantine, participants do not prevent convergence and therefore remain undetected, and derive the most damaging attack in closed form. We then propose a framework that combines a threshold-signed broadcast with upload recomputation, which detects every deviation without false alarms at linear instead of quadratic communication cost. To keep the optimization running, each affected EV recovers locally with a certified, fleet-aware machine learning price forecast, and we prove that the optimization remains convergent with a recovery cost bounded by the shape of the forecast error. Simulation results with real-world load, price, and charging data show that a biased operator raises the annual cost of disadvantaged EVs by 132.7% and lowers that of advantaged EVs by 49.3% without changing the aggregate load, whereas the defense limits all cost changes to 2.6%. An external MITM attacker raises the cost of its victims by 57.6%, the peak load by 5.8%, and the grid cost by 15.8%, whereas the defense keeps them within 1.1%, 0.2%, and 0.3% of benign operation. With up to 70% of the EVs attacked, the recovery converges in at least 97.8% of the runs.",
+      "summary": "分布式充电中的 ADMM 残差收敛并不证明协调信号诚实。该文构造可保持迭代收敛、却改变参与者分配与费用的不一致信号攻击，并结合门限签名广播、上传重算和本地恢复处理这类偏差。检测到缺失或不可信广播的车辆，只求解一次以最后可信计划为锚、以预测价格为线性项的局部强凸问题，此后固定恢复计划。签名一致性要求门限与被攻陷签名者数量满足相应条件；上传偏离检查和持续出证也有运营方遵守协议等前提。优化层面，冻结恢复车辆后若剩余联合充电问题仍可行，作者证明其 ADMM 收敛至该修改后问题的原始对偶最优点。恢复的额外局部费用由价格预测误差在充电窗口内的跨度及锚定项控制，统一价格平移不会改变局部计划；站点余量不足时则不保证恢复后的联合可行性。",
+      "reason": "推荐关注两个优化机制：收敛诊断不能识别目标或协调信号被篡改，以及恢复代价依赖价格误差的形状而非绝对水平。后者利用固定能量等式约束给出可解释的扰动界，对带耦合容量约束的分布式资源分配很具体；其收敛对象和可行前提也写得明确。",
+      "order": 11
+    },
+    {
+      "arxiv_id": "2611.19210",
+      "version": 1,
+      "title": "Martingale and signed diffusive optimal transport: geodesics and gradient flows",
+      "authors": [
+        "Aymeric Baradat",
+        "Jean-David Benamou",
+        "François-Xavier Vialard"
+      ],
+      "submitted": "2026-11-14",
+      "updated": "2026-11-14",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2611.19210v1",
+      "abstract": "In signed diffusive transport, a path of probability densities $\\rho_t$ on the circle and a momentum $m_t$ satisfy $\\partial_t\\rho=\\partial_{xx}m$, and the cost of the path is the action $\\int_0^1\\int m^2/(2\\rho)\\,dx\\,dt$. The diffusivity $m/\\rho$ is an unknown of this variational problem and can take either sign. On the real line, the constraint $m\\ge0$ gives the martingale Benamou-Brenier problem of Huesmann and Trevisan. We study geodesics and minimizing movements, which discretize gradient flows. For signed geodesics, we prove the $\\Gamma$-convergence of the time-discrete problems for all probability endpoints, and of the fully discrete Fourier-grid problems as the space and time meshes tend to zero independently, without a positive lower bound on the densities. For a modified Jordan-Kinderlehrer-Otto (JKO) scheme on the torus, we prove convergence along subsequences to a weak solution of a fourth-order equation, the Derrida-Lebowitz-Speer-Spohn equation for the entropy in dimension one, under the assumption that the densities of the scheme stay above a positive constant on every finite time interval. In dimension one, the normalized minimum values of a discretization with nonnegative momentum and of a discretization by martingale couplings with a fourth-moment cost converge to the same martingale transport cost, and we identify the limit of the minimizing movements with nonnegative momentum for potential energies with bounded second and third derivatives. We compute geodesics and modified JKO trajectories by Douglas-Rachford splitting and by an interior-point method, and bound the optimization errors of selected solutions by dual lower bounds evaluated in interval arithmetic. The computed geodesics approach zero density near the points where the diffusivity changes sign, and along computed trajectories of the modified JKO scheme the density minimum can fall below its initial value.",
+      "summary": "该文研究由二阶守恒律约束的有符号扩散最优运输，将扩散率作为可正可负的优化变量，并连接测地线、鞅运输与能量的最小化移动。作者证明任意概率端点下时间离散测地线的 $\\Gamma$ 收敛，以及空间 Fourier 网格与时间步独立细化时的联合收敛，不要求中间密度有统一正下界。修正 JKO 步是单个有限维凸问题，可用 Douglas–Rachford 分裂或内点法求解；其第四阶方程极限则额外假设密度在有限时域上具有统一正下界，这一条件并未对一般非恒定初值证明。计算部分用区间算术评估对偶下界，认证所选离散解的优化误差，并展示求解器报告的浮点对偶值可能不可靠。这些证书不包含离散化误差。",
+      "reason": "值得阅读的是把连续变分问题、网格极限和固定网格优化误差分层处理。尤其是独立网格细化与可验证对偶证书的组合，为数值最优运输提供了比单看求解器残差更完整的误差核算，同时如实保留 JKO 极限中的正性缺口。",
+      "order": 12
+    },
+    {
+      "arxiv_id": "2611.20312",
+      "version": 1,
+      "title": "Soft-constrained Schrödinger bridge for generative AI: numerical algorithms and approximation guarantees",
+      "authors": [
+        "Jin Ma",
+        "Ying Tan",
+        "Renyuan Xu",
+        "Qinxin Yan"
+      ],
+      "submitted": "2026-11-15",
+      "updated": "2026-11-15",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2611.20312v1",
+      "abstract": "We study a soft-constrained formulation of the Schrödinger bridge problem, in which the terminal distribution constraint is relaxed into a penalty on the discrepancy between the terminal law of the controlled process and a target distribution. This leads to an unconstrained McKean--Vlasov stochastic control problem, where the interaction enters only through the terminal cost. We characterize the optimizer via a McKean--Vlasov forward-backward stochastic differential equation and establish well-posedness under very mild assumptions. We also analyze two approximation regimes relevant to data-driven computation: approximation of the target law by empirical samples, and finite-particle approximation of the McKean--Vlasov control problem. For both, we derive convergence results and error estimates. Finally, building on the well-posedness and approximation results, we investigate two neural numerical methods: one based on the forward-backward system and the other on direct control optimization. Both methods are tested on state-of-the-art generative tasks. Our results provide both an algorithmic foundation and its theoretical guarentee for soft-constrained Schrödinger bridge problems in sample-based generative modeling.",
+      "summary": "软约束 Schrödinger 桥以终端分布罚项代替硬边际匹配，但由此产生的均场最优性系统和样本近似需要理论支撑。该文利用均场相互作用仅出现在终端条件这一结构，先在路径空间最小化相对熵加分布罚项，再由唯一最优路径律构造终端分布不动点，进而证明相应 McKean–Vlasov FBSDE 的全局可解性与依分布唯一性。结论要求参考扩散具有给定光滑性和一致椭圆性，终端罚泛函对分布的线性混合凸、Wasserstein Lipschitz，并具有有界光滑泛函导数等条件。作者分别分析目标分布的经验样本替代与有限粒子近似，给出控制或值的收敛和误差界，再设计基于最优性系统与直接反馈控制的两条神经求解路线。这些近似定理并非神经训练达到全局最优的通用复杂度保证。",
+      "reason": "推荐关注用路径空间凸性获得终端不动点的证明思路，以及把数据近似、粒子近似和神经数值求解分开的组织方式。它补上了仅形式推导均场最优性系统与实际粒子计算之间的一段基础，而不是把软罚建模本身当成新增贡献。",
+      "order": 13
+    },
+    {
+      "arxiv_id": "2611.20369",
+      "version": 1,
+      "title": "The Optimal Interface Method: A Modelling Paradigm for Two-Body Contact Problems via Optimal Control and $Γ$-convergence",
+      "authors": [
+        "Zhuopeng Liu",
+        "Paolo Piersanti"
+      ],
+      "submitted": "2026-11-16",
+      "updated": "2026-11-16",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "arxiv_url": "https://arxiv.org/abs/2611.20369v1",
+      "abstract": "This paper is concerned with the derivation of a model governing the equilibrium configuration of two linearly elastic bodies that may come into contact with each other. The contact zone, or coincidence set, is an \\emph{a priori} unknown of the model, and the equilibrium configuration is governed by variational inequalities. We introduce a new modelling paradigm in which the contact interface between the two linearly elastic bodies under consideration is now regarded as the \\emph{primary variable} of an optimal control problem whose states are the unique solutions of two \\emph{independent} unilateral contact problems for which this very contact interface represents the obstacle itself. As a result, the free boundary emerges as the solution of a low-dimensional optimisation problem rather than as the active set of coupled variational inequalities. We establish the existence and uniqueness of optimal controls minimising the reduced cost functional arising from the modelling paradigm introduced beforehand, and we show that the family of marginal energy functionals associated with such model $\\Gamma$-converges to the energy functional associated with the original variational inequalities as the positive \\emph{cost parameter} $\\beta$ in the reduced cost functional tends to zero. This $\\Gamma$-convergence argument also yields a characterisation of the coincidence set of the limit problem in terms of the optimal interfaces. We further show that, after a suitable regularisation, the reduced cost functional is Gâteaux differentiable, and that its Gâteaux derivative can be explicitly computed \\emph{without solving any adjoint system}. Finally, we corroborate the $\\Gamma$-convergence result obtained beforehand with numerical experiments on a simplified and exactly solvable configuration.",
+      "summary": "双弹性体接触的变分不等式把未知接触区域与两侧位移耦合在一起。该文把分隔界面提升为控制变量：给定界面后，分别求解两侧独立的单体障碍问题，再最小化总弹性能与界面曲率正则。在线性弹性、文中几何和函数空间设定下，每个正则参数 $\\beta>0$ 对应唯一最优界面；当 $\\beta\\to0$ 时，边际能量的 $\\Gamma$ 收敛与最优状态收敛把该模型连接回原始接触问题。进一步正则化后，作者用包络定理推导约化目标的 Gâteaux 导数，使梯度由状态后处理得到，无需另解伴随系统。数值验证采用可精确求解的简化配置，重点支撑模型一致性与梯度构造。",
+      "reason": "推荐关注通过改变优化变量拆开耦合变分约束，以及何种能量结构允许包络导数免去伴随求解。这是一条有明确适用背景的新建模与求导路线；其价值来自原问题与界面优化之间可证明的连接，而不只是套用现成优化器。",
+      "order": 14
+    }
+  ]
+}
