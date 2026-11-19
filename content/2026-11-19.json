@@ -1,0 +1,444 @@
+{
+  "date": "2026-11-19",
+  "status": "complete",
+  "frontiers_status": "recommendations",
+  "highlights": [
+    {
+      "arxiv_id": "2611.21844",
+      "label": "重尾非欧几里得优化的并行加速",
+      "text": "以广义 Moreau 梯度去偏和 $p$-GREG 处理 $\\ell_p$ 几何下的低阶矩噪声，降低可并行查询轮数，并给出受限局部预言机下界。轮数收益须连同维数、精度区间及总查询量阅读。",
+      "types": [
+        "field"
+      ]
+    },
+    {
+      "arxiv_id": "2611.22940",
+      "label": "退化条件下有限识别稀疏支撑",
+      "text": "将 KL 误差控制用于支撑阈值，在有界迭代与正则性条件下，无需通常非退化条件即可有限识别极限支撑；后续二阶保证针对已识别子空间。",
+      "types": [
+        "field"
+      ]
+    },
+    {
+      "arxiv_id": "2611.22025",
+      "label": "因果 Sinkhorn 的显式更新与线性率",
+      "text": "在正定高斯模型中，以 Cholesky 坐标处理单向因果限制，获得闭式块更新、显式线性率及协方差扰动稳定性，使优化误差与数据误差分别可核算。",
+      "types": [
+        "field"
+      ]
+    },
+    {
+      "arxiv_id": "2601.15184",
+      "label": "锥松弛与可行舍入实现同阶夹逼",
+      "text": "对两个凸体上的分别仿射目标及局部仿射约束，有限 de Finetti 构造给出 $O(n^{-1/2})$ 的松弛误差与可行解误差。层数误差界不等于每层高效可解。",
+      "types": [
+        "field"
+      ]
+    },
+    {
+      "arxiv_id": "2602.10726",
+      "label": "梯度流的可达性由协方差支撑决定",
+      "text": "高斯 Sinkhorn 梯度流从非奇异源趋向目标，奇异源可收敛到错误极限；协方差可交换时，相同支撑与降维目标分别呈现指数和 $O(t^{-1})$ 衰减。",
+      "types": [
+        "field"
+      ]
+    },
+    {
+      "arxiv_id": "2605.00711",
+      "label": "用历史曲率直接生成分布式步长",
+      "text": "新 Lyapunov 下降条件给出无需函数值线搜索的自适应规则；固定无向连通网络上，局部光滑凸损失有次线性保证，相应强凸条件下有线性率。",
+      "types": [
+        "group"
+      ]
+    },
+    {
+      "arxiv_id": "2611.23221",
+      "label": "把确定性近似可行与梯度成本分账",
+      "text": "非精确约束近端加加速 SVRG，在紧致域、严格可行等条件下控制确定性约束违反，并降低昂贵目标梯度的调用量。近似可行不等于所有内层点精确安全。",
+      "types": [
+        "group"
+      ]
+    },
+    {
+      "arxiv_id": "2611.21987",
+      "label": "把安全从采样点延伸到整个间隔",
+      "text": "以采样周期裕量构造截断随机策略，结合已知屏障下界与变化界保证采样间安全，再对实际策略分析梯度和有限时间性能；弱梯度支配残差仍保留。",
+      "types": [
+        "group"
+      ]
+    }
+  ],
+  "papers": [
+    {
+      "arxiv_id": "2611.21844",
+      "version": 1,
+      "title": "Bias-Reduced and Parallel Heavy-Tailed Stochastic Convex Optimization in $\\ell_p$ Geometries",
+      "authors": [
+        "Zhengyun Nie",
+        "Anant Shyam",
+        "Brian Bullins"
+      ],
+      "abstract": "We consider the fundamental problem of parallel stochastic convex optimization (SCO), whose aim is to approximately minimize a convex objective when given the ability to query a moment-bounded stochastic gradient oracle multiple times in parallel per round. Whereas most previous results have focused on the variance-bounded Euclidean ($\\ell_2$-norm) setting, meaning the objective is Lipschitz with respect to the $\\ell_2$-norm over an $\\ell_2$-bounded feasible set in $\\mathbb{R}^d$, in this work we study parallel SCO in $\\ell_p$ settings for $2 \\le p < \\infty$ under a heavy-tailed noise model. We begin by introducing a new class of $\\ell_p$-optimal-distance-convergence (ODC$_p$) algorithms, drawing on prior stochastic bias-reduced techniques [ACJ+21], which combine with multilevel Monte Carlo methods to efficiently estimate the optimum of uniformly convex objectives. As a consequence of our ODC$_p$ algorithms, we first establish rates for projection-efficient $\\ell_p$-Lipschitz optimization, composite convex minimization, and efficient $\\ell_p$-proximal point estimation. Combining our ODC$_p$ algorithms with a new $\\ell_p$-generalized Gaussian-based stochastic gradient estimator ($p$-GREG), we provide two efficient $\\ell_p$ parallel algorithms, EpochDA and $\\ell_p$-AC-SA, which achieve optimization error $\\epsilon > 0$ with at most $\\tilde{O}(d^{\\frac{p}{2p + 2}} \\epsilon^{-\\frac{p}{p + 1}})$ query depth, improving upon the sequential heavy-tailed stochastic query depth of $O(\\epsilon^{-p})$ for $\\epsilon \\leq \\tilde{O}(d^{-1/(2p)})$. We also establish dimension-dependent lower bounds of $\\Omega\\bigl(\\min\\{\\epsilon^{-p},d^{p/(3p-2)}\\}\\bigr)$ adaptive rounds for nonsmooth convex optimization over a subset of the unit $\\ell_p$ ball. Our results improve upon the $\\Omega(\\min\\{\\epsilon^{-p},\\epsilon^{2/3}d^{1/3}\\})$ bounds of [DG19], when adapted to the same feasible set.",
+      "submitted": "2026-11-16",
+      "updated": "2026-11-16",
+      "arxiv_url": "https://arxiv.org/abs/2611.21844v1",
+      "directions": [
+        "optimization-frontiers",
+        "stochastic"
+      ],
+      "summary": "非欧几里得几何与重尾噪声同时存在时，方差有界的并行随机优化分析不能直接沿用。该文针对 $2\\le p<\\infty$ 的 $\\ell_p$ 凸优化，假设无偏随机次梯度在对偶范数下具有有界 $q=p/(p-1)$ 阶矩，构造 ODC$_p$ 距离收敛算法与直接作用于广义 Moreau 梯度的多层 Monte Carlo 去偏估计，再结合 $p$-GREG 平滑和球预言机加速。在半径、矩界归一化时，算法的并行查询深度为 $\\widetilde O(d^{p/(2p+2)}\\epsilon^{-p/(p+1)})$，在论文给出的精度区间优于顺序深度 $O(\\epsilon^{-p})$。作者还给出受限 $\\ell_p$ 域、多项式并行局部查询模型下的维数依赖轮数下界；上下界并未在所有精度区间吻合，查询深度也不等同于总查询量。",
+      "reason": "推荐优先阅读广义 Moreau 梯度的去偏构造：当 $p>2$ 时，近端点到梯度的映射非线性，先估计近端点再代入会破坏所需的偏差控制。原文直接对梯度做多层估计，将非欧几里得几何、低阶矩噪声和并行信息获取放进同一分析，对设计不同信息精度下的随机优化子程序有明确方法价值。",
+      "order": 1
+    },
+    {
+      "arxiv_id": "2611.22940",
+      "version": 1,
+      "title": "KL-Guided Support Selection and Subspace Cubic Newton Methods for Sparse Optimization",
+      "authors": [
+        "Zihao Xia",
+        "Min Tao",
+        "Guojian Yin"
+      ],
+      "abstract": "We study sparse composite optimization with a smooth loss and a possibly nonconvex, nonsmooth regularizer. The objective is locally smooth on each fixed support. Our method combines full-space proximal-gradient steps with inexact cubic-regularized Newton steps on a subspace selected by thresholding. If the iterates are bounded and the objective satisfies the Kurdyka--Łojasiewicz (KL) property, the entire sequence converges to a first-order stationary point. A threshold based on the KL exponent ensures that the selected coordinate set coincides with the support of the limit after finitely many iterations, without requiring a nondegeneracy assumption. We also provide a residual-based threshold when such an exponent exists and its value is unknown. Under an additional continuity assumption on the restricted Hessian, the line search eventually accepts full cubic steps. With bounded cubic regularization parameters and damping parameters chosen to meet the target tolerances, we bound the number of outer iterations needed to reach restricted approximate second-order stationarity after support identification and entry into the full-step regime. We conduct numerical experiments in two settings: when the KL exponent is known and when it is unknown. In the former case, we use a degenerate problem to demonstrate the effectiveness of the proposed method. In the latter case, we compare the proposed method and its adaptive variant with existing solvers on sparse recovery and logistic regression problems.",
+      "submitted": "2026-11-17",
+      "updated": "2026-11-17",
+      "arxiv_url": "https://arxiv.org/abs/2611.22940v1",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "summary": "稀疏复合优化在固定支撑上通常光滑，但退化解可能使标准近端梯度无法有限识别支撑。该文交替执行全空间近端梯度步与阈值选定子空间上的非精确三次正则 Newton 步。在梯度光滑、适当支撑内二阶正则性、迭代有界及 Kurdyka–Łojasiewicz（KL）性质下，作者证明整个序列收敛到一阶驻点；利用正的幂型 KL 指数设计阈值，可在不要求通常非退化条件的情况下有限识别极限支撑，另有不需知道指数数值的残差阈值。进一步的完整三次步接受与二阶迭代界，还要求受限 Hessian 的连续性、正则参数有界及匹配精度的阻尼选择。二阶保证是在支撑识别并进入完整步阶段后、相对于已识别子空间成立。",
+      "reason": "最值得读的是把支撑选择阈值与 KL 收敛误差联系起来的机制，而非笼统地把 Newton 步限制到非零坐标。它解释了退化情形下如何排除逐渐趋零但未真正为零的伪支撑，并清楚区分全空间一阶收敛和受限二阶性质，可为活跃集与高阶局部算法的衔接提供可核查的分析路线。",
+      "order": 2
+    },
+    {
+      "arxiv_id": "2611.22025",
+      "version": 1,
+      "title": "Causal Input--Output Modeling with Prior Information",
+      "authors": [
+        "Amirhossein Taghvaei",
+        "Daran Xu"
+      ],
+      "abstract": "We study the problem of inferring a causal input--output model from unpaired marginal observations and a given prior coupling. We formulate this problem using entropic causal optimal transport, which seeks a coupling that preserves the observed marginals, satisfies a one--sided causality constraint, and remains close to the prior. For Gaussian marginals and general quadratic costs, we prove that the optimal coupling is Gaussian and reduce the problem to a finite--dimensional optimization over covariance matrices. Using a Cholesky transformation to simplify the causality constraint, we derive a Lagrangian dual formulation and develop a block coordinate descent algorithm with explicit update formulas. We establish linear convergence of the algorithm, with explicit convergence rates, and prove stability of the optimal coupling under marginal covariance perturbations and derive a statistical error bound. We further show its equivalence to Sinkhorn iterations. Numerical experiments demonstrate the computational efficiency of the proposed algorithm and illustrate the predictive advantages of causal couplings.",
+      "submitted": "2026-11-17",
+      "updated": "2026-11-17",
+      "arxiv_url": "https://arxiv.org/abs/2611.22025v1",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "summary": "只有未配对输入、输出轨迹及一个先验联合模型时，普通熵正则最优传输可能让当前输出使用未来输入。该文对高斯边缘和一般二次代价施加单向因果约束，证明最优耦合仍为高斯，并通过 Cholesky 坐标把无限维问题化为协方差优化。作者推导强对偶和具有显式更新的块坐标下降，证明依赖边缘与先验协方差的线性收敛率，并建立最优耦合对协方差扰动的局部 Lipschitz 稳定性及相应统计误差界。该迭代与高斯因果 Sinkhorn 一致；结论依赖原文的正定高斯与正则性设定，不是一般分布上的统一线性率。",
+      "reason": "推荐关注“因果限制如何变成可计算的坐标结构”以及由此获得的显式线性率。相对只给出抽象因果 Sinkhorn 递推或要求双向因果的传输模型，该文同时明确算法实现、收敛常数和数据扰动影响，使优化误差与统计误差能够分别核算。",
+      "order": 3
+    },
+    {
+      "arxiv_id": "2601.15184",
+      "version": 2,
+      "title": "Finite de Finetti for convex bodies and Polynomial Optimization",
+      "authors": [
+        "Julius A. Zeiss",
+        "Gereon Koßmann",
+        "René Schwonnek",
+        "Martin Plávala"
+      ],
+      "abstract": "We study polynomial optimization over convex bodies with separately affine objectives and local affine equality and inequality constraints. We construct a convergent hierarchy of conic relaxations with explicit finite-level error bounds of order $n^{-1/2}$ at level $n$, complemented by a constructive rounding scheme that produces feasible points. The relaxation bounds and rounded objective values bracket the optimum at the same rate. The analytic ingredient is a finite de Finetti representation theorem for arbitrary proper cones: bipartite marginals of symmetric extensions in maximal tensor products are $O(n^{-1/2})$-close, in base norm, to points of the minimal tensor product. Its proof combines a uniform, monogamy-type bound on a variational mutual information based on Frenkel's relative entropy with classical conditioning and informationally complete measurements. We apply the framework to the assemblage relaxation of two-player non-local games in general probabilistic theories. For polytopic state spaces, the hierarchy consists of linear programs, and experiments on the Clauser--Horne--Shimony--Holt (CHSH) game provide a numerical proof of concept for the outer approximations and feasible rounding procedure.",
+      "submitted": "2026-01-21",
+      "updated": "2026-11-17",
+      "arxiv_url": "https://arxiv.org/abs/2601.15184v2",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "summary": "非凸优化的松弛下界有收敛性，并不自动提供同精度的可行解。该文针对两个有限维凸体上的分别仿射目标及局部仿射等式、不等式约束，以任意适当锥的有限 de Finetti 定理构造对称扩张锥松弛。作者证明第 $n$ 层下界与最优值的误差为 $O(n^{-1/2})$，并用保留每个局部约束的构造性舍入给出同阶误差的可行乘积点，从上下两侧夹住最优值。常数依赖凸体几何；约束须分别作用于单个凸体，不能直接推广到任意耦合多项式约束。该结果控制松弛层数而非证明每层可高效求解，只有多面体等特例进一步化为线性规划。",
+      "reason": "突出之处是把信息论表示定理转化为“外松弛加可行舍入”的定量证书，而不是只给渐近精确性。局部约束在条件化分量上的逐项保留，是上下界同阶成立的关键；这一边界比直接将量子信息术语套到一般多项式优化更值得研究。",
+      "order": 4
+    },
+    {
+      "arxiv_id": "2602.10726",
+      "version": 3,
+      "title": "The Wasserstein gradient flow of the Sinkhorn divergence between Gaussian distributions",
+      "authors": [
+        "Mathis Hardion",
+        "Théo Lacombe"
+      ],
+      "abstract": "We study the Wasserstein gradient flow of the Sinkhorn divergence when both the source and the target are Gaussian distributions. We prove the existence of a flow that stays in the class of Gaussian distributions, and is unique in the larger class of measures with strongly-concave and smooth log-densities. We prove that the flow globally converges toward the target measure when the source's covariance matrix is not singular, and provide counter-examples to global convergence when it is, giving a first answer to an open question raised in [Carlier et al. 2024, \\S4.2]. When the covariance matrix of the source distribution commutes with that of the target, we derive more quantitative results that showcase exponential convergence toward the target when the source and the target share their support, but dropping to sublinear rates (O(t^{-1})) if the target is concentrated on a strict subspace of the source's support.",
+      "submitted": "2026-02-11",
+      "updated": "2026-11-17",
+      "arxiv_url": "https://arxiv.org/abs/2602.10726v3",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "summary": "Sinkhorn divergence 在且仅在源分布等于目标时为零，但这不保证其 Wasserstein 梯度流一定到达目标。该文在高斯源与目标下证明保高斯流的存在性，并在更大的强对数凹、光滑密度类中证明相应唯一性。初始协方差非奇异时，流在 Wasserstein 距离中全局趋向目标；奇异初始源面对非奇异目标则会趋向错误极限。协方差可交换时，作者进一步刻画支撑包含条件：相同支撑给出指数衰减，目标支撑严格较低维时仅有 $O(t^{-1})$ 的次线性衰减。该文分析的是连续时间流，并另讨论 Euler 近似，不把连续结论当作任意离散步长的保证。",
+      "reason": "推荐优先读奇异初始分布的反例及支撑导致的速率转变。它以可显式计算的模型区分“目标函数可辨识”“动力学可达”与“收敛速度”三个问题，对使用熵传输梯度训练分布时如何理解初始化和秩退化具有具体解释价值。",
+      "order": 5
+    },
+    {
+      "arxiv_id": "2605.00711",
+      "version": 3,
+      "title": "A Line-search-free Method for Adaptive Decentralized Optimization",
+      "authors": [
+        "Xiaokai Chen",
+        "Ilya Kuruzov",
+        "Gesualdo Scutari"
+      ],
+      "abstract": "We study decentralized optimization over networks where agents cooperatively minimize a smooth (strongly) convex sum of local losses while communicating only with immediate neighbors. Prevailing decentralized methods require either centralized knowledge of global problem and network parameters for stepsize tuning--hence impractical, or costly per-iteration line-searches that demand access to local function values. We propose line-search-free, fully decentralized algorithms in which each agent adapts its stepsize using only past local iterates and gradients--with no extra function evaluations and no global tuning. The key technical ingredient is a new Lyapunov function, from which a natural adaptive stepsize rule emerges: at each iteration, each agent selects the largest stepsize that guarantees descent, based solely on a local curvature estimate built from successive gradients. The proposed algorithms enjoy strong theoretical guarantees: sublinear convergence rates for merely convex objectives and linear rates under strong convexity. Numerical experiments on standard benchmarks show consistent improvements over the state of the art, both adaptive and non-adaptive.",
+      "submitted": "2026-05-01",
+      "updated": "2026-11-16",
+      "arxiv_url": "https://arxiv.org/abs/2605.00711v3",
+      "directions": [
+        "distributed",
+        "historical-information"
+      ],
+      "summary": "分布式步长通常需要全局光滑常数、网络谱信息或额外函数值线搜索。该文在固定、无向、连通网络上，从含连续迭代差和原始 Lagrangian 缺口的新 Lyapunov 函数推导仅依赖过去局部迭代与梯度的曲率估计及自适应步长。两种实现分别使用全局标量平均协议和仅邻居标量交换，均无需函数值线搜索。对局部光滑凸损失，作者证明序列收敛及遍历最优性指标的次线性率；在相应局部强凸和步长规则条件下有线性率。复杂度仍依赖轨迹上的曲率与网络谱隙，避免预先知道这些常数不意味着消除了网络困难。",
+      "reason": "推荐研究如何让收敛证明直接生成可执行的步长规则。相对把集中式自适应公式直接接到共识迭代，该文把历史曲率、原始对偶误差和通信约束一并纳入下降条件；第二种仅邻居交换的实现尤其适合比较历史信息加速与分布式协议的实际代价。",
+      "order": 6
+    },
+    {
+      "arxiv_id": "2611.23221",
+      "version": 1,
+      "title": "An inexact stochastic variance-reduced gradient method for constrained convex finite-sum optimization",
+      "authors": [
+        "Zhaosong Lu",
+        "Yifeng Xiao"
+      ],
+      "abstract": "In this paper, we study a class of constrained convex finite-sum optimization problems. In many practical applications, all or some of the constraints are hard constraints that represent imperative requirements. Consequently, any desirable approximate solution must (nearly) satisfy these constraints. Motivated by this, we focus on computing an $\\epsilon$-$surely\\ feasible\\ stochastic\\ optimal$ ($\\epsilon$-SFSO) solution, in which the constraint violation is deterministically bounded by $\\epsilon$, and the expected optimality gap is at most $\\epsilon$. While a recently proposed stochastic variance-reduced first-order penalty method can compute an $\\epsilon$-SFSO solution, there remains a significant gap between its first-order oracle complexity for computing an $\\epsilon$-SFSO solution and that for computing an $\\epsilon$-$expected\\ feasible\\ stochastic\\ optimal$ solution, where both the expected constraint violation and the expected optimality gap are bounded by $\\epsilon$. To narrow this gap, we propose an inexact stochastic variance-reduced gradient (SVRG) method that significantly improves the previously best-known first-order oracle complexity for computing an $\\epsilon$-SFSO solution. Furthermore, when the objective consists of a single function, the proposed method reduces to a novel deterministic first-order method for solving standard convex conic optimization. It achieves a significantly lower gradient evaluation complexity with respect to the objective function compared to existing methods, and can outperform them when computing constraint gradients and projections onto the associated cone is cheaper than evaluating the objective gradient. Preliminary numerical results are presented to illustrate the performance of the proposed method.",
+      "submitted": "2026-11-17",
+      "updated": "2026-11-17",
+      "arxiv_url": "https://arxiv.org/abs/2611.23221v1",
+      "directions": [
+        "safety-critical",
+        "stochastic"
+      ],
+      "summary": "有限和约束优化中，期望约束违反小并不等于每次输出的违反都小。该文以确定性约束违反至多 $\\epsilon$、期望目标差至多 $\\epsilon$ 的 SFSO 解为目标，将加速 SVRG 的难算约束近端步替换为非精确 KKT 解，并由一阶近端增广 Lagrangian 内层控制误差。在紧致近端定义域、光滑凸分量、光滑锥凸约束、严格可行点及可精确计算锥投影等条件下，作者获得 $O(s\\log s+\\sqrt{s}\\epsilon^{-1/2})$ 次目标分量梯度与 $\\widetilde O(s(\\log s)^{3/2}\\epsilon^{-1/2}+s^{1/4}\\epsilon^{-5/4})$ 次约束梯度的界。算法让外层迭代近似满足约束，但这不是所有内层试探点零违反，也不是精确可行算法。",
+      "reason": "最有价值的是把可行性可靠程度与不同预言机成本分开。相对先前二次罚方法对 SFSO 的目标梯度复杂度，该文通过可控的约束近端误差显著缩小确定性可行与期望可行的代价差；当目标梯度比约束梯度昂贵时，这种分账尤其具有算法设计价值。",
+      "order": 7
+    },
+    {
+      "arxiv_id": "2611.21987",
+      "version": 1,
+      "title": "Safe Reinforcement Learning with Hard Constraints: Policy Gradient Methods with Intersample Guarantees",
+      "authors": [
+        "Vipul K. Sharma",
+        "S. Sivaranjani"
+      ],
+      "abstract": "We develop a policy-gradient (PG) reinforcement learning (RL) framework with hard inter-sample control barrier function (CBF)-based safety constraints for nonlinear sampled-data systems. We first design a class of stochastic policies with support truncated to sampling-period-dependent safe control sets, that guarantee safety-by-construction at sampling instants. We then propose a model-free PG algorithm that searches over the class of safe-by-design policies and establish sufficient conditions on sampling-period such that any action sampled from safe control sets remains safe throughout the sampling interval, providing inter-sample guarantees. We further establish finite-time convergence and sample complexity guarantees for the proposed PG algorithm and characterize its global optimality under gradient dominance. Finally, we illustrate inter-sample safety guarantees on a safe quadrotor navigation environment.",
+      "submitted": "2026-11-16",
+      "updated": "2026-11-16",
+      "arxiv_url": "https://arxiv.org/abs/2611.21987v1",
+      "directions": [
+        "safety-critical",
+        "stochastic"
+      ],
+      "summary": "数字控制只在离散时刻更新，采样点安全不能排除两次更新之间越界。该文构造含采样周期裕量的安全控制集，并将随机策略支撑截断到该集合，在实际使用的安全策略类内执行策略梯度。安全定理要求初态安全、已知且有效的屏障表达式下界与区间变化界，以及足够短的采样周期使安全集有非空裕量；在这些条件下，保持输入可保证整段连续轨迹安全。作者为截断策略推导含归一化修正的无偏梯度估计，并在策略正则性、方差界和弱梯度支配条件下给出到安全策略类最优收益残差邻域的有限时间界。这里“model-free”指策略梯度估计不识别动力学，并不免除安全证书所需的先验界。",
+      "reason": "推荐关注如何把探索分布、采样间安全裕量和策略优化理论连成同一个对象。它不只是给不安全策略外挂投影器，而是对真正执行的截断策略计算梯度，并清楚保留弱梯度支配残差。对研究全程约束满足，采样周期与安全集非空之间的关系比只报告实验零违规更有参考价值。",
+      "order": 8
+    },
+    {
+      "arxiv_id": "2611.21837",
+      "version": 1,
+      "title": "Primal--Dual Kullback--Leibler Mirror-Prox for Dynamic Mean Field Games",
+      "authors": [
+        "Erhan Bayraktar",
+        "Ibrahim Ekren",
+        "Lu Vy",
+        "Ziqing Zhang"
+      ],
+      "abstract": "We compute finite-horizon dynamic mean field equilibria using a primal--dual Kullback--Leibler Mirror-Prox algorithm. Each iteration updates occupation measures by exponential tilting and computes the dual correction by solving a linear PDE, without solving a nonlinear Hamilton--Jacobi--Bellman equation or a best-response control problem. Under assumptions and Lasry--Lions monotonicity, we prove an $O(K^{-1})$ ergodic Minty bound after $K$ iterations and an $O(K^{-1/2})$ approximate-equilibrium bound for the corrected average. We obtain convergence rates for the population flow under strong monotonicity, and for smooth diffusions with uniformly convex control costs under ordinary monotonicity. We also prove convergence of continuous-time Markov chain approximations to diffusion equilibria and, under additional smoothness and convexity assumptions, bound the error in terms of the spatial mesh size and the number of iterations. Galerkin approximations preserve the $O(K^{-1})$ estimates under suitable bounds on the correction errors. Numerical experiments illustrate the method and its convergence.",
+      "submitted": "2026-11-16",
+      "updated": "2026-11-16",
+      "arxiv_url": "https://arxiv.org/abs/2611.21837v1",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "summary": "动态均值场博弈的迭代通常嵌套最优响应或非线性 HJB 求解。该文把占用测度的前向方程约束与 Sobolev 对偶函数写为原始对偶变分不等式，以 KL Mirror-Prox 的指数倾斜更新测度，并通过线性边值问题完成对偶修正。在 Lasry–Lions 单调性及原文的正则性、步长和比较条件下，作者得到 $O(K^{-1})$ 的遍历 Minty 比较界；平均测度可能不可行，只有在可行修正映射和误差控制条件下，修正平均才有 $O(K^{-1/2})$ 的近似均衡界。有限状态、网格扩散和 Galerkin 实现分别核算额外逼近条件与误差。",
+      "reason": "值得读的是为什么不能直接把原始对偶的平均点称为近似均衡：全空间 Minty gap 可能因不满足前向方程而无穷大。作者把比较集合、方程残差和可行修正分开，使一个看似标准的镜像外梯度率真正对应到动态博弈的可行决策。",
+      "order": 9
+    },
+    {
+      "arxiv_id": "2606.07888",
+      "version": 3,
+      "title": "On the sharp linear convergence rate of the circumcentered--reflection method on subspaces",
+      "authors": [
+        "Yunier Bello-Cruz"
+      ],
+      "abstract": "For two subspaces $U,V\\subseteq\\mathbb{R}^n$, the circumcentered--reflection method (CRM) of Behling, Bello-Cruz, and Santos (2018) computes the projection onto $U\\cap V$ using only the reflections across $U$ and $V$, with known linear-convergence rate equal to the cosine of the Friedrichs angle. We prove that, when CRM is initialized in $V$, it contracts at the strictly smaller rate $\\rho_V=(\\sin^2\\theta_p-\\sin^2\\theta_F)/(\\sin^2\\theta_p+\\sin^2\\theta_F)$, where $\\theta_F\\in(0,\\pi/2]$ is the Friedrichs angle, whose cosine we denote by $c_F\\coloneqq\\cos\\theta_F$, and $\\theta_p\\in[\\theta_F,\\pi/2]$ is the largest principal angle between $U$ and $V$. The bound is sharp, attained on an explicit ray in $V$, and optimal among parameter-free single-step iterations. The constant itself is not new: Bauschke, Bello-Cruz, Nghia, Phan, and Wang (2016) identified it as the optimal rate of the relaxed alternating-projection family and of their adaptive linesearch map $B_T$. Our contribution is that the parameter-free geometric circumcenter attains it as well, via Kantorovich's inequality applied to a single self-adjoint operator on $V$. Restricted to $V$, CRM coincides pointwise with the linesearch maps $A_T$ and $B_T$ from the Gubin--Polyak--Raik framework (1967). We further prove $\\rho_V<c_F^2$ whenever $\\theta_F<\\pi/2$, with one-step convergence exactly when $\\theta_F=\\theta_p$. Over-reflecting either or both of $R_U$, $R_V$ inside the circumcenter does not help. Going faster than $\\rho_V$ universally requires memory: Chebyshev semi-iteration applied to $P_VP_U$ attains a strictly smaller rate, beating $\\rho_V$ by a factor at most $2$, attained in the limit $\\theta_F\\to\\theta_p$.",
+      "submitted": "2026-06-05",
+      "updated": "2026-11-17",
+      "arxiv_url": "https://arxiv.org/abs/2606.07888v3",
+      "directions": [
+        "optimization-frontiers",
+        "historical-information"
+      ],
+      "summary": "两子空间最佳逼近中，circumcentered–reflection method（CRM）的旧分析常用 Friedrichs 角余弦估计速度。该文在初点属于 $V$ 时，通过几何投影和 Kantorovich 不等式证明更尖锐的逐步收缩常数 $\\rho_V=(\\sin^2\\theta_p-\\sin^2\\theta_F)/(\\sin^2\\theta_p+\\sin^2\\theta_F)$，并构造达到此界的方向。该常数早已出现在最优松弛投影方法中，新意是证明无须预知角度的 CRM 也达到它，并与已有自适应线搜索映射逐点一致。作者还分析过反射与带记忆 Chebyshev 半迭代的比较，说明相应单步无参数方法的速度边界；不能把这一受限比较理解为对所有投影算法的最优下界。",
+      "reason": "推荐把它作为“无参数自适应能做到哪一步、何时需要记忆”的清晰模型。它同时纠正保守的既有率，识别几种表面不同迭代的等价性，并量化记忆相对于单步策略的改进；与历史迭代信息加速的研究问题直接相关，而不意味着 CRM 本身已经使用历史记忆。",
+      "order": 10
+    },
+    {
+      "arxiv_id": "2602.05417",
+      "version": 2,
+      "title": "Optimistic Bilevel Optimization with Composite Lower-Level Problem",
+      "authors": [
+        "Mattia Solla",
+        "Johannes O. Royset"
+      ],
+      "abstract": "This paper introduces a novel double regularization scheme for bilevel optimization problems whose lower-level problem is composite and convex, but not necessarily strongly convex, in the lower-level variable. The analysis focuses on the primal-dual solution mapping of the regularized lower-level problem and exploits its properties to derive an almost-everywhere formula for the gradient of the regularized hyper-objective under mild assumptions. The paper then establishes conditions under which the hyper-objective of the actual problem is well defined and shows that its gradient can be approximated by the gradient of the regularized hyper-objective. Building on these results, a gradient sampling-based algorithm computes approximately stationary points of the regularized hyper-objective, and we prove its convergence to stationary points of the actual problem. Three numerical examples from machine learning and transportation engineering demonstrate the proposed approach.",
+      "submitted": "2026-02-05",
+      "updated": "2026-11-16",
+      "arxiv_url": "https://arxiv.org/abs/2602.05417v2",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "summary": "下层仅凸而非强凸的双层优化，解映射可能多值甚至在某些参数处为空，普通超梯度未必有定义。该文对复合凸下层的原始对偶问题施加双重正则化，建立正则解映射及几乎处处的超目标梯度公式，再以梯度采样处理非光滑上层。下层由光滑映射与适当的多面体上图、单调复合函数构成；原问题的驻点恢复需要聚点处的约束资格、二阶充分条件等局部正则性。完整梯度采样算法的极限结论还使用解析性、相关函数及导数有界、正则与精度参数趋零等假设，得到相应罚超目标的 Curtis–Overton 驻点保证，不是任意多值双层问题的全局最优解。",
+      "reason": "推荐阅读其如何把“正则问题易微分”与“极限对原问题有意义”分别证明。对复合、约束或非强凸下层，真正困难不是形式上写出超梯度，而是说明哪个解选择被逼近、何种局部条件保证极限驻性；该文提供了可逐条检查的原始对偶映射分析。",
+      "order": 11
+    },
+    {
+      "arxiv_id": "2611.21944",
+      "version": 1,
+      "title": "Decision-Weighted Limit Theorems: Less Conservative Robust Optimization",
+      "authors": [
+        "Dimitris Bertsimas",
+        "Danique de Moor",
+        "Dick den Hertog",
+        "Federica Donnini"
+      ],
+      "abstract": "Limit theorems provide a natural way to construct tractable models for optimization under uncertainty. Existing approaches typically apply them to unweighted sums of uncertain parameters and use the resulting bounds to construct uncertainty sets. We show that sharper formulations are obtained by applying limit theorems directly to the uncertain linear expressions in the optimization problem, with the decision variables as weights. For independent random variables with finite variance, the weighted central limit theorem yields a second-order cone constraint with a decision-dependent protection term, and for heavy-tailed random variables governed by stable limit laws, the weighted approach yields power-cone constraints. Using norm duality, we show that, under a condition on the individual bounds, the feasible region of the unweighted formulation is contained in that of the weighted one. In 16,000 knapsack instances with a prescribed violation probability of 5%, the weighted formulation improves the optimal objective value by 20.9% on average, with overall average violation probabilities between 3.45% and 4.95%, whereas those of the unweighted formulation are near zero.",
+      "submitted": "2026-11-16",
+      "updated": "2026-11-16",
+      "arxiv_url": "https://arxiv.org/abs/2611.21944v1",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "summary": "用极限定理先约束不确定系数的无权总和，再对决策加权表达式做鲁棒化，可能引入额外保守性。该文直接把决策变量当作权重，对独立、有限方差系数的线性组合应用加权中心极限定理，得到含决策相关标准差的二阶锥约束；稳定分布极限定理对应幂锥形式。作者利用范数对偶性，在个别幅度界满足相应条件时证明无权模型可行域包含于加权模型，并在背包实验中报告目标改善。正态近似是渐近的：若最优权重集中到少数项，大维数本身也不能保证可靠性；原文因此以最大单项贡献相对标准差的比例控制近似误差，不将实验违约率当作有限样本严格安全保证。",
+      "reason": "推荐关注决策权重如何改变不确定性聚合，以及优化选出来的权重会不会破坏概率近似。该文把保守性来源定位到具体建模步骤，并明确区分渐近锥近似与有限样本安全上界，是评估鲁棒模型“更不保守”究竟意味着什么的有用范例。",
+      "order": 12
+    },
+    {
+      "arxiv_id": "2306.10081",
+      "version": 5,
+      "title": "Optimizer's Information Criterion: Dissecting and Correcting Bias in Data-Driven Optimization",
+      "authors": [
+        "Garud Iyengar",
+        "Henry Lam",
+        "Tianyu Wang"
+      ],
+      "abstract": "In data-driven optimization, the sample performance of the obtained decision typically incurs an optimistic bias against the true performance, a phenomenon commonly known as the Optimizer's Curse and intimately related to overfitting in machine learning. We develop a general approach that we call \\emph{Optimizer's Information Criterion (OIC)} to correct this bias. OIC generalizes the celebrated Akaike Information Criterion from the evaluation of model adequacy, used primarily for model selection, to objective performance in data-driven optimization, which is used for decision selection. Our approach analytically approximates and cancels out the bias that comprises the interplay between model fitting and downstream optimization. As such, it saves the computational need to repeatedly solve optimization problems in cross-validation, while operating more generally than other bias approximating scheme. We apply OIC to a range of data-driven optimization formulations comprising empirical and parametric models, their regularized counterparts, and furthermore contextual optimization. Finally, we provide numerical validation of the superior performance of our approach under synthetic and real-world datasets.",
+      "submitted": "2023-06-16",
+      "updated": "2026-11-16",
+      "arxiv_url": "https://arxiv.org/abs/2306.10081v5",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "summary": "用同一批数据拟合并优化决策，再以训练目标评价决策，会产生由拟合和优化共同造成的乐观偏差。该文提出 Optimizer’s Information Criterion（OIC），通过决策规则影响函数与二阶展开近似并消去一阶评价偏差，将 AIC 的模型选择思想推广到决策选择。框架覆盖经验、参数、正则化和上下文决策规则，并给出与留一交叉验证的联系，避免为每个留出样本重新求解完整优化问题。结论依赖原文的复合成本光滑性、估计与影响函数展开、可积性和求解精度等正则条件；消除渐近首项偏差不等于给出任意有限数据下的无偏或高概率泛化证书。",
+      "reason": "值得读的是它把“模型拟合好”与“下游决策表现好”分开评价。相对通用保守泛化界，OIC 利用特定决策规则的敏感性解释并校正优化器诅咒，可用于比较不同建模与正则化方案；其独立价值在决策评价，而不是新增一种随机梯度更新。",
+      "order": 13
+    },
+    {
+      "arxiv_id": "2602.16155",
+      "version": 2,
+      "title": "Private Variance Reduction for Nonconvex Optimization under Distributional Uncertainty",
+      "authors": [
+        "Difei Xu",
+        "Meng Ding",
+        "Zebin Ma",
+        "Huanyi Xie",
+        "Youming Tao",
+        "Aicha Slaitane",
+        "Di Wang"
+      ],
+      "abstract": "Distribution shifts, group imbalances, and adversarial perturbations are common in real world deployments and can substantially degrade the performance of traditional Empirical Risk Minimization (ERM). Distributionally Robust Optimization (DRO) provides a principled response to these challenges by optimizing the worst-case expected loss over an uncertainty set of distributions. At the same time, the sensitive information involved in training DRO models makes Differential Privacy (DP) essential for protecting training data. Despite this need, DP DRO has received considerably less attention than classical DP ERM, owing to its minimax optimization structure with uncertainty constraints. To address this gap, we present a comprehensive study of empirical DP DRO with $\\psi$-divergence and nonconvex loss. We first consider DP DRO with KL divergence and a fixed divergence penalty. By exploiting its compositional finite sum optimization structure, we develop DP Recursive Spider, which combines recursive gradient tracking with a single sample estimator of the inner expectation. We then extend our study to a broader class of $\\psi$-divergences satisfying local regularity conditions and develop DP Double Spider through a dual formulation. Under bounded loss and regularity assumptions, both methods achieve a utility bound of $\\widetilde{\\mathcal{O}}((\\frac{\\sqrt{d}}{n\\varepsilon})^{2/3})$ in terms of the expected gradient norm, where $n$ is the data size, $d$ is the model dimension, and $\\widetilde{\\mathcal{O}}$ suppresses logarithmic factors in $n$ and $1/\\delta$. Experiments demonstrate that the proposed methods outperform existing approaches for DP minimax optimization.",
+      "submitted": "2026-02-18",
+      "updated": "2026-11-17",
+      "arxiv_url": "https://arxiv.org/abs/2602.16155v2",
+      "directions": [
+        "stochastic"
+      ],
+      "summary": "非凸经验 DRO 的私有优化，需要同时处理组合目标、递归梯度估计误差和隐私噪声。该文的版本化原文研究固定散度惩罚：KL 情形化为组合有限和目标，以 DP Recursive-SPIDER 追踪内外估计；一般散度借助标量对偶与 DP Double-SPIDER 更新。原文在整个相邻数据域上假设损失有界、梯度与 Hessian 受控，并对散度共轭在所需区间施加局部正则性；裁剪、初始化和参数选择也须纳入公开设定。相应定理给出 $(\\varepsilon,\\delta)$-差分隐私与期望梯度范数的 $\\widetilde O((\\sqrt{d\\log(1/\\delta)}/(n\\varepsilon))^{2/3})$ 界。该结论针对其固定惩罚目标，不能无条件转用到任意散度球约束的 DRO。",
+      "reason": "推荐研究递归方差缩减中梯度差敏感性随迭代位移变化的处理。它把私有噪声与内层期望误差放进同一下降分析，对理解 SPIDER 型估计在非标准复合随机目标中的适用边界有具体参考价值；阅读时应把有限样本经验目标的驻性与分布外鲁棒性分开。",
+      "order": 14
+    },
+    {
+      "arxiv_id": "2605.09238",
+      "version": 2,
+      "title": "iMuon: Intrinsic Spectral Optimization on Riemannian Matrix Manifolds",
+      "authors": [
+        "Yibang Li",
+        "Bihari Lal Pandey",
+        "Ravi Sah",
+        "Andi Han",
+        "Cyrus Mostajeran",
+        "Pratik Jawanpuria",
+        "Bamdev Mishra"
+      ],
+      "abstract": "Muon and related norm-constrained optimizers, now central to large-scale learning, compute updates via a linear maximization oracle (LMO) over a matrix-norm ball in Euclidean space. However, they do not generalize cleanly to manifold-valued parameters such as low-rank factorizations, orthogonality constraints, or symmetric positive-definite (SPD) matrices. Naively restricting the Muon LMO to the tangent space (i) breaks quotient symmetries and (ii) couples the tangent-space constraint with an ambient norm bound, which obstructs closed-form solutions. We resolve both issues with a key observation: every Riemannian metric canonically lifts a unitarily invariant Euclidean norm to an intrinsic norm on each tangent space. The resulting intrinsic LMO is symmetry preserving and, under a structural condition on the scaled tangent space, reduces to a standard Euclidean LMO. Building on this, we introduce intrinsic Muon (iMuon), a unified framework with closed-form updates on the fixed-rank, SPD, Stiefel, and Grassmann manifolds for various unitarily invariant norms, including the spectral, Frobenius, and nuclear norms. We establish deterministic and stochastic convergence rates of iMuon with constants that depend only on the manifold dimension. Notably, on the fixed-rank manifold, the constant depends only on the rank, which makes the rate independent of factor conditioning and removes the runtime factor rescaling required by prior work. Experiments on LoRA fine-tuning of LLMs, image classification, and subspace learning illustrate the efficacy of the proposed approach.",
+      "submitted": "2026-05-10",
+      "updated": "2026-11-16",
+      "arxiv_url": "https://arxiv.org/abs/2605.09238v2",
+      "directions": [
+        "stochastic"
+      ],
+      "summary": "直接把 Muon 的欧氏谱范数更新限制到切空间，会同时遇到因子表示不变性与切空间约束难解的问题。该文由 Riemannian 度量诱导内禀矩阵范数，在缩放切空间满足奇异值不变性或相应收缩条件时，将内禀线性最大化预言机化为可显式计算的欧氏问题，统一固定秩、SPD、Stiefel 与 Grassmann 等几何。作者在 retraction 光滑性下给出确定性一阶驻性界；随机版本还要求缩放梯度的矩界，其界包含对数因子和加性噪声残差 $2\\sigma_\\phi$。固定秩谱范数实例的几何常数只依赖秩，但目标光滑常数和初始差仍在复杂度中，不应把“秩依赖”解释为完全消除问题条件数。",
+      "reason": "最值得关注的是先定义与商空间对称性一致的预言机，而不是事后对因子更新补归一化。对随机矩阵优化，它将几何表示、可计算方向与噪声残差同时写明，适合比较预条件、谱更新和低秩参数化各自改变了哪部分理论；随机精确收敛所需的额外平均或动量并未在本文完成。",
+      "order": 15
+    },
+    {
+      "arxiv_id": "2611.22929",
+      "version": 1,
+      "title": "Projected Penalty-Gradient Tracking for Communication-Efficient Byzantine-Resilient Federated Learning",
+      "authors": [
+        "Yanjie Dong"
+      ],
+      "abstract": "We investigate communication-efficient federated learning over heterogeneous datasets in the presence of Byzantine adversaries capable of uploading arbitrary information. Penalty-based methods bound the influence of each worker through the bounded gradient of a penalty function; however, the bound is lost once the uploads are compressed, since a Byzantine worker can accumulate an unbounded state at the server. To retain the Byzantine resilience under compressed uploads, we propose a projected penalty-gradient tracking framework, where each honest worker uploads a compressed residual of its penalty gradient and the server projects each reconstructed state onto the known penalty-gradient ball. The framework accommodates any contractive compressor and yields two algorithms: fault-resilient proximal gradient with consistent sparsification (FRPG-CS), whose shared mask is protected by freshly drawn reserve rows, and lazily aggregated FRPG (LAG-FRPG), whose uploads are event-triggered. For smooth and strongly convex losses, we establish a finite-time bound on the expected objective gap, where the Byzantine error floor is independent of the compressor and the compression error decays faster than the optimization error. We also bound the expected number of lazy uploads and derive certificates that separate the finite-penalty model bias from the optimization error. Experiments on MNIST and Fashion-MNIST show that the proposed algorithms attain the highest accuracy among twelve methods under the Min-Max attack, whereas a compressed-momentum benchmark and a local-update benchmark remain preferable in attack-free accuracy and total traffic, respectively.",
+      "submitted": "2026-11-17",
+      "updated": "2026-11-17",
+      "arxiv_url": "https://arxiv.org/abs/2611.22929v1",
+      "directions": [
+        "distributed"
+      ],
+      "summary": "压缩上传会把历史增量累积为服务器状态，即使单次消息有界，拜占庭节点仍可能使累计状态失控。该文让诚实节点上传罚梯度的压缩残差，并在服务器把每个重建状态投影到已知罚梯度球，结合一致稀疏化与事件触发得到两种实现。对逐节点光滑、强凸损失、有界罚梯度、梯度噪声和收缩压缩器，作者分离 $O(K^{-1})$ 优化误差、与压缩器无关的拜占庭误差地板及更快衰减的压缩误差。目标是有限罚参数下的模型，仍存在相对精确共识解的建模偏差；无诚实多数要求也不意味着可消除任意数量恶意节点带来的误差。",
+      "reason": "推荐关注投影应施加在累计状态而非单次增量的机制区别。它把压缩、懒通信和恶意消息的作用逐项分开，并明确有限罚模型偏差与算法误差的差异，对通信受限分布式算法的状态设计比单纯叠加压缩器更有借鉴价值。",
+      "order": 16
+    },
+    {
+      "arxiv_id": "2603.27962",
+      "version": 2,
+      "title": "Gradient Manipulation in Distributed Stochastic Gradient Descent with Strategic Agents: Truthful Incentives with Convergence Guarantees",
+      "authors": [
+        "Ziqin Chen",
+        "Yongqiang Wang"
+      ],
+      "abstract": "Distributed learning has gained significant attention due to its advantages in scalability, privacy, and fault this http URL this paradigm, multiple agents collaboratively train a global model by exchanging parameters only with their neighbors. However, a key vulnerability of existing distributed learning approaches is their implicit assumption that all agents behave honestly during gradient updates. In real-world scenarios, this assumption often breaks down, as selfish or strategic agents may be incentivized to manipulate gradients for personal gain, ultimately compromising the final learning outcome. In this work, we propose a fully distributed payment mechanism that, for the first time, guarantees both truthful behaviors and accurate convergence in distributed stochastic gradient descent. This represents a significant advancement, as it overcomes two major limitations of existing truthfulness mechanisms for collaborative learning:(1) reliance on a centralized server for payment collection, and (2) sacrificing convergence accuracy to guarantee truthfulness. In addition to characterizing the convergence rate under general convex and strongly convex conditions, we also prove that our approach guarantees the cumulative gain that an agent can obtain through strategic behavior remains finite, even as the number of iterations approaches infinity--a property unattainable by most existing truthfulness mechanisms. Our experimental results on standard machine learning tasks, evaluated on benchmark datasets, confirm the effectiveness of the proposed approach.",
+      "submitted": "2026-03-30",
+      "updated": "2026-11-16",
+      "arxiv_url": "https://arxiv.org/abs/2603.27962v2",
+      "directions": [
+        "distributed",
+        "stochastic"
+      ],
+      "summary": "分布式 SGD 的参与者可能为改善自己的最终收益放大梯度或添加噪声。该文在固定对称连通网络上，为这类规定的策略动作设计仅邻居间计算、逐轮预算平衡的支付机制，用模型差异约束操纵净收益。在相应随机梯度 Lipschitz、无偏有界方差、奖励正则与步长、支付系数条件下，作者证明一般凸与强凸问题的收敛率，并给出即使无限时域仍有限的 $\\epsilon$-激励相容界。保证是所建模策略空间内的近似激励相容及相应近似均衡，并非对任意策略精确诚实，也不处理不计自身收益的破坏性拜占庭攻击。",
+      "reason": "推荐把它与鲁棒聚合区分着读：这里通过改变理性参与者的净效用来影响梯度生成，而不是把上传误差当外生扰动。配对支付的预算平衡、优化精度和长期操纵收益上界被同时分析，为研究协作优化中算法与信息提供者行为的耦合提供了独立视角。",
+      "order": 17
+    },
+    {
+      "arxiv_id": "2511.18703",
+      "version": 2,
+      "title": "Delay-Aware Distributed Multi-Robot Motion Planning",
+      "authors": [
+        "Ardalan Tajbakhsh",
+        "Augustinos Saravanos",
+        "James Zhu",
+        "Evangelos A. Theodorou",
+        "Lorenz T. Biegler",
+        "Aaron M. Johnson"
+      ],
+      "abstract": "This paper examines why distributed optimization degrades when multi-robot systems coordinate under realistic communication delays. Using consensus ADMM as a representative framework for generating collision-free, dynamically feasible motion plans in both trajectory optimization and receding-horizon control settings, we show that delay degrades performance structurally: the consensus and dual updates weight stale and current information identically, so staleness enters the optimizer disguised as genuine disagreement and accumulates through the multipliers. Delay-agnostic adaptation (e.g. residual balancing) inherits this contamination and can perform worse than a fixed penalty. We introduce a Delay-Aware ADMM (DA-ADMM) variant that adapts penalty parameters to real-time delay statistics and re-derives the global consensus update as a delay-weighted average, down-weighting stale information in favor of recent updates. Simulations in 2D and 3D show that DA-ADMM improves robustness, success rate, and solution quality over fixed-parameter, residual-balancing, lower-bound, and fixed-constraint baselines. Degradation is therefore governed not by delay length or frequency, but by the optimizer's ability to reason over the age of the information it receives.",
+      "submitted": "2025-11-24",
+      "updated": "2026-11-17",
+      "arxiv_url": "https://arxiv.org/abs/2511.18703v2",
+      "directions": [
+        "asynchronous-distributed",
+        "distributed"
+      ],
+      "summary": "通信延迟使共识 ADMM 的残差混入过期信息差异，乘子又会持续累积这种偏差；只按瞬时残差调罚参数可能进一步误判。该文面向连续轨迹、多机器人约束优化，按消息年龄调整局部罚权，并从带权增广 Lagrangian 子问题推导共识平均，形成 Delay-Aware ADMM。作者在二维、三维轨迹优化及 MPC 仿真中，对比固定参数、残差平衡与其他延迟处理方法，报告成功率、解质量和鲁棒性改善。结果支持的是给定问题与延迟实验下的算法机制和效果，论文未建立一般非凸、任意异步时延下的全局收敛定理；MPC 实验还要求陈旧计划在预测时域内有效。",
+      "reason": "推荐研究消息年龄应如何进入优化更新，而不只进入系统调度。该文把残差污染、均匀平均和乘子累积串成明确机制，并据此改变罚权与共识更新，对延迟自适应的算法设计直接相关；它与具有严格时延收敛率的研究互补，实验恢复近同步性能不能替代一般理论保证。",
+      "order": 18
+    }
+  ]
+}
