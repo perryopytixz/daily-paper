@@ -7,6 +7,7 @@
     { "id": "optimization-frontiers", "name": "Optimization Frontiers" },
     { "id": "historical-information", "name": "Historical Information-based Optimization" },
     { "id": "distributed", "name": "Distributed Optimization" },
+    { "id": "constrained-feasibility", "name": "Constrained Optimization and Feasibility" },
     { "id": "asynchronous-distributed", "name": "Asynchronous Distributed Optimization" },
     { "id": "stochastic", "name": "Stochastic Optimization" },
     { "id": "safety-critical", "name": "Safety-critical Optimization" },
