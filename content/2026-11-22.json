@@ -1,0 +1,85 @@
+{
+  "date": "2026-11-22",
+  "status": "complete",
+  "frontiers_status": "recommendations",
+  "highlights": [
+    {
+      "arxiv_id": "1504.01032",
+      "label": "三算子分裂：分别保留两个近端映射与一个前向步骤",
+      "text": "Davis–Yin 用两个影子点的差更新辅助变量，将两个非光滑项与一个光滑项分别处理。在余强制、解存在及规定步长下证明弱收敛，并统一多种两算子分裂；更快速率另需结构条件。本文为历史补读。",
+      "types": [
+        "field"
+      ]
+    },
+    {
+      "arxiv_id": "1803.10359",
+      "label": "异步梯度跟踪：用累积质量修复陈旧消息造成的失配",
+      "text": "ASY-SONATA 对边上的发送量和接收缓冲记账，支持无协调更新。固定强连通有向图、延迟与激活间隔有界等条件下，强凸总目标配合充分小常步长得到 R-线性收敛；步长上界仍依赖异步参数。本文为历史补读。",
+      "types": [
+        "group"
+      ]
+    }
+  ],
+  "papers": [
+    {
+      "arxiv_id": "1504.01032",
+      "version": 1,
+      "title": "A Three-Operator Splitting Scheme and its Optimization Applications",
+      "authors": [
+        "Damek Davis",
+        "Wotao Yin"
+      ],
+      "submitted": "2015-04-04",
+      "updated": "2015-04-04",
+      "arxiv_url": "https://arxiv.org/abs/1504.01032v1",
+      "abstract": "Operator splitting schemes have been successfully used in computational sciences to reduce complex problems into a series of simpler subproblems. Since 1950s, these schemes have been widely used to solve problems in PDE and control. Recently, large-scale optimization problems in machine learning, signal processing, and imaging have created a resurgence of interest in operator-splitting based algorithms because they often have simple descriptions, are easy to code, and have (nearly) state-of-the-art performance for large-scale optimization problems. Although operator splitting techniques were introduced over 60 years ago, their importance has significantly increased in the past decade. This paper introduces a new operator-splitting scheme for solving a variety of problems that are reduced to a monotone inclusion of three operators, one of which is cocoercive. Our scheme is very simple, and it does not reduce to any existing splitting schemes. Our scheme recovers the existing forward-backward, Douglas-Rachford, and forward-Douglas-Rachford splitting schemes as special cases. Our new splitting scheme leads to a set of new and simple algorithms for a variety of other problems, including the 3-set split feasibility problems, 3-objective minimization problems, and doubly and multiple regularization problems, as well as the simplest extension of the classic ADMM from 2 to 3 blocks of variables. In addition to the basic scheme, we introduce several modifications and enhancements that can improve the convergence rate in practice, including an acceleration that achieves the optimal rate of convergence for strongly monotone inclusions. Finally, we evaluate the algorithm on several applications.",
+      "summary": "当目标由两个非光滑凸项与一个光滑凸项构成时，把前两项合并会失去分别计算近端映射的便利。Davis–Yin 分裂直接求解三个算子之和的零点：每轮分别调用两个极大单调算子的预解式，并计算一次余强制算子，随后用两个影子点的差更新辅助变量。若第三个算子为 $\\beta$-余强制、零点存在，固定步长 $0<\\gamma<2\\beta$ 并取不松弛迭代时，辅助序列弱收敛到分裂映射的不动点，两个影子序列弱收敛到原包含问题的解。该框架将前向后向、Douglas–Rachford 和前向 Douglas–Rachford 分裂纳为特例，并给出分裂可行性、三项凸最小化及适当三块对偶问题的实现。本文是历史补读，采用 2015 年的 arXiv v1。",
+      "reason": "推荐重点阅读分裂映射的构造及其平均性分析：它解释了怎样同时保留两个容易求解的近端子问题，并显式利用第三项的光滑结构。此前推荐的变度量三算子方法是在这个基础框架上改变几何；补读原始设计，有助于分清分裂本身与预条件改进各自解决的困难。一般弱收敛并不自动给出线性率，原文的更快速率需要另加结构条件。",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "order": 1
+    },
+    {
+      "arxiv_id": "1803.10359",
+      "version": 4,
+      "title": "Achieving Linear Convergence in Distributed Asynchronous Multi-agent Optimization",
+      "authors": [
+        "Ye Tian",
+        "Ying Sun",
+        "Gesualdo Scutari"
+      ],
+      "submitted": "2018-03-28",
+      "updated": "2019-09-11",
+      "arxiv_url": "https://arxiv.org/abs/1803.10359v4",
+      "abstract": "This papers studies multi-agent (convex and nonconvex) optimization over static digraphs. We propose a general distributed asynchronous algorithmic framework whereby i) agents can update their local variables as well as communicate with their neighbors at any time, without any form of coordination; and ii) they can perform their local computations using (possibly) delayed, out-of-sync information from the other agents. Delays need not be known to the agent or obey any specific profile, and can also be time-varying (but bounded). The algorithm builds on a tracking mechanism that is robust against asynchrony (in the above sense), whose goal is to estimate locally the average of agents' gradients. When applied to strongly convex functions, we prove that it converges at an R-linear (geometric) rate as long as the step-size is sufficiently small. A sublinear convergence rate is proved, when nonconvex problems and/or diminishing, uncoordinated step-sizes are considered. To the best of our knowledge, this is the first distributed algorithm with provable geometric convergence rate in such a general asynchronous setting. Preliminary numerical results demonstrate the efficacy of the proposed algorithm and validate our theoretical findings.",
+      "summary": "异步网络中，直接把同步梯度跟踪替换成延迟消息会破坏梯度总量的守恒关系。该文提出 ASY-SONATA，以 P-ASY-SUM-PUSH 跟踪机制记录边上的累积发送量和接收缓冲，只吸收尚未使用的信息，再与局部下降和共识更新结合。算法面向固定强连通有向图，节点无须协调激活，消息可延迟并乱序到达；分析要求延迟有界、每个节点在有界迭代窗口内激活，局部梯度满足 Lipschitz 条件。在总目标强凸、权重满足规定随机性和正性条件且常步长充分小时，节点到全局最优解的误差按 R-线性率衰减。对总目标有下界的非凸问题，以梯度范数平方与共识误差平方的最大值衡量进展，给出达到 $\\delta$ 精度的 $O(1/\\delta)$ 全局迭代计数界；另分析各节点独立选取的递减步长。常步长上界依赖延迟、激活和网络参数，不能把未知具体延迟轨迹理解为参数完全不依赖延迟。本文为历史补读。",
+      "reason": "最值得研究的是异步通信中的质量记账，以及如何把跟踪误差、共识误差与优化误差放入统一的收敛分析。这与无全局同步条件下的分布式优化直接相关：新增内容不只是让节点提前运行，而是修复陈旧消息造成的代数失配并维持精确最优性。与此前推荐的 delay-free 参数方法对照阅读，可看清允许怎样的异步模型、需要哪些延迟界，以及步长设计为这些保证付出的代价。",
+      "directions": [
+        "asynchronous-distributed",
+        "distributed"
+      ],
+      "order": 2
+    },
+    {
+      "arxiv_id": "1808.04162",
+      "version": 4,
+      "title": "A Forward-Backward Splitting Method for Monotone Inclusions Without Cocoercivity",
+      "authors": [
+        "Yura Malitsky",
+        "Matthew K. Tam"
+      ],
+      "submitted": "2018-08-13",
+      "updated": "2020-05-06",
+      "arxiv_url": "https://arxiv.org/abs/1808.04162v4",
+      "abstract": "In this work, we propose a simple modification of the forward-backward splitting method for finding a zero in the sum of two monotone operators. Our method converges under the same assumptions as Tseng's forward-backward-forward method, namely, it does not require cocoercivity of the single-valued operator. Moreover, each iteration only requires one forward evaluation rather than two as is the case for Tseng's method. Variants of the method incorporating a linesearch, relaxation and inertia, or a structured three operator inclusion are also discussed.",
+      "summary": "一般单调包含中的光滑算子未必余强制，经典前向后向法因此可能失效；Tseng 方法可放宽到单调且 Lipschitz 连续，但每轮需计算两次前向算子。Malitsky–Tam 的前向反射后向法复用上一轮的算子值，以 $2B(x_k)-B(x_{k-1})$ 构造当前校正，每轮只需一次新的前向计算和一次预解式计算。在实 Hilbert 空间中，若 $A$ 极大单调、$B$ 单调且 $L$-Lipschitz、零点存在，固定步长 $0<\\lambda<1/(2L)$ 可保证迭代点弱收敛到解。证明使用带历史交叉项的能量估计，迭代点本身不必 Fejér 单调。原文还讨论线搜索、松弛惯性和三算子扩展；这些版本各有参数与空间条件。本文采用 2020 年更新的 v4 作历史补读。",
+      "reason": "推荐阅读历史算子值替代一次额外预言机调用的构造。与单纯给迭代点加动量不同，这里的历史信息直接改变可收敛的问题范围，使单次前向计算适用于含非余强制耦合项的鞍点与变分不等式。它为设计低调用成本的方法提供了具体的更新式和分析工具；比较效率时还须同时计算允许步长和迭代次数，不能由每轮少一次调用推出普遍更快。",
+      "directions": [
+        "historical-information",
+        "optimization-frontiers"
+      ],
+      "order": 3
+    }
+  ]
+}
