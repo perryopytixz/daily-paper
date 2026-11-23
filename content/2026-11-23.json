@@ -1,0 +1,36 @@
+{
+  "date": "2026-11-23",
+  "status": "complete",
+  "frontiers_status": "recommendations",
+  "highlights": [
+    {
+      "arxiv_id": "1608.08883",
+      "label": "原始—对偶线搜索：只回溯一侧，省去预先估计算子范数",
+      "text": "历史补读。PDAL 每次回溯只更新对偶变量；仿射近端等结构下，还可复用矩阵乘积而不增加矩阵—向量乘法。在有限维、闭真凸近端项及鞍点存在等条件下证明聚点为鞍点，固定鞍点差距有 $O(1/N)$ 遍历界；完整点列收敛定理还要求有效域连续性及步长上界。",
+      "types": [
+        "field"
+      ]
+    }
+  ],
+  "papers": [
+    {
+      "arxiv_id": "1608.08883",
+      "version": 2,
+      "title": "A first-order primal-dual algorithm with linesearch",
+      "authors": [
+        "Yura Malitsky",
+        "Thomas Pock"
+      ],
+      "submitted": "2016-08-31",
+      "updated": "2018-03-23",
+      "abstract": "The paper proposes a linesearch for a primal-dual method. Each iteration of the linesearch requires to update only the dual (or primal) variable. For many problems, in particular for regularized least squares, the linesearch does not require any additional matrix-vector multiplications. We prove convergence of the proposed method under standard assumptions. We also show an ergodic $O(1/N)$ rate of convergence for our method. In case one or both of the prox-functions are strongly convex, we modify our basic method to get a better convergence rate. Finally, we propose a linesearch for a saddle point problem with an additional smooth term. Several numerical experiments confirm the efficiency of our proposed methods.",
+      "arxiv_url": "https://arxiv.org/abs/1608.08883v2",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "order": 1,
+      "summary": "历史补读。原始—对偶方法求解 $\\min_x\\max_y\\,\\langle Kx,y\\rangle+g(x)-f^*(y)$ 时，固定步长往往依赖算子范数，通用回溯又可能重复计算两侧近端映射。该文提出 PDAL，用对偶增量的可检验条件选择步长：每个外层步先更新原始变量，回溯只重算对偶变量，并允许试探步长逐轮增大。有限维空间中，若两个近端项为闭真凸函数且存在鞍点，作者证明回溯有限终止、迭代序列有界且所有聚点均为鞍点；若再满足 $g$ 在其有效域上连续、步长有上界，则进一步证明整个原始—对偶点列收敛。文中构造的加权平均点满足相对于固定鞍点定义的差距 $G_{\\hat x,\\hat y}(X^N,Y^N)=O(1/N)$；这一指标不等同于一般 KKT 残差或约束违反量。已知一侧的强凸参数时，修改后的算法把该差距改进到 $O(1/N^2)$，并使强凸侧变量到相应最优解的距离为 $O(1/N)$。论文还扩展到含额外光滑凸项的问题。对偶近端为仿射映射等特定结构下，可复用矩阵乘积，使回溯不增加矩阵—向量乘法；一般问题仍需计入额外对偶近端与算子调用。",
+      "reason": "推荐重点阅读回溯判据如何吸收能量估计中的交叉项，以及正则最小二乘例子如何把重复矩阵乘法改写为历史乘积的组合。相较于同时重算原始与对偶变量的线搜索，PDAL 将自适应步长的主要内层开销集中到一侧，并给出有限终止和收敛依据，因而适合作为比较新原始—对偶自适应算法的基准。今天补读这项工作，可把此前反射算子与分裂方法的关注点延伸到“未知全局参数时，如何以可控调用成本选择步长”；阅读时应同时对照完整点列收敛的附加条件与差距指标的定义，避免把遍历界解释为最后迭代点的可行性保证。"
+    }
+  ]
+}
