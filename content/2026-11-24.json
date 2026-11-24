@@ -1,0 +1,324 @@
+{
+  "date": "2026-11-24",
+  "status": "complete",
+  "frontiers_status": "recommendations",
+  "highlights": [
+    {
+      "arxiv_id": "2611.27922",
+      "types": [
+        "field"
+      ],
+      "label": "最后迭代误差揭示维数与噪声的双重边界",
+      "text": "常步长投影随机次梯度法得到匹配上下界。有界噪声下，最优常步长的一维误差为 $\\Theta(n^{-1/2})$，固定维数至少为二时则有额外对数惩罚；结论专门针对最后迭代。"
+    },
+    {
+      "arxiv_id": "2611.27572",
+      "types": [
+        "field"
+      ],
+      "label": "非光滑在线凸优化获得最优小损失遗憾界",
+      "text": "通过撤销历史曲率并混合学习器，每轮一个次梯度即可获得 $O(GW+\\sqrt{GW\\Delta_T^\\star})$ 遗憾界；无需损失值或预知时域，$G,W$ 分别控制梯度与域几何。"
+    },
+    {
+      "arxiv_id": "2611.27366",
+      "types": [
+        "field",
+        "group"
+      ],
+      "label": "自适应惯性法无需步长收敛也能最终线性收敛",
+      "text": "共同 Lyapunov 分析联合控制局部曲率、步长比与系数变化，验证多种自适应加速策略并设计新算法。光滑强凸条件下得到最终 R 线性收敛，主迭代不需全局参数、重启或回溯。"
+    },
+    {
+      "arxiv_id": "2611.27433",
+      "types": [
+        "field",
+        "group"
+      ],
+      "label": "把全局粒子共识改为邻居通信与局部跟踪",
+      "text": "每节点维护局部粒子群，用一轮邻居混合替代中央聚合，证明受网络谱影响的共识速度。逼近全局极小点另需局部增长和足够的邻域命中概率，不能仅由共识推出。"
+    },
+    {
+      "arxiv_id": "2403.02704",
+      "types": [
+        "field"
+      ],
+      "label": "秩约束投影梯度从任意低秩初值全局线性收敛",
+      "text": "在无约束最优解低秩、受限光滑强凸及非空步长区间条件下，尖锐矩阵不等式把临界点几何推进到实际迭代保证；速率不依赖最优解的奇异值条件数。"
+    }
+  ],
+  "papers": [
+    {
+      "arxiv_id": "2611.27922",
+      "version": 1,
+      "title": "Sharp Last-Iterate Bounds for the Stochastic subGradient Method",
+      "authors": [
+        "Guglielmo Beretta",
+        "Tommaso Cesari",
+        "Roberto Colomboni",
+        "Andrea Paudice"
+      ],
+      "submitted": "2026-11-20",
+      "updated": "2026-11-20",
+      "abstract": "We determine the worst-case expected optimization error of the last iterate of constant-stepsize projected Stochastic subGradient Method on convex Lipschitz objectives. The upper and lower bounds match up to universal constants for every stepsize, horizon, dimension, and conditional noise moment of order $p\\in[1,\\infty]$. With bounded noise and a fixed positive bound on the initial distance to a minimizer, the best constant stepsize gives worst-case error after $n$ iterates of order $1/\\sqrt n$ on the line and $\\sqrt{\\log n/(n\\log\\log n)}$ in every fixed dimension at least two.",
+      "arxiv_url": "https://arxiv.org/abs/2611.27922v1",
+      "directions": [
+        "optimization-frontiers",
+        "stochastic"
+      ],
+      "summary": "常步长随机次梯度法通常用平均迭代获得收敛保证，而实际计算常直接输出最后一点。该文在闭凸可行集上的凸 Lipschitz 目标、无偏且满足条件 $p$ 阶矩界的噪声模型下，给出投影随机次梯度法最后迭代期望误差的匹配上下界，统一刻画步长、迭代次数、维数与 $p\\in[1,\\infty]$ 的影响。对于有界噪声和固定正的初始距离上界，优化常步长后，一维最坏误差为 $\\Theta(n^{-1/2})$；每个固定的至少二维空间中则为 $\\Theta(\\sqrt{\\log n/(n\\log\\log n)})$。这些是该算法与常步长策略的最坏情形结论，比较范围不包括任意步长调度或平均输出。",
+      "reason": "阅读重点是维数与噪声尾部如何共同决定最后迭代的损失：二维起就出现一维没有的对数惩罚，而有限矩阶数又产生另一类障碍。匹配的困难实例让这些因素成为可检验的算法边界，适合用来判断已有最后迭代分析中的对数项究竟来自证明还是方法本身。",
+      "order": 1
+    },
+    {
+      "arxiv_id": "2611.27572",
+      "version": 1,
+      "title": "Minimax-Optimal Small-Loss Regret in Online Convex Optimization and Applications to Contextual Search and Online Inverse Optimization",
+      "authors": [
+        "Shinsaku Sakaue"
+      ],
+      "submitted": "2026-11-20",
+      "updated": "2026-11-20",
+      "abstract": "We give small-loss regret bounds for online convex optimization (OCO), using one subgradient per round. Let $\\Delta_T^\\star$ denote the cumulative loss of the best fixed decision in hindsight, measured relative to the per-round minima. Our algorithm achieves the regret bound $O(1+\\sqrt{\\Delta_T^\\star})$ without knowing $\\Delta_T^\\star$, up to domain and gradient-scale factors. The bound is minimax optimal, including its domain dependence, on $\\ell_p$ balls for every $1\\le p\\le\\infty$. No smoothness or condition bounding gradient norms by loss values is assumed, and neither loss values nor the time horizon are needed. Algorithmically, we extend the metric-update revocation of Gupta et al. (2026), originally developed for online inverse optimization, to general OCO using the follow-the-regularized-leader framework and a mixture of multiple base learners. We also apply our algorithm to contextual search and online inverse optimization. In $d$-dimensional contextual search with comparison flips of unknown bias $\\kappa>0$, we obtain minimax expected cumulative absolute error $\\Theta(\\sqrt{d}/\\kappa^2)$ under Euclidean normalization using polynomially many arithmetic operations, resolving an open question of Liu et al. (2021). For online inverse optimization with the Euclidean unit-ball utility domain, our algorithm bounds the regret relative to observed actions by $O(\\sqrt{d}+d^{1/4}\\sqrt{D_T})$, where $D_T$ is their cumulative suboptimality; this matches the regret rate of Gupta et al. (2026) when $D_T=0$. Our guarantee extends to other utility domains; for example, on the probability simplex, the bound improves to $O(\\log(d+1)+\\sqrt{D_T\\log(d+1)})$.",
+      "arxiv_url": "https://arxiv.org/abs/2611.27572v1",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "summary": "在线凸优化的小损失界常依赖光滑性，或依赖把梯度大小与损失联系起来的自界条件。该文以比较点相对各轮最小值的累积损失 $\\Delta_T(u)=\\sum_t[f_t(u)-\\min_{w\\in K}f_t(w)]$ 为基准，通过 FTRL、可撤销的历史曲率项与多个基学习器的混合，构造每轮只观察一个次梯度的算法。在紧凸域上，给定次梯度范数上界 $G$ 及域的最大次指数平均宽度上界 $W$，得到 $R_T(u)=O(GW+\\sqrt{GW\\Delta_T(u)})$，不需损失值、时域长度或预知比较点损失。在 $\\ell_p$ 球等域上，该文证明这一保证包含域依赖在内的极小极大最优性，并给出带未知偏置比较噪声的上下文搜索应用。",
+      "reason": "推荐关注撤销历史正则曲率的机制，以及混合学习器时如何抵消额外误差。它把非光滑问题的小损失保证从额外的损失—梯度关系中分离出来；域几何通过明确的宽度量进入上界和下界，也使不同可行域上的比较更有依据。",
+      "order": 2
+    },
+    {
+      "arxiv_id": "2611.27366",
+      "version": 1,
+      "title": "Linear Convergence of Adaptive Accelerated Gradient Methods: A Unified Framework",
+      "authors": [
+        "Weihe Zhang",
+        "Ming Yan"
+      ],
+      "submitted": "2026-11-20",
+      "updated": "2026-11-20",
+      "abstract": "We establish a unified Lyapunov framework for adaptive accelerated gradient methods on smooth, strongly convex objectives. Conditions on local curvature, stepsize ratios, and coefficient variation ensure eventual linear convergence without assuming stepsize convergence. We verify these conditions for specified AdaNAG-G, smooth unconstrained AC-FGM, and AdaAGM policies and use them to design VC-FG and CC-FG. The verified adaptive main iterations require neither global smoothness nor strong-convexity parameters and avoid restart and backtracking. The framework also sharpens a fixed-step FISTA/NAG-type bound. Experiments on four smooth, strongly convex problem families illustrate complementary performance of the new methods.",
+      "arxiv_url": "https://arxiv.org/abs/2611.27366v1",
+      "directions": [
+        "historical-information",
+        "optimization-frontiers"
+      ],
+      "summary": "对未知光滑与强凸参数的自适应加速法，一般凸情形的次线性界不能自动推出强凸情形的线性收敛。该文为三序列惯性迭代建立共同 Lyapunov 分析，用局部曲率、相邻步长比及系数变化的条件控制能量收缩，不要求自适应步长收敛。作者对指定的 AdaNAG-G、光滑无约束 AC-FGM 和 AdaAGM 参数策略验证这些条件，并设计 VC-FG 与 CC-FG。在全局光滑、强凸目标及各自参数约束下，目标误差与到最优解的距离平方经过有限初始阶段后 R 线性收敛；相应主迭代不输入全局光滑或强凸常数，也无需重启和回溯。收缩率及初始阶段长度可以依赖问题和实际轨迹，不能直接等同于已知参数时的最优条件数复杂度。",
+      "reason": "这套分析把惯性系数变化与局部步长增长放进同一个二次型，再证明其最终正定，给出了可复用的工具。它解释了历史迭代外推与曲率自适应如何兼容，而无需先假设步长趋于常数；对设计新的无参数惯性策略，文中的充分条件比单个算法的速率结论更便于借鉴。",
+      "order": 3
+    },
+    {
+      "arxiv_id": "2611.27433",
+      "version": 1,
+      "title": "Consensus of Consensus: Decentralized Consensus-Based Optimization",
+      "authors": [
+        "Stefania Bellavia",
+        "Massimo Fornasier",
+        "Greta Malaspina",
+        "Tim Roith"
+      ],
+      "submitted": "2026-11-20",
+      "updated": "2026-11-20",
+      "abstract": "We propose and analyze a decentralized variant of Consensus-Based Optimization (CBO) for the global minimization of continuous, possibly non-convex functions accessible only through a stochastic, possibly biased, zeroth-order oracle with bounded mean-squared error. The agents are split among $N$ units of an undirected communication network. Each unit evolves its swarm of $M$ agents towards a local tracking variable, which follows the network average of the local consensus points through one round of neighbour-to-neighbour communication via a doubly stochastic mixing matrix, without any central coordinator. We show that, under an explicit condition linking the drift and diffusion parameters to $M$, all agents reach consensus almost surely, at an exponential mean-square rate governed by the spectrum of the mixing matrix. Using a finite-agent quantitative Laplace principle, we prove that, for large $\\alpha$ and provided some agent visits a neighbourhood of the global minimizer with sufficient probability, the expected mean-squared distance of the swarm from the minimizer falls below any tolerance within an explicit number of iterations, at a rate that deteriorates for poorly connected networks. We verify this hitting assumption for a simplified dynamics. Experiments on benchmarks up to dimension $d=1000$, with stochastic objectives, and on a federated learning task demonstrate the method's effectiveness.",
+      "arxiv_url": "https://arxiv.org/abs/2611.27433v1",
+      "directions": [
+        "distributed",
+        "optimization-frontiers",
+        "stochastic"
+      ],
+      "summary": "传统共识型全局优化虽然能并行更新粒子，却通常仍需每步计算一个全局加权共识点。该文让无向网络中的每个节点维护局部粒子群及跟踪变量，通过对称双随机混合矩阵的一轮邻居通信传播局部共识信息，取消中央协调；目标可连续非凸，零阶估计可有偏，但均方误差须一致有界。在漂移、扩散和每节点粒子数满足明确条件且初始分布有有限四阶矩时，作者证明全部粒子与跟踪变量几乎必然达成共识，并给出受网络谱控制的均方指数率。进一步在唯一全局极小点、局部增长与远离极小点的目标间隔条件下，结合有限粒子 Laplace 原理及足够强的邻域命中概率假设，得到在显式有限步数内达到任意期望均方精度的保证；命中假设仅对简化动力学另行验证。",
+      "reason": "局部加权共识与网络跟踪之间的耦合分析值得优先阅读：它把粒子群方法中的全局聚合改成真正的邻居通信，并明确显示网络连通性如何影响速度。论文也有助于区分两个常被混淆的目标：所有粒子聚到一起，与聚到全局极小点附近，需要不同的条件和证明。",
+      "order": 4
+    },
+    {
+      "arxiv_id": "2403.02704",
+      "version": 3,
+      "title": "Critical-Point Characterization of Rank-Constrained Optimization and Global Convergence of Projected Gradient Descent",
+      "authors": [
+        "Teng Zhang"
+      ],
+      "submitted": "2024-03-05",
+      "updated": "2026-11-20",
+      "abstract": "We study the rank-constrained problem $\\min_{\\mathrm{rank}(\\mathbf{X})\\leq r} f(\\mathbf{X})$ when the unconstrained minimizer $\\mathbf{X}_*$ has rank $r_*\\leq r$. We apply a sharp matrix inequality to characterize critical points and establish deterministic global linear convergence of projected gradient descent (ProjGD). First, assuming that $f$ satisfies rank-$(r+r_*)$ restricted smoothness and strong convexity with constants $L$ and $\\mu$, respectively, where $0<\\mu<L$, we show that every nonoptimal rank-$r$ critical point satisfies the inequality $\\|P_{T(\\mathbf{X})^\\perp}\\nabla f(\\mathbf{X})\\|/\\sigma_r(\\mathbf{X}) \\geq (2L\\mu/(L-\\mu))\\sqrt{r/r_*}$. Here $P_{T(\\mathbf{X})^\\perp}\\nabla f(\\mathbf{X})$ is the component of the gradient normal to the tangent space $T(\\mathbf{X})$ and $\\sigma_r(\\mathbf{X})$ is the $r$-th singular value of $\\mathbf{X}$. Second, this inequality implies that $\\mathbf{X}_*$ is the unique fixed point of ProjGD whenever the step size $\\eta$ satisfies $\\eta>\\sqrt{r_*/r}(L-\\mu)/(2L\\mu)$. Finally, under an additional rank-$2r$ restricted smoothness assumption, we apply the argument to the actual ProjGD iterates, establish a uniform improvement estimate for every iteration, and prove deterministic global linear convergence from every initialization of rank at most $r$ for $\\sqrt{r_*/r}(L-\\mu)/(2L\\mu)<\\eta<1/L$. The result allows arbitrary rank overparameterization $r\\geq r_*$, and its convergence rate is independent of the singular-value condition number of $\\mathbf{X}_*$. As a consequence, a rank-preserving curve argument proves the no-spurious-local-minima property whenever $(L-\\mu)/(L+\\mu)<(1+\\sqrt{r_*/r})^{-1}$. This matches the sharp threshold established by McRae et al. (2026). A quadratic example shows that the lower bound on the step size $\\sqrt{r_*/r}(L-\\mu)/(2L\\mu)$ is also sharp.",
+      "arxiv_url": "https://arxiv.org/abs/2403.02704v3",
+      "directions": [
+        "optimization-frontiers",
+        "constrained-feasibility"
+      ],
+      "summary": "秩约束投影梯度法的全局分析，既要排除非最优固定点，也要控制实际迭代的下降。该文用一个尖锐矩阵不等式，把秩固定流形上临界点的法向梯度与最小非零奇异值联系起来。设无约束最优解秩为 $r_*\\le r$，目标二阶连续可微，在秩不超过 $r+r_*$ 的方向上满足受限光滑与强凸条件，并在秩不超过 $2r$ 的方向上有同一光滑上界 $L$。当 $\\sqrt{r_*/r}(L-\\mu)/(2L\\mu)<\\eta<1/L$ 时，作者证明普通固定步长投影梯度法从任意秩至多为 $r$ 的初值全局 R 线性收敛，速率不依赖最优解的奇异值条件数。该步长区间须非空；二次反例还说明其步长下阈值和相应的受限曲率条件具有尖锐性。",
+      "reason": "最值得读的是从临界点几何推进到每一步统一改进的论证。唯一固定点本身不足以证明算法收敛，本文用切向与法向梯度的两种情形补上这一环节，并以反例解释为什么步长过小也会停在非最优点。这为比较秩过参数化、几何景观和实际求解保证提供了清楚的共同尺度。",
+      "order": 5
+    },
+    {
+      "arxiv_id": "2611.27771",
+      "version": 1,
+      "title": "Stochastic Extragradient Methods Beyond Lipschitz Continuity",
+      "authors": [
+        "Konstantinos Oikonomidis",
+        "Jan Quan",
+        "Mathijs Schuurmans",
+        "Panagiotis Patrinos"
+      ],
+      "submitted": "2026-11-20",
+      "updated": "2026-11-20",
+      "abstract": "Stochastic variational inequality problems have received significant attention due to their ability to model large-scale machine learning tasks. Typically, the operators involved are assumed to be globally Lipschitz, with only a handful of works extending beyond the standard setting to the so-called $(L_0,L_1)$-Lipschitz setting. In this work, we propose a novel stochastic past extragradient algorithm for variational inequality problems under a broad regularity assumption that is even less restrictive than $(L_0,L_1)$-Lipschitz continuity and provide convergence guarantees under bounded variance of the stochastic oracle. More precisely, we show a.s. convergence with suitable stepsize schedules and obtain convergence rates in expectation and in probability for fixed horizons. Finally, in numerical simulations we compare our proposed algorithm against standard methods.",
+      "arxiv_url": "https://arxiv.org/abs/2611.27771v1",
+      "directions": [
+        "optimization-frontiers",
+        "stochastic"
+      ],
+      "summary": "该文研究算子不满足全局 Lipschitz 连续性时的随机变分不等式，提出带非线性预条件和动量估计的随机过去外梯度法 SPEPG。其正则性条件要求归一化算子满足 Lipschitz 条件，覆盖比通常 $(L_0,L_1)$ 型条件更广的算子；算法用相互独立的样本计算方向和归一化尺度，以保留正确的平均方向。在原算子的无偏有界方差预言机、对全部解成立的 Minty 条件及规定参数下，有限时域平均预条件驻点残差的平方期望为 $O(K^{-1/2})$；采用不可和而平方可和的动量权重时，整条主迭代几乎必然收敛。原始算子残差得到的是依概率保证，不能直接把上述期望速率移用过去；作者给出有限方差噪声下原始残差期望发散的例子。",
+      "reason": "推荐阅读双独立采样与历史估计如何共同处理随机归一化偏差。论文的价值也在于把不同残差的保证分开：放宽算子增长条件后，预条件度量可有期望界，原始度量却可能只适合概率控制。这一边界对设计更一般的随机算子算法很有用。",
+      "order": 6
+    },
+    {
+      "arxiv_id": "2605.06615",
+      "version": 2,
+      "title": "When and Why SignSGD Outperforms SGD: A Theoretical Study Based on $\\ell_1$-norm Lower Bounds",
+      "authors": [
+        "Hongyi Tao",
+        "Dingzhi Yu",
+        "Lijun Zhang"
+      ],
+      "submitted": "2026-05-07",
+      "updated": "2026-11-20",
+      "abstract": "Sign-based optimization algorithms, such as SignSGD and Muon, have garnered significant attention for their remarkable performance in training large foundation models. Despite this empirical success, we still lack a theoretical understanding of when and why these sign-based methods outperform vanilla SGD. The core obstacle is that under standard smoothness and finite variance conditions, SGD is known to be minimax optimal for finding stationary points measured by $\\ell_2$-norms, thereby fundamentally precluding any complexity gains for sign-based methods in standard settings. To overcome this barrier, we analyze sign-based optimizers leveraging $\\ell_1$-norm stationarity, $\\ell_\\infty$-smoothness, and a separable noise model, which can better capture the coordinate-wise nature of signed updates. Under this distinct problem geometry, we derive matched upper and lower bounds for SignSGD and explicitly characterize the problem class in which SignSGD provably dominates SGD. Specifically, we compare the upper bound of SignSGD with the lower bound of SGD, illustrating that SignSGD effectively reduces the complexity by a factor of $d$ under sparse noise, where $d$ is the problem dimension. Furthermore, we elevate this framework to the matrix domain, providing an equivalent optimal lower bound for the Muon optimizer, proving that extending the sign operator to matrices preserves this optimal scaling with dimensionality. Finally, we bridge our theoretical bounds to practice, demonstrating that the theoretical superiority of SignSGD accurately predicts its faster convergence during the pretraining of nanoGPT and LLaMA, with Muon also outperforming SGD in these experiments. Code is available at this https URL .",
+      "arxiv_url": "https://arxiv.org/abs/2605.06615v2",
+      "directions": [
+        "optimization-frontiers",
+        "stochastic"
+      ],
+      "summary": "在标准欧氏光滑性与二范数驻点指标下，SGD 的极小极大最优性使符号方法的优势难以直接体现。该文改在 $\\ell_\\infty$ 光滑性、逐坐标条件方差模型和 $\\ell_1$ 梯度驻点指标下比较算法，为常步长 SignSGD 建立匹配上下界，并为同一问题类中的常步长小批量 SGD 构造下界。在规定的批量与时域范围内，噪声集中于少数坐标时，SignSGD 的样本复杂度可获得最高为维数因子的优势。作者进一步在谱范数光滑与各向异性矩阵噪声模型下，给出以核范数衡量驻点性的矩阵符号更新界；该理论分析的矩阵算法不带动量，使用精确矩阵符号算子。",
+      "reason": "推荐从问题几何及下界构造入手理解符号更新的优势。通过同时固定光滑模型、噪声结构和驻点指标，论文把稀疏噪声带来的优势明确写入复杂度，也为理解实际矩阵优化器中的谱几何作用提供了可核查的理论起点。",
+      "order": 7
+    },
+    {
+      "arxiv_id": "2611.26873",
+      "version": 1,
+      "title": "Inexact Proximal Method on Hadamard Manifolds",
+      "authors": [
+        "M. S. Louzeiro",
+        "R. Serra",
+        "S. Vieira"
+      ],
+      "submitted": "2026-11-19",
+      "updated": "2026-11-19",
+      "abstract": "We propose and analyze two inexact proximal point methods for unconstrained geodesically convex optimization on Hadamard manifolds. The first, a standard inexact proximal point method (SIPPM), accepts approximate subproblem solutions directly as new iterates and applies to arbitrary Hadamard manifolds under a summability condition on the relative error tolerances. The second, a hybrid inexact proximal point method (IHPPM), augments each inexact proximal step with a metric projection onto a half-space-like separating set, allowing the summability requirement to be relaxed to a fixed relative error tolerance at the cost of assuming geodesic convexity of the separating sets. For both methods we establish full asymptotic convergence, global $\\mathcal{O}(\\varepsilon^{-2})$ iteration-complexity bounds for approximate stationarity, and, under a local growth condition, local $Q$-linear convergence rates---with $Q$-superlinear acceleration for SIPPM when the proximal parameters tend to zero and a refined contraction factor for IHPPM. We further prove that the geodesic convexity of the separating sets holds automatically on Hadamard surfaces and on Hadamard manifolds of constant sectional curvature.",
+      "arxiv_url": "https://arxiv.org/abs/2611.26873v1",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "summary": "Hadamard 流形上的近端子问题通常无法精确求解，误差容许范围又受空间几何影响。该文比较两种测地凸优化算法：SIPPM 直接接受非精确近端点，要求相对误差容差可和；IHPPM 额外把当前点投影到含最优解的分离集合，允许固定相对容差，但要求这些集合测地凸。在有限维 Hadamard 流形、最优解存在且近端正则系数满足 $\\sum_k\\mu_k^{-2}=\\infty$ 等规定条件下，作者证明整序列收敛；近端参数有统一上界时，得到寻找小范数次梯度点的 $O(\\varepsilon^{-2})$ 外层迭代界。局部逆次梯度误差界带来 Q 线性收敛，直接法的近端正则系数趋零时还可获得 Q 超线性收敛。分离集合的测地凸性对 Hadamard 曲面或常截面曲率空间自动成立，不对任意 Hadamard 流形自动成立。",
+      "reason": "推荐关注非精确计算与几何条件之间的取舍：多做一次分离投影，可以换取固定误差容差，但相应投影的良定性需要独立验证。该文将这一条件与具体流形几何对应起来，便于判断欧氏非精确近端分析哪些部分可以移植；复杂度只统计外层迭代，不包含近端与投影的实现成本。",
+      "order": 8
+    },
+    {
+      "arxiv_id": "2611.27717",
+      "version": 1,
+      "title": "Applicability of the MPCC approach to Zeng reformulations of nonlinear pessimistic bilevel programming",
+      "authors": [
+        "Joaquín Parra",
+        "David Salas"
+      ],
+      "submitted": "2026-11-20",
+      "updated": "2026-11-20",
+      "abstract": "The vanilla method in bilevel programming is to reformulate it as a single-level mathematical programs with complementarity constraints (MPCC), via the KKT conditions of the lower-level. This method seemed to work only for optimistic formulations. However, in (Zeng, 2020), B. Zeng presented a general method to reduce pessimistic bilevel problems to optimistic ones. In this note, we study how to apply the MPCC approach to the pessimistic counterpart through Zeng's reformulation (Zeng, 2020). While we show that it cannot be applied directly since constraint qualification can be destroyed by the reformulation, it still can be used to solve natural relaxations, in the spirit of (Wiesemann,2013),(Loridan & Morgan,1989), (Loridan & Morgan,1996).",
+      "arxiv_url": "https://arxiv.org/abs/2611.27717v1",
+      "directions": [
+        "optimization-frontiers",
+        "constrained-feasibility"
+      ],
+      "summary": "将悲观双层问题经 Zeng 重写转成乐观问题后，直接用下层 KKT 条件替换最优反应可能失效。该文给出反例：新增的零松弛次水平约束会压低可行集维数、破坏约束资格，使原问题解无法由任何 KKT 乘子表示。若原下层可行集凸且满足约束资格、下层目标和不等式约束凸且可微、等式仿射，并且上层目标对跟随者变量凹且可微，则把新增约束放宽任意正量后可恢复相应资格条件及 MPCC 等价性。在紧性、连续性与悲观值函数下半连续等条件下，作者还证明松弛量和上层全局最优性容差同时趋零时，松弛问题近似全局解的领导者聚点为原悲观问题的全局解。这里的下层最优反应仍须精确满足，结论不是局部 MPCC 驻点算法的收敛定理。",
+      "reason": "论文具体展示了“等价重写”与“可用 KKT 求解”之间的缺口，并用法锥交规则说明正松弛如何修复它。文中同时处理松弛问题不一定达到最小值的情况，明确使用近似全局最优解，从而避免把建模等价性误当作现成数值算法的正确性保证。",
+      "order": 9
+    },
+    {
+      "arxiv_id": "2602.05489",
+      "version": 2,
+      "title": "Convergence Rate of the Last Iterate of Stochastic Proximal Algorithms",
+      "authors": [
+        "Kevin Kurian Thomas Vaidyan",
+        "Michael P. Friedlander",
+        "Ahmet Alacaoglu"
+      ],
+      "submitted": "2026-02-05",
+      "updated": "2026-11-19",
+      "abstract": "We analyze two classical algorithms for solving additively composite convex optimization problems where the objective is the sum of a smooth term and a nonsmooth regularizer. The first algorithm is the proximal stochastic gradient method for a single regularizer; the second is the randomized incremental proximal method, which uses the proximal operator of a randomly selected function when the regularizer is given as the sum of many nonsmooth functions. We focus on relaxing the bounded variance assumption that is common, yet stringent, for getting last iterate convergence rates. We prove the $\\widetilde{O}(1/\\sqrt{T})$ rate of convergence for the last iterate of both algorithms under componentwise convexity and smoothness, which is optimal up to log terms. Our results apply directly to graph-guided regularizers that arise in multi-task and federated learning, where the regularizer decomposes as a sum over edges of a collaboration graph.",
+      "arxiv_url": "https://arxiv.org/abs/2602.05489v2",
+      "directions": [
+        "optimization-frontiers",
+        "stochastic"
+      ],
+      "summary": "随机近端梯度法的最后迭代分析常假设梯度方差在整个空间一致有界，这甚至不能覆盖一些基本的正则化最小二乘问题。该文用分量函数的凸性与一致光滑性替代这一全局方差条件，只要求某个复合最优解处的随机梯度二阶矩有限。在正则项适当、闭、凸且解存在时，作者对随已知时域选择的常步长证明最后迭代期望目标误差为 $O(\\log(T+1)/\\sqrt T)$。当正则项是多项之和且每个分量凸、Lipschitz 时，随机增量近端法也有同阶最后迭代界；此时每步只调用一个分量近端算子，代价是界中增加与分量 Lipschitz 常数和项数有关的误差项。",
+      "reason": "推荐阅读如何用最优点处的二阶矩控制沿轨迹增长的梯度噪声，并处理近端映射非线性带来的最后迭代分析困难。它把无全局有界方差的理论从无约束 SGD 推进到一般凸复合问题；增量近端部分还清楚展示了减少单步近端成本所需的额外结构条件。",
+      "order": 10
+    },
+    {
+      "arxiv_id": "2611.27077",
+      "version": 1,
+      "title": "Accelerating Muon with Spectral Residual Correction",
+      "authors": [
+        "Zhixin Ren",
+        "Yao Lyu",
+        "Shengbo Eben Li",
+        "Liping Zhang"
+      ],
+      "submitted": "2026-11-20",
+      "updated": "2026-11-20",
+      "abstract": "Muon constructs matrix updates by applying a matrix-sign transformation to momentum. A common route to accelerating Muon is to modify the gradient or momentum before this transformation. We explore a complementary direction: refining the parameter step while retaining Muon's momentum recursion. Derived from the parameter subproblem of the ADMM-Inspired Momentum framework, AIMuon uses the gradient--momentum residual to correct the tentative spectral step. The residual undergoes a separate matrix-sign transformation, while spectral--nuclear duality determines the relative weighting of the momentum and residual directions. In practice, both directions are approximated with Newton--Schulz iterations and their combination is rescaled to match Muon's update magnitude. We establish a stochastic stationarity bound for the corresponding exact iteration. On GPT-2-small, GPT-2-medium, and Qwen3-0.6B, AIMuon reaches Muon's final validation loss with 8.98\\%, 10.05\\%, and 6.49\\% fewer optimization steps, respectively, while achieving lower final validation loss than Muon, Muon-Nesterov, and MONA.",
+      "arxiv_url": "https://arxiv.org/abs/2611.27077v1",
+      "directions": [
+        "historical-information",
+        "stochastic"
+      ],
+      "summary": "Muon 先累积动量，再对动量矩阵作谱变换；如何利用当前梯度与历史动量之间的差异，未必只能通过修改动量递推来实现。该文从 ADMM 启发的参数子问题导出 AIMuon，保留普通指数动量，另对梯度—动量残差独立作矩阵符号变换，并以核范数权重组合两个方向。对未做幅度归一化、采用精确矩阵符号算子的理论迭代，在目标光滑且下有界、随机梯度无偏且方差有界等条件下，作者得到平均 Frobenius 梯度范数平方的 $O(T^{-1})$ 优化项及 $O(B^{-1})$ 批量噪声底。实际算法另用 Newton–Schulz 近似并匹配 Muon 的更新幅度；三种语言模型实验中，达到 Muon 最终验证损失所需步数减少约 6.5%—10.1%，这并不是等比例的运行时间保证。",
+      "reason": "推荐关注历史动量与新梯度残差在非线性谱变换前后如何组合。分别变换再混合通常不同于先混合再变换，论文据此给出新的校正方向；阅读时将精确迭代的驻点界与实际近似、归一化实现分开，更便于判断哪些机制已有理论支持、哪些主要由消融实验验证。",
+      "order": 11
+    },
+    {
+      "arxiv_id": "2502.21099",
+      "version": 5,
+      "title": "Adaptive Lipschitz-Free Proximal Gradient Methods for Stochastic Composite Nonconvex Optimization",
+      "authors": [
+        "Ganzhao Yuan"
+      ],
+      "submitted": "2025-02-28",
+      "updated": "2026-11-20",
+      "abstract": "We propose {\\sf ALFPG}, an Adaptive Lipschitz-Free Proximal Gradient framework for stochastic composite nonconvex minimization. It adapts stepsizes from the optimization trajectory without requiring smoothness constants or line search. For finite-sum problems, {\\sf ALFPG-FS} combines coordinate-wise stepsizes, Nesterov extrapolation, and a SPIDER estimator; {\\sf ALFPG-D} is its full-batch specialization. Under component-wise smoothness, bounded sublevel sets, and separate lower bounds on $f$ and $h$, {\\sf ALFPG-FS} achieves expected $\\epsilon$-stationarity with $\\mathcal O(N+\\sqrt N \\epsilon^{-2})$ component-gradient evaluations. For expectation problems, we develop {\\sf ALFPG-MVR1} and {\\sf ALFPG-MVR2} (MVR: Momentum-based Variance Reduction). Both use one fresh sample per iteration. MVR1 uses one stochastic-gradient evaluation; MVR2 uses at most two evaluations at different points with the same sample. MVR1 requires smoothness of the expected loss; MVR2 additionally requires uniformly smooth sample losses. When the regularizer is convex or Lipschitz continuous on its effective domain and stochastic gradients are almost surely bounded, both methods achieve expected $\\epsilon$-stationarity using $\\widetilde{\\mathcal O}(\\sigma^2\\epsilon^{-4}+\\epsilon^{-2})$ and $\\widetilde{\\mathcal O}(\\sigma\\epsilon^{-3}+\\epsilon^{-2})$ stochastic-gradient evaluations, respectively. Here, $N$ is the number of component functions, $\\sigma^2$ bounds the gradient noise variance, and $\\widetilde{\\mathcal O}$ hides polylogarithmic factors. Neither expectation variant requires prior knowledge of $\\sigma$, and both recover $\\widetilde{\\mathcal O}(\\epsilon^{-2})$ complexity in the zero-noise regime. Numerical experiments on sparse phase retrieval, linear eigenvalue problems, and neural network regression show that all four ALFPG variants generally outperform state-of-the-art proximal-gradient baselines.",
+      "arxiv_url": "https://arxiv.org/abs/2502.21099v5",
+      "directions": [
+        "historical-information",
+        "stochastic"
+      ],
+      "summary": "ALFPG 根据历史近端位移调整尺度，将自适应对角度量、外推和 SPIDER 梯度估计用于非凸复合优化。相较已介绍的 v4，本次 v5 对有限和部分重新建立迭代有界性：从有效定义域有界，改为目标下水平集有界且光滑项、正则项分别下有界，因而允许无界有效域。在分量光滑、近端子问题可精确全局求解及算法规定参数下，仍以 $O(N+\\sqrt N\\varepsilon^{-2})$ 分量梯度复杂度得到期望 $\\varepsilon$ 驻点。期望目标的两个动量方差缩减版本保留原有的噪声自适应复杂度及其额外假设，本次主要新增阅读价值在有限和适用范围和有界性证明，不是新的复杂度阶。",
+      "reason": "推荐重读从下降与下水平集条件推出整条自适应轨迹有界的论证，再看它如何进入历史尺度和递归估计误差的联合控制。与直接限制全部可行点的范数相比，这一条件更适合无界定义域上的复合模型；同时要保留两部分分别下有界及精确近端的要求。",
+      "order": 12,
+      "update_note": "相较 2026-09-29 已推荐的 v4，v5 将有限和分析的有效定义域有界条件改为目标下水平集有界、光滑项与正则项分别下有界，并重做轨迹有界性证明；原有复杂度阶保留。"
+    },
+    {
+      "arxiv_id": "2611.27808",
+      "version": 1,
+      "title": "$\\mathtt{DistP}$: Scaling Local-Update Training with Zero-Shot Hyperparameter Transfer",
+      "authors": [
+        "Andrej Jovanović",
+        "Alex Iacob",
+        "Philipp Wiesner",
+        "Christophe Roux",
+        "Max Zimmer",
+        "Lorenzo Sani",
+        "Sebastian Pokutta",
+        "Nicholas D. Lane"
+      ],
+      "submitted": "2026-11-20",
+      "updated": "2026-11-20",
+      "abstract": "Local-update methods offer a communication-efficient alternative to Distributed Data Parallelism ($\\mathtt{DDP}$), but introduce additional hyperparameters that require costly tuning. For $\\mathtt{DDP}$, zero-shot hyperparameter transfer reduces this cost by reusing settings tuned on smaller models, but its applicability to local-update training remains unclear. We propose $\\mathtt{DistP}$, a theoretical framework extending existing transfer rules from $\\mathtt{DDP}$ to local-update training with varying worker counts, local steps, and outer optimizers. With averaging as the outer optimizer, $\\mathtt{DistP}$ supports learning-rate transfer across width and depth while improving model quality. The tuned inner learning rate also directly transfers across synchronization intervals, but follows two regimes when increasing the global batch size: square-root learning-rate scaling for larger local batches and a fixed reference rate for additional workers. We then generalize width and depth transfer to other outer optimizers, enabling stable scaling with $\\mathtt{Adam}$. However, with momentum in the outer optimizer, changing batch size or local steps can require inner--outer learning-rate tuning, consistent with prior work. In language-modeling experiments at $823$M parameters, $\\mathtt{DistP}$ reduces validation loss by $8.1\\%$ and improves mean downstream accuracy by $10\\%$ relative to baselines without retuning at the larger scale. Fitted scaling laws suggest that this advantage grows with the compute budget, reinforcing the benefits of $\\mathtt{DistP}$ for communication-efficient training.",
+      "arxiv_url": "https://arxiv.org/abs/2611.27808v1",
+      "directions": [
+        "distributed"
+      ],
+      "summary": "局部多步训练减少通信，却使模型宽度、深度、工作节点数、批量和同步间隔同时影响学习率调节。该文提出 DistP，把已有参数化缩放扩展到局部更新与外层聚合：在固定节点数和局部步数、平均一阶特征变化不被抵消且非线性余项受控等条件下，模型平均保留有界且非消失的特征变化；线性外层更新保留相应缩放，外层 Adam 则需额外调整学习率与稳定常数。对内层 Adam、模型平均及固定 token 预算，作者区分增大本地批量与增加节点数两种情形，提出前者按平方根缩放内层学习率、后者保留参考学习率的规则，并用语言模型实验检验。跨同步间隔直接复用学习率的累计步长解释不控制节点漂移，带外层动量时还可能需要联合调节内外学习率。",
+      "reason": "值得读的是把通信间隔、局部自适应优化与外层聚合放在同一个缩放问题中，而不只按全局批量给一条规则。它指出同样增加全局批量，改变本地噪声与增加独立节点并不等价；这些推导和实验能帮助分析分布式训练中的参数迁移，但不构成任意异质数据或任意同步间隔下的收敛保证。",
+      "order": 13
+    }
+  ]
+}
