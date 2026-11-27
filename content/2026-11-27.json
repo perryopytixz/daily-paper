@@ -1,0 +1,390 @@
+{
+  "date": "2026-11-27",
+  "status": "complete",
+  "frontiers_status": "recommendations",
+  "highlights": [
+    {
+      "arxiv_id": "2611.33931",
+      "label": "Chebyshev 步长｜用裁剪日程取得非凸加速",
+      "text": "NACC 用轮首梯度选择逆分形 Chebyshev 日程，再以能量预算裁剪步长。在梯度和 Hessian 均 Lipschitz、目标有下界且常数已知时，梯度复杂度主导项为 $\\widetilde O(\\varepsilon^{-7/4})$，每步保持充分下降。",
+      "types": [
+        "field"
+      ]
+    },
+    {
+      "arxiv_id": "2611.33531",
+      "label": "Bandit 凸优化｜减少遗憾界的维数依赖",
+      "text": "Gaussian 探索配合无偏梯度、Hessian 估计和在线 Newton 步，经凸体预处理，将对抗遗憾上界改善到 $\\widetilde O(d^{3/2}\\sqrt n)$。只需可行函数值反馈；与已知下界仍差 $d^{1/6}$ 及对数因子。",
+      "types": [
+        "field"
+      ]
+    },
+    {
+      "arxiv_id": "2611.34495",
+      "label": "多源 DRO｜用函数乘子分解交集歧义集",
+      "text": "作者把数据来源间的耦合移入函数型乘子，限制为仿射决策规则后获得可分解上界，并证明其优于若干聚合松弛。在二次损失和特定二阶 Wasserstein 球下近似精确，一般情形保留保守性。",
+      "types": [
+        "field"
+      ]
+    },
+    {
+      "arxiv_id": "2611.33441",
+      "label": "多目标块下降｜识别块驻点的失效边界",
+      "text": "各块分别驻定不保证 Pareto 驻定：只走真子块且所有目标单调的方法一般会受阻。作者在必要时加入全坐标联合步，获得 $O(\\varepsilon^{-(1+\\beta)/\\beta})$ 迭代界；全局检查和联合步的代价另行计数。",
+      "types": [
+        "field"
+      ]
+    },
+    {
+      "arxiv_id": "2611.34073",
+      "label": "输运映射动量｜给多目标 KL 优化离散加速保证",
+      "text": "把分布提升为同一基准上的输运映射，两步外推在 Hilbert 空间中进行，近端输出返回 Brenier 锥。在凸光滑势及有限 Pareto 半径等条件下，merit 函数为 $O(k^{-2})$；强凸版本达到加速线性率。",
+      "types": [
+        "group"
+      ]
+    },
+    {
+      "arxiv_id": "2611.33677",
+      "label": "Anderson 保护｜同时保留加速提案与正则化稳定",
+      "text": "AA 生成候选，Landweber 锚点与两重修正预算决定可接受步。局部条件下得到强收敛、噪声稳定和有限差异停止；另加源条件、值域不变性及预算尾界，才得到 $O(\\delta^{1/2})$ 重构误差率。",
+      "types": [
+        "group"
+      ]
+    },
+    {
+      "arxiv_id": "2611.34757",
+      "label": "分布式 GNE｜厘清显式原始—对偶的步长保证",
+      "text": "对非线性耦合约束，固定小步长保证在给定紧初值集上的半全局收敛；仿射约束或适当递减步长下获得全局结果。分析扩展到邻居决策信息，并用周期轨道说明一般固定步长的边界。",
+      "types": [
+        "group"
+      ]
+    },
+    {
+      "arxiv_id": "2610.03633",
+      "label": "随机双层优化｜区分两类噪声并匹配复杂度",
+      "text": "在标准新鲜梯度 oracle、下层强凸和规定精度范围内，作者分别匹配确定性、上层噪声和下层噪声的复杂度多项式阶。冻结线性倾斜求解与按位移重用梯度给出上界，初始化及条件数范围须一并保留。",
+      "types": [
+        "field"
+      ]
+    }
+  ],
+  "papers": [
+    {
+      "arxiv_id": "2611.33931",
+      "version": 1,
+      "title": "Near Optimal Pure Stepsize Adaptation Acceleration for Gradient Descent on Nonconvex Optimization",
+      "authors": [
+        "Yin Liu",
+        "Ziyang Zeng",
+        "Junyu Zhang"
+      ],
+      "abstract": "Existing accelerated first-order methods for nonconvex optimization typically rely on momentum or extrapolation, requiring auxiliary vectors beyond the current iterate and gradient. On the other hand, memory-free stepsize scheduling alone can accelerate certain convex problems, while no guarantee exists for nonconvex problems. This paper closes this gap by proposing Nonconvex Adaptively Clipped Chebyshev (NACC) gradient descent method, which achieves near optimal acceleration while keeping the vanilla gradient descent update. NACC combines an adaptive selection of reversed fractal Chebyshev stepsizes with an epoch-wise clipping mechanism to control the aggressiveness of stepsizes. For nonconvex problems with Lipschitz continuous gradients and Hessians, we establish a near-optimal $\\widetilde O(\\epsilon^{-7/4})$ complexity. If the problem is convex in addition, then, without modification, NACC automatically achieves an $\\widetilde O(\\epsilon^{-3/4})$ accelerated complexity. Importantly, NACC guarantees the standard quadratic sufficient descent at every iteration, even when the stepsizes are substantially larger than the conventional choice. These monotonicity properties further facilitate practical implementations that adaptively adjust the estimated gradient and Hessian Lipschitz constants, demonstrating significant advantages in numerical tests against the existing nonconvex acceleration benchmarks.",
+      "submitted": "2026-11-25",
+      "updated": "2026-11-25",
+      "arxiv_url": "https://arxiv.org/abs/2611.33931v1",
+      "summary": "在梯度和 Hessian 均 Lipschitz 连续、目标有下界的非凸问题上，NACC 保持普通梯度下降更新，只用自适应步长获得加速。作者采用逆分形次序的 Chebyshev 日程，根据轮首梯度范数选择日程长度，再用轮内能量预算裁剪过大的步长；由此控制负曲率和沿轨迹变化的 Hessian，而无需计算 Hessian 或存储动量向量。在已知两个 Lipschitz 常数的理论版本中，达到 $\\|\\nabla f(x)\\|\\leq\\varepsilon$ 的梯度步数主导项为 $\\widetilde O(\\varepsilon^{-7/4})$，且每步有充分下降。若目标另为凸且存在极小点，同一算法的梯度范数精度复杂度改善为 $\\widetilde O(\\varepsilon^{-3/4})$。文中的自适应常数实现另有数值比较；理论结果不应直接解释为任意未知常数的自动保证。",
+      "reason": "值得对照阅读的是步长序列的稳定性分析：固定 Hessian 下的多项式技巧，如何转成非交换 Hessian 乘积下的误差控制。它与其他长短步长加速工作达到相同的主要精度阶，但采用了不同的 Chebyshev 调度与能量裁剪机制，提供了可比较的分析路线。充分下降是已证明的性质，任意结构下的点列收敛仍需额外分析。",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "order": 1
+    },
+    {
+      "arxiv_id": "2611.33531",
+      "version": 1,
+      "title": "Adversarial Bandit Convex Optimization with $d^{3/2}\\sqrt{n}$ Regret",
+      "authors": [
+        "Alireza Bakhtiari",
+        "Kevin Jamieson",
+        "Tor Lattimore",
+        "Lillian Ratliff"
+      ],
+      "abstract": "We study adversarial bandit convex optimization, where in each of $n$ rounds a learner chooses a point $A_t$ in a convex body $\\mathcal{K}\\subset\\mathbb{R}^d$ and observes only a noisy value of a convex loss $f_t:\\mathcal{K}\\to[0,1]$ at that point. The losses are chosen by an adversary, who may change them from round to round and adapt them to the learner's past actions. We improve the best known regret bound for this problem from $\\widetilde O(d^{5/2}\\sqrt n)$ (Lattimore, 2020, 2026) to $\\widetilde O(d^{3/2}\\sqrt n)$, which matches the rate conjectured by Bubeck et al. (2017). Together with the recent lower bound of $\\Omega(d^{4/3}\\sqrt n)$ due to Rajaraman and Han (2026), it determines the minimax regret up to a factor of $d^{1/6}$ and logarithmic factors. The algorithm is an online Newton step with Gaussian exploration. Unlike earlier methods of this kind, it uses unbiased estimates of the gradient and Hessian of the Gaussian smoothing of the loss, rather than of an optimistic surrogate.",
+      "submitted": "2026-11-24",
+      "updated": "2026-11-24",
+      "arxiv_url": "https://arxiv.org/abs/2611.33531v1",
+      "summary": "该文研究自适应对手下的 bandit 凸优化：每轮只在所选可行点观察一次带噪函数值，损失凸且有界，不要求光滑或强凸，噪声满足条件次高斯假设。作者用 Gaussian 探索构造平滑损失梯度和 Hessian 的无偏估计，以在线 Newton 步、局部可信区域和负遗憾重启控制估计误差。经过凸体的随机仿射预处理，高概率遗憾界达到 $\\widetilde O(d^{3/2}\\sqrt n)$，相较文中列出的既有对抗界减少一个维数因子。Gaussian 样本可在凸体外，但凸延拓的评估通过径向映射转为一次可行查询。与文中引用的 $\\Omega(d^{4/3}\\sqrt n)$ 下界相比，维数依赖仍相差 $d^{1/6}$，并未闭合极小极大界。",
+      "reason": "优先阅读无偏二阶估计与可信区域的配合：它让随机在线 Newton 法直接处理平滑后的原损失，而无需先前的乐观替代函数。维数改进有明确的同设定基准，剩余下界间隙也清楚。该文的查询复杂度与遗憾价值突出，实际每轮计算代价还应结合凸体预处理和几何操作判断。",
+      "directions": [
+        "optimization-frontiers",
+        "stochastic"
+      ],
+      "order": 2
+    },
+    {
+      "arxiv_id": "2611.34495",
+      "version": 1,
+      "title": "Efficient Data Fusion in Distributionally Robust Optimization",
+      "authors": [
+        "Buse Şen",
+        "Aras Selvi",
+        "Jean Pauphilet",
+        "Daniel Kuhn"
+      ],
+      "abstract": "Decisions under uncertainty increasingly rest on fragmented evidence, such as samples from related but different populations, privacy-protected summary statistics, or complementary statistical descriptions of the same data. Distributionally robust optimization (DRO) can fuse such evidence by constructing one ambiguity set per source and hedging against all distributions in the intersection of these sets. This fusion approach is less conservative than aggregating the sources into a single ambiguity set, but it is computationally demanding. Exact reformulations grow exponentially with the number of sources, and even deciding whether the intersection is nonempty is NP-hard. We show that fusion DRO admits an exact reformulation in which the ambiguity sets are coupled only through functional Lagrange multipliers. Restricting these multipliers to affine decision rules yields upper bounds that decompose across the ambiguity sets, are exact for quadratic losses over Wasserstein balls around Gaussian references, and provably dominate aggregation-based relaxations such as Minkowski sums and balls around mixtures. The approximations admit finite conic reformulations in important special cases and subgradient methods for weakly convex losses, which makes fusion DRO applicable to neural network training. In portfolio, newsvendor, and binary classification experiments, the affine approximation stays close to the exact value wherever the latter is computable, scales far better than exact methods, and outperforms aggregation-based benchmarks out-of-sample.",
+      "submitted": "2026-11-25",
+      "updated": "2026-11-25",
+      "arxiv_url": "https://arxiv.org/abs/2611.34495v1",
+      "summary": "多个数据来源分别给出分布歧义集时，取交集能保留各来源的约束，但精确 DRO 重构可能随来源数指数增长，交集非空性本身也可困难。作者把集合间耦合移入函数型 Lagrange 乘子，将问题改写为各歧义集上的最坏期望之和；在紧支撑、集合凸且弱闭、交集非空等正则条件下建立强对偶。把乘子限制为仿射决策规则后，得到可分解的保守上界，并在二次损失、欧氏二阶 Wasserstein 球、来自同一正半定仿射族且协方差正定的参考分布下证明精确性，其中包括非退化 Gaussian 参考分布。论文还比较 Minkowski 和混合分布球等聚合松弛，给出有限锥规划形式及弱凸损失的次梯度方法。一般情形下的仿射近似仍是上界，不能将特殊模型的精确性外推到全部数据融合。",
+      "reason": "核心阅读价值是把“融合后整体求解”变成“各来源分别求解、只在乘子上协调”的对偶结构。它同时给出保守性比较和精确的特殊情形，能解释为何某些简便的数据聚合会丢失约束信息。推荐关注函数乘子到有限决策规则的取舍，以及可分解性与近似误差如何同时获得证书。",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "order": 3
+    },
+    {
+      "arxiv_id": "2611.33441",
+      "version": 1,
+      "title": "A block coordinate descent method for nonconvex multiobjective optimization under Hölder continuity",
+      "authors": [
+        "Lizet Santa Cruz Calderón",
+        "John Frank Matos Ascona",
+        "Vitaliano de Sousa Amaral",
+        "Danilo Rodrigues de Souza"
+      ],
+      "abstract": "In this paper, we propose a block coordinate descent method for unconstrained multiobjective optimization problems with possibly nonconvex objectives and Hölder continuous gradients, intended for large-scale instances, in which updating all the variables simultaneously is expensive. In each iteration, only one block is updated along a descent direction common to all objectives, obtained by minimizing the maximum of their regularized quadratic models. We show that, unlike the single-objective case, stationarity on each block does not imply Pareto stationarity, and that no method that updates only the blocks of a partition of the variables and is monotone in all the objectives reaches, in general, an $\\epsilon$-Pareto stationary point. Therefore, when none of the blockwise stationarity measures exceeds the tolerance, the algorithm performs a joint step across all coordinates and terminates only at $\\epsilon$-Pareto stationary points. We establish a complexity bound of $O(\\epsilon^{-(\\beta+1)/\\beta})$ iterations, where $\\beta$ is the smallest Hölder exponent, the same order as that of methods that update all the variables, as well as bounds on the numbers of function and gradient evaluations, which also hold with one regularization parameter per block.",
+      "submitted": "2026-11-24",
+      "updated": "2026-11-24",
+      "arxiv_url": "https://arxiv.org/abs/2611.33441v1",
+      "summary": "多目标优化中，每一块分别满足驻点条件，并不保证存在同一组目标权重使全梯度为零。作者构造反例，证明仅更新给定划分的真子块、且每步不增加任何目标的方法，一般无法达到 Pareto 驻点。为修复这一障碍，该文在块上的正则化 min-max 二次模型中求共同下降步；当各块的驻点度量都小、全局度量仍大时，切换为所有坐标的联合步。若各块梯度满足 Hölder 型模型余项界、模型矩阵有界且至少一个目标有下界，算法只在 $\\varepsilon$-Pareto 驻点终止，迭代数为 $O(\\varepsilon^{-(1+\\beta)/\\beta})$，其中 $\\beta$ 是最小 Hölder 指数。论文还分别计算函数、梯度评估代价；同阶迭代界不代表每轮都只读取一个块，也不代表自动降低总计算量。",
+      "reason": "值得先读的是块驻点与 Pareto 驻点不等价的障碍，而后再看算法。反例说明单目标坐标法的停止准则不能直接移植到多目标问题；联合步恰好对应这一缺失条件。它提供了一个有明确必要性依据的块方法设计，复杂度分析也区分了便宜的局部更新和必要的全局检查。",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "order": 4
+    },
+    {
+      "arxiv_id": "2611.34073",
+      "version": 1,
+      "title": "Accelerated Proximal Gradient Methods for Multiobjective Optimization over Probability Measures via Hilbert-Space Lifting",
+      "authors": [
+        "Dai Hai Nguyen"
+      ],
+      "abstract": "Many sampling and inference tasks require a single distribution that balances several targets. We formulate this task as multiobjective optimization of Kullback--Leibler (KL) divergences over probability measures, in the Pareto sense. The particle method MWGraD (Nguyen et al., 2025) uses explicit Wasserstein gradient steps, and its accelerated version A-MWGraD (Nguyen et al., 2026) lacks discrete-time guarantees. We propose the multiobjective Wasserstein proximal gradient (MWPG), which uses implicit Wasserstein gradient steps, and its accelerated version, multiobjective Wasserstein accelerated proximal gradient (MWAPG), with rigorous discrete-time guarantees. Our key idea is a Hilbert-space lifting: each measure is represented as the pushforward of a fixed base measure by a map in a Hilbert space. The problem then becomes a constrained multiobjective composite problem over transport maps, to which accelerated proximal gradient methods apply. For convex and smooth potentials, we show that MWAPG decreases a Pareto merit function at the rate $\\mathcal{O}(1/k^2)$; for $m$-strongly convex and $L$-smooth potentials, the rate is $\\mathcal{O}\\big((1-\\sqrt{m/L})^k\\big)$. We also give closed-form Gaussian updates and particle implementations based on input-convex neural networks, which require no score estimation. Experiments on synthetic and real-world dataset show that MWAPG needs far fewer iterations than MWPG and matches or outperforms A-MWGraD in Bayesian multi-task learning.",
+      "submitted": "2026-11-25",
+      "updated": "2026-11-25",
+      "arxiv_url": "https://arxiv.org/abs/2611.34073v1",
+      "summary": "该文将多个 KL 散度的 Pareto 优化提升到同一基准分布上的输运映射 Hilbert 空间，使两步历史映射的线性外推获得明确含义。MWPG 和加速版本 MWAPG 在 Brenier 映射锥内求近端步，把多目标权重交给有限维凹对偶问题，并把熵保留在隐式子问题中。对凸、梯度 $L$-Lipschitz 的可积目标势，以及有限熵的绝对连续初值和有限 Pareto 半径等条件，凸版本的 Pareto merit 函数达到 $O(k^{-2})$；各势另为 $m$-强凸时，强凸版本达到 $O((1-\\sqrt{m/L})^k)$。外推点可以离开映射锥，但算法不在那里评估熵。论文还给出保持速率的单调变体，以及误差衰减满足加权可和条件的非精确近端版本。粒子与神经网络实现是近似计算，不能仅凭迭代公式自动继承精确近端保证。",
+      "reason": "推荐关注历史外推与可行几何如何分工：外推在平坦空间中进行，近端输出回到合法映射锥，熵凸性只在允许的位置使用。这为把加速近端法移入非欧氏问题提供了具体例子。两步历史信息带来的速率改进有离散时间定理支持，特别适合比较单调保护、非精确求解与加速分析之间的关系。",
+      "directions": [
+        "historical-information",
+        "optimization-frontiers"
+      ],
+      "order": 5
+    },
+    {
+      "arxiv_id": "2611.33677",
+      "version": 1,
+      "title": "Anderson-Accelerated Landweber Iteration with Regularization Guarantees for Nonlinear Ill-Posed Problems",
+      "authors": [
+        "Jianming Gao",
+        "Xiliang Lu",
+        "Lin Tian"
+      ],
+      "abstract": "Anderson acceleration (AA) can markedly reduce iteration counts for fixed-point solvers, but its unrestricted signed history extrapolation need not preserve the stability required for iterative regularization of ill-posed problems. We introduce a regularization-guaranteed Anderson-accelerated Landweber method (RG-AA-LW) in which finite-memory AA generates a proposal while the committed iterate is a controlled perturbation of a certified Landweber anchor. Under a local tangential cone condition and a scale-normalized localization condition, we prove strong convergence of the exact-data trajectory to a solution, stability at every fixed iteration, finite discrepancy stopping, and strong convergence of the discrepancy-stopped noisy reconstructions to the same exact-data limit; local uniqueness is needed only if that selected limit is to be identified with a prescribed solution $x^\\dagger$. Under the additional benchmark source condition $x^\\dagger-x_0=F'(x^\\dagger)^*\\lambda^\\dagger$ and a standard range-invariance condition, we obtain the discrepancy-principle rate $\\left\\|x_{k_\\delta}^\\delta-x^\\dagger\\right\\|=O(\\delta^{1/2})$. The rate proof controls data-dependent Anderson coefficients through fixed memory, a fixed-reference ridge in the small AA least-squares problem, and an outer correction budget with an $O(k^{-1})$ tail. The numerical examples verify the efficiency of the proposed method.",
+      "submitted": "2026-11-25",
+      "updated": "2026-11-25",
+      "arxiv_url": "https://arxiv.org/abs/2611.33677v1",
+      "summary": "直接对 Landweber 迭代施加 Anderson 外推，可能同时放大可恢复成分和噪声，残差下降本身不足以保证迭代正则化。作者让固定记忆长度的 AA 仅生成提案，再围绕一个可认证的 Landweber 锚点截断修正；修正大小同时受可和的全局预算及当前锚点位移控制，小规模系数问题使用固定参考 ridge。在局部切锥条件和尺度归一化的局部化条件下，精确数据点列强收敛，带噪迭代在固定步数处稳定，差异原则有限停止，停止后的重构随噪声减小趋于同一个精确数据极限。这个结论不要求解局部唯一；若要把该极限识别为指定解，需相应识别条件。另加源条件、值域不变性及修正预算的 $O(k^{-1})$ 尾界，才得到指定解的 $O(\\delta^{1/2})$ 误差率。",
+      "reason": "最值得借鉴的是把“历史信息生成候选”与“哪些修正可以接受”分开分析。AA 的有符号系数不再直接承担稳定性保证，固定参考正则项和两重修正预算使证明可以追踪数据扰动。它紧贴历史残差加速中的保护问题；保证来自可接受步的控制，并非证明原始 AA 在任意逆问题上都更快。",
+      "directions": [
+        "historical-information"
+      ],
+      "order": 6
+    },
+    {
+      "arxiv_id": "2611.34757",
+      "version": 1,
+      "title": "On the Convergence of Discrete-Time Primal-Dual Algorithm for Distributed GNE Seeking",
+      "authors": [
+        "Weijian Li",
+        "Lacra Pavel",
+        "Panos J. Antsaklis",
+        "Hai Lin"
+      ],
+      "abstract": "We investigate the convergence of a discrete-time distributed primal-dual algorithm for generalized Nash equilibrium (GNE) seeking in a class of noncooperative games with nonlinear coupling constraints. We establish semi-global convergence of the algorithm under a fixed stepsize, in the sense that convergence can be guaranteed from any prescribed compact set of initial conditions by choosing a sufficiently small stepsize. Under a diminishing stepsize sequence, we further establish global convergence when the constraints are globally Lipschitz continuous. For the special case of affine constraints, global convergence is also guaranteed under a sufficiently small fixed stepsize. Finally, we extend these convergence results to a fully distributed GNE seeking algorithm in a partial-decision information setting, where each agent only has access to the actions of its neighbors. These results complement existing convergence results for continuous-time primal-dual dynamics, and provide new convergence guarantees for the discrete-time counterpart in distributed GNE seeking.",
+      "submitted": "2026-11-25",
+      "updated": "2026-11-25",
+      "arxiv_url": "https://arxiv.org/abs/2611.34757v1",
+      "summary": "该文分析带可分非线性耦合不等式的分布式变分 GNE 求解，采用显式离散原始—对偶更新，并通过邻居通信协调乘子。各玩家成本对自身决策凸，耦合函数光滑凸、满足 Slater 条件，伪梯度强单调且 Lipschitz，通信图固定、连通且无向。在这些条件下，作者证明：对预先给定的任意紧初值集，可选择充分小的固定步长保证收敛，即半全局保证；加上约束全局 Lipschitz 条件和合适的递减步长，可得到全局收敛；仿射约束下则允许与初值无关的充分小固定步长。通过增广伪梯度的受限强单调性，结果进一步扩展到只掌握邻居决策的情形。文中的周期轨道例子说明，一般非线性约束下任意小固定步长仍不能保证对所有初值收敛。",
+      "reason": "它针对耦合约束下原始—对偶算法离散化后是否仍收敛这一具体困难，明确区分半全局与全局保证。相较需要校正步骤的分裂方法，所分析的显式更新结构简单；阅读重点是用乘子与决策的联合 Lyapunov 控制解释步长为何依赖初值，以及邻居副本如何影响单调性。",
+      "directions": [
+        "distributed",
+        "constrained-feasibility"
+      ],
+      "order": 7
+    },
+    {
+      "arxiv_id": "2511.05104",
+      "version": 2,
+      "title": "Zeroth-order Algorithms for Distributed Online Optimization against Byzantine Edge Attacks",
+      "authors": [
+        "Yuhang Liu",
+        "Yujie Tang",
+        "Wenjun Mei"
+      ],
+      "abstract": "Byzantine attacks pose a fundamental challenge to distributed optimization, especially when they occur on communication edges, where truthful and corrupted messages coexist and attacked links are difficult to identify. While most existing studies focus on time-invariant objectives, many practical systems operate in dynamic environments and require distributed online optimization under such attacks. A central question is whether sublinear dynamic regret, a benchmark performance in online optimization, can still be achieved under Byzantine edge attacks. This paper answers this question affirmatively. We directly study distributed online optimization with time-varying directed networks, where the identities of adversarial edges are unknown to the agents and may change over time, and only zeroth-order feedback is available. Two resilient algorithms are proposed based on randomized and deterministic zeroth-order schemes. The former is more query-efficient and requires weaker smoothness conditions, while the latter provides deterministic guarantees and better performance in simulations. Both algorithms achieve consensus and, under suitable minimizer-path variation and algorithmic parameter conditions, achieve sublinear dynamic regret with respect to the original unweighted sum of local losses, without imposing stochastic assumptions for losses. Numerical results validate the theoretical findings. Overall, the results show that reliable distributed online optimization remains possible even under complex Byzantine edge attacks and limited feedback.",
+      "submitted": "2025-11-07",
+      "updated": "2026-11-25",
+      "arxiv_url": "https://arxiv.org/abs/2511.05104v2",
+      "summary": "作者研究时变有向网络上、通信边受到 Byzantine 篡改时的在线凸优化，目标仍是所有局部损失的原始非加权和。方法用可信邻居消息给出筛选区间，再以可信锚点的凸组合解释被接受的消息，通过 push-sum 缩放和反馈修正混合权重；随机双点差分和确定性差分分别提供零阶方向。保证依赖可信边在有界时间窗口内联合强连通，且可信边另有当轮可靠的受保护标量反馈通道。在紧凸可行域、有界梯度等条件下，适当步长、探索半径和最优解路径变化使动态遗憾次线性；随机版本的一般凸界可写为 $O(\\sqrt T)+o(T)$，其中后项取决于路径变化，不能删去。确定性版本需要额外二阶光滑条件。论文不要求损失独立同分布，但也不覆盖可信通信骨架完全缺失的任意攻击。",
+      "reason": "推荐关注如何避免弹性混合产生未知节点权重，仍对原始目标和证明遗憾界。可信锚点、受保护反馈与 push-sum 在证明中各有具体作用，与时变网络优化中的权重偏差问题直接相关。比较随机与确定性差分时，应同时看查询次数、光滑假设和路径变化条件。",
+      "directions": [
+        "distributed",
+        "time-varying-networks",
+        "stochastic"
+      ],
+      "order": 8
+    },
+    {
+      "arxiv_id": "2611.33466",
+      "version": 1,
+      "title": "Stochastic Optimization with Network Distribution Dynamics via Local Jacobian Approximation",
+      "authors": [
+        "Yuchen Cai",
+        "Zhiyu He",
+        "Michael Muehlebach",
+        "Florian Dörfler"
+      ],
+      "abstract": "Network systems feature complex interactions among agents, whereby local decisions can influence the state distributions observed by other agents through coupled network dynamics. Such endogenous distribution shifts across large-scale networks pose significant challenges and call for distributed and adaptive decision-making pipelines. To address these challenges and collectively optimize a steady-state performance objective, we propose a distributed network-aware decision-response (D-NAD) gradient algorithm. This algorithm enables each agent to approximate network-response sensitivity using only local information (i.e., the Jacobians of local dynamics and objectives) and neighborhood communication. We establish a non-asymptotic closed-loop convergence guarantee and quantify the impact of the Jacobian approximation errors therein. Numerical experiments on a semi-synthetic networked electric-vehicle price--demand problem demonstrate the effectiveness of the proposed algorithm.",
+      "submitted": "2026-11-24",
+      "updated": "2026-11-24",
+      "arxiv_url": "https://arxiv.org/abs/2611.33466v1",
+      "summary": "在该文的网络随机优化模型中，各代理的决策会经耦合动态改变其他代理所见的分布，优化目标是联合稳态分布下的总性能。D-NAD 用局部及邻居的动态和目标 Jacobian 近似全网响应灵敏度，再用截断 Neumann 展开得到分布式梯度更新。分析假设无向双随机网络、局部动态收缩、目标与 Jacobian 的适当光滑性，以及随机梯度的相对方差控制。对足够小的公共步长 $\\eta=\\eta_0/\\sqrt T$，平均期望梯度平方满足 $O(T^{-1/2}+B^{(1)}+B^{(2)})$，两项分别来自展开截断和邻域近似。增大展开阶数降低截断误差，却可能增大邻域误差上界；固定邻域和阶数时，迭代增长仍留下近似误差项。EV 价格—需求实验比较了这一计算量与精度的取舍。",
+      "reason": "最有价值的是将决策依赖分布的灵敏度计算落实为邻居可获得的信息，并把两种近似误差分别带入闭环驻点界。它与分布式梯度计算、局部模型及通信成本直接相关，也提醒读者：局部迭代更深不一定单调改善全网梯度近似，截断和局部化应联合选择。",
+      "directions": [
+        "distributed",
+        "stochastic"
+      ],
+      "order": 9
+    },
+    {
+      "arxiv_id": "2610.03633",
+      "version": 3,
+      "title": "Closing the Accuracy Gap in Stochastic First-Order Bilevel Optimization",
+      "authors": [
+        "Haihan Zhang",
+        "Wendao Wu",
+        "Chenheng Zhang",
+        "Yanyi Li",
+        "Chunyuan Zheng",
+        "Cong Fang",
+        "Haoxuan Li",
+        "Zhouchen Lin"
+      ],
+      "abstract": "We study the stochastic first-order complexity of smooth nonconvex-strongly-convex bilevel optimization with fresh, conditionally unbiased gradient samples of bounded variance. We assume globally $L$-Lipschitz gradients, bounded $f_y$, $\\mu$-strong convexity of the lower objective, and $\\rho$-Lipschitz lower Hessian blocks. Let $\\kappa=L/\\mu$, $\\vartheta=\\rho/\\mu$, and $\\chi=1+\\vartheta$. For $\\kappa\\ge2$, $1\\le\\vartheta\\le\\kappa^2$, every initial-gap budget $\\Delta>0$, and $0<\\epsilon\\le c\\min\\{L,\\sqrt{L\\Delta}\\}$, we establish $\\mathsf{T}_{\\mathrm{SFO}}(\\epsilon)=\\widetilde{\\Theta}(L\\chi\\kappa^{5/2}\\Delta\\epsilon^{-2}+L\\kappa^4\\sigma_f^2\\Delta\\epsilon^{-4}+L^3\\vartheta^2\\chi\\kappa^8\\sigma_g^2\\Delta\\epsilon^{-6})$, where $\\sigma_f^2$ and $\\sigma_g^2$ are the upper- and lower-level variance budgets. The comparison assumes a finite lower-initialization certificate, holds uniformly over both nonnegative noise budgets, and uses an accuracy constant $c$ independent of conditioning. Three lower-bound families capture the deterministic, upper-noise, and lower-noise contributions. The bounds cover arbitrary randomized adaptive queries and terminal outputs under worst-case expected costs, even for conservative sample gradients. The upper bound combines accelerated frozen-linear-tilt solves with displacement-based reuse of the full upper gradient. An independently chosen base-chain length yields the uniform accuracy range, while a projection and homotopy argument separates undisclosed coordinates from a newly disclosed source, allowing $\\vartheta/\\kappa$ to grow without bound. The bounds match polynomial orders and noise transitions; exact logarithmic exponents and coarser accuracies remain open.",
+      "submitted": "2026-10-02",
+      "updated": "2026-11-24",
+      "arxiv_url": "https://arxiv.org/abs/2610.03633v3",
+      "summary": "该文研究非凸—强凸双层优化的标准随机一阶 oracle 复杂度，oracle 每次只给出新鲜、条件无偏且方差受控的上下层梯度。设全局梯度 Lipschitz 常数归一化上界为 $L$，下层强凸常数为 $\\mu$，下层 Hessian 块变化界为 $\\rho$，并要求上层对下层变量的偏导有界及有限的下层初始误差证书。令 $\\kappa=L/\\mu$、$\\vartheta=\\rho/\\mu$、$\\chi=1+\\vartheta$；在 $\\kappa\\geq2$、$1\\leq\\vartheta\\leq\\kappa^2$ 和 $0<\\varepsilon\\leq c\\min\\{L,\\sqrt{L\\Delta}\\}$ 范围，作者给出匹配到对数因子的三项复杂度：$L\\chi\\kappa^{5/2}\\Delta\\varepsilon^{-2}$、$L\\kappa^4\\sigma_f^2\\Delta\\varepsilon^{-4}$、$L^3\\vartheta^2\\chi\\kappa^8\\sigma_g^2\\Delta\\varepsilon^{-6}$。上界组合加速的冻结线性倾斜下层求解与按外层位移刷新上层梯度；下界分别构造确定性、上层噪声和下层噪声实例，允许随机自适应查询与任意终端输出。该结论匹配多项式阶与噪声过渡，精确对数及更粗精度范围仍未闭合。",
+      "reason": "建议重点看上下层噪声为何产生不同精度幂次，以及梯度重用如何降低上层噪声代价。相比只报告精度阶的结果，该文显式保留条件数、Hessian 变化、初始差距与两类方差，使上界、下界能在同一参数范围比较。原文的 oracle、初始化及精度条件是这一比较的组成部分。",
+      "directions": [
+        "optimization-frontiers",
+        "stochastic"
+      ],
+      "order": 10
+    },
+    {
+      "arxiv_id": "2611.29199",
+      "version": 2,
+      "title": "A note on approximate projection onto the semidefinite complementarity set",
+      "authors": [
+        "Chao Ding"
+      ],
+      "abstract": "The proximal slack update in an augmented Lagrangian method for semidefinite complementarity constraints requires a joint matrix projection. Given real symmetric matrices $A$ and $B$, we seek the nearest pair $(X,Z)$ with $X$ positive semidefinite, $Z$ negative semidefinite, and $XZ=0$. Hou, Peng and Ding obtain a squared-loss factor of $2$ by fitting the pair in an eigenbasis of $A+B$. To improve this bound, we replace the orthogonal projector onto the subspace allowed for $X$ by a symmetric matrix $T$ with eigenvalues in $[0,1]$. From an optimal solution of the resulting semidefinite program, we form candidate subspaces by starting at the zero subspace and adding the eigenspaces of $T$ in decreasing order of eigenvalue. For each candidate, we compress $A$ to that subspace and $B$ to its orthogonal complement. We keep the positive eigenvalues of the first compression and the negative eigenvalues of the second. The best pair has squared loss at most $1.189$ times the minimum for arbitrary inputs and at most $1.15487$ times the minimum when $A$ is positive semidefinite and $B$ is negative semidefinite. For arbitrary inputs the factor improves to $1.18$ if $T$ has at most two distinct eigenvalues in $(0,1)$. The threshold-rounding proofs average over a uniform spectral threshold and use computer-assisted bounds for the resulting scalar inequalities.",
+      "submitted": "2026-11-22",
+      "updated": "2026-11-25",
+      "arxiv_url": "https://arxiv.org/abs/2611.29199v2",
+      "summary": "半定互补约束的近端块需要将一对对称矩阵投影到 $X\\succeq0$、$Z\\preceq0$、$XZ=0$ 的集合，一般求精确最优解是困难的。作者把为两个矩阵选择正交值域的投影算子松弛为谱在 $[0,1]$ 的矩阵，求解相应 SDP 后，按特征值阈值枚举候选子空间，再分别压缩输入矩阵并保留合适符号的谱。相较已有平方损失因子 $2$，文中保证任意输入下最优候选的平方损失至多为最优值的 $1.189$ 倍；输入已具正负半定符号时改进为 $1.15487$。特定松弛解谱结构还能给出 $1.18$。这些是平方距离因子，距离因子应取平方根。标量不等式使用计算机辅助认证；将该近似投影放入整体增广 Lagrangian 法时，仍须通过相应下降与驻点残差接受检验。",
+      "reason": "值得阅读的是“子空间选择—凸松弛—谱阈值舍入”如何把非凸互补结构变成有定量保证的近似块求解器。改进针对一般不对易矩阵，而非只在同时对角化情形成立。它为约束优化中的困难近端步骤提供了具体工具，同时清楚区分了块近似保证与整体算法的收敛条件。",
+      "directions": [
+        "optimization-frontiers",
+        "constrained-feasibility"
+      ],
+      "order": 11
+    },
+    {
+      "arxiv_id": "2611.33802",
+      "version": 1,
+      "title": "BGPNP: A Non-Euclidean Gradient Projection Newton Pursuit Method for Sparsity-Constrained Optimization",
+      "authors": [
+        "Jiawei Chen",
+        "Huilin Han",
+        "Yibing Lv",
+        "Jen-Chih Yao"
+      ],
+      "abstract": "A non-Euclidean gradient projection Newton pursuit method is proposed for solving sparsity constrained optimization problem via the Bregman distance. The method is also denoted as BGPNP. The method firstly constructs a gradient projection step based on the Bregman distance to ensure that the iterates satisfy the sparsity constraint. Then, when the support set becomes stable or the gradient norm is sufficiently small, a Newton pursuit step is introduced to improve local convergence efficiency. The BGPNP is proved to possess a sufficient descent property and the non-increasing monotonicity of the objective function values. The full convergence and linear convergence rate of the BGPNP are established under appropriate conditions, which do not involve the symmetry coefficient of Bregman distance and the $\\theta$-uniform condition. Moreover, the locally quadratical convergence rate of the BGPNP is also obtained. This method provides an effective algorithmic framework for sparse optimization in non-Euclidean setting. Numerical experiments on sparsity-constrained compressed sensing problems validate the competitive performance of BGPNP compared with existing leading solvers.",
+      "submitted": "2026-11-25",
+      "updated": "2026-11-25",
+      "arxiv_url": "https://arxiv.org/abs/2611.33802v1",
+      "summary": "BGPNP 将稀疏约束优化的梯度投影—Newton pursuit 框架搬到 Bregman 几何中：先求保持稀疏可行性的 Bregman 投影步，再在支撑稳定或梯度条件合适时尝试 Newton 修正，并用充分下降规则接受。原文以 Legendre 核和相对光滑等条件建立基本下降性质；完整点列收敛定理进一步要求核强凸、目标相对核具有正的 Legendre 强凸常数。在线性速率部分，作者还要求极限点用满允许稀疏度，且核梯度在相应支撑邻域 Lipschitz；局部二次速率另需受限 Hessian 的局部 Lipschitz 条件等，此时 Newton 步最终被激活并接受。论文避免了一些既有 Bregman 分析中的对称系数和均匀性条件，并给出非二次核实例。这里可行集非凸，不代表所有收敛速率都已覆盖任意非凸目标。",
+      "reason": "推荐关注非凸稀疏投影与非对称 Bregman 距离结合时，如何保留下降、识别支撑并最终切换到快速 Newton 步。原文把投影阶段与局部二阶阶段分开分析，便于检查各自需要的条件。尤其应对照相对强凸与局部 Hessian 条件阅读速率定理，避免仅凭摘要中的“适当条件”理解为一般保证。",
+      "directions": [
+        "optimization-frontiers",
+        "constrained-feasibility"
+      ],
+      "order": 12
+    },
+    {
+      "arxiv_id": "2609.02145",
+      "version": 2,
+      "title": "Online Non-Monotone DR-Submodular Maximization Beyond $1/e$ with Feasible Gradient Queries",
+      "authors": [
+        "Vaneet Aggarwal",
+        "Yiyang Lu"
+      ],
+      "abstract": "We study adversarial online maximization of nonnegative, non-monotone DR-submodular functions over compact convex down-closed sets $K\\subseteq[0,1]^d$ when gradients may be queried only at feasible points. The online approximation coefficients $4/9$ (Aggarwal and Lu) and $2\\sqrt{3}-3\\approx 0.4641$ (Aggarwal and Du) rely on queries along chains that start from the all-ones vector and leave $K$. With every query in $K$, the best known coefficient was $1/e$. We give an online algorithm with coefficient $0.4013$ that, in each round, plays a random action, queries one gradient at a point of $K$, and makes one projection. Its expected approximate regret is $O(RB(1+R)\\sqrt{T})$, where $R\\le\\sqrt{d}$ bounds the norm of points of $K$ and $B$ bounds the gradient norm on $K$. For a budget $\\sum_i x_i\\le k$, the bound is $O(kB\\sqrt{T})$. The algorithm keeps a state $x\\in K$, and the analysis applies the coordinate-chain comparison of Aggarwal and Lu inside the box $[0,x]$, which keeps every query feasible. A second comparison, along a path from $0$ in the direction $x$, cancels the extra terms that the box creates. Because the queries are feasible, they can be played, which gives regret $O(T^{2/3})$ under semi-bandit feedback and $O(T^{4/5})$ under bandit feedback with bounded values. Unbiased stochastic gradients with bounded second moment keep the $\\sqrt{T}$ rate, and on a fixed function the algorithm attains $0.4013\\,\\mathrm{OPT}-\\varepsilon$ in expectation with $O(1+R^2(1+R)^2B^2/\\varepsilon^2)$ feasible gradient queries.",
+      "submitted": "2026-09-02",
+      "updated": "2026-11-25",
+      "arxiv_url": "https://arxiv.org/abs/2609.02145v2",
+      "summary": "该文研究紧凸向下闭可行集中的非负、非单调 DR-submodular 连续函数在线最大化，要求所有梯度查询都可行。已有更高近似系数的坐标链会离开可行集，而此前可行查询的在线系数为 $1/e$。作者把坐标链比较限制在当前可行状态张成的盒中，再用另一条从零出发的路径抵消额外项，得到大于 $0.4013$ 的系数；每轮一次梯度查询和一次投影，期望近似遗憾为 $O(RB(1+R)\\sqrt T)$，其中 $R$ 控制可行点范数，$B$ 控制梯度。无偏且二阶矩有界的随机梯度保留平方根时间阶，进一步转换得到半 bandit 与 bandit 反馈界。离线同一目标上也有加性精度保证，无需梯度 Lipschitz。该文改善的是“只在可行点查询”的模型，不能直接以系数大小否定允许不可行查询的结果。",
+      "reason": "最值得阅读的是查询可行性如何进入分析，而非作为算法结束时的附加修复。局部盒比较与路径抵消同时保留较好的近似系数和一阶 oracle 预算，体现了连续非凸优化中“能查询哪里”会改变可达到保证的具体例子。推荐将它与无可行查询限制的坐标链方法并排比较。",
+      "directions": [
+        "optimization-frontiers",
+        "constrained-feasibility",
+        "stochastic"
+      ],
+      "order": 13
+    },
+    {
+      "arxiv_id": "2611.34123",
+      "version": 1,
+      "title": "Scaled Coordinate Descent for Convex Quadratic Programs",
+      "authors": [
+        "Cristian Rusu"
+      ],
+      "abstract": "We study a modification of coordinate descent for unconstrained symmetric positive definite quadratic programs that combines a coordinate correction with an exact scaling of the current iterate. For a selected coordinate, the method minimizes the objective function over the two-dimensional subspace spanned by the current iterate and the corresponding standard basis vector. Closed-form expressions are obtained for the two update parameters and for the resulting objective decrease. The scaling produces a state-dependent effective curvature that is no larger than the diagonal curvature used by standard coordinate descent, so the exact scaled update makes at least as much progress for the same selected coordinate. We discuss initialization, numerical stability, randomized coordinate selection, experimental comparisons with ordinary two-coordinate descent, and a block coordinate extension. In the spirit of previous theoretical results, we give a probabilistic linear convergence result. Finally, we provide experimental results to show the effectiveness of the proposed method on synthetic data.",
+      "submitted": "2026-11-25",
+      "updated": "2026-11-25",
+      "arxiv_url": "https://arxiv.org/abs/2611.34123v1",
+      "summary": "对于无约束正定二次规划，普通坐标下降只沿一个坐标方向优化。作者提出同时精确缩放当前迭代向量与修正所选坐标，即在当前向量和一个坐标基向量张成的二维子空间中最小化目标。两个参数及目标下降量可用闭式公式计算；其有效曲率不大于普通坐标更新的对角曲率，因此对同一坐标的精确更新至少获得同样多的下降。在有界间隔内覆盖每个坐标时，算法全局收敛；随机及块版本给出条件期望投影分析，继承普通随机块下降的线性保证。文中还讨论退化子空间、零初值和数值稳定性。它每步的子空间包含一个稠密向量，并非两个普通坐标，因此每步进展比较不能直接换算成相同运行时间下的优越性。",
+      "reason": "这一构造的阅读价值在于用一个可精确求解的二维模型增强坐标法，同时保留可解释的曲率和投影比较。相较增加固定坐标块，它使用依赖当前状态的非坐标方向；无需另存历史窗口。推荐关注闭式更新的退化处理，以及逐坐标下降优势与真实计算成本之间的区别。",
+      "directions": [
+        "optimization-frontiers"
+      ],
+      "order": 14
+    },
+    {
+      "arxiv_id": "2611.33567",
+      "version": 1,
+      "title": "ProPolar: Progressive Polar Decomposition for Implicit Neural Representations",
+      "authors": [
+        "Pureum Kim",
+        "Younggeon Ryu",
+        "Dongyoon Lee",
+        "Hae Beom Lee",
+        "Kyong Hwan Jin"
+      ],
+      "abstract": "Implicit neural representations (INRs) capture global low-frequency structure during the early stage of training and then refine localized high-frequency details, afterwards. However, standard optimizers are agnostic to the coarse-to-fine learning behavior of INRs. Such optimizers accumulate a gradient matrix in momentum buffer and retain components misaligned with the dominant low-frequency directions in the early stage. We propose a progressively growing rank scheduler and a rank-aware learning-rate scheduler for enhancing a subspace-based momentum optimization, where a momentum matrix is updated within a low-rank subspace. The rank schedule expands the subspace during training, and the scheduler holds the peak learning rate through rank growth so that the added subspace contributes to fine-detail recovery. Experiments on image fitting, single-image super-resolution (SISR), and neural radiance field optimization show that the proposed method improves convergence and peak reconstruction quality over competitive optimizers. The largest gains appear in the high-frequency refinement stage, mirroring the coarse-to-fine progression that the rank schedule targets. A significant study on hyperparameter optimization (HPO) on NeRF further confirms that these gains persist under matched search budgets.",
+      "submitted": "2026-11-25",
+      "updated": "2026-11-25",
+      "arxiv_url": "https://arxiv.org/abs/2611.33567v1",
+      "summary": "ProPolar 针对隐式神经表示训练中的动量矩阵设计更新：完整极分解会把不同奇异方向近乎同等放大，而早期动量常集中在低秩子空间。作者先用随机投影与薄 QR 形成低秩基，在该子空间中对动量做极分解，再随训练逐步增加秩；与之配合的学习率日程在秩增长阶段保持峰值，待秩饱和后衰减。图像拟合、超分辨率和 NeRF 实验比较了优化效果，频带实验及增加、固定、减小秩的消融用于考察历史动量中主方向与尾方向的作用。NeRF 的等预算 TPE 调参后，方法仍保持较好的平均重构质量，但并非所有场景和指标都领先。该文贡献是有对照实验支持的历史动量压缩与调度设计，没有给出一般非凸收敛定理。",
+      "reason": "它把“保存历史梯度”推进到“历史矩阵中的哪些方向应在何时用于更新”这一具体算法问题。递增子空间和学习率的配合有消融与频带证据，适合与完整矩阵正交化、固定秩动量压缩比较。相关认识来自所测隐式表示任务，不能直接推广为所有神经网络的统一频谱机制。",
+      "directions": [
+        "historical-information"
+      ],
+      "order": 15
+    }
+  ]
+}
