@@ -1,0 +1,129 @@
+{
+  "date": "2026-11-28",
+  "status": "complete",
+  "frontiers_status": "recommendations",
+  "highlights": [
+    {
+      "arxiv_id": "2402.06271",
+      "label": "局部 Hölder 梯度｜无回溯也能证明整列收敛",
+      "text": "仅用相邻点与梯度差调整步长，无需输入 Hölder 指数或常数。在凸复合问题、局部 $\\nu$-Hölder 梯度及解存在时，证明整列收敛与历史最佳目标差 $O(K^{-\\nu})$；核心是控制缩放步长，而非假定步长始终有正下界。",
+      "types": [
+        "field"
+      ]
+    },
+    {
+      "arxiv_id": "2301.04431",
+      "label": "历史差分自适应｜从近端梯度扩展到三项原始—对偶",
+      "text": "同时利用相邻梯度差的局部 Lipschitz 与余强单调性估计，凸两项模型无需回溯即可收敛，最佳目标差为 $O(1/K)$；扩展到三项原始—对偶模型。免算 $\\|A\\|$ 的变体仍需回溯，但不增加梯度评估。",
+      "types": [
+        "group"
+      ]
+    },
+    {
+      "arxiv_id": "2510.06079",
+      "label": "AdaPGNC｜用双侧曲率控制非凸自适应步长",
+      "text": "历史梯度差估计上曲率，函数值线性化误差估计下曲率，再限制步长增长。全局 Lipschitz 梯度、凸近端项和目标有下界时，单层、无线搜索与无重启即可用 $O(\\varepsilon^{-2})$ 次梯度评估达到近端梯度映射精度；算法需要函数值。",
+      "types": [
+        "field"
+      ]
+    },
+    {
+      "arxiv_id": "1708.05136",
+      "label": "ARock 复杂度｜刻画随规模消失的异步惩罚",
+      "text": "在收缩算子、独立均匀随机块与受控延迟尾和条件下，证明异步相对同步的 epoch 复杂度惩罚为 $1+O(m^{q-1/2})$，$q<1/2$。这比仅证明无界延迟下收敛更精细；实际吞吐加速仍依赖计算和通信模型。",
+      "types": [
+        "group"
+      ]
+    }
+  ],
+  "papers": [
+    {
+      "arxiv_id": "2402.06271",
+      "version": 2,
+      "title": "Adaptive proximal gradient methods are universal without approximation",
+      "authors": [
+        "Konstantinos A. Oikonomidis",
+        "Emanuel Laude",
+        "Puya Latafat",
+        "Andreas Themelis",
+        "Panagiotis Patrinos"
+      ],
+      "submitted": "2024-02-09",
+      "updated": "2024-07-05",
+      "arxiv_url": "https://arxiv.org/abs/2402.06271v2",
+      "abstract": "We show that adaptive proximal gradient methods for convex problems are not restricted to traditional Lipschitzian assumptions. Our analysis reveals that a class of linesearch-free methods is still convergent under mere local H\\\"older gradient continuity, covering in particular continuously differentiable semi-algebraic functions. To mitigate the lack of local Lipschitz continuity, popular approaches revolve around $\\varepsilon$-oracles and/or linesearch procedures. In contrast, we exploit plain H\\\"older inequalities not entailing any approximation, all while retaining the linesearch-free nature of adaptive schemes. Furthermore, we prove full sequence convergence without prior knowledge of local H\\\"older constants nor of the order of H\\\"older continuity. Numerical experiments make comparisons with baseline methods on diverse tasks from machine learning covering both the locally and the globally H\\\"older setting.",
+      "directions": [
+        "historical-information",
+        "optimization-frontiers"
+      ],
+      "summary": "凸复合优化中，梯度仅局部 Hölder 连续时，传统自适应近端梯度分析所依赖的步长正下界可能消失。该文重新分析基于相邻点、梯度差和步长比的 adaPG 方法，使算法无需知道 Hölder 指数 $\\nu\\in(0,1]$ 或连续性常数，也无需预设近似精度、回溯或函数值评估。在光滑项凸且梯度局部 $\\nu$-Hölder 连续、非光滑项正常下半连续凸且解存在的有限维情形下，作者证明整个迭代序列收敛到一个最优解，并给出历史最佳目标差 $O(K^{-\\nu})$ 的界。证明将可能趋零的步长与相邻迭代距离配对，控制缩放后的量。这里的“通用”指不需要输入光滑性指数，并不意味着获得 Hölder 类的最优复杂度；原文明确说明该最坏情形速率弱于 Nesterov 的通用原始梯度方法。",
+      "reason": "最值得读的是步长可能趋零时如何恢复点列收敛的分析。它把已有局部 Lipschitz 理论推进到局部 Hölder 条件，说明历史梯度驱动的自适应并不必然需要统一的正步长下界。与今天另外两篇自适应近端工作相比，这篇提供的是更弱光滑性下的证明工具；阅读时可重点比较缩放步长、迭代位移和 Lyapunov 函数各自承担的作用。",
+      "order": 1
+    },
+    {
+      "arxiv_id": "2301.04431",
+      "version": 4,
+      "title": "Adaptive proximal algorithms for convex optimization under local Lipschitz continuity of the gradient",
+      "authors": [
+        "Puya Latafat",
+        "Andreas Themelis",
+        "Lorenzo Stella",
+        "Panagiotis Patrinos"
+      ],
+      "submitted": "2023-01-11",
+      "updated": "2024-03-13",
+      "arxiv_url": "https://arxiv.org/abs/2301.04431v4",
+      "abstract": "Backtracking linesearch is the de facto approach for minimizing continuously differentiable functions with locally Lipschitz gradient. In recent years, it has been shown that in the convex setting it is possible to avoid linesearch altogether, and to allow the stepsize to adapt based on a local smoothness estimate without any backtracks or evaluations of the function value. In this work we propose an adaptive proximal gradient method, adaPG, that uses novel estimates of the local smoothness modulus which leads to less conservative stepsize updates and that can additionally cope with nonsmooth terms. This idea is extended to the primal-dual setting where an adaptive three-term primal-dual algorithm, adaPD, is proposed which can be viewed as an extension of the PDHG method. Moreover, in this setting the \"essentially\" fully adaptive variant adaPD$^+$ is proposed that avoids evaluating the linear operator norm by invoking a backtracking procedure, that, remarkably, does not require extra gradient evaluations. Numerical simulations demonstrate the effectiveness of the proposed algorithms compared to the state of the art.",
+      "directions": [
+        "historical-information",
+        "optimization-frontiers"
+      ],
+      "summary": "未知局部曲率时，近端梯度与原始—对偶方法通常借助回溯确定步长。该文的 adaPGM 利用最近两个迭代点及梯度差，同时估计局部 Lipschitz 与余强单调性信息，在允许步长增长的同时约束其增幅，不需要回溯或函数值评估。在光滑项凸且梯度局部 Lipschitz、近端项正常下半连续凸且最优解存在时，作者证明点列收敛，并得到历史最佳目标值 $O(1/K)$ 的收敛率。进一步针对 $f(x)+g(x)+h(Ax)$ 构造 adaPDM：在线性算子范数已知、满足相对内部可行性条件并按文中规则取步长及正安全裕量时，原始—对偶点列收敛。adaPDM+ 可避免预先计算 $\\|A\\|$，代价是回溯校正算子范数估计，但回溯不增加梯度评估。三项模型的这一变体仍有回溯，不能与 adaPGM 的完全无回溯性质混同。",
+      "reason": "推荐关注历史差分如何同时承担曲率估计和稳定性控制。两个局部几何估计产生较宽松的单步步长规则，Lyapunov 分析再把可能非单调的迭代连接到全局收敛；这为研究历史信息如何进入近端与原始—对偶更新提供了具体可比较的设计。三项复合模型还补充了仅靠两项近端梯度无法直接处理的线性组合结构。较宽松的单步规则不代表运行中每一步都比旧算法步长更大，原文专门区分了这两件事。",
+      "order": 2
+    },
+    {
+      "arxiv_id": "2510.06079",
+      "version": 1,
+      "title": "A Simple Adaptive Proximal Gradient Method for Nonconvex Optimization",
+      "authors": [
+        "Zilong Ye",
+        "Shiqian Ma",
+        "Junfeng Yang",
+        "Danqing Zhou"
+      ],
+      "submitted": "2025-10-07",
+      "updated": "2025-10-07",
+      "arxiv_url": "https://arxiv.org/abs/2510.06079v1",
+      "abstract": "Consider composite nonconvex optimization problems where the objective function consists of a smooth nonconvex term (with Lipschitz-continuous gradient) and a convex (possibly nonsmooth) term. Existing parameter-free methods for such problems often rely on complex multi-loop structures, require line searches, or depend on restrictive assumptions (e.g., bounded iterates). To address these limitations, we introduce a novel adaptive proximal gradient method (referred to as AdaPGNC) that features a simple single-loop structure, eliminates the need for line searches, and only requires the gradient's Lipschitz continuity to ensure convergence. Furthermore, AdaPGNC achieves the theoretically optimal iteration/gradient evaluation complexity of $\\mathcal{O}(\\varepsilon^{-2})$ for finding an $\\varepsilon$-stationary point. Our core innovation lies in designing an adaptive step size strategy that leverages upper and lower curvature estimates. A key technical contribution is the development of a novel Lyapunov function that effectively balances the function value gap and the norm-squared of consecutive iterate differences, serving as a central component in our convergence analysis. Preliminary experimental results indicate that AdaPGNC demonstrates competitive performance on several benchmark nonconvex (and convex) problems against state-of-the-art parameter-free methods.",
+      "directions": [
+        "historical-information",
+        "optimization-frontiers"
+      ],
+      "summary": "当目标由光滑非凸项和凸非光滑项组成时，凸自适应梯度法中的历史曲率规则不能直接沿用。该文提出 AdaPGNC，用当前与前一步的梯度差估计上曲率，并用函数值与梯度形成的线性化误差估计下曲率；检测到局部非凸性时进一步收紧步长，以非负可求和序列限制步长增长。算法只需单层循环，每步一次梯度和一次近端运算，无需线搜索、重启或预先知道上下曲率常数，但需要函数值来计算下曲率估计。在梯度全局 Lipschitz、近端项正常闭凸且总目标有下界时，作者构造由目标差和相邻位移组成的加权 Lyapunov 函数，证明近端梯度映射趋零，并以 $O(\\varepsilon^{-2})$ 次迭代及梯度评估达到 $\\|G_\\Lambda(x)\\|\\le\\varepsilon$，其中 $\\Lambda$ 是分析给出的步长上界。该保证针对驻点精度，不是非凸全局最优值，也不把局部 Lipschitz 条件作为一般非凸定理。",
+      "reason": "它把历史信息自适应中的关键障碍具体化：梯度差只描述上曲率，非凸线性化误差还需要单独控制。值得比较的是下曲率项怎样进入步长条件，以及可求和的增长预算怎样与能量权重配合，从而以简单循环保留标准的一阶驻点复杂度。相较今天的凸与 Hölder 工作，这篇给出有实质区别的非凸稳定机制；阅读时应同时注意函数值成本和全局光滑假设。",
+      "order": 3
+    },
+    {
+      "arxiv_id": "1708.05136",
+      "version": 1,
+      "title": "More Iterations per Second, Same Quality -- Why Asynchronous Algorithms may Drastically Outperform Traditional Ones",
+      "authors": [
+        "Robert Hannah",
+        "Wotao Yin"
+      ],
+      "submitted": "2017-08-17",
+      "updated": "2017-08-17",
+      "arxiv_url": "https://arxiv.org/abs/1708.05136v1",
+      "abstract": "In this paper, we consider the convergence of a very general asynchronous-parallel algorithm called ARock, that takes many well-known asynchronous algorithms as special cases (gradient descent, proximal gradient, Douglas Rachford, ADMM, etc.). In asynchronous-parallel algorithms, the computing nodes simply use the most recent information that they have access to, instead of waiting for a full update from all nodes in the system. This means that nodes do not have to waste time waiting for information, which can be a major bottleneck, especially in distributed systems. When the system has $p$ nodes, asynchronous algorithms may complete $\\Theta(\\ln(p))$ more iterations than synchronous algorithms in a given time period (\"more iterations per second\"). Although asynchronous algorithms may compute more iterations per second, there is error associated with using outdated information. How many more iterations in total are needed to compensate for this error is still an open question. The main results of this paper aim to answer this question. We prove, loosely, that as the size of the problem becomes large, the number of additional iterations that asynchronous algorithms need becomes negligible compared to the total number (\"same quality\" of the iterations). Taking these facts together, our results provide solid evidence of the potential of asynchronous algorithms to vastly speed up certain distributed computations.",
+      "directions": [
+        "asynchronous-distributed",
+        "distributed",
+        "stochastic"
+      ],
+      "summary": "异步算法每秒能执行更多更新，但陈旧信息可能增加达到相同精度所需的迭代数。该文在收缩不动点算子下分析 ARock，把吞吐优势与迭代复杂度损失分开比较。对于独立均匀随机块更新，若随机延迟向量独立同分布、与既有迭代独立，且两个含指数权重的延迟尾和 $M_1,M_2$ 有限并随块数 $m$ 至多按 $O(m^q)$ 增长、$0\\le q<1/2$，选择依赖延迟分布的步长后，以 epoch 计的复杂度为 $[1+O(m^{q-1/2})](1-r^2)^{-1}\\log(1/\\varepsilon)$，其中 $0<r<1$ 为算子的收缩率。因而在该扩展条件下，异步与对应同步随机块方法的复杂度比趋于一。对确定性延迟，作者另给依赖当前可观测延迟的步长和收敛因子；延迟过大时进展可以变得很小。文中的每秒更新优势来自特定计算与通信时间模型，不能据此保证任意网络中的实际加速。",
+      "reason": "这篇补充了已推荐的 ARock 无界延迟收敛工作所未直接回答的问题：允许无界延迟后，收敛速度相对同步基线损失多少。重点是为延迟误差建立带历史增量的 Lyapunov 函数，并把误差控制精确到随规模消失的复杂度惩罚。它与延迟鲁棒、延迟自适应步长研究直接相关，也提供了比较异步方法时应明确的尺度：更新次数、epoch 和墙钟时间分别需要什么假设。",
+      "order": 4
+    }
+  ]
+}
